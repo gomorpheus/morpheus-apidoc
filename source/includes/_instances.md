@@ -248,7 +248,8 @@ curl -XPOST "https://api.gomorpheus.com/api/instances" \
   "description": "dre-matrix-3",
   "instanceType": {"code":'redis'},
   "servicePlan": 1,
-  "layout": {"id": 1}
+  "layout": {"id": 1},
+  "site": {"id": 1}
   }
 ```
 
@@ -267,6 +268,7 @@ description | null | Optional description field
 instanceType | null | The type of instance by code we want to fetch
 servicePlan | null | service plans designate layout and capacity
 layout | null | the layout id for the instance type that you want to provision. i.e. single process or cluster
+site   | null | The Group Id for which server group to provision into. (can be acquired using the /api/groups API)
 
 ## Updating an Instance
 
@@ -286,14 +288,173 @@ curl -XPUT "https://api.gomorpheus.com/api/instances/1" \
 
 `PUT https://api.gomorpheus.com/api/instances/:id`
 
-### JSON Server Parameters
+### JSON Instance Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | Unique name scoped to your account for the instance
 description | null | Optional description field
 
-## Delete a Server
+## Stop an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/stop" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will stop all containers running within an instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/stop`
+
+## Start an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/start" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will start all containers running within an instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/start`
+
+## Restart an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/restart" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will restart all containers running within an instance. This includes rebuilding the environment variables and applying settings to the docker containers.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/restart`
+
+## Resize an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/resize" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "servicePlan": {
+    "id": 1
+  }}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to resize containers within an instance by increasing their memory plan or storage limit. This is done by assigning a new service plan to the container.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/resize`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+servicePlan | null    | the map containing the id of the service plan you wish to apply to the containers in this instance
+
+## Clone an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/clone" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "New Name",
+    "group": {
+      "id": 1
+  }}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+One can easily clone an instance and all containers within that instance. The containers are backed up via the backup services and used as a snapshot to produce a clone of the instance. It is possible to clone this app instance into an entirely different availability zone.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/clone`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+group       | null    | the map containing the id of the server group you would like to clone into.
+name        | null    | A name for the new cloned instance. If none is specified the existing name will be duplicated with the 'clone' suffix added.
+
+## Upgrade an Instance
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/upgrade" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "upgrade": {
+      "id": 1
+  }}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to perform certain upgrade options for an instance. See the section on getting a list of upgrade options for a particular instance. Depending on the instance type these could include adding a replica, adding a a tomcat node, adding a mysql save, or master. Entirely depends.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/upgrade`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+upgrade       | null    | the map containing the id of the instance type upgrade you would like to perform.
+
+
+## Delete an Instance
 
 ```shell
 curl -XDELETE "https://api.gomorpheus.com/api/instances/1" \
