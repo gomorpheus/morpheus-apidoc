@@ -247,9 +247,10 @@ curl -XPOST "https://api.gomorpheus.com/api/instances" \
   "name": "myRedis",
   "description": "dre-matrix-3",
   "instanceType": {"code":'redis'},
-  "servicePlan": 1,
   "layout": {"id": 1},
   "site": {"id": 1}
+  },
+  "servicePlan": 1
   }
 ```
 
@@ -259,7 +260,7 @@ curl -XPOST "https://api.gomorpheus.com/api/instances" \
 
 `POST https://api.gomorpheus.com/api/instances`
 
-### JSON Server Parameters
+### JSON Instance Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -270,7 +271,7 @@ servicePlan | null | service plans designate layout and capacity
 layout | null | the layout id for the instance type that you want to provision. i.e. single process or cluster
 site   | null | The Group Id for which server group to provision into. (can be acquired using the /api/groups API)
 
-There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts. Currently these input options are available in the `instanceType.config.options` map. These however, can be overridden in the event a config options map exists on the layout object within.
+There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts. Currently these input options are available in the `instanceType.config.options` map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: Custom options belong outside of the `instance` object block in the JSON Post just like the servicePlan argument does as well.
 
 ## Updating an Instance
 
