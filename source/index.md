@@ -16,6 +16,8 @@ includes:
   - zones
   - zonetypes
   - servers
+  - certificates
+  - keypairs
   - errors
 
 search: true

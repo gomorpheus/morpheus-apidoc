@@ -1,0 +1,5 @@
+name: "Morpheus API Docs"
+script: "rake build"
+files: 
+-
+  path: build
