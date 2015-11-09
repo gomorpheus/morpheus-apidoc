@@ -456,7 +456,7 @@ curl -XGET "https://api.gomorpheus.com/api/instances/1/acls" \
 ```json
 {
   "chain": {
-    "name": 'My Rule',
+    "name": "My Rule",
     "dateCreated": null,
     "lastUpdated": null,
     "isEnabled": true
