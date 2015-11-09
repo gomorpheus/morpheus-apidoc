@@ -46,10 +46,7 @@ curl "https://api.gomorpheus.com/api/instances"
       "description": null,
       "dateCreated": "2015-06-09T20:59:17Z",
       "lastUpdated": "2015-06-09T21:00:19Z",
-      "status": {
-        "enumType": "com.morpheus.Instance$Status",
-        "name": "running"
-      },
+      "status": "running",
       "containerIds": [
         4
       ]
@@ -86,10 +83,7 @@ curl "https://api.gomorpheus.com/api/instances"
       "description": null,
       "dateCreated": "2015-06-09T21:06:38Z",
       "lastUpdated": "2015-06-09T21:07:15Z",
-      "status": {
-        "enumType": "com.morpheus.Instance$Status",
-        "name": "running"
-      },
+      "status": "running",
       "containerIds": [
         6
       ]
@@ -132,10 +126,7 @@ curl "https://api.gomorpheus.com/api/instances"
       "description": null,
       "dateCreated": "2015-06-09T17:27:56Z",
       "lastUpdated": "2015-06-09T21:06:05Z",
-      "status": {
-        "enumType": "com.morpheus.Instance$Status",
-        "name": "running"
-      },
+      "status": "running"
       "containerIds": [
         3
       ]
@@ -224,10 +215,7 @@ curl "https://api.gomorpheus.com/api/instances/1" \
     "description": null,
     "dateCreated": "2015-06-09T20:59:17Z",
     "lastUpdated": "2015-06-09T21:00:19Z",
-    "status": {
-      "enumType": "com.morpheus.Instance$Status",
-      "name": "running"
-    },
+    "status": "running"
     "containerIds": [
       4
     ]
@@ -456,6 +444,138 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 upgrade       | null    | the map containing the id of the instance type upgrade you would like to perform.
 
+## Get ACL Rules
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/instances/1/acls" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "chain": {
+    "name": 'My Rule',
+    "dateCreated": null,
+    "lastUpdated": null,
+    "isEnabled": true
+  }, 
+  "rules": [
+    {
+      "cidr": "10.0.0.1/32",
+      "description": "My Home IP",
+      "enabled": true
+    }
+  ]
+}
+```
+
+It is possible to get a list of all acl rules applied to a particular instance using the nested acl url endpoint.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/acls`
+
+
+## Set ACL Rules
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "rules": [
+      {
+        cidr:"10.0.0.1/32"
+        description: "Home IP"
+      }
+  ]}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  chain: {}, rules: []
+}
+```
+
+It is possible to assign ACL CIDR rules to your instance. These can even be set in bulk.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/instances/:id/acls`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+rules       | null    | List of rules to be applied containing a CIDR and description
+
+
+## Delete ACL Rule
+
+```shell
+curl -XDELETE "https://api.gomorpheus.com/api/instances/1/acls/10.0.0.1%2F32" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "chain": {}, "rules": []
+}
+```
+
+This will delete a single rule from the acl chain. You must url encode the CIDR you wish to remove.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/instances/:id/acls/:cidr`
+
+## Enable ACL Firewall
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls/enable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to enable or disable rules at the instance level. This is only effective if the global firewall is turned on in settings.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/instances/:id/acls/enable`
+
+## Disable ACL Firewall
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls/disable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to disable rules at the instance level. This is only effective if the global firewall is turned on in settings.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/instances/:id/acls/disable`
+
 
 ## Delete an Instance
 
@@ -473,3 +593,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/instances/1" \
 ```
 
 Will delete an instance and all associated monitors and backups.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/instances/:id`
