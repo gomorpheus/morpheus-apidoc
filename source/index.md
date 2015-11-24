@@ -28,7 +28,7 @@ search: true
 
 # Introduction
 
-Welcome to the Morpheus API Documentation. Morpheus is a powerful container provisioning service complete with monitoring, logging, backups, and deployment strategies.
+Welcome to the Morpheus API Documentation. Morpheus is a powerful container provisioning service complete with monitoring, logging, backups, and deployment strategies. (version 2.2.x)
 
 We currently provide an OAUTH 2.0 based authentication model and are working on language specific libraries for ruby and a few others.
 
