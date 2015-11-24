@@ -15,9 +15,26 @@ curl "https://api.gomorpheus.com/api/instances/1/deploy"
 {
   "appDeploys": [
     {
-      
+      "config": null,
+      "dateCreated": "2015-11-14T23:49:24Z",
+      "deployDate": "2015-11-14T23:49:47Z",
+      "deployGroup": null,
+      "deployType": "browser",
+      "fetchUrl": null,
+      "gitRef": null,
+      "gitUrl": null,
+      "id": 2,
+      "instanceId": 5,
+      "keyPair": {
+        "id": 1,
+        "name": null
+      },
+      "lastUpdated": "2015-11-14T23:49:47Z",
+      "status": "committed",
+      "userVersion": null
     }
-  ]
+  ],
+  "success": true
 }
 ```
 
@@ -84,3 +101,7 @@ gitRef | null | The branch or tag name to be used to fetch from on git.
 fetchUrl | null | Used for fetch deploy type. Can fetch a zip file or general file and extract into archive
 deployGroup | null | Not yet in use but used to organize deploys for multiple apps in the same group
 config | null | JSON encoded list of parameters that varies by instance type. See below for more information
+
+## Upload Files to Deployment Archive
+
+

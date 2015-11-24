@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - instances
   - instancetypes
+  - deploys
   - checks
   - check_types
   - groups
@@ -18,6 +19,8 @@ includes:
   - servers
   - certificates
   - keypairs
+  - accounts
+  - users
   - errors
 
 search: true
