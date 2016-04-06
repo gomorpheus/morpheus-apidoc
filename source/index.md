@@ -22,6 +22,8 @@ includes:
   - accounts
   - users
   - errors
+  - security_groups
+  - security_group_rules
 
 search: true
 ---
