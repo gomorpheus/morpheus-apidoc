@@ -444,139 +444,6 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 upgrade       | null    | the map containing the id of the instance type upgrade you would like to perform.
 
-## Get ACL Rules
-
-```shell
-curl -XGET "https://api.gomorpheus.com/api/instances/1/acls" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "chain": {
-    "name": "My Rule",
-    "dateCreated": null,
-    "lastUpdated": null,
-    "isEnabled": true
-  }, 
-  "rules": [
-    {
-      "cidr": "10.0.0.1/32",
-      "description": "My Home IP",
-      "enabled": true
-    }
-  ]
-}
-```
-
-It is possible to get a list of all acl rules applied to a particular instance using the nested acl url endpoint.
-
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/instances/:id/acls`
-
-
-## Set ACL Rules
-
-```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls" \
-  -H "Authorization: BEARER access_token" \
-  -H "Content-Type: application/json" \
-  -d '{ "rules": [
-      {
-        cidr:"10.0.0.1/32"
-        description: "Home IP"
-      }
-  ]}'
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  chain: {}, rules: []
-}
-```
-
-It is possible to assign ACL CIDR rules to your instance. These can even be set in bulk.
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/instances/:id/acls`
-
-### JSON Parameters
-
-Parameter   | Default | Description
----------   | ------- | -----------
-rules       | null    | List of rules to be applied containing a CIDR and description
-
-
-## Delete ACL Rule
-
-```shell
-curl -XDELETE "https://api.gomorpheus.com/api/instances/1/acls/10.0.0.1%2F32" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "chain": {}, "rules": []
-}
-```
-
-This will delete a single rule from the acl chain. You must url encode the CIDR you wish to remove.
-
-### HTTP Request
-
-`DELETE https://api.gomorpheus.com/api/instances/:id/acls/:cidr`
-
-## Enable ACL Firewall
-
-```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls/enable" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "success": true
-}
-```
-
-It is possible to enable or disable rules at the instance level. This is only effective if the global firewall is turned on in settings.
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/instances/:id/acls/enable`
-
-## Disable ACL Firewall
-
-```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances/1/acls/disable" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "success": true
-}
-```
-
-It is possible to disable rules at the instance level. This is only effective if the global firewall is turned on in settings.
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/instances/:id/acls/disable`
-
-
 ## Delete an Instance
 
 ```shell
@@ -597,3 +464,97 @@ Will delete an instance and all associated monitors and backups.
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/instances/:id`
+
+## Get Security Groups
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/instances/1/security-groups" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "firewallEnabled": true,
+  "securityGroups": [
+    {
+      "id": 19,
+      "accountId": 1,
+      "name": "All Tomcat Access",
+      "description": "Allow everyone to access Tomcat"
+    }
+  ]
+}
+```
+
+This returns a list of all of the security groups applied to an instance and whether the firewall is enabled.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/security-groups`
+
+
+## Set Security Groups
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/instances/1/security-groups" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "securityGroupIds": [19, 2] }'
+```
+
+> The above command returns JSON structure similar to the 'get' of security groups.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+
+## Disable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will disable the firewall.  Any configured security groups will not be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
+
+## Enable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will enable the firewall.  Any configured security groups will be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
