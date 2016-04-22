@@ -5,7 +5,7 @@ Provides a means to find out which instance types are available to your user acc
 ## Get All Instance Types
 
 ```shell
-curl "https://api.gomorpheus.com/api/instace-types"
+curl "https://api.gomorpheus.com/api/instance-types"
   -H "Authorization: BEARER access_token"
 ```
 
