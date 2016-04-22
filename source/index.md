@@ -18,6 +18,7 @@ includes:
   - zones
   - zonetypes
   - servers
+  - server_types
   - certificates
   - keypairs
   - accounts
