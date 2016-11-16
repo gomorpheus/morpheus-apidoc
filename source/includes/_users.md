@@ -13,27 +13,39 @@ curl "https://api.gomorpheus.com/api/accounts/1/users"
 
 ```json
 {
-  "userCount": 1,
   "users": [
     {
-      "account": {
-        "id": 1
-      },
+      "id": 1,
+      "accountId": 1,
+      "username": "davydotcom",
+      "displayName": "David Estes",
+      "email": "destes@bcap.com",
+      "firstName": "David",
+      "lastName": "Estes",
+      "dateCreated": "2015-11-10T18:58:55+0000",
+      "lastUpdated": "2015-11-10T18:58:55+0000",
+      "enabled": true,
       "accountExpired": false,
       "accountLocked": false,
-      "dateCreated": "2015-11-10T18:58:55Z",
-      "displayName": "David Estes",
-      "email": "davydotcom@gmail.com",
-      "enabled": true,
-      "firstName": "David",
-      "id": 1,
-      "instanceLimits": null,
-      "lastName": "Estes",
-      "lastUpdated": "2015-11-10T18:58:55Z",
       "passwordExpired": false,
-      "username": "davydotcom"
+      "role": {
+        "id": 1,
+        "authority": "System Admin",
+        "description": "Super User"
+      },
+      "account": {
+        "id": 1,
+        "name": "Root Account"
+      },
+      "instanceLimits": null
     }
-  ]
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 1,
+    "total": 1
+  }
 }
 ```
 
@@ -49,12 +61,12 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort order
+phrase | null | Filter by matching firstName, lastName, username, or email
 username | null | Filter by username
-lastUpdated | null | Date filter, restricts query to only load accounts updated  timestamp is more recent or equal to the date specified
+lastUpdated | null | Date filter, restricts query to only load users updated  timestamp is more recent or equal to the date specified
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific User
 
@@ -68,27 +80,34 @@ curl "https://api.gomorpheus.com/api/accounts/1/users/1" \
 ```json
 {
   "user": {
-    "account": {
-      "id": 1
-    },
+    "id": 1,
+    "accountId": 1,
+    "username": "davydotcom",
+    "displayName": "David Estes",
+    "email": "destes@bcap.com",
+    "firstName": "David",
+    "lastName": "Estes",
+    "dateCreated": "2015-11-10T18:58:55+0000",
+    "lastUpdated": "2015-11-10T18:58:55+0000",
+    "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
-    "dateCreated": "2015-11-10T18:58:55Z",
-    "displayName": "David Estes",
-    "email": "davydotcom@gmail.com",
-    "enabled": true,
-    "firstName": "David",
-    "id": 1,
-    "instanceLimits": null,
-    "lastName": "Estes",
-    "lastUpdated": "2015-11-10T18:58:55Z",
     "passwordExpired": false,
-    "username": "davydotcom"
+    "role": {
+      "id": 1,
+      "authority": "System Admin",
+      "description": "Super User"
+    },
+    "account": {
+      "id": 1,
+      "name": "Root Account"
+    },
+    "instanceLimits": null
   }
 }
 ```
 
-This endpoint will retrieve a specific user by id if the user has permission to access the account.
+This endpoint will retrieve a specific user by id if the user has permission to access the user.
 
 ### HTTP Request
 
@@ -105,30 +124,34 @@ curl -XPOST "https://api.gomorpheus.com/api/accounts/1/users" \
     "firstName": "Jane",
     "lastName": "Doe",
     "password": "abc123",
+    "passwordConfirmation": "abc123",
     "role": {"id": 1},
     "instanceLimits": {
+      "maxCpu": 0,
       "maxMemory": 0,
       "maxStorage": 0
     }
   }}'
 ```
 
-> The above command returns JSON structured like getting a single user: 
+> The above command returns JSON structured like getting a single user:
 
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/accounts/:accountId/users`
 
-### JSON Check Parameters
+### JSON User Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-username  | null | A unique username for the account
-firstName | null | The users first name (optional)
-lastName  | null | The users last name (optional)
+username  | null | A unique username
+email     | null | The user's email
+firstName | null | The user's first name (optional)
+lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
-role      | null | A nested id of the role to assign to the user 
-instanceLimits | null | Optional JSON Map of maxMemory and maxStorage restrictions (0 means unlimited)
+passwordConfirmation  | null | The password again
+role      | null | A nested id of the role to assign to the user
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
 
 
 ## Updating a User
@@ -144,28 +167,31 @@ curl -XPUT "https://api.gomorpheus.com/api/accounts/1/users/2" \
     "password": "abc123",
     "role": {"id": 1},
     "instanceLimits": {
+      "maxCpu": 0,
       "maxMemory": 0,
       "maxStorage": 0
     }
   }}'
 ```
 
-> The above command returns JSON structured like getting a single account: 
+> The above command returns JSON structured like getting a single user:
 
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
 
-### JSON Check Parameters
+### JSON User Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-username  | null | A unique username for the account
-firstName | null | The users first name (optional)
-lastName  | null | The users last name (optional)
+username  | null | A unique username
+email     | null | The user's email
+firstName | null | The user's first name (optional)
+lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
-role      | null | A nested id of the role to assign to the user 
-instanceLimits | null | Optional JSON Map of maxMemory and maxStorage restrictions (0 means unlimited)
+passwordConfirmation  | null | The password again
+role      | null | A nested id of the role to assign to the user
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
 
 ## Delete a User
 

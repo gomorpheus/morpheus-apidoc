@@ -23,6 +23,7 @@ includes:
   - keypairs
   - accounts
   - users
+  - roles
   - errors
   - security_groups
   - security_group_rules
