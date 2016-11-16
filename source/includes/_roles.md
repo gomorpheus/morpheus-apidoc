@@ -277,7 +277,7 @@ Parameter | Default | Description
 permissionCode  |  | The code of the permission being changed
 access     |  | The new access level. **full**, **read**, **none**
 
-## Updating a Role's Global Group Access
+## Global Group Access
 
 > Global Group Access is controlled via the **update-permission** API
 
@@ -298,7 +298,7 @@ Parameter | Default | Description
 permissionCode  |  | **ComputeSite** is the code for Global Group Access
 access     |  | **full**, **custom**, **read**, or **none**
 
-## Customizing a Role's Group Access
+## Customizing Group Access
 
 > Global Group Access must first be changed to **custom** as seen above.
 
@@ -332,7 +332,7 @@ Parameter | Default | Description
 groupId  |  | id of the group (site)
 access     |  | **full**, **read**, or **none**
 
-## Updating a Role's Global Cloud Access
+## Global Cloud Access
 
 > Global Cloud Access is controlled via the **update-permission** API
 
@@ -353,7 +353,7 @@ Parameter | Default | Description
 permissionCode  |  | **ComputeZone** is the code for Global Cloud Access
 access     |  | **full**, **custom**, or **none**
 
-## Customizing a Role's Cloud Access
+## Customizing Cloud Access
 
 > Global Cloud Access must first be changed to **custom** as seen above.
 
@@ -387,7 +387,7 @@ Parameter | Default | Description
 cloudId  |  | id of the cloud (zone)
 access     |  | **full**, **read**, or **none**
 
-## Updating a Role's Global Instance Type Access
+## Global Instance Type Access
 
 > Global Instance Type Access is controlled via the **update-permission** API
 
@@ -408,7 +408,7 @@ Parameter | Default | Description
 permissionCode  |  | **InstanceType** is the code for Global Instance Type Access
 access     |  | **full**, **custom**, or **none**
 
-## Customizing a Role's Instance Type Access
+## Customizing Instance Type Access
 
 > Global Instance Type Access must first be changed to **custom** as seen above.
 
