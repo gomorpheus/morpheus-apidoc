@@ -446,7 +446,7 @@ access     |  | **full** or **none**
 ## Delete a Role
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/accounts/1/users/4" \
+curl -XDELETE "https://api.gomorpheus.com/api/roles/4" \
   -H "Authorization: BEARER access_token"
 ```
 
