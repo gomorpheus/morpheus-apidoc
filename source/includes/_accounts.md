@@ -127,7 +127,7 @@ Parameter | Default | Description
 name      | null | A unique name for the account
 description | null | Optional description field if you want to put more info there
 role      | Account Admin | A nested id of the default role for the account
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating an Account
@@ -163,7 +163,7 @@ Parameter | Default | Description
 name      | null | A unique name for the account
 description | null | Optional description field if you want to put more info there
 role      | null | A nested id of the default role for the account
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited).  The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 ## Delete an Account
 

@@ -151,7 +151,7 @@ lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
 passwordConfirmation  | null | The password again
 role      | null | A nested id of the role to assign to the user
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating a User
@@ -191,7 +191,7 @@ lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
 passwordConfirmation  | null | The password again
 role      | null | A nested id of the role to assign to the user
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 ## Delete a User
 

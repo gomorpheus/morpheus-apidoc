@@ -210,7 +210,7 @@ Parameter | Default | Description
 authority  | null | A name for the role
 description     | null | Optional description field if you want to put more info there
 baseRoleId | null | A role to copy feature permissions and access from (optional)
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Basic Role Settings
@@ -242,7 +242,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 authority  | null | A name for the role
 description     | null | Optional description field if you want to put more info there
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited)
+instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Role Feature Permissions
