@@ -96,11 +96,13 @@ curl -XPOST "https://api.gomorpheus.com/api/zones" \
   -d '{"zone":{
     "name": "My Zone",
     "description": "My description",
-    "location": "US EAST"
+    "location": "US EAST",
+    "zoneType": {"code": "standard"},
+    "groupId": 1
   }}'
 ```
 
-> The above command returns JSON structured like getting a single zone: 
+> The above command returns JSON structured like getting a single zone:
 
 ### HTTP Request
 
@@ -113,6 +115,8 @@ Parameter | Default | Description
 name      | null | A unique name scoped to your account for the zone
 description | null | Optional description field if you want to put more info there
 location  | null | Optional location argument for your zone
+zoneType  | "standard" | Map containing code or id of the zone type
+groupId  | null | Specifies which Server group this zone should be assigned to
 
 <aside class="warning">Creating a Server zone requires the `System Admin` role.</aside>
 
@@ -132,7 +136,7 @@ curl -XPUT "https://api.gomorpheus.com/api/zones/1" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single zone: 
+> The above command returns JSON structured like getting a single zone:
 
 ### HTTP Request
 
@@ -147,7 +151,7 @@ description | null | Optional description field if you want to put more info the
 location  | null | Optional location argument for your zone
 zoneType | null | A JSON query for finding the proper zone type by code
 groupId | null | Specifies which Server group this zone should be assigned to
-config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details. 
+config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
 <aside class="warning">Updating a Server zone requires the `System Admin` role.</aside>
 
