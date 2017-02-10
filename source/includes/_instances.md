@@ -410,7 +410,7 @@ lastUpdated | null | Date filter, restricts query to only load instances updated
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1" \
+curl "https://api.gomorpheus.com/api/instances/1216" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -420,42 +420,225 @@ curl "https://api.gomorpheus.com/api/instances/1" \
 {
   "success": true,
   "instance": {
-    "id": 4,
+    "id": 1216,
     "accountId": 1,
     "instanceType": {
-      "id": 6,
-      "name": "Tomcat",
+      "id": 7,
       "code": "tomcat",
       "category": "web",
-      "active": true,
-      "versions": [
-        "7.0.62"
-      ],
-      "instanceTypeLayouts": [
-        {
-          "id": 7,
-          "code": "tomcat-7.0.62-single",
-          "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
-        }
-      ]
+      "name": "Tomcat"
     },
     "layout": {
-      "id": 7,
+      "id": 22,
       "code": "tomcat-7.0.62-single",
-      "name": "Single Process",
-      "description": "This will provision a single process with no redundancy"
+      "name": "Docker Tomcat",
+      "description": "This will provision a single process with no redundancy",
+      "sortOrder": 0
     },
-    "plan": null,
-    "name": "My Tomcat",
+    "plan": {
+      "name": "Memory: 1GB Storage: 10GB",
+      "id": 5,
+      "code": "container-1024",
+      "category": null,
+      "description": "Memory: 1GB Storage: 10GB",
+      "visibility": "public",
+      "active": true,
+      "upgradeable": false,
+      "dateCreated": "2016-04-05T13:07:56Z",
+      "lastUpdated": "2016-08-15T18:55:19Z",
+      "internalId": null,
+      "externalId": null,
+      "configs": null,
+      "serverType": null,
+      "sortOrder": 3,
+      "maxStorage": 10737418240,
+      "maxMemory": 1073741824,
+      "maxLog": null,
+      "maxCpu": 0,
+      "maxCores": 0,
+      "maxDataStorage": 0,
+      "minDisks": null,
+      "maxDisks": null,
+      "customCpu": false,
+      "customCores": false,
+      "customMaxStorage": false,
+      "customMaxDataStorage": false,
+      "customMaxMemory": false,
+      "addVolumes": false,
+      "memoryOptionSource": null,
+      "cpuOptionSource": null,
+      "internalCost": 0.2,
+      "externalCost": 0.4,
+      "provisionType": {
+        "id": 1,
+        "aclEnabled": true,
+        "addVolumes": false,
+        "argumentTypes": [
+          {
+            "id": 1
+          }
+        ],
+        "backupType": null,
+        "code": "docker",
+        "containerService": "dockerContainerService",
+        "controllerTypes": [],
+        "createServer": false,
+        "customOptionTypes": [
+          {
+            "id": 315
+          },
+          {
+            "id": 316
+          },
+          {
+            "id": 318
+          },
+          {
+            "id": 320
+          },
+          {
+            "id": 323
+          },
+          {
+            "id": 322
+          },
+          {
+            "id": 314
+          },
+          {
+            "id": 317
+          },
+          {
+            "id": 319
+          },
+          {
+            "id": 321
+          },
+          {
+            "id": 324
+          }
+        ],
+        "customSupported": true,
+        "customizeVolume": false,
+        "description": null,
+        "exportServer": false,
+        "hasDatastore": false,
+        "hasNetworks": null,
+        "hasStorageControllers": false,
+        "hostDiskMode": null,
+        "hostNetwork": false,
+        "hostType": "container",
+        "lvmSupported": true,
+        "managed": true,
+        "mapPorts": true,
+        "maxDisk": null,
+        "maxNetworks": null,
+        "minDisk": 0,
+        "multiTenant": true,
+        "name": "Docker",
+        "networkTypes": [],
+        "optionTypes": [],
+        "pickServer": true,
+        "provisionService": "dockerProvisionService",
+        "reconfigureSupported": true,
+        "resizeCopiesVolumes": false,
+        "rootDiskCustomizable": true,
+        "rootStorageTypes": [],
+        "serverType": "morpheus-node",
+        "storageTypes": [
+          {
+            "id": 1
+          }
+        ],
+        "supportsAutoDatastore": false,
+        "supportsCustomServicePlans": true,
+        "viewSet": "dockerCustom"
+      },
+      "editable": true,
+      "regionCode": null,
+      "refType": null,
+      "refId": null
+    },
+    "name": "Spud Marketing",
+    "displayName": "Spud Marketing",
     "description": null,
-    "dateCreated": "2015-06-09T20:59:17Z",
-    "lastUpdated": "2015-06-09T21:00:19Z",
-    "status": "running"
+    "dateCreated": "2016-12-15T15:22:17Z",
+    "lastUpdated": "2017-02-01T19:46:00Z",
+    "status": "running",
     "containerIds": [
-      4
-    ]
-  }
+      1414,
+      1759
+    ],
+    "environmentPrefix": null
+  },
+  "loadBalancers": [
+    {
+      "instanceId": 1216,
+      "lbs": [
+        {
+          "lb": {
+            "id": 1,
+            "account": {
+              "id": 1
+            },
+            "adminPort": null,
+            "apiPort": null,
+            "config": null,
+            "createdBy": null,
+            "dateCreated": "2016-06-21T17:55:21Z",
+            "description": "",
+            "externalId": null,
+            "externalIp": "12.96.81.103",
+            "internalId": null,
+            "internalInstance": {
+              "id": 5
+            },
+            "internalIp": "192.168.163.233",
+            "lastUpdated": "2016-06-21T17:55:21Z",
+            "name": "LB1",
+            "ports": [
+              {
+                "id": 1
+              }
+            ],
+            "server": null,
+            "sshHost": null,
+            "sshPassword": null,
+            "sshPort": null,
+            "sshUsername": null,
+            "sslCert": null,
+            "sslEnabled": true,
+            "type": {
+              "id": 2
+            },
+            "visibility": "public",
+            "zone": {
+              "id": 1
+            }
+          },
+          "port": {
+            "id": 1,
+            "config": null,
+            "description": null,
+            "internalId": null,
+            "loadBalancer": {
+              "id": 1
+            },
+            "loadBalancerInstances": [
+              {
+                "id": 173
+              }
+            ],
+            "name": "morpheus80",
+            "port": 80,
+            "proxyProtocol": "HTTP",
+            "sslCert": null,
+            "sslEnabled": false
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -467,15 +650,35 @@ This endpoint retrieves a specific instance.
 curl -X POST "https://api.gomorpheus.com/api/instances" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{ "instance": {
-  "name": "myRedis",
-  "description": "dre-matrix-3",
-  "instanceType": {"code":'redis'},
-  "layout": {"id": 1},
-  "site": {"id": 1}
+  -d '{
+  "servicePlan": 5,
+  "zoneId": 6,
+  "instance": {
+    "name": "api-test",
+    "site": {
+      "id": 3
+    },
+    "instanceType": {
+      "code": "Ubuntu"
+    },
+    "layout": {
+      "id": 104
+    }
   },
-  "servicePlan": 1
+  "volumes": [
+    {
+      "id": -1,
+      "rootVolume": true,
+      "name": "root",
+      "size": 10,
+      "sizeId": null,
+      "storageType": null,
+      "datastoreId": null
+    }
+  ],
+  "servicePlanOptions": {
   }
+}'
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single check 
@@ -486,14 +689,26 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
 
 ### JSON Instance Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-name      | null | Unique name scoped to your account for the instance
-description | null | Optional description field
-instanceType | null | The type of instance by code we want to fetch
-servicePlan | null | service plans designate layout and capacity
-layout | null | the layout id for the instance type that you want to provision. i.e. single process or cluster
-site   | null | The Group Id for which server group to provision into. (can be acquired using the /api/groups API)
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+instance  | Y | n/a | Key for name, site, instanceType and layout
+name | Y | null | Name of the instance to be created
+site | Y | null | The group ID to provision the instance into
+instanceType | Y | null | The type of instance by code we want to fetch
+servicePlan | Y | null | Service plans designate layout and capacity
+layout |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
+servicePlan | Y | null | The id for the memory and storage option pre-configured within Morpheus
+zoneId | Y | null | The Cloud ID to provision the instance onto
+volumes | N | n/a | Key for additional LV configuration, can create additional LVs at provision
+id | N | -1 | The id for the LV configuration being created
+rootVolume | N | true | If set to false then a non-root LV will be created
+name | N | root | Name of the LV being created
+size | N | servicePlan size | Size of the LV to be created in GBs
+sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
+storageType | N | null | Identifier for LV type (e.g. Local, S3, etc...)
+datastoreId | N | null | The ID of the specific datastore
+
+
 
 There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts. Currently these input options are available in the `instanceType.config.options` map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: Custom options belong outside of the `instance` object block in the JSON Post just like the servicePlan argument does as well.
 
