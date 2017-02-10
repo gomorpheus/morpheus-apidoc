@@ -5,7 +5,7 @@ Instances are sets of containers of various types that can be provisioned across
 ## Get All Instances
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances"
+curl "https://api.gomorpheus.com/api/instances?max=3"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -15,145 +15,381 @@ curl "https://api.gomorpheus.com/api/instances"
 {
   "instances": [
     {
-      "id": 4,
+      "id": 1530,
       "accountId": 1,
       "instanceType": {
+        "id": 35,
+        "code": "ubuntu",
+        "category": "os",
+        "name": "Ubuntu"
+      },
+      "group": {
+        "id": 3,
+        "name": "Demo"
+      },
+      "cloud": {
         "id": 6,
-        "name": "Tomcat",
-        "code": "tomcat",
-        "category": "web",
-        "active": true,
-        "versions": [
-          "7.0.62"
-        ],
-        "instanceTypeLayouts": [
-          {
-            "id": 7,
-            "code": "tomcat-7.0.62-single",
-            "name": "Single Process",
-            "description": "This will provision a single process with no redundancy"
-          }
-        ]
+        "name": "San Mateo VMware"
       },
+      "containers": [
+        1798
+      ],
+      "connectionInfo": [
+        {
+          "ip": "192.168.162.59",
+          "port": 22
+        }
+      ],
       "layout": {
-        "id": 7,
-        "code": "tomcat-7.0.62-single",
-        "name": "Single Process",
-        "description": "This will provision a single process with no redundancy"
+        "id": 105
       },
-      "plan": null,
-      "name": "My Tomcat",
+      "plan": {
+        "id": 12,
+        "code": "vm-2048"
+      },
+      "name": "ah-San Mateo VMware-ubuntu",
       "description": null,
-      "dateCreated": "2015-06-09T20:59:17Z",
-      "lastUpdated": "2015-06-09T21:00:19Z",
-      "status": "running",
-      "containerIds": [
-        4
-      ]
-    },
-    {
-      "id": 6,
-      "accountId": 1,
-      "instanceType": {
-        "id": 11,
-        "name": "Postgres",
-        "code": "postgres",
-        "category": "sql",
-        "active": true,
-        "versions": [
-          "9.4"
-        ],
-        "instanceTypeLayouts": [
-          {
-            "id": 13,
-            "code": "postgres-9.4-single",
-            "name": "Single Process",
-            "description": "This will provision a single process with no redundancy"
-          }
-        ]
-      },
-      "layout": {
-        "id": 13,
-        "code": "postgres-9.4-single",
-        "name": "Single Process",
-        "description": "This will provision a single process with no redundancy"
-      },
-      "plan": null,
-      "name": "Quest DB",
-      "description": null,
-      "dateCreated": "2015-06-09T21:06:38Z",
-      "lastUpdated": "2015-06-09T21:07:15Z",
-      "status": "running",
-      "containerIds": [
-        6
-      ]
-    },
-    {
-      "id": 3,
-      "accountId": 1,
-      "instanceType": {
-        "id": 1,
-        "name": "Redis",
-        "code": "redis",
-        "category": "cache",
-        "active": true,
-        "versions": [
-          "3.0"
-        ],
-        "instanceTypeLayouts": [
-          {
-            "id": 2,
-            "code": "redis-3.0-master-slave",
-            "name": "Master\/Slave",
-            "description": "This will provision 2 containers, one master and 1 slave."
+      "config": {
+        "createBackup": true,
+        "evars": {
+          "UBUNTU_HOST": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_HOST",
+            "value": "container1798"
           },
-          {
-            "id": 1,
-            "code": "redis-3.0-single",
-            "name": "Single Process",
-            "description": "This will provision a single process with no redundancy"
+          "UBUNTU_IP": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_IP",
+            "value": "192.168.162.59"
+          },
+          "UBUNTU_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT",
+            "value": 22
+          },
+          "UBUNTU_PORT_22_TCP": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP",
+            "value": "tcp://192.168.162.59:22"
+          },
+          "UBUNTU_PORT_22_TCP_ADDR": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_ADDR",
+            "value": "192.168.162.59"
+          },
+          "UBUNTU_PORT_22_TCP_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_PORT",
+            "value": 22
+          },
+          "UBUNTU_PORT_22_TCP_PROTO": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_PROTO",
+            "value": "tcp"
           }
-        ]
+        }
       },
+      "instanceVersion": null,
+      "dateCreated": "2017-01-31T21:30:49+0000",
+      "lastUpdated": "2017-02-07T22:58:26+0000",
+      "hostName": "ah-San-Mateo-VMware-ubuntu",
+      "domainName": null,
+      "environmentPrefix": null,
+      "firewallEnabled": true,
+      "networkLevel": "container",
+      "autoScale": false,
+      "instanceContext": "production",
+      "currentDeployId": null,
+      "status": "running",
+      "statusMessage": null,
+      "errorMessage": null,
+      "statusDate": "2017-01-31T21:34:07+0000",
+      "statusPercent": null,
+      "statusEta": null,
+      "userStatus": null,
+      "createdBy": {
+        "id": 38
+      }
+    },
+    {
+      "id": 1653,
+      "accountId": 1,
+      "instanceType": {
+        "id": 35,
+        "code": "ubuntu",
+        "category": "os",
+        "name": "Ubuntu"
+      },
+      "group": {
+        "id": 3,
+        "name": "Demo"
+      },
+      "cloud": {
+        "id": 6,
+        "name": "San Mateo VMware"
+      },
+      "containers": [
+        1945
+      ],
+      "connectionInfo": [
+        {
+          "ip": "192.168.163.55",
+          "port": 22
+        }
+      ],
       "layout": {
-        "id": 1,
-        "code": "redis-3.0-single",
-        "name": "Single Process",
-        "description": "This will provision a single process with no redundancy"
+        "id": 105
       },
-      "plan": null,
-      "name": "Redis",
+      "plan": {
+        "id": 11,
+        "code": "vm-1024"
+      },
+      "name": "ah-San Mateo VMware-ubuntu-PDNStest",
       "description": null,
-      "dateCreated": "2015-06-09T17:27:56Z",
-      "lastUpdated": "2015-06-09T21:06:05Z",
-      "status": "running"
-      "containerIds": [
-        3
-      ]
+      "config": {
+        "createBackup": false,
+        "evars": {
+          "UBUNTU_HOST": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_HOST",
+            "value": "container1945"
+          },
+          "UBUNTU_IP": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_IP",
+            "value": "192.168.163.55"
+          },
+          "UBUNTU_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT",
+            "value": 22
+          },
+          "UBUNTU_PORT_22_TCP": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP",
+            "value": "tcp://192.168.163.55:22"
+          },
+          "UBUNTU_PORT_22_TCP_ADDR": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_ADDR",
+            "value": "192.168.163.55"
+          },
+          "UBUNTU_PORT_22_TCP_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_PORT",
+            "value": 22
+          },
+          "UBUNTU_PORT_22_TCP_PROTO": {
+            "export": true,
+            "masked": false,
+            "name": "UBUNTU_PORT_22_TCP_PROTO",
+            "value": "tcp"
+          }
+        }
+      },
+      "instanceVersion": null,
+      "dateCreated": "2017-02-10T14:27:42+0000",
+      "lastUpdated": "2017-02-10T14:31:19+0000",
+      "hostName": "ah-san-mateo-vmware-ubuntu-pdnstest",
+      "domainName": null,
+      "environmentPrefix": null,
+      "firewallEnabled": true,
+      "networkLevel": "container",
+      "autoScale": false,
+      "instanceContext": "dev",
+      "currentDeployId": null,
+      "status": "running",
+      "statusMessage": null,
+      "errorMessage": null,
+      "statusDate": "2017-02-10T14:30:43+0000",
+      "statusPercent": null,
+      "statusEta": null,
+      "userStatus": null,
+      "createdBy": {
+        "id": 38
+      }
+    },
+    {
+      "id": 1624,
+      "accountId": 1,
+      "instanceType": {
+        "id": 21,
+        "code": "apache",
+        "category": "web",
+        "name": "Apache"
+      },
+      "group": {
+        "id": 163,
+        "name": "snow-approvals"
+      },
+      "cloud": {
+        "id": 6,
+        "name": "San Mateo VMware"
+      },
+      "containers": [
+        1912
+      ],
+      "connectionInfo": [
+        {
+          "ip": "192.168.163.28",
+          "port": 10009
+        }
+      ],
+      "layout": {
+        "id": 48
+      },
+      "plan": {
+        "id": 3,
+        "code": "container-256"
+      },
+      "name": "approval-snow-test",
+      "description": null,
+      "config": {
+        "createBackup": true,
+        "evars": {
+          "APACHE_HOST": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_HOST",
+            "value": "container1912"
+          },
+          "APACHE_IP": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_IP",
+            "value": "192.168.163.28"
+          },
+          "APACHE_PORT_443_TCP": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_443_TCP",
+            "value": "tcp://192.168.163.28:10010"
+          },
+          "APACHE_PORT_443_TCP_ADDR": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_443_TCP_ADDR",
+            "value": "192.168.163.28"
+          },
+          "APACHE_PORT_443_TCP_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_443_TCP_PORT",
+            "value": 10010
+          },
+          "APACHE_PORT_443_TCP_PROTO": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_443_TCP_PROTO",
+            "value": "tcp"
+          },
+          "APACHE_PORT_80_TCP": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_80_TCP",
+            "value": "tcp://192.168.163.28:10009"
+          },
+          "APACHE_PORT_80_TCP_ADDR": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_80_TCP_ADDR",
+            "value": "192.168.163.28"
+          },
+          "APACHE_PORT_80_TCP_PORT": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_80_TCP_PORT",
+            "value": 10009
+          },
+          "APACHE_PORT_80_TCP_PROTO": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_80_TCP_PROTO",
+            "value": "tcp"
+          },
+          "APACHE_PORT_HTTP": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_HTTP",
+            "value": 10009
+          },
+          "APACHE_PORT_HTTPS": {
+            "export": true,
+            "masked": false,
+            "name": "APACHE_PORT_HTTPS",
+            "value": 10010
+          }
+        },
+        "loadBalancerProxyProtocol": "HTTP"
+      },
+      "instanceVersion": null,
+      "dateCreated": "2017-02-09T06:45:30+0000",
+      "lastUpdated": "2017-02-09T06:53:20+0000",
+      "hostName": "approval-snow-test",
+      "domainName": null,
+      "environmentPrefix": null,
+      "firewallEnabled": true,
+      "networkLevel": "container",
+      "autoScale": false,
+      "instanceContext": null,
+      "currentDeployId": null,
+      "status": "running",
+      "statusMessage": null,
+      "errorMessage": null,
+      "statusDate": "2017-02-09T06:53:20+0000",
+      "statusPercent": null,
+      "statusEta": null,
+      "userStatus": null,
+      "createdBy": {
+        "id": 25
+      }
     }
   ],
-  "instanceCount": 3,
   "stats": {
-    "4": {
-      "usedStorage": 178561024,
-      "maxStorage": 3103539200,
-      "usedMemory": 0,
-      "maxMemory": 0
+    "1530": {
+      "usedStorage": 6776664064,
+      "maxStorage": 21067075584,
+      "usedMemory": 1909739520,
+      "maxMemory": 2098315264,
+      "usedCpu": 1.0926682792
     },
-    "6": {
-      "usedStorage": 48861184,
-      "maxStorage": 3103539200,
-      "usedMemory": 0,
-      "maxMemory": 0
+    "1653": {
+      "usedStorage": 2662801408,
+      "maxStorage": 10499452928,
+      "usedMemory": 935444480,
+      "maxMemory": 1041350656,
+      "usedCpu": 0.1501000667
     },
-    "3": {
-      "usedStorage": 18976768,
+    "1624": {
+      "usedStorage": 4829184,
       "maxStorage": 3103539200,
-      "usedMemory": 0,
-      "maxMemory": 0
+      "usedMemory": 9113600,
+      "maxMemory": 268435456,
+      "usedCpu": 0
     }
+  },
+  "loadBalancers": [],
+  "meta": {
+    "offset": 0,
+    "max": "3",
+    "size": 3,
+    "total": 21
   }
 }
+
 ```
 
 This endpoint retrieves all instances and their JSON encoded configuration attributes based on check type. Server data is encrypted in the database.
@@ -228,7 +464,7 @@ This endpoint retrieves a specific instance.
 ## Provision an Instance
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances" \
+curl -X POST "https://api.gomorpheus.com/api/instances" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
