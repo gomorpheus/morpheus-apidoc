@@ -648,12 +648,296 @@ This endpoint retrieves a specific instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
-## Get container details for an instance
+## Get env variables 
+
+```shell
+curl "https://api.gomorpheus.com/api/instances/1216/envs" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "envs": [
+    {
+      "export": false,
+      "masked": false,
+      "name": "DATABASE_NAME",
+      "value": "spud_marketing"
+    }
+  ],
+  "readOnlyEnvs": {
+    "TOMCAT_HOST": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_HOST",
+      "value": "container1414"
+    },
+    "TOMCAT_HOST_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_HOST_2",
+      "value": "container1759"
+    },
+    "TOMCAT_IP": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_IP",
+      "value": "192.168.163.232"
+    },
+    "TOMCAT_IP_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_IP_2",
+      "value": "192.168.163.233"
+    },
+    "TOMCAT_PORT": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT",
+      "value": 10017
+    },
+    "TOMCAT_PORT_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_2",
+      "value": 10017
+    },
+    "TOMCAT_PORT_8080_TCP": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP",
+      "value": "tcp://192.168.163.232:10017"
+    },
+    "TOMCAT_PORT_8080_TCP_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_2",
+      "value": "tcp://192.168.163.233:10017"
+    },
+    "TOMCAT_PORT_8080_TCP_ADDR": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_ADDR",
+      "value": "192.168.163.232"
+    },
+    "TOMCAT_PORT_8080_TCP_ADDR_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_ADDR_2",
+      "value": "192.168.163.233"
+    },
+    "TOMCAT_PORT_8080_TCP_PORT": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_PORT",
+      "value": 10017
+    },
+    "TOMCAT_PORT_8080_TCP_PORT_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_PORT_2",
+      "value": 10017
+    },
+    "TOMCAT_PORT_8080_TCP_PROTO": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_PROTO",
+      "value": "tcp"
+    },
+    "TOMCAT_PORT_8080_TCP_PROTO_2": {
+      "export": true,
+      "masked": false,
+      "name": "TOMCAT_PORT_8080_TCP_PROTO_2",
+      "value": "tcp"
+    }
+  },
+  "importedEnvs": {
+    "MYSQL_HOST": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_HOST",
+      "value": "container1413"
+    },
+    "MYSQL_HOST_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_HOST_2",
+      "value": "container1756"
+    },
+    "MYSQL_IP": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_IP",
+      "value": "192.168.163.232"
+    },
+    "MYSQL_IP_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_IP_2",
+      "value": "192.168.163.233"
+    },
+    "MYSQL_MASTER": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_HOST",
+      "value": "container1413"
+    },
+    "MYSQL_PASSWORD": {
+      "export": true,
+      "masked": true,
+      "name": "MYSQL_PASSWORD",
+      "value": "morpheus"
+    },
+    "MYSQL_PASSWORD_2": {
+      "export": true,
+      "masked": true,
+      "name": "MYSQL_PASSWORD",
+      "value": "morpheus"
+    },
+    "MYSQL_PORT": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT",
+      "value": 10016
+    },
+    "MYSQL_PORT_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_2",
+      "value": 10016
+    },
+    "MYSQL_PORT_3306_TCP": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP",
+      "value": "tcp://192.168.163.232:10016"
+    },
+    "MYSQL_PORT_3306_TCP_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_2",
+      "value": "tcp://192.168.163.233:10016"
+    },
+    "MYSQL_PORT_3306_TCP_ADDR": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_ADDR",
+      "value": "192.168.163.232"
+    },
+    "MYSQL_PORT_3306_TCP_ADDR_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_ADDR_2",
+      "value": "192.168.163.233"
+    },
+    "MYSQL_PORT_3306_TCP_PORT": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_PORT",
+      "value": 10016
+    },
+    "MYSQL_PORT_3306_TCP_PORT_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_PORT_2",
+      "value": 10016
+    },
+    "MYSQL_PORT_3306_TCP_PROTO": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_PROTO",
+      "value": "tcp"
+    },
+    "MYSQL_PORT_3306_TCP_PROTO_2": {
+      "export": true,
+      "masked": false,
+      "name": "MYSQL_PORT_3306_TCP_PROTO_2",
+      "value": "tcp"
+    },
+    "MYSQL_USERNAME": "morpheus",
+    "MYSQL_USERNAME_2": "morpheus"
+  }
+}
+```
+
+This gets all the environment variables associated with the instance.
+
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/envs`
+
+## Get Security Groups
+
+```shell
+curl "https://api.gomorpheus.com/api/instances/1666/security-groups" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON like this:
+
+```json
+{
+  "success": true,
+  "firewallEnabled": true,
+  "securityGroups": [
+    {
+      "id": 43,
+      "accountId": 1,
+      "name": "api-tom-test",
+      "description": "Test Security Group"
+    }
+  ]
+}
+```
+This gets information about the security groups the instance has setup.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/security-groups`
+
+## Enable security-groups
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1666/security-groups/enable" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON like this:
+
+```json
+{
+  "success": true
+}
+```
+This action enables a security group assigned to an instance
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
+
+## Disable security-groups
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1666/security-groups/disable" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON like this:
+
+```json
+{
+  "success": true
+}
+```
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
+
+## Get container details
 
 ```shell
 curl "https://api.gomorpheus.com/api/instances/1216/containers" \
   -H "Authorization: BEARER access_token"
-``` 
+```
 > The above command returns JSON structured like this:
 
 ```json
@@ -723,14 +1007,13 @@ curl "https://api.gomorpheus.com/api/instances/1216/containers" \
     }
   ]
 }
-``` 
+```
 
 This can be valuable for evaluating the details of the compute server(s) running on an instance
 
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id/containers`
-
 
 ## Provision an Instance
 
