@@ -644,6 +644,94 @@ curl "https://api.gomorpheus.com/api/instances/1216" \
 
 This endpoint retrieves a specific instance.
 
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id`
+
+## Get container details for an instance
+
+```shell
+curl "https://api.gomorpheus.com/api/instances/1216/containers" \
+  -H "Authorization: BEARER access_token"
+``` 
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "containers": [
+    {
+      "id": 1414,
+      "name": "tomcat_1414",
+      "configs": "{\"evars\":{},\"hosts\":{\"container1414\":\"127.0.0.1\",\"container1759\":\"192.168.163.233\"},\"maxMemory\":1073741824,\"maxStorage\":10737418240,\"mounts\":[{\"containerPath\":\"/morpheus/data\",\"hostPath\":\"/morpheus/container_1414/data\",\"type\":\"data\"},{\"containerPath\":\"/morpheus/logs\",\"hostPath\":\"/morpheus/container_1414/logs\",\"type\":\"logs\"},{\"containerPath\":\"/morpheus/config\",\"hostPath\":\"/morpheus/container_1414/config\",\"type\":\"config\"}],\"ports\":[{\"displayName\":\"Http\",\"export\":true,\"exportName\":null,\"external\":10017,\"index\":0,\"internal\":8080,\"link\":true,\"loadBalance\":true,\"protocol\":\"http\",\"visible\":true}],\"priviligedContainer\":null,\"vm\":false}",
+      "containerType": {
+        "id": 23,
+        "name": "Tomcat 7.0.62"
+      },
+      "lastStats": "{\"ts\":\"2017-02-11T17:54:30+0000\",\"maxStorage\":10434699264,\"usedStorage\":290037760,\"running\":true,\"userCpuUsage\":0,\"systemCpuUsage\":0.0062528659,\"usedMemory\":770224128,\"maxMemory\":1073741824,\"cacheMemory\":275013632,\"readIOPS\":0,\"writeIOPS\":0,\"totalIOPS\":0,\"netTxUsage\":0,\"netRxUsage\":0}",
+      "environmentPrefix": null,
+      "status": "running",
+      "dateCreated": "2016-12-15T15:22:17Z",
+      "ip": "12.96.81.102",
+      "externalIp": "12.96.81.102",
+      "internalIp": "192.168.163.232",
+      "ports": [
+        {
+          "displayName": "Http",
+          "export": true,
+          "exportName": null,
+          "external": 10017,
+          "index": 0,
+          "internal": 8080,
+          "link": true,
+          "loadBalance": true,
+          "protocol": "http",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": 1759,
+      "name": "tomcat_1759",
+      "configs": "{\"evars\":{},\"hosts\":{\"container1414\":\"192.168.163.232\",\"container1759\":\"127.0.0.1\"},\"maxMemory\":1073741824,\"maxStorage\":10737418240,\"mounts\":[{\"containerPath\":\"/morpheus/data\",\"hostPath\":\"/morpheus/container_1759/data\",\"type\":\"data\"},{\"containerPath\":\"/morpheus/logs\",\"hostPath\":\"/morpheus/container_1759/logs\",\"type\":\"logs\"},{\"containerPath\":\"/morpheus/config\",\"hostPath\":\"/morpheus/container_1759/config\",\"type\":\"config\"}],\"networkInterfaces\":null,\"ports\":[{\"code\":\"tomcat.8080\",\"displayName\":\"Http\",\"export\":true,\"exportName\":null,\"external\":10017,\"index\":0,\"internal\":8080,\"link\":true,\"loadBalance\":true,\"protocol\":\"http\",\"visible\":true}],\"priviligedContainer\":null,\"serverId\":null,\"storageController\":null,\"vm\":false,\"volumes\":null}",
+      "containerType": {
+        "id": 23,
+        "name": "Tomcat 7.0.62"
+      },
+      "lastStats": "{\"ts\":\"2017-02-11T17:53:39+0000\",\"maxStorage\":10434699264,\"usedStorage\":288571392,\"running\":true,\"userCpuUsage\":0.0062526053,\"systemCpuUsage\":0.008336807,\"usedMemory\":790220800,\"maxMemory\":1073741824,\"cacheMemory\":190226432,\"readIOPS\":0,\"writeIOPS\":0,\"totalIOPS\":0,\"netTxUsage\":0,\"netRxUsage\":0}",
+      "environmentPrefix": null,
+      "status": "running",
+      "dateCreated": "2017-01-27T19:29:39Z",
+      "ip": "12.96.81.103",
+      "externalIp": "12.96.81.103",
+      "internalIp": "192.168.163.233",
+      "ports": [
+        {
+          "code": "tomcat.8080",
+          "displayName": "Http",
+          "export": true,
+          "exportName": null,
+          "external": 10017,
+          "index": 0,
+          "internal": 8080,
+          "link": true,
+          "loadBalance": true,
+          "protocol": "http",
+          "visible": true
+        }
+      ]
+    }
+  ]
+}
+``` 
+
+This can be valuable for evaluating the details of the compute server(s) running on an instance
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/containers`
+
+
 ## Provision an Instance
 
 ```shell
@@ -715,7 +803,7 @@ There can be additional properties to apply to the instance. For example mysql p
 ## Updating an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
@@ -740,7 +828,7 @@ description | null | Optional description field
 ## Stop an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/stop" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/stop" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -761,7 +849,7 @@ This will stop all containers running within an instance.
 ## Start an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/start" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/start" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -803,12 +891,24 @@ This will restart all containers running within an instance. This includes rebui
 ## Resize an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/resize" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/resize" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{ "servicePlan": {
-    "id": 1
-  }}'
+  -d '{
+  "servicePlanId": 6,
+  "volumes": [
+    {
+      "id": "-1",
+      "rootVolume": true,
+      "name": "root",
+      "size": 20,
+      "sizeId": null,
+      "storageType": null,
+      "datastoreId": null
+    }
+  ],
+  "deleteOriginalVolumes": true
+}'
 ```
 
 > The above command returns JSON structure like this:
@@ -827,14 +927,17 @@ It is possible to resize containers within an instance by increasing their memor
 
 ### JSON Parameters
 
-Parameter   | Default | Description
----------   | ------- | -----------
-servicePlan | null    | the map containing the id of the service plan you wish to apply to the containers in this instance
+Parameter   | Required | Default | Description
+---------   | -------- | ------- | -----------
+servicePlanId | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
+volumes | no | defaults to plan config | Can be used to grow just the logical volume of the instance instead of choosing a plan
+servicePlan (v2.9 and earlier) | no | null | Equivalent to servicePlanId for earlier Morpheus versions
+
 
 ## Clone an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/clone" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/clone" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "name": "New Name",
