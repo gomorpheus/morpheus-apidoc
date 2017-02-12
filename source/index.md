@@ -8,6 +8,7 @@ toc_footers:
   - <a href='http://www.gomorpheus.com'>Sign Up for a Developer Key</a>
 
 includes:
+  - apps
   - instances
   - instancetypes
   - deploys
@@ -18,11 +19,15 @@ includes:
   - zonetypes
   - serverTypes
   - servers
+  - server_types
   - certificates
   - keypairs
   - accounts
   - users
+  - roles
   - errors
+  - security_groups
+  - security_group_rules
 
 search: true
 ---

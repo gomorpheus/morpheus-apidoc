@@ -69,3 +69,97 @@ curl "https://api.gomorpheus.com/api/apps/1" \
   }
 }
 ```
+
+## Get Security Groups
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/apps/1/security-groups" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "firewallEnabled": true,
+  "securityGroups": [
+    {
+      "id": 19,
+      "accountId": 1,
+      "name": "All Tomcat Access",
+      "description": "Allow everyone to access Tomcat"
+    }
+  ]
+}
+```
+
+This returns a list of all of the security groups applied to an app and whether the firewall is enabled.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/apps/:id/security-groups`
+
+
+## Set Security Groups
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/apps/1/security-groups" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "securityGroupIds": [19, 2] }'
+```
+
+> The above command returns JSON structure similar to the 'get' of security groups.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/apps/:id/security-groups`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+
+## Disable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/apps/1/security-groups/disable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will disable the firewall.  Any configured security groups will not be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/apps/:id/security-groups/disable`
+
+## Enable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/apps/1/security-groups/enable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will enable the firewall.  Any configured security groups will be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`

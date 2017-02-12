@@ -96,11 +96,13 @@ curl -XPOST "https://api.gomorpheus.com/api/zones" \
   -d '{"zone":{
     "name": "My Zone",
     "description": "My description",
-    "location": "US EAST"
+    "location": "US EAST",
+    "zoneType": {"code": "standard"},
+    "groupId": 1
   }}'
 ```
 
-> The above command returns JSON structured like getting a single zone: 
+> The above command returns JSON structured like getting a single zone:
 
 ### HTTP Request
 
@@ -113,6 +115,8 @@ Parameter | Default | Description
 name      | null | A unique name scoped to your account for the zone
 description | null | Optional description field if you want to put more info there
 location  | null | Optional location argument for your zone
+zoneType  | "standard" | Map containing code or id of the zone type
+groupId  | null | Specifies which Server group this zone should be assigned to
 
 <aside class="warning">Creating a Server zone requires the `System Admin` role.</aside>
 
@@ -132,7 +136,7 @@ curl -XPUT "https://api.gomorpheus.com/api/zones/1" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single zone: 
+> The above command returns JSON structured like getting a single zone:
 
 ### HTTP Request
 
@@ -147,7 +151,7 @@ description | null | Optional description field if you want to put more info the
 location  | null | Optional location argument for your zone
 zoneType | null | A JSON query for finding the proper zone type by code
 groupId | null | Specifies which Server group this zone should be assigned to
-config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details. 
+config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
 <aside class="warning">Updating a Server zone requires the `System Admin` role.</aside>
 
@@ -168,3 +172,96 @@ curl -XDELETE "https://api.gomorpheus.com/api/zones/1" \
 
 If a zone has zones or servers still tied to it, a delete action will fail
 
+## Get Security Groups
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/zones/1/security-groups" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "firewallEnabled": true,
+  "securityGroups": [
+    {
+      "id": 19,
+      "accountId": 1,
+      "name": "All Tomcat Access",
+      "description": "Allow everyone to access Tomcat"
+    }
+  ]
+}
+```
+
+This returns a list of all of the security groups applied to a zone and whether the firewall is enabled.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/zones/:id/security-groups`
+
+
+## Set Security Groups
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/zones/1/security-groups" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "securityGroupIds": [19, 2] }'
+```
+
+> The above command returns JSON structure similar to the 'get' of security groups.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/zones/:id/security-groups`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+
+## Disable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/zones/1/security-groups/disable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will disable the firewall.  Any configured security groups will not be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/zones/:id/security-groups/disable`
+
+## Enable the firewall
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/zones/1/security-groups/enable" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will enable the firewall.  Any configured security groups will be applied.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/zones/:id/security-groups/enable`
