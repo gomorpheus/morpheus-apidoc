@@ -118,6 +118,8 @@ location  | null | Optional location argument for your zone
 zoneType  | "standard" | Map containing code or id of the zone type
 groupId  | null | Specifies which Server group this zone should be assigned to
 
+Additional properties are dynamic for the most part depending on teh zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
+
 <aside class="warning">Creating a Server zone requires the `System Admin` role.</aside>
 
 ## Updating a Zone
@@ -152,6 +154,8 @@ location  | null | Optional location argument for your zone
 zoneType | null | A JSON query for finding the proper zone type by code
 groupId | null | Specifies which Server group this zone should be assigned to
 config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
+
+Additional properties are dynamic for the most part depending on teh zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
 
 <aside class="warning">Updating a Server zone requires the `System Admin` role.</aside>
 

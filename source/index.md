@@ -19,7 +19,6 @@ includes:
   - groups
   - zones
   - zonetypes
-  - serverTypes
   - servers
   - server_types
   - certificates
