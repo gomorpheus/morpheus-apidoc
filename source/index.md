@@ -16,6 +16,7 @@ includes:
   - groups
   - zones
   - zonetypes
+  - serverTypes
   - servers
   - certificates
   - keypairs

@@ -25,6 +25,8 @@ curl "https://api.gomorpheus.com/api/servers"
       "zoneId": 1,
       "siteId": 1,
       "sshHost": "10.100.54.2",
+      "internalIp": "10.100.54.2",
+      "externalIp": "10.100.54.2",
       "sshPort": 22,
       "volumeId": null,
       "platform": null,
@@ -53,9 +55,6 @@ curl "https://api.gomorpheus.com/api/servers"
       "lastUpdated": "2015-06-09T12:47:42Z",
       "lastStats": "{\"cpuIdleTime\":131115400,\"cpuSystemTime\":76300,\"cpuTotalTime\":131297000,\"cpuUsage\":0.13391375541687012,\"cpuUserTime\":105300,\"freeMemory\":91340800,\"freeSwap\":0,\"ts\":\"2015-06-10T13:11:45+0000\",\"usedMemory\":2007887872,\"usedSwap\":0}",
       "status": "provisioned",
-      "serverTypes": [
-        
-      ],
       "interfaces": [
         {
           "id": 1,
@@ -96,6 +95,8 @@ curl "https://api.gomorpheus.com/api/servers"
       "zoneId": 1,
       "siteId": 1,
       "sshHost": "10.100.54.3",
+      "internalIp": "10.100.54.3",
+      "externalIp": "10.100.54.3",
       "sshPort": 22,
       "volumeId": null,
       "platform": null,
@@ -122,9 +123,6 @@ curl "https://api.gomorpheus.com/api/servers"
       "lastUpdated": "2015-06-09T14:17:51Z",
       "lastStats": "{\"cpuIdleTime\":130016650,\"cpuSystemTime\":1041990,\"cpuTotalTime\":131172760,\"cpuUsage\":0.1677870750427246,\"cpuUserTime\":114120,\"freeMemory\":215248896,\"freeSwap\":0,\"ts\":\"2015-06-10T13:18:33+0000\",\"usedMemory\":1883979776,\"usedSwap\":0}",
       "status": "provisioned",
-      "serverTypes": [
-        
-      ],
       "interfaces": [
         {
           "id": 2,
@@ -220,6 +218,8 @@ curl "https://api.gomorpheus.com/api/servers/1" \
     "zoneId": 1,
     "siteId": 1,
     "sshHost": "10.100.54.2",
+    "internalIp": "10.100.54.2",
+    "externalIp": "10.100.54.2",
     "sshPort": 22,
     "volumeId": null,
     "platform": null,
@@ -248,9 +248,6 @@ curl "https://api.gomorpheus.com/api/servers/1" \
     "lastUpdated": "2015-06-09T12:47:42Z",
     "lastStats": "{\"cpuIdleTime\":131294520,\"cpuSystemTime\":76390,\"cpuTotalTime\":131476290,\"cpuUsage\":0.10046958923339844,\"cpuUserTime\":105380,\"freeMemory\":91181056,\"freeSwap\":0,\"ts\":\"2015-06-10T13:14:45+0000\",\"usedMemory\":2008047616,\"usedSwap\":0}",
     "status": "provisioned",
-    "serverTypes": [
-      
-    ],
     "interfaces": [
       {
         "id": 1,
