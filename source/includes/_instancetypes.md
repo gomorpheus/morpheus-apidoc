@@ -28,7 +28,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 14,
           "code": "activemq-5.11",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/}
         }
       ]
     },
@@ -46,7 +48,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 15,
           "code": "cassandra-2.1-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -64,7 +68,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 12,
           "code": "confluence-5.7",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -82,13 +88,17 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 3,
           "code": "elasticsearch-1.5-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         },
         {
           "id": 4,
           "code": "elasticsearch-1.5-cluster",
           "name": "Cluster",
-          "description": "This will provision two nodes, in multi master cluster"
+          "description": "This will provision two nodes, in multi master cluster",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -106,7 +116,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 8,
           "code": "jenkins-1.596",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -124,7 +136,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 11,
           "code": "memcached-1.4-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -142,13 +156,17 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 16,
           "code": "mongo-3.0-rs",
           "name": "ReplicaSet",
-          "description": "This will provision a 3 node replicaSet"
+          "description": "This will provision a 3 node replicaSet",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         },
         {
           "id": 6,
           "code": "mongo-3.0-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -166,7 +184,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 5,
           "code": "mysql-5.6-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -184,7 +204,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 9,
           "code": "nexus-2.11",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -215,7 +237,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 13,
           "code": "postgres-9.4-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -233,7 +257,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 10,
           "code": "rabbitmq-3.5",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -251,13 +277,17 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 1,
           "code": "redis-3.0-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         },
         {
           "id": 2,
           "code": "redis-3.0-master-slave",
           "name": "Master\/Slave",
-          "description": "This will provision 2 containers, one master and 1 slave."
+          "description": "This will provision 2 containers, one master and 1 slave.",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     },
@@ -275,7 +305,9 @@ curl "https://api.gomorpheus.com/api/instance-types"
           "id": 7,
           "code": "tomcat-7.0.62-single",
           "name": "Single Process",
-          "description": "This will provision a single process with no redundancy"
+          "description": "This will provision a single process with no redundancy",
+          "provisionType": { /* see provision types */ },
+          "optionTypes": { /** see option types **/ }
         }
       ]
     }
@@ -313,7 +345,9 @@ curl "https://api.gomorpheus.com/api/instance-types/12"
         "id": 14,
         "code": "activemq-5.11",
         "name": "Single Process",
-        "description": "This will provision a single process with no redundancy"
+        "description": "This will provision a single process with no redundancy",
+        "provisionType": { /* see provision types */ },
+        "optionTypes": { /** see option types **/ }
       }
     ]
   }

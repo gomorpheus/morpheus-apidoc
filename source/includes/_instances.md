@@ -1,6 +1,6 @@
 # Instances
 
-Instances are sets of containers of various types that can be provisioned across the Morpheus stack and offer a wide range of services. MySQL, Redis, ElasticSearch, PostgreSQL, Tomcat, nginx, Confluence, Jenkins, and more.
+Instances are sets of containers or vms (morpheus API represents a vm as a container attached to a server) of various types that can be provisioned across the Morpheus stack and offer a wide range of services. MySQL, Redis, ElasticSearch, PostgreSQL, Tomcat, nginx, Confluence, Jenkins, and more. There are a few important concept differentiators between what morpheus calls an instance and what amazon calls an instance. In morpheus an isntance can represent many vms or containers that are of a set. For example. If you wanted to spin up a Mongo sharded replicaset, that requires 7 virtual machines or 7 docker containers. Morpheus represents this as a singular instance with a specified layout and then represents all the associated services running within that instance as containers. If, a container record is a docker container then the `serverId` it belngs to is representative of the Docker Host it was provisioned onto. If the container is a virtual machine then the serverId represents the compute resource it was provisioned onto, (i.e. the virtual machine).
 
 ## Get All Instances
 
@@ -1022,7 +1022,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{
-  "servicePlan": 5,
+  "servicePlanId": 5,
   "zoneId": 6,
   "instance": {
     "name": "api-test",
@@ -1066,7 +1066,7 @@ instance  | Y | n/a | Key for name, site, instanceType and layout
 name | Y | null | Name of the instance to be created
 site | Y | null | The group ID to provision the instance into
 instanceType | Y | null | The type of instance by code we want to fetch
-servicePlan | Y | null | Service plans designate layout and capacity
+servicePlanId | Y | null | Service plans designate layout and capacity
 layout |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
 servicePlan | Y | null | The id for the memory and storage option pre-configured within Morpheus
 zoneId | Y | null | The Cloud ID to provision the instance onto
@@ -1078,10 +1078,10 @@ size | N | servicePlan size | Size of the LV to be created in GBs
 sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
 storageType | N | null | Identifier for LV type (e.g. Local, S3, etc...)
 datastoreId | N | null | The ID of the specific datastore
+servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
 
 
-
-There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts. Currently these input options are available in the `instanceType.config.options` map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: Custom options belong outside of the `instance` object block in the JSON Post just like the servicePlan argument does as well.
+There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts as well as the provision type option types associated with the layout. Currently these input options are available from the option-types map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: See the API Document on OptionTypes for figuring out how to build property maps from them.
 
 ## Updating an Instance
 
