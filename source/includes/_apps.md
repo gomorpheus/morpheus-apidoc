@@ -232,13 +232,7 @@ curl -XPOST "https://api.gomorpheus.com/api/apps/1/add-instance" \
   -d '{"instanceId": 55, tierName: "App"}'
 ```
 
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
+> The above command returns JSON structured like getting a single app.
 
 ### HTTP Request
 
@@ -261,13 +255,7 @@ curl -XPOST "https://api.gomorpheus.com/api/apps/1/remove-instance" \
   -d '{"instanceId": 55}'
 ```
 
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
+> The above command returns JSON structured like getting a single app.
 
 ### HTTP Request
 
