@@ -1,6 +1,9 @@
 # Apps
 
-Apps are groupings of intances that are linked together to form a full application stack. They can be created with existing templates or new templates, as well as from existing instances.
+Apps are groupings of instances that are linked together to form a full application stack. They can be created with existing templates or new templates, as well as from existing instances.
+
+> **Current API support is limited to adding existing instances to an app**
+
 
 ## Get All Apps
 
@@ -15,17 +18,63 @@ curl "https://api.gomorpheus.com/api/apps"
 {
   "apps": [
     {
-      "id": 4,
+      "id": 1,
       "accountId": 1,
       "name": "My Test App",
-      "description": "Sample Description"
-      "instances": [],
-      "config": null,
+      "description": "Sample Description",
+      "status": "running",
+      "instanceCount": 2,
+      "containerCount": 2,
       "dateCreated": "2015-06-09T20:59:17Z",
-      "lastUpdated": "2015-06-09T21:00:19Z"
+      "lastUpdated": "2015-06-09T21:00:19Z",
+      "appTiers": [
+        {
+          "tier": {
+            "id": 2,
+            "name": "App"
+          },
+          "appInstances": [
+            {
+              "instance": {
+                "id": 53,
+                "name": "Test App - Grails",
+              }
+            }
+          ]
+        },
+        {
+          "tier": {
+            "id": 5,
+            "name": "Database"
+          },
+          "appInstances": [
+            {
+              "instance": {
+                "id": 54,
+                "name": "Test App - MySQL",
+              }
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "usedMemory": 0,
+        "maxMemory": 1073741824,
+        "usedStorage": 0,
+        "maxStorage": 21474836480,
+        "running": 0,
+        "total": 0,
+        "cpuUsage": 0,
+        "instanceCount": 2
+      }
     }
   ],
-  "appCount": 1
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 1,
+    "total": 1
+  }
 }
 ```
 
@@ -49,7 +98,7 @@ lastUpdated | null | Date filter, restricts query to only load apps updated  tim
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/apps/1" \
+curl "https://api.gomorpheus.com/api/apps/4" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -58,17 +107,171 @@ curl "https://api.gomorpheus.com/api/apps/1" \
 ```json
 {
   "app": {
-    "id": 4,
+    "id": 1,
     "accountId": 1,
     "name": "My Test App",
-    "description": "Sample Description"
-    "instances": [],
-    "config": null,
+    "description": "Sample Description",
+    "status": "running",
+    "instanceCount": 2,
+    "containerCount": 2,
     "dateCreated": "2015-06-09T20:59:17Z",
-    "lastUpdated": "2015-06-09T21:00:19Z"
+    "lastUpdated": "2015-06-09T21:00:19Z",
+    "appTiers": [
+      {
+        "tier": {
+          "id": 2,
+          "name": "App"
+        },
+        "appInstances": [
+          {
+            "instance": {
+              "id": 53,
+              "name": "Test App - Grails"
+            }
+          }
+        ]
+      },
+      {
+        "tier": {
+          "id": 5,
+          "name": "Database"
+        },
+        "appInstances": [
+          {
+            "instance": {
+              "id": 54,
+              "name": "Test App - MySQL"
+            }
+          }
+        ]
+      }
+    ],
+    "stats": {
+      "usedMemory": 0,
+      "maxMemory": 1073741824,
+      "usedStorage": 0,
+      "maxStorage": 21474836480,
+      "running": 0,
+      "total": 0,
+      "cpuUsage": 0,
+      "instanceCount": 2
+    }
   }
 }
 ```
+
+## Create an App
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/apps" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"app":{
+    "name": "sampleapp",
+    "description": "A sample app",
+    "site": {
+      "id": 1
+    }
+  }}'
+```
+
+> The above command returns JSON structured like getting a single app.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/apps`
+
+### JSON App Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name  | null | A name for the app
+description     | null | Optional description field
+site | null | A Map containing the id of the Site
+
+
+## Updating an App Name or Description
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/apps/2" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"app":{
+    "name": "My Sample App",
+    "description": "A new description of this app",
+  }}'
+```
+
+> The above command returns JSON structured like getting a single app.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/apps/:id`
+
+### JSON App Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name  | null | A name for the app
+description     | null | Optional description field
+
+
+## Add Existing Instance to App
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/apps/1/add-instance" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"instanceId": 55, tierName: "App"}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/apps/:id/add-instance`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name  | null | A name for the app
+description     | null | Optional description field
+
+
+## Remove Instance from App
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/apps/1/remove-instance" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"instanceId": 55}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/apps/:id/remove-instance`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+instanceId  | null | The ID of the instance being added
+
 
 ## Get Security Groups
 
