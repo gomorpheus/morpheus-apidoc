@@ -49,53 +49,6 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       },
       "name": "ah-San Mateo VMware-ubuntu",
       "description": null,
-      "config": {
-        "createBackup": true,
-        "evars": {
-          "UBUNTU_HOST": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_HOST",
-            "value": "container1798"
-          },
-          "UBUNTU_IP": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_IP",
-            "value": "192.168.162.59"
-          },
-          "UBUNTU_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT",
-            "value": 22
-          },
-          "UBUNTU_PORT_22_TCP": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP",
-            "value": "tcp://192.168.162.59:22"
-          },
-          "UBUNTU_PORT_22_TCP_ADDR": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_ADDR",
-            "value": "192.168.162.59"
-          },
-          "UBUNTU_PORT_22_TCP_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_PORT",
-            "value": 22
-          },
-          "UBUNTU_PORT_22_TCP_PROTO": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_PROTO",
-            "value": "tcp"
-          }
-        }
-      },
       "instanceVersion": null,
       "dateCreated": "2017-01-31T21:30:49+0000",
       "lastUpdated": "2017-02-07T22:58:26+0000",
@@ -153,53 +106,6 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       },
       "name": "ah-San Mateo VMware-ubuntu-PDNStest",
       "description": null,
-      "config": {
-        "createBackup": false,
-        "evars": {
-          "UBUNTU_HOST": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_HOST",
-            "value": "container1945"
-          },
-          "UBUNTU_IP": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_IP",
-            "value": "192.168.163.55"
-          },
-          "UBUNTU_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT",
-            "value": 22
-          },
-          "UBUNTU_PORT_22_TCP": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP",
-            "value": "tcp://192.168.163.55:22"
-          },
-          "UBUNTU_PORT_22_TCP_ADDR": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_ADDR",
-            "value": "192.168.163.55"
-          },
-          "UBUNTU_PORT_22_TCP_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_PORT",
-            "value": 22
-          },
-          "UBUNTU_PORT_22_TCP_PROTO": {
-            "export": true,
-            "masked": false,
-            "name": "UBUNTU_PORT_22_TCP_PROTO",
-            "value": "tcp"
-          }
-        }
-      },
       "instanceVersion": null,
       "dateCreated": "2017-02-10T14:27:42+0000",
       "lastUpdated": "2017-02-10T14:31:19+0000",
@@ -257,84 +163,6 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       },
       "name": "approval-snow-test",
       "description": null,
-      "config": {
-        "createBackup": true,
-        "evars": {
-          "APACHE_HOST": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_HOST",
-            "value": "container1912"
-          },
-          "APACHE_IP": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_IP",
-            "value": "192.168.163.28"
-          },
-          "APACHE_PORT_443_TCP": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_443_TCP",
-            "value": "tcp://192.168.163.28:10010"
-          },
-          "APACHE_PORT_443_TCP_ADDR": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_443_TCP_ADDR",
-            "value": "192.168.163.28"
-          },
-          "APACHE_PORT_443_TCP_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_443_TCP_PORT",
-            "value": 10010
-          },
-          "APACHE_PORT_443_TCP_PROTO": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_443_TCP_PROTO",
-            "value": "tcp"
-          },
-          "APACHE_PORT_80_TCP": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_80_TCP",
-            "value": "tcp://192.168.163.28:10009"
-          },
-          "APACHE_PORT_80_TCP_ADDR": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_80_TCP_ADDR",
-            "value": "192.168.163.28"
-          },
-          "APACHE_PORT_80_TCP_PORT": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_80_TCP_PORT",
-            "value": 10009
-          },
-          "APACHE_PORT_80_TCP_PROTO": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_80_TCP_PROTO",
-            "value": "tcp"
-          },
-          "APACHE_PORT_HTTP": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_HTTP",
-            "value": 10009
-          },
-          "APACHE_PORT_HTTPS": {
-            "export": true,
-            "masked": false,
-            "name": "APACHE_PORT_HTTPS",
-            "value": 10010
-          }
-        },
-        "loadBalancerProxyProtocol": "HTTP"
-      },
       "instanceVersion": null,
       "dateCreated": "2017-02-09T06:45:30+0000",
       "lastUpdated": "2017-02-09T06:53:20+0000",
@@ -420,225 +248,76 @@ curl "https://api.gomorpheus.com/api/instances/1216" \
 {
   "success": true,
   "instance": {
-    "id": 1216,
+    "id": 1698,
     "accountId": 1,
     "instanceType": {
-      "id": 7,
-      "code": "tomcat",
-      "category": "web",
-      "name": "Tomcat"
+      "id": 44,
+      "code": "redis",
+      "category": "cache",
+      "name": "Redis"
     },
+    "group": {
+      "id": 3,
+      "name": "Demo"
+    },
+    "cloud": {
+      "id": 6,
+      "name": "San Mateo VMware"
+    },
+    "containers": [
+      19
+    ],
+    "connectionInfo": [
+      {
+        "ip": "10.211.55.11",
+        "port": 10000
+      }
+    ],
     "layout": {
-      "id": 22,
-      "code": "tomcat-7.0.62-single",
-      "name": "Docker Tomcat",
-      "description": "This will provision a single process with no redundancy",
-      "sortOrder": 0
+      "id": 221
     },
     "plan": {
-      "name": "Memory: 1GB Storage: 10GB",
-      "id": 5,
-      "code": "container-1024",
-      "category": null,
-      "description": "Memory: 1GB Storage: 10GB",
-      "visibility": "public",
-      "active": true,
-      "upgradeable": false,
-      "dateCreated": "2016-04-05T13:07:56Z",
-      "lastUpdated": "2016-08-15T18:55:19Z",
-      "internalId": null,
-      "externalId": null,
-      "configs": null,
-      "serverType": null,
-      "sortOrder": 3,
-      "maxStorage": 10737418240,
-      "maxMemory": 1073741824,
-      "maxLog": null,
-      "maxCpu": 0,
-      "maxCores": 0,
-      "maxDataStorage": 0,
-      "minDisks": null,
-      "maxDisks": null,
-      "customCpu": false,
-      "customCores": false,
-      "customMaxStorage": false,
-      "customMaxDataStorage": false,
-      "customMaxMemory": false,
-      "addVolumes": false,
-      "memoryOptionSource": null,
-      "cpuOptionSource": null,
-      "internalCost": 0.2,
-      "externalCost": 0.4,
-      "provisionType": {
-        "id": 1,
-        "aclEnabled": true,
-        "addVolumes": false,
-        "argumentTypes": [
-          {
-            "id": 1
-          }
-        ],
-        "backupType": null,
-        "code": "docker",
-        "containerService": "dockerContainerService",
-        "controllerTypes": [],
-        "createServer": false,
-        "customOptionTypes": [
-          {
-            "id": 315
-          },
-          {
-            "id": 316
-          },
-          {
-            "id": 318
-          },
-          {
-            "id": 320
-          },
-          {
-            "id": 323
-          },
-          {
-            "id": 322
-          },
-          {
-            "id": 314
-          },
-          {
-            "id": 317
-          },
-          {
-            "id": 319
-          },
-          {
-            "id": 321
-          },
-          {
-            "id": 324
-          }
-        ],
-        "customSupported": true,
-        "customizeVolume": false,
-        "description": null,
-        "exportServer": false,
-        "hasDatastore": false,
-        "hasNetworks": null,
-        "hasStorageControllers": false,
-        "hostDiskMode": null,
-        "hostNetwork": false,
-        "hostType": "container",
-        "lvmSupported": true,
-        "managed": true,
-        "mapPorts": true,
-        "maxDisk": null,
-        "maxNetworks": null,
-        "minDisk": 0,
-        "multiTenant": true,
-        "name": "Docker",
-        "networkTypes": [],
-        "optionTypes": [],
-        "pickServer": true,
-        "provisionService": "dockerProvisionService",
-        "reconfigureSupported": true,
-        "resizeCopiesVolumes": false,
-        "rootDiskCustomizable": true,
-        "rootStorageTypes": [],
-        "serverType": "morpheus-node",
-        "storageTypes": [
-          {
-            "id": 1
-          }
-        ],
-        "supportsAutoDatastore": false,
-        "supportsCustomServicePlans": true,
-        "viewSet": "dockerCustom"
-      },
-      "editable": true,
-      "regionCode": null,
-      "refType": null,
-      "refId": null
+      "id": 69,
+      "code": "container-512"
     },
-    "name": "Spud Marketing",
-    "displayName": "Spud Marketing",
+    "name": "redistest",
     "description": null,
-    "dateCreated": "2016-12-15T15:22:17Z",
-    "lastUpdated": "2017-02-01T19:46:00Z",
-    "status": "running",
-    "containerIds": [
-      1414,
-      1759
+    "instanceVersion": null,
+    "tags": [
+
     ],
-    "environmentPrefix": null
-  },
-  "loadBalancers": [
-    {
-      "instanceId": 1216,
-      "lbs": [
-        {
-          "lb": {
-            "id": 1,
-            "account": {
-              "id": 1
-            },
-            "adminPort": null,
-            "apiPort": null,
-            "config": null,
-            "createdBy": null,
-            "dateCreated": "2016-06-21T17:55:21Z",
-            "description": "",
-            "externalId": null,
-            "externalIp": "12.96.81.103",
-            "internalId": null,
-            "internalInstance": {
-              "id": 5
-            },
-            "internalIp": "192.168.163.233",
-            "lastUpdated": "2016-06-21T17:55:21Z",
-            "name": "LB1",
-            "ports": [
-              {
-                "id": 1
-              }
-            ],
-            "server": null,
-            "sshHost": null,
-            "sshPassword": null,
-            "sshPort": null,
-            "sshUsername": null,
-            "sslCert": null,
-            "sslEnabled": true,
-            "type": {
-              "id": 2
-            },
-            "visibility": "public",
-            "zone": {
-              "id": 1
-            }
-          },
-          "port": {
-            "id": 1,
-            "config": null,
-            "description": null,
-            "internalId": null,
-            "loadBalancer": {
-              "id": 1
-            },
-            "loadBalancerInstances": [
-              {
-                "id": 173
-              }
-            ],
-            "name": "morpheus80",
-            "port": 80,
-            "proxyProtocol": "HTTP",
-            "sslCert": null,
-            "sslEnabled": false
-          }
-        }
-      ]
+    "maxMemory": 536870912,
+    "maxStorage": 5368709120,
+    "maxCores": 0,
+    "maxCpu": null,
+    "dateCreated": "2016-10-25T15:12:06+0000",
+    "lastUpdated": "2017-02-13T19:22:00+0000",
+    "hostName": "redistest",
+    "domainName": null,
+    "environmentPrefix": null,
+    "firewallEnabled": true,
+    "networkLevel": "container",
+    "autoScale": false,
+    "instanceContext": null,
+    "currentDeployId": null,
+    "status": "running",
+    "statusMessage": null,
+    "errorMessage": null,
+    "statusDate": "2016-10-25T15:12:41+0000",
+    "statusPercent": null,
+    "statusEta": null,
+    "userStatus": null,
+    "createdBy": {
+      "id": 1
     }
-  ]
+  },
+  "stats": {
+    "usedStorage": 2951,
+    "maxStorage": 1073741824,
+    "usedMemory": 266240,
+    "maxMemory": 268435456,
+    "usedCpu": 0.0418375032
+  }
 }
 ```
 
@@ -648,7 +327,7 @@ This endpoint retrieves a specific instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
-## Get env variables 
+## Get env variables
 
 ```shell
 curl "https://api.gomorpheus.com/api/instances/1216/envs" \
@@ -1029,7 +708,7 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
   }}'
 ```
 
-> The above command returns a similar JSON structure when submitting a GET request for a single check 
+> The above command returns a similar JSON structure when submitting a GET request for a single check
 
 ### HTTP Request
 
