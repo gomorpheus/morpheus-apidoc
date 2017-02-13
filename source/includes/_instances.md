@@ -1087,7 +1087,7 @@ This will start all containers running within an instance.
 ## Restart an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/restart" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/restart" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -1187,7 +1187,7 @@ name        | null    | A name for the new cloned instance. If none is specified
 ## Upgrade an Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/upgrade" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/upgrade" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "upgrade": {
@@ -1270,7 +1270,7 @@ This returns a list of all of the security groups applied to an instance and whe
 ## Set Security Groups
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances/1/security-groups" \
+curl -X POST "https://api.gomorpheus.com/api/instances/1/security-groups" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
@@ -1291,7 +1291,7 @@ securityGroupIds | null | List of all security groups ids which should be applie
 ## Disable the firewall
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -1312,7 +1312,7 @@ This will disable the firewall.  Any configured security groups will not be appl
 ## Enable the firewall
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
   -H "Authorization: BEARER access_token"
 ```
 
