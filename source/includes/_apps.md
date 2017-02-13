@@ -37,7 +37,7 @@ curl "https://api.gomorpheus.com/api/apps"
             {
               "instance": {
                 "id": 53,
-                "name": "Test App - Grails",
+                "name": "Test App - Grails"
               }
             }
           ]
@@ -51,7 +51,7 @@ curl "https://api.gomorpheus.com/api/apps"
             {
               "instance": {
                 "id": 54,
-                "name": "Test App - MySQL",
+                "name": "Test App - MySQL"
               }
             }
           ]
@@ -159,6 +159,13 @@ curl "https://api.gomorpheus.com/api/apps/4" \
   }
 }
 ```
+
+This endpoint retrieves a specific app.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/apps/:id`
+
 
 ## Create an App
 
