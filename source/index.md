@@ -11,6 +11,7 @@ includes:
   - apps
   - instances
   - instancetypes
+  - provisioning
   - provision_types
   - option_types
   - deploys
