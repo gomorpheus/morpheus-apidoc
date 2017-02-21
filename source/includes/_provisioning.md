@@ -94,6 +94,10 @@ sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
 storageType | N | null | Identifier for LV type
 datastoreId | Y | null | The ID of the specific datastore 
 servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+networkInterfaces | Y | n/a | JSON group for network definitions
+network | Y | n/a | JSON group for network id
+id | Y | n/a | id for the network to be used.  An example would be `Avi Internal` or `VM Network`
+networkInterfaceTypeId | Y | n/a | The id of the network interface within VMware
 publicKeyId | N | null | ID of a public key to add to the instance
 vmwareResroucePoolId | Y | null | ID of the resource group to use for instance
 hostId | N | null | Specific host to deploy to if so desired
