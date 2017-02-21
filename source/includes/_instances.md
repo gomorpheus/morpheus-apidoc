@@ -917,6 +917,58 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1773/backup" \
 
 `PUT https://api.gomorpheus.com/api/instances/:id/backup`
 
+## Get list of backups for an Instance
+
+```shell
+curl "https://api.gomorpheus.com/api/instances/1773/backups" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure that looks like this:
+
+```json
+{
+    "instance": {
+      "id": 1773
+    },
+    "backups": [
+    ]
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/backup`
+
+## Import Snapshot of an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/import-snapshot" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "storageProviderId": 1
+  }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to import a snapshot of an instance. This creates a Virtual Image of the instance as it currently exists.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/import-snapshot`
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+storageProviderId       | null    | Optional storage provider to use.
 
 ## Delete an Instance
 
