@@ -894,6 +894,26 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 upgrade       | null    | the map containing the id of the instance type upgrade you would like to perform.
 
+## Backup an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1773/backup" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure that looks like this:
+
+```json
+{
+    "success": true
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/backup`
+
+
 ## Delete an Instance
 
 ```shell
