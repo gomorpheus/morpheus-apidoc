@@ -938,7 +938,7 @@ curl "https://api.gomorpheus.com/api/instances/1773/backups" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/instances/:id/backup`
+`GET https://api.gomorpheus.com/api/instances/:id/backups`
 
 ## Import Snapshot of an Instance
 
