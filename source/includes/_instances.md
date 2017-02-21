@@ -1,6 +1,6 @@
 # Instances
 
-Instances are sets of containers or vms (morpheus API represents a vm as a container attached to a server) of various types that can be provisioned across the Morpheus stack and offer a wide range of services. MySQL, Redis, ElasticSearch, PostgreSQL, Tomcat, nginx, Confluence, Jenkins, and more. There are a few important concept differentiators between what morpheus calls an instance and what amazon calls an instance. In morpheus an isntance can represent many vms or containers that are of a set. For example. If you wanted to spin up a Mongo sharded replicaset, that requires 7 virtual machines or 7 docker containers. Morpheus represents this as a singular instance with a specified layout and then represents all the associated services running within that instance as containers. If, a container record is a docker container then the `serverId` it belngs to is representative of the Docker Host it was provisioned onto. If the container is a virtual machine then the serverId represents the compute resource it was provisioned onto, (i.e. the virtual machine).
+Instances are sets of containers or vms (morpheus API represents a vm as a container attached to a server) of various types that can be provisioned across the Morpheus stack and offer a wide range of services. MySQL, Redis, ElasticSearch, PostgreSQL, Tomcat, nginx, Confluence, Jenkins, and more. There are a few important concept differentiators between what morpheus calls an instance and what amazon calls an instance. In morpheus an isntance can represent many vms or containers that are of a set. For example. If you wanted to spin up a Mongo sharded replicaset, that requires 7 virtual machines or 7 docker containers. Morpheus represents this as a singular instance with a specified layout and then represents all the associated services running within that instance as containers. If, a container record is a docker container then the `serverId` it belongs to is representative of the Docker Host it was provisioned onto. If the container is a virtual machine then the serverId represents the compute resource it was provisioned onto, (i.e. the virtual machine).
 
 ## Get All Instances
 
@@ -791,7 +791,12 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1/resize" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{
-  "servicePlanId": 6,
+  "instance": {
+    "id": 1,
+    "plan": {
+      "id": 15
+    }
+  },
   "volumes": [
     {
       "id": "-1",
@@ -825,10 +830,9 @@ It is possible to resize containers within an instance by increasing their memor
 
 Parameter   | Required | Default | Description
 ---------   | -------- | ------- | -----------
-servicePlanId | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
+instance.plan.id | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
 volumes | no | defaults to plan config | Can be used to grow just the logical volume of the instance instead of choosing a plan
-servicePlan (v2.9 and earlier) | no | null | Equivalent to servicePlanId for earlier Morpheus versions
-
+deleteOriginalVolumes | no | false | Delete the original volumes after resizing. (Amazon only)
 
 ## Clone an Instance
 

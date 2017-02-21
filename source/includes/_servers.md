@@ -315,7 +315,7 @@ curl -XPOST "https://api.gomorpheus.com/api/servers" \
   }}'
 ```
 
-> The above command returns a similar JSON structure when submitting a GET request for a single check 
+> The above command returns a similar JSON structure when submitting a GET request for a single check
 
 ### HTTP Request
 
@@ -345,7 +345,7 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1" \
   }}'
 ```
 
-> The above command returns a similar JSON structure when submitting a GET request for a single check 
+> The above command returns a similar JSON structure when submitting a GET request for a single check
 
 ### HTTP Request
 
@@ -375,3 +375,53 @@ curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
 
 Will delete a server asynchronously and remove from the hosted chef system.
 
+## Resize a Server
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/servers/1/resize" \
+  -H "Authorization: BEARER access_token"
+  -H "Content-Type: application/json" \
+  -d '{
+    "server": {
+      "id": 82,
+      "plan": {
+        "id": 76
+      }
+    },
+    "volumes": [
+      {
+        "id": 419,
+        "rootVolume": true,
+        "name": "root",
+        "size": 10,
+        "sizeId": null,
+        "storageType": 1,
+        "datastoreId": "auto"
+      }
+    ],
+    "deleteOriginalVolumes": true
+  }'
+
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will resize a server asynchronously.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/resize`
+
+### JSON Server Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+server.plan.id      | null | The ID of the new plan (optional).
+volumes | null | List of volumes with their new sizes.
+deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
