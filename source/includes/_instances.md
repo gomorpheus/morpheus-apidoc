@@ -784,6 +784,48 @@ This will restart all containers running within an instance. This includes rebui
 
 `PUT https://api.gomorpheus.com/api/instances/:id/restart`
 
+## Suspend an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/suspend" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will suspend all containers in the instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/eject`
+
+## Eject an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/eject" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will eject any ISO media on all containers in the instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/eject`
+
 ## Resize an Instance
 
 ```shell
