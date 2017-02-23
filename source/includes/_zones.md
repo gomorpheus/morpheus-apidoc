@@ -1,6 +1,6 @@
 # Compute Zones
 
-Zones are a means of zoneing various servers based on provisioning type or subnets. Typically a Zone belongs to a zone and a zone can have many zones. There are several supported zone types that can be used for hardware/vm procurement such as the OpenStack zone type. The zone holds the credentials necessary to provision virtual machines on the open stack api. Amazon is another openstack zone type currently in the works. Of course, we also have the Standard zone type which allows for manual vm procurement.
+Zones are a means of zoning various servers based on provisioning type or subnets. Typically a Zone belongs to a zone and a zone can have many zones. There are several supported zone types that can be used for hardware/vm procurement such as the OpenStack zone type. The zone holds the credentials necessary to provision virtual machines on the open stack api. Amazon is another openstack zone type currently in the works. Of course, we also have the Standard zone type which allows for manual vm procurement.
 
 ## Get All Zones
 
@@ -95,6 +95,7 @@ curl -XPOST "https://api.gomorpheus.com/api/zones" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
     "name": "My Zone",
+    "code": "myzone",
     "description": "My description",
     "location": "US EAST",
     "zoneType": {"code": "standard"},
@@ -114,7 +115,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the zone
 description | null | Optional description field if you want to put more info there
-location  | null | Optional location argument for your zone
+code      | null | Optional code for use with policies
+location  | null | Optional location for your zone
+visibility      | private | private or public
 zoneType  | "standard" | Map containing code or id of the zone type
 groupId  | null | Specifies which Server group this zone should be assigned to
 
@@ -150,12 +153,13 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the zone
 description | null | Optional description field if you want to put more info there
-location  | null | Optional location argument for your zone
-zoneType | null | A JSON query for finding the proper zone type by code
+code      | null | Optional code for use with policies
+location  | null | Optional location for your zone
+visibility      | private | private or public
 groupId | null | Specifies which Server group this zone should be assigned to
 config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
-Additional properties are dynamic for the most part depending on teh zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
+Additional properties are dynamic for the most part depending on the zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
 
 <aside class="warning">Updating a Server zone requires the `System Admin` role.</aside>
 

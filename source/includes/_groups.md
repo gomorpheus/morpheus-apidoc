@@ -18,6 +18,7 @@ curl "https://api.gomorpheus.com/api/groups"
       "id": 1,
       "accountId": 1,
       "name": "Amazon East",
+      "code": "amazon",
       "active": true,
       "location": null,
       "visibility": "public",
@@ -73,6 +74,7 @@ curl "https://api.gomorpheus.com/api/groups/1" \
     "id": 1,
     "accountId": 1,
     "name": "Vagrant",
+    "code": null,
     "active": true,
     "location": null,
     "visibility": "public",
@@ -118,7 +120,7 @@ curl -XPOST "https://api.gomorpheus.com/api/groups" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single group: 
+> The above command returns JSON structured like getting a single group:
 
 ### HTTP Request
 
@@ -130,6 +132,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the group
 description | null | Optional description field if you want to put more info there
+code      | null | Optional code for use with policies
 location  | null | Optional location argument for your group
 
 <aside class="warning">Creating a Server group requires the `System Admin` role.</aside>
@@ -147,7 +150,7 @@ curl -XPUT "https://api.gomorpheus.com/api/groups/1" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single group: 
+> The above command returns JSON structured like getting a single group:
 
 ### HTTP Request
 
@@ -159,9 +162,47 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the group
 description | null | Optional description field if you want to put more info there
-location  | null | Optional location argument for your group
+code      | null | Optional code for use with policies
+location  | null | Optional location for your group
 
 <aside class="warning">Updating a Server group requires the `System Admin` role.</aside>
+
+## Updating Group Zones
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/groups/1/update-zones" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"group":{
+    "zones": [
+      {"id": 1}, {"id": 2}, {"id": 5}
+    ]
+  }}'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will update the zones that are assigned to the group.
+Any zones that are not passed in the `zones` parameter will be removed from the group.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/groups/:id/update-zones`
+
+### JSON Check Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+zones      | null | An array of all the zones assigned to this group.
+
+<aside class="warning">Assigning Zones to a Server group requires the `System Admin` role.</aside>
+
 
 ## Delete a Group
 
@@ -179,4 +220,3 @@ curl -XDELETE "https://api.gomorpheus.com/api/groups/1" \
 ```
 
 If a group has zones or servers still tied to it, a delete action will fail
-
