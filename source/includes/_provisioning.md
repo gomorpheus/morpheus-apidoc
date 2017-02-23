@@ -75,45 +75,74 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
 
 `POST https://api.gomorpheus.com/api/instances`
 
-### JSON Instance Parameters
+### JSON Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 instance  | Y | n/a | Key for name, site, instanceType layout, and plan
-name | Y | null | Name of the instance to be created
-site | Y | null | The Group ID to provision the instance into
-instanceType | Y | null | The type of instance by code we want to fetch
-layout |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
-plan | Y | null | The id for the memory and storage option pre-configured within Morpheus
+instance.name | Y | null | Name of the instance to be created
+instance.site.id | Y | null | The Group ID to provision the instance into
+instance.instanceType.code | Y | null | The type of instance by code we want to fetch
+instance.layout.id |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
+instance.plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus
 zoneId | Y | null | The Cloud ID to provision the instance onto
 evars | N | [] | Environment Variables, an array of objects that have name and value.
 copies | N | 1 | Number of copies to provision
 layoutSize | N | 1 | Apply a multiply factor of containers/vms within the instance
+servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
+volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
+networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
+config | N | null | Key for specific type configuration, see [Config](#config)
 
-### JSON Instance Parameters VMware Specific
+#### Volumes
+
+The (optional) `volumes` parameter is for LV configuration, can create additional LVs at provision
+It should be passed as an array of Objects with the following attributes:
 
 Parameter | Required | Default | Description
---------- | -------- | ------- | ------------
-volumes | Y | n/a | Key for LV configuration, can create additional LVs at provision
+--------- | -------- | ------- | -----------
 id | N | -1 | The id for the LV configuration being created
 rootVolume | N | true | If set to false then a non-root LV will be created
 name | Y | root | Name/type of the LV being created
-size | N | servicePlanId size | Size of the LV to be created in GBs
+size | N | [from service plan] | Size of the LV to be created in GBs
 sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
 storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore 
-servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
-networkInterfaces | Y | n/a | JSON group for network definitions
-network | Y | n/a | JSON group for network id
-id | Y | n/a | id for the network to be used.  An example would be `Avi Internal` or `VM Network`
-networkInterfaceTypeId | Y | n/a | The id of the network interface within VMware
+datastoreId | Y | null | The ID of the specific datastore
+
+#### Network Interfaces
+
+The `networkInterfaces` parameter is for network configuration.
+
+The Options API `/api/options/zoneNetworkOptions?zoneId=5&provisionTypeId=10` can be used to see which options are available.
+
+It should be passed as an array of Objects with the following attributes:
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+network.id | Y | n/a | id of the network to be used.
+networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
+ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
+
+#### Config
+
+The `config` parameter is for configuration options that are specific to each Provision Type.
+The Provision Types api can be used to see which options are available.
+
+##### JSON Config Parameters for VMware
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
 publicKeyId | N | null | ID of a public key to add to the instance
-vmwareResroucePoolId | Y | null | ID of the resource group to use for instance
+vmwareResourcePoolId | Y | null | ID of the resource group to use for instance
 hostId | N | null | Specific host to deploy to if so desired
 vmwareUsr | N | null | Additional user to provision to instance
 vmwarePwd | N | null | Password for additional user
 vmwareDomainName | N | null | Domain name to be given to instance
 vmwareCustomSpec | N | null | Customization spec ID
+
+
+
+**Documentation on ALL of the provision types to come...**
 
 
 
