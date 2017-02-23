@@ -20,10 +20,11 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
     },
     "layout": {
       "id": 105
+    },
+    "plan": {
+      "id": 75
     }
   },
-  "servicePlan": 11,
-  "servicePlanId": 11,
   "volumes": [
     {
       "id": -1,
@@ -52,13 +53,19 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
       "networkInterfaceTypeId": 4
     }
   ],
-  "publicKeyId": 14,
-  "vmwareResourcePoolId": "resgroup-56",
-  "hostId": null,
-  "vmwareUsr": "morpheus-api",
-  "vmwarePwd": "password",
-  "vmwareDomainName": null,
-  "vmwareCustomSpec": null
+  config: {
+    "publicKeyId": 14,
+    "vmwareResourcePoolId": "resgroup-56",
+    "hostId": null,
+    "vmwareUsr": "morpheus-api",
+    "vmwarePwd": "password",
+    "vmwareDomainName": null,
+    "vmwareCustomSpec": null
+  },
+  evars: [
+    {"name": "MY_APP_VAR1", "value": "VALUE1"},
+    {"name": "MY_APP_VAR2", "value": "VALUE2"}
+  ],
 }'
 ```
 
@@ -72,14 +79,16 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-instance  | Y | n/a | Key for name, site, instanceType and layout
+instance  | Y | n/a | Key for name, site, instanceType layout, and plan
 name | Y | null | Name of the instance to be created
-site | Y | null | The group ID to provision the instance into
+site | Y | null | The Group ID to provision the instance into
 instanceType | Y | null | The type of instance by code we want to fetch
-servicePlanId | Y | null | Service plans designate layout and capacity
 layout |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
-servicePlan | Y | null | The id for the memory and storage option pre-configured within Morpheus
+plan | Y | null | The id for the memory and storage option pre-configured within Morpheus
 zoneId | Y | null | The Cloud ID to provision the instance onto
+evars | N | [] | Environment Variables, an array of objects that have name and value.
+copies | N | 1 | Number of copies to provision
+layoutSize | N | 1 | Apply a multiply factor of containers/vms within the instance
 
 ### JSON Instance Parameters VMware Specific
 
