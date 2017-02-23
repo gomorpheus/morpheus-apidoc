@@ -93,7 +93,7 @@ servicePlanOptions | N | null | Map of custom options depending on selected serv
 securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
 volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
-config | N | null | Key for specific type configuration, see [Config](#config)
+config | Y | null | Key for specific type configuration, see [Config](#config)
 
 #### Volumes
 
