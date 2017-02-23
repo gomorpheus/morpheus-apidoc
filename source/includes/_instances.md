@@ -694,7 +694,13 @@ This can be valuable for evaluating the details of the compute server(s) running
 
 `GET https://api.gomorpheus.com/api/instances/:id/containers`
 
+## Create an Instance
 
+See Provisioning for details.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/instances`
 
 ## Updating an Instance
 
