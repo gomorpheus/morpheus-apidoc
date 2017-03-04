@@ -358,6 +358,59 @@ Parameter | Default | Description
 name      | null | Unique name scoped to your account for the server
 description | null | Optional description field
 
+
+## Install Agent
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/servers/1/install-agent" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "server": {
+  "sshUsername": "admin",
+  "sshPassword": "asafepassword",
+  "serverOs": {"id": 1}
+  }}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will make the server a managed server, and install the agent.
+
+### JSON Server Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+sshUsername      | null | ssh username to use when provisioning
+sshPassword | null | ssh password to use, if not specified the account public key can be used
+serverOs.id | null | The ID os the OS Type for this server. See GET /api/options/osTypes
+
+## Upgrade Agent
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/servers/1/upgrade" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will upgrade the version of the install installed on the server.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/upgrade`
+
 ## Delete a Server
 
 ```shell
@@ -374,6 +427,10 @@ curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
 ```
 
 Will delete a server asynchronously and remove from the hosted chef system.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/servers/:id`
 
 ## Resize a Server
 
