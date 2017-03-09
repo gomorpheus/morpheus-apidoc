@@ -30,6 +30,7 @@ includes:
   - errors
   - security_groups
   - security_group_rules
+  - billing
 
 search: true
 ---
