@@ -123,7 +123,7 @@ This endpoint will retrieve a specific account by id if the user has permission 
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:id`
+`GET https://api.gomorpheus.com/api/billing/accounts/:id`
 
 ### Query Parameters
 
