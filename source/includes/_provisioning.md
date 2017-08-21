@@ -94,6 +94,7 @@ securityGroups | N | null | Key for security group configuration. It should be p
 volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
 config | Y | null | Key for specific type configuration, see [Config](#config)
+metadata | N | null | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
 
 #### Volumes
 
@@ -140,6 +141,31 @@ vmwarePwd | N | null | Password for additional user
 vmwareDomainName | N | null | Domain name to be given to instance
 vmwareCustomSpec | N | null | Customization spec ID
 
+#### Metadata
+This is specific to AWS Metadata tags.  Name-Values pairs can be anything you like and are added to the instance JSON as an array of n-v pairs per the example to the right:
+
+```shell
+-d '{
+  "zoneID": 6,
+  "instance": {
+    ...
+  }
+  ...
+  "metadata": [
+    {
+      "id": null,
+      "name": "SampleName",
+      "value": "SampleValue"
+    }
+    {
+      "id": null,
+      "name": "BusinessUnit",
+      "value": "QualityAssurance"
+    }
+  ]
+  ...
+}
+```
 
 
 **Documentation on ALL of the provision types to come...**
