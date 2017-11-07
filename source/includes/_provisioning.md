@@ -33,7 +33,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
       "size": 10,
       "sizeId": null,
       "storageType": 1,
-      "datastoreId": "auto"
+      "datastoreId": "autoCluster"
     },
     {
       "id": -1,
@@ -109,7 +109,7 @@ name | Y | root | Name/type of the LV being created
 size | N | [from service plan] | Size of the LV to be created in GBs
 sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
 storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore
+datastoreId | Y | null | The ID of the specific datastore. Auto selection can be use by setting this to `auto` or `autoCluster` (for clusters).
 
 #### Network Interfaces
 
@@ -121,7 +121,7 @@ It should be passed as an array of Objects with the following attributes:
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-network.id | Y | n/a | id of the network to be used.
+network.id | Y | n/a | id of the network to be used. A network group can be specified instead by prefixing its ID  with `networkGroup-`.
 networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
 ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
 
