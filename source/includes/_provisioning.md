@@ -109,7 +109,7 @@ name | Y | root | Name/type of the LV being created
 size | N | [from service plan] | Size of the LV to be created in GBs
 sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
 storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore. Auto selection can be use by setting this to `auto` or `autoCluster` (for clusters).
+datastoreId | Y | null | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
 
 #### Network Interfaces
 
