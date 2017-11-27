@@ -65,6 +65,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For a Sub Account
 
@@ -131,6 +132,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 
 ## For All Zones
@@ -193,6 +195,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For a Specific Zone
 
@@ -252,6 +255,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For All Servers
 
@@ -301,6 +305,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For a Specific Server
 
@@ -342,6 +347,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For All Instances
 
@@ -389,6 +395,7 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
 
 ## For a Specific Instance
 
@@ -438,3 +445,4 @@ Parameter | Default                        | Description
 --------- | ------------------------------ | -----------
 startDate | Beginning of the current month |
 endDate   | Now                            |
+includeUsages | true                       | Optional ability to suppress the usage records
