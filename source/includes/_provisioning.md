@@ -53,7 +53,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
       "networkInterfaceTypeId": 4
     }
   ],
-  config: {
+  "config": {
     "publicKeyId": 14,
     "vmwareResourcePoolId": "resgroup-56",
     "hostId": null,
@@ -62,7 +62,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
     "vmwareDomainName": null,
     "vmwareCustomSpec": null
   },
-  evars: [
+  "evars": [
     {"name": "MY_APP_VAR1", "value": "VALUE1"},
     {"name": "MY_APP_VAR2", "value": "VALUE2"}
   ],
