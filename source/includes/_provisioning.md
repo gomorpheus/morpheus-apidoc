@@ -95,6 +95,7 @@ volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
 config | Y | null | Key for specific type configuration, see [Config](#config)
 metadata | N | null | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
+taskSetId | N | null | The Workflow ID to execute.
 
 #### Volumes
 
