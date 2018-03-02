@@ -5,7 +5,7 @@
 ## Get All Checks
 
 ```shell
-curl "https://api.gomorpheus.com/api/checks"
+curl "https://api.gomorpheus.com/api/monitoring/checks"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -63,7 +63,7 @@ This endpoint retrieves all checks and their JSON encoded configuration attribut
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/checks`
+`GET https://api.gomorpheus.com/api/monitoring/checks`
 
 ### Query Parameters
 
@@ -83,7 +83,7 @@ Remember — a happy kitten is an authenticated kitten!
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/checks/1" \
+curl "https://api.gomorpheus.com/api/monitoring/checks/1" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -140,7 +140,7 @@ This endpoint retrieves a specific check.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/checks/:id`
+`GET https://api.gomorpheus.com/api/monitoring/checks/:id`
 
 ### URL Parameters
 
@@ -151,7 +151,7 @@ ID | ID of the check to retrieve
 ## Create a Check
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/checks" \
+curl -XPOST "https://api.gomorpheus.com/api/monitoring/checks" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"check":{
@@ -171,7 +171,7 @@ curl -XPOST "https://api.gomorpheus.com/api/checks" \
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/checks`
+`POST https://api.gomorpheus.com/api/monitoring/checks`
 
 ### JSON Check Parameters
 
@@ -190,7 +190,7 @@ config | null | JSON encoded list of parameters that varies by check type. See b
 ## Updating a Check
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/checks/1" \
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"check":{
@@ -210,7 +210,7 @@ curl -XPUT "https://api.gomorpheus.com/api/checks/1" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/checks/:id`
+`PUT https://api.gomorpheus.com/api/monitoring/checks/:id`
 
 ### JSON Check Parameters
 
@@ -434,7 +434,7 @@ sshPassword | No        | Password for user, if not using key based authenticati
 
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/checks/1/mute" \
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"enabled":true}'
@@ -453,7 +453,7 @@ This endpoint can be used to toggle the mute state of a check on and off.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/checks/:id/mute`
+`PUT https://api.gomorpheus.com/api/monitoring/checks/:id/mute`
 
 ### JSON Parameters
 
@@ -465,7 +465,7 @@ enabled | Set to true or false
 ## Delete a Check
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/checks/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/monitoring/checks/1" \
   -H "Authorization: BEARER access_token"
 ```
 
