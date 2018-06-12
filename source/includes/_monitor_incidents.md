@@ -66,6 +66,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
+status | null | Filter by status
+severity | null | Filter by severity
 
 ## Get a Specific Incident
 
