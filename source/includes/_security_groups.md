@@ -78,8 +78,8 @@ curl -XPOST "https://api.gomorpheus.com/api/security-group" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
-  "description": "My Description"}
-  }
+  "description": "My Description"
+  }}'
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group 

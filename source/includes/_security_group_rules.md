@@ -80,14 +80,12 @@ curl -XPOST "https://api.gomorpheus.com/api/security-group/19/rules" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
-    "rule" : {
     "source": "50.22.10.10/32",
     "portRange": "55",
     "protocol": "tcp",
     "customRule": true,
-    "instanceTypeId": 3}
-    }
-  }
+    "instanceTypeId": 3
+    }}'
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group rule 
@@ -115,14 +113,12 @@ curl -XPUT "https://api.gomorpheus.com/api/security-group/19/rules/30" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
-    "rule" : {
     "source": "50.22.10.10/32",
     "portRange": "55",
     "protocol": "tcp",
     "customRule": true,
-    "instanceTypeId": 3}
-    }
-  }
+    "instanceTypeId": 3
+    }}'
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group rule
