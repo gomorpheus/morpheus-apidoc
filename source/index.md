@@ -16,6 +16,7 @@ includes:
   - option_types
   - deploys
   - checks
+  - monitor_incidents
   - check_types
   - groups
   - zones
