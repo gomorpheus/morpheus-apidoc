@@ -45,7 +45,22 @@ curl "https://api.gomorpheus.com/api/virtual-images"
       "trialVersion": false,
       "virtioSupported": true,
       "isAutoJoinDomain": false,
-      "userData": null
+      "vmToolsInstalled": true,
+      "isForceCustomization": false,
+      "isSysprep": false,
+      "userData": null,
+      "storageProvider": {
+        "id": 2,
+        "name": "local-images"
+      },
+      "externalId": null,
+      "visibility": "private",
+      "accounts": [
+        {
+          "id": 1,
+          "name": "root"
+        }
+      ]
     }
   ],
   "meta": {
@@ -117,7 +132,22 @@ curl "https://api.gomorpheus.com/api/virtual-images/764" \
     "trialVersion": false,
     "virtioSupported": true,
     "isAutoJoinDomain": false,
-    "userData": null
+    "vmToolsInstalled": true,
+    "isForceCustomization": false,
+    "isSysprep": false,
+    "userData": null,
+    "storageProvider": {
+      "id": 2,
+      "name": "testdrive2"
+    },
+    "externalId": null,
+    "visibility": "private",
+    "accounts": [
+      {
+        "id": 1,
+        "name": "root"
+      }
+    ]
   },
   "cloudFiles": [
     {
@@ -138,6 +168,11 @@ This endpoint retrieves a specific virtual image and its files.
 
 `GET https://api.gomorpheus.com/api/virtual-images/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
 
 ## Create a Virtual Image
 
@@ -149,6 +184,7 @@ curl -XPOST "https://api.gomorpheus.com/api/virtual-images" \
     "name": "testimage2",
     "imageType": "vmware",
     "isCloudInit": true,
+    "installAgent": true,
     "sshUsername": "root",
     "sshPassword": "mygoodpassword123",
     "sshKey": null,
@@ -156,8 +192,7 @@ curl -XPOST "https://api.gomorpheus.com/api/virtual-images" \
       "id": 9
     },
     "virtioSupported": true,
-    "isAutoJoinDomain": false,
-    "userData": null
+    "vmToolsInstalled": true,
 
   }}'
 ```
@@ -176,15 +211,22 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name  | null | A name for the virtual image
 imageType  | null | Code of image type. eg. vmware, ami, etc.
-storageProvider | null | A map containing the id of the Storage Provider
-isCloudInit | "off" | Cloud Init Enabled? "on" or "off"
+storageProvider | null | A Map containing the id of the Storage Provider
+isCloudInit | false | Cloud Init Enabled? true or false
+userData | null | Cloud-Init User Data, a bash script
+installAgent | false | Install Agent? true or false
 sshUsername | null | SSH Username
 sshPassword | null | SSH Password
 sshKey | null | SSK Key
-osType | null | A Map containing the id of the OS Type
-virtioSupported | "on" | VirtIO Drivers Loaded?
-isAutoJoinDomain | "off" | Auto Join Domain?
-userData | null | Cloud-Init User Data, a bash script
+osType | null | A Map containing the id of the OS Type. This can also be passed as a string (code or name) instead.
+visibility | "private" | private or public
+accounts  | null | Array of tenant account ids that are allowed access.
+isAutoJoinDomain | false | Auto Join Domain?
+virtioSupported | true | VirtIO Drivers Loaded?
+vmToolsInstalled | true | VM Tools Installed?
+isForceCustomization | false | Force Guest Customization?
+trialVersion | false | Trial Version
+isSysprep | false | Sysprep Enabled?
 
 ## Upload Virtual Image File
 
@@ -198,7 +240,7 @@ curl -XPOST "https://api.gomorpheus.com/api/virtual-images/765/upload" \
 
 ```json
 {
-  "success": true,
+  "success": true
 }
 ```
 
@@ -208,10 +250,23 @@ This will upload the file and associate it to the Virtual Image.
 
 `POST https://api.gomorpheus.com/api/virtual-images/:id/upload`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
+
+### Parameters
+
+Parameter | Description
+--------- | -----------
+url | Download the file from a remote url. This can be used instead of uploading a local file.
+filename | Specify a filename for destination file. The base filename of the uploaded file is the default.
+
 ## Remove Virtual Image File
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765/files?filename=" \
+curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765/files?filename=testimage.ovf" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -219,13 +274,19 @@ curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765/files?filename=
 
 ```json
 {
-  "success": true,
+  "success": true
 }
 ```
 
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/virtual-images/:id/files?filename=`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
 
 ### Parameters
 

@@ -24,6 +24,7 @@ includes:
   - zone_datastores
   - servers
   - server_types
+  - virtual_images
   - certificates
   - keypairs
   - accounts
