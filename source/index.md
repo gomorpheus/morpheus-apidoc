@@ -21,11 +21,13 @@ includes:
   - groups
   - zones
   - zonetypes
+  - zone_datastores
   - servers
   - server_types
   - certificates
   - keypairs
   - accounts
+  - account_groups
   - users
   - roles
   - errors
