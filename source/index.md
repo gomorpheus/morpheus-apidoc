@@ -29,6 +29,7 @@ includes:
   - keypairs
   - accounts
   - account_groups
+  - user_sources
   - users
   - roles
   - errors
