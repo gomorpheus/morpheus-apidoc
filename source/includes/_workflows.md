@@ -135,7 +135,7 @@ ID | The ID of the workflow
 curl -XPOST "https://api.gomorpheus.com/api/task-sets" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"task": {
+  -d '{"taskSet": {
     "name": "my workflow",
     "tasks": [
       {
