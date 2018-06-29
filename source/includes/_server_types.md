@@ -2,7 +2,7 @@
 
 A Compute Server Type is the description of the technology (bare metal or virtual) being deployed onto.
 
-## Get All Servers
+## Get All Server Types
 
 ```shell
 curl "https://api.gomorpheus.com/api/server-types"
@@ -322,4 +322,14 @@ curl "https://api.gomorpheus.com/api/server-types/1" \
   }
 }
 ```
+This endpoint will retrieve a specific server type by id
 
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/server-types/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the server type
