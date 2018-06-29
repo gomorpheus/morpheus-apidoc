@@ -18,7 +18,7 @@ curl "https://api.gomorpheus.com/api/task-sets"
   "taskSets": [
     {
       "id": 13,
-      "name": "apitest1",
+      "name": "my workflow",
       "description": null,
       "dateCreated": "2017-06-26T15:36:19+0000",
       "lastUpdated": "2017-06-26T15:44:38+0000",
@@ -136,7 +136,7 @@ curl -XPOST "https://api.gomorpheus.com/api/task-sets" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"task": {
-    "name": "apitest3",
+    "name": "my workflow",
     "tasks": [
       {
         "taskId": 3
