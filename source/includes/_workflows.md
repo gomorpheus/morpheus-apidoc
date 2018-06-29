@@ -2,7 +2,7 @@
 
 Provides API interfaces for managing the creation and modification of automation workflows. Workflows, also called Task Sets, are a collection of tasks that are organized in phases. A task phase determines if/when each task runs.
 
-<aside class="notice">Last modified in version 3.5</aside>
+<aside class="notice">Last modified in version 3.4.1</aside>
 
 ## Get All Workflows
 
