@@ -35,6 +35,9 @@ includes:
   - errors
   - security_groups
   - security_group_rules
+  - tasks
+  - task_types
+  - workflows
   - billing
 
 search: true
