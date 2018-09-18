@@ -124,7 +124,6 @@ curl -XPOST "https://api.gomorpheus.com/api/accounts/1/users" \
     "firstName": "Jane",
     "lastName": "Doe",
     "password": "abc123",
-    "passwordConfirmation": "abc123",
     "role": {"id": 1},
     "instanceLimits": {
       "maxCpu": 0,
@@ -149,7 +148,6 @@ email     | null | The user's email
 firstName | null | The user's first name (optional)
 lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
-passwordConfirmation  | null | The password again
 role      | null | A nested id of the role to assign to the user
 instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
@@ -189,7 +187,6 @@ email     | null | The user's email
 firstName | null | The user's first name (optional)
 lastName  | null | The user's last name (optional)
 password  | null | The password to apply to the user
-passwordConfirmation  | null | The password again
 role      | null | A nested id of the role to assign to the user
 instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
