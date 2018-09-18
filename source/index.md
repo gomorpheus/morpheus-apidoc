@@ -39,6 +39,7 @@ includes:
   - task_types
   - workflows
   - billing
+  - cypher
 
 search: true
 ---
