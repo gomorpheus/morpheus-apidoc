@@ -120,16 +120,12 @@ curl -XPOST "https://api.gomorpheus.com/api/accounts/1/users" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"user":{
-    "username": "testUser",
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "password": "abc123",
-    "role": {"id": 1},
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    }
+    "username": "testuser",
+    "email": "testuser@yourcompany.com",
+    "firstName": "Test",
+    "lastName": "User",
+    "password": "aStrongpassword123!",
+    "role": {"id": 1}
   }}'
 ```
 
