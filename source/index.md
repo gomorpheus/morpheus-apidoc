@@ -13,6 +13,7 @@ includes:
   - instancetypes
   - provisioning
   - provision_types
+  - storage_providers
   - option_types
   - deploys
   - checks
@@ -33,6 +34,7 @@ includes:
   - user_sources
   - users
   - roles
+  - policies
   - errors
   - security_groups
   - security_group_rules
