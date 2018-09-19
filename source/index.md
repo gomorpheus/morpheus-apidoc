@@ -22,6 +22,7 @@ includes:
   - zones
   - zonetypes
   - zone_datastores
+  - storage_providers
   - servers
   - server_types
   - virtual_images
