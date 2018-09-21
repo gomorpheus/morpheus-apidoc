@@ -238,7 +238,7 @@ curl -XPUT "https://api.gomorpheus.com/api/storage/providers/1" \
   -d '{
   "storageProvider": {
     "name": "my-storage",
-    copyToStore: true
+    "copyToStore": true
   }
 }'
 ```
@@ -251,7 +251,7 @@ curl -XPUT "https://api.gomorpheus.com/api/storage/providers/1" \
 
 ### JSON Parameters
 
-Update supports the same as parameters as [Create](#create-a-storage-provider).
+See [Create](#create-a-storage-provider).
 
 ## Delete a Storage Provider
 

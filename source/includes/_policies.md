@@ -152,11 +152,6 @@ Parameter | Default | Description
 name |  | If specified will return an exact match on name
 phrase |  | If specified will return a partial match on name
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | read, full
 
 ## Get a Specific Policy
 
@@ -214,11 +209,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the policy to retrieve
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | read, full
 
 ## Policy Types
 
@@ -293,14 +283,7 @@ This endpoint returns a list of all policy types.
 
 `GET https://api.gomorpheus.com/api/policy-types`
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | read, full
-Infrastructure: Policies | admin-policies | read, full
-
-### Policy Type Parameters
+### Policy Type Options
 
 ##### Backup Creation (createBackup)
 
@@ -455,11 +438,6 @@ curl -XPOST "https://api.gomorpheus.com/api/policies" \
 
 `POST https://api.gomorpheus.com/api/policies`
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | full
 
 ### JSON Parameters
 
@@ -533,12 +511,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the policy
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | full
-
 ### JSON Parameters
 
 Parameter | Default | Description
@@ -575,12 +547,6 @@ Will delete a policy from the system and make it no longer usable.
 Parameter | Description
 --------- | -----------
 ID | The ID of the policy
-
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Admin: Policies | admin-global-policies | full
 
 ## Group Policies
 
@@ -645,16 +611,9 @@ Parameter | Description
 --------- | -----------
 groupId | The ID of the group
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Infrastructure: Policies | admin-policies | read, full
-
-
-This resource also provides endpoints for [Get](#get-a-specific-policy), [Create](#create-a-policy), [Update](#update-a-policy) and [Delete](#delete-a-policy) that work just like the global policies endpoints.
-
-
+<aside class="info">
+This resource also provides endpoints for GET, POST, PUT and DELETE that work just like the global policies endpoints.
+</aside>
 
 ## Cloud Policies
 
@@ -719,12 +678,6 @@ Parameter | Description
 --------- | -----------
 cloudId | The ID of the cloud
 
-### Required Permissions
-
-Permission | Code | Access
---------- | ------- | -----------
-Infrastructure: Policies | admin-policies | read, full
-
-
-This resource also provides endpoints for [Get](#get-a-specific-policy), [Create](#create-a-policy), [Update](#update-a-policy) and [Delete](#delete-a-policy) that work just like the global policies endpoints.
-
+<aside class="info">
+This resource also provides endpoints for GET, POST, PUT and DELETE that work just like the global policies endpoints.
+</aside>

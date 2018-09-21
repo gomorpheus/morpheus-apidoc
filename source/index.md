@@ -35,6 +35,8 @@ includes:
   - users
   - roles
   - policies
+  - power_schedules
+  - execute_schedules
   - errors
   - security_groups
   - security_group_rules
@@ -43,6 +45,10 @@ includes:
   - workflows
   - billing
   - cypher
+  - archives
+  - image_builds
+  - boot_scripts
+  - preseed_scripts
 
 search: true
 ---
