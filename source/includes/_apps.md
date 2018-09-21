@@ -2,9 +2,6 @@
 
 Apps are groupings of instances that are linked together to form a full application stack. They can be created with existing templates or new templates, as well as from existing instances.
 
-> **Current API support is limited to adding existing instances to an app**
-
-
 ## Get All Apps
 
 ```shell
