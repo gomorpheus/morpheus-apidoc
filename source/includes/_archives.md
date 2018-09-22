@@ -448,7 +448,7 @@ curl -XGET "https://api.gomorpheus.com/api/archives/download/mybucket/myapp/conf
 
 Download the file as an authorized user with access to the bucket.
 
-<aside class="warning">Downloading a directory will return a .zip file containing all files under it.</aside>
+<aside class="info">Downloading a directory will return a .zip file containing all files under it.</aside>
 
 ### HTTP Request
 
@@ -658,7 +658,7 @@ curl -XGET "https://api.gomorpheus.com/public-archives/link?s=45a214fce9a546b9"
 
 > The above command returns the contents of the file as an attachment with Content-Type dicated by the file
 
-Download an archive file using a secret access token, without needing to be an authorizing user.
+Download an archive file lin
 
 ### HTTP Request
 
