@@ -4,9 +4,6 @@ title: Morpheus Developer APIs
 language_tabs:
   - shell
 
-toc_footers:
-  - <a href='http://www.gomorpheus.com'>Sign Up for a Developer Key</a>
-
 includes:
   - apps
   - instances
@@ -55,12 +52,12 @@ search: true
 
 # Introduction
 
-Welcome to the Morpheus API Documentation. Morpheus is a powerful provisioning service complete with monitoring, logging, backups, and application deployment strategies. (version 2.12.x)
+Welcome to the Morpheus API Documentation. Morpheus is a powerful provisioning service complete with monitoring, logging, backups, and application deployment strategies.
 
 We currently provide an OAUTH 2.0 based authentication model and are working on language specific libraries for ruby and a few others.
 
 <aside class="notice">
-The URL in the example assumes Morpheus cloud. If you are using an appliance based installation, simply replace the url with your custom Morpheus appliance URL.
+Replace the `morpheus-appliance-url` in the examples with your custom Morpheus appliance URL.
 </aside>
 
 
@@ -72,7 +69,7 @@ The Morpheus API follows the OAuth 2.0 Specification and acts as an OAUTH 2.0 pr
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl -X POST --data "username=meow&password=meow" "https://api.gomorpheus.com/oauth/token?grant_type=password&scope=write&client_id=morph-customer"
+curl -X POST --data "username=meow&password=meow" "https://morpheus-applaince-url/oauth/token?grant_type=password&scope=write&client_id=morph-customer"
 
 #Returns:
 {
@@ -84,7 +81,7 @@ curl -X POST --data "username=meow&password=meow" "https://api.gomorpheus.com/oa
 }
 ```
 
-> Make sure to replace `meow` with your username and password.
+> Make sure to replace `morpheus-appliance-url` with your appliance url and `meow` with your username and password.
 
 Morpheus expects all api requests to use the resultant `access_token` from the request made during authentication. This can be passed via the `Authorization` header. Be sure to replace the `access_token` with the actual token received from the OAuth request.
 
