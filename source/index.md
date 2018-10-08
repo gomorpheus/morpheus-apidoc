@@ -69,7 +69,7 @@ The Morpheus API follows the OAuth 2.0 Specification and acts as an OAUTH 2.0 pr
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl -X POST --data "username=meow&password=meow" "https://morpheus-applaince-url/oauth/token?grant_type=password&scope=write&client_id=morph-customer"
+curl -X POST --data "username=meow&password=meow" "https://morpheus-appliance-url/oauth/token?grant_type=password&scope=write&client_id=morph-customer"
 
 #Returns:
 {
