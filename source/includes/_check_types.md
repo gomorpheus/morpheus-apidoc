@@ -5,7 +5,7 @@ A set of APIs for fetching a list of available check types is also provided. Thi
 ## Get All Check Types
 
 ```shell
-curl "https://api.gomorpheus.com/api/check-types"
+curl "https://api.gomorpheus.command/api/monitoring/check-types"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -164,12 +164,12 @@ curl "https://api.gomorpheus.com/api/check-types"
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/check-types`
+`GET https://api.gomorpheus.com/api/monitoring/check-types`
 
 ## Get Specific Check Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/check-types/10"
+curl "https://api.gomorpheus.com/api/monitoring/check-types/10"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -194,5 +194,5 @@ curl "https://api.gomorpheus.com/api/check-types/10"
 ```
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/check-types/1`
+`GET https://api.gomorpheus.com/api/monitoring/check-types/1`
 
