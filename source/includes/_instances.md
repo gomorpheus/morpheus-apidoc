@@ -709,7 +709,6 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
-  "name": "my new redis",
   "description": "my new redis"
   }}'
 ```
@@ -724,8 +723,36 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the instance
-description | null | Optional description field
+name      |  | Unique name scoped to your account for the instance
+description |  | Optional description field
+tags |  | Tags
+instanceContext |  | Environment
+metadata |  | Array of metadata objects
+site.id |  | Group
+
+## Updating Instance Notes
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/notes" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "instance": {
+  "notes": "My notes about this instance."
+  }}'
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a single check
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/notes`
+
+### JSON Instance Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+notes      |  | Notes in markdown format.
+
 
 ## Stop an Instance
 
