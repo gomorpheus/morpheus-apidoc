@@ -728,7 +728,8 @@ description |  | Optional description field
 tags |  | Tags
 instanceContext |  | Environment
 metadata |  | Array of metadata objects
-site.id |  | Group
+powerScheduleType |  | Power Schedule ID
+site.id |  | Group ID
 
 ## Updating Instance Notes
 
