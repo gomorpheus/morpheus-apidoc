@@ -233,7 +233,7 @@ curl -XPOST "https://api.gomorpheus.com/api/apps/1/add-instance" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/apps/:id/add-instance`
+`POST https://api.gomorpheus.com/api/apps/:id/add-instance`
 
 ### JSON Parameters
 
@@ -299,7 +299,7 @@ This returns a list of all of the security groups applied to an app and whether 
 ## Set Security Groups
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/apps/1/security-groups" \
+curl -XPUT "https://api.gomorpheus.com/api/apps/1/security-groups" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
