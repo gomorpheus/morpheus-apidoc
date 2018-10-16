@@ -1,11 +1,11 @@
-# Storage Providers
+# Storage Buckets
 
-Provides API interfaces for managing Storage Providers (Object Stores).
+Provides API interfaces for managing Storage Buckets (Object Stores and File Shares).
 
-## Get All Storage Providers
+## Get All Storage Buckets
 
 ```shell
-curl "https://api.gomorpheus.com/api/storage/providers"
+curl "https://api.gomorpheus.com/api/storage/buckets"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -13,7 +13,7 @@ curl "https://api.gomorpheus.com/api/storage/providers"
 
 ```json
 {
-  "storageProviders": [
+  "storageBuckets": [
     {
       "id": 1,
       "name": "s3 test",
@@ -56,11 +56,11 @@ curl "https://api.gomorpheus.com/api/storage/providers"
 }
 ```
 
-This endpoint retrieves all storage providers associated with the account.
+This endpoint retrieves all storage buckets associated with the account.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/storage/providers`
+`GET https://api.gomorpheus.com/api/storage/buckets`
 
 ### Query Parameters
 
@@ -69,11 +69,11 @@ Parameter | Default | Description
 name | null | If specified will return an exact match on name
 phrase | null | If specified will return a partial match on name
 
-## Get a Specific Storage Provider
+## Get a Specific Storage Bucket
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/storage/providers/1" \
+curl "https://api.gomorpheus.com/api/storage/buckets/1" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -81,7 +81,7 @@ curl "https://api.gomorpheus.com/api/storage/providers/1" \
 
 ```json
 {
-  "storageProvider": {
+  "storageBucket": {
     "id": 1,
     "name": "s3 test",
     "accountId": 1,
@@ -104,27 +104,27 @@ curl "https://api.gomorpheus.com/api/storage/providers/1" \
 }
 ```
 
-This endpoint retrieves a specific storage provider.
+This endpoint retrieves a specific storage bucket.
 
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/storage/providers/:id`
+`GET https://api.gomorpheus.com/api/storage/buckets/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the storage provider to retrieve
+ID | The ID of the storage bucket to retrieve
 
-## Create a Storage Provider
+## Create a Storage Bucket
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/storage/providers" \
+curl -XPOST "https://api.gomorpheus.com/api/storage/buckets" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{
-  "storageProvider": {
+  "storageBucket": {
     "name": "test-storage",
     "providerType": "local",
     "config": {
@@ -141,18 +141,18 @@ curl -XPOST "https://api.gomorpheus.com/api/storage/providers" \
 }'
 ```
 
-> The above command returns JSON structured like getting a single storage provider: 
+> The above command returns JSON structured like getting a single storage bucket: 
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/storage/providers`
+`POST https://api.gomorpheus.com/api/storage/buckets`
 
 ### JSON Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the storage provider
-providerType      | null | The type of storage provider. [s3, azure, cifs, local, nfs, openstack, rackspace]
+name      | null | A unique name scoped to your account for the storage bucket
+providerType      | null | The type of storage bucket. [s3, azure, cifs, local, nfs, openstack, rackspace]
 config      | null | A map of config values. The expected values vary by providerType.
 bucketName      | null | The name of the bucket. Only applies to certain types eg. s3
 createBucket | false | Create the bucket if it does not exist. Only applies to certain types eg. s3
@@ -162,7 +162,7 @@ defaultDeploymentTarget      | null | Default Deployment Target
 defaultVirtualImageTarget      | null | Default Virtual Image Store
 retentionPolicyType      | null | Cleanup mode. backup - Move old files to a backup provider. delete - Delete old files. none (default) - Keep all files.
 retentionPolicyDays      | null | The number of days old a file must be before it is deleted.
-retentionProvider      | null | The backup Storage Provider where old files are moved to.
+retentionProvider      | null | The backup Storage Bucket where old files are moved to.
 
 ### Amazon S3 (s3)
 
@@ -229,34 +229,34 @@ bucketName | null | Bucket Name
 createBucket | false | Create the bucket if it does not exist
 
 
-## Update a Storage Provider
+## Update a Storage Bucket
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/storage/providers/1" \
+curl -XPUT "https://api.gomorpheus.com/api/storage/buckets/1" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{
-  "storageProvider": {
+  "storageBucket": {
     "name": "my-storage",
     "copyToStore": true
   }
 }'
 ```
 
-> The above command returns JSON structured like getting a single storage provider: 
+> The above command returns JSON structured like getting a single storage bucket: 
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/storage/providers/1`
+`PUT https://api.gomorpheus.com/api/storage/buckets/1`
 
 ### JSON Parameters
 
-See [Create](#create-a-storage-provider).
+See [Create](#create-a-storage-bucket).
 
-## Delete a Storage Provider
+## Delete a Storage Bucket
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/storage/providers/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/storage/buckets/1" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -268,14 +268,14 @@ curl -XDELETE "https://api.gomorpheus.com/api/storage/providers/1" \
 }
 ```
 
-Will delete a storage provider from the system and make it no longer usable.
+Will delete a storage bucket from the system and make it no longer usable.
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/storage/providers/:id`
+`DELETE https://api.gomorpheus.com/api/storage/buckets/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the storage provider
+ID | The ID of the storage bucket

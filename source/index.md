@@ -10,7 +10,6 @@ includes:
   - instancetypes
   - provisioning
   - provision_types
-  - storage_providers
   - option_types
   - deploys
   - checks
@@ -20,7 +19,7 @@ includes:
   - zones
   - zonetypes
   - zone_datastores
-  - storage_providers
+  - storage_buckets
   - servers
   - server_types
   - virtual_images
