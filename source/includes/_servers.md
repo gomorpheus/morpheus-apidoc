@@ -411,27 +411,6 @@ This will upgrade the version of the install installed on the server.
 
 `PUT https://api.gomorpheus.com/api/servers/:id/upgrade`
 
-## Delete a Server
-
-```shell
-curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-Will delete a server asynchronously and remove from the hosted chef system.
-
-### HTTP Request
-
-`DELETE https://api.gomorpheus.com/api/servers/:id`
-
 ## Resize a Server
 
 ```shell
@@ -482,3 +461,34 @@ Parameter | Default | Description
 server.plan.id      | null | The ID of the new plan (optional).
 volumes | null | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
+
+## Delete a Server
+
+```shell
+curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a server asynchronously and remove from the hosted chef system.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/servers/:id`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+removeResources | on if server is managed. | Remove Infrastructure.
+removeInstances | off | Remove Associated Instances
+preserveVolumes | off | Preserve Volumes
+releaseEIPs | on | Release EIPs
+force | off | Force Delete

@@ -1046,27 +1046,6 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 storageProviderId       | null    | Optional storage provider to use.
 
-## Delete an Instance
-
-```shell
-curl -XDELETE "https://api.gomorpheus.com/api/instances/1" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-Will delete an instance and all associated monitors and backups.
-
-### HTTP Request
-
-`DELETE https://api.gomorpheus.com/api/instances/:id`
-
 ## Get Security Groups
 
 ```shell
@@ -1160,3 +1139,33 @@ This will enable the firewall.  Any configured security groups will be applied.
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
+
+## Delete an Instance
+
+```shell
+curl -XDELETE "https://api.gomorpheus.com/api/instances/1" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete an instance and all associated monitors and backups.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/instances/:id`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+preserveVolumes | off | Preserve Volumes
+keepBackups | off | Preserve copy of backups
+releaseEIPs | on | Release EIPs
+force | off | Force Delete
