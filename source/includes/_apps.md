@@ -357,7 +357,7 @@ This will enable the firewall.  Any configured security groups will be applied.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
+`PUT https://api.gomorpheus.com/api/apps/:id/security-groups/enable`
 
 ## Delete an App
 
