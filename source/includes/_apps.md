@@ -379,7 +379,7 @@ Use `removeInstances=on` to also delete the instances in the app and all associa
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/instances/:id`
+`DELETE https://api.gomorpheus.com/api/apps/:id`
 
 ### Query Parameters
 
