@@ -262,7 +262,7 @@ curl -XPOST "https://api.gomorpheus.com/api/apps/1/remove-instance" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-instanceId  | null | The ID of the instance being added
+instanceId  | null | The ID of the instance being removed
 
 
 ## Get Security Groups
