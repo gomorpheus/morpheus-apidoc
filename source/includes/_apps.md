@@ -239,8 +239,8 @@ curl -XPOST "https://api.gomorpheus.com/api/apps/1/add-instance" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the app
-description     | null | Optional description field
+instanceId  | null | The ID of the instance being added
+tierName     | null | The Name of the Tier
 
 
 ## Remove Instance from App
