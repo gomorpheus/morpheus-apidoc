@@ -293,7 +293,7 @@ curl "https://api.gomorpheus.com/api/billing/servers"
 }
 ```
 
-Retrieves billing information for all zones on the requestor's account.
+Retrieves billing information for all servers on the requestor's account.
 
 ### HTTP Request
 
@@ -383,7 +383,7 @@ curl "https://api.gomorpheus.com/api/billing/instances"
 }
 ```
 
-Retrieves billing information for all zones on the requestor's account.
+Retrieves billing information for all instances on the requestor's account.
 
 ### HTTP Request
 
