@@ -45,6 +45,7 @@ includes:
   - image_builds
   - boot_scripts
   - preseed_scripts
+  - setup
 
 search: true
 ---
