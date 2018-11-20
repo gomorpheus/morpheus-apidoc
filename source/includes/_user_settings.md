@@ -199,3 +199,40 @@ Parameter | Default | Description
 clientId      |  | Client ID
 
 This endpoint revokes your API access token for the specified client.
+
+## Get Available API Clients
+
+```shell
+curl "https://api.gomorpheus.com/api/user-settings/api-clients" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "clients": [
+    {
+      "clientId": "morph-ios"
+    },
+    {
+      "clientId": "morph-marketing"
+    },
+    {
+      "clientId": "morph-customer"
+    },
+    {
+      "clientId": "morph-cli"
+    },
+    {
+      "clientId": "morph-api"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/user-settings/api-clients`
+
+This endpoint retrieves a list of available API clients.
