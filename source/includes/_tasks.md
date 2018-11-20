@@ -51,8 +51,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name
-name | null | Filter by name
+phrase |  | Filter by matching name
+name |  | Filter by name
+taskTypeCodes |  | Filter by task type code(s).
 
 ## Get a Specific Task
 
