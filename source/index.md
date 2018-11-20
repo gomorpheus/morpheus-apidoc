@@ -46,6 +46,8 @@ includes:
   - boot_scripts
   - preseed_scripts
   - setup
+  - whoami
+  - user_settings
 
 search: true
 ---
