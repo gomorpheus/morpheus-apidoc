@@ -224,7 +224,7 @@ curl -XPOST "https://api.gomorpheus.com/api/zones/1/security-groups" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/zones/:id/security-groups`
+`POST https://api.gomorpheus.com/api/zones/:id/security-groups`
 
 ### JSON Parameters
 
