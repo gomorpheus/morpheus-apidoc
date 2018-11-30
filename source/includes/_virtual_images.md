@@ -256,7 +256,7 @@ Parameter | Description
 --------- | -----------
 id | The ID of the virtual image
 
-### Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
@@ -288,7 +288,7 @@ Parameter | Description
 --------- | -----------
 id | The ID of the virtual image
 
-### Parameters
+### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
