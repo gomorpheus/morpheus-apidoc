@@ -48,6 +48,8 @@ includes:
   - setup
   - whoami
   - user_settings
+  - execution_request
+  - processes
 
 search: true
 ---
