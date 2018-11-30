@@ -79,9 +79,9 @@ This endpoint retrieves all processes.
 Parameter | Default | Description
 --------- | ------- | -----------
 phrase |  | If specified will return a partial match on displayName, message or output
-serverId |  | Filter by server id(s)
-instanceId |  | Filter by server id(s)
+instanceId |  | Filter by instance id(s)
 containerId |  | Filter by container id(s)
+serverId |  | Filter by server id(s)
 zoneId |  | Filter by zone id(s)
 appId |  | Filter by app id
 
