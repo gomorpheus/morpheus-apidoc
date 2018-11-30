@@ -547,6 +547,89 @@ This gets all the environment variables associated with the instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id/envs`
 
+## Get Instance History
+
+```shell
+curl "https://api.gomorpheus.com/api/238/history" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "processes": [
+    {
+      "id": 250,
+      "accountId": 1,
+      "uniqueId": "cebc47ec-cb2f-417a-886e-dd60cf81db26",
+      "processType": {
+        "code": "provision",
+        "name": "provision"
+      },
+      "description": null,
+      "subType": null,
+      "subId": null,
+      "zoneId": 34,
+      "integrationId": null,
+      "instanceId": 238,
+      "containerId": 240,
+      "serverId": 601,
+      "containerName": "apachetest",
+      "displayName": "apachetest",
+      "timerCategory": "vmware",
+      "timerSubCategory": "28",
+      "status": "failed",
+      "reason": null,
+      "percent": 100.0,
+      "statusEta": 348246,
+      "message": null,
+      "output": null,
+      "error": null,
+      "startDate": "2018-09-28T19:10:56+0000",
+      "endDate": "2018-09-28T20:21:49+0000",
+      "duration": 4253127,
+      "dateCreated": "2018-09-28T19:10:56+0000",
+      "lastUpdated": "2018-09-28T20:21:49+0000",
+      "createdBy": {
+        "username": "admin",
+        "displayName": "Admin"
+      },
+      "updatedBy": {
+        "username": "admin",
+        "displayName": "Admin"
+      },
+      "events": [
+
+      ]
+    }
+  ],
+  "meta": {
+    "size": 1,
+    "total": 1,
+    "offset": 0,
+    "max": 25
+  }
+}
+```
+
+This endpoint retrieves the process history for a specific instance. 
+
+The same info can be retrieved via [Process History](#get-all-processes).
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/history`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+phrase |  | If specified will return a partial match on displayName, message or output
+containerId |  | Filter by container id(s)
+serverId |  | Filter by server id(s)
+zoneId |  | Filter by zone id(s)
+
 ## Get Security Groups
 
 ```shell
