@@ -209,7 +209,7 @@ Any zones that are not passed in the `zones` parameter will be removed from the 
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/groups/:id/update-zones`
+`PUT https://api.gomorpheus.com/api/accounts/:id/groups/:groupId/update-zones`
 
 ### JSON Parameters
 
@@ -232,5 +232,9 @@ curl -XDELETE "https://api.gomorpheus.com/api/accounts/20/groups/365" \
   "success": true
 }
 ```
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/accounts/:id/groups/:groupId`
 
 If a group has zones or servers still tied to it, a delete action will fail
