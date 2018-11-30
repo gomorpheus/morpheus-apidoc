@@ -615,7 +615,7 @@ curl "https://api.gomorpheus.com/api/238/history" \
 
 This endpoint retrieves the process history for a specific instance. 
 
-The same info can be retrieved via [Process History](#get-all-processes).
+Alternatively, the [Process History](#get-all-processes) endpoint can be used to get the same information.
 
 ### HTTP Request
 
