@@ -167,7 +167,9 @@ curl "https://api.gomorpheus.com/api/roles/3" \
       "name": "Ansible",
       "access": "full"
     },
-  ]
+  ],
+  "globalAppTemplateAccess": "full",
+  "appTemplatePermissions": []
 }
 ```
 
@@ -291,6 +293,10 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
   }'
 ```
 
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
+
 ### JSON Parameters
 
 Parameter | Default | Description
@@ -346,6 +352,10 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
   }'
 ```
 
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
+
 ### JSON Parameters
 
 Parameter | Default | Description
@@ -400,6 +410,9 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
     "access": "custom"
   }'
 ```
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
 
 ### JSON Parameters
 
@@ -442,6 +455,53 @@ Parameter | Default | Description
 instanceTypeId  |  | id of the instance type
 access     |  | **full** or **none**
 
+## Global Blueprint Access
+
+> Global Blueprint Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "AppTemplate",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **AppTemplate** is the code for Global Blueprint Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Blueprint Access
+
+> Global Blueprint Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-blueprint" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "blueprintId": 2,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
 
 ## Delete a Role
 
@@ -457,5 +517,9 @@ curl -XDELETE "https://api.gomorpheus.com/api/roles/4" \
   "success": true
 }
 ```
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/roles/:id`
 
 If a role still has accounts or users tied to it, The delete will fail.
