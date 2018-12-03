@@ -620,7 +620,7 @@ This resource also provides endpoints for GET, POST, PUT and DELETE that work ju
 Policies scoped to a specific cloud can also be managed at another endpoint. 
 
 ```shell
-curl "https://api.gomorpheus.com/api/clouds/1/policies"
+curl "https://api.gomorpheus.com/api/zones/1/policies"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -670,7 +670,7 @@ curl "https://api.gomorpheus.com/api/clouds/1/policies"
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/clouds/:cloudId/policies`
+`GET https://api.gomorpheus.com/api/zones/:cloudId/policies`
 
 ### URL Parameters
 
