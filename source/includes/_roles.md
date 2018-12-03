@@ -388,7 +388,7 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-cloud" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/roles/:id/update-group`
+`PUT https://api.gomorpheus.com/api/roles/:id/update-cloud`
 
 ### JSON Parameters
 
