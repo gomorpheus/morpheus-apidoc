@@ -46,7 +46,7 @@ This endpoint retrieves all security group rules for a Security Gorup.
 ## Get a Specific Security Group Rule
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-group/19/rules/30" \
+curl "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -76,7 +76,7 @@ This endpoint retrieves a specific security group rule.
 ## Create a Security Group Rule
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-group/19/rules" \
+curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
@@ -94,7 +94,7 @@ Will create a security group rule and update all clouds, apps, and instances whi
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/security-group/:id/rules`
+`POST https://api.gomorpheus.com/api/security-groups/:id/rules`
 
 ### JSON Security Group Rule Parameters
 
@@ -109,7 +109,7 @@ instanceTypeId | null | The id of an Instance Type.  If specified, the source CI
 ## Updating a Security Group Rule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/security-group/19/rules/30" \
+curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
@@ -127,7 +127,7 @@ Will update a security group rule and update all clouds, apps, and instances whi
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/security-group/:id/rules/:id`
+`PUT https://api.gomorpheus.com/api/security-groups/:id/rules/:id`
 
 ### JSON Security Group Rule Parameters
 
@@ -136,7 +136,7 @@ Same parameters as specified in the creation of a Security Group Rule
 ## Delete a Security Group Rule
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-group/19/rules/30" \
+curl -XDELETE "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -152,4 +152,4 @@ Will delete a security group rule and update all clouds, apps, and instances whi
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/security-group/:id/rules/:id`
+`DELETE https://api.gomorpheus.com/api/security-groups/:id/rules/:id`

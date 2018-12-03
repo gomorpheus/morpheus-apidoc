@@ -50,7 +50,7 @@ phrase | null | Name or description filter, restricts query to only load securit
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-group/18" \
+curl "https://api.gomorpheus.com/api/security-groups/18" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -73,7 +73,7 @@ This endpoint retrieves a specific security group.
 ## Create a Security Group
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-group" \
+curl -XPOST "https://api.gomorpheus.com/api/security-groups" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
@@ -86,7 +86,7 @@ curl -XPOST "https://api.gomorpheus.com/api/security-group" \
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/security-group`
+`POST https://api.gomorpheus.com/api/security-groups`
 
 ### JSON Security Group Parameters
 
@@ -98,7 +98,7 @@ description | null | Optional description field
 ## Updating a Security Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/security-group/18" \
+curl -XPUT "https://api.gomorpheus.com/api/security-groups/18" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
@@ -111,7 +111,7 @@ curl -XPUT "https://api.gomorpheus.com/api/security-group/18" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/security-group/:id`
+`PUT https://api.gomorpheus.com/api/security-groups/:id`
 
 ### JSON Security Group Parameters
 
@@ -123,7 +123,7 @@ description | null | Optional description field
 ## Delete a Security Group
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-group/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/security-groups/1" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -139,4 +139,4 @@ Will delete a security group and update all clouds, apps, and instances which ar
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/security-group/:id`
+`DELETE https://api.gomorpheus.com/api/security-groups/:id`
