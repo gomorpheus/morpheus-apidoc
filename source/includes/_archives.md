@@ -452,7 +452,7 @@ Download the file as an authorized user with access to the bucket.
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/archives/download/:bucket/:filePath`
+`GET https://api.gomorpheus.com/api/archives/download/:bucket/:filePath`
 
 ### URL Parameters
 
@@ -473,7 +473,7 @@ Files in an archive bucket that has **Public URL** enabled can be downloaded via
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/public-archives/download/:bucket/:filePath`
+`GET https://api.gomorpheus.com/public-archives/download/:bucket/:filePath`
 
 ### URL Parameters
 
