@@ -107,7 +107,7 @@ ID | The ID of the cypher key
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2" \
+curl "https://api.gomorpheus.com/api/cypher/2/decrypt" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -128,7 +128,7 @@ This endpoint returns the decrypted value of the cypher key.  The last accessed 
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher/:id`
+`GET https://api.gomorpheus.com/api/cypher/:id/decrypt`
 
 ### URL Parameters
 
