@@ -48,8 +48,8 @@ This endpoint retrieves all boot scripts associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name |  | If specified will return an exact match on name
-phrase |  | If specified will return a partial match on name
+name |  | If specified will return an exact match on fileName
+phrase |  | If specified will return a partial match on fileName
 
 ## Get a Specific Boot Script
 
@@ -129,7 +129,7 @@ curl -XPUT "https://api.gomorpheus.com/api/boot-scripts/1" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
-    "name": "debian default"
+    "fileName": "debian default"
   }
 }'
 ```
@@ -150,7 +150,7 @@ ID | The ID of the boot script
 
 Same as [Create](#create-a-boot-script).
 
-## Delete an Boot Script
+## Delete a Boot Script
 
 ```shell
 curl -XDELETE "https://api.gomorpheus.com/api/boot-scripts/1" \
