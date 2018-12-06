@@ -47,8 +47,8 @@ This endpoint retrieves all preseed scripts associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name |  | If specified will return an exact match on name
-phrase |  | If specified will return a partial match on name
+name |  | If specified will return an exact match on fileName
+phrase |  | If specified will return a partial match on fileName
 
 ## Get a Specific Preseed Script
 
@@ -127,7 +127,7 @@ curl -XPUT "https://api.gomorpheus.com/api/preseed-scripts/1" \
   -H "Content-Type: application/json" \
   -d '{
   "preseedScript": {
-    "name": "good ubuntu"
+    "fileName": "good ubuntu"
   }
 }'
 ```
