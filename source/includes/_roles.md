@@ -502,6 +502,16 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-blueprint" \
   "access": "full"
 }
 ```
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-blueprint`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+blueprintId  |  | id of the blueprint (appTemplate)
+access     |  | **full**, **read**, or **none**
 
 ## Delete a Role
 
