@@ -357,7 +357,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | Unique name scoped to your account for the server
 description | null | Optional description field
-
+sshUsername | null | SSH Username
+sshPassword | null | SSH Password
+powerScheduleType | null | Power Schedule ID
 
 ## Install Agent
 
