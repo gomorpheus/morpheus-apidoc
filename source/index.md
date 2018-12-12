@@ -61,8 +61,10 @@ Welcome to the Morpheus API Documentation. Morpheus is a powerful provisioning s
 We currently provide an OAUTH 2.0 based authentication model and are working on language specific libraries for ruby and a few others.
 
 <aside class="notice">
-Replace the `morpheus-appliance-url` in the examples with your custom Morpheus appliance URL.
+Replace the <code>morpheus-appliance-url</code> in the examples with your custom Morpheus appliance URL.
 </aside>
+
+The current version is **3.5.3**
 
 
 # Authentication
