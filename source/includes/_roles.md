@@ -489,7 +489,7 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-blueprint" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{
-    "blueprintId": 2,
+    "appTemplateId": 2,
     "access": "full"
   }'
 ```
@@ -510,7 +510,7 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-blueprint" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-blueprintId  |  | id of the blueprint (appTemplate)
+appTemplateId  |  | id of the blueprint (appTemplate)
 access     |  | **full**, **read**, or **none**
 
 ## Delete a Role
