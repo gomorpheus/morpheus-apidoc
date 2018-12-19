@@ -83,7 +83,7 @@ curl "https://api.gomorpheus.com/api/execution-request/f22e1292-4407-44c0-b2c7-6
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/processes/events/:uniqueId`
+`GET https://api.gomorpheus.com/api/execution-request/:uniqueId`
 
 ### URL Parameters
 
