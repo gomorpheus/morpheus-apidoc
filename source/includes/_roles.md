@@ -190,7 +190,7 @@ curl -XPOST "https://api.gomorpheus.com/api/roles" \
   -d '{"role":{
     "authority": "Test Role",
     "description": "A test role",
-    "baseRoleId": {"id": 2},
+    "baseRoleId": 2,
     "instanceLimits": {
       "maxCpu": 0,
       "maxMemory": 0,
