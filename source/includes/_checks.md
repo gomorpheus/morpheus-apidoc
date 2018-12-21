@@ -163,7 +163,10 @@ curl -XPOST "https://api.gomorpheus.com/api/monitoring/checks" \
     "checkInterval": 300,
     "checkAgent": null,
     "active": true,
-    "config": "{\n  \"webMethod\" : \"GET\",\n  \"webUrl\" : \"http:\\\/\\\/google.com\"\n}",
+    "config": {
+      "webMethod": "GET",
+      "webUrl": "http://google.com"
+    }
   }}'
 ```
 
@@ -202,7 +205,10 @@ curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1" \
     "checkInterval": 300,
     "checkAgent": null,
     "active": true,
-    "config": "{\n  \"webMethod\" : \"GET\",\n  \"webUrl\" : \"http:\\\/\\\/google.com\"\n}",
+    "config": {
+      "webMethod": "GET",
+      "webUrl": "http://google.com"
+    }
   }}'
 ```
 
