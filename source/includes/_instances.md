@@ -232,6 +232,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
+name | null | Filter by name
+phrase | null | Filter by wildcard search of name and description
+instanceType | null | Filter by instance type code
 lastUpdated | null | Date filter, restricts query to only load instances updated  timestamp is more recent or equal to the date specified
 
 ## Get a Specific Instance
