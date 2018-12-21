@@ -89,7 +89,6 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 name | null | Filter by name
 phrase | null | Filter by wildcard search of name and description
-lastUpdated | null | Date filter, restricts query to only load apps updated  timestamp is more recent or equal to the date specified
 
 ## Get a Specific App
 
