@@ -432,7 +432,6 @@ sshPassword | No        | Password for user, if not using key based authenticati
 
 ## Mute a Check
 
-
 ```shell
 curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
   -H "Authorization: BEARER access_token" \
@@ -457,10 +456,41 @@ This endpoint can be used to toggle the mute state of a check on and off.
 
 ### JSON Parameters
 
-Parameter | Description
---------- | -----------
-enabled | Set to true or false
+Parameter | Default | Description
+--------- | ----------- | -----------
+enabled | true | Set to false to unmute
 
+
+## Mute All Checks
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"enabled":true}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "muteState": "QUARANTINED",
+  "updated": 20,
+  "success": true
+}
+```
+
+This endpoint can be used to toggle the mute state on and off for all checks.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/monitoring/checks/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+enabled | true | Set to false to unmute
 
 ## Delete a Check
 

@@ -222,9 +222,41 @@ This endpoint can be used to toggle the mute state (`inUptime`) of an incident o
 
 ### JSON Parameters
 
-Parameter | Description
---------- | -----------
-enabled | Set to true or false
+Parameter | Default | Description
+--------- | ----------- | -----------
+enabled | true | Set to false to unmute
+
+
+## Mute All Incidents
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"enabled":true}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "muteState": "QUARANTINED",
+  "updated": 11,
+  "success": true
+}
+```
+
+This endpoint can be used to toggle the mute state (`inUptime`) of all open incidents.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/monitoring/incidents/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+enabled | true | Set to false to unmute
 
 ## Close an Incident
 
