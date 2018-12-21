@@ -30,7 +30,7 @@ curl "https://api.gomorpheus.com/api/monitoring/checks"
       "checkType": {
         "id": 1
       },
-      "config": "{\n  \"webMethod\" : \"GET\",\n  \"webUrl\" : \"http:\\\/\\\/google.com\"\n}",
+      "config": {  "webMethod": "GET",  "webUrl": "http://google.com"},
       "createIncident": true,
       "dateCreated": "2015-05-16T12:05:23Z",
       "deleted": false,
@@ -108,7 +108,7 @@ curl "https://api.gomorpheus.com/api/monitoring/checks/1" \
     "checkType": {
       "id": 1
     },
-    "config": "{\n  \"webMethod\" : \"GET\",\n  \"webUrl\" : \"http:\\\/\\\/google.com\"\n}",
+    "config": {"webMethod": "GET", "webUrl": "http://google.com"},
     "createIncident": true,
     "dateCreated": "2015-05-16T12:05:23Z",
     "deleted": false,
@@ -246,7 +246,7 @@ We support a wide variety of check types. Each check type varies in its configur
   "check": {
     "name": "My Web Check",
     "checkType": {"code": "webGetCheck"},
-    "config": "{\"webMethod\":\"GET\",\"webUrl\": \"http:\\\/\\\/google.com\", \"checkUser\":\"basicUser\",\"checkPassword\":\"basicPassword\", \"webTextMatch\": \"Login\", \"textCheckOn\": \"on\"}"
+    "config": {"webMethod":"GET","webUrl": "http://google.com", "checkUser":"basicUser","checkPassword":"basicPassword", "webTextMatch": "Login", "textCheckOn": "on"}
   }
 }
 ```
@@ -271,7 +271,7 @@ webTextMatch  | No      | Set the string you want to look for in the page source
   "check": {
     "name": "MySql Check",
     "checkType": {"code": "mysqlCheck"},
-    "config": "{\"dbHost\":\"db.example.org\",\"dbPort\": \"3306\", \"dbUser\":\"basicUser\",\"dbPassword\":\"basicPassword\", \"dbName\": \"mydb\", \"dbQuery\": \"select 1\", \"checkOperator\": \"lt\", \"checkResult\": 2}"
+    "config": {"dbHost":"db.example.org","dbPort": "3306", "dbUser":"basicUser","dbPassword":"basicPassword", "dbName": "mydb", "dbQuery": "select 1", "checkOperator": "lt", "checkResult": 2}
   }
 }
 ```
@@ -299,7 +299,7 @@ checkResult | No        | Numerical value to compare the check result against
   "check": {
     "name": "SQL Server Check",
     "checkType": {"code": "sqlCheck"},
-    "config": "{\"dbHost\":\"db.example.org\",\"dbPort\": \"3306\", \"dbUser\":\"basicUser\",\"dbPassword\":\"basicPassword\", \"dbName\": \"mydb\", \"dbQuery\": \"select 1\", \"checkOperator\": \"lt\", \"checkResult\": 2}"
+    "config": {"dbHost":"db.example.org","dbPort": "3306", "dbUser":"basicUser","dbPassword":"basicPassword", "dbName": "mydb", "dbQuery": "select 1", "checkOperator": "lt", "checkResult": 2}
   }
 }
 ```
@@ -327,7 +327,7 @@ checkResult | No        | Numerical value to compare the check result against
   "check": {
     "name": "PostgerSQL Check",
     "checkType": {"code": "postgresCheck"},
-    "config": "{\"dbHost\":\"db.example.org\",\"dbPort\": \"3306\", \"dbUser\":\"basicUser\",\"dbPassword\":\"basicPassword\", \"dbName\": \"mydb\", \"dbQuery\": \"select 1\", \"checkOperator\": \"lt\", \"checkResult\": 2}"
+    "config": {"dbHost":"db.example.org","dbPort": "3306", "dbUser":"basicUser","dbPassword":"basicPassword", "dbName": "mydb", "dbQuery": "select 1", "checkOperator": "lt", "checkResult": 2}
   }
 }
 ```
@@ -356,7 +356,7 @@ checkResult | No        | Numerical value to compare the check result against
   "check": {
     "name": "Socket Check",
     "checkType": {"code": "socketCheck"},
-    "config": "{\"host\":\"test.example.org\",\"port\": \"3306\", \"send\":\"blah\",\"responseMatch\":\"OK\"}"
+    "config": {"host":"test.example.org","port": "3306", "send":"blah","responseMatch":"OK"}
   }
 }
 ```
@@ -379,7 +379,7 @@ responseMatch | No      | Response from the service to match against
   "check": {
     "name": "Socket Check",
     "checkType": {"code": "elasticSearchCheck"},
-    "config": "{\"esHost\":\"test.example.org\",\"esPort\": \"9200\"}"
+    "config": {"esHost":"test.example.org","esPort": "9200"}
   }
 }
 ```
@@ -421,7 +421,7 @@ To enable SSH tunneling for a check, add the following parameters to any check t
   "check": {
     "name": "Socket Check",
     "checkType": {"code": "elasticSearchCheck"},
-    "config": "{\"esHost\":\"test.example.org\",\"esPort\": \"9200\", \"tunnelOn\": \"on\", \"sshHost\": \"example.org\", \"sshPort\": 22, \"sshUser\": \"happyapps\"}"
+    "config": {"esHost":"test.example.org","esPort": "9200", "tunnelOn": "on", "sshHost": "example.org", "sshPort": 22, "sshUser": "happyapps"}
   }
 }
 ```
