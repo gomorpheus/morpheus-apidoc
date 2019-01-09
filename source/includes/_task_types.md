@@ -241,13 +241,9 @@ curl "https://api.gomorpheus.com/api/task-types"
 
 Parameter | Default | Description
 --------- | ------- | -----------
-max | 25 | Max number of results to return
-offset | 0 | Offset of records you want to load
+name |  | If specified will return an exact match on name or code
+code |  | If specified will return an exact match on code
 
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific Task Type
 
