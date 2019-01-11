@@ -17,6 +17,7 @@ curl "https://api.gomorpheus.com/api/security-groups/19/rules"
   "rules": [
     {
       "id": 31,
+      "name": null,
       "securityGroupId": 19,
       "source": "50.22.10.10/32",
       "portRange": null,
@@ -26,6 +27,7 @@ curl "https://api.gomorpheus.com/api/security-groups/19/rules"
     },
     {
       "id": 30,
+      "name": "port 99",
       "securityGroupId": 19,
       "source": "50.22.10.10/32",
       "portRange": "99",
@@ -57,6 +59,7 @@ curl "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   "success": true,
   "rule": {
     "id": 30,
+    "name": "port 99",
     "securityGroupId": 19,
     "source": "50.22.10.10/32",
     "portRange": "99",
@@ -80,6 +83,7 @@ curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
+    "name": "port 55",
     "source": "50.22.10.10/32",
     "portRange": "55",
     "protocol": "tcp",
@@ -100,6 +104,7 @@ Will create a security group rule and update all clouds, apps, and instances whi
 
 Parameter | Default | Description
 --------- | ------- | -----------
+name      | null | A name for the rule
 source      | null | CIDR representing the source IP(s) which should receive access
 portRange | null | Either a single value (i.e. 55) or a port range (i.e. 1-65535) for which to open access to the source.  Required if customRule is true, otherwise, ignored.
 protocol | null | Either tcp, udp, icmp. Required if customRule is true, otherwise, ignored.
