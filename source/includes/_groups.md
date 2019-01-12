@@ -220,3 +220,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/groups/1" \
 ```
 
 If a group has zones or servers still tied to it, a delete action will fail
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/groups/:id`

@@ -202,3 +202,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/accounts/1/users/2" \
 ```
 
 This will disassociate the user from any instances they have previously provisioned.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/users/:id`

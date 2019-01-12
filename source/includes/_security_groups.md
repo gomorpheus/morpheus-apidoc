@@ -70,6 +70,10 @@ curl "https://api.gomorpheus.com/api/security-groups/18" \
 
 This endpoint retrieves a specific security group.
 
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/security-groups/:id`
+
 ## Create a Security Group
 
 ```shell

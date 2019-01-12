@@ -515,3 +515,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/monitoring/checks/1" \
 
 A deleted check can be fetched from the API using the GET method to synchronize client side views, but can not be executed or updated.
 
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/monitoring/checks/:id`
+

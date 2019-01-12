@@ -183,3 +183,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/accounts/1" \
 If an account still has users or instances tied to it, The delete will fail.
 
 <aside class="info">This restriction should be lifted in a forthcoming API release</aside>
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/accounts/:id`

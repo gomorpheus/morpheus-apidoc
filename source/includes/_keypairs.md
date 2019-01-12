@@ -132,3 +132,7 @@ Will delete a key pair from the system and make it no longer usable.
 If a key pair is actively in use, a delete will fail.
 </aside>
 
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/key-pairs/:id`
+

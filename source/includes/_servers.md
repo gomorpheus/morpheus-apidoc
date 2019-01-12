@@ -384,6 +384,11 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1/install-agent" \
 
 This will make the server a managed server, and install the agent.
 
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/install-agent`
+
+
 ### JSON Server Parameters
 
 Parameter | Default | Description

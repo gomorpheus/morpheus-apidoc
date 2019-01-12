@@ -180,6 +180,10 @@ curl -XDELETE "https://api.gomorpheus.com/api/zones/1" \
 
 If a zone has zones or servers still tied to it, a delete action will fail
 
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/zones/:id`
+
 ## Get Security Groups
 
 ```shell

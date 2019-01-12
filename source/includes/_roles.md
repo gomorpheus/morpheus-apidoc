@@ -410,6 +410,7 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
     "access": "custom"
   }'
 ```
+
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
@@ -533,3 +534,8 @@ curl -XDELETE "https://api.gomorpheus.com/api/roles/4" \
 `DELETE https://api.gomorpheus.com/api/roles/:id`
 
 If a role still has accounts or users tied to it, The delete will fail.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/roles/:id`
+

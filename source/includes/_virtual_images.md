@@ -310,3 +310,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765" \
 ```
 
 Will delete a virtual image and any associated files.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/virtual-images/:id`

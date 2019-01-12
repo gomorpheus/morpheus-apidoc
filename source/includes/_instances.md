@@ -1176,7 +1176,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances/1/security-groups" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups`
+`POST https://api.gomorpheus.com/api/instances/:id/security-groups`
 
 ### JSON Parameters
 

@@ -169,4 +169,8 @@ Will delete a certificate from the system and make it no longer usable.
 If a certificate is actively in use, a delete will fail.
 </aside>
 
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/certificates/:id`
+
 
