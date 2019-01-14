@@ -534,8 +534,3 @@ curl -XDELETE "https://api.gomorpheus.com/api/roles/4" \
 `DELETE https://api.gomorpheus.com/api/roles/:id`
 
 If a role still has accounts or users tied to it, The delete will fail.
-
-### HTTP Request
-
-`DELETE https://api.gomorpheus.com/api/roles/:id`
-

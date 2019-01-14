@@ -205,4 +205,4 @@ This will disassociate the user from any instances they have previously provisio
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/users/:id`
+`DELETE https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
