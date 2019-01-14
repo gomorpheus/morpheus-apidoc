@@ -261,7 +261,7 @@ id | The ID of the virtual image
 Parameter | Description
 --------- | -----------
 url | Download the file from a remote url. This can be used instead of uploading a local file.
-filename | Specify a filename for destination file. The base filename of the uploaded file is the default.
+filename | Specify a filename for new file.
 
 ## Remove Virtual Image File
 
