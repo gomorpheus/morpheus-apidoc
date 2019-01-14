@@ -405,7 +405,7 @@ fileId | The ID of the archive file
 ```shell
 curl -XPOST "https://api.gomorpheus.com/api/archives/buckets/mybucket/files/myapp/config/?filename=application.rb" \
   -H "Authorization: BEARER access_token" \
-  -F 'file=@filename'
+  --data-binary '@/path/to/file'
 ```
 
 > The above command returns JSON structure like this:

@@ -151,11 +151,11 @@ curl "https://api.gomorpheus.com/api/virtual-images/764" \
   },
   "cloudFiles": [
     {
-      "name": "morpheus-virtual-images/764/testimage.vmdk",
+      "name": "testimage.vmdk",
       "size": 1034592
     },
     {
-      "name": "morpheus-virtual-images/764/testimage.ovf",
+      "name": "testimage.ovf",
       "size": 28038768
     }
   ]
@@ -231,9 +231,9 @@ isSysprep | false | Sysprep Enabled?
 ## Upload Virtual Image File
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/virtual-images/765/upload" \
+curl -XPOST "https://api.gomorpheus.com/api/virtual-images/765/upload?filename=disk-0.vmdk" \
   -H "Authorization: BEARER access_token" \
-  -F 'file=@filename'
+  --data-binary '@/path/to/file'
 ```
 
 > The above command returns JSON structure like this:
