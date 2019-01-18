@@ -131,7 +131,6 @@ curl -XPOST "https://api.gomorpheus.com/api/groups" \
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the group
-description | null | Optional description field if you want to put more info there
 code      | null | Optional code for use with policies
 location  | null | Optional location argument for your group
 
@@ -145,7 +144,6 @@ curl -XPUT "https://api.gomorpheus.com/api/groups/1" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
-    "description": "My description",
     "location": "US EAST"
   }}'
 ```
@@ -161,7 +159,6 @@ curl -XPUT "https://api.gomorpheus.com/api/groups/1" \
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name scoped to your account for the group
-description | null | Optional description field if you want to put more info there
 code      | null | Optional code for use with policies
 location  | null | Optional location for your group
 
