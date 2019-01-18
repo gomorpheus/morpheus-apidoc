@@ -357,32 +357,3 @@ curl "https://api.gomorpheus.com/api/instance-types/12"
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instance-types/:id`
-
-## Get Upgrade Options
-
-```shell
-curl "https://api.gomorpheus.com/api/instance-types/upgrades/1"
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structured like this
-
-```json
-{
-  "upgrades": [
-    {
-      "id": 3,
-      "code": "tomcat-add-node",
-      "containerTypes": null,
-      "description": "This will add an additional tomcat node",
-      "name": "Add Tomcat Node",
-      "sortOrder": 0
-    }
-  ]
-}
-```
-
-
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/instance-types/upgrades/:layout_id`
