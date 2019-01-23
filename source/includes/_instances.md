@@ -1029,37 +1029,6 @@ Parameter   | Default | Description
 group       | null    | the map containing the id of the server group you would like to clone into.
 name        | null    | A name for the new cloned instance. If none is specified the existing name will be duplicated with the 'clone' suffix added.
 
-## Upgrade an Instance
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/upgrade" \
-  -H "Authorization: BEARER access_token" \
-  -H "Content-Type: application/json" \
-  -d '{ "upgrade": {
-      "id": 1
-  }}'
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-It is possible to perform certain upgrade options for an instance. See the section on getting a list of upgrade options for a particular instance. Depending on the instance type these could include adding a replica, adding a a tomcat node, adding a mysql save, or master. Entirely depends.
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/upgrade`
-
-### JSON Parameters
-
-Parameter   | Default | Description
----------   | ------- | -----------
-upgrade       | null    | the map containing the id of the instance type upgrade you would like to perform.
-
 ## Backup an Instance
 
 ```shell
