@@ -298,7 +298,7 @@ This returns a list of all of the security groups applied to an app and whether 
 ## Set Security Groups
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/apps/1/security-groups" \
+curl -XPOST "https://api.gomorpheus.com/api/apps/1/security-groups" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
@@ -308,7 +308,7 @@ curl -XPUT "https://api.gomorpheus.com/api/apps/1/security-groups" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/apps/:id/security-groups`
+`POST https://api.gomorpheus.com/api/apps/:id/security-groups`
 
 ### JSON Parameters
 
