@@ -16,9 +16,23 @@ curl "https://api.gomorpheus.com/api/apps"
   "apps": [
     {
       "id": 1,
-      "accountId": 1,
       "name": "My Test App",
       "description": "Sample Description",
+      "accountId": 1,
+      "account": {
+        "id": 1,
+        "name": "root"
+      },
+      "siteId": 1,
+      "group": {
+        "id": 1,
+        "name": "My Group"
+      },
+      "blueprint": {
+        "id": 135,
+        "name": "Grails Example",
+        "type": "morpheus"
+      },
       "status": "running",
       "instanceCount": 2,
       "containerCount": 2,
@@ -104,9 +118,23 @@ curl "https://api.gomorpheus.com/api/apps/4" \
 {
   "app": {
     "id": 1,
-    "accountId": 1,
     "name": "My Test App",
     "description": "Sample Description",
+    "accountId": 1,
+    "account": {
+      "id": 1,
+      "name": "root"
+    },
+    "siteId": 1,
+    "group": {
+      "id": 1,
+      "name": "My Group"
+    },
+    "blueprint": {
+      "id": 135,
+      "name": "Grails Example",
+      "type": "morpheus"
+    },
     "status": "running",
     "instanceCount": 2,
     "containerCount": 2,
