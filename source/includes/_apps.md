@@ -172,7 +172,7 @@ curl -XPOST "https://api.gomorpheus.com/api/apps" \
   -d '{"app":{
     "name": "sampleapp",
     "description": "A sample app",
-    "site": {
+    "group": {
       "id": 1
     }
   }}'
@@ -190,7 +190,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name  | null | A name for the app
 description     | null | Optional description field
-site | null | A Map containing the id of the Site
+group | null | A Map containing the id of the Group
 
 
 ## Updating an App Name or Description
