@@ -88,7 +88,7 @@ curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
     "portRange": "55",
     "protocol": "tcp",
     "customRule": true,
-    "instanceTypeId": 3
+    "instanceTypeId": null
     }}'
 ```
 
@@ -122,7 +122,7 @@ curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
     "portRange": "55",
     "protocol": "tcp",
     "customRule": true,
-    "instanceTypeId": 3
+    "instanceTypeId": null
     }}'
 ```
 
