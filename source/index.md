@@ -6,6 +6,7 @@ language_tabs:
 
 includes:
   - apps
+  - blueprints
   - instances
   - instancetypes
   - provisioning
@@ -64,8 +65,7 @@ We currently provide an OAUTH 2.0 based authentication model and are working on 
 Replace the <code>morpheus-appliance-url</code> in the examples with your custom Morpheus appliance URL.
 </aside>
 
-The current version is **3.5.3**
-
+The current version is **3.6.0**
 
 # Authentication
 

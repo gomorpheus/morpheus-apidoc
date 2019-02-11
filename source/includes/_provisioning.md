@@ -148,7 +148,7 @@ This is specific to AWS Metadata tags.  Name-Values pairs can be anything you li
 
 ```shell
 -d '{
-  "zoneID": 6,
+  "zoneId": 6,
   "instance": {
     ...
   }
