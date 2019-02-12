@@ -136,6 +136,41 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the cypher
 
+## Decrypt a Cypher with Lease
+
+
+```shell
+curl "https://api.gomorpheus.com/api/cypher/2/decrypt/lease/6f4d3563-22ef-404f-8b81-c13d093cd55a"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "cypher": {
+    "id": 2,
+    "itemKey": "secret/myClientId",
+    "itemValue": "a secret value"
+  },
+  "success": true
+}
+```
+
+This endpoint returns the decrypted value of the cypher key.  The last accessed timestamp is updated.
+
+This endpoint authenticates via the passed lease token instead of the normal authentication header.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/cypher/:id/decrypt/lease/:lease`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the cypher
+lease | Your execution lease token
+
 ## Create a Cypher
 
 ```shell
