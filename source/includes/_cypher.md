@@ -13,9 +13,9 @@ Cypher has the following headers and url parameters available for authentication
 Name | Type | Description
 --------- | ----------- | -----------
 X-Cypher-Token | HTTP Header | An execution lease token. This can be used instead the standard `Authentication` header.
-X-Vault-Token | HTTP Header | alias for X-Cypher-Token
 X-Morpheus-Lease | HTTP Header | An execution lease token. This can be used instead the standard `Authentication` header.
 leaseToken | URL Parameter | An execution lease token.
+X-Vault-Token | HTTP Header | This header is supported as either an access token or an execution lease token. It will work as either one.
 
 
 ## List Cypher Keys
