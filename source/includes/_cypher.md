@@ -200,7 +200,7 @@ ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable
 ## Write a Cypher
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/secret/mymsg" \
+curl -XPOST "https://api.gomorpheus.com/api/cypher/v1/secret/mymsg" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"msg":"hello world"}'
