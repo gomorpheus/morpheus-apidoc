@@ -90,12 +90,12 @@ or
 Parameter | Description
 --------- | -----------
 key | If specified will match the start of the key.
-list | Set to `true` for list behavior with HTTP `GET`.
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
+list | Set to `true` for list behavior with HTTP `GET`.
 phrase |  | If specified will match any part of key
 key |  | If specified will return an exact match of key
 max | 25 | Max number of results to return
