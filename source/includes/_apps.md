@@ -103,6 +103,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 name | null | Filter by name
 phrase | null | Filter by wildcard search of name and description
+createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
 
 ## Get a Specific App
 
