@@ -4,10 +4,31 @@ Cypher at its core is a secure Key/Value store. But what makes cypher useful is 
 
 Cypher keys can be revoked, either through lease timeouts or manually. So even if somebody were to gain access to your keys you could revoke access to the keys and generate new ones for your applications.
 
-## Get All Cyphers
+## Cypher Authentication
+
+The cypher api endpoints allow for authentication via an execution lease token. An execution lease can be issued by Morpheus when certain tasks run, such as Ansible, which can then use the token to read cypher keys.  This can be used in place of the standard `Authentication` header with a user's `access_token`.
+
+Cypher has the following headers and url parameters available for authentication:
+
+Name | Type | Description
+--------- | ----------- | -----------
+X-Cypher-Token | HTTP Header | An execution lease token. This can be used instead the standard `Authentication` header.
+X-Vault-Token | HTTP Header | alias for X-Cypher-Token
+X-Morpheus-Lease | HTTP Header | An execution lease token. This can be used instead the standard `Authentication` header.
+leaseToken | URL Parameter | An execution lease token.
+
+
+## List Cypher Keys
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher"
+curl "https://api.gomorpheus.com/api/cypher/v1?list=true"
+  -H "Authorization: BEARER access_token"
+```
+
+or
+
+```shell
+curl -XLIST "https://api.gomorpheus.com/api/cypher/v1"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -15,38 +36,37 @@ curl "https://api.gomorpheus.com/api/cypher"
 
 ```json
 {
-  "cyphers": [
+  "auth": null,
+  "data": {
+    "keys": [
+      "password/15/mypassword",
+      "secret/foo"
+    ]
+  },
+  "lease_duration": null,
+  "lease_id": "",
+  "renewable": false,
+  "cypherItems": [
     {
-      "id": 4,
-      "itemKey": "key/mykey",
+      "itemKey": "password/15/mypassword",
       "leaseTimeout": 2764800000,
-      "expireDate": "2018-10-20T15:35:05+0000",
-      "dateCreated": "2018-09-18T15:35:05+0000",
-      "lastUpdated": "2018-09-18T15:35:05+0000",
-      "lastAccessed": "2018-09-18T15:35:05+0000"
+      "expireDate": "2019-03-23T10:17:52Z",
+      "dateCreated": "2019-02-19T10:17:52Z",
+      "lastUpdated": "2019-02-19T10:17:52Z",
+      "lastAccessed": "2019-02-19T10:17:52Z"
     },
     {
-      "id": 2,
-      "itemKey": "secret/myClientId",
+      "itemKey": "secret/foo",
       "leaseTimeout": 2764800000,
-      "expireDate": "2018-10-20T18:38:21+0000",
-      "dateCreated": "2018-09-18T18:38:21+0000",
-      "lastUpdated": "2018-09-18T18:38:21+0000",
-      "lastAccessed": "2018-09-18T18:38:21+0000"
-    },
-    {
-      "id": 3,
-      "itemKey": "uuid/myid",
-      "leaseTimeout": 2764800000,
-      "expireDate": "2018-10-20T15:34:50+0000",
-      "dateCreated": "2018-09-18T15:34:50+0000",
-      "lastUpdated": "2018-09-18T15:34:50+0000",
-      "lastAccessed": "2018-09-18T15:34:50+0000"
+      "expireDate": "2019-03-25T17:14:33Z",
+      "dateCreated": "2019-02-21T17:14:33Z",
+      "lastUpdated": "2019-02-21T17:14:33Z",
+      "lastAccessed": "2019-02-21T17:14:33Z"
     }
   ],
   "meta": {
-    "size": 3,
-    "total": 3,
+    "size": 2,
+    "total": 2,
     "max": 25,
     "offset": 0
   }
@@ -57,20 +77,35 @@ This endpoint retrieves all cypher keys associated with the account, or user.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher`
+`GET https://api.gomorpheus.com/api/cypher/v1/:key?list=true`
+
+or
+
+`LIST https://api.gomorpheus.com/api/cypher/v1/:key`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+key | If specified will match the start of the key.
+list | Set to `true` for list behavior with HTTP `GET`.
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match of key
-phrase | null | If specified will match any part of key
+phrase |  | If specified will match any part of key
+key |  | If specified will return an exact match of key
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | key | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
 
-## Get a Specific Cypher
+## Read a Cypher Key
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2" \
+curl "https://api.gomorpheus.com/api/cypher/v1/secret/foo" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -78,127 +113,116 @@ curl "https://api.gomorpheus.com/api/cypher/2" \
 
 ```json
 {
+  "success": true,
+  "auth": null,
+  "data": {
+    "foo":"bar",
+    "briefing":"top secret info"
+  },
+  "lease_duration": 2764800000,
+  "lease_id": "",
+  "renewable": false,
   "cypher": {
-    "id": 2,
-    "itemKey": "secret/myClientId",
+    "itemKey": "secret/foo",
     "leaseTimeout": 2764800000,
-    "expireDate": "2018-10-20T18:38:21+0000",
-    "dateCreated": "2018-09-18T18:38:21+0000",
-    "lastUpdated": "2018-09-18T18:38:21+0000",
-    "lastAccessed": "2018-09-18T18:38:21+0000"
+    "expireDate": "2019-03-18T20:15:51Z",
+    "dateCreated": "2019-02-14T20:15:51Z",
+    "lastUpdated": "2019-02-14T20:15:51Z",
+    "lastAccessed": "2019-02-14T20:15:51Z"
   }
 }
 ```
 
 This endpoint retrieves a specific cypher key.
-
+The value of the key is decrypted and returned as `data`.
+It may be a String or an object with many `{"key":"value"}` pairs.
+The type depends on the cypher engine's capabilities and what type of data was written to the key.  For example the `secret/` engine allows either a string or an object, while the `password/` engine will always store and return a string.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher/:id`
+`GET https://api.gomorpheus.com/api/cypher/v1/:key`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the cypher key
+key | The full cypher key including the mount prefix.
 
-## Decrypt a Cypher
+See [Cypher Authentication](#cypher-authentication) for details on specifying a lease token.
+
+## Read a Cypher with Lease
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2/decrypt" \
-  -H "Authorization: BEARER access_token"
+curl "https://api.gomorpheus.com/api/cypher/v1/password/15/mypassword"
+  -H "X-Lease-Token: 6f4d3563-22ef-404f-8b81-c13d093cd55a"
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured like reading a key with normal authentication:
 
-```json
+```
 {
+  "auth": null,
+  "data": "B[,t;ng[5[lg&th",
+  "lease_duration": 432000000,
+  "lease_id": "",
+  "renewable": false,
   "cypher": {
-    "id": 2,
-    "itemKey": "secret/myClientId",
-    "itemValue": "a secret value"
-  },
-  "success": true
+    "itemKey": "password/15/mypassword",
+    "leaseTimeout": 432000000,
+    "expireDate": "2019-02-26T21:35:20Z",
+    "dateCreated": "2019-02-21T21:35:20Z",
+    "lastUpdated": "2019-02-21T21:35:20Z",
+    "lastAccessed": "2019-02-21T21:35:20Z"
+  }
 }
 ```
 
-This endpoint returns the decrypted value of the cypher key.  The last accessed timestamp is updated.
-
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher/:id/decrypt`
+`GET https://api.gomorpheus.com/api/cypher/v1/secret/foo`
+
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+X-Lease-Token | Your execution lease token. This can be used instead the standard `Authentication` header.
 
 ### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the cypher
-
-## Decrypt a Cypher with Lease
-
-
-```shell
-curl "https://api.gomorpheus.com/api/cypher/2/decrypt/lease/6f4d3563-22ef-404f-8b81-c13d093cd55a"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "cypher": {
-    "id": 2,
-    "itemKey": "secret/myClientId",
-    "itemValue": "a secret value"
-  },
-  "success": true
-}
-```
-
-This endpoint returns the decrypted value of the cypher key.  The last accessed timestamp is updated.
-
-This endpoint authenticates via the passed lease token instead of the normal authentication header.
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/cypher/:id/decrypt/lease/:lease`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-id | The ID of the cypher
-lease | Your execution lease token
-
-## Create a Cypher
-
-```shell
-curl -XPOST "https://api.gomorpheus.com/api/cypher" \
-  -H "Authorization: BEARER access_token" \
-  -H "Content-Type: application/json" \
-  -d '{"cypher":{
-    "itemKey": "secret/mysecret",
-    "itemValue": "My Secret Value"
-  }}'
-```
-
-> The above command returns JSON structured like getting a single cypher: 
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/cypher`
-
-### JSON Parameters
-
-The following parameters are available under the context **cypher**.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-itemKey      | null | A unique key in the format mount/key
-itemValue | null | The value to be stored securely. Some types will generate their own value.
-leaseTimeout | null | The Lease time in MS (default is 32 days)
+key | | The cypher key including the mount prefix.
+leaseTimeout | | The lease duration in milliseconds
+ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
+value | | The value of the key. Used when passing value as a string and not JSON data.
 
+
+## Write a Cypher
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/secret/mymsg" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"msg":"hello world"}'
+```
+
+> The above command returns JSON structured like readding a cypher key:.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/cypher/v1`
+
+### JSON Parameters
+
+The following parameters are available under the root context of the JSON body.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ttl      | 32 days | Time to Live in seconds, or a human readable format eg. '15m', 8h, '7d'
+
+The `secret/` engine stores the JSON payload itself as the value of the key.
+The `ttl` payload key is a special key, that is present, will be parsed as the `ttl` parameter (lease duration in seconds).
 
 #### Item Key
 
@@ -230,7 +254,7 @@ Year      | 31536000000
 ## Delete a Cypher
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/cypher/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/cypher/v1/secret/foo" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -246,10 +270,10 @@ Will delete a cypher from the system and make it no longer usable.
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/cypher/:id`
+`DELETE https://api.gomorpheus.com/api/cypher/v1/:key`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the cypher key
+key | The full cypher key including the mount prefix.
