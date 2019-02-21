@@ -27,13 +27,6 @@ curl "https://api.gomorpheus.com/api/cypher/v1?list=true"
   -H "Authorization: BEARER access_token"
 ```
 
-or
-
-```shell
-curl -XLIST "https://api.gomorpheus.com/api/cypher/v1"
-  -H "Authorization: BEARER access_token"
-```
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -80,10 +73,6 @@ This endpoint retrieves all cypher keys associated with the account, or user.
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/cypher/v1/:key?list=true`
-
-or
-
-`LIST https://api.gomorpheus.com/api/cypher/v1/:key`
 
 ### URL Parameters
 
