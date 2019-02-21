@@ -129,6 +129,8 @@ The value of the key is decrypted and returned as `data`.
 It may be a String or an object with many `{"key":"value"}` pairs.
 The type depends on the cypher engine's capabilities and what type of data was written to the key.  For example the `secret/` engine allows either a string or an object, while the `password/` engine will always store and return a string.
 
+The `leaseTimeout` and `ttl` parameters are only relevant if the cypher engine will be creating a key that does not exist. eg. `password/`
+
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/cypher/v1/:key`
@@ -139,7 +141,12 @@ Parameter | Description
 --------- | -----------
 key | The full cypher key including the mount prefix.
 
-See [Cypher Authentication](#cypher-authentication) for details on specifying a lease token.
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+leaseTimeout | | The lease duration in milliseconds.
+ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
 
 ## Read a Cypher with Lease
 
@@ -171,23 +178,24 @@ curl "https://api.gomorpheus.com/api/cypher/v1/password/15/mypassword"
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher/v1/secret/foo`
+`GET https://api.gomorpheus.com/api/cypher/v1/:key`
 
 ### HTTP Headers
 
-Header | Description
---------- | -----------
-X-Lease-Token | Your execution lease token. This can be used instead the standard `Authentication` header.
+See [Cypher Authentication](#cypher-authentication) for details on specifying a lease token.
 
 ### URL Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 key | | The cypher key including the mount prefix.
-leaseTimeout | | The lease duration in milliseconds
-ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
-value | | The value of the key. Used when passing value as a string and not JSON data.
 
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+leaseTimeout | | The lease duration in milliseconds.
+ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
 
 ## Write a Cypher
 
