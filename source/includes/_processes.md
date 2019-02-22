@@ -83,7 +83,7 @@ instanceId |  | Filter by instance id(s)
 containerId |  | Filter by container id(s)
 serverId |  | Filter by server id(s)
 zoneId |  | Filter by zone id(s)
-appId |  | Filter by app id
+appId |  | Filter by app id(s)
 
 
 ## Get a Specific Process
