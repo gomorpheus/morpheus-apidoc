@@ -210,7 +210,7 @@ curl -XPOST "https://api.gomorpheus.com/api/cypher/v1/secret/mymsg" \
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/cypher/v1`
+`POST https://api.gomorpheus.com/api/cypher/v1/:key`
 
 ### JSON Parameters
 
@@ -223,9 +223,9 @@ ttl      | 32 days | Time to Live in seconds, or a human readable format eg. '15
 The `secret/` engine stores the JSON payload itself as the value of the key.
 The `ttl` payload key is a special key, that is present, will be parsed as the `ttl` parameter (lease duration in seconds).
 
-#### Item Key
+#### Key
 
-The *itemKey* contains two parts: the *mount* and the *key*, separated by a */*.
+The *key* includes a *mount* prefix separated by a */*. For example, the key `secret/foo` uses the `secret` mount.
 
 ##### Available Mountpoints
 
