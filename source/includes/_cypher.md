@@ -212,6 +212,13 @@ curl -XPOST "https://api.gomorpheus.com/api/cypher/v1/secret/mymsg" \
 
 `POST https://api.gomorpheus.com/api/cypher/v1/:key`
 
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+leaseTimeout | | The lease duration in milliseconds.
+ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
+
 ### JSON Parameters
 
 The following parameters are available under the root context of the JSON body.
