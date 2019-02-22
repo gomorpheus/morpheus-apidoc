@@ -218,6 +218,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 leaseTimeout | | The lease duration in milliseconds.
 ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
+value |  | The secret value to be stored. Only required for certain mountpoints.
 
 ### JSON Parameters
 
@@ -227,8 +228,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 ttl      | 32 days | Time to Live in seconds, or a human readable format eg. '15m', 8h, '7d'
 
-The `secret/` engine stores the JSON payload itself as the value of the key.
-The `ttl` payload key is a special key, that is present, will be parsed as the `ttl` parameter (lease duration in seconds).
+The `secret` engine is capable of storing the entire JSON object as key=value pairs, or just a single string. To pass a string, use the `value` query parameter instead of JSON.
+
+The `ttl` payload key is a special key that if present will be parsed and used as the `ttl` parameter (lease duration in seconds).
 
 #### Key
 
@@ -242,7 +244,7 @@ Mount | Description | Example
 --------- | ------- | ---------
 password | Generates a secure password of specified character length in the key pattern (or 15) with symbols, numbers, upper case, and lower case letters (i.e. password/15/mypass generates a 15 character password). | password/15/mypass
 tfvars | This is a module to store a tfvars file for terraform. | tfvars/mytfvar
-secret | This is the standard secret module that stores a key/value in encrypted form. | secret/mysecret
+secret | This is the standard secret module that stores a key/value in encrypted form. Capable of storing entire JSON object or a String. | secret/mysecret
 uuid | Returns a new UUID by key name when requested and stores the generated UUID by key name for a given lease timeout period. | uuid/autoMac1
 key | Generates a Base 64 encoded AES Key of specified bit length in the key pattern (i.e. key/128/mykey generates a 128-bit key) | key/128/mykey
 
