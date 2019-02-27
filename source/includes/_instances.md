@@ -331,7 +331,7 @@ This endpoint retrieves a specific instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
-## Get env variables
+## Get Env Variables
 
 ```shell
 curl "https://api.gomorpheus.com/api/instances/1216/envs" \
@@ -634,71 +634,7 @@ containerId |  | Filter by container id(s)
 serverId |  | Filter by server id(s)
 zoneId |  | Filter by zone id(s)
 
-## Get Security Groups
-
-```shell
-curl "https://api.gomorpheus.com/api/instances/1666/security-groups" \
-  -H "Authorization: BEARER access_token"
-```
-> The above command returns JSON like this:
-
-```json
-{
-  "success": true,
-  "firewallEnabled": true,
-  "securityGroups": [
-    {
-      "id": 43,
-      "accountId": 1,
-      "name": "api-tom-test",
-      "description": "Test Security Group"
-    }
-  ]
-}
-```
-This gets information about the security groups the instance has setup.
-
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/instances/:id/security-groups`
-
-## Enable security-groups
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1666/security-groups/enable" \
-  -H "Authorization: BEARER access_token"
-```
-> The above command returns JSON like this:
-
-```json
-{
-  "success": true
-}
-```
-This action enables a security group assigned to an instance
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
-
-## Disable security-groups
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1666/security-groups/disable" \
-  -H "Authorization: BEARER access_token"
-```
-> The above command returns JSON like this:
-
-```json
-{
-  "success": true
-}
-```
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
-
-## Get container details
+## Get Container Details
 
 ```shell
 curl "https://api.gomorpheus.com/api/instances/1216/containers" \
@@ -1154,7 +1090,45 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
 
-## Disable the firewall
+This defines the list of all the security groups applied to an instance.
+
+## Enable security-groups
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON like this:
+
+```json
+{
+  "success": true
+}
+```
+This action enables a security group assigned to an instance
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
+
+## Disable security-groups
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
+  -H "Authorization: BEARER access_token"
+```
+> The above command returns JSON like this:
+
+```json
+{
+  "success": true
+}
+```
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
+
+## Disable the Firewall
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
@@ -1175,7 +1149,7 @@ This will disable the firewall.  Any configured security groups will not be appl
 
 `PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
 
-## Enable the firewall
+## Enable the Firewall
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
