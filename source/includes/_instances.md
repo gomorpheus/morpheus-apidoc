@@ -644,66 +644,116 @@ curl "https://api.gomorpheus.com/api/instances/1216/containers" \
 
 ```json
 {
-  "success": true,
   "containers": [
     {
-      "id": 1414,
-      "name": "tomcat_1414",
-      "configs": "{\"evars\":{},\"hosts\":{\"container1414\":\"127.0.0.1\",\"container1759\":\"192.168.163.233\"},\"maxMemory\":1073741824,\"maxStorage\":10737418240,\"mounts\":[{\"containerPath\":\"/morpheus/data\",\"hostPath\":\"/morpheus/container_1414/data\",\"type\":\"data\"},{\"containerPath\":\"/morpheus/logs\",\"hostPath\":\"/morpheus/container_1414/logs\",\"type\":\"logs\"},{\"containerPath\":\"/morpheus/config\",\"hostPath\":\"/morpheus/container_1414/config\",\"type\":\"config\"}],\"ports\":[{\"displayName\":\"Http\",\"export\":true,\"exportName\":null,\"external\":10017,\"index\":0,\"internal\":8080,\"link\":true,\"loadBalance\":true,\"protocol\":\"http\",\"visible\":true}],\"priviligedContainer\":null,\"vm\":false}",
-      "containerType": {
-        "id": 23,
-        "name": "Tomcat 7.0.62"
+      "id": 292,
+      "accountId": 1,
+      "instance": {
+        "id": 294,
+        "name": "nginxtest"
       },
-      "lastStats": "{\"ts\":\"2017-02-11T17:54:30+0000\",\"maxStorage\":10434699264,\"usedStorage\":290037760,\"running\":true,\"userCpuUsage\":0,\"systemCpuUsage\":0.0062528659,\"usedMemory\":770224128,\"maxMemory\":1073741824,\"cacheMemory\":275013632,\"readIOPS\":0,\"writeIOPS\":0,\"totalIOPS\":0,\"netTxUsage\":0,\"netRxUsage\":0}",
-      "environmentPrefix": null,
-      "status": "running",
-      "dateCreated": "2016-12-15T15:22:17Z",
-      "ip": "12.96.81.102",
-      "externalIp": "12.96.81.102",
-      "internalIp": "192.168.163.232",
+      "containerType": {
+        "id": 187,
+        "code": "nginx-vmware-1.9",
+        "category": "nginx",
+        "name": "NGINX 1.9"
+      },
+      "containerTypeSet": {
+        "id": 193,
+        "code": "nginx-vmware-1.9-set",
+        "category": "nginx"
+      },
+      "server": {
+        "id": 653,
+        "name": "nginxtest"
+      },
+      "cloud": {
+        "id": 34,
+        "name": "myvmware"
+      },
+      "name": "nginxtest_292",
+      "ip": "10.30.20.50",
+      "internalIp": "10.30.20.50",
+      "internalHostname": "container292",
+      "externalHostname": "nginxtest",
+      "externalDomain": "localdomain",
+      "externalFqdn": "nginxtest.localdomain",
       "ports": [
         {
+          "index": 0,
+          "external": 80,
+          "internal": 80,
+          "primaryPort": true,
           "displayName": "Http",
           "export": true,
-          "exportName": null,
-          "external": 10017,
-          "index": 0,
-          "internal": 8080,
-          "link": true,
+          "visible": true,
           "loadBalance": true,
+          "link": true,
+          "exportName": "HTTP",
           "protocol": "http",
-          "visible": true
+          "code": "nginx.80"
+        },
+        {
+          "index": 1,
+          "external": 443,
+          "internal": 443,
+          "primaryPort": false,
+          "displayName": "Https",
+          "export": true,
+          "visible": true,
+          "loadBalance": true,
+          "link": true,
+          "exportName": "HTTPS",
+          "protocol": "https",
+          "code": "nginx.443"
         }
-      ]
-    },
-    {
-      "id": 1759,
-      "name": "tomcat_1759",
-      "configs": "{\"evars\":{},\"hosts\":{\"container1414\":\"192.168.163.232\",\"container1759\":\"127.0.0.1\"},\"maxMemory\":1073741824,\"maxStorage\":10737418240,\"mounts\":[{\"containerPath\":\"/morpheus/data\",\"hostPath\":\"/morpheus/container_1759/data\",\"type\":\"data\"},{\"containerPath\":\"/morpheus/logs\",\"hostPath\":\"/morpheus/container_1759/logs\",\"type\":\"logs\"},{\"containerPath\":\"/morpheus/config\",\"hostPath\":\"/morpheus/container_1759/config\",\"type\":\"config\"}],\"networkInterfaces\":null,\"ports\":[{\"code\":\"tomcat.8080\",\"displayName\":\"Http\",\"export\":true,\"exportName\":null,\"external\":10017,\"index\":0,\"internal\":8080,\"link\":true,\"loadBalance\":true,\"protocol\":\"http\",\"visible\":true}],\"priviligedContainer\":null,\"serverId\":null,\"storageController\":null,\"vm\":false,\"volumes\":null}",
-      "containerType": {
-        "id": 23,
-        "name": "Tomcat 7.0.62"
+      ],
+      "plan": {
+        "id": 76,
+        "code": "vm-1024",
+        "name": "1 CPU, 1GB Memory"
       },
-      "lastStats": "{\"ts\":\"2017-02-11T17:53:39+0000\",\"maxStorage\":10434699264,\"usedStorage\":288571392,\"running\":true,\"userCpuUsage\":0.0062526053,\"systemCpuUsage\":0.008336807,\"usedMemory\":790220800,\"maxMemory\":1073741824,\"cacheMemory\":190226432,\"readIOPS\":0,\"writeIOPS\":0,\"totalIOPS\":0,\"netTxUsage\":0,\"netRxUsage\":0}",
-      "environmentPrefix": null,
+      "dateCreated": "2019-02-20T18:29:05+0000",
+      "lastUpdated": "2019-02-27T21:07:35+0000",
+      "statsEnabled": true,
       "status": "running",
-      "dateCreated": "2017-01-27T19:29:39Z",
-      "ip": "12.96.81.103",
-      "externalIp": "12.96.81.103",
-      "internalIp": "192.168.163.233",
-      "ports": [
+      "userStatus": "running",
+      "environmentPrefix": null,
+      "stats": {
+        "ts": "2019-02-27T21:07:31+0000",
+        "running": true,
+        "userCpuUsage": 0.1504010695,
+        "systemCpuUsage": 0.1838235294,
+        "usedMemory": 317256000,
+        "maxMemory": 1017032000,
+        "cacheMemory": 404236000,
+        "maxStorage": 10499452928,
+        "usedStorage": 3700285440,
+        "readIOPS": 0,
+        "writeIOPS": 0.35,
+        "totalIOPS": 0.35,
+        "iops": {
+        },
+        "netTxUsage": 114,
+        "netRxUsage": 2198
+      },
+      "runtimeInfo": {
+      },
+      "containerVersion": null,
+      "repositoryImage": null,
+      "planCategory": null,
+      "hostname": "nginxtest",
+      "domainName": null,
+      "volumeCreated": true,
+      "containerCreated": false,
+      "maxStorage": 10737418240,
+      "maxMemory": 1073741824,
+      "maxCores": 1,
+      "maxCpu": 1,
+      "availableActions": [
         {
-          "code": "tomcat.8080",
-          "displayName": "Http",
-          "export": true,
-          "exportName": null,
-          "external": 10017,
-          "index": 0,
-          "internal": 8080,
-          "link": true,
-          "loadBalance": true,
-          "protocol": "http",
-          "visible": true
+          "code": "nginx-1.9-remove-node",
+          "name": "Remove Nginx Node"
         }
       ]
     }
@@ -716,6 +766,170 @@ This can be valuable for evaluating the details of the compute server(s) running
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id/containers`
+
+## Get Available Service Plans for an Instance
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/instances/service-plans?zoneId=1&layoutId=75" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "plans": [
+    {
+      "id": 75,
+      "name": "1 CPU, 512MB Memory",
+      "value": 75,
+      "code": "vm-512",
+      "maxStorage": 10737418240,
+      "maxMemory": 536870912,
+      "maxCpu": 1,
+      "maxCores": 1,
+      "customCpu": false,
+      "customMaxMemory": false,
+      "customMaxStorage": true,
+      "customMaxDataStorage": true,
+      "customCoresPerSocket": false,
+      "coresPerSocket": 1,
+      "storageTypes": [
+        {
+          "id": 1,
+          "editable": false,
+          "optionTypes": [
+
+          ],
+          "displayOrder": 1,
+          "code": "standard",
+          "volumeType": "disk",
+          "minStorage": null,
+          "deletable": false,
+          "defaultType": true,
+          "createDatastore": null,
+          "resizable": false,
+          "storageType": null,
+          "allowSearch": true,
+          "volumeOptionSource": null,
+          "displayName": "Disk",
+          "minIOPS": null,
+          "maxIOPS": null,
+          "hasDatastore": true,
+          "customSize": true,
+          "autoDelete": true,
+          "name": "Standard",
+          "configurableIOPS": false,
+          "customLabel": true,
+          "enabled": true,
+          "description": "Standard",
+          "volumeCategory": "disk",
+          "externalId": null,
+          "maxStorage": null
+        }
+      ],
+      "rootStorageTypes": [
+        {
+          "id": 1,
+          "editable": false,
+          "optionTypes": [
+
+          ],
+          "displayOrder": 1,
+          "code": "standard",
+          "volumeType": "disk",
+          "minStorage": null,
+          "deletable": false,
+          "defaultType": true,
+          "createDatastore": null,
+          "resizable": false,
+          "storageType": null,
+          "allowSearch": true,
+          "volumeOptionSource": null,
+          "displayName": "Disk",
+          "minIOPS": null,
+          "maxIOPS": null,
+          "hasDatastore": true,
+          "customSize": true,
+          "autoDelete": true,
+          "name": "Standard",
+          "configurableIOPS": false,
+          "customLabel": true,
+          "enabled": true,
+          "description": "Standard",
+          "volumeCategory": "disk",
+          "externalId": null,
+          "maxStorage": null
+        }
+      ],
+      "addVolumes": true,
+      "customizeVolume": true,
+      "rootDiskCustomizable": true,
+      "noDisks": false,
+      "hasDatastore": true,
+      "minDisk": 0,
+      "maxDisk": null,
+      "lvmSupported": true,
+      "datastores": {
+        "cluster": [
+          {
+            "id": 54,
+            "name": "demo-qnap - 4.3TB Free"
+          }
+        ],
+        "store": [
+          {
+            "id": 50,
+            "name": "datastore1 - 463.4GB Free"
+          }
+        ]
+      },
+      "supportsAutoDatastore": true,
+      "autoOptions": [
+        {
+          "id": "autoCluster",
+          "name": "Auto - Cluster"
+        },
+        {
+          "id": "auto",
+          "name": "Auto - Datastore"
+        }
+      ],
+      "cpuOptions": [
+
+      ],
+      "coreOptions": [
+
+      ],
+      "memoryOptions": [
+
+      ],
+      "rootCustomSizeOptions": {
+      },
+      "customSizeOptions": {
+      },
+      "customCores": false,
+      "maxDisks": null,
+      "memorySizeType": "MB"
+    }
+  ]
+}
+```
+
+This returns a list of all of the service plans available for an instance type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *layoutId* are required.
+
+This endpoint can  be used to get the list of plans available for creating a new instance or resizing an existing instance.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/service-plans`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+zoneId | The ID of the [Cloud](#compute-zones)
+layoutId | The ID of the instance layout
 
 ## Create an Instance
 

@@ -84,7 +84,7 @@ instance.name | Y | null | Name of the instance to be created
 instance.site.id | Y | null | The Group ID to provision the instance into
 instance.instanceType.code | Y | null | The type of instance by code we want to fetch
 instance.layout.id |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
-instance.plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus
+instance.plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
 zoneId | Y | null | The Cloud ID to provision the instance onto
 evars | N | [] | Environment Variables, an array of objects that have name and value.
 copies | N | 1 | Number of copies to provision

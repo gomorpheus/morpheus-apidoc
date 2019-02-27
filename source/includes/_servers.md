@@ -296,6 +296,170 @@ Parameter | Description
 --------- | -----------
 ID | ID of the check to retrieve
 
+## Get Available Service Plans for a Server
+
+```shell
+curl -XGET "https://api.gomorpheus.com/api/servers/service-plans?zoneId=2&serverTypeId=60" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "plans": [
+    {
+      "id": 75,
+      "name": "1 CPU, 512MB Memory",
+      "value": 75,
+      "code": "vm-512",
+      "maxStorage": 10737418240,
+      "maxMemory": 536870912,
+      "maxCpu": 1,
+      "maxCores": 1,
+      "customCpu": false,
+      "customMaxMemory": false,
+      "customMaxStorage": true,
+      "customMaxDataStorage": true,
+      "customCoresPerSocket": false,
+      "coresPerSocket": 1,
+      "storageTypes": [
+        {
+          "id": 1,
+          "editable": false,
+          "optionTypes": [
+
+          ],
+          "displayOrder": 1,
+          "code": "standard",
+          "volumeType": "disk",
+          "minStorage": null,
+          "deletable": false,
+          "defaultType": true,
+          "createDatastore": null,
+          "resizable": false,
+          "storageType": null,
+          "allowSearch": true,
+          "volumeOptionSource": null,
+          "displayName": "Disk",
+          "minIOPS": null,
+          "maxIOPS": null,
+          "hasDatastore": true,
+          "customSize": true,
+          "autoDelete": true,
+          "name": "Standard",
+          "configurableIOPS": false,
+          "customLabel": true,
+          "enabled": true,
+          "description": "Standard",
+          "volumeCategory": "disk",
+          "externalId": null,
+          "maxStorage": null
+        }
+      ],
+      "rootStorageTypes": [
+        {
+          "id": 1,
+          "editable": false,
+          "optionTypes": [
+
+          ],
+          "displayOrder": 1,
+          "code": "standard",
+          "volumeType": "disk",
+          "minStorage": null,
+          "deletable": false,
+          "defaultType": true,
+          "createDatastore": null,
+          "resizable": false,
+          "storageType": null,
+          "allowSearch": true,
+          "volumeOptionSource": null,
+          "displayName": "Disk",
+          "minIOPS": null,
+          "maxIOPS": null,
+          "hasDatastore": true,
+          "customSize": true,
+          "autoDelete": true,
+          "name": "Standard",
+          "configurableIOPS": false,
+          "customLabel": true,
+          "enabled": true,
+          "description": "Standard",
+          "volumeCategory": "disk",
+          "externalId": null,
+          "maxStorage": null
+        }
+      ],
+      "addVolumes": true,
+      "customizeVolume": true,
+      "rootDiskCustomizable": true,
+      "noDisks": false,
+      "hasDatastore": true,
+      "minDisk": 0,
+      "maxDisk": null,
+      "lvmSupported": true,
+      "datastores": {
+        "cluster": [
+          {
+            "id": 54,
+            "name": "demo-qnap - 4.3TB Free"
+          }
+        ],
+        "store": [
+          {
+            "id": 50,
+            "name": "datastore1 - 463.4GB Free"
+          }
+        ]
+      },
+      "supportsAutoDatastore": true,
+      "autoOptions": [
+        {
+          "id": "autoCluster",
+          "name": "Auto - Cluster"
+        },
+        {
+          "id": "auto",
+          "name": "Auto - Datastore"
+        }
+      ],
+      "cpuOptions": [
+
+      ],
+      "coreOptions": [
+
+      ],
+      "memoryOptions": [
+
+      ],
+      "rootCustomSizeOptions": {
+      },
+      "customSizeOptions": {
+      },
+      "customCores": false,
+      "maxDisks": null,
+      "memorySizeType": "MB"
+    }
+  ]
+}
+```
+
+This returns a list of all of the service plans available for a server type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *serverTypeId* are required.  
+
+This endpoint can  be used to get the list of plans available for provisioning a new server or resizing a server.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/servers/service-plans`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+zoneId | The ID of the [Cloud](#compute-zones)
+serverTypeId | The ID of the [Server Type](#compute-server-types)
+
 ## Provision a Server
 
 ```shell
@@ -466,7 +630,7 @@ Will resize a server asynchronously.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-server.plan.id      | null | The ID of the new plan (optional).
+server.plan.id      | null | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
 volumes | null | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 
