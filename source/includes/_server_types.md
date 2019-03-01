@@ -2,6 +2,8 @@
 
 A Compute Server Type is the description of the technology (bare metal or virtual) being deployed onto.
 
+**NOTE:** A Server Type in the API Is equivalent to a Host Type within the morpheus UI.
+
 ## Get All Server Types
 
 ```shell
@@ -283,14 +285,14 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-sort | key | Sort order
+sort | displayOrder | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 name | null | Filter by name or code
 code | null | Filter by code
 phrase | null | Filter by wildcard search of name, code and description
-provisionType | null | Filter by provision type code
-zoneType | null | Filter by provision type code
-creatable | null | Filter by creatable flag
+provisionType | null | Filter by [Provision Type](#provision-types) code
+zoneType | null | Filter by [Zone Type](#zone-types) code
+creatable | null | Filter by creatable flag. This is whether or not it can be provisioned.
 
 
 ## Get a Specific Server Type
