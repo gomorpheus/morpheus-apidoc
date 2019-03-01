@@ -283,11 +283,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
+sort | key | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+name | null | Filter by name or code
+code | null | Filter by code
+phrase | null | Filter by wildcard search of name, code and description
+provisionType | null | Filter by provision type code
+zoneType | null | Filter by provision type code
+creatable | null | Filter by creatable flag
 
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific Server Type
 
