@@ -94,13 +94,14 @@ This endpoint will create a new AppDeploy entry configured for the specific inst
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userVersion | null | Optional version tag for reference of teh build
+userVersion | null | Deployment Verison userVersion identifier.
+versionId | null | Deployment Version ID. This can be passed instead of userVersion.
 deployType | browser | The type of deployment. File based is browser, `git` for git and `fetch` for fetching from a url
 gitUrl | null | The ssh git url to use to fetch files for the archive
 gitRef | null | The branch or tag name to be used to fetch from on git.
 fetchUrl | null | Used for fetch deploy type. Can fetch a zip file or general file and extract into archive
 deployGroup | null | Not yet in use but used to organize deploys for multiple apps in the same group
-config | null | JSON encoded list of parameters that varies by instance type. See below for more information
+configMap | null | JSON encoded list of parameters that varies by instance type. See below for more information
 
 ## Upload Files to Deployment Archive
 
