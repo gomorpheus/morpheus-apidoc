@@ -34,6 +34,9 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       "containers": [
         1798
       ],
+      "servers": [
+        2
+      ],
       "connectionInfo": [
         {
           "ip": "192.168.162.59",
@@ -91,6 +94,9 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       "containers": [
         1945
       ],
+      "servers": [
+        2
+      ],
       "connectionInfo": [
         {
           "ip": "192.168.163.55",
@@ -147,6 +153,9 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
       },
       "containers": [
         1912
+      ],
+      "servers": [
+        3
       ],
       "connectionInfo": [
         {
@@ -270,6 +279,9 @@ curl "https://api.gomorpheus.com/api/instances/1216" \
     },
     "containers": [
       19
+    ],
+    "servers": [
+      2
     ],
     "connectionInfo": [
       {

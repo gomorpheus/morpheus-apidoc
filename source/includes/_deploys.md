@@ -56,7 +56,7 @@ curl -XPOST "https://api.gomorpheus.com/api/instances/1/deploy"
   -H "Authorization: BEARER access_token"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
-    "deployType": 'browser',
+    "deployType": "browser",
     "gitUrl": null,
     "fetchUrl": null,
     "gitRef": null,
@@ -69,7 +69,7 @@ curl -XPOST "https://api.gomorpheus.com/api/instances/1/deploy"
 ```json
 {
   "appDeploy": {
-  	"deployType": 'browser',
+  	"deployType": "browser",
     "gitUrl": null,
     "fetchUrl": null,
     "gitRef": null,
