@@ -1342,48 +1342,6 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable"
 
 `PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
 
-## Disable the Firewall
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-This will disable the firewall.  Any configured security groups will not be applied.
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
-
-## Enable the Firewall
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
-  -H "Authorization: BEARER access_token"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-This will enable the firewall.  Any configured security groups will be applied.
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
-
 ## Delete an Instance
 
 ```shell
