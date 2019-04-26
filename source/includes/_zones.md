@@ -120,6 +120,7 @@ location  | null | Optional location for your zone
 visibility      | private | private or public
 zoneType  | "standard" | Map containing code or id of the zone type
 groupId  | null | Specifies which Server group this zone should be assigned to
+accountId | null | Specifies which Tenant this zone should be assigned to
 
 Additional properties are dynamic for the most part depending on teh zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
 
@@ -157,6 +158,7 @@ code      | null | Optional code for use with policies
 location  | null | Optional location for your zone
 visibility      | private | private or public
 groupId | null | Specifies which Server group this zone should be assigned to
+accountId | null | Specifies which Tenant this zone should be assigned to
 config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
 Additional properties are dynamic for the most part depending on the zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
