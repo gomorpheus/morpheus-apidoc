@@ -157,7 +157,6 @@ description | null | Optional description field if you want to put more info the
 code      | null | Optional code for use with policies
 location  | null | Optional location for your zone
 visibility      | private | private or public
-groupId | null | Specifies which Server group this zone should be assigned to
 accountId | null | Specifies which Tenant this zone should be assigned to
 config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
