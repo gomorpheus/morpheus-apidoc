@@ -1318,42 +1318,6 @@ securityGroupIds | null | List of all security groups ids which should be applie
 
 This defines the list of all the security groups applied to an instance.
 
-## Enable security-groups
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/enable" \
-  -H "Authorization: BEARER access_token"
-```
-> The above command returns JSON like this:
-
-```json
-{
-  "success": true
-}
-```
-This action enables a security group assigned to an instance
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/enable`
-
-## Disable security-groups
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/security-groups/disable" \
-  -H "Authorization: BEARER access_token"
-```
-> The above command returns JSON like this:
-
-```json
-{
-  "success": true
-}
-```
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/instances/:id/security-groups/disable`
-
 ## Delete an Instance
 
 ```shell
