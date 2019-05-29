@@ -20,6 +20,8 @@ includes:
   - zones
   - zonetypes
   - zone_datastores
+  - zone_resource_pools
+  - zone_folders
   - storage_buckets
   - servers
   - server_types
