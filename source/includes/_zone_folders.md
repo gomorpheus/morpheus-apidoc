@@ -5,7 +5,7 @@ Resource Folders can be managed for each Compute Zone (Cloud) in your infrastruc
 ## Get All Resource Folders for Cloud
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/resource-folders"
+curl "https://api.gomorpheus.com/api/zones/5/folders"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -63,7 +63,7 @@ This endpoint retrieves all resource folders under a cloud.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/zones/:zoneId/resource-folders`
+`GET https://api.gomorpheus.com/api/zones/:zoneId/folders`
 
 ### URL Parameters
 
@@ -81,7 +81,7 @@ name | null | Filter on exact match of name
 ## Get a Specific Resource Folder
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/resource-folders/50" \
+curl "https://api.gomorpheus.com/api/zones/5/folders/50" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -131,7 +131,7 @@ This endpoint retrieves a specific resource folder.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/zones/:zoneId/resource-folders/:id`
+`GET https://api.gomorpheus.com/api/zones/:zoneId/folders/:id`
 
 ### URL Parameters
 
@@ -143,7 +143,7 @@ id | The ID of the resource folder to retrieve
 ## Updating a Resource Folder
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/zones/5/resource-folders/50" \
+curl -XPUT "https://api.gomorpheus.com/api/zones/5/folders/50" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"folder":{
@@ -167,7 +167,7 @@ This endpoint allows updating settings for a resource folder.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/zones/:zoneId/resource-folders/:id`
+`PUT https://api.gomorpheus.com/api/zones/:zoneId/folders/:id`
 
 ### URL Parameters
 
