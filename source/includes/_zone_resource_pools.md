@@ -194,7 +194,7 @@ Parameter | Default | Description
 name      | null | Name
 defaultPool      | false | Set as the Default Pool
 defaultImage      | false | Set as the Default Image Target
-active      | null | Activate (true) or disable (false) the resource pool
+active      | true | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
 tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
 resourcePermissions.all  | null | Pass true to allow access all groups
