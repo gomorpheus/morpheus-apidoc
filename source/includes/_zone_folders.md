@@ -187,5 +187,3 @@ visibility      | private | private or public
 tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
 resourcePermissions.all  | null | Pass true to allow access all groups
 resourcePermissions.sites  | null | Array of groups that are allowed access
-
-bindData(folder, payload.folder, [include:['visibility', 'active', 'defaultFolder', 'defaultStore']])
