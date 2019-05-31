@@ -13,22 +13,39 @@ curl "https://api.gomorpheus.com/api/security-groups"
 
 ```json
 {
-  "success": true,
   "securityGroups": [
     {
-      "id": 19,
-      "accountId": 1,
-      "name": "All Access to Tomcat",
-      "description": ""
-    },
-    {
       "id": 18,
-      "accountId": 1,
       "name": "Colorado office",
-      "description": "All the Colorado office to access anywhere"
+      "description": "All the Colorado office to access anywhere",
+      "accountId": 1,
+      "groupSource": null,
+      "externalId": null,
+      "enabled": null,
+      "syncSource": "internal",
+      "zone": null,
+      "locations": [
+        {
+          "id": 429,
+          "name": "Colorado office",
+          "externalId": "sg-01c120cf02de97410",
+          "iacId": null,
+          "zone": {
+            "id": 8,
+            "name": "test-aws"
+          },
+          "zonePool": null,
+          "status": "available"
+        }
+      ]
     }
   ],
-  "securityGroupCount": 2
+  "meta": {
+    "size": 1,
+    "total": 1,
+    "offset": 0,
+    "max": 25
+  }
 }
 ```
 
@@ -58,12 +75,30 @@ curl "https://api.gomorpheus.com/api/security-groups/18" \
 
 ```json
 {
-  "success": true,
   "securityGroup": {
     "id": 18,
-    "accountId": 1,
     "name": "Colorado office",
-    "description": "All the Colorado office to access anywhere"
+    "description": "All the Colorado office to access anywhere",
+    "accountId": 1,
+    "groupSource": null,
+    "externalId": null,
+    "enabled": null,
+    "syncSource": "internal",
+    "zone": null,
+    "locations": [
+      {
+        "id": 429,
+        "name": "Colorado office",
+        "externalId": "sg-01c120cf02de97410",
+        "iacId": null,
+        "zone": {
+          "id": 8,
+          "name": "bertramlabs-aws"
+        },
+        "zonePool": null,
+        "status": "available"
+      }
+    ]
   }
 }
 ```
@@ -73,6 +108,12 @@ This endpoint retrieves a specific security group.
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/security-groups/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the security group
 
 ## Create a Security Group
 
@@ -117,6 +158,12 @@ curl -XPUT "https://api.gomorpheus.com/api/security-groups/18" \
 
 `PUT https://api.gomorpheus.com/api/security-groups/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the security group
+
 ### JSON Security Group Parameters
 
 Parameter | Default | Description
@@ -144,3 +191,62 @@ Will delete a security group and update all clouds, apps, and instances which ar
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/security-groups/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the security group
+
+
+## Create a Security Group Location
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/security-groups/18/locations" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{ "securityGroupLocation": {
+    "zoneId": 5,
+    "customOptions": {
+      "resourceGroup": 1
+    },
+    }}'
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a single security group rule 
+
+Will add a security group to the specified cloud.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/security-groups/:id/locations`
+
+### JSON Security Group Location Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+zoneId      | null | The
+customOptions.vpc      | null | VPC  (Amazon only)
+customOptions.resourceGroup      | null | ID of the resource group or pool to scope.  (Azure only)
+
+## Delete a Security Group Location
+
+```shell
+curl -XDELETE "https://api.gomorpheus.com/api/security-groups/18/locations/29" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a single security group rule 
+
+Will remove a security group from a cloud.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/security-groups/:id/locations/:locationId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the security group
+locationId | The ID of the security group location
