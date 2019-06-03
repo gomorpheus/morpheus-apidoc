@@ -150,6 +150,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | Name for your security group
 description | null | Optional description field
+zoneId      | null | Scoped Cloud ID.
+customOptions.vpc      | null | VPC  (Amazon only)
+customOptions.resourceGroup      | null | ID of the resource group or pool to scope.  (Azure only)
 
 ## Updating a Security Group
 
@@ -236,7 +239,7 @@ Will add a security group to the specified cloud.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zoneId      | null | The
+zoneId      | null | The ID of the Zone (Cloud)
 customOptions.vpc      | null | VPC  (Amazon only)
 customOptions.resourceGroup      | null | ID of the resource group or pool to scope.  (Azure only)
 
