@@ -87,6 +87,7 @@ curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
     "source": "50.22.10.10/32",
     "portRange": "55",
     "protocol": "tcp",
+    "destination": "50.22.10.10/32",
     "customRule": true,
     "instanceTypeId": null
     }}'
@@ -105,11 +106,19 @@ Will create a security group rule and update all clouds, apps, and instances whi
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A name for the rule
-source      | null | CIDR representing the source IP(s) which should receive access
+policy      | null | Either accept or deny. The default is accept.
+sourceType      | null | Either cidr, group, tier, instance. The default is cidr.
+source      | null | CIDR representing the source IP(s) which should receive access. Required for sourceType=cidr.
+sourceGroup.id      | null | The source Security Group ID. Required for sourceType=group. 
+sourceTier.id      | null | The source Tier ID. Required for soureType=tier. 
 portRange | null | Either a single value (i.e. 55) or a port range (i.e. 1-65535) for which to open access to the source.  Required if customRule is true, otherwise, ignored.
 protocol | null | Either tcp, udp, icmp. Required if customRule is true, otherwise, ignored.
-customRule | null | Either true or false.  Specifies if this rule a custom rule (where source, portRange, and protocol are all required) or if it is tied to an Instance Type.
-instanceTypeId | null | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise, ignored. 
+destinationType      | null | Either cidr, group, tier, instance. The default is cidr.
+destination      | null | CIDR representing the destination IP(s) which should receive access. Required for destinationType=cidr. 
+destinationGroup.id      | null | The destination Security Group ID. Required for destinationType=group. 
+destinationTier.id      | null | The destination Tier ID. Required for destinationType=tier. 
+customRule | true | Either true or false.  Specifies if this rule a custom rule (where destination, portRange, and protocol are all required) or if it is tied to an Instance Type.
+instanceTypeId | null | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise ignored. 
 
 ## Updating a Security Group Rule
 
@@ -119,7 +128,7 @@ curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "source": "50.22.10.10/32",
-    "portRange": "55",
+    "portRange": "55-56",
     "protocol": "tcp",
     "customRule": true,
     "instanceTypeId": null

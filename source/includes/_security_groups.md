@@ -37,6 +37,17 @@ curl "https://api.gomorpheus.com/api/security-groups"
           "zonePool": null,
           "status": "available"
         }
+      ],
+      "rules": [
+        {
+          "id": 8413,
+          "name": null,
+          "source": "0.0.0.0/0",
+          "portRange": "5555-5560",
+          "protocol": "tcp",
+          "customRule": true,
+          "instanceTypeId": null
+        }
       ]
     }
   ],
