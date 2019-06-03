@@ -143,18 +143,20 @@ Will create a security group rule and update all clouds, apps, and instances whi
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A name for the rule
-sourceType      | null | Either cidr, group, tier, instance. The default is cidr.
+direction      | ingress | Either ingress or egress.
+source      | null | CIDR representing the source IP(s) which should receive 
+sourceType      | cidr | Either cidr, group, tier, all.
 source      | null | CIDR representing the source IP(s) which should receive access. Required for sourceType=cidr.
 sourceGroup.id      | null | The source Security Group ID. Required for sourceType=group. 
 sourceTier.id      | null | The source Tier ID. Required for soureType=tier. 
 portRange | null | Either a single value (i.e. 55) or a port range (i.e. 1-65535) for which to open access to the source.  Required if customRule is true, otherwise, ignored.
 protocol | null | Either tcp, udp, icmp. Required if customRule is true, otherwise, ignored.
-destinationType      | null | Either cidr, group, tier, instance. The default is cidr.
+destinationType      | cidr | Either cidr, group, tier, instance.
 destination      | null | CIDR representing the destination IP(s) which should receive access. Required for destinationType=cidr. 
 destinationGroup.id      | null | The destination Security Group ID. Required for destinationType=group. 
 destinationTier.id      | null | The destination Tier ID. Required for destinationType=tier. 
-ruleType      | null | Either customRule or an instance type code. The default is customRule.
-policy      | null | Either accept or deny. The default is accept.
+ruleType      | customRule | Either customRule or an instance type code.
+policy      | accept | Either accept or deny.
 instanceTypeId | null | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise ignored. 
 
 ## Updating a Security Group Rule

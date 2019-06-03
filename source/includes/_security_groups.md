@@ -40,13 +40,25 @@ curl "https://api.gomorpheus.com/api/security-groups"
       ],
       "rules": [
         {
-          "id": 8413,
-          "name": null,
-          "source": "0.0.0.0/0",
-          "portRange": "5555-5560",
-          "protocol": "tcp",
+          "id": 30,
+          "name": "my app ports",
+          "ruleType": "customRule",
           "customRule": true,
           "instanceTypeId": null
+          "direction": "ingress",
+          "policy": "accept",
+          "sourceType": "cidr",
+          "source": "0.0.0.0/0",
+          "sourceGroup": null,
+          "sourceTier": null,
+          "portRange": "5565-5570",
+          "protocol": "tcp",
+          "destinationType": "instance",
+          "destination": null,
+          "destinationGroup": null,
+          "destinationTier": null,
+          "externalId": null,
+          "enabled": null,
         }
       ]
     }
@@ -109,7 +121,8 @@ curl "https://api.gomorpheus.com/api/security-groups/18" \
         "zonePool": null,
         "status": "available"
       }
-    ]
+    ],
+    "rules": []
   }
 }
 ```
