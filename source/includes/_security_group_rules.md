@@ -13,27 +13,52 @@ curl "https://api.gomorpheus.com/api/security-groups/19/rules"
 
 ```json
 {
-  "success": true,
   "rules": [
     {
-      "id": 31,
-      "name": null,
-      "securityGroupId": 19,
-      "source": "50.22.10.10/32",
-      "portRange": null,
-      "protocol": null,
-      "customRule": false,
-      "instanceTypeId": 3
+      "id": 29,
+      "name": "my-sg port 5555",
+      "ruleType": "customRule",
+      "customRule": true,
+      "instanceTypeId": null
+      "direction": "ingress",
+      "policy": "accept",
+      "sourceType": "group",
+      "source": null,
+      "sourceGroup": {
+        "id": 2239,
+        "name": "my-sg"
+      },
+      "sourceTier": null,
+      "portRange": "5555",
+      "protocol": "tcp",
+      "destinationType": "instance",
+      "destination": null,
+      "destinationGroup": null,
+      "destinationTier": null,
+      "externalId": null,
+      "enabled": null,
+      "syncSource": "external"
     },
     {
       "id": 30,
-      "name": "port 99",
-      "securityGroupId": 19,
-      "source": "50.22.10.10/32",
-      "portRange": "99",
-      "protocol": "tcp",
+      "name": "my app ports",
+      "ruleType": "customRule",
       "customRule": true,
       "instanceTypeId": null
+      "direction": "ingress",
+      "policy": "accept",
+      "sourceType": "cidr",
+      "source": "0.0.0.0/0",
+      "sourceGroup": null,
+      "sourceTier": null,
+      "portRange": "5565-5570",
+      "protocol": "tcp",
+      "destinationType": "instance",
+      "destination": null,
+      "destinationGroup": null,
+      "destinationTier": null,
+      "externalId": null,
+      "enabled": null,
     }
   ]
 }
@@ -58,15 +83,26 @@ curl "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
 {
   "success": true,
   "rule": {
-    "id": 30,
-    "name": "port 99",
-    "securityGroupId": 19,
-    "source": "50.22.10.10/32",
-    "portRange": "99",
-    "protocol": "tcp",
-    "customRule": true,
-    "instanceTypeId": null
-  }
+      "id": 30,
+      "name": "my app ports",
+      "ruleType": "customRule",
+      "customRule": true,
+      "instanceTypeId": null
+      "direction": "ingress",
+      "policy": "accept",
+      "sourceType": "cidr",
+      "source": "0.0.0.0/0",
+      "sourceGroup": null,
+      "sourceTier": null,
+      "portRange": "5565-5570",
+      "protocol": "tcp",
+      "destinationType": "instance",
+      "destination": null,
+      "destinationGroup": null,
+      "destinationTier": null,
+      "externalId": null,
+      "enabled": null,
+    }
 }
 ```
 
@@ -84,10 +120,11 @@ curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "name": "port 55",
+    "sourceType": "cidr",
     "source": "50.22.10.10/32",
     "portRange": "55",
     "protocol": "tcp",
-    "destination": "50.22.10.10/32",
+    "destinationType": "instance",
     "customRule": true,
     "instanceTypeId": null
     }}'
@@ -106,7 +143,6 @@ Will create a security group rule and update all clouds, apps, and instances whi
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A name for the rule
-policy      | null | Either accept or deny. The default is accept.
 sourceType      | null | Either cidr, group, tier, instance. The default is cidr.
 source      | null | CIDR representing the source IP(s) which should receive access. Required for sourceType=cidr.
 sourceGroup.id      | null | The source Security Group ID. Required for sourceType=group. 
@@ -117,7 +153,8 @@ destinationType      | null | Either cidr, group, tier, instance. The default is
 destination      | null | CIDR representing the destination IP(s) which should receive access. Required for destinationType=cidr. 
 destinationGroup.id      | null | The destination Security Group ID. Required for destinationType=group. 
 destinationTier.id      | null | The destination Tier ID. Required for destinationType=tier. 
-customRule | true | Either true or false.  Specifies if this rule a custom rule (where destination, portRange, and protocol are all required) or if it is tied to an Instance Type.
+ruleType      | null | Either customRule or an instance type code. The default is customRule.
+policy      | null | Either accept or deny. The default is accept.
 instanceTypeId | null | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise ignored. 
 
 ## Updating a Security Group Rule
@@ -127,11 +164,7 @@ curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
-    "source": "50.22.10.10/32",
-    "portRange": "55-56",
-    "protocol": "tcp",
-    "customRule": true,
-    "instanceTypeId": null
+    "portRange": "55-56"
     }}'
 ```
 
