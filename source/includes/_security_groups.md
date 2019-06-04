@@ -164,8 +164,8 @@ Parameter | Default | Description
 name      | null | Name for your security group
 description | null | Optional description field
 zoneId      | null | Scoped Cloud ID.
-customOptions.vpc      | null | ID of VPC (Amazon only)
-customOptions.resourceGroup      | null | ID of the resource group or pool to scope.  (Azure only)
+customOptions.vpc      | null | External ID of Amazon VPC.
+customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
 
 ## Updating a Security Group
 
@@ -253,8 +253,8 @@ Will add a security group to the specified cloud.
 Parameter | Default | Description
 --------- | ------- | -----------
 zoneId      | null | The ID of the Zone (Cloud)
-customOptions.vpc      | null | ID of VPC  (Amazon only)
-customOptions.resourceGroup      | null | ID of the resource group or pool to scope.  (Azure only)
+customOptions.vpc      | null | External ID of Amazon VPC.
+customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
 
 ## Delete a Security Group Location
 
