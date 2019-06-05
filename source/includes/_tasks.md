@@ -122,6 +122,7 @@ curl -XPOST "https://api.gomorpheus.com/api/tasks" \
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | null | A unique name for the task
+code      | null | A unique code for the task
 taskType.code      | null | The type of task
 taskOptions | {} | Map of options specific to each type. eg. script
 resultType      | null | The result type eg. value, exitCode, keyValue, json
