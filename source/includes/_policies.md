@@ -448,7 +448,7 @@ description      |  | A description for the policy
 policyType.code      |  | The policy type.  [maxMemory, maxStorage, maxCores, maxContainers, etc.]
 config      |  | A map of config values. The expected values vary by policyType. See [Policy Types](#policy-types).
 enabled      | true | Enabled. Set to false to disable.
-refType      |  | Scope object type. [ComputeSite, ComputeZone, User]
+refType      |  | Scope object type. [ComputeSite, ComputeZone, User, Role]
 refId      |  | Scope object ID, of group, cloud, user, etc.
 accounts      |  | Array of tenants to scope the policy to.
 eachUser      | false | Apply individually to each user in role, Only for policies scoped to a Role
