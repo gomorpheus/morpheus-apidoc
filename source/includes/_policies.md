@@ -451,6 +451,7 @@ enabled      | true | Enabled. Set to false to disable.
 refType      |  | Scope object type. [ComputeSite, ComputeZone, User]
 refId      |  | Scope object ID, of group, cloud, user, etc.
 accounts      |  | Array of tenants to scope the policy to.
+eachUser      | false | Apply individually to each user in role, Only for policies scoped to a Role
 
 ### Create a Policy For a Group
 
