@@ -53,6 +53,7 @@ includes:
   - user_settings
   - execution_request
   - processes
+  - wiki
 
 search: true
 ---
