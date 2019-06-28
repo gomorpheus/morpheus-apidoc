@@ -5,7 +5,7 @@ Morpheus provides a way to create and edit documentation in the form of wiki pag
 ## Get All Wiki Pages
 
 ```shell
-curl "https://api.gomorpheus.com/api/wiki"
+curl "https://api.gomorpheus.com/api/wiki/pages"
   -H "Authorization: BEARER access_token"
 ```
 
@@ -88,7 +88,7 @@ This endpoint retrieves wiki pages associated with the account.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/wiki`
+`GET https://api.gomorpheus.com/api/wiki/pages`
 
 ### Query Parameters
 
@@ -152,7 +152,7 @@ phrase |  | If specified will return a partial match on page name
 ## Get a Specific Wiki Page
 
 ```shell
-curl "https://api.gomorpheus.com/api/wiki/2" \
+curl "https://api.gomorpheus.com/api/wiki/pages/2" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -189,7 +189,7 @@ This endpoint retrieves a specific wiki page.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/wiki/:id`
+`GET https://api.gomorpheus.com/api/wiki/pages/:id`
 
 ### URL Parameters
 
@@ -200,7 +200,7 @@ ID | The ID of the Wiki Page
 ## Create a Wiki Page
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/wiki" \
+curl -XPOST "https://api.gomorpheus.com/api/wiki/pages" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -214,7 +214,7 @@ curl -XPOST "https://api.gomorpheus.com/api/wiki" \
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/wiki`
+`POST https://api.gomorpheus.com/api/wiki/pages`
 
 ### JSON Page Parameters
 
@@ -228,7 +228,7 @@ content | null | The content of the page (markdown).
 ## Update a Wiki Page
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/wiki/4" \
+curl -XPUT "https://api.gomorpheus.com/api/wiki/pages/4" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -240,7 +240,7 @@ curl -XPUT "https://api.gomorpheus.com/api/wiki/4" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/wiki/:id`
+`PUT https://api.gomorpheus.com/api/wiki/pages/:id`
 
 ### URL Parameters
 
@@ -259,7 +259,7 @@ content | null | The content of the page (markdown).
 ## Delete a Wiki Page
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/wiki/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/wiki/pages/1" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -269,7 +269,7 @@ Will delete a Wiki Page from the system.
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/wiki/:id`
+`DELETE https://api.gomorpheus.com/api/wiki/pages/:id`
 
 ### URL Parameters
 
