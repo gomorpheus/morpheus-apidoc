@@ -137,7 +137,7 @@ curl "https://api.gomorpheus.com/api/wiki/categories"
 }
 ```
 
-This endpoint retrieves all categories, without pagination, associated with the account. The categories returned are those of the found pages.
+This endpoint retrieves all categories associated with the account. The results are not paginated. The categories returned are those of the found pages.
 
 ### HTTP Request
 
@@ -147,7 +147,8 @@ This endpoint retrieves all categories, without pagination, associated with the 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase |  | If specified will return a partial match on page name
+phrase |  | If specified will return a partial match on category name
+pagePhrase |  | If specified will return a partial match on page name
 
 ## Get a Specific Wiki Page
 
@@ -294,7 +295,7 @@ curl "https://api.gomorpheus.com/api/instances/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page.
 
-This endpoint retrieves a specific wiki page for a particular instance.
+This endpoint retrieves the wiki page for an instance.
 If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
 
 ### HTTP Request
@@ -320,7 +321,7 @@ curl -XPUT "https://api.gomorpheus.com/instances/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page: 
 
-This endpoint updates a wiki page for a particular instance. 
+This endpoint updates the wiki page for an instance. 
 The page will be created if it does not yet exist.
 
 ### HTTP Request
@@ -351,7 +352,7 @@ curl "https://api.gomorpheus.com/api/apps/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page.
 
-This endpoint retrieves a specific wiki page for a particular app.
+This endpoint retrieves the wiki page for an app.
 If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
 
 ### HTTP Request
@@ -377,7 +378,7 @@ curl -XPUT "https://api.gomorpheus.com/apps/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page: 
 
-This endpoint updates a wiki page for a particular app. 
+This endpoint updates the wiki page for an app. 
 The page will be created if it does not yet exist.
 
 ### HTTP Request
@@ -408,7 +409,7 @@ curl "https://api.gomorpheus.com/api/servers/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page.
 
-This endpoint retrieves a specific wiki page for a particular server.
+This endpoint retrieves the wiki page for a server.
 If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
 
 ### HTTP Request
@@ -434,7 +435,7 @@ curl -XPUT "https://api.gomorpheus.com/servers/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page: 
 
-This endpoint updates a wiki page for a particular server. 
+This endpoint updates the wiki page for a server. 
 The page will be created if it does not yet exist.
 
 ### HTTP Request
@@ -451,7 +452,7 @@ ID | The ID of the Server
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | (app name) | A unique name scoped to your account for the wiki page.
+name      | (server name) | A unique name scoped to your account for the wiki page.
 content | null | The content of the page (markdown).
 
 
@@ -465,7 +466,7 @@ curl "https://api.gomorpheus.com/api/zones/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page.
 
-This endpoint retrieves a specific wiki page for a particular cloud.
+This endpoint retrieves the wiki page for a cloud.
 If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
 
 ### HTTP Request
@@ -491,7 +492,7 @@ curl -XPUT "https://api.gomorpheus.com/zones/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page: 
 
-This endpoint updates a wiki page for a particular cloud. 
+This endpoint updates wiki page for a cloud. 
 The page will be created if it does not yet exist.
 
 ### HTTP Request
@@ -521,7 +522,7 @@ curl "https://api.gomorpheus.com/api/groups/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page.
 
-This endpoint retrieves a specific wiki page for a particular group.
+This endpoint retrieves the wiki page for a group.
 If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
 
 ### HTTP Request
@@ -547,7 +548,7 @@ curl -XPUT "https://api.gomorpheus.com/groups/1/wiki" \
 
 > The above command returns JSON structured like getting a single wiki page: 
 
-This endpoint updates a wiki page for a particular group. 
+This endpoint updates the wiki page for a group. 
 The page will be created if it does not yet exist.
 
 ### HTTP Request
