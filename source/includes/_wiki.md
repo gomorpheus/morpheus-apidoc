@@ -509,7 +509,7 @@ ID | The ID of the Cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | (app name) | A unique name scoped to your account for the wiki page.
+name      | (cloud name) | A unique name scoped to your account for the wiki page.
 content | null | The content of the page (markdown).
 
 
@@ -565,5 +565,5 @@ ID | The ID of the Group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | (app name) | A unique name scoped to your account for the wiki page.
+name      | (group name) | A unique name scoped to your account for the wiki page.
 content | null | The content of the page (markdown).
