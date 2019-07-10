@@ -197,6 +197,42 @@ visibility |  | private or public
 sortOrder |  | Sort order
 active |  | Set to false to deactvate the environment
 
+Only user created environments may be updated.
+
+## Toggle an Environment
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/environments/5/toggle-active" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "environment": {
+    "description": "The Dev B environment",
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single environment:
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/environments/:id/toggle-active`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the environment
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+active      | (toggle) | Pass true or false explicately. Default is to toggle the current value.
+
+Setting active to false will remove it from the list of available environments, making it unavailable during provisioning.
+This endpoint allows global environments to be updated by the master account.
+
 ## Delete an Environment
 
 ```shell
@@ -222,4 +258,4 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the environment
 
-Only user generated environments may be deleted. The default global environments cannot be deleted.
+Only user created environments may be deleted.
