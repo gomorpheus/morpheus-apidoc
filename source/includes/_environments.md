@@ -222,7 +222,7 @@ ID | The ID of the environment
 
 Parameter | Default | Description
 --------- | ------- | -----------
-active      | (toggle) | Pass true or false explicately. Default is to toggle the current value.
+active      | (toggle) | Pass true or false explicitly. Default is to toggle the current value.
 
 Setting active to false will remove it from the list of available environments, making it unavailable during provisioning.
 This endpoint allows global environments to be updated by the master account.
