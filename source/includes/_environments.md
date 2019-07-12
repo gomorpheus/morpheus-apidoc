@@ -204,12 +204,7 @@ Only user created environments may be updated.
 ```shell
 curl -XPUT "https://api.gomorpheus.com/api/environments/5/toggle-active" \
   -H "Authorization: BEARER access_token" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "environment": {
-    "description": "The Dev B environment",
-  }
-}'
+  -H "Content-Type: application/json"
 ```
 
 > The above command returns JSON structured like getting a single environment:
@@ -224,7 +219,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the environment
 
-### JSON Parameters
+### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
