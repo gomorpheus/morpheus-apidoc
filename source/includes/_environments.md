@@ -230,7 +230,7 @@ This endpoint allows global environments to be updated by the master account.
 ## Delete an Environment
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/environments/1" \
+curl -XDELETE "https://api.gomorpheus.com/api/environments/5" \
   -H "Authorization: BEARER access_token"
 ```
 
