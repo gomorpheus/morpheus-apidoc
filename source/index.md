@@ -14,8 +14,11 @@ includes:
   - option_types
   - deploys
   - checks
-  - monitor_incidents
   - check_types
+  - monitor_groups
+  - monitor_apps
+  - monitor_incidents
+  - contacts
   - groups
   - zones
   - zonetypes

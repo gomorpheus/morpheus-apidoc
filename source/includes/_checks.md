@@ -1,6 +1,6 @@
-# Monitor Checks
+# Checks
 
- These entities define what and when a check is executed within the Morpheus system. Morpheus supports a vast array of different check types (not solely web checks). The API provides a means to list all of an account's checks in addition to create, modify, mute, and or delete them.
+ These entities define what and when a monitoring check is executed within the Morpheus system. Morpheus supports a vast array of different check types (not solely web checks). The API provides a means to list all of an account's checks in addition to create, modify, mute, and or delete them.
 
 ## Get All Checks
 
@@ -234,7 +234,7 @@ config | null | JSON encoded list of parameters that varies by check type. See b
 
 ## Check Types and Options
 
-We support a wide variety of check types. Each check type varies in its configuration payload when determining how the check should be run.
+Morpheus supports a wide variety of check types. Each check type varies in its configuration payload when determining how the check should be run.
 
 
 > Creates a Web type Check
@@ -412,7 +412,7 @@ A Push check is a check that is updated by a web hook. An external source is res
 
 ## SSH Tunneling
 
-SSH tunneling options allow the different check types to tunnel to a host via a proxy, and execute checks relative to the proxy. A SSH tunnel can use your account generated public and private key-pairs or SSH password (we **strongly** recommend using a key-pair).
+SSH tunneling options allow the different check types to tunnel to a host via a proxy, and execute checks relative to the proxy. A SSH tunnel can use your account generated public and private key-pairs or SSH password. It is  **strongly recommended** to use a key-pair.
 
 To enable SSH tunneling for a check, add the following parameters to any check type config as seen earlier in the Check Types section.
 
