@@ -1937,3 +1937,201 @@ Parameter | Description
 clusterId | The ID of the cluster
 id | The ID of the stateful set to restart
 
+
+## Get Cluster History
+
+```shell
+curl "https://api.gomorpheus.com/api/clusters/:clusterId/history" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "processes": [
+    {
+      "id": 250,
+      "accountId": 1,
+      "uniqueId": "cebc47ec-cb2f-417a-886e-dd60cf81db26",
+      "processType": {
+        "code": "provision",
+        "name": "provision"
+      },
+      "description": null,
+      "subType": null,
+      "subId": null,
+      "zoneId": 34,
+      "integrationId": null,
+      "instanceId": 238,
+      "containerId": 240,
+      "serverId": 601,
+      "containerName": "apachetest",
+      "displayName": "apachetest",
+      "timerCategory": "vmware",
+      "timerSubCategory": "28",
+      "status": "failed",
+      "reason": null,
+      "percent": 100.0,
+      "statusEta": 348246,
+      "message": null,
+      "output": null,
+      "error": null,
+      "startDate": "2018-09-28T19:10:56+0000",
+      "endDate": "2018-09-28T20:21:49+0000",
+      "duration": 4253127,
+      "dateCreated": "2018-09-28T19:10:56+0000",
+      "lastUpdated": "2018-09-28T20:21:49+0000",
+      "createdBy": {
+        "username": "admin",
+        "displayName": "Admin"
+      },
+      "updatedBy": {
+        "username": "admin",
+        "displayName": "Admin"
+      },
+      "events": [
+
+      ]
+    }
+  ],
+  "meta": {
+    "size": 1,
+    "total": 1,
+    "offset": 0,
+    "max": 25
+  }
+}
+```
+
+This endpoint retrieves the process history for a specific cluster. 
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/history`
+
+## Get Cluster History Details
+
+```shell
+curl "https://api.gomorpheus.com/api/clusters/:clusterId/history/:processId" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "process": {
+    "id": 7,
+    "accountId": 1,
+    "uniqueId": "17bac5a4-b417-4004-ad5a-d05d16c42757",
+    "processType": {
+      "code": "serverProvision",
+      "name": "server provision"
+    },
+    "description": null,
+    "subType": null,
+    "subId": null,
+    "zoneId": null,
+    "integrationId": null,
+    "instanceId": null,
+    "containerId": null,
+    "serverId": 12,
+    "containerName": null,
+    "displayName": "kube1-master",
+    "timerCategory": "amazonKubeMaster.provision",
+    "timerSubCategory": null,
+    "status": "complete",
+    "reason": null,
+    "percent": 100.0,
+    "statusEta": 23108,
+    "message": null,
+    "output": null,
+    "error": null,
+    "startDate": "2019-07-29T23:40:56+0000",
+    "endDate": "2019-07-29T23:41:19+0000",
+    "duration": 22785,
+    "dateCreated": "2019-07-29T23:40:56+0000",
+    "lastUpdated": "2019-07-29T23:41:19+0000",
+    "createdBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    },
+    "updatedBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    },
+    "events": [
+
+    ]
+  }
+}
+```
+
+This endpoint retrieves the history for a specific cluster process. 
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/clusters/:clusterId/history/:processId`
+
+## Get Cluster History Event 
+
+```shell
+curl "https://api.gomorpheus.com/api/clusters/:clusterId/history/events/:eventId" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "processEvent": {
+    "id": 6,
+    "processId": 125,
+    "accountId": 1,
+    "uniqueId": "f1ec503c-365a-4002-8fc5-2c0f3e9121d1",
+    "processType": {
+      "code": "provisionImage",
+      "name": "prepare image"
+    },
+    "description": null,
+    "refType": "computeServer",
+    "refId": 129,
+    "subType": null,
+    "subId": null,
+    "zoneId": null,
+    "integrationId": null,
+    "instanceId": null,
+    "containerId": null,
+    "serverId": 129,
+    "containerName": null,
+    "displayName": "dans-docker-host-2",
+    "status": "failed",
+    "reason": null,
+    "percent": 100.0,
+    "statusEta": 180000,
+    "message": "failed to provision server",
+    "output": null,
+    "error": null,
+    "startDate": "2019-09-25T17:49:23+0000",
+    "endDate": "2019-09-25T17:49:43+0000",
+    "duration": 20199,
+    "dateCreated": "2019-09-25T17:49:23+0000",
+    "lastUpdated": "2019-09-25T17:50:56+0000",
+    "createdBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    },
+    "updatedBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    }
+  }
+}
+```
+
+This endpoint retrieves the process event for a specific cluster process event. 
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/clusters/:clusterId/history/events/:eventId`
