@@ -15,6 +15,7 @@ includes:
   - deploys
   - checks
   - check_types
+  - clusters
   - monitor_groups
   - monitor_apps
   - monitor_incidents
