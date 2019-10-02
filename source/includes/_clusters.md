@@ -1,6 +1,6 @@
 # Clusters
 
-Clusters is for creating and managing Kubernetes Clusters, Morpheus manager Docker Clusters, KVM Clusters, or Cloud specific Kubernetes services such as EKS. The `Triforce` Cluster is a combination Kubernetes, KVM and Functions* Cluster, with all nodes supporting all three provision types. 
+Clusters is for creating and managing Kubernetes Clusters, Morpheus managed Docker Clusters, KVM Clusters, or Cloud specific Kubernetes services such as EKS. The `Triforce` Cluster is a combination Kubernetes, KVM and Functions* Cluster, with all nodes supporting all three provision types. 
 
 ## Get All Clusters
 
@@ -1199,7 +1199,7 @@ phrase | null | Name or internalId filter, restricts query to only load volumes 
 ## Delete a Volume
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id" \
+curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/volumes/:id" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -1211,18 +1211,18 @@ curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id
 }
 ```
 
-Will delete a namespace of the from the specified cluster
+Will delete a volume from the specified cluster
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id`
+`DELETE https://api.gomorpheus.com/api/clusters/:clusterId/volumes/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 clusterId | The ID of the cluster
-id | The ID of the namespace to delete
+id | The ID of the volume to delete
 
 ### Query Parameters
 
@@ -1507,7 +1507,7 @@ This endpoint retrieves pods of a specified cluster.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/clusters/:id/deployments`
+`GET https://api.gomorpheus.com/api/clusters/:id/pods`
 
 ### URL Parameters
 
@@ -2008,7 +2008,7 @@ This endpoint retrieves the process history for a specific cluster.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances/:id/history`
+`GET https://api.gomorpheus.com/api/clusters/:id/history`
 
 ## Get Cluster History Details
 
