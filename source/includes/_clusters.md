@@ -884,7 +884,7 @@ active | N | false | Namespace active
 permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
 
 
-## Delete a Namespace
+## Delete a Namespace (Kubernetes)
 
 ```shell
 curl -XDELETE "https://api.gomorpheus.com/api/clusters/1/namespaces/1" \
