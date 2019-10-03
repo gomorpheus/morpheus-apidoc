@@ -687,7 +687,8 @@ curl "https://api.gomorpheus.com/api/clusters/:cluster_id/namespaces"
       "description": "Some details about namespace",
       "regionCode": null,
       "externalId": null,
-      "status": "available"
+      "status": "available",
+      "active": true
     }
   ],
   "meta": {
@@ -725,8 +726,9 @@ curl "https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id"
     "id": 13,
     "visibility": "public",
     "name": "My Namespace",
-    "status": "available",
     "description": "new description",
+    "status": "available",
+    "active": true,
     "permissions": {
       "resourcePermissions": {
         "allGroups": true,
