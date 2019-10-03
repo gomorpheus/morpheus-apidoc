@@ -845,7 +845,7 @@ plans | N | n/a | Array of service plans that are allowed access
 ## Update Namespace (Kubernetes)
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/1/namespaces" \
+curl -XPUT "https://api.gomorpheus.com/api/clusters/1/namespaces/1" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"namespace": {
@@ -866,13 +866,14 @@ curl -XPUT "https://api.gomorpheus.com/api/clusters/1/namespaces" \
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/clusters/:id/namespaces`
+`PUT https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | The ID of the cluster
+clusterId | The ID of the cluster
+id | The ID of the namespace
 
 ### JSON Cluster Parameters
 
@@ -886,7 +887,7 @@ permissions | N | null | Key for resource permission configuration, see [Permiss
 ## Delete a Namespace
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id" \
+curl -XDELETE "https://api.gomorpheus.com/api/clusters/1/namespaces/1" \
   -H "Authorization: BEARER access_token"
 ```
 
