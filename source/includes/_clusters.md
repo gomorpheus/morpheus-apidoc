@@ -974,7 +974,13 @@ curl -XPOST "https://api.gomorpheus.com/api/clusters/:id/servers" \
     }}'
 ```
 
-> The above command returns a similar JSON structure when submitting a GET request for workers 
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
 
 ### HTTP Request
 
