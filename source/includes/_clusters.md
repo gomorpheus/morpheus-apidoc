@@ -337,7 +337,7 @@ This endpoint retrieves a specific cluster.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cluster/:id`
+`GET https://api.gomorpheus.com/api/clusters/:id`
 
 ### URL Parameters
 
@@ -354,7 +354,7 @@ curl -XPOST "https://api.gomorpheus.com/api/clusters" \
   -d '{"cluster": {
         "type": "docker-cluster",
         "name": "stubby toes docker cluster",
-        "description": null,
+        "description": "cluster description",
         "group": {"id": 2},
         "cloud": {"id": 3},
         "layout": "docker-amazon-ubuntu-16.04-single",
@@ -430,16 +430,16 @@ The Provision Types api can be used to see which options are available.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-config | Y | null | Key for specific instance type configuration, see [Config](#config)
-name | Y | n/a | Name to be used for instance(s) created in the cluster
+config | Y | null | Key for specific host type configuration, see [Config](#config)
+name | Y | n/a | Name to be used for host(s) created in the cluster
 plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
 plan.options | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
 volumes | N | null | Key for volume configuration, see [Volumes](#volumes)  
 networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
-securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
-visibility | N | private | Visibility for server instance
-userGroup.id | N | null | User Group ID for server instance
-hostname | N | null | Hostname for server instance
+securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the host to
+visibility | N | private | Visibility for server host
+userGroup.id | N | null | User Group ID for server host
+hostname | N | null | Hostname for server host
 
 #### Volumes
 
