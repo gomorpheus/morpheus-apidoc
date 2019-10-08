@@ -620,47 +620,21 @@ curl "https://api.gomorpheus.com/api/clusters/1/api-config" \
 }
 ```
 
+This endpoint retrieves the API configuration for a specified cluster. The configuration is cluster type specific, see [API Config Mappings](#api-config-mappings)
+
+### API Config Mappings
+
+See below for cluster type specific mappings
+
+#### Kubernetes
+Config | Purpose
+------ | -------
+serviceToken | API Token
+serviceAccess | Kube Config
+
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/clusters/:id/api-config`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-id | The ID of the cluster
-
-
-## Get API Token 
-
-```shell
-curl "https://api.gomorpheus.com/api/clusters/1/api-token" \
-  -H "Authorization: BEARER access_token" \
-  -H "Content-Type: application/json" 
-```
-
-> The above comand returns JSON structure like this:
-
-```json
-{
-  "serviceUrl": null,
-  "serviceHost": null,
-  "servicePath": null,
-  "serviceHostname": null,
-  "servicePort": 22,
-  "serviceUsername": null,
-  "servicePassword": null,
-  "serviceToken": null,
-  "serviceAccess": null,
-  "serviceCert": null,
-  "serviceConfig": null,
-  "serviceVersion": null
-}
-```
-
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/clusters/:id/api-token`
 
 ### URL Parameters
 
@@ -1346,7 +1320,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load containers which contain the phrase specified
 resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
@@ -1410,7 +1384,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load deployments which contain the phrase specified
 resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
@@ -1473,7 +1447,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load jobs which contain the phrase specified
 
 
 ## Get Pods
@@ -1536,7 +1510,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load pods which contain the phrase specified
 resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
@@ -1595,7 +1569,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load services which contain the phrase specified
 
 
 ## Get Stateful Sets
@@ -1658,7 +1632,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase | null | Name or internalId filter, restricts query to only load stateful sets which contain the phrase specified
 resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
