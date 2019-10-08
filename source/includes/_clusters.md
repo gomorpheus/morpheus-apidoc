@@ -1779,7 +1779,7 @@ force | off | Force Delete
 ## Delete a Stateful Set
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/statefulset/:id" \
+curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/statefulsets/:id" \
   -H "Authorization: BEARER access_token"
 ```
 
@@ -1795,7 +1795,7 @@ Will delete a stateful set from the specified cluster
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/clusters/:clusterId/statefulset/:id`
+`DELETE https://api.gomorpheus.com/api/clusters/:clusterId/statefulsets/:id`
 
 ### URL Parameters
 
