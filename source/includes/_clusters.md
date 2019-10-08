@@ -419,20 +419,20 @@ type  | Y | n/a | Type of cluster to be created
 name | Y | n/a | Name of the cluster to be created
 description | N | null | Description of the cluster to be created
 group.id | Y | n/a | The Group ID to provision the cluster into
-cloud.id | Y | n/a | The Cloud ID to provision the instance into 
-layout.id | Y | n/a | The Layout ID for the instance type(s) that will be provisioned for the cluster 
+cloud.id | Y | n/a | The Cloud ID to provision the host into 
+layout.id | Y | n/a | The Layout ID for the host type(s) that will be provisioned for the cluster 
 server | Y | n/a | Key for server configuration, see [Server](#server)
         
 #### Server
 
-The `server` parameter is for server instance configuration that are specific to each Provision Type.
+The `server` parameter is for server host configuration that are specific to each Provision Type.
 The Provision Types api can be used to see which options are available.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 config | Y | null | Key for specific host type configuration, see [Config](#config)
 name | Y | n/a | Name to be used for host(s) created in the cluster
-plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
+plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. 
 plan.options | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
 volumes | N | null | Key for volume configuration, see [Volumes](#volumes)  
 networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
@@ -576,7 +576,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/clusters/1" \
 }
 ```
 
-Will delete a cluster and associated resources, instances, volumes asynchronously 
+Will delete a cluster and associated resources, hosts, volumes asynchronously 
 
 ### HTTP Request
 
@@ -587,7 +587,7 @@ Will delete a cluster and associated resources, instances, volumes asynchronousl
 Parameter | Default | Description
 --------- | ------- | -----------
 removeResources | on | Remove Infrastructure.
-removeInstances | off | Remove Associated Instances
+removeInstances | off | Remove Associated Hosts
 preserveVolumes | off | Preserve Volumes
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
@@ -1347,7 +1347,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
 phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
-resourceLevel | null | Resource level filter
+resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
 ## Get Deployments
@@ -1364,13 +1364,15 @@ curl "https://api.gomorpheus.com/api/clusters/:id/deployments"
   "deployments": [
     {
       "id": 4,
-      "code": "test_pod_code",
-      "lastUpdated": "2019-10-01T02:09:53+0000",
-      "managed": false,
-      "resourceType": "deployment",
-      "category": "kubernetes.deployment.cluster.3",
-      "status": "starting",
       "name": "test deployment display name",
+      "code": "test_deployment_code",
+      "description": null,
+      "category": "kubernetes.deployment.cluster.3",
+      "resourceLevel": "app",
+      "resourceType": "deployment",
+      "managed": false,
+      "status": "starting",
+      "lastUpdated": "2019-10-01T02:09:53+0000",
       "owner": {
         "id": 1
       },
@@ -1409,7 +1411,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
 phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
-resourceLevel | null | Resource level filter
+resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
 ## Get Jobs
@@ -1487,14 +1489,16 @@ curl "https://api.gomorpheus.com/api/clusters/:id/pods"
 {
   "pods": [
     {
-      "id": 2,
-      "code": "test_pod_code",
-      "lastUpdated": "2019-10-01T02:23:19+0000",
-      "managed": false,
-      "resourceType": "pod",
-      "category": "kubernetes.pod.cluster.3",
-      "status": "starting",
+      "id": 30,
       "name": "test pod display name",
+      "code": "test_pod_code",
+      "description": null,
+      "category": "kubernetes.pod.cluster.3",
+      "resourceLevel": null,
+      "resourceType": "pod",
+      "managed": false,
+      "status": "unknown",
+      "lastUpdated": "2019-10-01T00:29:07+0000",
       "owner": {
         "id": 1
       },
@@ -1533,7 +1537,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
 phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
-resourceLevel | null | Resource level filter
+resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
 ## Get Services
@@ -1605,23 +1609,25 @@ curl "https://api.gomorpheus.com/api/clusters/:id/statefulsets"
 
 ```json
 {
-  "statefulsets": [
+  "statefulsets": [    
     {
       "id": 3,
-      "code": "test_pod_code",
-      "lastUpdated": "2019-10-01T02:10:32+0000",
-      "managed": false,
-      "resourceType": "statefulset",
-      "category": "kubernetes.statefulset.cluster.3",
-      "status": "starting",
       "name": "test statefulset display name",
+      "code": "test_code",
+      "description": null,
+      "category": "kubernetes.statefulset.cluster.3",
+      "resourceLevel": null,
+      "resourceType": "statefulset",
+      "managed": false,
+      "status": "starting",
+      "lastUpdated": "2019-10-01T02:10:32+0000",
       "owner": {
         "id": 1
       },
       "totalCpuUsage": 0,
       "stats": {
       }
-    }
+    }  
   ],
   "meta": {
     "size": 1,
@@ -1653,7 +1659,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
 phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
-resourceLevel | null | Resource level filter
+resourceLevel | null | Resource level filter: app, system, storage, logging
 
 
 ## Delete Container
