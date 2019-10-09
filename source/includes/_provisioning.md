@@ -150,6 +150,11 @@ Parameter | Required | Default | Description
 provisionServerId | N | null | Specific host to deploy to if so desired
 resourcePoolId | Y | null | External ID of the resource group to use for instance
 
+##### JSON Config Parameters for Kubernetes
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+resourcePoolId | Y | null | ID of the resource group (kubernetes cluster) to use for instance
+
 #### Metadata
 This is specific to AWS Metadata tags.  Name-Values pairs can be anything you like and are added to the instance JSON as an array of n-v pairs per the example to the right:
 
