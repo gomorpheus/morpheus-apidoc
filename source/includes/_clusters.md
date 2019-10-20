@@ -345,6 +345,7 @@ Parameter | Description
 --------- | -----------
 ID | ID of the cluster
 
+
 ## Create a Cluster
 
 ```shell
@@ -2124,3 +2125,202 @@ This endpoint retrieves the process event for a specific cluster process event.
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/clusters/:clusterId/history/events/:eventId`
+
+
+## Get Datastores
+
+```shell
+curl "https://api.gomorpheus.com/api/clusters/:id/datastores"
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "datastores": [
+    {
+      "id": 4,
+      "name": "vsanDatastore",
+      "code": null,
+      "type": "vsan",
+      "visibility": "privates",
+      "storageSize": 3000483446784,
+      "freeSpace": 1634729396798,
+      "drsEnabled": false,
+      "active": true,
+      "allowWrite": true,
+      "defaultStore": false,
+      "online": true,
+      "allowRead": true,
+      "allowProvision": true,
+      "refType": "ComputeServerGroup",
+      "refId": 3,
+      "externalId": "datastore-58601",
+      "zone": {
+        "id": 4
+      },
+      "zonePool": {
+        "id": 9
+      },
+      "owner": {
+        "id": 1
+      },
+      "tenants": [
+        {
+          "id": 1,
+          "name": "Stubby Toes Inc."
+        }
+      ],
+      "datastores": [
+
+      ]
+    }
+  ],
+  "meta": {
+    "size": 1,
+    "total": 1,
+    "max": 25,
+    "offset": 0
+  }
+}
+```
+
+This endpoint retrieves datastores of a specified cluster.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/clusters/:id/datastores`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the cluster
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+order | asc | Sort direction, use 'desc' to reverse sort
+phrase | null | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
+name | null | Name filter, restricts query to only load datastore of specified name
+code | null | Code filter, restricts query to only load datastore of specified code
+hideInactive | null | If true restricts query to only load active datastores
+
+
+## Get Datastore
+
+```shell
+curl "https://api.gomorpheus.com/api/clusters/1/datastores/1" \
+  -H "Authorization: BEARER access_token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "datastore": {
+    "id": 4,
+    "name": "vsanDatastore",
+    "code": null,
+    "type": "vsan",
+    "visibility": "privates",
+    "storageSize": 3000483446784,
+    "freeSpace": 1634729396798,
+    "drsEnabled": false,
+    "active": true,
+    "allowWrite": true,
+    "defaultStore": false,
+    "online": true,
+    "allowRead": true,
+    "allowProvision": true,
+    "refType": "ComputeServerGroup",
+    "refId": 3,
+    "externalId": "datastore-58601",
+    "zone": {
+      "id": 4
+    },
+    "zonePool": {
+      "id": 9
+    },
+    "owner": {
+      "id": 1
+    },
+    "tenants": [
+      {
+        "id": 1,
+        "name": "Stubby Toes Inc."
+      }
+    ],
+    "datastores": [
+
+    ]
+  }
+}
+```
+
+This endpoint retrieves a specific cluster datastore.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/clusters/:clusterId/datastores/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Cluster ID | ID of the cluster
+ID | ID of datastore
+
+
+## Update Datastore
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/clusters/1/datastores/1" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"datastore": {
+        "active": true,
+        "permissions": {
+          "resourcePermissions": {
+            "all": true,
+            "sites": [
+              {
+                "id": 2
+              }
+            ]
+          },
+          "tenantPermissions": {
+            "accounts": [
+              1
+            ]
+          }
+        },
+        "visibility": "private" 
+      }}'
+```         
+
+> The above command returns same JSON structure  [Get Datastore](#get-datastore)
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/clusters/:clusterId/datastores/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+clusterId | The ID of the cluster
+id | The ID of the datastore
+
+### JSON Cluster Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+visibility | N | private | Visibility for server host
+active | N | true | Datastore active
+permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
