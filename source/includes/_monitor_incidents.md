@@ -304,3 +304,41 @@ This endpoint can be used to toggle the mute state (`inUptime`) of an incident o
 `PUT https://api.gomorpheus.com/api/monitoring/incidents/:id/reopen`
 
 
+## Create an Incident
+
+```shell
+curl -XPOST "https://api.gomorpheus.com/api/monitoring/incidents" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"incident":{
+        "comment": "This is a summary of the incident",
+        "resolution": null,
+        "status": "open",
+        "severity": "warning",
+        "name": "Incident Name",
+        "startDate": "2019-10-20T19:42:00Z",
+        "endDate": "2019-10-21T19:42:00Z",
+        "inUptime": true
+  }}'
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a single incident 
+
+This endpoint can be used to create an incident.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/monitoring/incidents`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+resolution | null | Description of the resolution to this incident
+comment | null | Comment on this incident, updates summary field
+status | null | Set status (open or closed)
+severity | null | Set severity (critical, warning or info)
+name | null | Set display name(subject)
+startDate | null | Set start time
+endDate | null | Set end time
+inUptime | null | Set 'In Availability'
