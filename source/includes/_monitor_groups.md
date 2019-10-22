@@ -39,6 +39,7 @@ curl "https://api.gomorpheus.com/api/monitoring/groups"
     "lastMetric": null,
     "severity": "critical",
     "createIncident": true,
+    "muted": false,
     "createdBy": {
       "id": 1,
       "username": "james"
@@ -77,6 +78,7 @@ curl "https://api.gomorpheus.com/api/monitoring/groups"
         "id": 271
       },
       "createIncident": true,
+      "muted": false,
       "createdBy": {
         "id": 1,
         "username": "james"
@@ -122,7 +124,7 @@ Parameter | Default | Description
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 lastUpdated | null | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
-deleted | undefined | Used to specify you can load previously deleted checks. Useful for synchronizing deleted records in your client side store.
+deleted | false | Pass true to see checks that have been deleted.
 
 
 <aside class="success">
@@ -166,6 +168,7 @@ curl "https://api.gomorpheus.com/api/monitoring/groups/1" \
     "lastMetric": null,
     "severity": "critical",
     "createIncident": true,
+    "muted": false,
     "createdBy": {
       "id": 1,
       "username": "james"
@@ -204,6 +207,7 @@ curl "https://api.gomorpheus.com/api/monitoring/groups/1" \
         "id": 271
       },
       "createIncident": true,
+      "muted": false,
       "createdBy": {
         "id": 1,
         "username": "james"
@@ -313,19 +317,18 @@ checks |  | Array of [Check](#checks) IDs
 curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/1/mute" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"enabled":true}'
+  -d '{"muted":true}'
 ```
 
 > The above command returns JSON structure like this:
 
 ```json
 {
-  "muteState": "QUARANTINED",
   "success": true
 }
 ```
 
-This endpoint can be used to toggle the mute state of a check on and off.
+This endpoint can be used to toggle the mute state of a check group on and off.  This sets `createIncident` to the opposite of `muted`.
 
 ### HTTP Request
 
@@ -335,8 +338,27 @@ This endpoint can be used to toggle the mute state of a check on and off.
 
 Parameter | Default | Description
 --------- | ----------- | -----------
-enabled | true | Set to false to unmute
+muted | true | Set to false to unmute
 
+## Unmute a Check Group
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/1/mute" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ## Mute All Check Groups
 
@@ -344,20 +366,18 @@ enabled | true | Set to false to unmute
 curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/mute-all" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"enabled":true}'
+  -d '{"muted":true}'
 ```
 
 > The above command returns JSON structure like this:
 
 ```json
 {
-  "muteState": "QUARANTINED",
-  "updated": 20,
-  "success": true
+  "success": true,
+  "muted": true,
+  "updated": 5
 }
 ```
-
-This endpoint can be used to toggle the mute state on and off for all checks.
 
 ### HTTP Request
 
@@ -367,7 +387,28 @@ This endpoint can be used to toggle the mute state on and off for all checks.
 
 Parameter | Default | Description
 --------- | ----------- | -----------
-enabled | true | Set to false to unmute
+muted | true | Set to false to unmute
+
+## Unmute All Check Groups
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false,
+  "updated": 5
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ## Delete a Check Group
 

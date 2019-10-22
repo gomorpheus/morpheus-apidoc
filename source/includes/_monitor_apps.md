@@ -44,6 +44,7 @@ curl "https://api.gomorpheus.com/api/monitoring/apps"
       "history": null,
       "severity": "critical",
       "createIncident": true,
+
       "createdBy": {
         "id": 1,
         "username": "james"
@@ -287,6 +288,110 @@ active    | true | Used to determine if monitor app is active
 inUptime |  | Affects Availability. Default is on.
 checks |  | Array of [Check](#checks) IDs
 checkGroups |  | Array of [Check Group](#check-groups) IDs
+
+## Mute a Monitor App
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":true}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": true
+}
+```
+
+This endpoint can be used to toggle the mute state of a monitor app. This sets `createIncident` to the opposite of `muted`.
+
+
+## Unmute a Monitor App
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/monitoring/checks/:id/mute`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
+
+
+## Mute All Monitor Apps
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false,
+  "updated": 3
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/monitoring/apps/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
+
+This endpoint can be used to toggle the mute state of all monitor apps. This sets `createIncident` to the opposite of `muted`.
+
+## Unmute All Monitor App
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false,
+  "updated": 3
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ## Delete a Monitor App
 
