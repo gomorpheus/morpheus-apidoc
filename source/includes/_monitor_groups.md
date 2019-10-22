@@ -254,7 +254,7 @@ ID | ID of the check to retrieve
 curl -XPOST "https://api.gomorpheus.com/api/monitoring/groups" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"check":{
+  -d '{"checkGroup":{
     "name": "My Check Group",
     "description": "A collection of checks",
     "checks": [5,6,7]
