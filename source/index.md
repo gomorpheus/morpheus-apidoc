@@ -19,6 +19,7 @@ includes:
   - monitor_groups
   - monitor_apps
   - monitor_incidents
+  - monitor_alerts
   - contacts
   - groups
   - zones

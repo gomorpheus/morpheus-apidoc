@@ -1,6 +1,6 @@
 # Contacts
 
-These entities define contacts to be notified of incidents.
+These entities are notification settings such as name, email and phone number. Contacts are used by [alerts](#alerts) to send notifications.
 
 ## Get All Contacts
 
