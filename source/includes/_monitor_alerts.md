@@ -171,7 +171,7 @@ curl -XPOST "https://api.gomorpheus.com/api/monitoring/alerts" \
 Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Unique name scoped to your account for the alert
-minDuration | 0 | Duration in minutes of the delay before sending a notifcation. Default is immediate (0).
+minDuration | 0 | Duration in minutes of the delay before sending notification(s). Default is immediate (0).
 minSeverity  | critical | Severity level threshold for sending notifications. They can be `info`, `warning`, or `critical`
 active    | true | Set to false to disable notifications.
 allChecks      | false | Trigger for all [checks](#checks).
@@ -233,7 +233,7 @@ Parameter | Description
 Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Unique name scoped to your account for the alert
-minDuration | 0 | Duration in minutes of the delay before sending a notifcation. Default is immediate (0).
+minDuration | 0 | Duration in minutes of the delay before sending notification(s). Default is immediate (0).
 minSeverity  | critical | Severity level threshold for sending notifications. They can be `info`, `warning`, or `critical`
 active    | true | Set to false to disable notifications.
 allChecks      | false | Trigger for all [checks](#checks).
