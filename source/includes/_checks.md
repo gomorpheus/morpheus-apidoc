@@ -72,7 +72,7 @@ Parameter | Default | Description
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 lastUpdated | null | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
-deleted | undefined | Used to specify you can load previously deleted checks. Useful for synchronizing deleted records in your client side store.
+deleted | false | Pass true to see checks that have been deleted.
 
 
 <aside class="success">
@@ -442,19 +442,40 @@ sshPassword | No        | Password for user, if not using key based authenticati
 curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"enabled":true}'
+  -d '{"muted":true}'
 ```
 
 > The above command returns JSON structure like this:
 
 ```json
 {
-  "muteState": "QUARANTINED",
-  "success": true
+  "success": true,
+  "muted": true
 }
 ```
 
-This endpoint can be used to toggle the mute state of a check on and off.
+This endpoint can be used to toggle the mute state of a check.  
+This sets `createIncident` the opposite of `muted`.
+
+## Unmute a Check
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ### HTTP Request
 
@@ -464,7 +485,7 @@ This endpoint can be used to toggle the mute state of a check on and off.
 
 Parameter | Default | Description
 --------- | ----------- | -----------
-enabled | true | Set to false to unmute
+muted | true | Set to false to unmute
 
 
 ## Mute All Checks
@@ -473,20 +494,18 @@ enabled | true | Set to false to unmute
 curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/mute-all" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
-  -d '{"enabled":true}'
+  -d '{"muted":true}'
 ```
 
 > The above command returns JSON structure like this:
 
 ```json
 {
-  "muteState": "QUARANTINED",
-  "updated": 20,
-  "success": true
+  "success": true,
+  "muted": true,
+  "updated": 20
 }
 ```
-
-This endpoint can be used to toggle the mute state on and off for all checks.
 
 ### HTTP Request
 
@@ -496,7 +515,30 @@ This endpoint can be used to toggle the mute state on and off for all checks.
 
 Parameter | Default | Description
 --------- | ----------- | -----------
-enabled | true | Set to false to unmute
+muted | true | Set to false to unmute
+
+This endpoint can be used to toggle the mute state of all checks. This sets `createIncident` to the opposite of `muted`.
+
+## Unmute All Checks
+
+```shell
+curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/mute-all" \
+  -H "Authorization: BEARER access_token" \
+  -H "Content-Type: application/json" \
+  -d '{"muted":false}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true,
+  "muted": false,
+  "updated": 20
+}
+```
+
+The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ## Delete a Check
 
