@@ -34,7 +34,7 @@ curl "https://api.gomorpheus.com/api/monitoring/alerts"
       "apps": [
 
       ],
-       "recipients": [
+       "contacts": [
         {
           "id": 1,
           "name": "admin",
@@ -101,7 +101,7 @@ curl "https://api.gomorpheus.com/api/monitoring/alerts/1" \
     "apps": [
 
     ],
-    "recipients": [
+    "contacts": [
       {
         "id": 1,
         "name": "admin",
@@ -149,7 +149,7 @@ curl -XPOST "https://api.gomorpheus.com/api/monitoring/alerts" \
     "apps": [
 
     ],
-    "recipients": [
+    "contacts": [
       {
         "id": 1,
         "method": "emailAddress,smsAddress",
@@ -180,9 +180,9 @@ allApps      | false | Trigger for all [monitor apps](#monitor-apps).
 checks      |  | Array of [Check](#checks) IDs. Trigger for specific checks.
 groups      |  | Array of [Check Group](#check-groups) IDs. Trigger for specific check groups.
 apps      |  | Array of [Monitor App](#monitor-apps) IDs. Trigger for specific monitor apps.
-recipients      |  | Array of recipient objects. See [Alert Recipient Parameters](#alert-recipient-parameters).
+contacts      |  | Array of objects. See [Alert Contact Parameters](#alert-contact-parameters).
 
-#### Alert Recipient Parameters
+#### Alert Contacts Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -205,7 +205,7 @@ curl -XPUT "https://api.gomorpheus.com/api/monitoring/alerts/1" \
     "minDuration": 0,
     "allChecks": false,
     "checks": [1,2,3,4,5],
-    "recipients": [
+    "contacts": [
       {
         "id": 1,
         "method": "emailAddress",
@@ -242,7 +242,7 @@ allApps      | false | Trigger for all [monitor apps](#monitor-apps).
 checks      |  | Array of [Check](#checks) IDs. Trigger for specific checks.
 groups      |  | Array of [Check Group](#check-groups) IDs. Trigger for specific check groups.
 apps      |  | Array of [Monitor App](#monitor-apps) IDs. Trigger for specific monitor apps.
-recipients      |  | Array of recipient objects. See [Alert Recipient Parameters](#alert-recipient-parameters).
+contacts      |  | Array of objects. See [Alert Contact Parameters](#alert-contact-parameters).
 
 
 ## Delete an Alert
