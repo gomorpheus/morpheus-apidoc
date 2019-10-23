@@ -54,6 +54,7 @@ includes:
   - preseed_scripts
   - setup
   - whoami
+  - appliance_settings
   - user_settings
   - execution_request
   - processes
