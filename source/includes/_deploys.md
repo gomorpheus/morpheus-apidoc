@@ -45,10 +45,6 @@ This endpoint retrieves all deploys that were created for a given instance
 `GET https://api.gomorpheus.com/api/instances/1/deploy`
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Create a new Deployment
 
 ```shell

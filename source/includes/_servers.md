@@ -207,10 +207,6 @@ lastUpdated | null | Date filter, restricts query to only load servers updated  
 createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Get a Specific Server
 
 

@@ -43,10 +43,6 @@ lastUpdated | null | A date filter, restricts query to only load certificates up
 name | null | If specified will return an exact match certificate
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Get a Specific Certificate
 
 

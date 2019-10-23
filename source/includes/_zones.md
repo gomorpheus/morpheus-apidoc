@@ -44,10 +44,6 @@ type | null | If specified will return all zones by type code (`standard`,`opens
 groupId | null | If specified will return all zones assigned to a server group by id.
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Get a Specific Zone
 
 

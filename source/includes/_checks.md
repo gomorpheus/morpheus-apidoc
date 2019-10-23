@@ -75,10 +75,6 @@ lastUpdated | null | Date filter, restricts query to only load checks updated  t
 deleted | false | Pass true to see checks that have been deleted.
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Get a Specific Check
 
 

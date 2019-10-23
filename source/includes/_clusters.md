@@ -151,11 +151,6 @@ name | null | Name filter, restricts query to only load clusters matching the na
 zoneId | null | Zone filter, restricts query to only load clusters of a specified zone
 typeId | null | Type filter, restricts query to only load clusters of a specified cluster type
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-
 ## Get a Specific Cluster
 
 ```shell
