@@ -187,12 +187,12 @@ recipients      |  | Array of recipient objects. See [Alert Recipient Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
 id      |  | Contact ID. The [contact](#contacts) to be notified.
-method      | none | Method(s) to notify by. For emails use "emailAddress". For SMS use "smsAddress". For both Email and SMS use "emailAddress,smsAddress".
+method      | none | Method(s) to notify by.  Email is `emailAddress`, SMS is `smsAddress` and both Email and SMS is `emailAddress,smsAddress`.
 notify      | false | Notify On Change. Send notifications when an incident is created or updated.
 close      | false | Notify On Close. Send notifications when an incident is closed.
 
 This defines a contact to notify and how to notify them.
-Be sure to pass `notify` and/or `close` to *true*, otherwise notifications will not be sent to the contact.
+Be sure to pass `"method":"emailAddress"` and `"notify":true`, otherwise notifications will not be sent to the contact.
 
 ## Updating an Alert
 
@@ -242,6 +242,7 @@ allApps      | false | Trigger for all [monitor apps](#monitor-apps).
 checks      |  | Array of [Check](#checks) IDs. Trigger for specific checks.
 groups      |  | Array of [Check Group](#check-groups) IDs. Trigger for specific check groups.
 apps      |  | Array of [Monitor App](#monitor-apps) IDs. Trigger for specific monitor apps.
+recipients      |  | Array of recipient objects. See [Alert Recipient Parameters](#alert-recipient-parameters).
 
 
 ## Delete an Alert
