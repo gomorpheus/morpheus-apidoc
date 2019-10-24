@@ -1,6 +1,6 @@
 # Alerts
 
- Alerts are rules that define who is notified about monitoring [incidents](#incidents). An alert can be configured for specific [Checks](#checks), [check groups](#check-groups), and/or [monitor apps](#monitor-apps).
+ Alerts are rules that define who is notified about monitoring [incidents](#incidents). An alert can be configured for specific [Checks](#checks), [Check Groups](#check-groups), and/or [Monitor Apps](#monitor-apps). Alert notification recipients are defined as [Contacts](#contacts).
 
 ## Get All Alerts
 
@@ -26,7 +26,7 @@ curl "https://api.gomorpheus.com/api/monitoring/alerts"
       "dateCreated": "2019-10-23T01:08:22+0000",
       "lastUpdated": "2019-10-23T01:08:22+0000",
       "checks": [
-
+        1,2,3
       ],
       "checkGroups": [
 
@@ -54,7 +54,7 @@ curl "https://api.gomorpheus.com/api/monitoring/alerts"
 }
 ```
 
-This endpoint retrieves all alerts and their JSON encoded configuration attributes based on alert type. Alert data is encrypted in the database.
+This endpoint retrieves a paginated list of alerts.
 
 ### HTTP Request
 
