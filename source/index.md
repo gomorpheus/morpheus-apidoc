@@ -55,6 +55,7 @@ includes:
   - setup
   - whoami
   - appliance_settings
+  - whitelabel_settings
   - user_settings
   - execution_request
   - processes
