@@ -140,3 +140,4 @@ currencyKey | Currency provider API key
 enableAllZoneTypes | Set all cloud types enabled status on, overrides enableZoneTypes and disableZoneTypes parameters
 enableZoneTypes | List of cloud type IDs to set enabled status on
 disableZoneTypes | List of cloud type IDs to set enabled status off
+disableAllZoneTypes | Set all cloud types enabled status off, can be used in conjunction with enableZoneTypes
