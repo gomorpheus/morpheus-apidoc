@@ -175,7 +175,7 @@ phrase |  | If specified will return a partial match on name
 ## Get Subnets for a Network
 
 ```shell
-curl "$MORPHEUS_API_URL/api/55/subnets"
+curl "$MORPHEUS_API_URL/api/networks/55/subnets"
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -333,7 +333,7 @@ This endpoint retrieves all Subnets under a specific network.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/:networkId/subnets`
+`GET https://api.gomorpheus.com/api/networks/:networkId/subnets`
 
 
 ### URL Parameters
