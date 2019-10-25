@@ -161,7 +161,7 @@ userId      | (current user) | ID of User *Only available to the master account.
 ## Regenerate API Access Token
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/user-settings/regenerate-access-token?clientId=morph-api" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-settings/regenerate-access-token?clientId=morph-customer" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json"
 ```
@@ -200,7 +200,7 @@ This endpoint regenerates your API access token for the specified client. If a c
 ## Revoke API Access Token
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/user-settings/clear-access-token?clientId=morph-api" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-settings/clear-access-token?clientId=morph-customer" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json"
 ```
@@ -251,7 +251,7 @@ curl "$MORPHEUS_API_URL/api/user-settings/api-clients" \
       "clientId": "morph-cli"
     },
     {
-      "clientId": "morph-api"
+      "clientId": "morph-customer"
     }
   ]
 }
