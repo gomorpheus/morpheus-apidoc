@@ -4,7 +4,7 @@ Provides API interfaces for viewing billing information by account, zone, instan
 
 These endpoints correspond to the section called **Operations: Usage** in the Morpheus UI.
 
-## By Account
+## Billing By Account
 
 ```shell
 curl "$MORPHEUS_API_URL/api/billing/account" \
@@ -69,7 +69,7 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For a Sub Account
+## Billing For a Tenant
 
 Will retrieve billing information for a specific account, if it is the current account or a sub account of the requesting
 user's account.
@@ -137,7 +137,7 @@ endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
 
-## For All Zones
+## Billing For All Zones
 
 ```shell
 curl "$MORPHEUS_API_URL/api/billing/zones" \
@@ -199,7 +199,7 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For a Specific Zone
+## Billing For a Specific Zone
 
 ```shell
 curl "$MORPHEUS_API_URL/api/billing/zones/1" \
