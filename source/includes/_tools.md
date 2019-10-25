@@ -1,4 +1,4 @@
-# Tools
+# TOOLS
 
 The Tools API endpoints provide access to Cypher, Archives, Image Builder and Migrations.
 
