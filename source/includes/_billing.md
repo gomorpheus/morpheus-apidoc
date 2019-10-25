@@ -2,11 +2,13 @@
 
 Provides API interfaces for viewing billing information by account, zone, instance or server.  By default, the information returned is from the beginning of the current month until now.  The date range is parameterized but the end date cannot exceed the current date.
 
+These endpoints correspond to the section called **Operations: Usage** in the Morpheus UI.
+
 ## By Account
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/account"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/account" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +75,8 @@ Will retrieve billing information for a specific account, if it is the current a
 user's account.
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/account/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/account/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -138,8 +140,8 @@ includeUsages | true                       | Optional ability to suppress the us
 ## For All Zones
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/zones"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/zones" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -200,8 +202,8 @@ includeUsages | true                       | Optional ability to suppress the us
 ## For a Specific Zone
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/zones/1"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/zones/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -257,11 +259,11 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For All Servers
+## Billing For All Servers
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/servers"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/servers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -307,11 +309,11 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For a Specific Server
+## Billing For a Specific Server
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/servers/1"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/servers/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -349,11 +351,11 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For All Instances
+## Billing For All Instances
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/instances"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/instances" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -397,11 +399,11 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## For a Specific Instance
+## Billing For a Specific Instance
 
 ```shell
-curl "https://api.gomorpheus.com/api/billing/instances/1"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/billing/instances/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

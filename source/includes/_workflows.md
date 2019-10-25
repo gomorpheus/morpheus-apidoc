@@ -1,12 +1,14 @@
-# Workflows
+## Workflows
 
 Provides API interfaces for managing the creation and modification of automation workflows. Workflows, also called Task Sets, are a collection of tasks that are organized in phases. A task phase determines if/when each task runs.
 
-## Get All Workflows
+A Workflow may also be referred to as a *Task Set* or *taskSet*.
+
+<!--## Get All Workflows-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-sets"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-sets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -74,8 +76,8 @@ name | null | Filter by name
 ## Get a Specific Workflow
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-sets/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-sets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,8 +132,8 @@ ID | The ID of the workflow
 ## Create a Workflow
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/task-sets" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/task-sets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
     "name": "my workflow",
@@ -170,8 +172,8 @@ tasks.taskPhase | provision | Task Phase.
 ## Updating a Workflow
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/task-sets/5" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/task-sets/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"taskSet":{
     "tasks": [
@@ -207,8 +209,8 @@ tasks.taskPhase | provision | Task Phase.
 ## Delete a Workflow
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/task-sets/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/task-sets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

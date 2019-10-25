@@ -1,12 +1,12 @@
-# Security Group Rules
+## Security Group Rules
 
 A Security Group Rule specifies that a certain CIDR is able to access a particular port (or port range) for a particular protocol.  Or, that a particular CIDR is able to access all instances of a particular type (like MySql, Redis, etc).  A Security Group Rule belongs to a Security Group and a Security Group is applied to either a Cloud, App, or Instance.
 
-## Get All Security Group Rules for a Security Group
+<!--## Get All Security Group Rules for a Security Group-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups/19/rules"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups/19/rules"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +73,8 @@ This endpoint retrieves all security group rules for a Security Gorup.
 ## Get a Specific Security Group Rule
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -115,8 +115,8 @@ This endpoint retrieves a specific security group rule.
 ## Create a Security Group Rule
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/security-groups/19/rules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "name": "port 55",
@@ -162,8 +162,8 @@ instanceTypeId | null | The id of an Instance Type.  If specified, the source CI
 ## Updating a Security Group Rule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "portRange": "55-56"
@@ -185,8 +185,8 @@ Same parameters as specified in the creation of a Security Group Rule
 ## Delete a Security Group Rule
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

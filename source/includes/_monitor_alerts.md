@@ -5,8 +5,8 @@
 ## Get All Alerts
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/alerts"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/alerts"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -72,8 +72,8 @@ lastUpdated | null | Date filter, restricts query to only load alerts updated  t
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/alerts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -129,8 +129,8 @@ Parameter | Description
 ## Create an Alert
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/alerts" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/alerts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '"alert": {
     "name": "My Alert",
@@ -196,8 +196,8 @@ Be sure to pass `"method":"emailAddress"` and `"notify":true`, otherwise notific
 ## Updating an Alert
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/alerts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '"alert": {
     "minSeverity": "critical",
@@ -247,8 +247,8 @@ contacts      |  | Array of objects. See [Alert Contact Parameters](#alert-conta
 ## Delete an Alert
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/alerts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

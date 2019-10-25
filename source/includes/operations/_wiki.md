@@ -5,8 +5,8 @@ Morpheus provides a way to create and edit documentation in the form of wiki pag
 ## Get All Wiki Pages
 
 ```shell
-curl "https://api.gomorpheus.com/api/wiki/pages"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/wiki/pages"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ phrase |  | If specified will return a partial match on name
 ## Get All Wiki Categories
 
 ```shell
-curl "https://api.gomorpheus.com/api/wiki/categories"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/wiki/categories"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -153,8 +153,8 @@ pagePhrase |  | If specified will return a partial match on page name
 ## Get a Specific Wiki Page
 
 ```shell
-curl "https://api.gomorpheus.com/api/wiki/pages/2" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/wiki/pages/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -201,8 +201,8 @@ ID | The ID of the Wiki Page
 ## Create a Wiki Page
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/wiki/pages" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/wiki/pages" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "name": "Sample Doc",
@@ -229,8 +229,8 @@ content | null | The content of the page (markdown).
 ## Update a Wiki Page
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/wiki/pages/4" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/wiki/pages/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "#Sample Doc\nAn updated sample document in **markdown**.\nCheers!"
@@ -260,8 +260,8 @@ content | null | The content of the page (markdown).
 ## Delete a Wiki Page
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/wiki/pages/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/wiki/pages/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page
@@ -289,8 +289,8 @@ ID | The ID of the Wiki Page
 ## Get a Wiki Page For Instance
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1/wiki" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -311,8 +311,8 @@ ID | The ID of the Instance
 ## Update a Wiki Page For Instance
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/instances/1/wiki" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/instances/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this instance."
@@ -346,8 +346,8 @@ content | null | The content of the page (markdown).
 ## Get a Wiki Page For App
 
 ```shell
-curl "https://api.gomorpheus.com/api/apps/1/wiki" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/apps/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -368,8 +368,8 @@ ID | The ID of the App
 ## Update a Wiki Page For App
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/apps/1/wiki" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/apps/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this app."
@@ -403,8 +403,8 @@ content | null | The content of the page (markdown).
 ## Get a Wiki Page For Server
 
 ```shell
-curl "https://api.gomorpheus.com/api/servers/1/wiki" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/servers/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -425,8 +425,8 @@ ID | The ID of the Server
 ## Update a Wiki Page For Server
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/servers/1/wiki" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/servers/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this server."
@@ -460,8 +460,8 @@ content | null | The content of the page (markdown).
 ## Get a Wiki Page For Cloud
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/1/wiki" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -482,8 +482,8 @@ ID | The ID of the Cloud
 ## Update a Wiki Page For Cloud
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/zones/1/wiki" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/zones/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this cloud."
@@ -516,8 +516,8 @@ content | null | The content of the page (markdown).
 ## Get a Wiki Page For Group
 
 ```shell
-curl "https://api.gomorpheus.com/api/groups/1/wiki" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/groups/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -538,8 +538,8 @@ ID | The ID of the Group
 ## Update a Wiki Page For Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/groups/1/wiki" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/groups/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this group."

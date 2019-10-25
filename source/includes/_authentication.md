@@ -13,7 +13,9 @@ Most of the `/api` Morpheus API endpoints require authentication.  Some endpoint
 
 This header must be included in all requests that require authentication.
 
-`Authorization: Bearer $MORPHEUS_API_TOKEN`
+Header |  Description
+---------  | -----------
+Authorization      | Use the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`
 
 
 ## Get Access Token
@@ -44,9 +46,9 @@ curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&clien
 
 ### HTTP Headers
 
-Parameter | Default | Description
---------- | ------- | -----------
-Content-Type      |  | application/x-www-form-urlencoded
+Header | Description
+--------- | -----------
+Content-Type     | `application/x-www-form-urlencoded`
 
 ### Query Parameters
 
@@ -82,8 +84,8 @@ This provides a way to renew your client's session with the API, and extend the 
 
 Your `refresh_token` is returned by [Get Access Token](#get-access-token).
 
-<aside class="warning">
-This will render your current access token invalid, so you will need to update any scripts using it.
+<aside class="info">
+This will render your current access token invalid, so you will need to update any scripts relying on it.
 </aside>
 
 ```shell
@@ -109,9 +111,9 @@ curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&clien
 
 ### HTTP Headers
 
-Parameter | Default | Description
+Header | Default | Description
 --------- | ------- | -----------
-Content-Type      |  | application/x-www-form-urlencoded
+Content-Type      |  | Use `application/x-www-form-urlencoded`.
 
 ### Query Parameters
 

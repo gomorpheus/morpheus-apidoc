@@ -1,12 +1,12 @@
-# Resource Folders
+## Resource Folders
 
 Resource Folders can be managed for each Compute Zone (Cloud) in your infrastructure.
 
-## Get All Resource Folders for Cloud
+<!--## Get All Resource Folders for Cloud-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/folders"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/5/folders"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -81,8 +81,8 @@ name | null | Filter on exact match of name
 ## Get a Specific Resource Folder
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/folders/50" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/5/folders/50" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -143,8 +143,8 @@ id | The ID of the resource folder to retrieve
 ## Updating a Resource Folder
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/zones/5/folders/50" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/zones/5/folders/50" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"folder":{
     "active": true,

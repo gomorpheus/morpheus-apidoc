@@ -1,12 +1,12 @@
 # Users
 
-Managing users via the API is always scoped to a specific account. Most of the API's regarding user management require that the account Id of the user also be known
+Managing users via the API is always scoped to a specific tenant. Most of the API's regarding user management require that the tenant Id of the user also be known
 
-## Get All Users for an Account
+## Get All Users for a Tenant
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts/1/users"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts/1/users"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -49,7 +49,7 @@ curl "https://api.gomorpheus.com/api/accounts/1/users"
 }
 ```
 
-This endpoint retrieves all accounts.
+This endpoint retrieves all tenants.
 
 ### HTTP Request
 
@@ -71,8 +71,8 @@ lastUpdated | null | Date filter, restricts query to only load users updated  ti
 ## Get a Specific User
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts/1/users/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts/1/users/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -116,8 +116,8 @@ This endpoint will retrieve a specific user by id if the user has permission to 
 ## Create a User
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/accounts/1/users" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testuser",
@@ -151,8 +151,8 @@ instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxSt
 ## Updating a User
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/accounts/1/users/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/accounts/1/users/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testUser",
@@ -189,8 +189,8 @@ instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxSt
 ## Delete a User
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/accounts/1/users/2" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/accounts/1/users/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

@@ -7,62 +7,90 @@ language_tabs:
 includes:
   - introduction
   - authentication
-  - apps
-  - blueprints
-  - instances
-  - instancetypes
+  - whoami
+  - errors
+
+  - operations
+  - operations/dashboard
+  - operations/activity
+  - operations/processes
+  - billing
+  - operations/budgets
+  - operations/wiki
+
   - provisioning
   - provision_types
+  - instances
+  - instancetypes
+  - apps
+  - blueprints
+  - automation
+  - tasks
+  - task_types
+  - workflows
+  - power_schedules
+  - execute_schedules
+  - virtual_images
+  - library
   - option_types
   - deploys
-  - checks
-  - check_types
-  - clusters
-  - monitor_groups
-  - monitor_apps
-  - monitor_incidents
-  - monitor_alerts
-  - contacts
+  - execution_request
+
+  - infrastructure
   - groups
   - zones
   - zonetypes
   - zone_datastores
   - zone_resource_pools
   - zone_folders
-  - storage_buckets
+  - clusters
   - servers
   - server_types
-  - virtual_images
-  - certificates
+  - storage_buckets
   - keypairs
-  - accounts
-  - account_groups
-  - user_sources
-  - users
-  - roles
-  - policies
-  - power_schedules
-  - execute_schedules
-  - errors
+  - certificates
+  
+  - networks
+  - network_types
+  - network_groups
+  - network_subnets
+  - network_pools
+  - network_domains
+  - network_services
+  - network_proxies
   - security_groups
   - security_group_rules
-  - tasks
-  - task_types
-  - workflows
-  - billing
+
+  - logs
+
+  - monitoring
+  - monitor_apps
+  - checks
+  - check_types
+  - monitor_groups
+  - monitor_incidents
+  - contacts
+  - monitor_alerts
+  
+  - tools
   - cypher
   - archives
   - image_builds
   - boot_scripts
   - preseed_scripts
-  - setup
-  - whoami
-  - appliance_settings
+  
+  - admin
+  - accounts
+  - account_groups
+  - roles
+  - users
   - user_settings
-  - execution_request
-  - processes
+  - user_sources
+  - policies
   - environments
-  - wiki
+  - appliance_settings
+  - setup
+  - license
 
 search: true
 ---

@@ -1,12 +1,14 @@
-# Storage Buckets
+# Storage
+
+## Storage Buckets
 
 Provides API interfaces for managing Storage Buckets (Object Stores and File Shares).
 
-## Get All Storage Buckets
+<!--## Get All Storage Buckets-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/storage/buckets"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/storage/buckets"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +75,8 @@ phrase | null | If specified will return a partial match on name
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/storage/buckets/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/storage/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -120,8 +122,8 @@ ID | The ID of the storage bucket to retrieve
 ## Create a Storage Bucket
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/storage/buckets" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/storage/buckets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "storageBucket": {
@@ -232,8 +234,8 @@ createBucket | false | Create the bucket if it does not exist
 ## Update a Storage Bucket
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/storage/buckets/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/storage/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "storageBucket": {
@@ -256,8 +258,8 @@ See [Create](#create-a-storage-bucket).
 ## Delete a Storage Bucket
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/storage/buckets/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/storage/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

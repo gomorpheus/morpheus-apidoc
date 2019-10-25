@@ -5,8 +5,8 @@ Provides API interfaces for managing appliance settings within Morpheus
 ## Get Appliance Settings
 
 ```shell
-curl "https://api.gomorpheus.com/api/appliance-settings" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/appliance-settings" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -60,8 +60,8 @@ This endpoint retrieves appliance settings.
 ## Update Appliance Settings
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/appliance-settings" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/appliance-settings" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"applianceSettings": {
         "registrationEnabled": true,

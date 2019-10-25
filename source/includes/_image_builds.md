@@ -5,8 +5,8 @@ Image Builds are used to generate [Virtual Images](#virtual-images) for  your Mo
 ## Get All Image Builds
 
 ```shell
-curl "https://api.gomorpheus.com/api/image-builds" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/image-builds" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -113,8 +113,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/image-builds/4" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/image-builds/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this *(config omited)* :
@@ -304,8 +304,8 @@ ID | The ID of the image build to retrieve
 ## Create an Image Build
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/image-builds" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/image-builds" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "imageBuild": {
@@ -412,8 +412,8 @@ keepResults      |  0 | Keep Results - Keep only the most recent builds. Older e
 ## Update an Image Build
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/image-builds/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/image-builds/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "imageBuild": {
@@ -442,8 +442,8 @@ See [Create](#create-an-image-build).
 ## Delete an Image Build
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/image-builds/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/image-builds/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -469,8 +469,8 @@ ID | The ID of the image build
 ## Run an Image Build
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/image-builds/1/run" \
-  -H "Authorization: BEARER access_token"
+curl -XPOST "$MORPHEUS_API_URL/api/image-builds/1/run" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -496,8 +496,8 @@ ID | The ID of the image build
 ## List Image Build Executions
 
 ```shell
-curl "https://api.gomorpheus.com/api/image-builds/1/list-executions" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/image-builds/1/list-executions" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

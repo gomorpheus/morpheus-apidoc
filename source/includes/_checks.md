@@ -5,8 +5,8 @@
 ## Get All Checks
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/checks"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/checks" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -79,8 +79,8 @@ deleted | false | Pass true to see checks that have been deleted.
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/checks/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/checks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -147,8 +147,8 @@ ID | ID of the check to retrieve
 ## Create a Check
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/checks" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/checks" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"check":{
     "name": "My Check",
@@ -189,8 +189,8 @@ config | null | JSON encoded list of parameters that varies by check type. See b
 ## Updating a Check
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"check":{
     "name": "My Check",
@@ -435,8 +435,8 @@ sshPassword | No        | Password for user, if not using key based authenticati
 ## Mute a Check
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -456,8 +456,8 @@ This sets `createIncident` the opposite of `muted`.
 ## Unmute a Check
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -487,8 +487,8 @@ muted | true | Set to false to unmute
 ## Mute All Checks
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -518,8 +518,8 @@ This endpoint can be used to toggle the mute state of all checks. This sets `cre
 ## Unmute All Checks
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/checks/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -539,8 +539,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Check
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/checks/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/checks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

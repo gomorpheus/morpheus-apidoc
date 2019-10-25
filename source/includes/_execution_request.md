@@ -1,12 +1,14 @@
-# Execution Request
+## Execution Request
 
 Provides API interfaces for executing an arbitrary script or command on an instance, container or host.
 
+<!--
 ## Create an Execution Request
+-->
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/execution-request/execute?instanceId=256" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/execution-request/execute?instanceId=256" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "script": "uname -a"
@@ -57,8 +59,8 @@ This endpoint executes the provided script on the specified instance, container 
 ## Get a Specific Execution Request
 
 ```shell
-curl "https://api.gomorpheus.com/api/execution-request/f22e1292-4407-44c0-b2c7-698ee2241491" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/execution-request/f22e1292-4407-44c0-b2c7-698ee2241491" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

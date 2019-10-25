@@ -1,4 +1,4 @@
-# User Sources
+## User Sources
 
 User Sources can be configured for each Tenant.
 Supported types include LDAP, JumpCloud, Active Directory, and others.
@@ -7,11 +7,11 @@ Supported types include LDAP, JumpCloud, Active Directory, and others.
 This API is only available to the master account.
 </aside>
 
-## Get All User Sources
+<!--## Get All User Sources-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/user-sources"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/user-sources"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -70,8 +70,8 @@ type | null | Filter on exact match of type code
 ## Get a Specific User Source
 
 ```shell
-curl "https://api.gomorpheus.com/api/user-sources/2" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/user-sources/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -128,8 +128,8 @@ ID | The ID of the user source
 ## Create a User Source
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/accounts/60/user-sources" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/accounts/60/user-sources" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"userSource": {
     "type": "activeDirectory",
@@ -253,8 +253,8 @@ config.encryptionKey      | null | Encryption Key
 ## Updating a User Source
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/user-sources/3" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"userSource": {
     "type": "activeDirectory",
@@ -302,8 +302,8 @@ config | {} | Map of configuration options which vary by type.
 ## Updating Subdomain for a User Source
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/user-sources/3/subdomain" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3/subdomain" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"subdomain": "ninjas"}'
 ```
@@ -337,8 +337,8 @@ This endpoint updates the subdomain for the account associated with the user sou
 ## Delete a User Source
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/user-sources/3" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/user-sources/3" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -361,6 +361,6 @@ ID | The ID of the user source
 
 Will delete a user source from the system and make it no longer usable.
 
-<aside class="warning">
+<aside class="info">
 If a user source is tied to existing users, a delete will fail.
 </aside>

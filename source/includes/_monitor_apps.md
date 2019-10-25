@@ -1,12 +1,12 @@
-# Monitor Apps
+## Monitor Apps
 
-These entities define the checks associated with a specific app.
+These entities define a collection of monitoring checks and/or check groups that are associated with a specific app.
 
-## Get All Monitor Apps
+<!--## Get All Monitor Apps-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/apps"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/apps"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -81,8 +81,8 @@ phrase |  | If specified will return a partial match on name or email or sms
 ## Get a Specific Monitor App
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/apps/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/apps/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -225,8 +225,8 @@ ID | ID of the monitor app
 ## Create a Monitor App
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/apps" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/apps" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
     "name": "My App Checks",
@@ -255,8 +255,8 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Updating a Monitor App
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/3" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/apps/3" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
     "checks": [],
@@ -292,8 +292,8 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Mute a Monitor App
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -313,8 +313,8 @@ This endpoint can be used to toggle the mute state of a monitor app. This sets `
 ## Unmute a Monitor App
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -344,8 +344,8 @@ muted | true | Set to false to unmute
 ## Mute All Monitor Apps
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -375,8 +375,8 @@ This endpoint can be used to toggle the mute state of all monitor apps. This set
 ## Unmute All Monitor App
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/apps/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -396,8 +396,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Monitor App
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/apps/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/apps/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

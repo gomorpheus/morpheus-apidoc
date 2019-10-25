@@ -1,12 +1,12 @@
-# Deployment Management
+# Deployments
 
 Provides API's used for creating "Deployment archives" for use with deployable instance types (i.e. Tomcat, Nginx, Apache, etc.). These endpoints also provide a means to trigger a deploy as well as to rollback from a failed deploy. There is a flow to creating a deployment archive. First you must create an appDeploy record. Then you can freely upload files to that deployment archive. Once your upload is complete it is easy to simply trigger the deploy.
 
 ## Get all Deployments
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1/deploy"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1/deploy" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -48,8 +48,8 @@ This endpoint retrieves all deploys that were created for a given instance
 ## Create a new Deployment
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/instances/1/deploy"
-  -H "Authorization: BEARER access_token"
+curl -XPOST "$MORPHEUS_API_URL/api/instances/1/deploy"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
     "deployType": "browser",
@@ -86,7 +86,7 @@ This endpoint will create a new AppDeploy entry configured for the specific inst
 
 `POST https://api.gomorpheus.com/api/instances/:id/deploy`
 
-### JSON Check Parameters
+### JSON App Deploy Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------

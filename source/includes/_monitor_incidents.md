@@ -5,8 +5,8 @@ These entities are incidents that result from [Checks](#checks). The API provide
 ## Get All Incidents
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/incidents"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/incidents"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -74,8 +74,8 @@ severity | null | Filter by severity
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -164,8 +164,8 @@ ID | ID of the incident to retrieve
 ## Updating an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
     "resolution": "We fixed the problem",
@@ -202,8 +202,8 @@ endDate | null | Set end time
 ## Mute an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -233,8 +233,8 @@ muted | true | Set to false to unmute
 ## Unmute an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -253,8 +253,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Mute All Incidents
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -284,8 +284,8 @@ muted | true | Set to false to unmute
 ## Unmute all Incidents
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -305,8 +305,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Close an Incident
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -326,8 +326,8 @@ curl -XDELETE "https://api.gomorpheus.com/api/monitoring/incidents/1" \
 ## Reopen an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/reopen" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/reopen" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -351,8 +351,8 @@ This endpoint can be used to toggle the status of an incident back to `open`.
 ## Create an Incident
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/incidents" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/incidents" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
         "comment": "This is a summary of the incident",

@@ -6,8 +6,8 @@ Virtual Images can be managed via the API.
 ## Get List of Virtual Images
 
 ```shell
-curl "https://api.gomorpheus.com/api/virtual-images"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/virtual-images"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -94,8 +94,8 @@ imageType | null | Filter by image type code, "vmware", "ami", etc
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/virtual-images/764" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/virtual-images/764" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -177,8 +177,8 @@ id | The ID of the virtual image
 ## Create a Virtual Image
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/virtual-images" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/virtual-images" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "name": "testimage2",
@@ -231,8 +231,8 @@ isSysprep | false | Sysprep Enabled?
 ## Upload Virtual Image File
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/virtual-images/765/upload?filename=disk-0.vmdk" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/virtual-images/765/upload?filename=disk-0.vmdk" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   --data-binary '@/path/to/file'
 ```
 
@@ -266,8 +266,8 @@ filename | Specify a filename for new file.
 ## Remove Virtual Image File
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765/files?filename=testimage.ovf" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/virtual-images/765/files?filename=testimage.ovf" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -297,8 +297,8 @@ filename  | null | The name of the file to be deleted
 ## Delete a Virtual Image
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/virtual-images/765" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

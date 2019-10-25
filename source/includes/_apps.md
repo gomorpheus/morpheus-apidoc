@@ -5,8 +5,8 @@ Apps are groupings of instances that are linked together to form a full applicat
 ## Get All Apps
 
 ```shell
-curl "https://api.gomorpheus.com/api/apps"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/apps" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -89,7 +89,7 @@ curl "https://api.gomorpheus.com/api/apps"
 }
 ```
 
-This endpoint retrieves all apps and the correlated instances. Server data is encrypted in the database.
+This endpoint retrieves a paginated list of apps.
 
 ### HTTP Request
 
@@ -109,8 +109,8 @@ createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/apps/4" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/apps/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -195,8 +195,8 @@ This endpoint retrieves a specific app.
 ## Create an App
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/apps" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/apps" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"app":{
     "name": "sampleapp",
@@ -225,8 +225,8 @@ group | null | A Map containing the id of the Group
 ## Updating an App Name or Description
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/apps/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/apps/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"app":{
     "name": "My Sample App",
@@ -251,8 +251,8 @@ description     | null | Optional description field
 ## Add Existing Instance to App
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/apps/1/add-instance" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/apps/1/add-instance" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"instanceId": 55, tierName: "App"}'
 ```
@@ -274,8 +274,8 @@ tierName     | null | The Name of the Tier
 ## Remove Instance from App
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/apps/1/remove-instance" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/apps/1/remove-instance" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"instanceId": 55}'
 ```
@@ -297,7 +297,7 @@ instanceId  | null | The ID of the instance being removed
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/apps/1/security-groups" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -327,8 +327,8 @@ This returns a list of all of the security groups applied to an app and whether 
 ## Set Security Groups
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/apps/1/security-groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/apps/1/security-groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```
@@ -348,8 +348,8 @@ securityGroupIds | null | List of all security groups ids which should be applie
 ## Delete an App
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/apps/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/apps/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

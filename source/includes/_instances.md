@@ -5,8 +5,8 @@ Instances are sets of containers or vms (morpheus API represents a vm as a conta
 ## Get All Instances
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances?max=3"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances?max=3"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -229,7 +229,7 @@ curl "https://api.gomorpheus.com/api/instances?max=3"
 
 ```
 
-This endpoint retrieves all instances and their JSON encoded configuration attributes based on check type. Server data is encrypted in the database.
+This endpoint retrieves a paginated list of instances. 
 
 ### HTTP Request
 
@@ -251,8 +251,8 @@ createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1216" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1216" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -346,8 +346,8 @@ This endpoint retrieves a specific instance.
 ## Get Env Variables
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1216/envs" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1216/envs" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 > The above command returns JSON structured like this:
 
@@ -566,8 +566,8 @@ This gets all the environment variables associated with the instance.
 ## Get Instance History
 
 ```shell
-curl "https://api.gomorpheus.com/api/238/history" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/238/history" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -649,8 +649,8 @@ zoneId |  | Filter by zone id(s)
 ## Get Container Details
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1216/containers" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1216/containers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 > The above command returns JSON structured like this:
 
@@ -783,7 +783,7 @@ This can be valuable for evaluating the details of the compute server(s) running
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/instances/service-plans?zoneId=1&layoutId=75" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -945,17 +945,193 @@ layoutId | The ID of the instance layout
 
 ## Create an Instance
 
-See [Provisioning](#provisioning) for details.
+```shell
+curl -X POST "https://api.gomorpheus.com/api/instances" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "zoneId": 6,
+  "instance": {
+    "name": "api-testing2",
+    "site": {
+      "id": 3
+    },
+    "instanceType": {
+      "code": "Ubuntu"
+    },
+    "layout": {
+      "id": 105
+    },
+    "plan": {
+      "id": 75
+    }
+  },
+  "volumes": [
+    {
+      "id": -1,
+      "rootVolume": true,
+      "name": "root",
+      "size": 10,
+      "sizeId": null,
+      "storageType": 1,
+      "datastoreId": "autoCluster"
+    },
+    {
+      "id": -1,
+      "rootVolume": false,
+      "name": "data",
+      "size": 5,
+      "sizeId": null,
+      "storageType": 1,
+      "datastoreId": "auto"
+    }
+  ],
+  "networkInterfaces": [
+    {
+      "network": {
+        "id": 5
+      },
+      "networkInterfaceTypeId": 4
+    }
+  ],
+  "config": {
+    "publicKeyId": 14,
+    "vmwareResourcePoolId": "resgroup-56",
+    "hostId": null,
+    "vmwareUsr": "morpheus-api",
+    "vmwarePwd": "password",
+    "vmwareDomainName": null,
+    "vmwareCustomSpec": null
+  },
+  "evars": [
+    {"name": "MY_APP_VAR1", "value": "VALUE1"},
+    {"name": "MY_APP_VAR2", "value": "VALUE2"}
+  ],
+}'
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a single check 
 
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/instances`
 
+### JSON Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+instance  | Y | n/a | Key for name, site, instanceType layout, and plan
+instance.name | Y | null | Name of the instance to be created
+instance.site.id | Y | null | The Group ID to provision the instance into
+instance.instanceType.code | Y | null | The type of instance by code we want to fetch
+instance.layout.id |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
+instance.plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
+zoneId | Y | null | The Cloud ID to provision the instance onto
+evars | N | [] | Environment Variables, an array of objects that have name and value.
+copies | N | 1 | Number of copies to provision
+layoutSize | N | 1 | Apply a multiply factor of containers/vms within the instance
+servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
+volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
+networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
+config | Y | null | Key for specific type configuration, see [Config](#config)
+metadata | N | null | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
+taskSetId | N | null | The Workflow ID to execute.
+taskSetName | N | null | The Workflow Name to execute.
+
+#### Volumes
+
+The (optional) `volumes` parameter is for LV configuration, can create additional LVs at provision
+It should be passed as an array of Objects with the following attributes:
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+id | N | -1 | The id for the LV configuration being created
+rootVolume | N | true | If set to false then a non-root LV will be created
+name | Y | root | Name/type of the LV being created
+size | N | [from service plan] | Size of the LV to be created in GBs
+sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
+storageType | N | null | Identifier for LV type
+datastoreId | Y | null | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
+
+#### Network Interfaces
+
+The `networkInterfaces` parameter is for network configuration.
+
+The Options API `/api/options/zoneNetworkOptions?zoneId=5&provisionTypeId=10` can be used to see which options are available.
+
+It should be passed as an array of Objects with the following attributes:
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+network.id | Y | n/a | id of the network to be used. A network group can be specified instead by prefixing its ID  with `networkGroup-`.
+networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
+ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
+
+#### Config
+
+The `config` parameter is for configuration options that are specific to each Provision Type.
+The Provision Types api can be used to see which options are available.
+
+##### JSON Config Parameters for VMware
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+publicKeyId | N | null | ID of a public key to add to the instance
+resourcePoolId | Y | null | External ID of the resource group to use for instance
+hostId | N | null | Specific host to deploy to if so desired
+vmwareUsr | N | null | Additional user to provision to instance
+vmwarePwd | N | null | Password for additional user
+vmwareDomainName | N | null | Domain name to be given to instance
+vmwareCustomSpec | N | null | Customization spec ID
+
+
+##### JSON Config Parameters for Docker
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+provisionServerId | N | null | Specific host to deploy to if so desired
+resourcePoolId | Y | null | External ID of the resource group to use for instance
+
+##### JSON Config Parameters for Kubernetes
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+resourcePoolId | Y | null | ID of the resource group (kubernetes cluster) to use for instance
+
+#### Metadata
+This is specific to AWS Metadata tags.  Name-Values pairs can be anything you like and are added to the instance JSON as an array of n-v pairs per the example to the right:
+
+```shell
+-d '{
+  "zoneId": 6,
+  "instance": {
+    ...
+  }
+  ...
+  "metadata": [
+    {
+      "id": null,
+      "name": "SampleName",
+      "value": "SampleValue"
+    }
+    {
+      "id": null,
+      "name": "BusinessUnit",
+      "value": "QualityAssurance"
+    }
+  ]
+  ...
+}
+```
+
+
+**Documentation on ALL of the provision types to come...**
+
+There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts as well as the provision type option types associated with the layout. Currently these input options are available from the option-types map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: See the API Document on OptionTypes for figuring out how to build property maps from them.
+
 ## Updating an Instance
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
-  -H "Authorization: BEARER access_token" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
   "description": "my new redis"
@@ -984,7 +1160,7 @@ site.id |  | Group ID
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/stop" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1005,7 +1181,7 @@ This will stop all containers running within an instance.
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/start" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1026,7 +1202,7 @@ This will start all containers running within an instance.
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/restart" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1047,7 +1223,7 @@ This will restart all containers running within an instance. This includes rebui
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/suspend" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1068,7 +1244,7 @@ This will suspend all containers in the instance.
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/eject" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1089,7 +1265,7 @@ This will eject any ISO media on all containers in the instance.
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/resize" \
-  -H "Authorization: BEARER access_token" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "instance": {
@@ -1139,7 +1315,7 @@ deleteOriginalVolumes | no | false | Delete the original volumes after resizing.
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/clone" \
-  -H "Authorization: BEARER access_token" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "name": "New Name",
     "group": {
@@ -1172,7 +1348,7 @@ name        | null    | A name for the new cloned instance. If none is specified
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1773/backup" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -1190,8 +1366,8 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1773/backup" \
 ## Get list of backups for an Instance
 
 ```shell
-curl "https://api.gomorpheus.com/api/instances/1773/backups" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instances/1773/backups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -1214,7 +1390,7 @@ curl "https://api.gomorpheus.com/api/instances/1773/backups" \
 
 ```shell
 curl -X PUT "https://api.gomorpheus.com/api/instances/1/import-snapshot" \
-  -H "Authorization: BEARER access_token" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "storageProviderId": 1
   }'
@@ -1244,7 +1420,7 @@ storageProviderId       | null    | Optional storage provider to use.
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/instances/1/security-groups" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1275,7 +1451,7 @@ This returns a list of all of the security groups applied to an instance and whe
 
 ```shell
 curl -X POST "https://api.gomorpheus.com/api/instances/1/security-groups" \
-  -H "Authorization: BEARER access_token" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```
@@ -1297,8 +1473,8 @@ This defines the list of all the security groups applied to an instance.
 ## Delete an Instance
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/instances/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/instances/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

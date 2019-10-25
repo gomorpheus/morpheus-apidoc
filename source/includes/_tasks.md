@@ -1,12 +1,12 @@
-# Tasks
+## Tasks
 
 Provides API interfaces for managing the creation and modification of automation tasks.  Tasks are used in workflows for automation.
 
-## Get All Tasks
+<!--## Get All Tasks-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/tasks"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/tasks"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -58,8 +58,8 @@ taskTypeCodes |  | Filter by task type code(s).
 ## Get a Specific Task
 
 ```shell
-curl "https://api.gomorpheus.com/api/tasks/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/tasks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,8 +97,8 @@ ID | The ID of the task
 ## Create a Task
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/tasks" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/tasks" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"task": {
     "name": "cleanup tmp files",
@@ -154,8 +154,8 @@ These additional task options are available when using executeTarget of `remote`
 ## Updating a Task
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/tasks/5" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/tasks/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"task":{
     "name": "my task",
@@ -181,8 +181,8 @@ Same as [Create](#create-a-task).
 ## Delete a Task
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/tasks/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/tasks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

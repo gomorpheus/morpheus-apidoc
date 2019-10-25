@@ -2,11 +2,13 @@
 
 Blueprints are templates for creating apps. They are a set of instance configurations, organized by tier, and scoped by group, cloud and environment.
 
+ A Blueprint may also be referred to as a *App Template* or *appTemplate*.
+
 ## Get All Blueprints
 
 ```shell
-curl "https://api.gomorpheus.com/api/blueprints"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/blueprints" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -137,8 +139,8 @@ phrase | null | Filter by wildcard search of name and description
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/blueprints/4" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/blueprints/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -251,8 +253,8 @@ This endpoint retrieves a specific blueprint.
 ## Create a Blueprint
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -397,8 +399,8 @@ Example:
 ## Updating a Blueprint
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/blueprints/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/blueprints/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -491,8 +493,8 @@ This overwrites the entire config, so the entire blueprint config should be pass
 ## Update Blueprint Permissions
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/update-permissions" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/update-permissions" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "resourcePermission": {
     "all":false,
@@ -519,8 +521,8 @@ resourcePermission.sites  | null | Enable access for specific groups only
 ## Update Blueprint Image
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/image" \
-  -H "Authorization: BEARER access_token"
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/image" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -F 'templateImage=@filename'
 ```
 
@@ -542,8 +544,8 @@ Upload a new logo image.  Expects multipart form data as the request format, not
 ## Delete a Blueprint
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/blueprints/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/blueprints/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

@@ -1,12 +1,12 @@
-# Check Groups
+## Check Groups
 
-These entities define a collection of checks.
+These entities define Check Groups, a collection of checks.
 
-## Get All Check Groups
+<!--## Get All Check Groups-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/groups"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/groups"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,8 +130,8 @@ deleted | false | Pass true to see checks that have been deleted.
 ## Get a Specific Check Group
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/groups/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -251,8 +251,8 @@ ID | ID of the check to retrieve
 ## Create a Check Group
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
     "name": "My Check Group",
@@ -282,8 +282,8 @@ checks | [] | Array of [Check](#checks) IDs
 ## Updating a Check Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
     checks: [5,6,7,8,9]
@@ -310,8 +310,8 @@ checks |  | Array of [Check](#checks) IDs
 ## Mute a Check Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -339,8 +339,8 @@ muted | true | Set to false to unmute
 ## Unmute a Check Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -359,8 +359,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Mute All Check Groups
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -388,8 +388,8 @@ muted | true | Set to false to unmute
 ## Unmute All Check Groups
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/groups/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -409,8 +409,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Check Group
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/groups/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

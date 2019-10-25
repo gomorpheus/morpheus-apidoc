@@ -1,12 +1,12 @@
-# Power Schedules
+## Power Schedules
 
 Power Schedules can be configured to automatically power on and off your instances and servers.
 
-## Get All Power Schedules
+<!--## Get All Power Schedules-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/power-schedules" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/power-schedules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -65,8 +65,8 @@ phrase | null | If specified will return a partial match on name
 ## Get a Specific Power Schedule
 
 ```shell
-curl "https://api.gomorpheus.com/api/power-schedules/2" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/power-schedules/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -123,8 +123,8 @@ ID | The ID of the power schedule to retrieve
 ## Create a Power Schedule
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/power-schedules" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/power-schedules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -186,8 +186,8 @@ saturdayOff | 24 | Saturday Stop
 ## Update a Power Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/power-schedules/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/power-schedules/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -214,8 +214,8 @@ See [Create](#create-a-power-schedule).
 ## Delete a Power Schedule
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/power-schedules/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/power-schedules/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -241,8 +241,8 @@ ID | The ID of the power schedule
 ## Add Instances to a Power Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/power-schedules/2/add-instances" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/power-schedules/2/add-instances" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "instances": [
@@ -280,8 +280,8 @@ instances      |  | Array of Instance IDs to add
 ## Remove Instances from a Power Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/power-schedules/2/remove-instances" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/power-schedules/2/remove-instances" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "instances": [
@@ -319,8 +319,8 @@ instances      |  | Array of Instance IDs to remove
 ## Add Servers to a Power Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/power-schedules/2/add-servers" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/power-schedules/2/add-servers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "servers": [
@@ -358,8 +358,8 @@ servers      |  | Array of Server IDs to add
 ## Remove Servers from a Power Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/power-schedules/2/remove-servers" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/power-schedules/2/remove-servers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "servers": [

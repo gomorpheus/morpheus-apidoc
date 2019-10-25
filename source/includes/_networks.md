@@ -1,0 +1,347 @@
+# Networks
+
+Provides API for managing Networks.
+
+## Get All Networks
+
+```shell
+curl "$MORPHEUS_API_URL/api/networks"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networks": [
+    {
+      "id": 1,
+      "name": "my-network",
+      "zone": {
+        "id": 5,
+        "name": "qa-azure"
+      },
+      "type": {
+        "id": 8,
+        "name": "Network",
+        "code": "azureNetwork"
+      },
+      "owner": {
+        "id": 1,
+        "name": "root"
+      },
+      "code": null,
+      "category": "azure.network.5",
+      "interfaceName": null,
+      "bridgeName": null,
+      "bridgeInterface": null,
+      "description": null,
+      "externalId": "/subscriptions/88213e1e-d4c5-467f-b029-f34622281a98/resourceGroups/ARMUbuntu16/providers/Microsoft.Network/virtualNetworks/my-network",
+      "internalId": null,
+      "uniqueId": null,
+      "externalType": "Network",
+      "refUrl": null,
+      "refType": "ComputeZone",
+      "refId": 31,
+      "vlanId": null,
+      "vswitchName": null,
+      "dhcpServer": true,
+      "dhcpIp": null,
+      "gateway": null,
+      "netmask": null,
+      "broadcast": null,
+      "subnetAddress": null,
+      "dnsPrimary": null,
+      "dnsSecondary": null,
+      "cidr": "192.168.0.0/16",
+      "tftpServer": null,
+      "bootFile": null,
+      "switchId": null,
+      "fabricId": null,
+      "networkRole": null,
+      "status": "available",
+      "availabilityZone": null,
+      "pool": null,
+      "networkProxy": null,
+      "networkDomain": null,
+      "prefixLength": null,
+      "visibility": "private",
+      "enableAdmin": false,
+      "active": true,
+      "defaultNetwork": false,
+      "assignPublicIp": false,
+      "noProxy": null,
+      "applianceUrlProxyBypass": true,
+      "zonePool": {
+        "id": 118,
+        "name": "ARMUbuntu16"
+      },
+      "allowStaticOverride": false,
+      "tenants": [
+        {
+          "id": 1,
+          "name": "root"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "size": 1,
+    "total": 1,
+    "offset": 0,
+    "max": 25
+  }
+}
+```
+
+This endpoint retrieves all Networks associated with the account.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/networks`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
+
+## Get a Specific Network
+
+
+```shell
+curl "$MORPHEUS_API_URL/api/networks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "network": {
+    "id": 1,
+    "name": "my-network",
+    "zone": {
+      "id": 31,
+      "name": "qa-azure"
+    },
+    "type": {
+      "id": 8,
+      "name": "Network",
+      "code": "azureNetwork"
+    },
+    "owner": {
+      "id": 1,
+      "name": "root"
+    },
+    "code": null,
+    "category": "azure.network.31",
+    "interfaceName": null,
+    "bridgeName": null,
+    "bridgeInterface": null,
+    "description": null,
+    "externalId": "/subscriptions/88213e1e-d4c5-467f-b029-f34622281a98/resourceGroups/ARMUbuntu16/providers/Microsoft.Network/virtualNetworks/my-network",
+    "internalId": null,
+    "uniqueId": null,
+    "externalType": "Network",
+    "refUrl": null,
+    "refType": "ComputeZone",
+    "refId": 31,
+    "vlanId": null,
+    "vswitchName": null,
+    "dhcpServer": true,
+    "dhcpIp": null,
+    "gateway": null,
+    "netmask": null,
+    "broadcast": null,
+    "subnetAddress": null,
+    "dnsPrimary": null,
+    "dnsSecondary": null,
+    "cidr": "192.168.0.0/16",
+    "tftpServer": null,
+    "bootFile": null,
+    "switchId": null,
+    "fabricId": null,
+    "networkRole": null,
+    "status": "available",
+    "availabilityZone": null,
+    "pool": null,
+    "networkProxy": null,
+    "networkDomain": null,
+    "prefixLength": null,
+    "visibility": "private",
+    "enableAdmin": false,
+    "active": true,
+    "defaultNetwork": false,
+    "assignPublicIp": false,
+    "noProxy": null,
+    "applianceUrlProxyBypass": true,
+    "zonePool": {
+      "id": 118,
+      "name": "ARMUbuntu16"
+    },
+    "allowStaticOverride": false,
+    "tenants": [
+      {
+        "id": 1,
+        "name": "root"
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves a specific Network.
+
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/networks/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Network to retrieve
+
+
+## Create a Network
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/networks" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "network": {
+    "name": "test network",
+    "description": "a test network",
+    "zone": {
+      "id": 31
+    },
+    "type": {
+      "id": 8
+    },
+    "resourceGroupId": "testresource",
+    "addressSpace": "192.168.2.0/24",
+    "subnetName": "test",
+    "subnetCidr": "192.168.2.0/28",
+    "scanNetwork": "off",
+    "applianceUrlProxyBypass": "on",
+    "noProxy": null
+  },
+  "tenantPermissions": {
+    "accounts": [1]
+  },
+  "resourcePermissions": {
+    "all": true
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Network: 
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/networks`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      |  | Name
+description      |  | Description
+zone.id      |  | Cloud ID
+type.id      |  | Network Type ID
+pool      | null | Network Pool ID
+allowStaticOverride      |  | Allow IP Override
+assignPublicIP      |  | Assign Public IP
+active      |  | Activate (true) or disable (false) the network
+availabilityZone      |  | Availability Zone
+networkDomain.id      | null | Network Domain ID
+searchDomains      | null | Search Domains
+scanNetwork      | off | Scan Network
+networkProxy.id      | null | Network Proxy ID
+applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
+noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
+visibility      | private | private or public
+tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
+resourcePermissions.all  | null | Pass true to allow access all groups
+resourcePermissions.sites  | null | Array of groups that are allowed access
+
+This endpoint allows creating a Network.  Only certain types of clouds support creating and deleting networks. Configuration options vary by [Network Types](#network-types).
+
+
+## Update a Network
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/networks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "network": {
+    "description": "a test network"
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Network: 
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/networks/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Network
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+description      |  | Description
+dhcpServer      |  | DHCP Server
+allowStaticOverride      |  | Allow IP Override
+assignPublicIP      |  | Assign Public IP
+active      |  | Activate (true) or disable (false) the network
+availabilityZone      |  | Availability Zone
+scanNetwork      | off | Scan Network
+networkProxy.id      | null | Network Proxy ID
+applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
+noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
+visibility      | private | private or public
+tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
+resourcePermissions.all  | null | Pass true to allow access all groups
+resourcePermissions.sites  | null | Array of groups that are allowed access
+
+This endpoint allows updating a Network.  Configuration options vary by [Network Types](#network-types).
+
+## Delete a Network
+
+```shell
+curl -XDELETE "$MORPHEUS_API_URL/api/networks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a Network from the system and make it no longer usable.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/networks/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Network
+

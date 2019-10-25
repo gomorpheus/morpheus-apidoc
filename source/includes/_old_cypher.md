@@ -7,8 +7,8 @@ Cypher keys can be revoked, either through lease timeouts or manually. So even i
 ## Get All Cyphers
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/cypher"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -70,8 +70,8 @@ phrase | null | If specified will match any part of key
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/cypher/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -107,8 +107,8 @@ ID | The ID of the cypher key
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2/decrypt" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/cypher/2/decrypt" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -140,7 +140,7 @@ ID | The ID of the cypher
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/2/decrypt/lease/6f4d3563-22ef-404f-8b81-c13d093cd55a"
+curl "$MORPHEUS_API_URL/api/cypher/2/decrypt/lease/6f4d3563-22ef-404f-8b81-c13d093cd55a"
 ```
 
 > The above command returns JSON structured like this:
@@ -174,8 +174,8 @@ lease | Your execution lease token
 ## Create a Cypher
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/cypher" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/cypher" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"cypher":{
     "itemKey": "secret/mysecret",
@@ -230,8 +230,8 @@ Year      | 31536000000
 ## Delete a Cypher
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/cypher/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/cypher/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

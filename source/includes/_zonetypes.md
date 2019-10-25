@@ -1,14 +1,14 @@
-# Zone Types
+## Cloud Types
 
-Provides a means to find out which zone types are available for zone provisioning and in the  future what config properties are required. 
+<!--
+## Get All Cloud Types
+-->
 
-**NOTE:** A Zone Type in the API Is equivalent to a Cloud Type within the morpheus UI.
-
-## Get All Zone Types
+Fetch a paginated list of available cloud types. This returns the configuration options for each type.
 
 ```shell
-curl "https://api.gomorpheus.com/api/zone-types"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zone-types"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this
@@ -20,25 +20,25 @@ curl "https://api.gomorpheus.com/api/zone-types"
       "id": 3,
       "name": "Amazon",
       "code": "amazon",
-      "description": "amazon zone"
-      serverTypes: [],
-      optionTypes: []
+      "description": "amazon zone",
+      "serverTypes": [],
+      "optionTypes": []
     },
     {
       "id": 2,
       "name": "Openstack",
       "code": "openstack",
       "description": "openstac zone",
-      serverTypes: [],
-      optionTypes: []
+      "serverTypes": [],
+      "optionTypes": []
     },
     {
       "id": 1,
       "name": "Standard",
       "code": "standard",
       "description": "Standard zone - manually managed servers or virtual machines"
-      serverTypes: [],
-      optionTypes: []
+      "serverTypes": [],
+      "optionTypes": []
     }
   ]
 }
@@ -61,11 +61,11 @@ code | null | Filter by code
 phrase | null | Filter by wildcard search of name, code and description
 provisionType | null | Filter by [Provision Type](#provision-types) code
 
-## Get Specific Zone Type
+## Get Specific Cloud Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/zone-types/1"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zone-types/1"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this

@@ -23,8 +23,8 @@ leaseToken | URL Parameter | An execution lease token.
 ## List Cypher Keys
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/v1?list=true"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/cypher/v1?list=true" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -96,8 +96,8 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/v1/secret/foo" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/cypher/v1/secret/foo" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -152,7 +152,7 @@ ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/cypher/v1/password/15/mypassword"
+curl "$MORPHEUS_API_URL/api/cypher/v1/password/15/mypassword" \
   -H "X-Lease-Token: 6f4d3563-22ef-404f-8b81-c13d093cd55a"
 ```
 
@@ -200,8 +200,8 @@ ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable
 ## Write a Cypher
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/cypher/v1/secret/mymsg" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/cypher/v1/secret/mymsg" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"msg":"hello world"}'
 ```
@@ -262,8 +262,8 @@ Year      | 31536000000
 ## Delete a Cypher
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/cypher/v1/secret/foo" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/cypher/v1/secret/foo" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

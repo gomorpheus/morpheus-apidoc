@@ -2,11 +2,11 @@
 
 Morpheus provides a database for keeping track of Key Pairs in the system. These can be used for provisioning servers and auto assigning added keypairs.
 
-## Get All Key Pairs
+<!--## Get All Key Pairs-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/key-pairs"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/key-pairs"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -45,8 +45,8 @@ name | null | If specified will return an exact match keypair
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/key-pairs/2" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/key-pairs/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -80,8 +80,8 @@ ID | The ID of the key pair
 ## Create a KeyPair
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/key-pairs" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/key-pairs" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"keyPair":{
     "name": "My Key",
@@ -96,7 +96,7 @@ curl -XPOST "https://api.gomorpheus.com/api/key-pairs" \
 
 `POST https://api.gomorpheus.com/api/key-pairs`
 
-### JSON Check Parameters
+### JSON Key Pair Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -109,8 +109,8 @@ privateKey | null | The private key pair value (optional)
 ## Delete a Key Pair
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/key-pairs/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/key-pairs/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -124,7 +124,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/key-pairs/1" \
 
 Will delete a key pair from the system and make it no longer usable.
 
-<aside class="warning">
+<aside class="info">
 If a key pair is actively in use, a delete will fail.
 </aside>
 

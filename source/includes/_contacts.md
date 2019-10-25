@@ -5,8 +5,8 @@ These entities are notification settings such as name, email and phone number. C
 ## Get All Contacts
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/contacts"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/contacts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -49,8 +49,8 @@ phrase |  | If specified will return a partial match on name or email or sms
 ## Get a Specific Contact
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -82,8 +82,8 @@ ID | ID of the contact
 ## Create a Contact
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/contacts" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/contacts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
     "name": "IT Admin",
@@ -110,8 +110,8 @@ slackHook      |  | Slack Hook
 ## Updating a Contact
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/contacts/3" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/contacts/3" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
     "name": "Jane Doe"
@@ -142,8 +142,8 @@ slackHook      |  | Slack Hook
 ## Delete a Contact
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

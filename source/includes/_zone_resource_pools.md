@@ -1,12 +1,12 @@
-# Resource Pools
+## Resource Pools
 
 Resource Pools can be managed for each Compute Zone (Cloud) in your infrastructure.
 
-## Get All Resource Pools for Cloud
+<!--## Get All Resource Pools for Cloud-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/resource-pools"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/5/resource-pools"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -85,8 +85,8 @@ name | null | Filter on exact match of name
 ## Get a Specific Resource Pool
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -152,8 +152,8 @@ id | The ID of the resource pool to retrieve
 ## Create a Resource Pool
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/zones/5/resource-pools" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/zones/5/resource-pools" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool": {
     "name": "mypool",
@@ -220,8 +220,8 @@ config.auditors      | [] | Array of auditor usernames
 ## Updating a Resource Pool
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool":{
     "active": true,
@@ -268,8 +268,8 @@ resourcePermissions.plans  | null | Array of plans that are allowed access
 ## Delete a Resource Pool
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

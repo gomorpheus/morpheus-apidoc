@@ -7,8 +7,8 @@ Archives are organized by buckets. Each bucket has a unique name that is used to
 ## Get All Archive Buckets
 
 ```shell
-curl "https://api.gomorpheus.com/api/archives/buckets" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/archives/buckets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -94,8 +94,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/archives/buckets/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/archives/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -146,8 +146,8 @@ ID | The ID of the archive bucket to retrieve
 ## Create an Archive Bucket
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/archives/buckets" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/archives/buckets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "archiveBucket": {
@@ -182,8 +182,8 @@ accounts      |  | Tenants - Grant read only access to certain tenants
 ## Update an Archive Bucket
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/archives/buckets/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/archives/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "archiveBucket": {
@@ -219,8 +219,8 @@ accounts      |  | Tenants - Grant read only access to certain tenants
 ## Delete an Archive Bucket
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/archives/buckets/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/archives/buckets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -248,8 +248,8 @@ ID | The ID of the archive bucket
 ## Get All Archive Files
 
 ```shell
-curl "https://api.gomorpheus.com/api/archives/buckets/mybucket/files/"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/archives/buckets/mybucket/files/" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -356,8 +356,8 @@ fullTree | false | Include files under sub directories too. This is always true 
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/archives/files/954"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/archives/files/954" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -403,8 +403,8 @@ fileId | The ID of the archive file
 ## Upload Archive File
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/archives/buckets/mybucket/files/myapp/config/?filename=application.rb" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/archives/buckets/mybucket/files/myapp/config/?filename=application.rb" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   --data-binary '@/path/to/file'
 ```
 
@@ -441,7 +441,7 @@ filename | Specify a filename for archive file. The base filename of the uploade
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/archives/download/mybucket/myapp/config/application.rb" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns the contents of the specified file as an attachment with Content-Type dicated by the file
@@ -486,8 +486,8 @@ filePath | The full path of the file being downloaded
 ## Delete Archive File
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/archives/files/99" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/archives/files/99" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -519,8 +519,8 @@ fileId | The ID of the archive file
 ### HTTP Request
 
 ```shell
-curl "https://api.gomorpheus.com/api/archives/files/1/links"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/archives/files/1/links"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 ```json
@@ -585,8 +585,8 @@ fileId | The ID of the archive file
 ## Create an Archive File Link
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/archives/files/:fileId/links" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/archives/files/:fileId/links" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
 ```
 
@@ -623,8 +623,8 @@ expireSeconds      | 0 | Time to live in seconds. 0 means do not expire.
 ## Delete an Archive File Link
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/archives/files/1/links/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XDELETE "$MORPHEUS_API_URL/api/archives/files/1/links/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
 ```
 

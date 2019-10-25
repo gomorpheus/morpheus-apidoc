@@ -1,12 +1,12 @@
-# Check Types
+## Check Types
 
 A set of APIs for fetching a list of available check types is also provided. This API can make it useful for associating a check type code to an ID for check `GET` and `POST` requests.
-
+<!--
 ## Get All Check Types
-
+-->
 ```shell
 curl "https://api.gomorpheus.command/api/monitoring/check-types"
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this
@@ -169,8 +169,8 @@ curl "https://api.gomorpheus.command/api/monitoring/check-types"
 ## Get Specific Check Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/check-types/10"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/check-types/10" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this
