@@ -201,7 +201,7 @@ name |  | If specified will return an exact match on name
 code |  | If specified will return an exact match on code
 phrase |  | If specified will return a partial match on name
 
-## Get a Specific Network
+## Get a Specific Network Type
 
 
 ```shell
