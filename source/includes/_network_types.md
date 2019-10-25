@@ -1,11 +1,13 @@
 ## Network Types
 
 Provides API for viewing Network Types and their configuration options.
+
 <!--
 ## Get All Network Types
 -->
+
 ```shell
-curl "$MORPHEUS_API_URL/api/network-types"
+curl "$MORPHEUS_API_URL/api/network-types" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
