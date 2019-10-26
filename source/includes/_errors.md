@@ -1,5 +1,20 @@
 ## Errors
 
+```shell
+curl "$MORPHEUS_API_URL/api/foobar" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+
+> The above command returns HTTP 404 and JSON structured like this:
+
+```json
+{
+  "success": false,
+  "msg": "Unable to find api endpoint GET /api/foobar"
+}
+```
+
 As with any API, errors can occur and when they do the Morpheus API returns an HTTP Error code.
 
 ### HTTP Error Codes
@@ -35,11 +50,38 @@ The HTTP response usually contains a body with valid JSON about the error and wh
 }
 ```
 
+#### 401 Error Response
+
+```json
+{
+  "success": false,
+  "msg": "unauthenticated"
+}
+```
+
+#### 403 Error Response
+
+```json
+{
+  "success": false,
+  "msg": "You do not have permissions to access this api endpoint"
+}
+```
+
 #### 404 Error Response
 
 ```json
 {
   "success": false,
-  "msg": "Unable to find api endpoint GET /api/woot"
+  "msg": "Unable to find api endpoint GET /api/foobar"
+}
+```
+
+#### 500 Error Response
+
+```json
+{
+  "success": false,
+  "msg": "Oops, something bad happened."
 }
 ```

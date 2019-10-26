@@ -6,9 +6,10 @@ language_tabs:
 
 includes:
   - introduction
+  - api_format
+  - errors
   - authentication
   - whoami
-  - errors
 
   - operations
   - operations/dashboard

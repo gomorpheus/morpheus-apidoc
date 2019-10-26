@@ -8,9 +8,7 @@ The Morpheus API uses an OAUTH 2.0 based authentication model.  See [Authenticat
 
 For convenience, the curl examples in this document use environment variables in place of the Morpheus appliance URL and access token. This allows the examples to be copied and executed without any modification.
 
-To get this working, set up [Environment Variables](#environment-variables).
-
-Alternatively, just be sure to replace <code>$MORPHEUS_API_URL</code> and <code>$MORPHEUS_API_TOKEN</code> in the curl examples with your own Morpheus URL and access token.
+To get this working, set up [Environment Variables](#environment-variables), or just be sure to replace <code>$MORPHEUS_API_URL</code> and <code>$MORPHEUS_API_TOKEN</code> in the curl examples with your own Morpheus URL and access token.
 
 <aside class="info">
 Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
