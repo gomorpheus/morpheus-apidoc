@@ -27,13 +27,11 @@ curl "$MORPHEUS_API_URL/api/instances?phrase=test" \
 
 This is an example of Morpheus API request that finds all instances with a similar name.
 
-### Request Format
-
-API requests typically have the morpheus appliance url followed by a path like `/api/resource/:id`.
-
-Example:
+### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id`
+
+This is the format for documenting request endpoints.
 
 ### URL Parameters
 

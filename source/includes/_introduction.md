@@ -16,6 +16,19 @@ Be sure to keep your access token a secret. Anyone with the token can interact w
 
 If you are looking to use the API to setup a fresh installation of the morpheus appliance, see [Setup](#setup).
 
+### Programming Languages
+
+The Morpheus API has clients available for developing in a variety of programming languages.
+
+Language | Description
+--------- | ------- | -----------
+Ruby | The [Morpheus CLI](https://github.com/gomorpheus/morpheus-cli/) is written in ruby and provides the `Morpheus::APIClient` driver.
+Python | The [Morpheus Python](#morpheus-python) client is under development.
+Java | The Morpheus Java client is under development.
+Go | The Morpheus Go client is under development.
+Terraform (Go) | The Morpheus Terraform Provider is under development.
+
+
 ## Version
 
 This document is for the Morpheus API version **4.1.0**.
@@ -39,15 +52,3 @@ export MORPHEUS_API_TOKEN="e1d62c34-f7f5-4713-a874-31491e7707de"
 <aside class="info">
 As always, be careful not to copy and execute request examples in sensitive environments, such as production.
 </aside>
-
-## Client Languages
-
-The Morpheus API has clients in a variety of programming languages.
-
-Language | Description
---------- | ------- | -----------
-Ruby | The [Morpheus CLI](https://github.com/gomorpheus/morpheus-cli/) is written in ruby and provides the `Morpheus::APIClient` driver.
-Python | The [Morpheus Python](#morpheus-python) client is under development.
-Java | The Morpheus Java client is under development.
-Go | The Morpheus Go client is under development.
-Terraform (Go) | The Morpheus Terraform Provider is under development.
