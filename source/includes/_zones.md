@@ -40,10 +40,10 @@ This endpoint retrieves all zones and a list of zones associated with the zone b
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load zones updated more recent or equal to the date specified
-name | null | If specified will return an exact match zone
-type | null | If specified will return all zones by type code (`standard`,`openstack`,`amazon`)
-groupId | null | If specified will return all zones assigned to a server group by id.
+lastUpdated |  | A date filter, restricts query to only load zones updated more recent or equal to the date specified
+name |  | If specified will return an exact match zone
+type |  | If specified will return all zones by type code (`standard`,`openstack`,`amazon`)
+groupId |  | If specified will return all zones assigned to a server group by id.
 
 
 ## Get a Specific Cloud
@@ -111,14 +111,14 @@ curl -XPOST "$MORPHEUS_API_URL/api/zones" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the cloud
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for your cloud
+name      |  | A unique name scoped to your account for the cloud
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for your cloud
 visibility      | private | private or public
 zoneType  | "standard" | Map containing code or id of the cloud type
-groupId  | null | Specifies which Server group this cloud should be assigned to
-accountId | null | Specifies which Tenant this cloud should be assigned to
+groupId  |  | Specifies which Server group this cloud should be assigned to
+accountId |  | Specifies which Tenant this cloud should be assigned to
 
 Additional config properties are dynamic and depend on the specified type of cloud. See [Cloud Types](#cloud-types).
 
@@ -148,13 +148,13 @@ curl -XPUT "$MORPHEUS_API_URL/api/zones/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the zone
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for your zone
+name      |  | A unique name scoped to your account for the zone
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for your zone
 visibility      | private | private or public
-accountId | null | Specifies which Tenant this zone should be assigned to
-config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
+accountId |  | Specifies which Tenant this zone should be assigned to
+config |  | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
@@ -229,5 +229,5 @@ curl -XPOST "$MORPHEUS_API_URL/api/zones/1/security-groups" \
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
-securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+securityGroupIds |  | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
 

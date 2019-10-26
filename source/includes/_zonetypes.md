@@ -52,14 +52,14 @@ curl "$MORPHEUS_API_URL/api/zone-types"
 
 Parameter | Default | Description
 --------- | ------- | -----------
-max | null | Max number of results to return. Default is all (no limit).
+max |  | Max number of results to return. Default is all (no limit).
 offset | 0 | Offset of records you want to load
 sort | displayOrder | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-name | null | Filter by name or code
-code | null | Filter by code
-phrase | null | Filter by wildcard search of name, code and description
-provisionType | null | Filter by [Provision Type](#provision-types) code
+name |  | Filter by name or code
+code |  | Filter by code
+phrase |  | Filter by wildcard search of name, code and description
+provisionType |  | Filter by [Provision Type](#provision-types) code
 
 ## Get Specific Cloud Type
 

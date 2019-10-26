@@ -109,9 +109,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
-createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 
 
 ### Response

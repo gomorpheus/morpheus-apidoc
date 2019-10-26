@@ -63,9 +63,9 @@ This endpoint retrieves all user sources.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on wildcard match of name or description
-name | null | Filter on exact match of name
-type | null | Filter on exact match of type code
+phrase |  | Filter on wildcard match of name or description
+name |  | Filter on exact match of name
+type |  | Filter on exact match of type code
 
 ## Get a Specific User Source
 
@@ -166,10 +166,10 @@ accountId | The ID of the subtenant account to associate the user source with
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name
-type      | null | Type code (ldap, jumpCloud, activeDirectory, okta, oneLogin, saml, customExternal, customApi)
-description | null | Description (optional)
-defaultAccountRole.id | null | Default Role ID
+name      |  | Name
+type      |  | Type code (ldap, jumpCloud, activeDirectory, okta, oneLogin, saml, customExternal, customApi)
+description |  | Description (optional)
+defaultAccountRole.id |  | Default Role ID
 roleMappings | {} | Map of Morpheus Role ID : Fully Qualified Role Name
 roleMappingNames | {} | Map of Morpheus Role ID : Role Name
 config | {} | Map of configuration options which vary by type.
@@ -178,77 +178,77 @@ config | {} | Map of configuration options which vary by type.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.url      | null | URL
-config.bindingUsername      | null | Binding Username
-config.bindingPassword      | null | Binding Password
-config.requiredGroup      | null | Required group name (a.k.a. tag)
+config.url      |  | URL
+config.bindingUsername      |  | Binding Username
+config.bindingPassword      |  | Binding Password
+config.requiredGroup      |  | Required group name (a.k.a. tag)
 
 ### JSON Parameters for jumpCloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
 config.organizationId      | false | Organization ID
-config.bindingUsername      | null | Binding Username
-config.bindingPassword      | null | Binding Password
-config.requiredRole      | null | Required group name (a.k.a. tag)
+config.bindingUsername      |  | Binding Username
+config.bindingPassword      |  | Binding Password
+config.requiredRole      |  | Required group name (a.k.a. tag)
 
 ### JSON Parameters for activeDirectory
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.url      | null | AD Server
-config.domain      | null | Domain
+config.url      |  | AD Server
+config.domain      |  | Domain
 config.useSSL      | false | Use SSL
-config.bindingUsername      | null | Binding Username
-config.bindingPassword      | null | Binding Password
-config.requiredGroup      | null | Required Group
-config.searchMemberGroups      | null | Include Member Groups
+config.bindingUsername      |  | Binding Username
+config.bindingPassword      |  | Binding Password
+config.requiredGroup      |  | Required Group
+config.searchMemberGroups      |  | Include Member Groups
 
 ### JSON Parameters for okta
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.url      | null | OKTA URL
-config.administratorAPIToken      | null | Adminstrator API Token
-config.requiredGroup      | null | Required Group
+config.url      |  | OKTA URL
+config.administratorAPIToken      |  | Adminstrator API Token
+config.requiredGroup      |  | Required Group
 
 ### JSON Parameters for oneLogin
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.subdomain      | null | OneLogin Subdomain
-config.region      | null | OneLogin Region
-config.clientSecret      | null | API Client Secret
-config.clientId      | null | API Client ID
-config.requiredRole      | null | Required Role
+config.subdomain      |  | OneLogin Subdomain
+config.region      |  | OneLogin Region
+config.clientSecret      |  | API Client Secret
+config.clientId      |  | API Client ID
+config.requiredRole      |  | Required Role
 
 ### JSON Parameters for saml
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.url      | null | Login Redirect URL
+config.url      |  | Login Redirect URL
 config.doNotIncludeSAMLRequest      | false | Exclude SAMLRequest Parameter
-config.logoutUrl      | null | Logout Post URL
-config.publicKey      | null | Signing Public Key
+config.logoutUrl      |  | Logout Post URL
+config.publicKey      |  | Signing Public Key
 
 ### JSON Parameters for customExternal
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.loginUrl      | null | External Login URL
+config.loginUrl      |  | External Login URL
 config.doNotIncludeSAMLRequest      | false | Do not include SAMLRequest
-config.logout      | null | External Logout URL
-config.encryptionAlgo      | null | Encryption Algorithm ('NONE','AES','DES','DESede','HmacSHA1', 'HmacSHA256')
-config.encryptionKey      | null | Encryption Key
+config.logout      |  | External Logout URL
+config.encryptionAlgo      |  | Encryption Algorithm ('NONE','AES','DES','DESede','HmacSHA1', 'HmacSHA256')
+config.encryptionKey      |  | Encryption Key
 
 ### JSON Parameters for customApi
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.endpoint      | null | API Endpoint
-config.apiStyle      | null | API Style ('Form URL Encoded [GET]','Form URL Encoded [POST]','JSON [POST]','XML [POST]','HTTP Basic [GET]')
-config.encryptionAlgo      | null | Encryption Algorithm ('NONE','AES','DES','DESede','HmacSHA1', 'HmacSHA256')
-config.encryptionKey      | null | Encryption Key
+config.endpoint      |  | API Endpoint
+config.apiStyle      |  | API Style ('Form URL Encoded [GET]','Form URL Encoded [POST]','JSON [POST]','XML [POST]','HTTP Basic [GET]')
+config.encryptionAlgo      |  | Encryption Algorithm ('NONE','AES','DES','DESede','HmacSHA1', 'HmacSHA256')
+config.encryptionKey      |  | Encryption Key
 
 ## Updating a User Source
 
@@ -291,10 +291,10 @@ ID | The ID of the user source
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name
-description | null | Description (optional)
-active      | null | Activate (true) or disable (false) the user source
-defaultAccountRole.id | null | Default Role ID
+name      |  | Name
+description |  | Description (optional)
+active      |  | Activate (true) or disable (false) the user source
+defaultAccountRole.id |  | Default Role ID
 roleMappings | {} | Map of Morpheus Role ID : Fully Qualified Role Name
 roleMappingNames | {} | Map of Morpheus Role ID : Role Name
 config | {} | Map of configuration options which vary by type.
@@ -330,7 +330,7 @@ ID | The ID of the user source
 
 Parameter | Default | Description
 --------- | ------- | -----------
-subdomain      | null | New Subdomain for account
+subdomain      |  | New Subdomain for account
 
 This endpoint updates the subdomain for the account associated with the user source.
 

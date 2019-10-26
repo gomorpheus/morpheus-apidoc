@@ -94,7 +94,7 @@ This endpoint retrieves wiki pages associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match on name or urlName
+name |  | If specified will return an exact match on name or urlName
 phrase |  | If specified will return a partial match on name
 
 ## Get All Wiki Categories
@@ -221,9 +221,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/wiki/pages" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the wiki page.
-category | null | Optional category for grouping with other pages.
-content | null | The content of the page (markdown).
+name      |  | A unique name scoped to your account for the wiki page.
+category |  | Optional category for grouping with other pages.
+content |  | The content of the page (markdown).
 
 
 ## Update a Wiki Page
@@ -253,9 +253,9 @@ ID | The ID of the Wiki Page
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the wiki page.
-category | null | Optional category for grouping with other pages.
-content | null | The content of the page (markdown).
+name      |  | A unique name scoped to your account for the wiki page.
+category |  | Optional category for grouping with other pages.
+content |  | The content of the page (markdown).
 
 ## Delete a Wiki Page
 
@@ -339,7 +339,7 @@ ID | The ID of the Instance
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (instance name) | A unique name scoped to your account for the wiki page.
-content | null | The content of the page (markdown).
+content |  | The content of the page (markdown).
 
 
 
@@ -396,7 +396,7 @@ ID | The ID of the App
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (app name) | A unique name scoped to your account for the wiki page.
-content | null | The content of the page (markdown).
+content |  | The content of the page (markdown).
 
 
 
@@ -453,7 +453,7 @@ ID | The ID of the Server
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (server name) | A unique name scoped to your account for the wiki page.
-content | null | The content of the page (markdown).
+content |  | The content of the page (markdown).
 
 
 
@@ -510,7 +510,7 @@ ID | The ID of the Cloud
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (cloud name) | A unique name scoped to your account for the wiki page.
-content | null | The content of the page (markdown).
+content |  | The content of the page (markdown).
 
 
 ## Get a Wiki Page For Group
@@ -566,4 +566,4 @@ ID | The ID of the Group
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (group name) | A unique name scoped to your account for the wiki page.
-content | null | The content of the page (markdown).
+content |  | The content of the page (markdown).

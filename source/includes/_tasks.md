@@ -121,22 +121,22 @@ curl -XPOST "$MORPHEUS_API_URL/api/tasks" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the task
-code      | null | A unique code for the task
-taskType.code      | null | The type of task
+name      |  | A unique name for the task
+code      |  | A unique code for the task
+taskType.code      |  | The type of task
 taskOptions | {} | Map of options specific to each type. eg. script
-resultType      | null | The result type eg. value, exitCode, keyValue, json
+resultType      |  | The result type eg. value, exitCode, keyValue, json
 executeTarget      | <variable> | The execution target. eg. local,remote,resource. The default value varies by task type.
 retryable      | false | If the task should be retried or not.
-retryCount      | null | The number of times to retry.
-retryDelaySeconds      | null | The delay, between retries.
+retryCount      |  | The number of times to retry.
+retryDelaySeconds      |  | The delay, between retries.
 
 ### JSON Parameters for Execute Target: Local
 
 Parameter | Default | Description
 --------- | ------- | -----------
-taskOptions.localScriptGitId      | null | The Git Repo ID
-taskOptions.localScriptGitRef      | null | The Git Repo Ref eg. master
+taskOptions.localScriptGitId      |  | The Git Repo ID
+taskOptions.localScriptGitRef      |  | The Git Repo Ref eg. master
 
 These additional task options are available when using executeTarget of `local`.
 
@@ -144,10 +144,10 @@ These additional task options are available when using executeTarget of `local`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-taskOptions.host      | null | Host or IP Address for remote execution
+taskOptions.host      |  | Host or IP Address for remote execution
 taskOptions.port      | 22 | Port for remote execution
-taskOptions.username      | null | Username for remote execution
-taskOptions.password      | null | Password for remote execution
+taskOptions.username      |  | Username for remote execution
+taskOptions.password      |  | Password for remote execution
 
 These additional task options are available when using executeTarget of `remote`.
 

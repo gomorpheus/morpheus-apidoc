@@ -59,8 +59,8 @@ zoneId | The ID of the cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on partial match of name
-name | null | Filter on exact match of name
+phrase |  | Filter on partial match of name
+name |  | Filter on exact match of name
 
 ## Get a Specific Data Store
 
@@ -162,8 +162,8 @@ id | The ID of the data store
 
 Parameter | Default | Description
 --------- | ------- | -----------
-active      | null | Activate (true) or disable (false) the datastore
+active      |  | Activate (true) or disable (false) the datastore
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access

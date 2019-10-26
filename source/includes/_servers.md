@@ -187,24 +187,24 @@ This endpoint retrieves a paginated list of hosts.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
-siteId | null | Filter by group ID
-zoneId | null | Filter by zone ID
-clusterId | null | Filter by cluster ID
-managed | null | Filter by managed (true) or unmanaged (false)
-serverType | null | Filter by server type code
-powerState | null | Filter by power status
-ip | null | Filter by IP address
-vm | null | Filter to show only Virtual Machines (true)
-vmHypervisor | null | Filter to show only VM Hypervisors (true)
-bareMetalHost | null | Filter to show only Baremetal Servers (true)
-status | null | Filter by status
-agentInstalled | null | Filter by agent installed (true)
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+siteId |  | Filter by group ID
+zoneId |  | Filter by zone ID
+clusterId |  | Filter by cluster ID
+managed |  | Filter by managed (true) or unmanaged (false)
+serverType |  | Filter by server type code
+powerState |  | Filter by power status
+ip |  | Filter by IP address
+vm |  | Filter to show only Virtual Machines (true)
+vmHypervisor |  | Filter to show only VM Hypervisors (true)
+bareMetalHost |  | Filter to show only Baremetal Servers (true)
+status |  | Filter by status
+agentInstalled |  | Filter by agent installed (true)
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-lastUpdated | null | Date filter, restricts query to only load servers updated  timestamp is more recent or equal to the date specified
-createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
+lastUpdated |  | Date filter, restricts query to only load servers updated  timestamp is more recent or equal to the date specified
+createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 
 
 ## Get a Specific Host
@@ -500,13 +500,13 @@ curl -XPOST "$MORPHEUS_API_URL/api/servers" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the server
-description | null | Optional description field
-zone | null | The zone id we want to assign the server to.
-sshHost | null | reachable ip address for the server to remote in and provision the server
-sshUsername | null | ssh username to use when provisioning
-sshPassword | null | optional ssh password to use, if not specified the account public key can be used
-dataDevice  | null | the mount point for the lvm volume that needs to be created
+name      |  | Unique name scoped to your account for the server
+description |  | Optional description field
+zone |  | The zone id we want to assign the server to.
+sshHost |  | reachable ip address for the server to remote in and provision the server
+sshUsername |  | ssh username to use when provisioning
+sshPassword |  | optional ssh password to use, if not specified the account public key can be used
+dataDevice  |  | the mount point for the lvm volume that needs to be created
 
 ## Updating a Server
 
@@ -530,11 +530,11 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the server
-description | null | Optional description field
-sshUsername | null | SSH Username
-sshPassword | null | SSH Password
-powerScheduleType | null | Power Schedule ID
+name      |  | Unique name scoped to your account for the server
+description |  | Optional description field
+sshUsername |  | SSH Username
+sshPassword |  | SSH Password
+powerScheduleType |  | Power Schedule ID
 
 ## Install Agent
 
@@ -568,9 +568,9 @@ This will make the host a managed server, and install the agent.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-sshUsername      | null | ssh username to use when provisioning
-sshPassword | null | ssh password to use, if not specified the account public key can be used
-serverOs.id | null | The ID os the OS Type for this server. See GET /api/options/osTypes
+sshUsername      |  | ssh username to use when provisioning
+sshPassword |  | ssh password to use, if not specified the account public key can be used
+serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osTypes
 
 ## Upgrade Agent
 
@@ -640,8 +640,8 @@ Will resize a host asynchronously.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-server.plan.id      | null | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
-volumes | null | List of volumes with their new sizes.
+server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
+volumes |  | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 
 ## Delete a Server

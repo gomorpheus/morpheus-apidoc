@@ -66,7 +66,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-lastUpdated | null | Date filter, restricts query to only load alerts updated  timestamp is more recent or equal to the date specified
+lastUpdated |  | Date filter, restricts query to only load alerts updated  timestamp is more recent or equal to the date specified
 
 ## Get a Specific Alert
 

@@ -89,9 +89,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name or code
-name | null | Filter by name
-code | null | Filter by code
+phrase |  | Filter by matching name or code
+name |  | Filter by name
+code |  | Filter by code
 
 ## Get a Specific Environment
 

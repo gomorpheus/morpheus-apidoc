@@ -101,9 +101,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
-createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 
 ## Get a Specific App
 
@@ -217,9 +217,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the app
-description     | null | Optional description field
-group | null | A Map containing the id of the Group
+name  |  | A name for the app
+description     |  | Optional description field
+group |  | A Map containing the id of the Group
 
 
 ## Updating an App Name or Description
@@ -244,8 +244,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/apps/2" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the app
-description     | null | Optional description field
+name  |  | A name for the app
+description     |  | Optional description field
 
 
 ## Add Existing Instance to App
@@ -267,8 +267,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/add-instance" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-instanceId  | null | The ID of the instance being added
-tierName     | null | The Name of the Tier
+instanceId  |  | The ID of the instance being added
+tierName     |  | The Name of the Tier
 
 
 ## Remove Instance from App
@@ -290,7 +290,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/remove-instance" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-instanceId  | null | The ID of the instance being removed
+instanceId  |  | The ID of the instance being removed
 
 
 ## Get Security Groups
@@ -343,7 +343,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/security-groups" \
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
-securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+securityGroupIds |  | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
 
 ## Delete an App
 

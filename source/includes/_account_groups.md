@@ -63,9 +63,9 @@ accountId | The ID of the subtenant account
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on partial match of name or location
-name | null | Filter on exact match of name
-lastUpdated | null | A date filter, restricts query to only load groups updated more recent or equal to the date specified
+phrase |  | Filter on partial match of name or location
+name |  | Filter on exact match of name
+lastUpdated |  | A date filter, restricts query to only load groups updated more recent or equal to the date specified
 
 ## Get a Specific Group for Subtenant
 
@@ -145,10 +145,10 @@ accountId | The ID of the subtenant account
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to the subtenant for the group
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location argument for the group
+name      |  | A unique name scoped to the subtenant for the group
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location argument for the group
 
 ## Updating a Group for Subtenant
 
@@ -180,10 +180,10 @@ id | The ID of the group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to the subtenant for the group
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for the group
+name      |  | A unique name scoped to the subtenant for the group
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for the group
 
 ## Updating Group Zones for Subtenant
 
@@ -217,7 +217,7 @@ Any zones that are not passed in the `zones` parameter will be removed from the 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zones      | null | An array of all the zones assigned to this group.
+zones      |  | An array of all the zones assigned to this group.
 
 
 ## Delete a Group for Subtenant

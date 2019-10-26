@@ -84,7 +84,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-phrase | null | Name or description filter, restricts query to only load security groups which contain the phrase specified
+phrase |  | Name or description filter, restricts query to only load security groups which contain the phrase specified
 
 ## Get a Specific Security Group
 
@@ -161,11 +161,11 @@ curl -XPOST "$MORPHEUS_API_URL/api/security-groups" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name for your security group
-description | null | Optional description field
-zoneId      | null | Scoped Cloud ID.
-customOptions.vpc      | null | External ID of Amazon VPC.
-customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
+name      |  | Name for your security group
+description |  | Optional description field
+zoneId      |  | Scoped Cloud ID.
+customOptions.vpc      |  | External ID of Amazon VPC.
+customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 
 ## Updating a Security Group
 
@@ -195,8 +195,8 @@ id | The ID of the security group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name for your security group
-description | null | Optional description field
+name      |  | Name for your security group
+description |  | Optional description field
 
 ## Delete a Security Group
 
@@ -252,9 +252,9 @@ Will add a security group to the specified cloud.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zoneId      | null | The ID of the Zone (Cloud)
-customOptions.vpc      | null | External ID of Amazon VPC.
-customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
+zoneId      |  | The ID of the Zone (Cloud)
+customOptions.vpc      |  | External ID of Amazon VPC.
+customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 
 ## Delete a Security Group Location
 

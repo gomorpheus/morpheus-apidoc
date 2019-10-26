@@ -39,8 +39,8 @@ This endpoint retrieves all key pairs associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load certificates updated more recent or equal to the date specified
-name | null | If specified will return an exact match certificate
+lastUpdated |  | A date filter, restricts query to only load certificates updated more recent or equal to the date specified
+name |  | If specified will return an exact match certificate
 
 
 ## Get a Specific Certificate
@@ -107,11 +107,11 @@ curl -XPOST "$MORPHEUS_API_URL/api/certificates" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the key
-certFile | null | The contents of the certificate file
-keyFile | null | The contents of the key file
+name      |  | A unique name scoped to your account for the key
+certFile |  | The contents of the certificate file
+keyFile |  | The contents of the key file
 wildcard | false | Wether or not this certificate is a wildcard cert
-domainName | null | The domain name this certificate is tied to
+domainName |  | The domain name this certificate is tied to
 
 ## Updating a Certificate
 
@@ -138,11 +138,11 @@ curl -XPUT "$MORPHEUS_API_URL/api/certificates/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the key
-certFile | null | The contents of the certificate file
-keyFile | null | The contents of the key file
+name      |  | A unique name scoped to your account for the key
+certFile |  | The contents of the certificate file
+keyFile |  | The contents of the key file
 wildcard | false | Wether or not this certificate is a wildcard cert
-domainName | null | The domain name this certificate is tied to
+domainName |  | The domain name this certificate is tied to
 
 ## Delete a Certificate
 

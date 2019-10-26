@@ -63,8 +63,8 @@ This endpoint retrieves all cypher keys associated with the account, or user.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match of key
-phrase | null | If specified will match any part of key
+name |  | If specified will return an exact match of key
+phrase |  | If specified will match any part of key
 
 ## Get a Specific Cypher
 
@@ -195,9 +195,9 @@ The following parameters are available under the context **cypher**.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-itemKey      | null | A unique key in the format mount/key
-itemValue | null | The value to be stored securely. Some types will generate their own value.
-leaseTimeout | null | The Lease time in MS (default is 32 days)
+itemKey      |  | A unique key in the format mount/key
+itemValue |  | The value to be stored securely. Some types will generate their own value.
+leaseTimeout |  | The Lease time in MS (default is 32 days)
 
 
 #### Item Key

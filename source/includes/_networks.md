@@ -253,21 +253,21 @@ name      |  | Name
 description      |  | Description
 zone.id      |  | Cloud ID
 type.id      |  | Network Type ID
-pool      | null | Network Pool ID
+pool      |  | Network Pool ID
 allowStaticOverride      |  | Allow IP Override
 assignPublicIP      |  | Assign Public IP
 active      |  | Activate (true) or disable (false) the network
 availabilityZone      |  | Availability Zone
-networkDomain.id      | null | Network Domain ID
-searchDomains      | null | Search Domains
+networkDomain.id      |  | Network Domain ID
+searchDomains      |  | Search Domains
 scanNetwork      | off | Scan Network
-networkProxy.id      | null | Network Proxy ID
+networkProxy.id      |  | Network Proxy ID
 applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
 noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 This endpoint allows creating a Network.  Only certain types of clouds support creating and deleting networks. Configuration options vary by [Network Types](#network-types).
 
@@ -308,13 +308,13 @@ assignPublicIP      |  | Assign Public IP
 active      |  | Activate (true) or disable (false) the network
 availabilityZone      |  | Availability Zone
 scanNetwork      | off | Scan Network
-networkProxy.id      | null | Network Proxy ID
+networkProxy.id      |  | Network Proxy ID
 applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
 noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 This endpoint allows updating a Network.  Configuration options vary by [Network Types](#network-types).
 

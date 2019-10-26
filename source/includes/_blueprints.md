@@ -132,8 +132,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
 
 ## Get a Specific Blueprint
 
@@ -342,11 +342,11 @@ curl -XPOST "$MORPHEUS_API_URL/api/blueprints" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the blueprint
-description     | null | Optional description field
+name  |  | A name for the blueprint
+description     |  | Optional description field
 category     | morpheus | Optional category field
 type     | morpheus | Blueprint Type. The default is 'morpheus'.
-tiers | null | A Map containing a key for each tier and all their instances.
+tiers |  | A Map containing a key for each tier and all their instances.
 
 ### Blueprint Tiers Configuration
 
@@ -514,8 +514,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/update-permissions" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resourcePermission.all  | null | Enable access for all groups
-resourcePermission.sites  | null | Enable access for specific groups only
+resourcePermission.all  |  | Enable access for all groups
+resourcePermission.sites  |  | Enable access for specific groups only
 
 
 ## Update Blueprint Image
@@ -536,7 +536,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/image" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-templateImage  | null | Image File png,jpg,svg
+templateImage  |  | Image File png,jpg,svg
 
 Upload a new logo image.  Expects multipart form data as the request format, not JSON.
 

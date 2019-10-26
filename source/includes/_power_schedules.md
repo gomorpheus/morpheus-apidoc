@@ -59,8 +59,8 @@ This endpoint retrieves all power schedules associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match on name
-phrase | null | If specified will return a partial match on name
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
 
 ## Get a Specific Power Schedule
 

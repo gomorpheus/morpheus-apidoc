@@ -71,7 +71,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-lastUpdated | null | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
+lastUpdated |  | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
 deleted | false | Pass true to see checks that have been deleted.
 
 
@@ -176,15 +176,15 @@ curl -XPOST "$MORPHEUS_API_URL/api/monitoring/checks" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the check
-description | null | Optional description field
-checkType | null | Check type you want to create, use code and a valid check type: `{"code": "webGetCheck"}`
+name      |  | Unique name scoped to your account for the check
+description |  | Optional description field
+checkType |  | Check type you want to create, use code and a valid check type: `{"code": "webGetCheck"}`
 checkInterval | 300 | Number of seconds you want between check executions (minimum value is 60, depending on your subscription plan)
 inUptime  | true | Used to determine if check should affect account wide availability calculations
 active    | true | Used to determine if check should be scheduled to execute
 severity  | critical | Severity level of incidents that are created when this check fails. They can be `info`, `warning`, or `critical`
-checkAgent | null | Specifies agent you want to run the check with i.e. `{"id": 1}` See Agents for more information
-config | null | JSON encoded list of parameters that varies by check type. See below for more information
+checkAgent |  | Specifies agent you want to run the check with i.e. `{"id": 1}` See Agents for more information
+config |  | JSON encoded list of parameters that varies by check type. See below for more information
 
 ## Updating a Check
 
@@ -218,15 +218,15 @@ curl -XPUT "$MORPHEUS_API_URL/api/monitoring/checks/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the check
-description | null | Optional description field
-checkType | null | Check type you want to create, use code and a valid check type: `{"code": "webGetCheck"}`
+name      |  | Unique name scoped to your account for the check
+description |  | Optional description field
+checkType |  | Check type you want to create, use code and a valid check type: `{"code": "webGetCheck"}`
 checkInterval | 300 | Number of seconds you want between check executions (minimum value is 60, depending on your subscription plan)
 inUptime  | true | Used to determine if check should affect account wide availability calculations
 active    | true | Used to determine if check should be scheduled to execute
 severity  | critical | Severity level of incidents that are created when this check fails. They can be `info`, `warning`, or `critical`
-checkAgent | null | Specifies agent you want to run the check with i.e. `{"id": 1}` See Agents for more information
-config | null | JSON encoded list of parameters that varies by check type. See below for more information
+checkAgent |  | Specifies agent you want to run the check with i.e. `{"id": 1}` See Agents for more information
+config |  | JSON encoded list of parameters that varies by check type. See below for more information
 
 ## Check Types and Options
 

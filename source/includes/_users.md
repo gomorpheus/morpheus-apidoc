@@ -63,9 +63,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort order
-phrase | null | Filter by matching firstName, lastName, username, or email
-username | null | Filter by username
-lastUpdated | null | Date filter, restricts query to only load users updated  timestamp is more recent or equal to the date specified
+phrase |  | Filter by matching firstName, lastName, username, or email
+username |  | Filter by username
+lastUpdated |  | Date filter, restricts query to only load users updated  timestamp is more recent or equal to the date specified
 
 
 ## Get a Specific User
@@ -139,13 +139,13 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-username  | null | A unique username
-email     | null | The user's email
-firstName | null | The user's first name (optional)
-lastName  | null | The user's last name (optional)
-password  | null | The password to apply to the user
-role      | null | A nested id of the role to assign to the user
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+username  |  | A unique username
+email     |  | The user's email
+firstName |  | The user's first name (optional)
+lastName  |  | The user's last name (optional)
+password  |  | The password to apply to the user
+role      |  | A nested id of the role to assign to the user
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating a User
@@ -178,13 +178,13 @@ curl -XPUT "$MORPHEUS_API_URL/api/accounts/1/users/2" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-username  | null | A unique username
-email     | null | The user's email
-firstName | null | The user's first name (optional)
-lastName  | null | The user's last name (optional)
-password  | null | The password to apply to the user
-role      | null | A nested id of the role to assign to the user
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+username  |  | A unique username
+email     |  | The user's email
+firstName |  | The user's first name (optional)
+lastName  |  | The user's last name (optional)
+password  |  | The password to apply to the user
+role      |  | A nested id of the role to assign to the user
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 ## Delete a User
 

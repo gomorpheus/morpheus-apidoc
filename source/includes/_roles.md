@@ -72,8 +72,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-phrase | null | Filter by matching authority
-authority | null | Filter by authority
+phrase |  | Filter by matching authority
+authority |  | Filter by authority
 
 
 ## Get a Specific Role
@@ -209,10 +209,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/roles" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-authority  | null | A name for the role
-description     | null | Optional description field if you want to put more info there
-baseRoleId | null | A role to copy feature permissions and access from (optional)
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+baseRoleId |  | A role to copy feature permissions and access from (optional)
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Basic Role Settings
@@ -242,9 +242,9 @@ curl -XPUT "$MORPHEUS_API_URL/api/roles/4" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-authority  | null | A name for the role
-description     | null | Optional description field if you want to put more info there
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Role Feature Permissions

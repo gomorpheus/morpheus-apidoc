@@ -148,10 +148,10 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or serviceUrl filter, restricts query to only load clusters which contain the phrase specified
-name | null | Name filter, restricts query to only load clusters matching the name specified
-zoneId | null | Zone filter, restricts query to only load clusters of a specified zone
-typeId | null | Type filter, restricts query to only load clusters of a specified cluster type
+phrase |  | Name or serviceUrl filter, restricts query to only load clusters which contain the phrase specified
+name |  | Name filter, restricts query to only load clusters matching the name specified
+zoneId |  | Zone filter, restricts query to only load clusters of a specified zone
+typeId |  | Type filter, restricts query to only load clusters of a specified cluster type
 
 ## Get a Specific Cluster
 
@@ -415,7 +415,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 type  | Y | n/a | Type of cluster to be created
 name | Y | n/a | Name of the cluster to be created
-description | N | null | Description of the cluster to be created
+description | N |  | Description of the cluster to be created
 group.id | Y | n/a | The Group ID to provision the cluster into
 cloud.id | Y | n/a | The Cloud ID to provision the host into 
 layout.id | Y | n/a | The Layout ID for the host type(s) that will be provisioned for the cluster 
@@ -428,16 +428,16 @@ The Provision Types api can be used to see which options are available.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-config | Y | null | Key for specific host type configuration, see [Config](#config)
+config | Y |  | Key for specific host type configuration, see [Config](#config)
 name | Y | n/a | Name to be used for host(s) created in the cluster
-plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. 
-plan.options | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
-volumes | N | null | Key for volume configuration, see [Volumes](#volumes)  
-networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
-securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the host to
+plan.id | Y |  | The id for the memory and storage option pre-configured within Morpheus. 
+plan.options | N |  | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+volumes | N |  | Key for volume configuration, see [Volumes](#volumes)  
+networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
+securityGroups | N |  | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the host to
 visibility | N | private | Visibility for server host
-userGroup.id | N | null | User Group ID for server host
-hostname | N | null | Hostname for server host
+userGroup.id | N |  | User Group ID for server host
+hostname | N |  | Hostname for server host
 
 #### Volumes
 
@@ -450,9 +450,9 @@ id | N | -1 | The id for the LV configuration being created
 rootVolume | N | true | If set to false then a non-root LV will be created
 name | Y | root | Name/type of the LV being created
 size | N | [from service plan] | Size of the LV to be created in GBs
-sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
-storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
+sizeId | N |  | Can be used to select pre-existing LV choices from Morpheus
+storageType | N |  | Identifier for LV type
+datastoreId | Y |  | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
 
 #### Network Interfaces
 
@@ -505,11 +505,11 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | Cluster name
-description | null | Cluster description
-enabled | null | Cluster enabled
-serviceUrl | null | Cluster API Url
-refresh | null | Queue cluster refresh
+name |  | Cluster name
+description |  | Cluster description
+enabled |  | Cluster enabled
+serviceUrl |  | Cluster API Url
+refresh |  | Queue cluster refresh
 
 ## Update Cluster Permissions
 
@@ -551,12 +551,12 @@ The `permissions` parameter is for permissions for clusters and namespaces.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resourcePool.visibility | null | Applicable to clusters only
-resourcePermissions.all  | null | Pass true to allow access to all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
-resourcePermissions.allPlans | null | Pass true to allow access to all plans
-resourcePermissions.plans | null | Array of plans that are allowed access
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
+resourcePool.visibility |  | Applicable to clusters only
+resourcePermissions.all  |  | Pass true to allow access to all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+resourcePermissions.allPlans |  | Pass true to allow access to all plans
+resourcePermissions.plans |  | Array of plans that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 
 
 ## Delete a Cluster
@@ -797,10 +797,10 @@ id | The ID of the cluster
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-name | Y | null | Namespace name
-description | N | null | Namespace description
+name | Y |  | Namespace name
+description | N |  | Namespace description
 active | N | false | Namespace active
-resourcePermissions | N | null | Key for resource permission configuration, see [Resource Permissions](#resource-permissions)  
+resourcePermissions | N |  | Key for resource permission configuration, see [Resource Permissions](#resource-permissions)  
 
 #### Resource Permissions
 
@@ -808,9 +808,9 @@ The `resourcePermissions` parameter is a map for namespace group and service pla
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-all | N | null | Pass true to allow access to all groups
-sites | N | null | Array of groups that are allowed access
-allPlans | N | null | Pass true to allow access to all service plans
+all | N |  | Pass true to allow access to all groups
+sites | N |  | Array of groups that are allowed access
+allPlans | N |  | Pass true to allow access to all service plans
 plans | N | n/a | Array of service plans that are allowed access
 
 
@@ -851,9 +851,9 @@ id | The ID of the namespace
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-description | N | null | Namespace description
+description | N |  | Namespace description
 active | N | false | Namespace active
-permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
+permissions | N |  | Key for resource permission configuration, see [Permissions](#permissions)  
 
 
 ## Delete a Namespace (Kubernetes)
@@ -1076,7 +1076,7 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Name filter, restricts query to only load workers matching the name or display name
+phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
 ## Get Masters (Kubernetes)
 
@@ -1103,7 +1103,7 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Name filter, restricts query to only load workers matching the name or display name
+phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
 
 ## Get Volumes
@@ -1174,7 +1174,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
 
 
 ## Delete a Volume
@@ -1318,8 +1318,8 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load containers which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load containers which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Deployments
@@ -1382,8 +1382,8 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load deployments which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load deployments which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Jobs
@@ -1445,7 +1445,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load jobs which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load jobs which contain the phrase specified
 
 
 ## Get Pods
@@ -1508,8 +1508,8 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load pods which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load pods which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Services
@@ -1567,7 +1567,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load services which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load services which contain the phrase specified
 
 
 ## Get Stateful Sets
@@ -1630,8 +1630,8 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load stateful sets which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load stateful sets which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Delete Container
@@ -2203,10 +2203,10 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
-name | null | Name filter, restricts query to only load datastore of specified name
-code | null | Code filter, restricts query to only load datastore of specified code
-hideInactive | null | If true restricts query to only load active datastores
+phrase |  | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
+name |  | Name filter, restricts query to only load datastore of specified name
+code |  | Code filter, restricts query to only load datastore of specified code
+hideInactive |  | If true restricts query to only load active datastores
 
 
 ## Get Datastore
@@ -2320,4 +2320,4 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 visibility | N | private | Visibility for server host
 active | N | true | Datastore active
-permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
+permissions | N |  | Key for resource permission configuration, see [Permissions](#permissions)  

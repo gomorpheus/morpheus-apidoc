@@ -57,18 +57,18 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-query | null | Filter by wildcard search of fields
-message | null | Filter by message.
-sourceType | null | Filter by source type
-typeCode | null | Filter by source type
-objectId | null | Filter by objectId
-token | null | Filter by token
-level | null | Filter by log level. `DEBUG`, `INFO`, `ERROR`. Multiple values can be passed pipe delimited. Example: `WARN|ERROR`
-startMs | null | Date filter, restricts query to only load logs updated more recently than the date specified.
-endMs | null | Date filter, restricts query to only load logs updated before the date specified.
-containers | null | Filter by Container ID. Accepts multiple values.
-servers | null | Filter by Server ID. Accepts multiple values.
-clusterId | null | Filter by Cluster ID
+query |  | Filter by wildcard search of fields
+message |  | Filter by message.
+sourceType |  | Filter by source type
+typeCode |  | Filter by source type
+objectId |  | Filter by objectId
+token |  | Filter by token
+level |  | Filter by log level. `DEBUG`, `INFO`, `ERROR`. Multiple values can be passed pipe delimited. Example: `WARN|ERROR`
+startMs |  | Date filter, restricts query to only load logs updated more recently than the date specified.
+endMs |  | Date filter, restricts query to only load logs updated before the date specified.
+containers |  | Filter by Container ID. Accepts multiple values.
+servers |  | Filter by Server ID. Accepts multiple values.
+clusterId |  | Filter by Cluster ID
 
 ### Response
 

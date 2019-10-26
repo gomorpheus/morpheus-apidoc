@@ -241,11 +241,11 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
-instanceType | null | Filter by instance type code
-lastUpdated | null | Date filter, restricts query to only load instances updated  timestamp is more recent or equal to the date specified
-createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+instanceType |  | Filter by instance type code
+lastUpdated |  | Date filter, restricts query to only load instances updated  timestamp is more recent or equal to the date specified
+createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 
 ## Get a Specific Instance
 
@@ -1021,23 +1021,23 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 instance  | Y | n/a | Key for name, site, instanceType layout, and plan
-instance.name | Y | null | Name of the instance to be created
-instance.site.id | Y | null | The Group ID to provision the instance into
-instance.instanceType.code | Y | null | The type of instance by code we want to fetch
-instance.layout.id |  Y | null | The layout id for the instance type that you want to provision. i.e. single process or cluster
-instance.plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
-zoneId | Y | null | The Cloud ID to provision the instance onto
+instance.name | Y |  | Name of the instance to be created
+instance.site.id | Y |  | The Group ID to provision the instance into
+instance.instanceType.code | Y |  | The type of instance by code we want to fetch
+instance.layout.id |  Y |  | The layout id for the instance type that you want to provision. i.e. single process or cluster
+instance.plan.id | Y |  | The id for the memory and storage option pre-configured within Morpheus. See [Available Service Plans](##get-available-service-plans-for-an-instance)
+zoneId | Y |  | The Cloud ID to provision the instance onto
 evars | N | [] | Environment Variables, an array of objects that have name and value.
 copies | N | 1 | Number of copies to provision
 layoutSize | N | 1 | Apply a multiply factor of containers/vms within the instance
-servicePlanOptions | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
-securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
-volumes | N | null | Key for volume configuration, see [Volumes](#volumes)
-networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
-config | Y | null | Key for specific type configuration, see [Config](#config)
-metadata | N | null | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
-taskSetId | N | null | The Workflow ID to execute.
-taskSetName | N | null | The Workflow Name to execute.
+servicePlanOptions | N |  | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+securityGroups | N |  | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
+volumes | N |  | Key for volume configuration, see [Volumes](#volumes)
+networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
+config | Y |  | Key for specific type configuration, see [Config](#config)
+metadata | N |  | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
+taskSetId | N |  | The Workflow ID to execute.
+taskSetName | N |  | The Workflow Name to execute.
 
 #### Volumes
 
@@ -1050,9 +1050,9 @@ id | N | -1 | The id for the LV configuration being created
 rootVolume | N | true | If set to false then a non-root LV will be created
 name | Y | root | Name/type of the LV being created
 size | N | [from service plan] | Size of the LV to be created in GBs
-sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
-storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
+sizeId | N |  | Can be used to select pre-existing LV choices from Morpheus
+storageType | N |  | Identifier for LV type
+datastoreId | Y |  | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
 
 #### Network Interfaces
 
@@ -1076,25 +1076,25 @@ The Provision Types api can be used to see which options are available.
 ##### JSON Config Parameters for VMware
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-publicKeyId | N | null | ID of a public key to add to the instance
-resourcePoolId | Y | null | External ID of the resource group to use for instance
-hostId | N | null | Specific host to deploy to if so desired
-vmwareUsr | N | null | Additional user to provision to instance
-vmwarePwd | N | null | Password for additional user
-vmwareDomainName | N | null | Domain name to be given to instance
-vmwareCustomSpec | N | null | Customization spec ID
+publicKeyId | N |  | ID of a public key to add to the instance
+resourcePoolId | Y |  | External ID of the resource group to use for instance
+hostId | N |  | Specific host to deploy to if so desired
+vmwareUsr | N |  | Additional user to provision to instance
+vmwarePwd | N |  | Password for additional user
+vmwareDomainName | N |  | Domain name to be given to instance
+vmwareCustomSpec | N |  | Customization spec ID
 
 
 ##### JSON Config Parameters for Docker
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-provisionServerId | N | null | Specific host to deploy to if so desired
-resourcePoolId | Y | null | External ID of the resource group to use for instance
+provisionServerId | N |  | Specific host to deploy to if so desired
+resourcePoolId | Y |  | External ID of the resource group to use for instance
 
 ##### JSON Config Parameters for Kubernetes
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-resourcePoolId | Y | null | ID of the resource group (kubernetes cluster) to use for instance
+resourcePoolId | Y |  | ID of the resource group (kubernetes cluster) to use for instance
 
 #### Metadata
 This is specific to AWS Metadata tags.  Name-Values pairs can be anything you like and are added to the instance JSON as an array of n-v pairs per the example to the right:
@@ -1466,7 +1466,7 @@ curl -X POST "https://api.gomorpheus.com/api/instances/1/security-groups" \
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
-securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+securityGroupIds |  | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
 
 This defines the list of all the security groups applied to an instance.
 

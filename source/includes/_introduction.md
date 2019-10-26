@@ -4,11 +4,9 @@ Welcome to the Morpheus API Documentation.
 
 [Morpheus](https://www.morpheusdata.com/) is a powerful cloud management tool that provides provisioning, monitoring, logging, backups, and application deployment strategies.
 
-The Morpheus API uses an OAUTH 2.0 based authentication model.  See [Authentication](#authentication).
+The Morpheus API uses an OAUTH 2.0 based authentication model.  See [Authentication](#authentication).  
 
-For convenience, the curl examples in this document use environment variables in place of the Morpheus appliance URL and access token. This allows the examples to be copied and executed without any modification.
-
-To get this working, set up [Environment Variables](#environment-variables), or just be sure to replace <code>$MORPHEUS_API_URL</code> and <code>$MORPHEUS_API_TOKEN</code> in the curl examples with your own Morpheus URL and access token.
+For convenience, the examples in this document use environment variables in place of the URL and access token so that the examples can be copied and executed without any modification. To make this work you must set up [Environment Variables](#environment-variables), or just be sure to replace <code>$MORPHEUS_API_URL</code> and <code>$MORPHEUS_API_TOKEN</code> in your commands.
 
 If you are looking to use the API to initialize a fresh installation of the morpheus appliance, see [Setup](#setup).
 

@@ -75,8 +75,8 @@ zoneId | The ID of the cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on partial match of name
-name | null | Filter on exact match of name
+phrase |  | Filter on partial match of name
+name |  | Filter on exact match of name
 
 ## Get a Specific Resource Folder
 
@@ -182,10 +182,10 @@ Parameter | Default | Description
 --------- | ------- | -----------
 defaultFolder      | false | Set as the Default Folder
 defaultImage      | false | Set as the Default Image Target
-active      | null | Activate (true) or disable (false) the resource folder
+active      |  | Activate (true) or disable (false) the resource folder
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
-resourcePermissions.allPlans  | null | Pass true to allow access all plans
-resourcePermissions.plans  | null | Array of plans that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+resourcePermissions.allPlans  |  | Pass true to allow access all plans
+resourcePermissions.plans  |  | Array of plans that are allowed access

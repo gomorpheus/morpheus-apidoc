@@ -485,9 +485,9 @@ Parameter | Default | Description
 type.id      |  | [Subnet Types](#subnet-types) ID
 config      |  | Configuration object. Settings vary by type.
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 This endpoint allows creating a Subnet.  Only certain types of clouds support creating and deleting subnets. Configuration options vary for each [Subnet Type](#subnet-types).
 
@@ -526,9 +526,9 @@ Parameter | Default | Description
 type.id      |  | [Subnet Types](#subnet-types) ID
 config      |  | Configuration object. Settings vary by type.
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 This endpoint allows updating a Subnet.  Only certain types of clouds support this action. Configuration options vary for each [Subnet Type](#subnet-types).
 

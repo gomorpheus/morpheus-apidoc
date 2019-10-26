@@ -37,8 +37,8 @@ This endpoint retrieves all key pairs associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load keypairs updated more recent or equal to the date specified
-name | null | If specified will return an exact match keypair
+lastUpdated |  | A date filter, restricts query to only load keypairs updated more recent or equal to the date specified
+name |  | If specified will return an exact match keypair
 
 
 ## Get a Specific Key Pair
@@ -100,9 +100,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/key-pairs" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the key
-publicKey | null | The public key pair value
-privateKey | null | The private key pair value (optional)
+name      |  | A unique name scoped to your account for the key
+publicKey |  | The public key pair value
+privateKey |  | The private key pair value (optional)
 
 **NOTE** The Public and Private key are stored in encrypted form in the database.
 

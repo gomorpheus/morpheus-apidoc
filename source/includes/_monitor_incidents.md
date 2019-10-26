@@ -67,8 +67,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-status | null | Filter by status
-severity | null | Filter by severity
+status |  | Filter by status
+severity |  | Filter by severity
 
 ## Get a Specific Incident
 
@@ -190,13 +190,13 @@ This endpoint can be used to update certain properties of an incident.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resolution | null | Description of the resolution to this incident
-comment | null | Comment on this incident
-status | null | Set status (open or closed)
-severity | null | Set severity (critical, warning or info)
-name | null | Set display name(subject)
-startDate | null | Set start time
-endDate | null | Set end time
+resolution |  | Description of the resolution to this incident
+comment |  | Comment on this incident
+status |  | Set status (open or closed)
+severity |  | Set severity (critical, warning or info)
+name |  | Set display name(subject)
+startDate |  | Set start time
+endDate |  | Set end time
 
 
 ## Mute an Incident
@@ -378,11 +378,11 @@ This endpoint can be used to create an incident.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resolution | null | Description of the resolution to this incident
-comment | null | Comment on this incident, updates summary field
-status | null | Set status (open or closed)
-severity | null | Set severity (critical, warning or info)
-name | null | Set display name(subject)
-startDate | null | Set start time
-endDate | null | Set end time
-inUptime | null | Set 'In Availability'
+resolution |  | Description of the resolution to this incident
+comment |  | Comment on this incident, updates summary field
+status |  | Set status (open or closed)
+severity |  | Set severity (critical, warning or info)
+name |  | Set display name(subject)
+startDate |  | Set start time
+endDate |  | Set end time
+inUptime |  | Set 'In Availability'

@@ -50,8 +50,8 @@ This endpoint retrieves all groups and a list of zones associated with the group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load groups updated more recent or equal to the date specified
-name | null | If specified will return an exact match group
+lastUpdated |  | A date filter, restricts query to only load groups updated more recent or equal to the date specified
+name |  | If specified will return an exact match group
 
 
 ## Get a Specific Group
@@ -126,9 +126,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/groups" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the group
-code      | null | Optional code for use with policies
-location  | null | Optional location argument for your group
+name      |  | A unique name scoped to your account for the group
+code      |  | Optional code for use with policies
+location  |  | Optional location argument for your group
 
 ## Updating a Group
 
@@ -152,9 +152,9 @@ curl -XPUT "$MORPHEUS_API_URL/api/groups/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the group
-code      | null | Optional code for use with policies
-location  | null | Optional location for your group
+name      |  | A unique name scoped to your account for the group
+code      |  | Optional code for use with policies
+location  |  | Optional location for your group
 
 ## Updating Group Zones
 
@@ -188,7 +188,7 @@ Any zones that are not passed in the `zones` parameter will be removed from the 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zones      | null | An array of all the zones assigned to this group.
+zones      |  | An array of all the zones assigned to this group.
 
 
 ## Delete a Group

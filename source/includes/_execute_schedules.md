@@ -56,8 +56,8 @@ This endpoint retrieves all execute schedules associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match on name
-phrase | null | If specified will return a partial match on name
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
 
 ## Get a Specific Execute Schedule
 

@@ -79,8 +79,8 @@ zoneId | The ID of the cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on partial match of name
-name | null | Filter on exact match of name
+phrase |  | Filter on partial match of name
+name |  | Filter on exact match of name
 
 ## Get a Specific Resource Pool
 
@@ -191,22 +191,22 @@ zoneId | The ID of the cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name
+name      |  | Name
 defaultPool      | false | Set as the Default Pool
 defaultImage      | false | Set as the Default Image Target
 active      | true | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  | true | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
+resourcePermissions.sites  |  | Array of groups that are allowed access
 resourcePermissions.allPlans  | true | Pass true to allow access all plans
-resourcePermissions.plans  | null | Array of plans that are allowed access
+resourcePermissions.plans  |  | Array of plans that are allowed access
 
 ### JSON Parameters for Amazon Resource Pool
 
 Parameter | Default | Description
 --------- | ------- | -----------
-config.cidrBlock      | null | Provide the base CIDR Block to use for this VPC (must be between a /16 and /28 Block)
+config.cidrBlock      |  | Provide the base CIDR Block to use for this VPC (must be between a /16 and /28 Block)
 config.tenancy      | default | default or dedicated
 
 ### JSON Parameters for Cloud Foundry
@@ -257,13 +257,13 @@ id | The ID of the resource pool
 
 Parameter | Default | Description
 --------- | ------- | -----------
-active      | null | Activate (true) or disable (false) the resource pool
+active      |  | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
-resourcePermissions.all  | null | Pass true to allow access all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
-resourcePermissions.allPlans  | null | Pass true to allow access all plans
-resourcePermissions.plans  | null | Array of plans that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+resourcePermissions.allPlans  |  | Pass true to allow access all plans
+resourcePermissions.plans  |  | Array of plans that are allowed access
 
 ## Delete a Resource Pool
 

@@ -123,7 +123,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-lastUpdated | null | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
+lastUpdated |  | Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified
 deleted | false | Pass true to see checks that have been deleted.
 
 
@@ -300,8 +300,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/monitoring/groups/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the check group
-description | null | Optional description field
+name      |  | Unique name scoped to your account for the check group
+description |  | Optional description field
 inUptime  | true | Used to determine if check should affect account wide availability calculations
 active    | true | Used to determine if check should be scheduled to execute
 severity  | critical | Severity level of incidents that are created when this check fails. They can be `info`, `warning`, or `critical`

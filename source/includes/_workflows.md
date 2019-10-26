@@ -70,8 +70,8 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name
-name | null | Filter by name
+phrase |  | Filter by matching name
+name |  | Filter by name
 
 ## Get a Specific Workflow
 
@@ -162,10 +162,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/task-sets" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the workflow
-description      | null | A description of the workflow
+name      |  | A unique name for the workflow
+description      |  | A description of the workflow
 tasks      | [] | List of task objects in order
-tasks.taskId | null | Task ID
+tasks.taskId |  | Task ID
 tasks.taskPhase | provision | Task Phase.
 
 
@@ -200,10 +200,10 @@ ID | The ID of the workflow
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the workflow
-description      | null | A description of the workflow
+name      |  | A unique name for the workflow
+description      |  | A description of the workflow
 tasks      | [] | List of task objects in order
-tasks.taskId | null | Task ID
+tasks.taskId |  | Task ID
 tasks.taskPhase | provision | Task Phase.
 
 ## Delete a Workflow
