@@ -17,7 +17,7 @@ curl "$MORPHEUS_API_URL/api/foobar" \
 
 As with any API, errors can occur and when they do the Morpheus API returns an HTTP Error code.
 
-### HTTP Error Codes
+### Error Codes
 
 The Morpheus API uses the following error codes:
 

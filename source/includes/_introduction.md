@@ -10,24 +10,12 @@ For convenience, the curl examples in this document use environment variables in
 
 To get this working, set up [Environment Variables](#environment-variables), or just be sure to replace <code>$MORPHEUS_API_URL</code> and <code>$MORPHEUS_API_TOKEN</code> in the curl examples with your own Morpheus URL and access token.
 
+If you are looking to use the API to initialize a fresh installation of the morpheus appliance, see [Setup](#setup).
+
+
 <aside class="info">
 Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
 </aside>
-
-If you are looking to use the API to setup a fresh installation of the morpheus appliance, see [Setup](#setup).
-
-### Programming Languages
-
-The Morpheus API has clients available for developing in a variety of programming languages.
-
-Language | Description
---------- | ------- | -----------
-Ruby | The [Morpheus CLI](https://github.com/gomorpheus/morpheus-cli/) is written in ruby and provides the `Morpheus::APIClient` driver.
-Python | The [Morpheus Python](#morpheus-python) client is under development.
-Java | The Morpheus Java client is under development.
-Go | The Morpheus Go client is under development.
-Terraform (Go) | The Morpheus Terraform Provider is under development.
-
 
 ## Version
 
