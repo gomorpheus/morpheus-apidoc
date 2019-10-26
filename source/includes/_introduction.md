@@ -28,11 +28,11 @@ The following environment variables are used throughout the examples in this doc
 
 Environment Variable | Description
 --------- | ------- | -----------
-MORPHEUS_API_URL | The URL of your morpheus data appliance. Example: <code>https://morpheus.yourcompany.com</code>
+MORPHEUS_API_URL | The URL of your morpheus data appliance. Example: <code>https://api.gomorpheus.com</code>
 MORPHEUS_API_TOKEN | Your access token. Example: <code>e1d62c34-f7f5-4713-a874-31491e7707de</code>
 
 ```bash
-export MORPHEUS_API_URL="https://morpheus.yourcompany.com"
+export MORPHEUS_API_URL="https://api.gomorpheus.com"
 export MORPHEUS_API_TOKEN="e1d62c34-f7f5-4713-a874-31491e7707de"
 ```
 
