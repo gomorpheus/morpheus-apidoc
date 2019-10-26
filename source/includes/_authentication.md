@@ -20,7 +20,7 @@ Authorization      | Use the format `bearer access_token`. Example: `Authorizati
 
 ## Get Access Token
 
-This endpoint provides authentication via the username and password of a morpheus [User](#users). The response includes a valid access token.  If your current token is expired, a new one will be created and returned.  By default, access tokens are valid for 1 year from the date they were created, or until it is refreshed.
+This endpoint provides authentication via username and password of a morpheus [User](#users). The response includes a valid access token.  If your current token is expired, a new one will be created and returned. 
 
 
 ```shell
@@ -48,7 +48,7 @@ curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&clien
 
 Header | Description
 --------- | -----------
-Content-Type     | `application/x-www-form-urlencoded`
+Content-Type     | `application/x-www-form-urlencoded`. This endpoint does not currently accept `application/json`, it should in the future.
 
 ### Query Parameters
 
@@ -72,7 +72,7 @@ Name | Description
 --------- | -----------
 access_token | The access token for this user (scoped to client_id).
 refresh_token | The refresh token for this user (scoped to client_id).
-expires_in | The remaining seconds before the token expires. By default, access tokens are valid for 1 year or until it is refreshed.
+expires_in | The remaining seconds before the token expires. By default, access tokens are valid for 1 year or until it is refreshed. This time may vary depending on the `client_id` that is used.
 token_type | The token type, this will be `bearer`.
 scope | The scope, this will be `write`.
 

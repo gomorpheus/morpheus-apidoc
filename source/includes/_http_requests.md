@@ -30,7 +30,7 @@ This is an example of Morpheus API request that finds all instances with a simil
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
-This is the format for documenting request endpoints.
+This is the format for documenting request endpoints. Most endpoints have a path that looks like `/api/resources/:id`.
 
 ### URL Parameters
 
@@ -39,6 +39,13 @@ Parameter | Description
 :id | ID of the Instance.
 
 This is the format for documenting URL parameters that are included in the path of the request.
+
+### HTTP Headers
+
+Header |  Description
+---------  | -----------
+Authorization      | Use the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`. Most endpoints require this header. Some exceptions include [Authentication](#authentication) and [Setup](#setup).
+Content-Type      | Use `application/json` for `POST` and `PUT` requests. This is needed to ensure your JSON payload is parsed.  Exceptions to this rule include file uploads where `application/x-www-form-urlencoded` and `application/octet-stream` may be needed instead.
 
 ### Query Parameters
 
@@ -56,27 +63,13 @@ name | A unique string.
 
 This is the format for documenting JSON parameters that are included in the body of the request.
 
-### HTTP Headers
-
-Header |  Description
----------  | -----------
-Authorization      | Use the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`
-Content-Type      | Use `application/json` for `POST` and `PUT` requests.
-
-These are the only two headers that the API regularly expects.
-
-Most endpoints require the `Authorization` header. Some exceptions include [Authentication](#authentication) and [Setup](#setup).
-
-When making `POST` and `PUT` requests , be sure to pass the `Content-Type: application/json` header. This is needed to ensure your JSON payload will be parsed. 
-
-Most `POST` and `PUT` endpoints expect the `Content-Type` header to be ` application/json`. Exceptions to this rule include file uploads where `application/x-www-form-urlencoded` and `application/octet-stream` may be needed instead.
 
 ### HTTP Response
 
-The [Morpheus API] returns **200 OK** for successful requests. 
-If a request fails, an [Error Code](#error-codes) will be returned instead. JSON is always returned, even when errors occur.
+The Morpheus API returns **200 OK** for successful requests. 
+If a request fails, an [Error Code](#error-codes) will be returned instead. JSON is always returned, even when an error occurs.
 
-The API almost always responds with the header `Content-Type: application/json` and JSON in the body. This is true for all requests except file downloads.
+The API typically responds with `Content-Type: application/json` and a response body that is valid JSON.
 
 This is an example of an API response that retrieves a [Contact](#contacts) record by ID.
 

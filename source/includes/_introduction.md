@@ -12,7 +12,6 @@ To get this working, set up [Environment Variables](#environment-variables), or 
 
 If you are looking to use the API to initialize a fresh installation of the morpheus appliance, see [Setup](#setup).
 
-
 <aside class="info">
 Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
 </aside>
