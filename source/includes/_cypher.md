@@ -6,7 +6,7 @@ Cypher keys can be revoked, either through lease timeouts or manually. So even i
 
 ## Cypher Authentication
 
-The cypher api endpoints allow for authentication via an special headers or the standard *Authentication: bear access_token*. Instead of an access token, an execution lease token can be used to authenticate.
+The Cypher API endpoints allow authentication via a special header or the standard [Authorization] header. Instead of an access token, an execution lease token can be used to authenticate.
 An execution lease will be issued by Morpheus for certain tasks, such as Ansible, which can then use the token to read cypher keys.
 
 Cypher has the following headers and url parameters available for authentication:
@@ -17,7 +17,6 @@ X-Cypher-Token | HTTP Header | An access token or an execution lease token.
 X-Vault-Token | HTTP Header | An access token or an execution lease token.
 X-Morpheus-Lease | HTTP Header | An execution lease token.
 leaseToken | URL Parameter | An execution lease token.
-
 
 
 ## List Cypher Keys
