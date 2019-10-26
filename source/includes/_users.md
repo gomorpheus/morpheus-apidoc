@@ -121,7 +121,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testuser",
-    "email": "testuser@yourcompany.com",
+    "email": "testuser@api.gomorpheus.com",
     "firstName": "Test",
     "lastName": "User",
     "password": "aStrongpassword123!",
