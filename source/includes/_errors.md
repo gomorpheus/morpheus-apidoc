@@ -35,3 +35,72 @@ Error Code | Meaning
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
 
+### Troubleshooting
+
+The HTTP response usually contains a body with valid JSON about the error and what caused it.
+
+#### 400 Error
+
+```json
+{
+  "success": false,
+  "errors": {
+    "email": "Please enter a valid email address"
+  }
+}
+```
+
+#### 401 Error
+
+This error is returned if your access token is invalid or expired.
+
+```json
+{
+  "error": "invalid_token",
+  "error_description": "Invalid access token: bad-token"
+}
+```
+
+#### 403 Error
+
+This error is seen if you try to access an endpoint without the required permissions.
+
+```json
+{
+  "success": false,
+  "msg": "You do not have permissions to access this api endpoint"
+}
+```
+
+#### 404 Error
+
+This error is returned when the api path is unknown.  It can also be seen if a resource could be not be found by the specified ID.
+
+```json
+{
+  "success": false,
+  "msg": "Unable to find api endpoint GET /api/foobar"
+}
+```
+
+It can also be seen if a resource could be not be found by the specified ID.
+
+```json
+{
+  "success": false,
+  "msg": "App not found"
+}
+```
+
+
+#### 500 Error
+
+This error indicates something went wrong with the request and an unexpected error has occured.
+
+```json
+{
+  "success": false,
+  "msg": "Oops, something bad happened."
+}
+```
+
