@@ -24,7 +24,7 @@ This endpoint provides authentication via username and password of a morpheus [U
 
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&client_id=morph-customer" \
+curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&client_id=morph-api" \
   -d 'username=admin' -d 'password=foobar'
 ```
 
@@ -54,7 +54,7 @@ Content-Type     | `application/x-www-form-urlencoded`. This endpoint does not c
 
 Parameter | Default | Description
 --------- | ------- | -----------
-client_id      |  | Client ID, use `morph-customer`. Users may only have one access token per Client ID. The CLI uses `morph-cli`.
+client_id      |  | Client ID, use `morph-api`. Users may only have one access token per Client ID. The CLI uses `morph-cli`.
 grant_type      | | OAuth Grant Type, use `password`.
 scope      | | OAuth token scope, use `write`.
 
@@ -89,7 +89,7 @@ This will render your current access token invalid, so you will need to update a
 </aside>
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=refresh_token&client_id=morph-customer&scope=write" \
+curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=refresh_token&client_id=morph-api&scope=write" \
   -d 'refresh_token=718cc628-b89f-43f5-bef7-f39887b47e68'
 ```
 
@@ -119,7 +119,7 @@ Content-Type      |  | Use `application/x-www-form-urlencoded`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-client_id      |  | Client ID, use `morph-customer`. Users only have one access token per Client ID.
+client_id      |  | Client ID, use `morph-api`. Users only have one access token per Client ID.
 grant_type      | | OAuth Grant Type, use `refresh_token`.
 scope      | | OAuth token scope, use `write`.
 
