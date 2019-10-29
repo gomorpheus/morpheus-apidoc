@@ -41,6 +41,8 @@ The HTTP response usually contains a body with valid JSON about the error and wh
 
 #### 400 Error
 
+This errors is returned if the request could not be completed as requested. This usually means a required parameter is missing or invalid. These responses often include an `errors` object to indicate which parameters were invalid.
+
 ```json
 {
   "success": false,
