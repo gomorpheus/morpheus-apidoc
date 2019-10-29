@@ -343,6 +343,12 @@ This endpoint retrieves a specific instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Get Env Variables
 
 ```shell
@@ -563,6 +569,12 @@ This gets all the environment variables associated with the instance.
 
 `GET https://api.gomorpheus.com/api/instances/:id/envs`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Get Instance History
 
 ```shell
@@ -636,6 +648,12 @@ Alternatively, the [Process History](#get-all-processes) endpoint can be used to
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id/history`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ### Query Parameters
 
@@ -778,6 +796,12 @@ This can be valuable for evaluating the details of the compute server(s) running
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id/containers`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ## Get Available Service Plans for an Instance
 
@@ -1144,6 +1168,12 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
 
 `PUT https://api.gomorpheus.com/api/instances/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ### JSON Instance Parameters
 
 Parameter | Default | Description
@@ -1177,6 +1207,12 @@ This will stop all containers running within an instance.
 
 `PUT https://api.gomorpheus.com/api/instances/:id/stop`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Start an Instance
 
 ```shell
@@ -1197,6 +1233,12 @@ This will start all containers running within an instance.
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/start`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ## Restart an Instance
 
@@ -1219,6 +1261,12 @@ This will restart all containers running within an instance. This includes rebui
 
 `PUT https://api.gomorpheus.com/api/instances/:id/restart`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Suspend an Instance
 
 ```shell
@@ -1240,6 +1288,12 @@ This will suspend all containers in the instance.
 
 `PUT https://api.gomorpheus.com/api/instances/:id/eject`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Eject an Instance
 
 ```shell
@@ -1260,6 +1314,12 @@ This will eject any ISO media on all containers in the instance.
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/eject`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ## Resize an Instance
 
@@ -1303,6 +1363,12 @@ It is possible to resize containers within an instance by increasing their memor
 
 `PUT https://api.gomorpheus.com/api/instances/:id/resize`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ### JSON Parameters
 
 Parameter   | Required | Default | Description
@@ -1337,12 +1403,21 @@ One can easily clone an instance and all containers within that instance. The co
 
 `PUT https://api.gomorpheus.com/api/instances/:id/clone`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ### JSON Parameters
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
 group       | null    | the map containing the id of the server group you would like to clone into.
+group       | null    | the map containing the id of the server group you would like to clone into.
 name        | null    | A name for the new cloned instance. If none is specified the existing name will be duplicated with the 'clone' suffix added.
+
+This endpoint also supports all of the same parameters as [Create and Instance][#create-an-instance], so you can override any configuration options when provisioning the clone.
 
 ## Backup an Instance
 
@@ -1362,6 +1437,12 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1773/backup" \
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/backup`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ## Get list of backups for an Instance
 
@@ -1386,6 +1467,12 @@ curl "$MORPHEUS_API_URL/api/instances/1773/backups" \
 
 `GET https://api.gomorpheus.com/api/instances/:id/backups`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Import Snapshot of an Instance
 
 ```shell
@@ -1409,6 +1496,12 @@ It is possible to import a snapshot of an instance. This creates a Virtual Image
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/import-snapshot`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ### JSON Parameters
 
@@ -1446,6 +1539,11 @@ This returns a list of all of the security groups applied to an instance and whe
 
 `GET https://api.gomorpheus.com/api/instances/:id/security-groups`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ## Set Security Groups
 
@@ -1461,6 +1559,12 @@ curl -X POST "https://api.gomorpheus.com/api/instances/1/security-groups" \
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/instances/:id/security-groups`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ### JSON Parameters
 
@@ -1490,6 +1594,12 @@ Will delete an instance and all associated monitors and backups.
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/instances/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
 
 ### Query Parameters
 

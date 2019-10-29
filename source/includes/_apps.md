@@ -91,10 +91,6 @@ curl "$MORPHEUS_API_URL/api/apps" \
 
 This endpoint retrieves a paginated list of apps.
 
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/apps`
-
 ### Query Parameters
 
 Parameter | Default | Description
@@ -191,6 +187,11 @@ This endpoint retrieves a specific app.
 
 `GET https://api.gomorpheus.com/api/apps/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
 
 ## Create an App
 
@@ -240,6 +241,12 @@ curl -XPUT "$MORPHEUS_API_URL/api/apps/2" \
 
 `PUT https://api.gomorpheus.com/api/apps/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
 ### JSON App Parameters
 
 Parameter | Default | Description
@@ -263,6 +270,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/add-instance" \
 
 `POST https://api.gomorpheus.com/api/apps/:id/add-instance`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
 ### JSON Parameters
 
 Parameter | Default | Description
@@ -285,6 +298,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/remove-instance" \
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/apps/:id/remove-instance`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
 
 ### JSON Parameters
 
@@ -323,6 +342,11 @@ This returns a list of all of the security groups applied to an app and whether 
 
 `GET https://api.gomorpheus.com/api/apps/:id/security-groups`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
 
 ## Set Security Groups
 
@@ -338,6 +362,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps/1/security-groups" \
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/apps/:id/security-groups`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
 
 ### JSON Parameters
 
@@ -366,6 +396,12 @@ Use `removeInstances=on` to also delete the instances in the app and all associa
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/apps/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
 
 ### Query Parameters
 
