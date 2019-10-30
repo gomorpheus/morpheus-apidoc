@@ -90,8 +90,7 @@ includes:
   - user_sources
   - policies
   - environments
-  - appliance_settings
-  - whitelabel_settings
+  
   - setup
   - license
 
