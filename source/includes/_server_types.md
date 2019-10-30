@@ -1,14 +1,14 @@
-# Compute Server Types
+## Host Types
 
-A Compute Server Type is the description of the technology (bare metal or virtual) being deployed onto.
+<!--
+## Get All Host Types
+-->
 
-**NOTE:** A Server Type in the API Is equivalent to a Host Type within the morpheus UI.
-
-## Get All Server Types
+Fetch a paginated list of available host types. This returns the configuration options for each type.
 
 ```shell
-curl "https://api.gomorpheus.com/api/server-types"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/server-types"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -274,7 +274,6 @@ curl "https://api.gomorpheus.com/api/server-types"
 }
 ```
 
-
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/server-types`
@@ -287,19 +286,19 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | displayOrder | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-name | null | Filter by name or code
-code | null | Filter by code
-phrase | null | Filter by wildcard search of name, code and description
-provisionType | null | Filter by [Provision Type](#provision-types) code
-zoneType | null | Filter by [Zone Type](#zone-types) code
-creatable | null | Filter by creatable flag. This is whether or not it can be provisioned.
+name |  | Filter by name or code
+code |  | Filter by code
+phrase |  | Filter by wildcard search of name, code and description
+provisionType |  | Filter by [Provision Type](#provision-types) code
+zoneType |  | Filter by [Zone Type](#zone-types) code
+creatable |  | Filter by creatable flag. This is whether or not it can be provisioned.
 
 
-## Get a Specific Server Type
+## Get a Specific Host Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/server-types/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/server-types/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -328,7 +327,7 @@ curl "https://api.gomorpheus.com/api/server-types/1" \
   }
 }
 ```
-This endpoint will retrieve a specific server type by id
+This endpoint will retrieve a specific host type by id
 
 ### HTTP Request
 
@@ -338,4 +337,4 @@ This endpoint will retrieve a specific server type by id
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the server type
+ID | The ID of the host type

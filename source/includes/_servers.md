@@ -1,14 +1,14 @@
-# Compute Servers
+# Hosts
 
- A Compute Server is either a bare metal machine or virtual machine that is provisioned into morpheus via Chef. These servers are setup as Docker Hosts and used to provision containers into. They also run the morphd agent which reports server statistics and logs back to the morpheus stack.
+ A Host, or Server, is either a bare metal machine or virtual machine that is provisioned into morpheus via Chef. These servers are setup as Docker Hosts and used to provision containers into. They also run the morphd agent which reports host statistics and logs back to the morpheus stack.
 
- <aside class="warning">You must be authorized as a System Admin to provision servers into Morpheus cloud or in an Appliance context.</aside>
+ A Host may also be referred to as a *Server* or *server*.
 
-## Get All Servers
+## Get All Hosts
 
 ```shell
-curl "https://api.gomorpheus.com/api/servers"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/servers"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -177,7 +177,7 @@ curl "https://api.gomorpheus.com/api/servers"
 }
 ```
 
-This endpoint retrieves all servers and their JSON encoded configuration attributes based on check type. Server data is encrypted in the database.
+This endpoint retrieves a paginated list of hosts.
 
 ### HTTP Request
 
@@ -187,36 +187,32 @@ This endpoint retrieves all servers and their JSON encoded configuration attribu
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
-siteId | null | Filter by group ID
-zoneId | null | Filter by zone ID
-clusterId | null | Filter by cluster ID
-managed | null | Filter by managed (true) or unmanaged (false)
-serverType | null | Filter by server type code
-powerState | null | Filter by power status
-ip | null | Filter by IP address
-vm | null | Filter to show only Virtual Machines (true)
-vmHypervisor | null | Filter to show only VM Hypervisors (true)
-bareMetalHost | null | Filter to show only Baremetal Servers (true)
-status | null | Filter by status
-agentInstalled | null | Filter by agent installed (true)
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+siteId |  | Filter by group ID
+zoneId |  | Filter by zone ID
+clusterId |  | Filter by cluster ID
+managed |  | Filter by managed (true) or unmanaged (false)
+serverType |  | Filter by server type code
+powerState |  | Filter by power status
+ip |  | Filter by IP address
+vm |  | Filter to show only Virtual Machines (true)
+vmHypervisor |  | Filter to show only VM Hypervisors (true)
+bareMetalHost |  | Filter to show only Baremetal Servers (true)
+status |  | Filter by status
+agentInstalled |  | Filter by agent installed (true)
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-lastUpdated | null | Date filter, restricts query to only load servers updated  timestamp is more recent or equal to the date specified
-createdBy | null | Filter by Created By (User) ID. Accepts multiple values.
+lastUpdated |  | Date filter, restricts query to only load servers updated  timestamp is more recent or equal to the date specified
+createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Server
+## Get a Specific Host
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/servers/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/servers/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -297,7 +293,7 @@ curl "https://api.gomorpheus.com/api/servers/1" \
 }
 ```
 
-This endpoint retrieves a specific server.
+This endpoint retrieves a specific host.
 
 
 ### HTTP Request
@@ -310,11 +306,11 @@ Parameter | Description
 --------- | -----------
 ID | ID of the check to retrieve
 
-## Get Available Service Plans for a Server
+## Get Available Service Plans for a Host
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/servers/service-plans?zoneId=2&serverTypeId=60" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -459,9 +455,9 @@ curl -XGET "https://api.gomorpheus.com/api/servers/service-plans?zoneId=2&server
 }
 ```
 
-This returns a list of all of the service plans available for a server type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *serverTypeId* are required.  
+This returns a list of all of the service plans available for a host type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *serverTypeId* are required.  
 
-This endpoint can  be used to get the list of plans available for provisioning a new server or resizing a server.
+This endpoint can  be used to get the list of plans available for provisioning a new host or resizing a host.
 
 ### HTTP Request
 
@@ -474,11 +470,11 @@ Parameter | Description
 zoneId | The ID of the [Cloud](#compute-zones)
 serverTypeId | The ID of the [Server Type](#compute-server-types)
 
-## Provision a Server
+## Provision a Host
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/servers" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/servers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "name": "dre-matrix-3",
@@ -504,19 +500,19 @@ curl -XPOST "https://api.gomorpheus.com/api/servers" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the server
-description | null | Optional description field
-zone | null | The zone id we want to assign the server to.
-sshHost | null | reachable ip address for the server to remote in and provision the server
-sshUsername | null | ssh username to use when provisioning
-sshPassword | null | optional ssh password to use, if not specified the account public key can be used
-dataDevice  | null | the mount point for the lvm volume that needs to be created
+name      |  | Unique name scoped to your account for the server
+description |  | Optional description field
+zone |  | The zone id we want to assign the server to.
+sshHost |  | reachable ip address for the server to remote in and provision the server
+sshUsername |  | ssh username to use when provisioning
+sshPassword |  | optional ssh password to use, if not specified the account public key can be used
+dataDevice  |  | the mount point for the lvm volume that needs to be created
 
 ## Updating a Server
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/servers/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "name": "dre-matrix-3",
@@ -534,17 +530,17 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Unique name scoped to your account for the server
-description | null | Optional description field
-sshUsername | null | SSH Username
-sshPassword | null | SSH Password
-powerScheduleType | null | Power Schedule ID
+name      |  | Unique name scoped to your account for the server
+description |  | Optional description field
+sshUsername |  | SSH Username
+sshPassword |  | SSH Password
+powerScheduleType |  | Power Schedule ID
 
 ## Install Agent
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/servers/1/install-agent" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1/install-agent" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "sshUsername": "admin",
@@ -561,7 +557,7 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1/install-agent" \
 }
 ```
 
-This will make the server a managed server, and install the agent.
+This will make the host a managed server, and install the agent.
 
 ### HTTP Request
 
@@ -572,15 +568,15 @@ This will make the server a managed server, and install the agent.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-sshUsername      | null | ssh username to use when provisioning
-sshPassword | null | ssh password to use, if not specified the account public key can be used
-serverOs.id | null | The ID os the OS Type for this server. See GET /api/options/osTypes
+sshUsername      |  | ssh username to use when provisioning
+sshPassword |  | ssh password to use, if not specified the account public key can be used
+serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osTypes
 
 ## Upgrade Agent
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/servers/1/upgrade" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1/upgrade" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -591,7 +587,7 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1/upgrade" \
 }
 ```
 
-This will upgrade the version of the install installed on the server.
+This will upgrade the version of the install installed on the host.
 
 ### HTTP Request
 
@@ -600,8 +596,8 @@ This will upgrade the version of the install installed on the server.
 ## Resize a Server
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/servers/1/resize" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1/resize" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -H "Content-Type: application/json" \
   -d '{
     "server": {
@@ -634,7 +630,7 @@ curl -XPUT "https://api.gomorpheus.com/api/servers/1/resize" \
 }
 ```
 
-Will resize a server asynchronously.
+Will resize a host asynchronously.
 
 ### HTTP Request
 
@@ -644,15 +640,15 @@ Will resize a server asynchronously.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-server.plan.id      | null | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
-volumes | null | List of volumes with their new sizes.
+server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
+volumes |  | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 
 ## Delete a Server
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/servers/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -663,7 +659,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/servers/1" \
 }
 ```
 
-Will delete a server asynchronously and remove from the hosted chef system.
+Will delete a host asynchronously.
 
 ### HTTP Request
 

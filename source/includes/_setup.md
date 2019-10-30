@@ -5,7 +5,7 @@ The Morpheus API can be used to initialize a fresh installation of the morpheus 
 ## Check Appliance
 
 ```shell
-curl "https://api.gomorpheus.com/api/setup/check"
+curl "$MORPHEUS_API_URL/api/setup/check"
 ```
 
 > The above command returns JSON structured like this:
@@ -28,8 +28,8 @@ This endpoint can be used to check if the appliance needs to be setup or not, an
 ## Initialize Appliance
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/setup/init" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/setup/init" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "applianceName": "myenterprise-morpheus",
@@ -54,7 +54,7 @@ curl -XPOST "https://api.gomorpheus.com/api/setup/init" \
 
 Initialize the appliance, creating the master account and user.
 
-<aside class="warning">
+<aside class="info">
 This api can only be used successfully one time. Subsequent attempts will return an HTTP 400 error.
 </aside>
 

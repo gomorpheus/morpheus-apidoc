@@ -1,4 +1,4 @@
-# Option Types
+## Option Types
 
 Morpheus has several objects that have dynamic models depending on the type of the object. This includes options when provisioning different instances or even options when defining tasks or creating docker hosts!. This section aims to describe what is contained in the option-types association as well as how to query morpheus for available options in certain option-type scenarios.
 
@@ -91,8 +91,8 @@ config:      | Any special configuration options pertaining to specific input ty
 ## Get Option Source Data
 
 ```shell
-curl "https://api.gomorpheus.com/api/options/keyPairs"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/options/keyPairs"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this

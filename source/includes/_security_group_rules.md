@@ -1,12 +1,12 @@
-# Security Group Rules
+## Security Group Rules
 
 A Security Group Rule specifies that a certain CIDR is able to access a particular port (or port range) for a particular protocol.  Or, that a particular CIDR is able to access all instances of a particular type (like MySql, Redis, etc).  A Security Group Rule belongs to a Security Group and a Security Group is applied to either a Cloud, App, or Instance.
 
-## Get All Security Group Rules for a Security Group
+<!--## Get All Security Group Rules for a Security Group-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups/19/rules"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups/19/rules"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +73,8 @@ This endpoint retrieves all security group rules for a Security Gorup.
 ## Get a Specific Security Group Rule
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -115,8 +115,8 @@ This endpoint retrieves a specific security group rule.
 ## Create a Security Group Rule
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-groups/19/rules" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/security-groups/19/rules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "name": "port 55",
@@ -142,28 +142,28 @@ Will create a security group rule and update all clouds, apps, and instances whi
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A name for the rule
+name      |  | A name for the rule
 direction      | ingress | Either ingress or egress.
-source      | null | CIDR representing the source IP(s) which should receive 
+source      |  | CIDR representing the source IP(s) which should receive 
 sourceType      | cidr | Either cidr, group, tier, all.
-source      | null | CIDR representing the source IP(s) which should receive access. Required for sourceType=cidr.
-sourceGroup.id      | null | The source Security Group ID. Required for sourceType=group. 
-sourceTier.id      | null | The source Tier ID. Required for soureType=tier. 
-portRange | null | Either a single value (i.e. 55) or a port range (i.e. 1-65535) for which to open access to the source.  Required if customRule is true, otherwise, ignored.
-protocol | null | Either tcp, udp, icmp. Required if customRule is true, otherwise, ignored.
+source      |  | CIDR representing the source IP(s) which should receive access. Required for sourceType=cidr.
+sourceGroup.id      |  | The source Security Group ID. Required for sourceType=group. 
+sourceTier.id      |  | The source Tier ID. Required for soureType=tier. 
+portRange |  | Either a single value (i.e. 55) or a port range (i.e. 1-65535) for which to open access to the source.  Required if customRule is true, otherwise, ignored.
+protocol |  | Either tcp, udp, icmp. Required if customRule is true, otherwise, ignored.
 destinationType      | cidr | Either cidr, group, tier, instance.
-destination      | null | CIDR representing the destination IP(s) which should receive access. Required for destinationType=cidr. 
-destinationGroup.id      | null | The destination Security Group ID. Required for destinationType=group. 
-destinationTier.id      | null | The destination Tier ID. Required for destinationType=tier. 
+destination      |  | CIDR representing the destination IP(s) which should receive access. Required for destinationType=cidr. 
+destinationGroup.id      |  | The destination Security Group ID. Required for destinationType=group. 
+destinationTier.id      |  | The destination Tier ID. Required for destinationType=tier. 
 ruleType      | customRule | Either customRule or an instance type code.
 policy      | accept | Either accept or deny.
-instanceTypeId | null | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise ignored. 
+instanceTypeId |  | The id of an Instance Type.  If specified, the source CIDR will have access to all ports exposed by the particular instance in the cloud, app, or instance.  Required if customRule is false, otherwise ignored. 
 
 ## Updating a Security Group Rule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "portRange": "55-56"
@@ -185,8 +185,8 @@ Same parameters as specified in the creation of a Security Group Rule
 ## Delete a Security Group Rule
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

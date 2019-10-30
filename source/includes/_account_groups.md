@@ -1,12 +1,14 @@
-# Subtenant Groups
+## Subtenant Groups
 
 Groups belonging to a subtenant can be managed by the master account.
 
+<!--
 ## Get All Groups for Subtenant
+-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts/20/groups"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts/20/groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -61,15 +63,15 @@ accountId | The ID of the subtenant account
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Filter on partial match of name or location
-name | null | Filter on exact match of name
-lastUpdated | null | A date filter, restricts query to only load groups updated more recent or equal to the date specified
+phrase |  | Filter on partial match of name or location
+name |  | Filter on exact match of name
+lastUpdated |  | A date filter, restricts query to only load groups updated more recent or equal to the date specified
 
 ## Get a Specific Group for Subtenant
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts/20/groups/365" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -117,8 +119,8 @@ id | The ID of the group to retrieve
 ## Create a Group for Subtenant
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/accounts/20/groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/accounts/20/groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -143,16 +145,16 @@ accountId | The ID of the subtenant account
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to the subtenant for the group
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location argument for the group
+name      |  | A unique name scoped to the subtenant for the group
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location argument for the group
 
 ## Updating a Group for Subtenant
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/accounts/20/groups/365" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -178,16 +180,16 @@ id | The ID of the group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to the subtenant for the group
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for the group
+name      |  | A unique name scoped to the subtenant for the group
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for the group
 
 ## Updating Group Zones for Subtenant
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/accounts/20/groups/365/update-zones" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/accounts/20/groups/365/update-zones" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "zones": [
@@ -215,14 +217,14 @@ Any zones that are not passed in the `zones` parameter will be removed from the 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zones      | null | An array of all the zones assigned to this group.
+zones      |  | An array of all the zones assigned to this group.
 
 
 ## Delete a Group for Subtenant
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/accounts/20/groups/365" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

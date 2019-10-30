@@ -5,8 +5,8 @@ A Security Group is a grouping of rules.  Each rule is a whitelist entry for a p
 ## Get All Security Groups
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -84,14 +84,14 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-phrase | null | Name or description filter, restricts query to only load security groups which contain the phrase specified
+phrase |  | Name or description filter, restricts query to only load security groups which contain the phrase specified
 
 ## Get a Specific Security Group
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/security-groups/18" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/security-groups/18" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -142,8 +142,8 @@ id | The ID of the security group
 ## Create a Security Group
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/security-groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -161,17 +161,17 @@ curl -XPOST "https://api.gomorpheus.com/api/security-groups" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name for your security group
-description | null | Optional description field
-zoneId      | null | Scoped Cloud ID.
-customOptions.vpc      | null | External ID of Amazon VPC.
-customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
+name      |  | Name for your security group
+description |  | Optional description field
+zoneId      |  | Scoped Cloud ID.
+customOptions.vpc      |  | External ID of Amazon VPC.
+customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 
 ## Updating a Security Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/security-groups/18" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/security-groups/18" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -195,14 +195,14 @@ id | The ID of the security group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | Name for your security group
-description | null | Optional description field
+name      |  | Name for your security group
+description |  | Optional description field
 
 ## Delete a Security Group
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-groups/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/security-groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -229,8 +229,8 @@ id | The ID of the security group
 ## Create a Security Group Location
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/security-groups/18/locations" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/security-groups/18/locations" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupLocation": {
     "zoneId": 5,
@@ -252,15 +252,15 @@ Will add a security group to the specified cloud.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zoneId      | null | The ID of the Zone (Cloud)
-customOptions.vpc      | null | External ID of Amazon VPC.
-customOptions.resourceGroup      | null | External ID of the Azure Resource Group to scope to.
+zoneId      |  | The ID of the Zone (Cloud)
+customOptions.vpc      |  | External ID of Amazon VPC.
+customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 
 ## Delete a Security Group Location
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/security-groups/18/locations/29" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/security-groups/18/locations/29" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group rule 

@@ -5,8 +5,8 @@ Provides API interfaces for managing the creation and modification of roles with
 ## Get All Roles
 
 ```shell
-curl "https://api.gomorpheus.com/api/roles"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/roles"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -72,15 +72,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-phrase | null | Filter by matching authority
-authority | null | Filter by authority
+phrase |  | Filter by matching authority
+authority |  | Filter by authority
 
 
 ## Get a Specific Role
 
 ```shell
-curl "https://api.gomorpheus.com/api/roles/3" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/roles/3" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -184,8 +184,8 @@ This endpoint will retrieve a specific role by id if the user has permission to 
 ## Create a Role
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/roles" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/roles" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
@@ -209,17 +209,17 @@ curl -XPOST "https://api.gomorpheus.com/api/roles" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-authority  | null | A name for the role
-description     | null | Optional description field if you want to put more info there
-baseRoleId | null | A role to copy feature permissions and access from (optional)
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+baseRoleId |  | A role to copy feature permissions and access from (optional)
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Basic Role Settings
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
@@ -242,16 +242,16 @@ curl -XPUT "https://api.gomorpheus.com/api/roles/4" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-authority  | null | A name for the role
-description     | null | Optional description field if you want to put more info there
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Updating Role Feature Permissions
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "admin-users",
@@ -284,8 +284,8 @@ access     |  | The new access level. **full**, **read**, **none**
 > Global Group Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "ComputeSite",
@@ -309,8 +309,8 @@ access     |  | **full**, **custom**, **read**, or **none**
 > Global Group Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-group" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-group" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "groupId": 2,
@@ -343,8 +343,8 @@ access     |  | **full**, **read**, or **none**
 > Global Cloud Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "ComputeZone",
@@ -368,8 +368,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Cloud Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-cloud" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-cloud" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "cloudId": 2,
@@ -402,8 +402,8 @@ access     |  | **full**, **read**, or **none**
 > Global Instance Type Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "InstanceType",
@@ -427,8 +427,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Instance Type Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-instance-type" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-instance-type" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "instanceTypeId": 1,
@@ -461,8 +461,8 @@ access     |  | **full** or **none**
 > Global Blueprint Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-permission" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "AppTemplate",
@@ -486,8 +486,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Blueprint Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/roles/4/update-blueprint" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-blueprint" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "appTemplateId": 2,
@@ -517,8 +517,8 @@ access     |  | **full**, **read**, or **none**
 ## Delete a Role
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/roles/4" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/roles/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

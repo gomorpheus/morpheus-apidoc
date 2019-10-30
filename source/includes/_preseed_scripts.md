@@ -1,12 +1,12 @@
-# Preseed Scripts
+## Preseed Scripts
 
 Preseed Scripts are used in the Image Builder service. See [Image Builds](#image-builds)
 
-## Get All Preseed Scripts
+<!--## Get All Preseed Scripts-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/preseed-scripts"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/preseed-scripts"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -54,8 +54,8 @@ phrase |  | If specified will return a partial match on fileName
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/preseed-scripts/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/preseed-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -95,8 +95,8 @@ ID | The ID of the preseed script to retrieve
 ## Create a Preseed Script
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/preseed-scripts" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/preseed-scripts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "preseedScript": {
@@ -122,8 +122,8 @@ content      |  | The script content
 ## Update a Preseed Script
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/preseed-scripts/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/preseed-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "preseedScript": {
@@ -151,8 +151,8 @@ See [Create](#create-a-preseed-script).
 ## Delete a Preseed Script
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/preseed-scripts/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/preseed-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

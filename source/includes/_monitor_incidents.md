@@ -5,8 +5,8 @@ These entities are incidents that result from [Checks](#checks). The API provide
 ## Get All Incidents
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/incidents"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/incidents"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -67,15 +67,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-status | null | Filter by status
-severity | null | Filter by severity
+status |  | Filter by status
+severity |  | Filter by severity
 
 ## Get a Specific Incident
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -164,8 +164,8 @@ ID | ID of the incident to retrieve
 ## Updating an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
     "resolution": "We fixed the problem",
@@ -190,20 +190,20 @@ This endpoint can be used to update certain properties of an incident.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resolution | null | Description of the resolution to this incident
-comment | null | Comment on this incident
-status | null | Set status (open or closed)
-severity | null | Set severity (critical, warning or info)
-name | null | Set display name(subject)
-startDate | null | Set start time
-endDate | null | Set end time
+resolution |  | Description of the resolution to this incident
+comment |  | Comment on this incident
+status |  | Set status (open or closed)
+severity |  | Set severity (critical, warning or info)
+name |  | Set display name(subject)
+startDate |  | Set start time
+endDate |  | Set end time
 
 
 ## Mute an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -233,8 +233,8 @@ muted | true | Set to false to unmute
 ## Unmute an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/mute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -253,8 +253,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Mute All Incidents
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -284,8 +284,8 @@ muted | true | Set to false to unmute
 ## Unmute all Incidents
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/mute-all" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -305,8 +305,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Close an Incident
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -326,8 +326,8 @@ curl -XDELETE "https://api.gomorpheus.com/api/monitoring/incidents/1" \
 ## Reopen an Incident
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/monitoring/incidents/1/reopen" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/monitoring/incidents/1/reopen" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -351,8 +351,8 @@ This endpoint can be used to toggle the status of an incident back to `open`.
 ## Create an Incident
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/monitoring/incidents" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/monitoring/incidents" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
         "comment": "This is a summary of the incident",
@@ -378,11 +378,11 @@ This endpoint can be used to create an incident.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resolution | null | Description of the resolution to this incident
-comment | null | Comment on this incident, updates summary field
-status | null | Set status (open or closed)
-severity | null | Set severity (critical, warning or info)
-name | null | Set display name(subject)
-startDate | null | Set start time
-endDate | null | Set end time
-inUptime | null | Set 'In Availability'
+resolution |  | Description of the resolution to this incident
+comment |  | Comment on this incident, updates summary field
+status |  | Set status (open or closed)
+severity |  | Set severity (critical, warning or info)
+name |  | Set display name(subject)
+startDate |  | Set start time
+endDate |  | Set end time
+inUptime |  | Set 'In Availability'

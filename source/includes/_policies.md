@@ -5,8 +5,8 @@ Provides API interfaces for managing Policies.
 ## Get All Policies
 
 ```shell
-curl "https://api.gomorpheus.com/api/policies"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/policies"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -157,8 +157,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/policies/4" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/policies/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -213,8 +213,8 @@ ID | The ID of the policy to retrieve
 ## Policy Types
 
 ```shell
-curl "https://api.gomorpheus.com/api/policy-types" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/policy-types" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -413,8 +413,8 @@ config.createUser | false | Create User [true, false]
 ## Create a Policy
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/policies" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/policies" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "policy": {
@@ -487,8 +487,8 @@ refId      | The ID of the user
 ## Update a Policy
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/policies/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/policies/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "policy": {
@@ -525,8 +525,8 @@ accounts      |  | Array of tenants to scope the policy to.
 ## Delete a Policy
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/policies/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/policies/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -554,8 +554,8 @@ ID | The ID of the policy
 Policies scoped to a specific group can also be managed at another endpoint. 
 
 ```shell
-curl "https://api.gomorpheus.com/api/groups/1/policies"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/groups/1/policies"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -621,8 +621,8 @@ This resource also provides endpoints for GET, POST, PUT and DELETE that work ju
 Policies scoped to a specific cloud can also be managed at another endpoint. 
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/1/policies"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/1/policies"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

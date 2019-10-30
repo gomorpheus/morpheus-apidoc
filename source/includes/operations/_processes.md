@@ -2,11 +2,13 @@
 
 Provides API interfaces for viewing historical processes for instances.
 
+These endpoints correspond to the section called **Operations: History** in the Morpheus UI.
+
 ## Get All Processes
 
 ```shell
-curl "https://api.gomorpheus.com/api/processes" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/processes" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -89,8 +91,8 @@ appId |  | Filter by app id(s)
 ## Get a Specific Process
 
 ```shell
-curl "https://api.gomorpheus.com/api/processes/250" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/processes/250" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -495,8 +497,8 @@ ID | The ID of the process
 ## Get a Specific Process Event
 
 ```shell
-curl "https://api.gomorpheus.com/api/processes/events/940" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/processes/events/940" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

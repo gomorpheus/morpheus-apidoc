@@ -2,11 +2,13 @@
 
 Clusters is for creating and managing Kubernetes Clusters, Morpheus managed Docker Clusters, KVM Clusters, or Cloud specific Kubernetes services such as EKS. The `Triforce` Cluster is a combination Kubernetes, KVM and Functions* Cluster, with all nodes supporting all three provision types. 
 
+A Cluster may also be referred to as an *Server Group* or *serverGroup*.
+
 ## Get All Clusters
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -146,21 +148,16 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or serviceUrl filter, restricts query to only load clusters which contain the phrase specified
-name | null | Name filter, restricts query to only load clusters matching the name specified
-zoneId | null | Zone filter, restricts query to only load clusters of a specified zone
-typeId | null | Type filter, restricts query to only load clusters of a specified cluster type
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
+phrase |  | Name or serviceUrl filter, restricts query to only load clusters which contain the phrase specified
+name |  | Name filter, restricts query to only load clusters matching the name specified
+zoneId |  | Zone filter, restricts query to only load clusters of a specified zone
+typeId |  | Type filter, restricts query to only load clusters of a specified cluster type
 
 ## Get a Specific Cluster
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -349,8 +346,8 @@ ID | ID of the cluster
 ## Create a Cluster
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/clusters" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/clusters" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"cluster": {
         "type": "docker-cluster",
@@ -418,7 +415,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 type  | Y | n/a | Type of cluster to be created
 name | Y | n/a | Name of the cluster to be created
-description | N | null | Description of the cluster to be created
+description | N |  | Description of the cluster to be created
 group.id | Y | n/a | The Group ID to provision the cluster into
 cloud.id | Y | n/a | The Cloud ID to provision the host into 
 layout.id | Y | n/a | The Layout ID for the host type(s) that will be provisioned for the cluster 
@@ -431,16 +428,16 @@ The Provision Types api can be used to see which options are available.
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-config | Y | null | Key for specific host type configuration, see [Config](#config)
+config | Y |  | Key for specific host type configuration, see [Config](#config)
 name | Y | n/a | Name to be used for host(s) created in the cluster
-plan.id | Y | null | The id for the memory and storage option pre-configured within Morpheus. 
-plan.options | N | null | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
-volumes | N | null | Key for volume configuration, see [Volumes](#volumes)  
-networkInterfaces | N | null | Key for network configuration, see [Network Interfaces](#network-interfaces)
-securityGroups | N | null | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the host to
+plan.id | Y |  | The id for the memory and storage option pre-configured within Morpheus. 
+plan.options | N |  | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+volumes | N |  | Key for volume configuration, see [Volumes](#volumes)  
+networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
+securityGroups | N |  | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the host to
 visibility | N | private | Visibility for server host
-userGroup.id | N | null | User Group ID for server host
-hostname | N | null | Hostname for server host
+userGroup.id | N |  | User Group ID for server host
+hostname | N |  | Hostname for server host
 
 #### Volumes
 
@@ -453,9 +450,9 @@ id | N | -1 | The id for the LV configuration being created
 rootVolume | N | true | If set to false then a non-root LV will be created
 name | Y | root | Name/type of the LV being created
 size | N | [from service plan] | Size of the LV to be created in GBs
-sizeId | N | null | Can be used to select pre-existing LV choices from Morpheus
-storageType | N | null | Identifier for LV type
-datastoreId | Y | null | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
+sizeId | N |  | Can be used to select pre-existing LV choices from Morpheus
+storageType | N |  | Identifier for LV type
+datastoreId | Y |  | The ID of the specific datastore. Auto selection can be specified as `auto` or `autoCluster` (for clusters).
 
 #### Network Interfaces
 
@@ -480,8 +477,8 @@ The Provision Types api can be used to see which options are available.
 ## Update Cluster
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"cluster": {
        "name": "Cluster Name",
@@ -508,17 +505,17 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | Cluster name
-description | null | Cluster description
-enabled | null | Cluster enabled
-serviceUrl | null | Cluster API Url
-refresh | null | Queue cluster refresh
+name |  | Cluster name
+description |  | Cluster description
+enabled |  | Cluster enabled
+serviceUrl |  | Cluster API Url
+refresh |  | Queue cluster refresh
 
 ## Update Cluster Permissions
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/1/permissions" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/1/permissions" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"permissions": {
        "resourcePermissions": {
@@ -554,19 +551,19 @@ The `permissions` parameter is for permissions for clusters and namespaces.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resourcePool.visibility | null | Applicable to clusters only
-resourcePermissions.all  | null | Pass true to allow access to all groups
-resourcePermissions.sites  | null | Array of groups that are allowed access
-resourcePermissions.allPlans | null | Pass true to allow access to all plans
-resourcePermissions.plans | null | Array of plans that are allowed access
-tenantPermissions.accounts  | null | Array of tenant account ids that are allowed access
+resourcePool.visibility |  | Applicable to clusters only
+resourcePermissions.all  |  | Pass true to allow access to all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+resourcePermissions.allPlans |  | Pass true to allow access to all plans
+resourcePermissions.plans |  | Array of plans that are allowed access
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 
 
 ## Delete a Cluster
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -597,8 +594,8 @@ force | off | Force Delete
 ## Get API Config
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/1/api-config" \
-  -H "Authorization: BEARER access_token" \
+curl "$MORPHEUS_API_URL/api/clusters/1/api-config" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" 
 ```
 
@@ -647,8 +644,8 @@ id | The ID of the cluster
 ## List Namespaces (Kubernetes)
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:cluster_id/namespaces"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:cluster_id/namespaces" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -689,8 +686,8 @@ clusterId | The ID of the cluster
 ## Get Namespace (Kubernetes)
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:clusterId/namespaces/:id"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:clusterId/namespaces/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -754,8 +751,8 @@ id | The ID of the namespace
 ## Add Namespace (Kubernetes)
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/clusters/1/namespaces" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/clusters/1/namespaces" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"namespace": {
        "name": "Namespace Name",
@@ -800,10 +797,10 @@ id | The ID of the cluster
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-name | Y | null | Namespace name
-description | N | null | Namespace description
+name | Y |  | Namespace name
+description | N |  | Namespace description
 active | N | false | Namespace active
-resourcePermissions | N | null | Key for resource permission configuration, see [Resource Permissions](#resource-permissions)  
+resourcePermissions | N |  | Key for resource permission configuration, see [Resource Permissions](#resource-permissions)  
 
 #### Resource Permissions
 
@@ -811,17 +808,17 @@ The `resourcePermissions` parameter is a map for namespace group and service pla
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-all | N | null | Pass true to allow access to all groups
-sites | N | null | Array of groups that are allowed access
-allPlans | N | null | Pass true to allow access to all service plans
+all | N |  | Pass true to allow access to all groups
+sites | N |  | Array of groups that are allowed access
+allPlans | N |  | Pass true to allow access to all service plans
 plans | N | n/a | Array of service plans that are allowed access
 
 
 ## Update Namespace (Kubernetes)
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/1/namespaces/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/1/namespaces/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"namespace": {
        "description": "Description",
@@ -854,16 +851,16 @@ id | The ID of the namespace
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-description | N | null | Namespace description
+description | N |  | Namespace description
 active | N | false | Namespace active
-permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
+permissions | N |  | Key for resource permission configuration, see [Permissions](#permissions)  
 
 
 ## Delete a Namespace (Kubernetes)
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/1/namespaces/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/1/namespaces/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -897,8 +894,8 @@ force | off | Force Delete
 ## Add Worker
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/clusters/:id/servers" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/clusters/:id/servers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"server": {
         "config": {
@@ -977,8 +974,8 @@ server | Key for server configuration, see [Server](#server)
 ## Get Workers
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/workers"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/workers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1079,13 +1076,13 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Name filter, restricts query to only load workers matching the name or display name
+phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
 ## Get Masters (Kubernetes)
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/masters"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/masters" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured similar to [Get Workers](#get-workers)
@@ -1106,14 +1103,14 @@ id | The ID of the cluster
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase | null | Name filter, restricts query to only load workers matching the name or display name
+phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
 
 ## Get Volumes
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/volumes"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/volumes" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1177,14 +1174,14 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load volumes which contain the phrase specified
 
 
 ## Delete a Volume
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/volumes/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/volumes/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1218,8 +1215,8 @@ force | off | Force Delete
 ## Get Containers
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/containers"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/containers" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1321,15 +1318,15 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load containers which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load containers which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Deployments
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/deployments"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/deployments" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1385,15 +1382,15 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load deployments which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load deployments which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Jobs
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/jobs"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/jobs" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1448,14 +1445,14 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load jobs which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load jobs which contain the phrase specified
 
 
 ## Get Pods
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/pods"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/pods" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1511,15 +1508,15 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load pods which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load pods which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Get Services
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/services"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/services" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1570,14 +1567,14 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load services which contain the phrase specified
+phrase |  | Name or internalId filter, restricts query to only load services which contain the phrase specified
 
 
 ## Get Stateful Sets
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/statefulsets"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/statefulsets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -1633,15 +1630,15 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load stateful sets which contain the phrase specified
-resourceLevel | null | Resource level filter: app, system, storage, logging
+phrase |  | Name or internalId filter, restricts query to only load stateful sets which contain the phrase specified
+resourceLevel |  | Resource level filter: app, system, storage, logging
 
 
 ## Delete Container
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/containers/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/containers/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1675,8 +1672,8 @@ force | off | Force Delete
 ## Delete a Deployment
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/deployments/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/deployments/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1710,8 +1707,8 @@ force | off | Force Delete
 ## Delete a Job
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/jobs/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/jobs/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1745,8 +1742,8 @@ force | off | Force Delete
 ## Delete a Service
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/services/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/services/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1780,8 +1777,8 @@ force | off | Force Delete
 ## Delete a Stateful Set
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/clusters/:clusterId/statefulsets/:id" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/clusters/:clusterId/statefulsets/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1815,8 +1812,8 @@ force | off | Force Delete
 ## Restart a Container
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/:clusterId/containers/:id/restart" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/:clusterId/containers/:id/restart" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1844,8 +1841,8 @@ id | The ID of the container to restart
 ## Restart a Deployment
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/:clusterId/deployments/:id/restart" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/:clusterId/deployments/:id/restart" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1873,8 +1870,8 @@ id | The ID of the deployment to restart
 ## Restart a Pod
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/:clusterId/pods/:id/restart" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/:clusterId/pods/:id/restart" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1902,8 +1899,8 @@ id | The ID of the pod to restart
 ## Restart a Stateful Set
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/:clusterId/statefulsets/:id/restart" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/:clusterId/statefulsets/:id/restart" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -1931,8 +1928,8 @@ id | The ID of the stateful set to restart
 ## Get Cluster History
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:clusterId/history" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:clusterId/history" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -2003,8 +2000,8 @@ This endpoint retrieves the process history for a specific cluster.
 ## Get Cluster History Details
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:clusterId/history/:processId" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:clusterId/history/:processId" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -2067,8 +2064,8 @@ This endpoint retrieves the history for a specific cluster process.
 ## Get Cluster History Event 
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:clusterId/history/events/:eventId" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:clusterId/history/events/:eventId" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -2130,8 +2127,8 @@ This endpoint retrieves the process event for a specific cluster process event.
 ## Get Datastores
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/:id/datastores"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/:id/datastores"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -2206,17 +2203,17 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
-name | null | Name filter, restricts query to only load datastore of specified name
-code | null | Code filter, restricts query to only load datastore of specified code
-hideInactive | null | If true restricts query to only load active datastores
+phrase |  | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
+name |  | Name filter, restricts query to only load datastore of specified name
+code |  | Code filter, restricts query to only load datastore of specified code
+hideInactive |  | If true restricts query to only load active datastores
 
 
 ## Get Datastore
 
 ```shell
-curl "https://api.gomorpheus.com/api/clusters/1/datastores/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/clusters/1/datastores/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -2280,8 +2277,8 @@ ID | ID of datastore
 ## Update Datastore
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/clusters/1/datastores/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/clusters/1/datastores/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"datastore": {
         "active": true,
@@ -2323,4 +2320,4 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 visibility | N | private | Visibility for server host
 active | N | true | Datastore active
-permissions | N | null | Key for resource permission configuration, see [Permissions](#permissions)  
+permissions | N |  | Key for resource permission configuration, see [Permissions](#permissions)  

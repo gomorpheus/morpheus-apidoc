@@ -6,8 +6,8 @@ Virtual Images can be managed via the API.
 ## Get List of Virtual Images
 
 ```shell
-curl "https://api.gomorpheus.com/api/virtual-images"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/virtual-images"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -84,18 +84,18 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name
-lastUpdated | null | Date filter, restricts query to only records with a timestamp is more recent or equal to the date specified
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name
+lastUpdated |  | Date filter, restricts query to only records with a timestamp is more recent or equal to the date specified
 filterType | "User" | Filter by type, "User", "System" or "All"
-imageType | null | Filter by image type code, "vmware", "ami", etc
+imageType |  | Filter by image type code, "vmware", "ami", etc
 
 ## Get a Specific Virtual Image
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/virtual-images/764" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/virtual-images/764" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -177,8 +177,8 @@ id | The ID of the virtual image
 ## Create a Virtual Image
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/virtual-images" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/virtual-images" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "name": "testimage2",
@@ -209,18 +209,18 @@ This endpoint creates a new virtual image, without any files yet.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the virtual image
-imageType  | null | Code of image type. eg. vmware, ami, etc.
-storageProvider | null | A Map containing the id of the Storage Provider
+name  |  | A name for the virtual image
+imageType  |  | Code of image type. eg. vmware, ami, etc.
+storageProvider |  | A Map containing the id of the Storage Provider
 isCloudInit | false | Cloud Init Enabled? true or false
-userData | null | Cloud-Init User Data, a bash script
+userData |  | Cloud-Init User Data, a bash script
 installAgent | false | Install Agent? true or false
-sshUsername | null | SSH Username
-sshPassword | null | SSH Password
-sshKey | null | SSK Key
-osType | null | A Map containing the id of the OS Type. This can also be passed as a string (code or name) instead.
+sshUsername |  | SSH Username
+sshPassword |  | SSH Password
+sshKey |  | SSK Key
+osType |  | A Map containing the id of the OS Type. This can also be passed as a string (code or name) instead.
 visibility | "private" | private or public
-accounts  | null | Array of tenant account ids that are allowed access.
+accounts  |  | Array of tenant account ids that are allowed access.
 isAutoJoinDomain | false | Auto Join Domain?
 virtioSupported | true | VirtIO Drivers Loaded?
 vmToolsInstalled | true | VM Tools Installed?
@@ -231,8 +231,8 @@ isSysprep | false | Sysprep Enabled?
 ## Upload Virtual Image File
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/virtual-images/765/upload?filename=disk-0.vmdk" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/virtual-images/765/upload?filename=disk-0.vmdk" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   --data-binary '@/path/to/file'
 ```
 
@@ -266,8 +266,8 @@ filename | Specify a filename for new file.
 ## Remove Virtual Image File
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765/files?filename=testimage.ovf" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/virtual-images/765/files?filename=testimage.ovf" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -292,13 +292,13 @@ id | The ID of the virtual image
 
 Parameter | Default | Description
 --------- | ------- | -----------
-filename  | null | The name of the file to be deleted
+filename  |  | The name of the file to be deleted
 
 ## Delete a Virtual Image
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/virtual-images/765" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/virtual-images/765" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

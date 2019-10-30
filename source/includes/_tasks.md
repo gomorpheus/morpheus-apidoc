@@ -1,12 +1,12 @@
-# Tasks
+## Tasks
 
 Provides API interfaces for managing the creation and modification of automation tasks.  Tasks are used in workflows for automation.
 
-## Get All Tasks
+<!--## Get All Tasks-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/tasks"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/tasks"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -58,8 +58,8 @@ taskTypeCodes |  | Filter by task type code(s).
 ## Get a Specific Task
 
 ```shell
-curl "https://api.gomorpheus.com/api/tasks/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/tasks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,8 +97,8 @@ ID | The ID of the task
 ## Create a Task
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/tasks" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/tasks" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"task": {
     "name": "cleanup tmp files",
@@ -121,22 +121,22 @@ curl -XPOST "https://api.gomorpheus.com/api/tasks" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the task
-code      | null | A unique code for the task
-taskType.code      | null | The type of task
+name      |  | A unique name for the task
+code      |  | A unique code for the task
+taskType.code      |  | The type of task
 taskOptions | {} | Map of options specific to each type. eg. script
-resultType      | null | The result type eg. value, exitCode, keyValue, json
+resultType      |  | The result type eg. value, exitCode, keyValue, json
 executeTarget      | <variable> | The execution target. eg. local,remote,resource. The default value varies by task type.
 retryable      | false | If the task should be retried or not.
-retryCount      | null | The number of times to retry.
-retryDelaySeconds      | null | The delay, between retries.
+retryCount      |  | The number of times to retry.
+retryDelaySeconds      |  | The delay, between retries.
 
 ### JSON Parameters for Execute Target: Local
 
 Parameter | Default | Description
 --------- | ------- | -----------
-taskOptions.localScriptGitId      | null | The Git Repo ID
-taskOptions.localScriptGitRef      | null | The Git Repo Ref eg. master
+taskOptions.localScriptGitId      |  | The Git Repo ID
+taskOptions.localScriptGitRef      |  | The Git Repo Ref eg. master
 
 These additional task options are available when using executeTarget of `local`.
 
@@ -144,18 +144,18 @@ These additional task options are available when using executeTarget of `local`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-taskOptions.host      | null | Host or IP Address for remote execution
+taskOptions.host      |  | Host or IP Address for remote execution
 taskOptions.port      | 22 | Port for remote execution
-taskOptions.username      | null | Username for remote execution
-taskOptions.password      | null | Password for remote execution
+taskOptions.username      |  | Username for remote execution
+taskOptions.password      |  | Password for remote execution
 
 These additional task options are available when using executeTarget of `remote`.
 
 ## Updating a Task
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/tasks/5" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/tasks/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"task":{
     "name": "my task",
@@ -181,8 +181,8 @@ Same as [Create](#create-a-task).
 ## Delete a Task
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/tasks/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/tasks/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

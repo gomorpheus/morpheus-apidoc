@@ -1,12 +1,18 @@
-# Accounts
+# Tenants
 
-Provides API interfaces for managing the creation and modification of accounts within Morpheus (Typically only accessible by the Master Account)
+Provides API interfaces for managing the creation and modification of tenants within Morpheus. Typically this is only accessible by users of the Master Tenant.
 
-## Get All Accounts
+<!--
+  JD: uhh this "(Typically only accessible by the Master Account)." needs to be investigated. non master account users should not be able to edit other tenant accounts, only their own...
+-->
+
+A Tenant may also be referred to as an *Account* or *account*.
+
+## Get All Tenants
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -16,9 +22,13 @@ curl "https://api.gomorpheus.com/api/accounts"
   "accounts": [
     {
       "id": 1,
-      "name": "Root Account",
-      "description": "The master account",
+      "name": "Master",
+      "description": "The master tenant",
+      "subdomain": null,
       "currency": "USD",
+      "confs": {
+        "isMasterAccount": "true"
+      },
       "instanceLimits": null,
       "lastUpdated": "2015-11-10T18:58:55+0000",
       "dateCreated": "2015-11-10T18:58:55+0000",
@@ -39,7 +49,7 @@ curl "https://api.gomorpheus.com/api/accounts"
 }
 ```
 
-This endpoint retrieves all accounts.
+This endpoint retrieves all tenants.
 
 ### HTTP Request
 
@@ -53,16 +63,16 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name or description
-name | null | Filter by name
-lastUpdated | null | Date filter, restricts query to only load accounts updated  timestamp is more recent or equal to the date specified
+phrase |  | Filter by matching name or description
+name |  | Filter by name
+lastUpdated |  | Date filter, restricts query to only load tenants updated more recently than the date specified
 
 
-## Get a Specific Account
+## Get a Specific Tenant
 
 ```shell
-curl "https://api.gomorpheus.com/api/accounts/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/accounts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -71,9 +81,13 @@ curl "https://api.gomorpheus.com/api/accounts/1" \
 {
   "account": {
     "id": 1,
-    "name": "Root Account",
-    "description": "The master account",
+    "name": "Master",
+    "description": "The master tenant",
+    "subdomain": null,
     "currency": "USD",
+    "confs": {
+      "isMasterAccount": "true"
+    },
     "instanceLimits": null,
     "externalId": null,
     "lastUpdated": "2015-11-10T18:58:55+0000",
@@ -88,26 +102,21 @@ curl "https://api.gomorpheus.com/api/accounts/1" \
 }
 ```
 
-This endpoint will retrieve a specific account by id if the user has permission to access it.
+This endpoint will retrieve a specific account by ID.
 
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/accounts/:id`
 
-## Create an Account
+## Create a Tenant
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/accounts" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/accounts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
-    "name": "My New Account",
+    "name": "My New Tenant",
     "description": "My description",
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    },
     role: {
       id: 2
     }
@@ -124,17 +133,17 @@ curl -XPOST "https://api.gomorpheus.com/api/accounts" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the account
-description | null | Optional description field if you want to put more info there
+name      |  | A unique name for the account
+description |  | Optional description field if you want to put more info there
 role      | Account Admin | A nested id of the default role for the account
-instanceLimits | null | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
-## Updating an Account
+## Updating a Tenant
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/accounts/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/accounts/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
     "name": "My New Account",
@@ -160,16 +169,16 @@ curl -XPUT "https://api.gomorpheus.com/api/accounts/2" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the account
-description | null | Optional description field if you want to put more info there
-role      | null | A nested id of the default role for the account
-active | null | Set to false to deactvate the account
+name      |  | A unique name for the account
+description |  | Optional description field if you want to put more info there
+role      |  | A nested id of the default role for the account
+active |  | Set to false to deactvate the account
 
-## Delete an Account
+## Delete a Tenant
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/accounts/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/accounts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -180,7 +189,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/accounts/1" \
 }
 ```
 
-If an account still has users or instances tied to it, The delete will fail.
+If a tenant still has users or instances tied to it, The delete will fail.
 
 <aside class="info">This restriction should be lifted in a forthcoming API release</aside>
 

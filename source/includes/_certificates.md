@@ -5,8 +5,8 @@ Morpheus provides a database for keeping track of SSL Certificates in the system
 ## Get All SSL Certificates
 
 ```shell
-curl "https://api.gomorpheus.com/api/certificates"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/certificates" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -39,20 +39,16 @@ This endpoint retrieves all key pairs associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load certificates updated more recent or equal to the date specified
-name | null | If specified will return an exact match certificate
+lastUpdated |  | A date filter, restricts query to only load certificates updated more recent or equal to the date specified
+name |  | If specified will return an exact match certificate
 
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific Certificate
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/certificates/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/certificates/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -89,8 +85,8 @@ ID | The ID of the key pair to retrieve
 ## Create a Certificate
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/certificates" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/certificates" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -107,21 +103,21 @@ curl -XPOST "https://api.gomorpheus.com/api/certificates" \
 
 `POST https://api.gomorpheus.com/api/certificates`
 
-### JSON Check Parameters
+### JSON Certificate Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the key
-certFile | null | The contents of the certificate file
-keyFile | null | The contents of the key file
+name      |  | A unique name scoped to your account for the key
+certFile |  | The contents of the certificate file
+keyFile |  | The contents of the key file
 wildcard | false | Wether or not this certificate is a wildcard cert
-domainName | null | The domain name this certificate is tied to
+domainName |  | The domain name this certificate is tied to
 
 ## Updating a Certificate
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/certificates/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/certificates/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -138,21 +134,21 @@ curl -XPUT "https://api.gomorpheus.com/api/certificates/1" \
 
 `PUT https://api.gomorpheus.com/api/certificates/:id`
 
-### JSON Check Parameters
+### JSON Certificate Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the key
-certFile | null | The contents of the certificate file
-keyFile | null | The contents of the key file
+name      |  | A unique name scoped to your account for the key
+certFile |  | The contents of the certificate file
+keyFile |  | The contents of the key file
 wildcard | false | Wether or not this certificate is a wildcard cert
-domainName | null | The domain name this certificate is tied to
+domainName |  | The domain name this certificate is tied to
 
 ## Delete a Certificate
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/certificates/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/certificates/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -165,7 +161,7 @@ curl -XDELETE "https://api.gomorpheus.com/api/certificates/1" \
 
 Will delete a certificate from the system and make it no longer usable.
 
-<aside class="warning">
+<aside class="info">
 If a certificate is actively in use, a delete will fail.
 </aside>
 

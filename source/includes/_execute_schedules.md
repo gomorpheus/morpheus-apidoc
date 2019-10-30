@@ -1,12 +1,12 @@
-# Execute Schedules
+## Execute Schedules
 
 Execute Schedules are definitions for recurring schedules. These schedules can be used in your backup jobs.
 
-## Get All Execute Schedules
+<!--## Get All Execute Schedules-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/execute-schedules" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/execute-schedules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -56,14 +56,14 @@ This endpoint retrieves all execute schedules associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name | null | If specified will return an exact match on name
-phrase | null | If specified will return a partial match on name
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
 
 ## Get a Specific Execute Schedule
 
 ```shell
-curl "https://api.gomorpheus.com/api/execute-schedules/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/execute-schedules/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ ID | The ID of the execute schedule to retrieve
 ## Create an Execute Schedule
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/execute-schedules" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/execute-schedules" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -136,8 +136,8 @@ enabled      | true | Enabled
 ## Update an Execute Schedule
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/execute-schedules/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/execute-schedules/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -161,8 +161,8 @@ See [Create](#create-an-execute-schedule).
 ## Delete an Execute Schedule
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/execute-schedules/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/execute-schedules/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

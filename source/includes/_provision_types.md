@@ -1,12 +1,15 @@
-# Provision Types
+## Provision Types
 
-Morpheus supports a diverse set of cloud APIS for provisioning compute and services. In order to facilitate some of these capabilities and preserve some of the diverse sets of feature sets across these plaforms it is necessary to provide a means to dynamicaly specifying provisioning options depending on what is being provisioned. Morpheus calls these `provision-types`. Each `InstanceTypeLayout` that can be provisioned has a correlating `ProvisionType` and each `CloudType` (aka `ZoneType`) has a list of supported provision types it is capable of provisioning. This record contains optionTypes (see section on `optionTypes` for specifics on how to parse this data) as well as information for building out network parameters and storage parameters by listing different storage type information.
 
+<!--
 ## Get All Provision Types
+-->
+
+Fetch the list of available provision types.
 
 ```shell
-curl "https://api.gomorpheus.com/api/provision-types"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/provision-types"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this
@@ -195,8 +198,8 @@ curl "https://api.gomorpheus.com/api/provision-types"
 ## Get Specific Provision Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/provision-types/9"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/provision-types/9"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this

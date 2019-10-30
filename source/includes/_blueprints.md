@@ -2,11 +2,13 @@
 
 Blueprints are templates for creating apps. They are a set of instance configurations, organized by tier, and scoped by group, cloud and environment.
 
+ A Blueprint may also be referred to as a *App Template* or *appTemplate*.
+
 ## Get All Blueprints
 
 ```shell
-curl "https://api.gomorpheus.com/api/blueprints"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/blueprints" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,15 +132,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-name | null | Filter by name
-phrase | null | Filter by wildcard search of name and description
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
 
 ## Get a Specific Blueprint
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/blueprints/4" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/blueprints/4" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -251,8 +253,8 @@ This endpoint retrieves a specific blueprint.
 ## Create a Blueprint
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -340,11 +342,11 @@ curl -XPOST "https://api.gomorpheus.com/api/blueprints" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  | null | A name for the blueprint
-description     | null | Optional description field
+name  |  | A name for the blueprint
+description     |  | Optional description field
 category     | morpheus | Optional category field
 type     | morpheus | Blueprint Type. The default is 'morpheus'.
-tiers | null | A Map containing a key for each tier and all their instances.
+tiers |  | A Map containing a key for each tier and all their instances.
 
 ### Blueprint Tiers Configuration
 
@@ -397,8 +399,8 @@ Example:
 ## Updating a Blueprint
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/blueprints/2" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/blueprints/2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -491,8 +493,8 @@ This overwrites the entire config, so the entire blueprint config should be pass
 ## Update Blueprint Permissions
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/update-permissions" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/update-permissions" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "resourcePermission": {
     "all":false,
@@ -512,15 +514,15 @@ curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/update-permissions" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-resourcePermission.all  | null | Enable access for all groups
-resourcePermission.sites  | null | Enable access for specific groups only
+resourcePermission.all  |  | Enable access for all groups
+resourcePermission.sites  |  | Enable access for specific groups only
 
 
 ## Update Blueprint Image
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/image" \
-  -H "Authorization: BEARER access_token"
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/image" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -F 'templateImage=@filename'
 ```
 
@@ -534,7 +536,7 @@ curl -XPOST "https://api.gomorpheus.com/api/blueprints/1/image" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-templateImage  | null | Image File png,jpg,svg
+templateImage  |  | Image File png,jpg,svg
 
 Upload a new logo image.  Expects multipart form data as the request format, not JSON.
 
@@ -542,8 +544,8 @@ Upload a new logo image.  Expects multipart form data as the request format, not
 ## Delete a Blueprint
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/blueprints/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/blueprints/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:

@@ -1,12 +1,12 @@
-# User Settings
+## User Settings
 
 Provides API for managing your own user settings and api access tokens.
 
-## Get User Settings
+<!--## Get User Settings-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/user-settings" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/user-settings" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -48,13 +48,13 @@ This endpoint retrieves your user settings and API access token information.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 ## Update User Settings
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/user-settings" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-settings" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "user": {
@@ -79,7 +79,7 @@ curl -XPUT "https://api.gomorpheus.com/api/user-settings" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 ### JSON Parameters
 
@@ -100,8 +100,8 @@ receiveNotifications      |  | Receive Notifications (true or false)
 ## Update Avatar Image
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/user-settings/avatar" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/user-settings/avatar" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -F 'user.avatar=@filename'
 ```
 
@@ -121,7 +121,7 @@ curl -XPOST "https://api.gomorpheus.com/api/user-settings/avatar" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 ### Parameters
 
@@ -134,8 +134,8 @@ Upload a new avatar image.  Expects multipart form data as the request format, n
 ## Delete Avatar Image
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/user-settings/avatar" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/user-settings/avatar" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -156,13 +156,13 @@ Delete your avatar image.  Expects multipart form data as the request format, no
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 ## Regenerate API Access Token
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/user-settings/regenerate-access-token?clientId=morph-api" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-settings/regenerate-access-token?clientId=morph-api" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json"
 ```
 
@@ -183,7 +183,7 @@ curl -XPUT "https://api.gomorpheus.com/api/user-settings/regenerate-access-token
 Parameter | Default | Description
 --------- | ------- | -----------
 clientId      |  | Client ID
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 
 > The above command returns JSON structured like this:
@@ -200,8 +200,8 @@ This endpoint regenerates your API access token for the specified client. If a c
 ## Revoke API Access Token
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/user-settings/clear-access-token?clientId=morph-api" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/user-settings/clear-access-token?clientId=morph-api" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json"
 ```
 
@@ -222,15 +222,15 @@ curl -XPUT "https://api.gomorpheus.com/api/user-settings/clear-access-token?clie
 Parameter | Default | Description
 --------- | ------- | -----------
 clientId      |  | Client ID
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*
 
 This endpoint revokes your API access token for the specified client.
 
 ## Get Available API Clients
 
 ```shell
-curl "https://api.gomorpheus.com/api/user-settings/api-clients" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/user-settings/api-clients" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -239,19 +239,10 @@ curl "https://api.gomorpheus.com/api/user-settings/api-clients" \
 {
     "clients": [
     {
-      "clientId": "morph-ios"
-    },
-    {
-      "clientId": "morph-marketing"
-    },
-    {
-      "clientId": "morph-customer"
+      "clientId": "morph-api"
     },
     {
       "clientId": "morph-cli"
-    },
-    {
-      "clientId": "morph-api"
     }
   ]
 }
@@ -267,4 +258,4 @@ This endpoint retrieves a list of available API clients.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User, requires the correct permission to operate on users other than yourself.
+userId      | (current user) | ID of User *Only available to the master account.*

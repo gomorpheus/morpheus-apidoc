@@ -1,12 +1,14 @@
-# Server Groups
+# Groups
 
-Server Groups are used to organize provisioned servers in your infrastructure. When a user on the system provisions an instance like MySQL, they can select which group to provision the instance into. This can be used to scope servers by environment or by region.
+Groups are used to organize provisioned servers in your infrastructure. When a user on the system provisions an instance like MySQL, they can select which group to provision the instance into. This can be used to scope servers by environment or by region.
+
+A Group may also be referred to as a *Site* or *site*.
 
 ## Get All Groups
 
 ```shell
-curl "https://api.gomorpheus.com/api/groups"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/groups"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -48,20 +50,16 @@ This endpoint retrieves all groups and a list of zones associated with the group
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load groups updated more recent or equal to the date specified
-name | null | If specified will return an exact match group
+lastUpdated |  | A date filter, restricts query to only load groups updated more recent or equal to the date specified
+name |  | If specified will return an exact match group
 
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific Group
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/groups/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -108,8 +106,8 @@ ID | The ID of the group to retrieve
 ## Create a Group
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -124,21 +122,19 @@ curl -XPOST "https://api.gomorpheus.com/api/groups" \
 
 `POST https://api.gomorpheus.com/api/groups`
 
-### JSON Check Parameters
+### JSON Check Group Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the group
-code      | null | Optional code for use with policies
-location  | null | Optional location argument for your group
-
-<aside class="warning">Creating a Server group requires the `System Admin` role.</aside>
+name      |  | A unique name scoped to your account for the group
+code      |  | Optional code for use with policies
+location  |  | Optional location argument for your group
 
 ## Updating a Group
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/groups/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -152,21 +148,19 @@ curl -XPUT "https://api.gomorpheus.com/api/groups/1" \
 
 `PUT https://api.gomorpheus.com/api/groups/:id`
 
-### JSON Check Parameters
+### JSON Check Group Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the group
-code      | null | Optional code for use with policies
-location  | null | Optional location for your group
-
-<aside class="warning">Updating a Server group requires the `System Admin` role.</aside>
+name      |  | A unique name scoped to your account for the group
+code      |  | Optional code for use with policies
+location  |  | Optional location for your group
 
 ## Updating Group Zones
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/groups/1/update-zones" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/groups/1/update-zones" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "zones": [
@@ -190,20 +184,18 @@ Any zones that are not passed in the `zones` parameter will be removed from the 
 
 `PUT https://api.gomorpheus.com/api/groups/:id/update-zones`
 
-### JSON Check Parameters
+### JSON Update Group Zones Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-zones      | null | An array of all the zones assigned to this group.
-
-<aside class="warning">Assigning Zones to a Server group requires the `System Admin` role.</aside>
+zones      |  | An array of all the zones assigned to this group.
 
 
 ## Delete a Group
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/groups/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/groups/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

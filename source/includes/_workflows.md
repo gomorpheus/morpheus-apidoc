@@ -1,12 +1,14 @@
-# Workflows
+## Workflows
 
 Provides API interfaces for managing the creation and modification of automation workflows. Workflows, also called Task Sets, are a collection of tasks that are organized in phases. A task phase determines if/when each task runs.
 
-## Get All Workflows
+A Workflow may also be referred to as a *Task Set* or *taskSet*.
+
+<!--## Get All Workflows-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-sets"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-sets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -68,14 +70,14 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name
-name | null | Filter by name
+phrase |  | Filter by matching name
+name |  | Filter by name
 
 ## Get a Specific Workflow
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-sets/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-sets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,8 +132,8 @@ ID | The ID of the workflow
 ## Create a Workflow
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/task-sets" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/task-sets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
     "name": "my workflow",
@@ -160,18 +162,18 @@ curl -XPOST "https://api.gomorpheus.com/api/task-sets" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the workflow
-description      | null | A description of the workflow
+name      |  | A unique name for the workflow
+description      |  | A description of the workflow
 tasks      | [] | List of task objects in order
-tasks.taskId | null | Task ID
+tasks.taskId |  | Task ID
 tasks.taskPhase | provision | Task Phase.
 
 
 ## Updating a Workflow
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/task-sets/5" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/task-sets/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"taskSet":{
     "tasks": [
@@ -198,17 +200,17 @@ ID | The ID of the workflow
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name for the workflow
-description      | null | A description of the workflow
+name      |  | A unique name for the workflow
+description      |  | A description of the workflow
 tasks      | [] | List of task objects in order
-tasks.taskId | null | Task ID
+tasks.taskId |  | Task ID
 tasks.taskPhase | provision | Task Phase.
 
 ## Delete a Workflow
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/task-sets/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/task-sets/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

@@ -1,10 +1,12 @@
-# Whoami
+## Whoami
 
 Provides API to retrieve information about yourself, including your roles and permissions.
 
+The appliance build version is also returned.
+
 ```shell
-curl "https://api.gomorpheus.com/api/whoami" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/whoami" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -123,4 +125,4 @@ curl "https://api.gomorpheus.com/api/whoami" \
 
 `GET https://api.gomorpheus.com/api/whoami`
 
-This endpoint retrieves your user information, roles and permissions.  The appliance build version is also returned.
+

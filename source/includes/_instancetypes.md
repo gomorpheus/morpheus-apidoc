@@ -1,12 +1,15 @@
+<!--
 # Instance Types
+-->
 
-Provides a means to find out which instance types are available to your user account. These can vary in range from database containers, to web containers, to custom containers.
-.
 ## Get All Instance Types
 
+Fetch the list of available instance types. These can vary in range from database containers, to web containers, to custom containers.
+.
+
 ```shell
-curl "https://api.gomorpheus.com/api/instance-types"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instance-types"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this
@@ -322,8 +325,8 @@ curl "https://api.gomorpheus.com/api/instance-types"
 ## Get Specific Instance Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/instance-types/12"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/instance-types/12"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this

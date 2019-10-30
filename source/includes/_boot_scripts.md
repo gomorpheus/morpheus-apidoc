@@ -1,12 +1,12 @@
-# Boot Scripts
+## Boot Scripts
 
 Boot Scripts are used in the Image Builder service. See [Image Builds](#image-builds)
 
-## Get All Boot Scripts
+<!--## Get All Boot Scripts-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/boot-scripts"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/boot-scripts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -55,8 +55,8 @@ phrase |  | If specified will return a partial match on fileName
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/boot-scripts/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/boot-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,8 +97,8 @@ ID | The ID of the boot script to retrieve
 ## Create a Boot Script
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/boot-scripts" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/boot-scripts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
@@ -124,8 +124,8 @@ content      |  | The script content
 ## Update a Boot Script
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/boot-scripts/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/boot-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
@@ -153,8 +153,8 @@ Same as [Create](#create-a-boot-script).
 ## Delete a Boot Script
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/boot-scripts/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/boot-scripts/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

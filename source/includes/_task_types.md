@@ -1,12 +1,14 @@
-# Task Types
+## Task Types
 
 A Task Type is a type of automation task. Each type defines its own set of options to be configured for each task.
 
+<!--
 ## Get All Task Types
+-->
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-types"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-types"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -248,8 +250,8 @@ code |  | If specified will return an exact match on code
 ## Get a Specific Task Type
 
 ```shell
-curl "https://api.gomorpheus.com/api/task-types/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/task-types/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:

@@ -2,11 +2,14 @@
 
 Provides API interfaces for managing the creation and modification of provisioning environments.
 
+This API endpoint corresponds to Morpheus UI section called **Admin: Provisioning > Environments**.
+
+
 ## Get All Environments
 
 ```shell
-curl "https://api.gomorpheus.com/api/environments"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/environments"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -86,15 +89,15 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase | null | Filter by matching name or code
-name | null | Filter by name
-code | null | Filter by code
+phrase |  | Filter by matching name or code
+name |  | Filter by name
+code |  | Filter by code
 
 ## Get a Specific Environment
 
 ```shell
-curl "https://api.gomorpheus.com/api/environments/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/environments/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -131,8 +134,8 @@ ID | The ID of the environment
 ## Create an Environment
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/environments" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/environments" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -165,8 +168,8 @@ sortOrder | 0 | Sort order
 ## Updating an Environment
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/environments/5" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/environments/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -202,8 +205,8 @@ Only user created environments may be updated.
 ## Toggle an Environment
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/environments/5/toggle-active" \
-  -H "Authorization: BEARER access_token"
+curl -XPUT "$MORPHEUS_API_URL/api/environments/5/toggle-active" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like getting a single environment:
@@ -230,8 +233,8 @@ This endpoint allows global environments to be updated by the master account.
 ## Delete an Environment
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/environments/5" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/environments/5" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:

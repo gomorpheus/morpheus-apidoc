@@ -1,12 +1,14 @@
-# Compute Zones
+# Clouds
 
-Zones are a means of zoning various servers based on provisioning type or subnets. Typically a Zone belongs to a zone and a zone can have many zones. There are several supported zone types that can be used for hardware/vm procurement such as the OpenStack zone type. The zone holds the credentials necessary to provision virtual machines on the open stack api. Amazon is another openstack zone type currently in the works. Of course, we also have the Standard zone type which allows for manual vm procurement.
+Clouds are a means of zoning various servers based on provisioning type or subnets. Typically an instance or host belongs to a cloud. The cloud holds the credentials necessary to provision virtual machines on the cloud provider's api.  Cloud provider types include: Openstack, Amazon AWS, Nutanix, VMWare vCenter, etc.  Of course, we also have the Standard cloud type which allows for manual vm procurement.
 
-## Get All Zones
+A Cloud may also be referred to as a *Zone* or *zone*.
+
+## Get All Clouds
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones"
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -38,22 +40,18 @@ This endpoint retrieves all zones and a list of zones associated with the zone b
 
 Parameter | Default | Description
 --------- | ------- | -----------
-lastUpdated | null | A date filter, restricts query to only load zones updated more recent or equal to the date specified
-name | null | If specified will return an exact match zone
-type | null | If specified will return all zones by type code (`standard`,`openstack`,`amazon`)
-groupId | null | If specified will return all zones assigned to a server group by id.
+lastUpdated |  | A date filter, restricts query to only load zones updated more recent or equal to the date specified
+name |  | If specified will return an exact match zone
+type |  | If specified will return all zones by type code (`standard`,`openstack`,`amazon`)
+groupId |  | If specified will return all zones assigned to a server group by id.
 
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Zone
+## Get a Specific Cloud
 
 
 ```shell
-curl "https://api.gomorpheus.com/api/zones/1" \
-  -H "Authorization: BEARER access_token"
+curl "$MORPHEUS_API_URL/api/zones/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
@@ -87,15 +85,15 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the zone to retrieve
 
-## Create a Zone
+## Create a Cloud
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/zones" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/zones" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
-    "name": "My Zone",
-    "code": "myzone",
+    "name": "My Cloud",
+    "code": "mycloud",
     "description": "My description",
     "location": "US EAST",
     "zoneType": {"code": "standard"},
@@ -103,37 +101,35 @@ curl -XPOST "https://api.gomorpheus.com/api/zones" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single zone:
+> The above command returns JSON structured like getting a single cloud:
 
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/zones`
 
-### JSON Check Parameters
+### JSON Cloud Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the zone
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for your zone
+name      |  | A unique name scoped to your account for the cloud
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for your cloud
 visibility      | private | private or public
-zoneType  | "standard" | Map containing code or id of the zone type
-groupId  | null | Specifies which Server group this zone should be assigned to
-accountId | null | Specifies which Tenant this zone should be assigned to
+zoneType  | "standard" | Map containing code or id of the cloud type
+groupId  |  | Specifies which Server group this cloud should be assigned to
+accountId |  | Specifies which Tenant this cloud should be assigned to
 
-Additional properties are dynamic for the most part depending on teh zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
+Additional config properties are dynamic and depend on the specified type of cloud. See [Cloud Types](#cloud-types).
 
-<aside class="warning">Creating a Server zone requires the `System Admin` role.</aside>
-
-## Updating a Zone
+## Updating a Cloud
 
 ```shell
-curl -XPUT "https://api.gomorpheus.com/api/zones/1" \
-  -H "Authorization: BEARER access_token" \
+curl -XPUT "$MORPHEUS_API_URL/api/zones/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
-    "name": "My Zone",
+    "name": "My Cloud",
     "description": "My description",
     "location": "US EAST",
     "zoneType": {"code": "standard"},
@@ -148,27 +144,25 @@ curl -XPUT "https://api.gomorpheus.com/api/zones/1" \
 
 `PUT https://api.gomorpheus.com/api/zones/:id`
 
-### JSON Check Parameters
+### JSON Cloud Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | null | A unique name scoped to your account for the zone
-description | null | Optional description field if you want to put more info there
-code      | null | Optional code for use with policies
-location  | null | Optional location for your zone
+name      |  | A unique name scoped to your account for the zone
+description |  | Optional description field if you want to put more info there
+code      |  | Optional code for use with policies
+location  |  | Optional location for your zone
 visibility      | private | private or public
-accountId | null | Specifies which Tenant this zone should be assigned to
-config | null | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
+accountId |  | Specifies which Tenant this zone should be assigned to
+config |  | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
 
-Additional properties are dynamic for the most part depending on the zone/cloud type. To determine what these are please look at the `optionTypes` list on the `ZoneType` record.
+Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
-<aside class="warning">Updating a Server zone requires the `System Admin` role.</aside>
-
-## Delete a Zone
+## Delete a Cloud
 
 ```shell
-curl -XDELETE "https://api.gomorpheus.com/api/zones/1" \
-  -H "Authorization: BEARER access_token"
+curl -XDELETE "$MORPHEUS_API_URL/api/zones/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON Structured like this:
@@ -189,7 +183,7 @@ If a zone has zones or servers still tied to it, a delete action will fail
 
 ```shell
 curl -XGET "https://api.gomorpheus.com/api/zones/1/security-groups" \
-  -H "Authorization: BEARER access_token"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 > The above command returns JSON structure like this:
@@ -219,8 +213,8 @@ This returns a list of all of the security groups applied to a zone and whether 
 ## Set Security Groups
 
 ```shell
-curl -XPOST "https://api.gomorpheus.com/api/zones/1/security-groups" \
-  -H "Authorization: BEARER access_token" \
+curl -XPOST "$MORPHEUS_API_URL/api/zones/1/security-groups" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```
@@ -235,5 +229,5 @@ curl -XPOST "https://api.gomorpheus.com/api/zones/1/security-groups" \
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
-securityGroupIds | null | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
+securityGroupIds |  | List of all security groups ids which should be applied.  If no security groups should apply, pass '[]'
 
