@@ -1,6 +1,6 @@
-## HTTP Requests
+## API
 
-The Morpheus API is an HTTP interface that provides a RESTful interface to the data within the morpheus appliance. It uses `GET` to read, `POST` to create, `PUT` to update and `DELETE` to destroy resources.
+The Morpheus API is an HTTP interface. It provides access to resources and functionality provided by the [Morpheus](https://www.morpheusdata.com/) appliance. It is a RESTful API where (typically) `GET` reads, `POST` creates, `PUT` updates and `DELETE` destroys resources.
 
 ```shell
 curl "$MORPHEUS_API_URL/api/instances?phrase=test" \
