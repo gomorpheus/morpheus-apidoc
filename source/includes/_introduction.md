@@ -6,7 +6,7 @@ Welcome to the Morpheus API Documentation.
 
 This document aims to illustrate the Morpheus [API](#api) protocol and its available endpoints.
 
-The API endpoints are organized under sections that match the Morpheus UI.
+The API endpoints are organized in sections that match the Morpheus UI.
 
 ### Sections
 
