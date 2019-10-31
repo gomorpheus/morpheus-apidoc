@@ -139,12 +139,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/60/user-sources" \
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
-      "bindingPassword": "goodadpassword",
+      "bindingPassword": "96119ec75001",
       "requiredGroup": "MorpheusUsers",
       "searchMemberGroups": "off"
     },
     "defaultAccountRole": {
-      "id": 19
+      "id": 1
     }
   }
 }'
@@ -170,9 +170,9 @@ name      |  | Name
 type      |  | Type code (ldap, jumpCloud, activeDirectory, okta, oneLogin, saml, customExternal, customApi)
 description |  | Description (optional)
 defaultAccountRole.id |  | Default Role ID
-roleMappings | {} | Map of Morpheus Role ID : Fully Qualified Role Name
-roleMappingNames | {} | Map of Morpheus Role ID : Role Name
-config | {} | Map of configuration options which vary by type.
+roleMappings | | Map of Morpheus Role ID : Fully Qualified Role Name
+roleMappingNames | | Map of Morpheus Role ID : Role Name
+config | | Map of configuration options which vary by type.
 
 ### JSON Parameters for LDAP
 
@@ -264,12 +264,12 @@ curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3" \
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
-      "bindingPassword": "goodadpassword",
+      "bindingPassword": "96119ec75001",
       "requiredGroup": "MorpheusUsers",
       "searchMemberGroups": "off"
     },
     "defaultAccountRole": {
-      "id": 19
+      "id": 1
     }
   }
 }'
@@ -295,9 +295,9 @@ name      |  | Name
 description |  | Description (optional)
 active      |  | Activate (true) or disable (false) the user source
 defaultAccountRole.id |  | Default Role ID
-roleMappings | {} | Map of Morpheus Role ID : Fully Qualified Role Name
-roleMappingNames | {} | Map of Morpheus Role ID : Role Name
-config | {} | Map of configuration options which vary by type.
+roleMappings | | Map of Morpheus Role ID : Fully Qualified Role Name
+roleMappingNames | | Map of Morpheus Role ID : Role Name
+config | | Map of configuration options which vary by type.
 
 ## Updating Subdomain for a User Source
 

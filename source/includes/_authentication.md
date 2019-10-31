@@ -2,7 +2,7 @@
 
 The Morpheus API uses an OAUTH 2.0 based authentication model. 
 
-Authentication is done by passing an access token in the [Authorization](#authorization-header) http header.
+Authentication is done by passing an access token in the [Authorization](#authorization-header) HTTP header.
 
 Use [Get Access Token](#get-access-token) to acquire a valid access token.
 

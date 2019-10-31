@@ -124,7 +124,7 @@ Parameter | Default | Description
 name      |  | A unique name for the task
 code      |  | A unique code for the task
 taskType.code      |  | The type of task
-taskOptions | {} | Map of options specific to each type. eg. script
+taskOptions | | Map of options specific to each type. eg. script
 resultType      |  | The result type eg. value, exitCode, keyValue, json
 executeTarget      | <variable> | The execution target. eg. local,remote,resource. The default value varies by task type.
 retryable      | false | If the task should be retried or not.

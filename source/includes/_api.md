@@ -1,9 +1,9 @@
 ## API
 
-The Morpheus API is the HTTP interface for the [Morpheus](https://www.morpheusdata.com/) appliance. It is a RESTful API where (typically) `GET` reads, `POST` creates, `PUT` updates and `DELETE` destroys resources.
+The Morpheus API is an HTTP interface for interacting with the [Morpheus](https://www.morpheusdata.com/) appliance. It provides a RESTful interface where `GET` reads, `POST` creates, `PUT` updates and `DELETE` destroys resources.
 
 ```shell
-curl "$MORPHEUS_API_URL/api/instances?phrase=test" \
+curl "$MORPHEUS_API_URL/api/users/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -11,26 +11,45 @@ curl "$MORPHEUS_API_URL/api/instances?phrase=test" \
 
 ```json
 {
-  "instances": [
-    
-  ],
-  "meta": {
-    "offset": 0,
-    "max": 25,
-    "size": 0,
-    "total": 0
+  "user": {
+    "id": 1,
+    "accountId": 1,
+    "username": "admin",
+    "displayName": "Morpheus Admin",
+    "email": "admin@morpheusdata.com",
+    "firstName": "Morpheus",
+    "lastName": "Admin",
+    "dateCreated": "2017-03-16T21:26:39+0000",
+    "lastUpdated": "2019-10-30T23:09:01+0000",
+    "enabled": true,
+    "accountExpired": false,
+    "accountLocked": false,
+    "passwordExpired": false,
+    "loginCount": 86638,
+    "loginAttempts": 0,
+    "lastLoginDate": "2016-06-30T21:05:15+0000",
+    "roles": [
+      {
+        "id": 1,
+        "authority": "System Admin",
+        "description": "Super User"
+      }
+    ],
+    "account": {
+      "id": 1,
+      "name": "root"
+    }
   }
 }
-
 ```
 
-This is an example of Morpheus API request that finds all instances with a similar name.
+This is an example of Morpheus API request to retrieve details about the master [User][#users].
 
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/:id`
 
-This is the format for documenting request paths. Most endpoints have a path like */api/resources/:id*.
+This is the format for the request method and path of the endpoint. Most paths have a format like **/api/resources/:id**.
 
 ### URL Parameters
 
@@ -38,7 +57,7 @@ Parameter | Description
 --------- | -----------
 :id | ID of the Instance.
 
-This is the format for documenting URL parameters. These are parameters that are included in the path of the request.
+This is the format for URL parameters. These are parameters that are included in the path of the request.
 
 ### HTTP Headers
 
@@ -49,11 +68,11 @@ Content-Type      | Use `application/json` for `POST` and `PUT` requests. This i
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-phrase |  | If specified will return a partial match on name.
+Parameter | Description
+--------- | -------
+phrase | If specified will return a partial match on name.
 
-This is the format for documenting query string parameters. These are parameters which are included in the query string of the request.
+This is the format for query string parameters. These are parameters which are included in the query string of the request.
 
 ### JSON Parameters
 
@@ -61,7 +80,7 @@ Parameter | Description
 --------- | -----------
 name | A unique string.
 
-This is the format for documenting JSON parameters. These are parameters which are included in the body of the request, with *Content-Type application/json*.
+This is the format for JSON parameters. These are parameters which are included in the body of the request, with *Content-Type application/json*.
 
 
 ### HTTP Response

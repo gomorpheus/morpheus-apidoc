@@ -1,6 +1,6 @@
 # Activity
 
-This endpoint provides data about activity with the morpheus appliance. User activity and other morpheus events can be seen here.
+This endpoint provides data about activity with the Morpheus appliance. User activity and other morpheus events can be seen here.
 
 The most recent activity is returned by default.
 
@@ -75,8 +75,8 @@ curl "$MORPHEUS_API_URL/api/activity" \
     },
     {
       "success": true,
-      "name": "jimbo",
-      "message": "User 'jimbo' updated. Password changed.",
+      "name": "julius",
+      "message": "User 'julius' updated. Password changed.",
       "ts": "2019-10-08T21:17:52Z",
       "activityType": "Admin",
       "accountId": 1,
@@ -130,5 +130,4 @@ userName | Username of the author.
 ts | Timestamp of when the activity occurred.
 objectId | Object ID
 objectType | Object Type
-
 

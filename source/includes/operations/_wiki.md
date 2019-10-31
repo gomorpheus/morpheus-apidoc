@@ -22,7 +22,7 @@ curl "$MORPHEUS_API_URL/api/wiki/pages"
       "refId": null,
       "refType": null,
       "format": "markdown",
-      "content": "Welcome to the home page for this morpheus appliance wiki.",
+      "content": "Welcome to the home page for this Morpheus wiki.",
       "createdBy": {
         "id": 1,
         "username": "admin"

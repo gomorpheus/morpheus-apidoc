@@ -2,8 +2,6 @@
 
 The Library API endpoints provide the management of Instance Types, Layouts, and Container Types.
 
-These endpoints correspond to the section called **Provisioning: Library** in the Morpheus UI.
-
 <aside class="info">
 More documentation coming soon...
 </aside>

@@ -2,8 +2,6 @@
 
 Provides API interfaces for viewing billing information by account, zone, instance or server.  By default, the information returned is from the beginning of the current month until now.  The date range is parameterized but the end date cannot exceed the current date.
 
-These endpoints correspond to the section called **Operations: Usage** in the Morpheus UI.
-
 ## Billing By Account
 
 ```shell

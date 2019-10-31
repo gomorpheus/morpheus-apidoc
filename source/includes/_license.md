@@ -139,10 +139,10 @@ Parameter | Default | Description
 --------- | ------- | -----------
 license      |  | License Key Content. A very long and silly string.
 
-This endpoint installs a new license in the morpheus appliance.
+This endpoint installs a new license in the Morpheus appliance.
 
 <aside class="info">
-Be careful. This will replace your current license key, which may impact the features available in the morpheus appliance.
+Be careful. This will replace your current license key, which may impact the features available in the Morpheus appliance.
 </aside>
 
 ## Decode License

@@ -1,8 +1,6 @@
-# Process History
+# History
 
-Provides API interfaces for viewing historical processes for instances.
-
-These endpoints correspond to the section called **Operations: History** in the Morpheus UI.
+Provides API interfaces for viewing the process history for instances.
 
 ## Get All Processes
 

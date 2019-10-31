@@ -6,6 +6,7 @@ language_tabs:
 
 includes:
   - introduction
+  - version
   - api
   - errors
   - programming_languages
@@ -92,8 +93,8 @@ includes:
   - environments
   - appliance_settings
   - whitelabel_settings
-  - setup
   - license
+  - setup
 
 search: true
 ---
