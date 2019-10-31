@@ -9,6 +9,6 @@ If you are looking to use the API to initialize a fresh installation of the morp
 ## Version
 
 <aside class="info">
-This document is for the Morpheus API version **4.1.0**.
+This document is for the Morpheus API version <b>4.1.0</b>
 </aside>
 You can determine your appliance version using [Check Appliance](#check-appliance).
