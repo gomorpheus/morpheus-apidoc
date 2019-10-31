@@ -9,6 +9,10 @@ Use [Get Access Token](#get-access-token) to acquire a valid access token.
 Most of the `/api` Morpheus API endpoints require authentication.  Some endpoints do not require authentication, and can be be accessed anonymously. This includes [Get Access Token](#get-access-token) and [Check Appliance](#check-appliance).
 
 
+<aside class="info">
+Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
+</aside>
+
 ## Authorization Header
 
 This header must be included in all requests that require authentication.

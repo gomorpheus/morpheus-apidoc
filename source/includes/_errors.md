@@ -15,15 +15,17 @@ curl "$MORPHEUS_API_URL/api/foobar" \
 }
 ```
 
-As with any API, errors can occur and when they do the Morpheus API returns an HTTP Error code.
+As with any API, errors will occur. When the Morpheus API encounters an error, it returns an HTTP Error Code, **not 200 OK**.
+
+The response body typically returns valid JSON, even when an error occurs.
 
 ### Error Codes
 
 The Morpheus API uses the following error codes:
 
-Error Code | Meaning
+Error Code | Description
 ---------- | -------
-400 | Bad Request -- Your request failed. It may just require you to pass more information.
+400 | Bad Request -- Your request failed. It may just require you to change your request parameters.
 401 | Unauthorized -- Your API key is invalid. Check your Authorization header.
 403 | Forbidden -- Your API key does not have the required role or permissions.
 404 | Not Found -- The specified resource could not be found.

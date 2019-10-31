@@ -6,7 +6,7 @@ language_tabs:
 
 includes:
   - introduction
-  - http_requests
+  - api
   - errors
   - programming_languages
   - authentication
