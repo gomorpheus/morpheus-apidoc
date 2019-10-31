@@ -20,5 +20,5 @@ Section |  Description
 [TOOLS](#tools) | Cypher, Archives, Image Builder
 [ADMINISTRATION](#administration) | Tenants, Users, Roles
 
-To initialize a freshly installed Morpheus appliance, see [SETUP](#setup).
+To initialize a freshly installed Morpheus appliance, see [Setup](#setup).
 
