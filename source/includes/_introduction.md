@@ -12,13 +12,13 @@ The API endpoints are organized in sections that match the Morpheus UI.
 
 Section |  Description
 --------- | -------
-[OPERATIONS](#operations) | Dashboard, Activity, Wiki
-[PROVISIONING](#provisioning) | Instances, Apps, Automation
+[OPERATIONS](#operations) | Dashboard, Activity, Billing, Wiki
+[PROVISIONING](#provisioning) | Instances, Apps, Blueprints, Automation
 [INFRASTRUCTURE](#infrastructure) | Groups, Clouds, Hosts, Clusters
 [LOGS](#logs) | View logs created by your Hosts and Containers.
 [MONITORING](#monitoring) | Checks, Incidents, Alerts, Contacts
 [TOOLS](#tools) | Cypher, Archives, Image Builder
-[ADMINISTRATION](#administration) | Tenants, Users, Roles
+[ADMINISTRATION](#administration) | Tenants, Users, Roles, Policies
 
 To initialize a freshly installed Morpheus appliance, see [Setup](#setup).
 
