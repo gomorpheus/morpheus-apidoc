@@ -145,12 +145,12 @@ This endpoint installs a new license in the Morpheus appliance.
 Be careful. This will replace your current license key, which may impact the features available in the Morpheus appliance.
 </aside>
 
-## Decode License
+## Test License
 
-This endpoint can be used to decode a license to see if it is valid and other information about it.  It does not install the key, it is just a test.
+This endpoint can be used to decode a license to see if it is valid and other information about it.  This is just a test, it does not install the key.
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/license/decode" \
+curl -XPOST "$MORPHEUS_API_URL/api/license/test" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -168,7 +168,7 @@ The same as [Get License](#get-current-license), or when the key is invalid:
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/license/decode`
+`POST https://api.gomorpheus.com/api/license/test`
 
 ### JSON Parameters
 
@@ -178,4 +178,33 @@ license      |  | License Key Content. A very long and silly string.
 
 <aside class="info">
 This is a way to inspect a license before you install it.
+</aside>
+
+## Uninstall License
+
+This endpoint will remove the currently installed license key.
+Be sure to have a copy of your license key saved before you uninstall it.
+
+```shell
+curl -XDELETE "$MORPHEUS_API_URL/api/license" \
+  -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "license": "4704270b94ab7713e8eaca4c82917d27b5b2a1cc95a1818d71b4648c3f821a18a20b78ba9623f8609cbc3712b96fb4c68bbef1880c16a5946a198c1ff6943badef07458898df99b83cddca7bc33e883a54b6025fbd5b8e84d83c419d2ca5b7ec847227b2b63d1ccbcf6a91fcc9dc4e9bd26321166bb04e54983fc858c5c2f7c7893741f435f4921ba33a9778ec714a6a95054a074ff6969dda1b4"
+}'
+```
+
+> The above command returns JSON Structured like this:
+
+
+```json
+{"success":true}
+```
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/license`
+
+<aside class="danger">
+Be aware that the appliance functionality will be restricted without a license key installed.
 </aside>
