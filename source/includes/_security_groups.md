@@ -166,6 +166,9 @@ description |  | Optional description field
 zoneId      |  | Scoped Cloud ID.
 customOptions.vpc      |  | External ID of Amazon VPC.
 customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access.
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 ## Updating a Security Group
 
@@ -197,6 +200,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name for your security group
 description |  | Optional description field
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
 
 ## Delete a Security Group
 
