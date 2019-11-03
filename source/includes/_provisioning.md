@@ -1,4 +1,4 @@
-# PROVISIONING
+# Provisioning
 
 The Provisioning API endpoints provide the Instances, Apps, and Automation.
 
