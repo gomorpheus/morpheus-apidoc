@@ -91,6 +91,7 @@ includes:
   - user_sources
   - policies
   - environments
+  - log_settings
   - appliance_settings
   - whitelabel_settings
   - license
