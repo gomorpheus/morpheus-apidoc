@@ -536,17 +536,17 @@ sshUsername |  | SSH Username
 sshPassword |  | SSH Password
 powerScheduleType |  | Power Schedule ID
 
-## Install Agent
+## Convert To Managed
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/servers/1/install-agent" \
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1/make-managed" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "sshUsername": "admin",
   "sshPassword": "asafepassword",
   "serverOs": {"id": 1}
-  }}'
+  }, "installAgent": true}'
 ```
 
 > The above command returns JSON structure like this:
@@ -561,8 +561,15 @@ This will make the host a managed server, and install the agent.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/servers/:id/install-agent`
+`PUT https://api.gomorpheus.com/api/servers/:id/make-managed`
 
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+server      |  | Object containing server configuration parameters
+installAgent | true | Install agent. Set to false to manually install agent instead.
 
 ### JSON Server Parameters
 
