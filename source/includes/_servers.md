@@ -508,7 +508,7 @@ sshUsername |  | ssh username to use when provisioning
 sshPassword |  | optional ssh password to use, if not specified the account public key can be used
 dataDevice  |  | the mount point for the lvm volume that needs to be created
 
-## Updating a Server
+## Updating a Host
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/servers/1" \
@@ -600,7 +600,7 @@ This will upgrade the version of the install installed on the host.
 
 `PUT https://api.gomorpheus.com/api/servers/:id/upgrade`
 
-## Resize a Server
+## Resize a Host
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/servers/1/resize" \
@@ -651,7 +651,7 @@ server.plan.id      |  | The ID of the new plan (optional). See [Available Servi
 volumes |  | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 
-## Delete a Server
+## Delete a Host
 
 ```shell
 curl -XDELETE "$MORPHEUS_API_URL/api/servers/1" \
