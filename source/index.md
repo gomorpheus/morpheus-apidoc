@@ -86,9 +86,10 @@ includes:
   - accounts
   - account_groups
   - roles
-  - users
+  - users 
   - user_settings
   - user_sources
+  - integrations
   - policies
   - environments
   - appliance_settings
