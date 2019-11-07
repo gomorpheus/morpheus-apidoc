@@ -51,10 +51,10 @@ This endpoint retrieves log settings.
 `GET https://api.gomorpheus.com/api/log-settings`
 
 
-## Update Appliance Settings
+## Update Log Settings
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/appliance-settings" \
+curl -XPUT "$MORPHEUS_API_URL/api/log-settings" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"logSettings": {
@@ -177,4 +177,4 @@ Will delete the syslog rule matching the specified name.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+:id | ID of the syslog rule 
