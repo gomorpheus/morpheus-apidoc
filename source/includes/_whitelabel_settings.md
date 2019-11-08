@@ -48,7 +48,7 @@ curl "https://api.gomorpheus.com/api/whitelabel-settings" \
 }    
 ```
 
-This endpoint retrieves appliance settings.
+This endpoint retrieves whitelabel settings.
 
 ### HTTP Request
 
@@ -122,7 +122,7 @@ disableSupportMenu | Can be used to disable support menu [on&#124;off]
 resetHeaderLogo | Resets header logo to default header logo
 resetFooterLogo | Resets footer logo to default footer logo
 resetLoginLogo | Resets login logo to default login logo
-resetFavicon | Resets favicon default favicon
+resetFavicon | Resets favicon to default favicon
 headerBgColor | Header background color
 headerFgColor | Header foreground color
 navBgColor | Nav background color
@@ -177,14 +177,14 @@ curl -XPOST "https://api.gomorpheus.com/api/whitelabel-settings/images" \
 
 Parameter | Required | Description
 --------- | -------- | -----------
-headerLogo.file | N | Image File png,jpg,svg 
-resetHeaderLogo | N | Resets header logo
-footerLogo.file | N | Image File png,jpg,svg
-resetFooterLogo | N | Resets footer logo
-loginLogo.file | N | Image File png,jpg,svg
-resetLoginLogo | N | Resets login logo
-favicon.file | N | Icon File ico
-resetFavicon | N | Resets favicon logo
+headerLogo.file | N | Header logo image file, valid image types png,jpg,svg) 
+resetHeaderLogo | N | Resets header logo to default
+footerLogo.file | N | Footer logo image file, valid image types png,jpg,svg)
+resetFooterLogo | N | Resets footer logo to default
+loginLogo.file | N | Login logo image file, valid image types png,jpg,svg)
+resetLoginLogo | N | Resets login logo to default
+favicon.file | N | Favicon image file, valid image type ico
+resetFavicon | N | Resets favicon logo to default
 
 Uploads whitelabel images.  Expects multipart form data as the request format, not JSON.
 
