@@ -19,7 +19,7 @@ curl "$MORPHEUS_API_URL/api/backup-settings" \
 ```json
 {
   "backupSettings": {
-    "enabled": true,
+    "backupsEnabled": true,
     "createBackups": true,
     "backupAppliance": true,
     "defaultStorageBucket": {
@@ -46,11 +46,11 @@ This endpoint retrieves backup settings.
 ## Update Backup Settings
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/appliance-settings" \
+curl -XPUT "$MORPHEUS_API_URL/api/backup-settings" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"backupSettings": {
-         "enabled": false,
+         "backupsEnabled": false,
          "createBackups": false,
          "backupAppliance": true,
          "retentionCount": 7,
@@ -80,7 +80,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/appliance-settings" \
 
 Parameter | Required | Description
 --------- | -------- | -----------
-enabled | N | Use this to enable / disable backups
+backupsEnabled | N | Use this to enable / disable scheduled backups
 retentionCount | N | Maximum number of successful backups to retain
 createBackups | N | Use this to enable / disable create backups
 backupAppliance | N | When enabled, a Backup will be created to backup the Morpheus appliance database
