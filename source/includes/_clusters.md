@@ -2203,13 +2203,13 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Name or internalId filter, restricts query to only load datastores which contain the phrase specified
+phrase |  | Name filter, restricts query to only load datastores which contain the phrase specified
 name |  | Name filter, restricts query to only load datastore of specified name
 code |  | Code filter, restricts query to only load datastore of specified code
-hideInactive |  | If true restricts query to only load active datastores
+hideInactive | false | If true restricts query to only load active datastores
 
 
-## Get Datastore
+## Get a Specific Datastore
 
 ```shell
 curl "$MORPHEUS_API_URL/api/clusters/1/datastores/1" \
@@ -2253,6 +2253,28 @@ curl "$MORPHEUS_API_URL/api/clusters/1/datastores/1" \
         "name": "Stubby Toes Inc."
       }
     ],
+    "permissions": {
+      "resourcePermissions": {
+        "allGroups": true,
+        "defaultStore": false,
+        "allPlans": false,
+        "defaultTarget": false,
+        "morpheusResourceType": "Datastore",
+        "morpheusResourceId": 4,
+        "canManage": false,
+        "all": true,
+        "account": {
+          "id": 1
+        },
+        "sites": [],
+        "plans": []
+      },
+      "tenantPermissions": {
+        "accounts": [           
+          1
+        ]
+      }
+    },
     "datastores": [
 
     ]
@@ -2301,7 +2323,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/clusters/1/datastores/1" \
       }}'
 ```         
 
-> The above command returns same JSON structure  [Get Datastore](#get-datastore)
+> The above command returns same JSON structure  [Get Datastore](#get-a-specific-datastore)
 
 ### HTTP Request
 
@@ -2318,6 +2340,6 @@ id | The ID of the datastore
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-visibility | N | private | Visibility for server host
+visibility | N | private | Visibility for datastore
 active | N | true | Datastore active
 permissions | N |  | Key for resource permission configuration, see [Permissions](#permissions)  
