@@ -165,5 +165,7 @@ Parameter | Default | Description
 active      |  | Activate (true) or disable (false) the datastore
 visibility      | private | private or public
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+tenantPermissions.defaultTarget  |  | Array of tenant account ids which should use the data store as the Default
+tenantPermissions.defaultStore  |  | Array of tenant account ids which should use the data store as the Image Target
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
