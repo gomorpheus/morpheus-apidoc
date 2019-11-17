@@ -38,6 +38,7 @@ includes:
   - option_types
   - deploys
   - execution_request
+  - jobs
 
   - infrastructure
   - groups
