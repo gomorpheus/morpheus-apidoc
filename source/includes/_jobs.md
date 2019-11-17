@@ -328,6 +328,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/jobs" \
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Job name
+enabled | N | Use this to set enabled state, defaults to true
 task.id | Y if workflow.id not used | Use this to assign task to job. Not compatible with workflow
 workflow.id | Y if task.id not used | Use this to assign workflow to job. Not compatible with task
 targetType | Y | Target type where job will execute: appliance, instance, server
@@ -393,6 +394,7 @@ Parameter | Description
 Parameter | Required | Description
 --------- | -------- | -----------
 name | N | Job name
+enabled | N | Use this to set enabled state
 task.id | N | Use this to assign task to job. Not compatible with workflow
 workflow.id | N | Use this to assign workflow to job. Not compatible with task
 targetType | N | Target type where job will execute: appliance, instance, server
