@@ -23,6 +23,7 @@ curl "$MORPHEUS_API_URL/api/accounts" \
     {
       "id": 1,
       "name": "Master",
+      "subdomain": "subdomain",
       "description": "The master tenant",
       "subdomain": null,
       "currency": "USD",
@@ -82,6 +83,7 @@ curl "$MORPHEUS_API_URL/api/accounts/1" \
   "account": {
     "id": 1,
     "name": "Master",
+    "subdomain": "subdomain",
     "description": "The master tenant",
     "subdomain": null,
     "currency": "USD",
@@ -117,6 +119,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts" \
   -d '{"account":{
     "name": "My New Tenant",
     "description": "My description",
+    "subdomain": "subdomain",
     role: {
       id: 2
     }
@@ -135,6 +138,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for the account
 description |  | Optional description field if you want to put more info there
+subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
 role      | Account Admin | A nested id of the default role for the account
 instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
@@ -148,6 +152,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/accounts/2" \
   -d '{"account":{
     "name": "My New Account",
     "description": "My new description",
+    "subdomain": "subdomain",
     "instanceLimits": {
       "maxCpu": 0,
       "maxMemory": 0,
@@ -171,6 +176,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for the account
 description |  | Optional description field if you want to put more info there
+subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
 role      |  | A nested id of the default role for the account
 active |  | Set to false to deactvate the account
 
