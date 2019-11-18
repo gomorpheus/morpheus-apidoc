@@ -20,6 +20,7 @@ includes:
   - billing
   - operations/budgets
   - operations/wiki
+  - approvals
 
   - provisioning
   - provision_types
