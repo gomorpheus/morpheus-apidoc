@@ -141,7 +141,7 @@ This endpoint retrieves a specific approval.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the approval
+id | ID of the approval
 
 
 ## Get a Specific Approval Item
@@ -192,13 +192,13 @@ This endpoint retrieves a specific approval item
 
 Parameter | Description
 --------- | -----------
-ID | ID of the approval item
+id | ID of the approval item
 
 
 ## Update an Approval Item
 
 ```shell
-curl "$MORPHEUS_API_URL/api/approval-items/3/approve" \
+curl -XPUT "$MORPHEUS_API_URL/api/approval-items/3/approve" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -214,11 +214,11 @@ This endpoint updates a specific approval item based upon specified action
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/approval-items/:id/:action`
+`PUT https://api.gomorpheus.com/api/approval-items/:id/:action`
 
 ### URL Parameters
 
 Parameter | Required | Description
 --------- | -------- | -----------
-ID | Y | ID of the approval item
+id | Y | ID of the approval item
 action | Y | Approval item action [approve, deny, cancel]
