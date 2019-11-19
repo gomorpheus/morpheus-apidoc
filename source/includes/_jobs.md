@@ -100,7 +100,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Name or external ID filter, restricts query to only load jobs which contain the phrase specified
-
+itemSource |  | Source filter, restricts query to only load jobs of specified source: [all, user, sync]
 
 ## Get a Specific Job
 
@@ -280,7 +280,7 @@ This endpoint retrieves a specific job.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the job
+id | ID of the job
 includeExecCount | Number of most recent job executions to include in response
 
 
@@ -387,7 +387,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/jobs/1" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the job
+id | ID of the job
 
 ### JSON Parameters
 
@@ -429,8 +429,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/jobs/3/execute" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the job
-:customConfig | Optional custom config
+id | ID of the job
+customConfig | Optional custom config
 
 
 ## Delete a Job
@@ -452,13 +452,13 @@ curl -XDELETE "$MORPHEUS_API_URL/api/jobs/3" \
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/jobs/:id
+`DELETE https://api.gomorpheus.com/api/jobs/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-:id | ID of the job
+id | ID of the job
 
 
 ## Get Job Executions
@@ -657,4 +657,74 @@ This endpoint retrieves a specific job execution.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the job
+id | ID of the job
+
+
+## Get a Specific Job Execution Event
+
+```shell
+curl "$MORPHEUS_API_URL/api/job-executions/1/events/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "processEvent": {
+    "id": 32,
+    "processId": 201,
+    "accountId": 1,
+    "uniqueId": "82368308-045e-40c8-ad41-faf7ecd6320e",
+    "processType": {
+      "code": "executeTask",
+      "name": "execute task"
+    },
+    "description": "echo goodbye",
+    "refType": "instance",
+    "refId": 3,
+    "subType": null,
+    "subId": null,
+    "zoneId": null,
+    "integrationId": null,
+    "instanceId": 3,
+    "containerId": null,
+    "serverId": null,
+    "containerName": null,
+    "displayName": "echo goodbye",
+    "status": "failed",
+    "reason": null,
+    "percent": 100.0,
+    "statusEta": 10568,
+    "message": "Task Execution Failed on Attempt 1\n",
+    "output": null,
+    "error": "Task Execution Failed on Attempt 1\n",
+    "startDate": "2019-11-19T08:00:25+0000",
+    "endDate": "2019-11-19T08:00:27+0000",
+    "duration": 1712,
+    "dateCreated": "2019-11-19T08:00:25+0000",
+    "lastUpdated": "2019-11-19T08:00:27+0000",
+    "createdBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    },
+    "updatedBy": {
+      "username": "root",
+      "displayName": "Stubby Toes"
+    }
+  }
+}
+```
+
+This endpoint retrieves a specific job execution event.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/job-executions/:id/events/:eventId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the job execution
+eventId | ID of the job execution event
