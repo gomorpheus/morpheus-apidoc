@@ -91,6 +91,10 @@ curl "$MORPHEUS_API_URL/api/apps" \
 
 This endpoint retrieves a paginated list of apps.
 
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/apps`
+
 ### Query Parameters
 
 Parameter | Default | Description
