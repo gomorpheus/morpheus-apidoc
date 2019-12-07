@@ -91,6 +91,9 @@ includes:
   - users 
   - user_settings
   - user_sources
+  - service_plans
+  - price_sets
+  - prices
   - integrations
   - policies
   - environments
