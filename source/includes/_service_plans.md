@@ -420,7 +420,7 @@ Will deactivate a service plan
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/service-plans/:id/deactivate`
+`PUT https://api.gomorpheus.com/api/service-plans/:id/deactivate`
 
 ### URL Parameters
 

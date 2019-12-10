@@ -120,7 +120,7 @@ Parameter | Description
 id | ID of the price
 
 
-## Create a Prices
+## Create a Price
 
 Use this command to create a price.
 
