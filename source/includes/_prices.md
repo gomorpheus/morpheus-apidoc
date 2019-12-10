@@ -23,6 +23,7 @@ curl "$MORPHEUS_API_URL/api/prices" \
       "id": 124,
       "name": "Amazon - c1.medium - US West (N. California) - Linux",
       "code": "amazon.c1.medium.ec2.us-west-1.amazonaws.com.Linux",
+      "active": true,
       "priceType": "compute",
       "priceUnit": "hour",
       "additionalPriceUnit": null,
@@ -66,6 +67,7 @@ offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Restricts query to only load prices with name or code containing the phrase specified
+includeInactive | false | If true, include inactive prices in the results
 
 
 ## Get a Specific Price
@@ -83,6 +85,7 @@ curl "$MORPHEUS_API_URL/api/prices/1" \
     "id": 124,
     "name": "Amazon - c1.medium - US West (N. California) - Linux",
     "code": "amazon.c1.medium.ec2.us-west-1.amazonaws.com.Linux",
+    "active": true,
     "priceType": "compute",
     "priceUnit": "hour",
     "additionalPriceUnit": null,
@@ -255,10 +258,10 @@ crossCloudApply | N | Apply price across clouds, optional true, false flag for d
 restartUsage | N | Apply changes to usage
  
 
-## Delete a Price Set
+## Deactivate a Price Set
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/prices/1" \
+curl -XDELETE "$MORPHEUS_API_URL/api/prices/1/deactivate" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -270,11 +273,11 @@ curl -XDELETE "$MORPHEUS_API_URL/api/prices/1" \
 }
 ```
 
-Will delete a price 
+Will deactivate a price 
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/prices/:id`
+`PUT https://api.gomorpheus.com/api/prices/:id/deactivate`
 
 ### URL Parameters
 

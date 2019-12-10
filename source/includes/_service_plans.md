@@ -404,10 +404,10 @@ priceSets.id | N | List of price sets to include in service plan
 config.ranges | N | Key for service plan custom configuration, see [Config](#config)
  
 
-## Delete a Service Plan
+## Deactivate a Service Plan
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/service-plans/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/service-plans/1/deactivate" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -419,11 +419,11 @@ curl -XDELETE "$MORPHEUS_API_URL/api/service-plans/1" \
 }
 ```
 
-Will delete a service plan 
+Will deactivate a service plan 
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/service-plans/:id`
+`DELETE https://api.gomorpheus.com/api/service-plans/:id/deactivate`
 
 ### URL Parameters
 
