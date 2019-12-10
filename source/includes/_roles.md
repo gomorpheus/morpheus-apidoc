@@ -212,7 +212,8 @@ Parameter | Default | Description
 authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
 baseRoleId |  | A role to copy feature permissions and access from (optional)
-instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
+multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
+multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 
 
 ## Updating Basic Role Settings
@@ -223,12 +224,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/roles/4" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
-    "description": "A new description of test role",
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    }
+    "description": "A new description of test role"
   }}'
 ```
 
@@ -244,8 +240,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
-instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
-
+multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
+multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 
 ## Updating Role Feature Permissions
 
