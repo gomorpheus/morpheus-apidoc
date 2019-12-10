@@ -185,7 +185,7 @@ This endpoint retrieves a specific service plan.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/service-plan/:id`
+`GET https://api.gomorpheus.com/api/service-plans/:id`
 
 ### URL Parameters
 
@@ -266,18 +266,17 @@ Parameter | Required | Description
 name | Y | Service plan name
 code | Y | Service plan code, must be unique
 description | N | Service plan description
-active | N | Can be used to enable / disable the service plan. Default is on
 editable | N | Can be used to enable / disable the editability of the service plan. Default is on
 maxStorage | Y | Max storage size in bytes
 maxMemory | Y | Max memory size in bytes
 maxCores | N | Max cores
 maxDisks | N | Max disks allowed
 provisionType.id | Y | Provision type ID
-customCores | N | Can be used to enable / disable customizable cores. Default is on
-customMaxStorage | N | Can be used to enable / disable customizable storage. Default is on
-customMaxDataStorage | N | Can be used to enable / disable customizable extra volumes. Default is on
-customMaxMemory | N | Can be used to enable / disable customizable memory. Default is on
-addVolumes | N | Can be used to enable / disable ability to add volumes. Default is on
+customCores | N | Can be used to enable / disable customizable cores. Default is off
+customMaxStorage | N | Can be used to enable / disable customizable storage. Default is off
+customMaxDataStorage | N | Can be used to enable / disable customizable extra volumes. Default is off
+customMaxMemory | N | Can be used to enable / disable customizable memory. Default is off
+addVolumes | N | Can be used to enable / disable ability to add volumes. Default is off
 sortOrder | N | Sort order
 priceSets.id | N | List of price sets to include in service plan
 config.ranges | N | Key for service plan custom configuration, see [Config](#config)
@@ -308,7 +307,6 @@ curl -XPUT "$MORPHEUS_API_URL/api/service-plans/1" \
       "name": "stubby toes plan 1",
       "code": "stubby.toes.plan.1",
       "description": null,
-      "active": true,
       "editable": true,
       "maxStorage": 10737418240,
       "config": {
@@ -387,18 +385,17 @@ Parameter | Required | Description
 name | Y | Service plan name
 code | Y | Service plan code, must be unique
 description | N | Service plan description
-active | N | Can be used to enable / disable the service plan. Default is on
 editable | N | Can be used to enable / disable the editability of the service plan. Default is on
 maxStorage | Y | Max storage size in bytes
 maxMemory | Y | Max memory size in bytes
 maxCores | N | Max cores
 maxDisks | N | Max disks allowed
 provisionType.id | Y | Provision type ID
-customCores | N | Can be used to enable / disable customizable cores. Default is on
-customMaxStorage | N | Can be used to enable / disable customizable storage. Default is on
-customMaxDataStorage | N | Can be used to enable / disable customizable extra volumes. Default is on
-customMaxMemory | N | Can be used to enable / disable customizable memory. Default is on
-addVolumes | N | Can be used to enable / disable ability to add volumes. Default is on
+customCores | N | Can be used to enable / disable customizable cores. Default is off
+customMaxStorage | N | Can be used to enable / disable customizable storage. Default is off
+customMaxDataStorage | N | Can be used to enable / disable customizable extra volumes. Default is off
+customMaxMemory | N | Can be used to enable / disable customizable memory. Default is off
+addVolumes | N | Can be used to enable / disable ability to add volumes. Default is off
 sortOrder | N | Sort order
 priceSets.id | N | List of price sets to include in service plan
 config.ranges | N | Key for service plan custom configuration, see [Config](#config)

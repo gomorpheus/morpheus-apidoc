@@ -258,7 +258,7 @@ id | The ID of the price set
 Parameter | Required | Description
 --------- | -------- | -----------
 name | N | Price set new name
-restartUsage | N | Can be used to apply price changes to usage
+restartUsage | N | Can be used to apply price changes to usage: true, false
 prices | N | List of price IDs to associate with price set
  
 

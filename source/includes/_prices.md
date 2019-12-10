@@ -107,7 +107,7 @@ curl "$MORPHEUS_API_URL/api/prices/1" \
 }
 ```
 
-This endpoint retrieves a specific price set.
+This endpoint retrieves a specific price.
 
 ### HTTP Request
 
@@ -117,7 +117,7 @@ This endpoint retrieves a specific price set.
 
 Parameter | Description
 --------- | -----------
-id | ID of the price set
+id | ID of the price
 
 
 ## Create a Prices
@@ -163,12 +163,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/prices" \
 
 Parameter | Required | Description
 --------- | -------- | -----------
-name | Y | Price set name
-code | Y | Price set code, must be unique
+name | Y | Price name
+code | Y | Price code, must be unique
 account.id | N | Assign to specified tenant account
 priceType | Y | Price type **code**, see [Price Types](#price-types)
 priceUnit | Y | Price unit: minute, hour, day, month, year, two year, three year, four year, five year
-incurCharges | Y | Price set type: running, stopped, always
+incurCharges | Y | Indicates when to incur charges: running, stopped, always
 currency | Y | ISO Currency code
 cost | Y | Cost
 markupType | N | Price adjustment type: fixed, percent, custom
@@ -234,16 +234,16 @@ curl -XPUT "$MORPHEUS_API_URL/api/prices/1" \
 
 Parameter | Description
 --------- | -----------
-id | The ID of the price set
+id | The ID of the price 
 
 ### JSON Parameters
 
 Parameter | Required | Description
 --------- | -------- | -----------
-name | Y | Price set name
+name | Y | Price name
 priceType | Y | Price type **code**, see [Price Types](#price-types)
 priceUnit | Y | Price unit: minute, hour, day, month, year, two year, three year, four year, five year
-incurCharges | Y | Price set type: running, stopped, always
+incurCharges | Y | Indicates when to incur charges: running, stopped, always
 currency | Y | ISO Currency code
 cost | Y | Cost
 markupType | N | Price adjustment type: fixed, percent, custom
@@ -258,7 +258,7 @@ crossCloudApply | N | Apply price across clouds, optional true, false flag for d
 restartUsage | N | Apply changes to usage
  
 
-## Deactivate a Price Set
+## Deactivate a Price
 
 ```shell
 curl -XDELETE "$MORPHEUS_API_URL/api/prices/1/deactivate" \
