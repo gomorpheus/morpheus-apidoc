@@ -75,7 +75,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/provisioning-settings" \
             "id": 42
           },
           "defaultTemplateType": {
-            "code": "kubernetes"
+            "id": 2
           }
         }
       }'
@@ -102,7 +102,7 @@ allowServerSelection | Use this to enable / disable allowing host selection
 requireEnvironments | Use this to enable / disable requiring environment selection
 showPricing | Use this to enable / disable showing pricing
 hideDatastoreStats | Use this to enable / disable hiding datastore stats
-crossTenantNamingPolicies | Use this to enable / disable cross-tenatn naming policies
+crossTenantNamingPolicies | Use this to enable / disable cross-tenant naming policies
 reuseSequence | Use this to enable / disable reusing naming sequence numbers
 cloudInitUsername | Cloud-init username
 cloudInitPassword | Cloud-init password
@@ -110,4 +110,4 @@ cloudInitKeyPair.id | Cloud-init key pair ID
 deployStorageProvider.id | Deployment archive storage provider ID
 windowsPassword | Windows administrator password
 pxeRootPassword | PXE Boot default root password
-defaultTemplateType.code | Default blueprint type code
+defaultTemplateType.id | Default blueprint type ID
