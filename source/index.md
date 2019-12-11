@@ -99,6 +99,7 @@ includes:
   - environments
   - appliance_settings
   - backup_settings
+  - provisioning_settings
   - log_settings
   - whitelabel_settings
   - license
