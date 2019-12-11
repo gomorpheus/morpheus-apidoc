@@ -119,6 +119,9 @@ visibility      | private | private or public
 zoneType  | "standard" | Map containing code or id of the cloud type
 groupId  |  | Specifies which Server group this cloud should be assigned to
 accountId |  | Specifies which Tenant this cloud should be assigned to
+enabled | true | Can be used to disable the cloud
+autoRecoverPowerState | false | Automatically Power on VMs
+config |  | Map containing zone configuration settings. See the section on specific zone types for details.
 
 Additional config properties are dynamic and depend on the specified type of cloud. See [Cloud Types](#cloud-types).
 
@@ -154,7 +157,9 @@ code      |  | Optional code for use with policies
 location  |  | Optional location for your zone
 visibility      | private | private or public
 accountId |  | Specifies which Tenant this zone should be assigned to
-config |  | For non standard zone types, this is a json encoded string with config properties for openstack and Amazon. See the section on specific zone types for details.
+enabled | true | Can be used to disable the cloud
+autoRecoverPowerState |  | Automatically Power on VMs
+config |  | Map containing zone configuration settings. See the section on specific zone types for details.
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
