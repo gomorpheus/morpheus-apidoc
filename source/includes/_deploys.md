@@ -90,7 +90,7 @@ This endpoint will create a new AppDeploy entry configured for the specific inst
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userVersion |  | Deployment Verison userVersion identifier.
+userVersion |  | Deployment Version userVersion identifier.
 versionId |  | Deployment Version ID. This can be passed instead of userVersion.
 deployType | browser | The type of deployment. File based is browser, `git` for git and `fetch` for fetching from a url
 gitUrl |  | The ssh git url to use to fetch files for the archive
