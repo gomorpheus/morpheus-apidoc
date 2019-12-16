@@ -2,11 +2,6 @@
 
 Provides API interfaces for managing price sets within Morpheus
 
-<aside class="info">
-This endpoint is available in Morpheus API version **4.2.x**
-</aside>
-
-
 ## Get All Price Sets
 
 ```shell
