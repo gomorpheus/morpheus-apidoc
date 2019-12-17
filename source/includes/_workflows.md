@@ -164,10 +164,48 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for the workflow
 description      |  | A description of the workflow
+type      | provision | Workflow type. Pass `operation` for operational workflows.
+optionTypes      | [] | List of option type IDs for use with operational workflow configuration.
 tasks      | [] | List of task objects in order
 tasks.taskId |  | Task ID
-tasks.taskPhase | provision | Task Phase.
+tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workflows.
 
+## Create an Operational Workflow
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/task-sets" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"taskSet": {
+    "name": "test workflow",
+    "type": "operation",
+    "optionTypes": [3,4,5],
+    "tasks": [
+      {
+        "taskId": 3,
+        "phase": "operation"
+      }
+    ]
+  }}'
+```
+
+> The above command returns JSON structured like getting a single workflow:
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/task-sets`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      |  | A unique name for the workflow
+description      |  | A description of the workflow
+type      | provision | Workflow type. Pass `operation` for operational workflows.
+optionTypes      | [] | List of option type IDs for use with operational workflow configuration.
+tasks      | [] | List of task objects in order
+tasks.taskId |  | Task ID
+tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workflows
 
 ## Updating a Workflow
 
@@ -231,3 +269,48 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the workflow
 
+## Execute a Workflow
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/task-sets/5/execute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"job":{
+    "targetType": "instance",
+    "instances": [1]
+  }}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint executes a workflow on the specified instances of servers.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/task-sets/:id/execute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the workflow
+
+### JSON Parameters
+
+The following parameters are passed inside an object named `job`.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      | `workflow.name` | A name for the execution job.
+description      | `workflow.name` | A description for the execution job. 
+targetType      | | The type of object to execute on. Pass either `instance` or `server`.
+instances      | | Array of Instance IDs. Only applicable for `targetType` is `instance`.
+servers      | | Array of Server IDs. Only applicable for `targetType` is server`.
+customOptions | | Map of options to be used as values in the workflow tasks. These correspond to option types.
+customConfig | | String of custom configuration values as JSON.
