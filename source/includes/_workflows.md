@@ -277,7 +277,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/task-sets/5/execute" \
   -H "Content-Type: application/json" \
   -d '{"job":{
     "targetType": "instance",
-    "instances": [1]
+    "instances": [1],
+    "customOptions": {
+      "mysqlVersion":"5.7"
+    }
   }}'
 ```
 
