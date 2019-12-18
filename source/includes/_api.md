@@ -43,7 +43,7 @@ curl "$MORPHEUS_API_URL/api/users/1" \
 }
 ```
 
-This is an example of a Morpheus API request that retrieves details about a [User](#users]).
+This is an example of a Morpheus API request that retrieves details about a [User](#users).
 
 ### HTTP Request
 

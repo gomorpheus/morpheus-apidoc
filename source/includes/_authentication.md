@@ -6,8 +6,7 @@ Authentication is done by passing an access token in the [Authorization](#author
 
 Use [Get Access Token](#get-access-token) to acquire a valid access token.
 
-Most of the `/api` Morpheus API endpoints require authentication.  Some endpoints do not require authentication, and can be be accessed anonymously. This includes [Get Access Token](#get-access-token) and [Check Appliance](#check-appliance).
-
+Most `/api` endpoints require authentication.
 
 <aside class="info">
 Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
@@ -23,9 +22,6 @@ Authorization      | Use the format `bearer access_token`. Example: `Authorizati
 
 
 ## Get Access Token
-
-This endpoint provides authentication via username and password of a morpheus [User](#users). The response includes a valid access token.  If your current token is expired, a new one will be created and returned. 
-
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&client_id=morph-api" \
@@ -43,6 +39,9 @@ curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=password&scope=write&clien
   "scope": "write"
 }
 ```
+
+This endpoint provides authentication via username and password of a morpheus [User](#users). The response includes a valid access token.  If your current token is expired, a new one will be created and returned. 
+
 
 ### HTTP Request
 
@@ -66,8 +65,13 @@ scope      | | OAuth token scope, use `write`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-username      |  | [User](#users) username. Subtenant users will need to pass their subdomain prefix like <code>domain\username</code>. The default tenant subdomain is the tenant account ID. Example: <code>2\neo</code>
+username      |  | [User](#users) username. Subtenant users will need to pass their subdomain prefix like <code>domain\username</code>. The default subdomain is the tenant account ID. Example: <code>2\neo</code>
 password      |  | [User](#users) password
+
+<aside class="info">
+Subtenant users will need to pass their subdomain prefix like <code>subdomain\username</code>. The default subdomain is the tenant account ID. Example: <code>2\neo</code>
+</aside>
+
 
 
 ### Response
@@ -82,15 +86,6 @@ scope | The scope, this will be `write`.
 
 
 ## Refresh Access Token
-
-This endpoint allows refreshing your current access token to get a new token.  This is done by passing your current `refresh_token`. 
-This provides a way to renew your client's session with the API, and extend the expiration date.
-
-Your `refresh_token` is returned by [Get Access Token](#get-access-token).
-
-<aside class="info">
-This will render your current access token invalid, so you will need to update any scripts relying on it.
-</aside>
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=refresh_token&client_id=morph-api&scope=write" \
@@ -108,6 +103,15 @@ curl -XPOST "$MORPHEUS_API_URL/oauth/token?grant_type=refresh_token&client_id=mo
   "scope": "write"
 }
 ```
+
+This endpoint allows refreshing your current access token to get a new token.  This is done by passing your current `refresh_token`. 
+This provides a way to renew your client's session with the API, and extend the expiration date.
+
+Your `refresh_token` is returned by [Get Access Token](#get-access-token).
+
+<aside class="info">
+This will render your current access token invalid, so you will need to update any scripts relying on it.
+</aside>
 
 ### HTTP Request
 

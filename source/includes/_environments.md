@@ -2,9 +2,6 @@
 
 Provides API interfaces for managing the creation and modification of provisioning environments.
 
-This API endpoint corresponds to Morpheus UI section called **Admin: Provisioning > Environments**.
-
-
 ## Get All Environments
 
 ```shell

@@ -1,8 +1,8 @@
 # Billing
 
-Provides API interfaces for viewing billing information by account, zone, instance or server.  By default, the information returned is from the beginning of the current month until now.  The date range is parameterized but the end date cannot exceed the current date.
+Provides API interfaces for viewing billing usage information by tenant, zone, instance or server.  By default, usage is returned is from the beginning of the current month until now.  The date range is parameterized but the end date cannot exceed the current date.
 
-## Billing By Account
+## Billing By Tenant
 
 ```shell
 curl "$MORPHEUS_API_URL/api/billing/account" \
@@ -67,9 +67,9 @@ startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
 
-## Billing For a Tenant
+## Billing For a Specific Tenant
 
-Will retrieve billing information for a specific account, if it is the current account or a sub account of the requesting
+Will retrieve billing information for a specific tenant, if it is the current account or a sub account of the requesting
 user's account.
 
 ```shell

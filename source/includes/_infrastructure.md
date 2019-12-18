@@ -1,3 +1,3 @@
 # Infrastructure
 
-The Infrastructure API endpoints correspond to the Morpheus UI section called **Infrastructure**.
+The Infrastructure API endpoints provide management of Groups, Clouds, Clusters, Hosts, Networks, Storage, Keys & Certs, etc.
