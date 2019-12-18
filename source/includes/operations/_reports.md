@@ -275,7 +275,7 @@ This endpoint downloads a specific report result as a file attachment. The defau
 Parameter | Description
 --------- | -----------
 id | ID of the report result
-format | Format of the rendered report file. The default is `.json`.
+format | Format of the rendered report file, `json` or `csv`. The default is `.json`.
 
 
 ## Run a Report
