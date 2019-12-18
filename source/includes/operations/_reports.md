@@ -2,7 +2,7 @@
 
 Provides API interfaces for viewing report results and executing new reports.
 
-## Report Types
+## Get All Report Types
 
 ```shell
 curl "$MORPHEUS_API_URL/api/report-types" \
