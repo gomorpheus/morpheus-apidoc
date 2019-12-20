@@ -705,33 +705,6 @@ Parameter | Description
 --------- | -----------
 :id | ID of the server
 
-## Start a Host
-
-```shell
-curl -X PUT "https://api.gomorpheus.com/api/servers/1/start" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-This will start a host.
-
-### HTTP Request
-
-`PUT https://api.gomorpheus.com/api/servers/:id/start`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-:id | ID of the server
-
 ## Run Workflow on a Host
 
 ```shell
