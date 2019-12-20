@@ -26,7 +26,7 @@ leaseToken | URL Parameter | An execution lease token.
 ## List Cypher Keys
 
 ```shell
-curl "$MORPHEUS_API_URL/api/cypher?list=true" \
+curl -XLIST "$MORPHEUS_API_URL/api/cypher?list=true" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -69,9 +69,11 @@ curl "$MORPHEUS_API_URL/api/cypher?list=true" \
 
 This endpoint retrieves all cypher keys associated with the account, or user.
 
+This endpoint is available http method `LIST`. The `GET` method can be used to list keys as well, by passing the query parameter `list=true`.
+
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/cypher/:key?list=true`
+`LIST https://api.gomorpheus.com/api/cypher/:key?list=true`
 
 ### URL Parameters
 
