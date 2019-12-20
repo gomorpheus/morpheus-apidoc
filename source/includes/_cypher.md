@@ -109,7 +109,8 @@ curl "$MORPHEUS_API_URL/api/cypher/v1/secret/foo" \
     "foo":"bar",
     "briefing":"top secret info"
   },
-  "lease_duration": 2764800000,
+  "type": "object",
+  "lease_duration": 2764800,
   "lease_id": "",
   "renewable": false,
   "cypher": {
@@ -144,11 +145,10 @@ key | The full cypher key including the mount prefix.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-leaseTimeout | | The lease duration in milliseconds.
-ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
+ttl | `0` | Time to Live. The lease duration in seconds, or a human readable format eg. `15m`, `8h`, `7d`. The default is `0` meaning Never expires.
+leaseTimeout | | This can be used instead of `ttl` to specify the exact lease duration in milliseconds.
 
 ## Read a Cypher with Lease
-
 
 ```shell
 curl "$MORPHEUS_API_URL/api/cypher/v1/password/15/mypassword" \
@@ -161,6 +161,7 @@ curl "$MORPHEUS_API_URL/api/cypher/v1/password/15/mypassword" \
 {
   "auth": null,
   "data": "B[,t;ng[5[lg&th",
+  "type": "string",
   "lease_duration": 432000000,
   "lease_id": "",
   "renewable": false,
@@ -207,6 +208,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/cypher/v1/secret/mymsg" \
 
 > The above command returns JSON structured like readding a cypher key:.
 
+This endpoint will create or update a cypher key.
+
+This endpoint can be invoked with both HTTP `POST` and `PUT`.
+
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/cypher/v1/:key`
@@ -217,7 +222,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 leaseTimeout | | The lease duration in milliseconds.
 ttl | 32 days | Time to Live. The lease duration in seconds, or a human readable format eg. '15m', 8h, '7d'. This can be used instead of leaseTimeout.
-value |  | The secret value to be stored. Only required for certain mountpoints.
+value |  | The secret value to be stored. Only required for certain mountpoints. Some engine generate their own value and do not require a value to be passed. eg. `uuid`, `key` and `password`.
+type |  | The type of data stored, `string` or `object`. The data type depends on the cypher engine being used. Most engines store type `string`, but the `secret` engine stores type `object` by default. You can store a secret value as a string instead by passing this value as `string`. This means the `data` value returned by the API will be a string and not an object.
 
 ### JSON Parameters
 
@@ -225,9 +231,9 @@ The following parameters are available under the root context of the JSON body.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-ttl      | 32 days | Time to Live in seconds, or a human readable format eg. '15m', 8h, '7d'
+ttl      | 32 days | Time to Live in seconds, or a human readable format eg. `15m`, `8h`, `7d`
 
-The `secret` engine is capable of storing the entire JSON object as key=value pairs, or just a single string. To pass a string, use the `value` query parameter instead of JSON.
+The `secret` engine is capable of storing the entire JSON object as key=value pairs, or just a single string. To pass a string, use the `value` query parameter instead of JSON or pass query parameter `type=string`.
 
 The `ttl` payload key is a special key that if present will be parsed and used as the `ttl` parameter (lease duration in seconds).
 
