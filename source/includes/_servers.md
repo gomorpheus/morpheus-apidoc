@@ -651,6 +651,123 @@ server.plan.id      |  | The ID of the new plan (optional). See [Available Servi
 volumes |  | List of volumes with their new sizes.
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 
+## Start a Host
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/servers/1/start" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will start a host.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/start`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the server
+
+## Stop a Host
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/servers/1/stop" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will stop a host.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/stop`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the server
+
+## Start a Host
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/servers/1/start" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will start a host.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/start`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the server
+
+## Run Workflow on a Host
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/servers/1/workflow" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will run a provisioning workflow on a host. 
+
+For operational workflows, see [Execute a Workflow](#execute-a-workflow).
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/workflow`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the server
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+workflowId | ID of the workflow to execute
+workflowName | Name of the workflow to execute
+
 ## Delete a Host
 
 ```shell
@@ -681,3 +798,4 @@ removeInstances | off | Remove Associated Instances
 preserveVolumes | off | Preserve Volumes
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
+
