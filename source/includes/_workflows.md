@@ -310,8 +310,7 @@ The following parameters are passed inside an object named `job`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      | `workflow.name` | A name for the execution job.
-description      | `workflow.name` | A description for the execution job. 
+name      | (workflow name) | A name for the execution job. Can be used to find execution results with `/api/processes?name=`.
 targetType      | | The type of object to execute on. Pass either `instance` or `server`.
 instances      | | Array of Instance IDs. Only applicable for `targetType` is `instance`.
 servers      | | Array of Server IDs. Only applicable for `targetType` is server`.
