@@ -268,7 +268,7 @@ This endpoint downloads a specific report result as a file attachment. The defau
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/reports/download/:id`
+`GET https://api.gomorpheus.com/api/reports/download/:id(.:format)`
 
 ### URL Parameters
 

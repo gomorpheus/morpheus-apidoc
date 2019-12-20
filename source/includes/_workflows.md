@@ -292,7 +292,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/task-sets/5/execute" \
 }
 ```
 
-This endpoint executes a workflow on the specified instances of servers.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
+This endpoint executes a workflow on the specified `instances` or `servers`, depending on which `targetType` is specified.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
 
 ### HTTP Request
 
