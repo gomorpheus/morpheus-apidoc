@@ -1398,7 +1398,7 @@ For operational workflows, see [Execute a Workflow](#execute-a-workflow).
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/servers/:id/workflow`
+`PUT https://api.gomorpheus.com/api/instances/:id/workflow`
 
 ### URL Parameters
 
