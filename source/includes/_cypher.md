@@ -5,7 +5,7 @@ Cypher at its core is a secure Key/Value store. But what makes cypher useful is 
 Cypher keys can be revoked, either through lease timeouts or manually. So even if somebody were to gain access to your keys you could revoke access to the keys and generate new ones for your applications.
 
 <aside class="info">
-<b>Deprecation notice.</b> The new endpoint is </code>/api/cypher</code>. The old endpoint <code>/api/cypher/v1</code> still exists and behaves exactly the same way, but is now deprecated and will be removed in the near future.
+<b>Deprecation notice.</b> The endpoint <code>/api/cypher/v1</code> is now deprecated and will be removed in the future. The new endpoint is </code>/api/cypher</code>.
 </aside>
 
 ## Cypher Authentication
