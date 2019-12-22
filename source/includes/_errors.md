@@ -1,21 +1,6 @@
 ## Errors
 
-```shell
-curl "$MORPHEUS_API_URL/api/foobar" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
-```
-
-
-> The above command returns HTTP 404 and JSON structured like this:
-
-```json
-{
-  "success": false,
-  "msg": "Unable to find api endpoint GET /api/foobar"
-}
-```
-
-When the Morpheus API encounters an error it returns an HTTP status like **400** instead of **200 OK**.  The response body contains JSON.
+When the Morpheus API encounters an error it returns an HTTP status like **400** instead of **200 OK**.  The error response body contains JSON with information to help troubleshoot the error.
 
 ### Error Codes
 
@@ -35,13 +20,16 @@ Error Code | Description
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
 
-### Troubleshooting
 
-The HTTP response body contains JSON with informationa bout the error that has occured.
+### 400 Error
 
-#### 400 Error
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/contacts" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -d '{"contact":{"name":"example"}}'
+```
 
-This error is returned if the request could not be completed as requested. This usually means a required parameter is missing or invalid. This type of response usually includes a `msg` describing the error and an `errors` object to indicate which parameters were invalid.
+> The above command returns HTTP 400 and JSON structured like this:
 
 ```json
 {
@@ -53,9 +41,14 @@ This error is returned if the request could not be completed as requested. This 
 }
 ```
 
-#### 401 Error
+### 401 Error
 
-This error is returned if your access token is invalid or expired.
+```shell
+curl "$MORPHEUS_API_URL/api/instances" \
+-H "Authorization: BEARER BOGUS_TOKEN"
+```
+
+> The above command returns HTTP 401 and JSON structured like this:
 
 ```json
 {
@@ -64,9 +57,16 @@ This error is returned if your access token is invalid or expired.
 }
 ```
 
-#### 403 Error
+This error is returned if your access token is invalid or expired.
 
-This error is seen if you try to access an endpoint without the required permissions.
+### 403 Error
+
+```shell
+curl "$MORPHEUS_API_URL/api/setup" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns HTTP 403 and JSON structured like this:
 
 ```json
 {
@@ -75,9 +75,17 @@ This error is seen if you try to access an endpoint without the required permiss
 }
 ```
 
-#### 404 Error
+This error is seen if you try to access an endpoint without the required permissions.  
 
-This error is returned when the API path is unknown.  It can also be seen if a resource is not found by the specified ID.
+For this error example, use a user that does not have any admin permissions.
+
+### 404 Error Endpoint Not Found
+
+```shell
+curl "$MORPHEUS_API_URL/api/foobar" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+> The above command returns HTTP 404 and JSON structured like this:
 
 ```json
 {
@@ -86,7 +94,7 @@ This error is returned when the API path is unknown.  It can also be seen if a r
 }
 ```
 
-It can also be seen if a resource could be not be found by the specified ID.
+> The above command returns HTTP 404 and JSON structured like this:
 
 ```json
 {
@@ -95,10 +103,33 @@ It can also be seen if a resource could be not be found by the specified ID.
 }
 ```
 
+This error indicates the specified endpoint path does not exist. Check the URL of your request and try again.
 
-#### 500 Error
+### 404 Error ID Not Found
 
-This error indicates something went wrong with the request and an unexpected error has occured.
+```shell
+curl "$MORPHEUS_API_URL/api/apps/99999" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns HTTP 404 and JSON structured like this:
+
+```json
+{
+  "success": false,
+  "msg": "App not found"
+}
+```
+
+The 404 error code can also be seen if a resource could be not be found by the specified ID.
+
+### 500 Error
+
+```shell
+curl "$MORPHEUS_API_URL/api/test/500" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+> The above command returns HTTP 500 and JSON structured like this:
 
 ```json
 {
@@ -107,3 +138,6 @@ This error indicates something went wrong with the request and an unexpected err
 }
 ```
 
+This error indicates something went wrong with the request and an unexpected error has occured. 
+
+This example does not actually work and will return 404 instead.  Hopefully you do not encounter a 500 error.
