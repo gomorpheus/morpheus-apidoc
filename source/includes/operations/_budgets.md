@@ -1,6 +1,6 @@
 # Budgets
 
-Provides API interfaces for managing Budgets.
+Provides API interfaces for managing budgets.
 
 ## Get All Budgets
 
@@ -14,38 +14,34 @@ curl "$MORPHEUS_API_URL/api/budgets" \
 ```json
 {
   "budgets": [
-    {
+     {
       "id": 1,
-      "name": "huh",
-      "description": "a test budget",
-      "ownerId": 1,
-      "accountId": 1,
-      "accountName": "root",
-      "userId": 1,
-      "userName": "admin",
-      "zoneId": null,
-      "zoneName": null,
-      "siteId": null,
-      "siteName": null,
-      "refScope": "tenant",
-      "refType": "Account",
-      "refId": 2,
-      "refName": "JRD",
-      "config": {
+      "name": "sample budget",
+      "description": "a yearly budget",
+      "account": {
+        "id": 1,
+        "name": "root"
       },
+      "refScope": "account",
+      "refType": null,
+      "refId": null,
+      "refName": "root",
       "interval": "year",
       "period": "year",
-      "year": "2019",
+      "year": "2020",
       "resourceType": "all",
       "timezone": "America/New_York",
-      "startDate": "2019-01-01T05:00:00+0000",
-      "endDate": "2020-01-01T04:59:59+0000",
+      "startDate": "2020-01-01T05:00:00+0000",
+      "endDate": "2021-01-01T04:59:59+0000",
       "active": true,
       "enabled": true,
       "rollover": false,
-      "costs": [
-        5000.0,
-      ],
+      "costs": {
+        "year": 1000.0
+      },
+      "averageCost": 83.33333333333333,
+      "totalCost": 1000.0,
+      "currency": "USD",
       "warningLimit": null,
       "overLimit": null,
       "externalId": null,
@@ -54,52 +50,48 @@ curl "$MORPHEUS_API_URL/api/budgets" \
       "createdByName": "Admin",
       "updatedById": null,
       "updatedByName": null,
-      "dateCreated": "2019-11-17T05:59:20+0000",
-      "lastUpdated": "2019-11-17T05:59:20+0000"
+      "dateCreated": "2020-01-03T17:40:08+0000",
+      "lastUpdated": "2020-01-03T17:40:08+0000"
     },
     {
       "id": 2,
-      "name": "slim",
+      "name": "my budget",
       "description": "99 per month",
-      "ownerId": 1,
-      "accountId": 1,
-      "accountName": "root",
-      "userId": 1,
-      "userName": "admin",
-      "zoneId": null,
-      "zoneName": null,
-      "siteId": null,
-      "siteName": null,
-      "refScope": "tenant",
-      "refType": "Account",
-      "refId": 3,
-      "refName": "GMD",
-      "config": {
+      "account": {
+        "id": 1,
+        "name": "root"
       },
+      "refScope": "account",
+      "refType": null,
+      "refId": null,
+      "refName": "root",
       "interval": "month",
       "period": "year",
-      "year": "2019",
+      "year": "2020",
       "resourceType": "all",
       "timezone": "America/New_York",
-      "startDate": "2019-01-01T05:00:00+0000",
-      "endDate": "2020-01-01T04:59:59+0000",
+      "startDate": "2020-01-01T05:00:00+0000",
+      "endDate": "2021-01-01T04:59:59+0000",
       "active": true,
       "enabled": true,
       "rollover": false,
-      "costs": [
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0,
-        99.0
-      ],
+      "costs": {
+        "january": 99.0,
+        "february": 99.0,
+        "march": 99.0,
+        "april": 99.0,
+        "may": 99.0,
+        "june": 99.0,
+        "july": 99.0,
+        "august": 99.0,
+        "september": 99.0,
+        "october": 99.0,
+        "november": 99.0,
+        "december": 99.0
+      },
+      "averageCost": 99.0,
+      "totalCost": 1188.0,
+      "currency": "USD",
       "warningLimit": null,
       "overLimit": null,
       "externalId": null,
@@ -108,13 +100,55 @@ curl "$MORPHEUS_API_URL/api/budgets" \
       "createdByName": "Admin",
       "updatedById": null,
       "updatedByName": null,
-      "dateCreated": "2019-12-21T12:34:21+0000",
-      "lastUpdated": "2019-12-21T12:34:21+0000"
+      "dateCreated": "2020-01-03T17:37:51+0000",
+      "lastUpdated": "2020-01-03T17:37:51+0000"
+    },
+    {
+      "id": 3,
+      "name": "quarters",
+      "description": "Quarterly budget for tenant Acme",
+      "account": {
+        "id": 1,
+        "name": "root"
+      },
+      "refScope": "tenant",
+      "refType": "Account",
+      "refId": 47,
+      "refName": "Acme",
+      "interval": "quarter",
+      "period": "year",
+      "year": "2020",
+      "resourceType": "all",
+      "timezone": "America/New_York",
+      "startDate": "2020-01-01T05:00:00+0000",
+      "endDate": "2021-01-01T04:59:59+0000",
+      "active": true,
+      "enabled": true,
+      "rollover": false,
+      "costs": {
+        "q1": 250.0,
+        "q2": 250.0,
+        "q3": 250.0,
+        "q4": 500.0
+      },
+      "averageCost": 312.5,
+      "totalCost": 1250.0,
+      "currency": "USD",
+      "warningLimit": null,
+      "overLimit": null,
+      "externalId": null,
+      "internalId": null,
+      "createdById": 1,
+      "createdByName": "James D",
+      "updatedById": null,
+      "updatedByName": null,
+      "dateCreated": "2020-01-02T02:54:34+0000",
+      "lastUpdated": "2020-01-03T17:43:52+0000"
     }
   ],
   "meta": {
-    "size": 2,
-    "total": 2,
+    "size": 3,
+    "total": 3,
     "offset": 0,
     "max": 25
   }
@@ -149,51 +183,66 @@ curl "$MORPHEUS_API_URL/api/budgets/1" \
 
 ```json
 {
+  "success": true,
   "budget": {
     "id": 1,
-    "name": "2019 JRD",
-    "description": "my budget schedule",
-    "ownerId": 1,
-    "accountId": 1,
-    "accountName": "root",
-    "userId": 1,
-    "userName": "james",
-    "zoneId": null,
-    "zoneName": null,
-    "siteId": null,
-    "siteName": null,
-    "refScope": "tenant",
-    "refType": "Account",
-    "refId": 2,
-    "refName": "JRD",
-    "config": {
+    "name": "sample budget",
+    "description": "a yearly budget",
+    "account": {
+      "id": 1,
+      "name": "root"
     },
+    "refScope": "account",
+    "refType": null,
+    "refId": null,
+    "refName": "root",
     "interval": "year",
     "period": "year",
-    "year": "2019",
+    "year": "2020",
     "resourceType": "all",
     "timezone": "America/New_York",
-    "startDate": "2019-01-01T05:00:00+0000",
-    "endDate": "2020-01-01T04:59:59+0000",
+    "startDate": "2020-01-01T05:00:00+0000",
+    "endDate": "2021-01-01T04:59:59+0000",
     "active": true,
     "enabled": true,
     "rollover": false,
-    "costs": [
-      5000.0
-    ],
+    "costs": {
+      "year": 1000.0
+    },
+    "averageCost": 83.33333333333333,
+    "totalCost": 1000.0,
+    "currency": "USD",
     "warningLimit": null,
     "overLimit": null,
     "externalId": null,
     "internalId": null,
     "createdById": 1,
-    "createdByName": "James D",
+    "createdByName": "Admin",
     "updatedById": null,
     "updatedByName": null,
-    "dateCreated": "2019-11-17T05:59:20+0000",
-    "lastUpdated": "2019-11-17T05:59:20+0000"
+    "dateCreated": "2020-01-03T17:40:08+0000",
+    "lastUpdated": "2020-01-03T17:40:08+0000",
+    "stats": {
+      "averageCost": 83.33,
+      "totalCost": 1000.0,
+      "currency": "USD",
+      "conversionRate": 1,
+      "intervals": [
+        {
+          "index": 0,
+          "year": "Y1",
+          "shortYear": "Y1",
+          "budget": 1000.0,
+          "cost": 15.1016
+        }
+      ],
+      "current": {
+        "estimatedCost": 15.1,
+        "lastCost": 15.1
+      }
+    }
   }
 }
-
 ```
 
 This endpoint will retrieve a specific budget by id.
@@ -216,9 +265,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/budgets" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
     "name": "sample budget",
-    "year": "2019",
+    "year": "2020",
     "interval": "year",
-    "costs": [350]
+    "costs": {"year":350}
   }}'
 ```
 
@@ -236,11 +285,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for the budget
 description      |  | A description of the budget
-refType      |  | The type of the scope for the budget, eg. account, group, cloud, user
-refId      |  | The ID of the account the budget applies to.
 period      | year | Budget period, year
-interval      | year | Budget interval, year, quarter or month
-costs      |  | Array of budget values like [350] for yearly, [75,75,75,75] for quarterly or a list of 12 prices when `interval` is `month`.
+year      | 2020 | Budget period value, default is the current year.
+interval      | year | Budget interval, `year`, `quarter`, `month`.
+scope      |  | The type of the scope for the budget, `account`, `group`, `cloud`, `user`.  The default scope is `account`, which means the entire account.
+scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`.
+scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
+scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
+scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
+costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Updating a Budget
 
@@ -249,7 +302,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/budgets/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
-    "costs": [25000]
+    "costs": {"year":5000}
   }}'
 ```
 
@@ -275,11 +328,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for the budget
 description      |  | A description of the budget
-refType      |  | The type of the scope for the budget, eg. account, group, cloud, user
-refId      |  | The ID of the account the budget applies to.
-accountId      |  | The ID of the account the budget applies to.
-interval      | year | Budget interval, year, quarter or month
-costs      |  | Array of budget values like `[350]` for interval year, `[75,75,75,75]` for quarter (Quarter 1 - Quarter 4) or a list of 12 values like `[30,30,30,30,30,30,30,30,30,30,30,90]` for interval is month (January - December). Passing a cost value as `0` or `null` means no cost, and no limit will be enforced during that interval.
+period      | year | Budget period, year
+year      | 2020 | Budget period value, default is the current year.
+interval      | year | Budget interval, `year`, `quarter`, `month`.
+scope      |  | The type of the scope for the budget, `account`, `group`, `cloud`, `user`. 
+scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`.
+scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
+scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
+scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
+costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Delete a Budget
 

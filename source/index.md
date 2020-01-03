@@ -22,6 +22,7 @@ includes:
   - operations/activity
   - billing
   - operations/processes
+  - operations/health
 
   - provisioning
   - provision_types
