@@ -8,7 +8,7 @@ Cypher keys can be revoked, either through lease timeouts or manually. So even i
 <b>Deprecation notice.</b> The endpoint <code>/api/cypher/v1</code> is now deprecated and will be removed in the future. The new endpoint is </code>/api/cypher</code>.
 </aside>
 
-## Cypher Authentication
+### Cypher Authentication
 
 The Cypher API endpoints allow authentication via a special header or the standard [Authorization] header. Instead of an access token, an execution lease token can be used to authenticate.
 An execution lease will be issued by Morpheus for certain tasks, such as Ansible, which can then use the token to read cypher keys.
