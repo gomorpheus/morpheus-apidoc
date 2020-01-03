@@ -116,13 +116,13 @@ curl -XPUT "https://api.gomorpheus.com/api/whitelabel-settings" \
 
 Parameter | Description
 --------- | -----------
-active | Can be used to enable / disable whitelabel feature [on&#124;off]
+enabled | Can be used to enable / disable whitelabel feature [true&#124;false]
 applianceName | Appliance name. Master account only
-disableSupportMenu | Can be used to disable support menu [on&#124;off]
-resetHeaderLogo | Resets header logo to default header logo
-resetFooterLogo | Resets footer logo to default footer logo
-resetLoginLogo | Resets login logo to default login logo
-resetFavicon | Resets favicon to default favicon
+disableSupportMenu | Can be used to disable support menu [true&#124;false]
+resetHeaderLogo | Resets header logo to default header logo [true&#124;false]
+resetFooterLogo | Resets footer logo to default footer logo [true&#124;false]
+resetLoginLogo | Resets login logo to default login logo [true&#124;false]
+resetFavicon | Resets favicon to default favicon [true&#124;false]
 headerBgColor | Header background color
 headerFgColor | Header foreground color
 navBgColor | Nav background color
@@ -177,14 +177,14 @@ curl -XPOST "https://api.gomorpheus.com/api/whitelabel-settings/images" \
 
 Parameter | Required | Description
 --------- | -------- | -----------
-headerLogo.file | N | Header logo image file, valid image types png,jpg,svg) 
-resetHeaderLogo | N | Resets header logo to default
-footerLogo.file | N | Footer logo image file, valid image types png,jpg,svg)
-resetFooterLogo | N | Resets footer logo to default
-loginLogo.file | N | Login logo image file, valid image types png,jpg,svg)
-resetLoginLogo | N | Resets login logo to default
+headerLogo.file | N | Header logo image file, valid image types [png&#124;jpg&#124;svg]
+resetHeaderLogo | N | Resets header logo to default [true&#124;false]
+footerLogo.file | N | Footer logo image file, valid image types [png&#124;jpg&#124;svg]
+resetFooterLogo | N | Resets footer logo to default [true&#124;false]
+loginLogo.file | N | Login logo image file, valid image types [png&#124;jpg&#124;svg]
+resetLoginLogo | N | Resets login logo to default [true&#124;false]
 favicon.file | N | Favicon image file, valid image type ico
-resetFavicon | N | Resets favicon logo to default
+resetFavicon | N | Resets favicon logo to default [true&#124;false]
 
 Uploads whitelabel images.  Expects multipart form data as the request format, not JSON.
 
