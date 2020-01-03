@@ -204,3 +204,48 @@ Parameter | Description
 ID | The ID of the task
 
 If a task is still tied to workflows, the delete will fail.
+
+## Execute a Task
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/tasks/5/execute" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"job":{
+    "targetType": "instance",
+    "instances": [1]
+  }}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint executes a task on the specified instances or servers.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/tasks/:id/execute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the task
+
+### JSON Parameters
+
+The following parameters are passed inside an object named `job`.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      | (task name) | A name for the execution job. Can be used to find execution results with `/api/processes?name=`.
+targetType      | | The type of object to execute on. Pass either `instance` or `server`.
+instances      | | Array of Instance IDs. Only applicable for `targetType` is `instance`.
+servers      | | Array of Server IDs. Only applicable for `targetType` is server`.
+customOptions | | Map of options to be used as values in the task. These correspond to option types.
+customConfig | | String of custom configuration values as JSON.

@@ -1286,7 +1286,7 @@ This will suspend all containers in the instance.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/instances/:id/eject`
+`PUT https://api.gomorpheus.com/api/instances/:id/suspend`
 
 ### URL Parameters
 
@@ -1376,6 +1376,42 @@ Parameter   | Required | Default | Description
 instance.plan.id | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
 volumes | no | defaults to plan config | Can be used to grow just the logical volume of the instance instead of choosing a plan
 deleteOriginalVolumes | no | false | Delete the original volumes after resizing. (Amazon only)
+
+## Run Workflow on an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/workflow" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will run a provisioning workflow on all containers in an instance. 
+
+For operational workflows, see [Execute a Workflow](#execute-a-workflow).
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/workflow`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+workflowId | ID of the workflow to execute
+workflowName | Name of the workflow to execute
 
 ## Clone an Instance
 

@@ -20,7 +20,7 @@ curl "$MORPHEUS_API_URL/api/key-pairs"
       "id": 2,
       "name": "Test",
       "privateKey": null,
-      "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXhVj5Oe88bXPmNA32iZ0ijlgbTkeCgnTkLwDyGfOTBH56QR9gwU66B1mh+ceU/lm1jS0zNuHtGFiMabbL+7a+MgJ7HVuaV4CR2/a/cp1yEzvvuJE6IvoGzDiXIdafasdfxcvdfadfVcEyOn+TW16rbS6GR/IwuvS81GqSJ6Z5/IJh4R5IW5yzK6z6BTHtX+vQQN9xv60JmwBC1NO5UVps2KVDBSCildlNlPR4AFrtVYDPSjRmjvj3DjGnJ6YlgjFIgc23bk1t0pknocgkB+7QZrkt1ed6AWVojGTUo2B9Cd/MphCKfZ davydotcom@Davids-MacBook-Pro-2.local"
+      "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXhVj5Oe88bXPmNA32iZ0ijlgbTkeCgnTkLwDyGfOTBH56QR9gwU66B1mh+ceU/lm1jS0zNuHtGFiMabbL+7a+MgJ7HVuaV4CR2/a/cp1yEzvvuJE6IvoGzDiXIdafasdfxcvdfadfvcEyOn+TW16rbS6GR/IwuvS81GqSJ6Z5/IJh4R5IW5yzK6z6BTHtX+vQQN9xv60JmwBC1NO5UVps2KVDBSCildlNlPR4AFrtVYDPSjRmjvj3DjGnJ6YlgjFIgc23bk1t0pknocgkB+7QZrkt1ed6AWVojGTUo2B9Cd/MphCKfZ mykey"
     }
   ],
   "success": true
@@ -58,7 +58,7 @@ curl "$MORPHEUS_API_URL/api/key-pairs/2" \
     "id": 2,
     "name": "Test",
     "privateKey": null,
-    "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXhVj5Oe88bXPmNA32iZ0ijlgbTkeCgnTkLwDyGfOTBH56QR9gwU66B1mh+ceU/lm1jS0zNuHtGFiMabbL+7a+MgJ7HVuaV4CR2/a/cp1yEzvvuJE6IvoGzDiXIdafasdfxcvdfadfVcEyOn+TW16rbS6GR/IwuvS81GqSJ6Z5/IJh4R5IW5yzK6z6BTHtX+vQQN9xv60JmwBC1NO5UVps2KVDBSCildlNlPR4AFrtVYDPSjRmjvj3DjGnJ6YlgjFIgc23bk1t0pknocgkB+7QZrkt1ed6AWVojGTUo2B9Cd/MphCKfZ davydotcom@Davids-MacBook-Pro-2.local"
+    "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXhVj5Oe88bXPmNA32iZ0ijlgbTkeCgnTkLwDyGfOTBH56QR9gwU66B1mh+ceU/lm1jS0zNuHtGFiMabbL+7a+MgJ7HVuaV4CR2/a/cp1yEzvvuJE6IvoGzDiXIdafasdfxcvdfadfvcEyOn+TW16rbS6GR/IwuvS81GqSJ6Z5/IJh4R5IW5yzK6z6BTHtX+vQQN9xv60JmwBC1NO5UVps2KVDBSCildlNlPR4AFrtVYDPSjRmjvj3DjGnJ6YlgjFIgc23bk1t0pknocgkB+7QZrkt1ed6AWVojGTUo2B9Cd/MphCKfZ mykey"
   },
   "success": true
 }

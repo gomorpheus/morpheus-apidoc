@@ -15,12 +15,13 @@ includes:
 
   - operations
   - operations/dashboard
-  - operations/activity
-  - operations/processes
-  - billing
-  - operations/budgets
+  - operations/reports
   - operations/wiki
+  - operations/budgets
   - approvals
+  - operations/activity
+  - billing
+  - operations/processes
 
   - provisioning
   - provision_types
@@ -28,18 +29,18 @@ includes:
   - instancetypes
   - apps
   - blueprints
+  - jobs
   - automation
   - tasks
   - task_types
   - workflows
   - power_schedules
   - execute_schedules
+  - execution_request
   - virtual_images
   - library
   - option_types
   - deploys
-  - execution_request
-  - jobs
 
   - infrastructure
   - groups
@@ -51,10 +52,6 @@ includes:
   - clusters
   - servers
   - server_types
-  - storage_buckets
-  - keypairs
-  - certificates
-  
   - networks
   - network_types
   - network_groups
@@ -65,6 +62,9 @@ includes:
   - network_proxies
   - security_groups
   - security_group_rules
+  - storage_buckets
+  - keypairs
+  - certificates
 
   - logs
 

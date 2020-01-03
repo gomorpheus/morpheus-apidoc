@@ -99,7 +99,7 @@ curl "$MORPHEUS_API_URL/api/options/keyPairs"
 
 ```json
 [
-	["name": "Davids Key Pair", "value": 1]
+	{"name": "My Key Pair", "value": 1}
 ]
 ```
 

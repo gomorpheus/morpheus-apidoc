@@ -1,9 +1,5 @@
 # Dashboard
 
-This endpoint provides data for rendering the Morpheus appliance dashboard.
-
-## Get Dashboard Data
-
 ```shell
 curl "$MORPHEUS_API_URL/api/dashboard" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
@@ -331,16 +327,8 @@ curl "$MORPHEUS_API_URL/api/dashboard" \
 }
 ```
 
+This endpoint can be used to view dashboard information about the remote Morpheus appliance.  This is an overview and summary of data available to the user that can be used to render a dashboard.
+
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/dashboard`
-
-
-### Response
-
-Name | Description
---------- | -----------
-data | An object containing the dashboard data.
-
-*More documentation coming soon...*
-
