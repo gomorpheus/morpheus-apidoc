@@ -129,7 +129,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the alarm
 
-## Acknowledge A Health Alarm
+## Acknowledge a Health Alarm
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/health/alarms/1/acknowledge" \
