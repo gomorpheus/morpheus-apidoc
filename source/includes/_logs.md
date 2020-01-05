@@ -53,8 +53,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-sort | name | Sort order
-order | asc | Sort direction, use 'desc' to reverse sort
+sort | ts | Sort order
+order | desc | Sort direction
 query |  | Filter by wildcard search of fields
 message |  | Filter by message.
 sourceType |  | Filter by source type
