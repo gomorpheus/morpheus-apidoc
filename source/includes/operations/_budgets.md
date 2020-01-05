@@ -273,6 +273,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/budgets" \
 
 > The above command returns JSON structured like getting a single budget:
 
+This endpoint creates a new budget.
+
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/budgets`
@@ -294,6 +296,7 @@ scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
 costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
+
 
 ## Updating a Budget
 
@@ -336,7 +339,7 @@ scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`
 scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
-costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
+costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule the default cost for each interval is `0`, so be sure to specify an amount for every interval when creating a new budget.
 
 ## Delete a Budget
 
@@ -352,6 +355,8 @@ curl -XDELETE "$MORPHEUS_API_URL/api/budgets/1" \
   "success": true
 }
 ```
+
+This endpoint deletes a budget from the system.
 
 ### HTTP Request
 
