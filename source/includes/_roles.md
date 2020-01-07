@@ -191,11 +191,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/roles" \
     "authority": "Test Role",
     "description": "A test role",
     "baseRoleId": 2,
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    }
+    "roleType": "user"
   }}'
 ```
 
@@ -212,6 +208,7 @@ Parameter | Default | Description
 authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
 baseRoleId |  | A role to copy feature permissions and access from (optional)
+roleType | | The type of role to be created. Accepted values are either 'user' to create a User role or 'account' to create a Tenant role
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 
@@ -240,7 +237,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
-multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
+multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 
 ## Updating Role Feature Permissions
