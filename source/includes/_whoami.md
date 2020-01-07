@@ -12,107 +12,104 @@ curl "$MORPHEUS_API_URL/api/whoami" \
   "user": {
     "id": 1,
     "accountId": 1,
-    "username": "admin",
-    "displayName": "Admin",
-    "email": "admin@morpheustestdata.com",
-    "firstName": "Admin",
-    "lastName": "",
-    "dateCreated": "2016-08-28T03:28:09+0000",
-    "lastUpdated": "2018-11-20T05:11:50+0000",
+    "username": "test",
+    "displayName": "Test U",
+    "email": "testuser@morpheusdata.com",
+    "firstName": "Test",
+    "lastName": "User",
+    "dateCreated": "2016-08-27T19:28:09+0000",
+    "lastUpdated": "2020-01-07T05:19:20+0000",
     "enabled": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
+    "loginCount": 1575,
+    "loginAttempts": 0,
+    "lastLoginDate": "2020-01-07T05:19:20+0000",
     "roles": [
       {
-        "id": 1,
-        "authority": "System Admin",
-        "description": "Super User"
+        "id": 5,
+        "authority": "Standard User",
+        "description": "A basic user role"
       }
     ],
     "account": {
       "id": 1,
       "name": "root"
-    }
+    },
+    "windowsUsername": "morphtest",
+    "linuxUsername": "morphtest"
   },
   "isMasterAccount": true,
-  "permissions": {
-    "ComputeSite": "full",
-    "ComputeZone": "full",
-    "InstanceType": "full",
-    "account-usage": "full",
-    "admin-accounts-users": "full",
-    "admin-accounts": "full",
-    "admin-appliance": "full",
-    "admin-backupSettings": "full",
-    "admin-certificates": "full",
-    "admin-cm": "full",
-    "admin-containers": "full",
-    "admin-environments": "full",
-    "admin-global-policies": "full",
-    "admin-groups": "full",
-    "admin-identity-sources": "full",
-    "admin-keypairs": "full",
-    "admin-licenses": "full",
-    "admin-logSettings": "full",
-    "admin-monitorSettings": "full",
-    "admin-policies": "full",
-    "admin-provisioningSettings": "full",
-    "admin-roles": "full",
-    "admin-servers": "full",
-    "admin-servicePlans": "full",
-    "admin-users": "full",
-    "admin-utilities": "full",
-    "admin-whitelabel": "full",
-    "admin-zones": "full",
-    "app-templates": "full",
-    "apps": "full",
-    "arm-template": "full",
-    "automation-services": "full",
-    "backup-services": "full",
-    "backups": "full",
-    "billing": "full",
-    "cloudFormation-template": "full",
-    "dashboard": "read",
-    "deployment-services": "full",
-    "deployments": "full",
-    "guidance": "full",
-    "infrastructure-boot": "full",
-    "infrastructure-loadbalancer": "full",
-    "infrastructure-networks": "full",
-    "infrastructure-securityGroups": "full",
-    "infrastructure-state": "full",
-    "infrastructure-storage-browser": "full",
-    "infrastructure-storage": "full",
-    "logs": "full",
-    "migrations": "full",
-    "monitoring": "full",
-    "operations-approvals": "full",
-    "operations-health": "read",
-    "provisioning-admin": "full",
-    "provisioning-force-delete": "full",
-    "provisioning": "full",
-    "reports-analytics": "full",
-    "reports": "full",
-    "scheduling-execute": "full",
-    "scheduling-power": "full",
-    "services-archives": "full",
-    "services-cypher": "full",
-    "services-image-builder": "full",
-    "services-kubernetes": "full",
-    "services-network-registry": "full",
-    "support-menu": "read",
-    "task-scripts": "full",
-    "tasks": "full",
-    "terminal-access": "yes",
-    "terminal": "full",
-    "terraform-template": "full",
-    "thresholds": "full",
-    "trust-services": "full",
-    "virtual-images": "full"
-  },
+  "permissions": [
+    {
+      "name": "Provisioning: Blueprints",
+      "code": "app-templates",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Apps",
+      "code": "apps",
+      "access": "full"
+    },
+    {
+      "name": "Logs",
+      "code": "logs",
+      "access": "full"
+    },
+    {
+      "name": "Monitoring",
+      "code": "monitoring",
+      "access": "full"
+    },
+    {
+      "name": "Operations: Wiki",
+      "code": "operations-wiki",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Instances",
+      "code": "provisioning",
+      "access": "full"
+    },
+    {
+      "name": "Operations: Reports",
+      "code": "reports",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Tasks - Script Engines",
+      "code": "task-scripts",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Tasks",
+      "code": "tasks",
+      "access": "full"
+    },
+    {
+      "name": "Remote Console: Auto Login",
+      "code": "terminal-access",
+      "access": "yes"
+    },
+    {
+      "name": "Remote Console",
+      "code": "terminal",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Blueprints - Terraform",
+      "code": "terraform-template",
+      "access": "full"
+    },
+    {
+      "name": "Provisioning: Virtual Images",
+      "code": "virtual-images",
+      "access": "full"
+    }
+  ],
   "appliance": {
-    "buildVersion": "3.5.3"
+    "buildVersion": "4.1.2"
   }
 }
 ```
