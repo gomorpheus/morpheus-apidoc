@@ -46,6 +46,7 @@ curl "$MORPHEUS_API_URL/api/virtual-images"
       "virtioSupported": true,
       "isAutoJoinDomain": false,
       "vmToolsInstalled": true,
+      "installAgent": true,
       "isForceCustomization": false,
       "isSysprep": false,
       "userData": null,
