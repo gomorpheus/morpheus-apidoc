@@ -294,6 +294,44 @@ Parameter | Default | Description
 --------- | ------- | -----------
 filename  |  | The name of the file to be deleted
 
+## Update a Virtual Image
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/virtual-images/764" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"virtualImage":{
+    "installAgent": true,
+    "sshUsername": "root",
+    "sshPassword": "mygreatpassword12345!",
+    "sshKey": null,
+    "osType": {
+      "id": 9
+    },
+    "virtioSupported": true,
+    "vmToolsInstalled": true,
+
+  }}'
+```
+
+> The above command returns JSON structured like getting a single virtual image.
+
+This endpoint updates an existing virtual image.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/virtual-images/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
+
+### JSON Virtual Image Parameters
+
+The same parameters as [Create a Virtual Image](#Create-a-Virtual-Image) are supported.
+
 ## Delete a Virtual Image
 
 ```shell
@@ -314,3 +352,9 @@ Will delete a virtual image and any associated files.
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/virtual-images/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
