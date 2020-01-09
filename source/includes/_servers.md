@@ -708,8 +708,11 @@ Parameter | Description
 ## Run Workflow on a Host
 
 ```shell
-curl -X PUT "https://api.gomorpheus.com/api/servers/1/workflow" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+curl -X PUT "https://api.gomorpheus.com/api/servers/1/workflow?workflowId=33" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -d '{ "taskSet": {
+    "customOptions": {"mysqlVersion":"5.6.17"}
+    }}'
 ```
 
 > The above command returns JSON structure like this:
@@ -740,6 +743,13 @@ Parameter | Description
 --------- | -----------
 workflowId | ID of the workflow to execute
 workflowName | Name of the workflow to execute
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+taskSet      |  | Object containing workflow configuration parameters
+taskSet.customOptions      |  | Object containing any custom option type configuration parameters
 
 ## Delete a Host
 

@@ -1380,8 +1380,11 @@ deleteOriginalVolumes | no | false | Delete the original volumes after resizing.
 ## Run Workflow on an Instance
 
 ```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/workflow" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/workflow?workflowId=99" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -d '{ "taskSet": {
+    "customOptions": {"foo":"bar"}
+    }}'
 ```
 
 > The above command returns JSON structure like this:
@@ -1412,6 +1415,13 @@ Parameter | Description
 --------- | -----------
 workflowId | ID of the workflow to execute
 workflowName | Name of the workflow to execute
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+taskSet      |  | Object containing workflow configuration parameters
+taskSet.customOptions      |  | Object containing any custom option type configuration parameters
 
 ## Clone an Instance
 
