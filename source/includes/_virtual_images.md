@@ -304,14 +304,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/virtual-images/764" \
   -d '{"virtualImage":{
     "installAgent": true,
     "sshUsername": "root",
-    "sshPassword": "mygreatpassword12345!",
-    "sshKey": null,
-    "osType": {
-      "id": 9
-    },
-    "virtioSupported": true,
-    "vmToolsInstalled": true,
-
+    "sshPassword": "aGreatpassword12345!"
   }}'
 ```
 
