@@ -246,6 +246,7 @@ phrase |  | Filter by wildcard search of name and description
 instanceType |  | Filter by instance type code
 lastUpdated |  | Date filter, restricts query to only load instances updated  timestamp is more recent or equal to the date specified
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
+showDeleted | false | If true, includes instances in pending removal status.
 
 ## Get a Specific Instance
 
@@ -1655,3 +1656,23 @@ preserveVolumes | off | Preserve Volumes
 keepBackups | off | Preserve copy of backups
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
+
+## Cancel Removal of an Instance
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/instances/2/cancel-removal" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like getting a single instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/cancel-removal`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app

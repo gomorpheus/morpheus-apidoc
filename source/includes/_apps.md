@@ -104,6 +104,7 @@ offset | 0 | Offset of records you want to load
 name |  | Filter by name
 phrase |  | Filter by wildcard search of name and description
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
+showDeleted | false | If true, includes apps in pending removal status.
 
 ## Get a Specific App
 
@@ -416,3 +417,53 @@ preserveVolumes | off | Preserve Volumes
 keepBackups | off | Preserve copy of backups
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
+
+
+## Cancel Removal of an App
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/apps/2/cancel-removal" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like getting a single app.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/apps/:id/cancel-removal`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
+
+## Add Existing Instance to App
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/apps/1/add-instance" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"instanceId": 55, tierName: "App"}'
+```
+
+> The above command returns JSON structured like getting a single app.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/apps/:id/add-instance`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+instanceId  |  | The ID of the instance being added
+tierName     |  | The Name of the Tier
