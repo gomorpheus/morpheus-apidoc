@@ -477,12 +477,21 @@ Alternatively, the [Cloud Policies](#cloud-policies) endpoint can be used.
 
 ### Create a Policy For a User
 
-Policies can be scoped to a cloud by passing the following:
+Policies can be scoped to a user by passing the following:
 
 Parameter | Value
 --------- | -------
 refType      | User
 refId      | The ID of the user
+
+### Create a Policy For a Role
+
+Policies can be scoped to a role by passing the following:
+
+Parameter | Value
+--------- | -------
+refType      | Role
+refId      | The ID of the role
 
 ## Update a Policy
 
