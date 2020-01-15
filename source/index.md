@@ -39,7 +39,7 @@ includes:
   - execute_schedules
   - execution_request
   - virtual_images
-  - library
+
   - option_types
   - deploys
 
