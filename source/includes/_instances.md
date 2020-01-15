@@ -1657,7 +1657,7 @@ keepBackups | off | Preserve copy of backups
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
-## Cancel Removal of an Instance
+## Undo Delete of an Instance
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/instances/2/cancel-removal" \

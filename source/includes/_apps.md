@@ -419,7 +419,7 @@ releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
 
-## Cancel Removal of an App
+## Undo Delete of an App
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/apps/2/cancel-removal" \
