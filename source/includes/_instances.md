@@ -1667,6 +1667,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/instances/2/cancel-removal" \
 
 > The above command returns JSON structured like getting a single instance.
 
+This operation will undo the delete of an instance that is pending removal.
+
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/instances/:id/cancel-removal`
@@ -1675,4 +1677,4 @@ curl -XPUT "$MORPHEUS_API_URL/api/instances/2/cancel-removal" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+:id | ID of the instance

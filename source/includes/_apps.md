@@ -429,6 +429,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/apps/2/cancel-removal" \
 
 > The above command returns JSON structured like getting a single app.
 
+This operation will undo the delete of an app that is pending removal.
+
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/apps/:id/cancel-removal`
