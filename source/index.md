@@ -39,6 +39,7 @@ includes:
   - execute_schedules
   - execution_request
   - virtual_images
+  - cluster_layouts
 
   - option_types
   - deploys
