@@ -187,11 +187,11 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Name, description and provision type name, restricts query to only load service plans which contain the phrase specified
-provisionType | false | Provision type code filter, restricts query to only load cluster layouts of specified provision type 
+phrase |  | Name, description and provision type name, restricts query to only load cluster layouts which contain the phrase specified
+provisionType |  | Provision type code filter, restricts query to only load cluster layouts of specified provision type 
 
 
-## Get a Specific Service Plan
+## Get a Specific Cluster Layout
 
 ```shell
 curl "$MORPHEUS_API_URL/api/library/cluster-layouts/1" \
@@ -453,6 +453,8 @@ containerType.id | Y | Container type ID
 
 ## Update a Cluster Layout
 
+Use this command to update an existing cluster layout.
+
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/library/cluster-layouts/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
@@ -574,7 +576,7 @@ Parameter | Required | Description
 --------- | ------- | -----------
 name | N | Name of cluster layout. Defaults to `Copy of <cloned layout name>`
 description | N | Description of cluster layout. Defaults to cloned layout description
-version | N | Version of cluster layout. Defaults to cloned layout version
+computeVersion | N | Version of cluster layout. Defaults to cloned layout version
 
 
 ## Delete a Cluster Layout
