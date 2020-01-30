@@ -1186,6 +1186,7 @@ instanceContext |  | Environment
 metadata |  | Array of metadata objects
 powerScheduleType |  | Power Schedule ID
 site.id |  | Group ID
+createdById |  | User ID, can be used to change instance owner.
 
 ## Stop an Instance
 
