@@ -399,6 +399,60 @@ name      | (app name) | A unique name scoped to your account for the wiki page.
 content |  | The content of the page (markdown).
 
 
+## Get a Wiki Page For Cluster
+
+```shell
+curl "$MORPHEUS_API_URL/api/clusters/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like getting a single wiki page.
+
+This endpoint retrieves the wiki page for a cluster.
+If its page does not yet exist, the response is still 200 OK with a body like *"page":null*.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/clusters/:id/wiki`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Cluster
+
+## Update a Wiki Page For Cluster
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/clusters/1/wiki" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"page":{
+    "content": "Lots of good information about this cluster."
+  }}'
+```
+
+> The above command returns JSON structured like getting a single wiki page: 
+
+This endpoint updates the wiki page for a cluster. 
+The page will be created if it does not yet exist.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/clusters/:id/wiki`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Cluster
+
+### JSON Page Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      | (cluster name) | A unique name scoped to your account for the wiki page.
+content |  | The content of the page (markdown).
 
 ## Get a Wiki Page For Server
 
