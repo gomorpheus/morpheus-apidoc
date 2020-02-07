@@ -579,7 +579,7 @@ Parameter | Description
 ## Get Instance History
 
 ```shell
-curl "$MORPHEUS_API_URL/api/238/history" \
+curl "$MORPHEUS_API_URL/api/instances/238/history" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
