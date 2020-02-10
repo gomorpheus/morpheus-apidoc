@@ -578,6 +578,7 @@ Parameter | Default | Description
 sshUsername      |  | ssh username to use when provisioning
 sshPassword |  | ssh password to use, if not specified the account public key can be used
 serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osTypes
+provisionSiteId |  | Specific group to provision to
 
 ## Upgrade Agent
 
