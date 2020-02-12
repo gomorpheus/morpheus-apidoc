@@ -86,20 +86,20 @@ This is the format for JSON parameters. These are parameters which are included 
 ### HTTP Response
 
 The Morpheus API returns **200 OK** for successful requests. 
-If a request fails, an HTTP [Error Code](#error-codes) will be returned. JSON is always returned, even when an error occurs.
+If a request fails, an HTTP [Error](#errors) will be returned.
 
-The API (almost) always responds with *Content-Type: application/json* and a response body that is valid JSON.
+Most API endpoints respond with *Content-Type: application/json* and body that contains JSON data.
 
 This is an example of an API response that retrieves a [Contact](#contacts) record by ID.
 
 #### Success Example
+
 ```shell
 curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
-
-> The above command returns JSON structured like this:
+> The above command returns HTTP 200 and JSON structured like this:
 
 ```json
 {
@@ -113,16 +113,17 @@ curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
 }
 ```
 
+This is an example of a successful response that contains the requested record.
+
 #### Error Example
 
-Here is an example a a 400 error
 ```shell
 curl "$MORPHEUS_API_URL/api/monitoring/contacts/999" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
 
-> The above command returns JSON structured like this:
+> The above command returns HTTP 404 and JSON structured like this:
 
 ```json
 {
@@ -130,6 +131,8 @@ curl "$MORPHEUS_API_URL/api/monitoring/contacts/999" \
   "msg": "Contact not found for this account"
 }
 ```
+
+This is an example of a 404 error response caused when the specified record was not found.
 
 ## Environment Variables
 
