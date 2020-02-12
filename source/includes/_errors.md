@@ -41,6 +41,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/contacts" \
 }
 ```
 
+This error is returned if your request is invalid. This usually means you are missing a parameter or one you've passed is incorrect. Typically you can just fix your request payload and try again.
+
 ### 401 Error
 
 ```shell
