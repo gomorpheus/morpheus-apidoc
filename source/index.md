@@ -27,7 +27,6 @@ includes:
   - provisioning
   - provision_types
   - instances
-  - instancetypes
   - apps
   - blueprints
   - jobs
@@ -39,9 +38,18 @@ includes:
   - execute_schedules
   - execution_request
   - virtual_images
-  - cluster_layouts
-
+  - library
+  - instance_types
+  - layouts
+  - container_types
+  - container_templates
+  - container_scripts
   - option_types
+  - option_lists
+  - options
+  - spec_templates
+  - cluster_layouts
+  
   - deploys
 
   - infrastructure

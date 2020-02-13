@@ -11,7 +11,7 @@ This document describes the Morpheus [API](#api) protocol and the endpoints it p
 Section |  Description
 --------- | -------
 [Operations](#operations) | [Dashboard](#dashboard), [Reports](#reports), [Wiki](#wiki), [Budgets](#budgets), [Approvals](#approvals), [Activity](#activity), [Billing](#billing), [History](#history)
-[Provisioning](#provisioning) | [Instances](#instances), [Apps](#apps), [Blueprints](#blueprints), [Jobs](#jobs), [Automation](#automation), [Virtual Images](#virtual-images), [Deployments](#deployments)
+[Provisioning](#provisioning) | [Instances](#instances), [Apps](#apps), [Blueprints](#blueprints), [Jobs](#jobs), [Automation](#automation), [Virtual Images](#virtual-images), [Library](#library), [Deployments](#deployments)
 [Infrastructure](#infrastructure) | [Groups](#groups), [Clouds](#clouds), [Clusters](#clusters), [Hosts](#hosts), [Networks](#networks), [Storage](#storage), [Keys](#key-pairs) & [Certs](#ssl-certificates)
 [Logs](#logs) | View logs for your hosts and containers.
 [Monitoring](#monitoring) | [Checks](#checks), [Incidents](#checks), [Alerts](#alerts), [Contacts](#contacts)

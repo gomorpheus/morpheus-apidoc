@@ -1,9 +1,7 @@
-## Provision Types
+<!-- ## Provision Types -->
 
-
-<!--
 ## Get All Provision Types
--->
+
 
 Fetch the list of available provision types.
 
@@ -194,6 +192,18 @@ curl "$MORPHEUS_API_URL/api/provision-types"
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/provision-types`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | Name and code, restricts query to only load provision types which contain the phrase specified
+name |  | Name filter, restricts query to only load type matching name specified
+code |  | Code filter, restricts query to only load type matching code specified
 
 ## Get Specific Provision Type
 

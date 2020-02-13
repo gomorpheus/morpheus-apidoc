@@ -2,7 +2,7 @@
 # Instance Types
 -->
 
-## Get All Instance Types
+## Get All Instance Types for Provisioning
 
 Fetch the list of available instance types. These can vary in range from database containers, to web containers, to custom containers.
 .
@@ -322,7 +322,7 @@ curl "$MORPHEUS_API_URL/api/instance-types"
 
 `GET https://api.gomorpheus.com/api/instance-types`
 
-## Get Specific Instance Type
+## Get Specific Instance Type for Provisioning
 
 ```shell
 curl "$MORPHEUS_API_URL/api/instance-types/12"

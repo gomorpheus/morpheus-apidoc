@@ -1,111 +1,288 @@
-## Option Types
+# Option Types
 
-Morpheus has several objects that have dynamic models depending on the type of the object. This includes options when provisioning different instances or even options when defining tasks or creating docker hosts!. This section aims to describe what is contained in the option-types association as well as how to query morpheus for available options in certain option-type scenarios.
+Provides API interfaces for managing Library: Option Types within Morpheus.
 
-## Example of an Option Type Record
-
-```json
-{
-	"optionTypes": [
-                {
-                    "name": "subnet",
-                    "description": null,
-                    "fieldName": "subnetId",
-                    "fieldLabel": "Subnet",
-                    "fieldContext": "config",
-                    "fieldAddOn": null,
-                    "placeHolder": null,
-                    "helpBlock": "",
-                    "defaultValue": null,
-                    "optionSource": "amazonSubnet",
-                    "type": "select",
-                    "advanced": false,
-                    "required": true,
-                    "editable": false,
-                    "config": [],
-                    "displayOrder": 100
-                },
-                {
-                    "name": "security group",
-                    "description": null,
-                    "fieldName": "securityId",
-                    "fieldLabel": "Security Group",
-                    "fieldContext": "config",
-                    "fieldAddOn": null,
-                    "placeHolder": null,
-                    "helpBlock": "",
-                    "defaultValue": null,
-                    "optionSource": "amazonSecurityGroup",
-                    "type": "select",
-                    "advanced": false,
-                    "required": true,
-                    "editable": false,
-                    "config": [],
-                    "displayOrder": 101
-                },
-                {
-                    "name": "public key",
-                    "description": null,
-                    "fieldName": "publicKeyId",
-                    "fieldLabel": "Public Key",
-                    "fieldContext": "config",
-                    "fieldAddOn": null,
-                    "placeHolder": null,
-                    "helpBlock": "",
-                    "defaultValue": null,
-                    "optionSource": "keyPairs",
-                    "type": "select",
-                    "advanced": false,
-                    "required": false,
-                    "editable": false,
-                    "config": [],
-                    "displayOrder": 9
-                }
-            ]
-}
-```
-
-
-Option types can easily represent some common input types, including text, number, radio, checkbox, and dropdown/multiple choice.
-
-
-### JSON Parameters
-
-Parameter   | Description
----------   | -----------
-name        | The name of the option type for handy reference
-description | Short description of hte option type (the CLI actually shows this when pressing `?` for help)
-fieldName   | The property key for when posting this option type to a JSON POST request
-fieldLabel  | User friendly label for prompting a user for input
-fieldContext | Some properties need nested i.e. in a `config: {}` block. This is a `.` seperated context of where the property should be constructed
-placeHolder | Any placeholder text when nothing is yet entered
-helpBlock  | Short help text describing the option
-defaultValue | The default value if no user entry is specified. This value should be passed to the desired JSON Map if nothing else is entered
-optionSource | Option source references an API endpoint for receiving a JSON list of available options for this field.
-type         | The type of input. I.e. text, select, radio,checkbox, etc.
-required     | Is this field entry required for the request
-editable     | Used primarily on tasks and workflows. Basically wether or not the field can be overridden optionally when the object is run
-displayOrder | The order with which the fields should be prompted. This is rather important when using optionSource in some scenarios for determining available values.
-config:      | Any special configuration options pertaining to specific input types, like a radio button.
-
-## Get Option Source Data
+## Get All Option Types
 
 ```shell
-curl "$MORPHEUS_API_URL/api/options/keyPairs"
+curl "$MORPHEUS_API_URL/api/library/option-types" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
-> The above command returns JSON structured like this
+> The above command returns JSON structured like this:
 
 ```json
-[
-	{"name": "My Key Pair", "value": 1}
-]
+{
+  "optionTypes": [
+    {
+      "id": 811,
+      "name": "DB Version",
+      "description": "Database Version",
+      "code": null,
+      "fieldName": "dbVersion",
+      "fieldLabel": "DB Version",
+      "fieldContext": "config.customOptions",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "placeHolder": "yourversion",
+      "helpBlock": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "text",
+      "advanced": false,
+      "required": false,
+      "editable": false,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 0,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": false,
+      "dependsOnCode": null,
+      "contextualDefault": false
+    },
+    {
+      "id": 1236,
+      "name": "myselect",
+      "description": "a select option type",
+      "code": "myselect",
+      "fieldName": "myselect",
+      "fieldLabel": "My Select",
+      "fieldContext": "config.customOptions",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "placeHolder": null,
+      "helpBlock": null,
+      "defaultValue": null,
+      "optionSource": "list",
+      "optionList": {
+        "id": 51,
+        "name": "my groups"
+      },
+      "type": "select",
+      "advanced": false,
+      "required": false,
+      "editable": false,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 3,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": false,
+      "dependsOnCode": null,
+      "contextualDefault": false
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 2,
+    "total": 2
+  }
+}
 ```
 
+This endpoint retrieves all option types.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/options/:optionSource`
+`GET https://api.gomorpheus.com/api/library/option-types`
 
-Returns a list of name/value pairs for option-type models. Some option-types depend on input data for proper representation. This typically includes zoneId or siteId for the item being provisioned as request parameters or sometimes previous option type parameters.
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | Name, code or description, restricts query to only load option types which contain the phrase specified
+name |  | Name filter, restricts query to only load type matching name specified
+code |  | Code filter, restricts query to only load type matching code specified
+fieldName |  | Field Name filter, restricts query to only load type matching fieldName specified
+fieldContext |  | Field Context filter, restricts query to only load type matching fieldContext specified
+fieldLabel |  | Field Label filter, restricts query to only load type matching fieldLabel specified
+
+
+## Get a Specific Option Type
+
+```shell
+curl "$MORPHEUS_API_URL/api/library/option-types/811" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "optionType": {
+    "id": 811,
+    "name": "DB Version",
+    "description": "Database Version",
+    "code": null,
+    "fieldName": "dbVersion",
+    "fieldLabel": "DB Version",
+    "fieldContext": "config.customOptions",
+    "fieldGroup": null,
+    "fieldClass": null,
+    "fieldAddOn": null,
+    "fieldComponent": null,
+    "placeHolder": "yourversion",
+    "helpBlock": null,
+    "defaultValue": null,
+    "optionSource": null,
+    "optionList": null,
+    "type": "text",
+    "advanced": false,
+    "required": false,
+    "editable": false,
+    "creatable": true,
+    "config": {
+    },
+    "displayOrder": 0,
+    "wrapperClass": null,
+    "enabled": true,
+    "noBlank": false,
+    "dependsOnCode": null,
+    "contextualDefault": false
+  }
+}
+```
+
+This endpoint retrieves a specific option type.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/library/option-types/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the option type
+
+
+## Create an Option Type
+
+Use this command to create an option type.
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/library/option-types" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"optionType": {
+       "name": "Test Input",
+       "type": "text",
+       "description": "A test option type",
+       "fieldName": "testinput",
+       "fieldLabel": "Test Input"
+     }}'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "id": 104,
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/library/option-types`
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | Y | Name
+description | N | Description
+fieldName | N | Field Name, the name for user input. This along with fieldContext determines the configuration property name.
+type | N | Type, the type of input. eg. `text`, `checkbox`, `select`, etc. Default is `text`.
+fieldLabel | N | Field Label, the label for user input.
+placeHolder | N | Placeholder
+defaultValue | N | Default Value
+required | N | Required, Default is `false`.
+exportMeta | N | Export as Tag, Default is `false`.
+optionList.id | N | ID of [Option List](#option-lists). For use with type `select`, this will set optionSource to `list`.
+
+## Update an Option Type
+
+Use this command to update an existing option type.
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/library/option-types/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+  -H "Content-Type: application/json" \
+  -d '{"optionType": {
+        "description": "An example input"
+      }}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/library/option-types/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the option type
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | Y | Name
+description | N | Description
+fieldName | N | Field Name, the name for user input. This along with fieldContext determines the configuration property name.
+type | N | Type, the type of input. eg. `text`, `checkbox`, `select`, etc. Default is `text`.
+fieldLabel | N | Field Label, the label for user input.
+placeHolder | N | Placeholder
+defaultValue | N | Default Value
+required | N | Required, Default is `false`.
+exportMeta | N | Export as Tag, Default is `false`.
+optionList.id | N | ID of [Option List](#option-lists). For use with type `select`, this will set optionSource to `list`.
+
+## Delete an Option Type
+
+```shell
+curl -XDELETE "$MORPHEUS_API_URL/api/library/option-types/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete an option type 
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/library/option-types/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the option type
