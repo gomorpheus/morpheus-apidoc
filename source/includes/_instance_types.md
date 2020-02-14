@@ -620,7 +620,63 @@ hasDeployment | N | Supports Deployments, set to `true` or `false`.
 environmentPrefix | N | Environment Prefix, can be used to make exported evars unique.
 environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variables)
 optionTypes | N | Array of instance type option type IDs, see [Option Types](#option-types)
- 
+
+## Toggle Featured For Instance Type
+
+Use this command to toggle the featured flag for an existing instance type.
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/:id/toggle-featured" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/library/instance-types/:id/toggle-featured`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the instance type
+
+
+## Update Logo For Instance Type
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/:id/update-logo" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+  -F 'logo=@filename'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+Use this command to update the logo image for an existing instance type. This endpoint expects multipart form data as the request format, not JSON.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/library/instance-types/:id/update-logo`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the instance type
 
 ## Delete an Instance Type
 
