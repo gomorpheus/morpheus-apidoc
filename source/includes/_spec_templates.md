@@ -187,7 +187,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/spec-templates" \
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Spec template name
-type.code | Y | Spec Template Type code. eg. `kubernetes`, `helm`, `terraform`, `arm`, `cloudFormation`, `oneview`, `swarm`, `ucs`.
+type.code | Y | Spec Template Type. i.e. arm, cloudFormation, helm, kubernetes, oneview, terraform, ucs.
 file | Y | File, object specifying file type and content, see [File Object](#file-object-parameter)
 
 ### File Object Parameter
@@ -242,7 +242,7 @@ id | The ID of the spec template
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Spec template name
-type.code | Y | Spec Template Type code. eg. `kubernetes`, `helm`, `terraform`, `arm`, `cloudFormation`, `oneview`, `swarm`, `ucs`.
+type.code | Y | Spec Template Type. i.e. arm, cloudFormation, helm, kubernetes, oneview, terraform, ucs.
 file | Y | File, object specifying file type and content, see [File Object](#file-object-parameter)
 
 ## Delete a Spec Template
