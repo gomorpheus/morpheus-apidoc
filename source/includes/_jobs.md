@@ -328,8 +328,10 @@ task.id | Y if workflow.id not used | Use this to assign task to job. Not compat
 workflow.id | Y if task.id not used | Use this to assign workflow to job. Not compatible with task
 targetType | Y | Target type where job will execute: appliance, instance, server
 targets | 1..n for instance or server target types | Key for targets configuration, see [Targets](#targets)
-scheduleMode | Y | Job execution schedule type ID or 'manual'
+scheduleMode | Y | Job execution schedule type ID or 'manual' or 'dateTime'
 customConfig | N | Job custom configuration
+dateTime | N | Date and Time to execute the job. Use UTC time in the format 2020-02-15T05:00:00Z. Required when scheduleMode is 'dateTime'.
+run | N | If true executes job
 
 #### Targets
 
@@ -394,8 +396,9 @@ task.id | N | Use this to assign task to job. Not compatible with workflow
 workflow.id | N | Use this to assign workflow to job. Not compatible with task
 targetType | N | Target type where job will execute: appliance, instance, server
 targets | N | Key for targets configuration, see [Targets](#targets)
-scheduleMode | N | Job execution schedule type ID or 'manual'
+scheduleMode | Y | Job execution schedule type ID or 'manual' or 'dateTime'
 customConfig | N | Job custom configuration
+dateTime | N | Date and Time to execute the job. Use UTC time in the format 2020-02-15T05:00:00Z. Required when scheduleMode is 'dateTime'.
 run | N | If true executes job 
 
 
