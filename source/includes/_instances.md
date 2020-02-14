@@ -1433,6 +1433,7 @@ volumes | N |  | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
 config | Y |  | Key for specific type configuration, see [Config](#config)
 metadata | N |  | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
+ports | N |  | Array of port objects, see [Exposed Ports](#exposed-ports)
 taskSetId | N |  | The Workflow ID to execute.
 taskSetName | N |  | The Workflow Name to execute.
 
@@ -1464,6 +1465,20 @@ Parameter | Required | Default | Description
 network.id | Y | n/a | id of the network to be used. A network group can be specified instead by prefixing its ID  with `networkGroup-`.
 networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
 ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
+
+#### Exposed Ports
+
+The `ports` parameter is for port configuration.
+
+The layout may have default ports, which are defined in node types, that are always configured. This parameter will be for additional custom ports to be opened.
+
+It should be passed as an array of Objects with the following attributes:
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+port | Y | n/a | port number. eg. `8080`
+name | N | n/a | A name for the port eg. `web`
+lb | N |  | The load balancer protocol. `HTTP`, `HTTPS`, or `TCP`. Default is none.
 
 #### Config
 
