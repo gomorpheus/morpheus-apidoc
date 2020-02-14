@@ -191,9 +191,12 @@ type.code | Y | Spec Template Type. i.e. arm, cloudFormation, helm, kubernetes, 
 file | Y | File, object specifying file type and content, see [File Object](#file-object-parameter)
 
 ### File Object Parameter
-sourceType | Y | File Source eg. `local`, `repo`, `url`. Default is `local`.
+
+Parameter | Required | Description
+--------- | -------- | -----------
+sourceType | Y | File Source i.e. `local`, `repository`, `url`. Default is `local`.
 content | Y | File content, the template text. Only required when sourceType is `local`.
-contentPath | Y | Content Path, the repo file location or url. Required when sourceType is `repo` or `url`.
+contentPath | Y | Content Path, the repo file location or url. Required when sourceType is `repository` or `url`.
 contentRef | N | Content Ref, the branch/tag. Only used when sourceType is `repo`.
 
 #### Cloud Formation Capability Parameters
