@@ -68,7 +68,6 @@ includes:
   - network_subnets
   - network_pools
   - network_domains
-  - network_services
   - network_proxies
   - security_groups
   - security_group_rules

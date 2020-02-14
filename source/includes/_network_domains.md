@@ -15,14 +15,40 @@ curl "$MORPHEUS_API_URL/api/networks/domains"
 {
   "networkDomains": [
     {
-      "id": 1
+      "id": 2,
+      "name": "mydomain.local",
+      "active": true,
+      "fqdn": null,
+      "description": null,
+      "visibility": "private",
+      "domainController": false,
+      "publicZone": false,
+      "domainUsername": null,
+      "domainPassword": null,
+      "refType": null,
+      "refId": null,
+      "refSource": null,
+      "internalId": null,
+      "ouPath": null,
+      "dcServer": null,
+      "zoneType": null,
+      "dnssec": null,
+      "domainSerial": null,
+      "account": {
+        "id": 1,
+        "name": "root"
+      },
+      "owner": {
+        "id": 1,
+        "name": "root"
+      }
     }
   ],
   "meta": {
-    "offset": 0,
-    "max": 25,
     "size": 1,
-    "total": 1
+    "total": 1,
+    "offset": 0,
+    "max": 25
   }
 }
 ```
@@ -53,7 +79,33 @@ curl "$MORPHEUS_API_URL/api/networks/domains/1" \
 ```json
 {
   "networkDomain": {
-
+    "id": 1,
+    "name": "testdomain.xyz",
+    "active": true,
+    "fqdn": "testdomain.xyz.",
+    "description": "an example domain",
+    "visibility": "private",
+    "domainController": false,
+    "publicZone": false,
+    "domainUsername": null,
+    "domainPassword": null,
+    "refType": "AccountIntegration",
+    "refId": 18,
+    "refSource": "integration",
+    "internalId": null,
+    "ouPath": null,
+    "dcServer": null,
+    "zoneType": "Authoritative",
+    "dnssec": null,
+    "domainSerial": null,
+    "account": {
+      "id": 1,
+      "name": "root"
+    },
+    "owner": {
+      "id": 1,
+      "name": "root"
+    }
   }
 }
 ```
@@ -75,12 +127,13 @@ ID | The ID of the Network Domain to retrieve
 ## Create a Network Domain
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/networks/domains" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+curl -XPOST "http://$MORPHEUS_API_URL/api/networks/domains" \
+  -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "networkDomain": {
-    
+    "name": "test.xyz",
+    "description": "A test domain"
   }
 }'
 ```
@@ -95,18 +148,29 @@ curl -XPOST "$MORPHEUS_API_URL/api/networks/domains" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      |  | Name
-description      |  | Description
+name |  | Name
+description |  | Description
+displayName |  | Overrides displayed name in domain selection components. Useful if using many OU Paths.
+publicZone | false | Public Zone
+taskSetId | | Workflow ID. Workflows can be applied to an instance when associated with a domain. Useful for custom domain related scripting. (Important if wanting to ensure the computer is removed from the domain using teardown phased workflows.) 
+active | true | Active
+domainController      | true | Join Domain Controller
+domainUsername      | true | Domain Username
+domainPassword      | true | Domain Password
+dcServer |  | DC Server. If specified, must be the server name and not an IP Address. 
+ouPath |  | OU Path.  (i.e. 'OU=staging,DC=ad,DC=morpheusdata,DC=com')
+guestUsername |  | Guest Username. If set, will change the instances RPC Service User after joining a Domain. 
+guestPassword |  | Guest Password
 
 ## Update a Network Domain
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/networks/domains/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/networks/domains/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "networkDomain": {
-
+    "description": "an excellent domain"
   }
 }'
 ```
@@ -125,12 +189,12 @@ ID | The ID of the Network Domain
 
 ### JSON Parameters
 
-Same as [Create](#create-a-network).
+Same as [Create](#create-a-network-domain).
 
 ## Delete a Network Domain
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/networks/domains/1" \
+curl -XDELETE "$MORPHEUS_API_URL/api/networks/domains/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 

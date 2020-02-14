@@ -2,6 +2,8 @@
 
 Provides API for managing Network Services.
 
+Only the list endpoint is currently the only available endpoint. Network Service management will be available with the Integration API endpoints.
+
 ## Get All Network Services
 
 ```shell
@@ -15,15 +17,15 @@ curl "$MORPHEUS_API_URL/api/networks/services"
 {
   "networkServices": [
     {
-      "id": 1
+      "serviceType": "networkPool",
+      "serviceTypeName": "Network Pool",
+      "type": "phpipam",
+      "typeName": "phpIPAM",
+      "name": "phpIPAM",
+      "id": 30,
+      "integrationId": 26
     }
-  ],
-  "meta": {
-    "offset": 0,
-    "max": 25,
-    "size": 1,
-    "total": 1
-  }
+  ]
 }
 ```
 
@@ -41,7 +43,6 @@ name |  | If specified will return an exact match on name
 phrase |  | If specified will return a partial match on name
 
 ## Get a Specific Network Service
-
 
 ```shell
 curl "$MORPHEUS_API_URL/api/networks/services/1" \
@@ -125,7 +126,7 @@ ID | The ID of the Network Service
 
 ### JSON Parameters
 
-Same as [Create](#create-a-network).
+Same as [Create](#create-a-network-service).
 
 ## Delete a Network Service
 
@@ -153,4 +154,3 @@ Will delete a Network Service from the system and make it no longer usable.
 Parameter | Description
 --------- | -----------
 ID | The ID of the Network Service
-

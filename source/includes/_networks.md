@@ -321,7 +321,7 @@ This endpoint allows updating a Network.  Configuration options vary by [Network
 ## Delete a Network
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/networks/1" \
+curl -XDELETE "$MORPHEUS_API_URL/api/networks/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 

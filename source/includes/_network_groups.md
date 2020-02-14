@@ -15,14 +15,30 @@ curl "$MORPHEUS_API_URL/api/networks/groups"
 {
   "networkGroups": [
     {
-      "id": 1
+      "id": 1,
+      "name": "test network group",
+      "description": "a test network group",
+      "visibility": "private",
+      "active": true,
+      "networks": [
+        1
+      ],
+      "subnets": [
+
+      ],
+      "tenants": [
+        {
+          "id": 1,
+          "name": "root"
+        }
+      ]
     }
   ],
   "meta": {
-    "offset": 0,
-    "max": 25,
     "size": 1,
-    "total": 1
+    "total": 1,
+    "offset": 0,
+    "max": 25
   }
 }
 ```
@@ -53,8 +69,116 @@ curl "$MORPHEUS_API_URL/api/networks/groups/1" \
 ```json
 {
   "networkGroup": {
+    "id": 1,
+    "name": "test network group",
+    "description": "a test network group",
+    "visibility": "private",
+    "active": true,
+    "networks": [
+      1
+    ],
+    "subnets": [
 
-  }
+    ],
+    "tenants": [
+      {
+        "id": 1,
+        "name": "root"
+      }
+    ],
+    "resourcePermission": {
+      "all": true,
+      "sites": [
+        {
+          "id": 284,
+          "name": "anothergroup",
+          "default": true
+        },
+        {
+          "id": 317,
+          "name": "another group",
+          "default": false
+        }
+      ],
+      "allPlans": null,
+      "plans": [
+
+      ]
+    }
+  },
+  "networks": [
+    {
+      "id": 1,
+      "name": "VM Network",
+      "zone": {
+        "id": 29,
+        "name": "den-vcenter"
+      },
+      "type": {
+        "id": 6,
+        "name": "VMWare Network",
+        "code": "vmwareNetwork"
+      },
+      "owner": {
+        "id": 1,
+        "name": "root"
+      },
+      "code": "vmware.network.29.network-51",
+      "category": "vmware.network.29",
+      "interfaceName": null,
+      "bridgeName": null,
+      "bridgeInterface": null,
+      "description": "VM Network",
+      "externalId": "network-51",
+      "internalId": null,
+      "uniqueId": "network-51",
+      "externalType": "Network",
+      "refUrl": null,
+      "refType": "ComputeZone",
+      "refId": 29,
+      "vlanId": null,
+      "vswitchName": null,
+      "dhcpServer": true,
+      "dhcpIp": null,
+      "gateway": null,
+      "netmask": null,
+      "broadcast": null,
+      "subnetAddress": null,
+      "dnsPrimary": null,
+      "dnsSecondary": null,
+      "cidr": null,
+      "tftpServer": null,
+      "bootFile": null,
+      "switchId": null,
+      "fabricId": null,
+      "networkRole": null,
+      "status": null,
+      "availabilityZone": null,
+      "pool": null,
+      "networkProxy": null,
+      "networkDomain": null,
+      "prefixLength": null,
+      "visibility": "private",
+      "enableAdmin": false,
+      "scanNetwork": null,
+      "active": true,
+      "defaultNetwork": false,
+      "assignPublicIp": false,
+      "noProxy": null,
+      "applianceUrlProxyBypass": true,
+      "zonePool": {
+        "id": 12,
+        "name": "labs-den-pool"
+      },
+      "allowStaticOverride": null,
+      "subnets": [
+
+      ]
+    }
+  ],
+  "subnets": [
+
+  ]
 }
 ```
 
@@ -80,7 +204,14 @@ curl -XPOST "$MORPHEUS_API_URL/api/networks/groups" \
   -H "Content-Type: application/json" \
   -d '{
   "networkGroup": {
-    
+    "name": "test network group",
+    "description": "a test network group",
+    "networks": [
+      1
+    ],
+    "subnets": [
+
+    ]
   }
 }'
 ```
@@ -101,12 +232,19 @@ description      |  | Description
 ## Update a Network Group
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/networks/groups/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/networks/groups/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "networkGroup": {
+    "name": "my network group",
+    "description": "my test network group",
+    "networks": [
+      2
+    ],
+    "subnets": [
 
+    ]
   }
 }'
 ```

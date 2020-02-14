@@ -15,14 +15,31 @@ curl "$MORPHEUS_API_URL/api/networks/proxies"
 {
   "networkProxies": [
     {
-      "id": 1
+      "id": 1,
+      "name": "myproxy",
+      "proxyHost": "10.30.50.100",
+      "proxyPort": 9091,
+      "proxyUser": null,
+      "proxyPassword": null,
+      "proxyDomain": "myproxy.com",
+      "proxyWorkstation": null,
+      "visibility": "private",
+      "account": {
+        "id": 1,
+        "name": "root"
+      },
+      "owner": {
+        "id": 1,
+        "name": "root"
+      }
     }
   ],
+  "networkProxyCount": 1,
   "meta": {
-    "offset": 0,
-    "max": 25,
     "size": 1,
-    "total": 1
+    "total": 1,
+    "offset": 0,
+    "max": 25
   }
 }
 ```
@@ -53,7 +70,23 @@ curl "$MORPHEUS_API_URL/api/networks/proxies/1" \
 ```json
 {
   "networkProxy": {
-
+    "id": 1,
+    "name": "myproxy",
+    "proxyHost": "10.30.50.100",
+    "proxyPort": 9091,
+    "proxyUser": null,
+    "proxyPassword": null,
+    "proxyDomain": "myproxy.com",
+    "proxyWorkstation": null,
+    "visibility": "private",
+    "account": {
+      "id": 1,
+      "name": "root"
+    },
+    "owner": {
+      "id": 1,
+      "name": "root"
+    }
   }
 }
 ```
@@ -80,7 +113,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/networks/proxies" \
   -H "Content-Type: application/json" \
   -d '{
   "networkProxy": {
-    
+    "name": "myproxy",
+    "proxyHost": "192.168.1.155",
+    "proxyPort": "9005",
+    "proxyUser": "proxyuser",
+    "proxyPassword": "proxypass",
+    "visibility": "private"
   }
 }'
 ```
@@ -101,12 +139,12 @@ description      |  | Description
 ## Update a Network Proxy
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/networks/proxies/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/networks/proxies/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "networkProxy": {
-
+    "name": "ourproxy"
   }
 }'
 ```
@@ -125,7 +163,7 @@ ID | The ID of the Network Proxy
 
 ### JSON Parameters
 
-Same as [Create](#create-a-network).
+Same as [Create](#create-a-network-proxy).
 
 ## Delete a Network Proxy
 
