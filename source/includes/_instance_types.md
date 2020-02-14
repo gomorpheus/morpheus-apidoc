@@ -678,6 +678,12 @@ Parameter | Description
 --------- | -----------
 id | The ID of the instance type
 
+### Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+logo      |  | Logo File png,jpg,svg
+
 ## Delete an Instance Type
 
 ```shell
