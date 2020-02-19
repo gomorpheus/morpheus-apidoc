@@ -69,6 +69,7 @@ includes:
   - network_pools
   - network_domains
   - network_proxies
+  - network_routers
   - security_groups
   - security_group_rules
   - storage_buckets
