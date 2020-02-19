@@ -75,6 +75,21 @@ This api can only be used successfully one time. Subsequent attempts will return
 
 ### JSON Parameters
 
+jsondata = {
+        "accountName": "MasterTenant",
+        "firstName": "Dan",
+        "lastName": "Freedman",
+        "email": "dfreedman@trace3.com",
+        "username": "admin",
+        "password": "P@ssw0rd!",
+        "confirmPassword": "P@ssw0rd!",
+        "applianceName": "MasterAppliance",
+        "applianceUrl": "https://centos-map2.labs.trace3.com/",
+        "backups": "on",
+        "monitoring": "on",
+        "logs": "on",
+        "hubMode": "skip"
+    }
 Parameter | Default | Description
 --------- | ------- | -----------
 applianceUrl      |  | Appliance URL
@@ -85,8 +100,11 @@ password      |  | Password
 email      |  | Email Address
 firstName      |  | First Name
 lastName      |  | Last Name
-hubMode      | skip | Hub Mode [register|login|skip]. The default is *skip*, which means do not connect to the hub. Pass *login* or *register* to connect with the [Morpheus Hub](https://morpheushub.com) during setup. The default is *skip*.
-hub      | | Object containing Morpheus Hub connection settings. Either [Hub Register Parameters](#hub-register-parameters) or [Hub Login Parameters](#hub-login-parameters). This is only required if *hubMode* is *register* or *login*.
+backups      | false | Enable Backups
+monitoring      | false | Enable Monitoring
+logs      | false | Enable Logs
+hubMode      | skip | Hub Mode ie. `register`, `login`, `skip`. The default is `skip`, which means do not connect to the hub. Pass `login` or `register` to connect with the [Morpheus Hub](https://morpheushub.com) during setup.
+hub      | | Object containing Morpheus Hub connection settings. Either [Hub Register Parameters](#hub-register-parameters) or [Hub Login Parameters](#hub-login-parameters). This is only required if `hubMode` is `register` or `login`.
 
 ### Hub Register Parameters
 
