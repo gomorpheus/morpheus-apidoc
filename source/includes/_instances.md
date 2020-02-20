@@ -246,6 +246,7 @@ phrase |  | Filter by wildcard search of name and description
 instanceType |  | Filter by instance type code
 lastUpdated |  | Date filter, restricts query to only load instances updated  timestamp is more recent or equal to the date specified
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
+status |  | Filter by instance type status
 showDeleted | false | If true, includes instances in pending removal status.
 
 ## Get a Specific Instance
