@@ -75,21 +75,6 @@ This api can only be used successfully one time. Subsequent attempts will return
 
 ### JSON Parameters
 
-jsondata = {
-        "accountName": "MasterTenant",
-        "firstName": "Dan",
-        "lastName": "Freedman",
-        "email": "dfreedman@trace3.com",
-        "username": "admin",
-        "password": "P@ssw0rd!",
-        "confirmPassword": "P@ssw0rd!",
-        "applianceName": "MasterAppliance",
-        "applianceUrl": "https://centos-map2.labs.trace3.com/",
-        "backups": "on",
-        "monitoring": "on",
-        "logs": "on",
-        "hubMode": "skip"
-    }
 Parameter | Default | Description
 --------- | ------- | -----------
 applianceUrl      |  | Appliance URL
