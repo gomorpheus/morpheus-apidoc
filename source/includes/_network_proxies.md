@@ -135,7 +135,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name |  | Name
 proxyHost |  | Proxy Host
-proxyPort |  | Proxy Host
+proxyPort |  | Proxy Port
 proxyUser |  | Proxy Username
 proxyPassword |  | Proxy Password
 proxyDomain |  | Proxy Domain
