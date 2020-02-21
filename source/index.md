@@ -70,6 +70,7 @@ includes:
   - network_domains
   - network_proxies
   - network_routers
+  - network_services
   - security_groups
   - security_group_rules
   - storage_buckets
