@@ -191,6 +191,9 @@ curl -XPOST "$MORPHEUS_API_URL/api/networks/pools" \
   -d '{
   "networkPool": {
     "name": "test pool",
+    "type": {
+      "code": "morpheus"
+    },
     "ipRanges": [
       {
         "startAddress": "192.2.2.100",

@@ -133,8 +133,15 @@ curl -XPOST "$MORPHEUS_API_URL/api/networks/proxies" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name      |  | Name
-description      |  | Description
+name |  | Name
+proxyHost |  | Proxy Host
+proxyPort |  | Proxy Host
+proxyUser |  | Proxy Username
+proxyPassword |  | Proxy Password
+proxyDomain |  | Proxy Domain
+proxyWorkstation |  | Proxy Workstation
+visibility | private | Visibility
+account.id |  | Tenant Account ID
 
 ## Update a Network Proxy
 
