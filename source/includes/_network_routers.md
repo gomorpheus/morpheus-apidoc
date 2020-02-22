@@ -345,7 +345,7 @@ id | The ID of the network router
 
 ### JSON Parameters
 
-The parameters for updating a network router is type dependent. The following lists the common parameters. See [get a specific type](#get-a-specific-type)
+The parameters for updating a network router is type dependent. The following lists the common parameters. See [get a specific type](#get-a-specific-network-router-type)
 to list available options for that network router type.
 
 Parameter | Required | Description
@@ -737,7 +737,7 @@ curl "$MORPHEUS_API_URL/api/network-router-types/2" \
 }
 ```
 
-This endpoint retrieves a specific network router type.
+This endpoint retrieves a specific network router type. Use this API to retrieve list of available option types for a specific network router type.
 
 ### HTTP Request
 
