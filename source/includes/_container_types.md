@@ -248,11 +248,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/container-types" \
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Node type name
+shortName | Y | The short name is a name with no spaces used for display in your container list.
 description | N | Node type description
 containerVersion | Y | Version of the node type
 provisionTypeCode | Y | Provision type code, eg. `amazon`, etc.
-containerScripts | N | Array of script IDs, see [Scripts](#scripts)
-containerTemplates | N | Array of file template IDs, see [File Templates](#file-templates)
+scripts | N | Array of script IDs, see [Scripts](#scripts)
+templates | N | Array of file template IDs, see [File Templates](#file-templates)
 environmentVariables | N | Array of node type env variables, see [Environment Variables](#environment-variables)
 
 **note** The available configuration settings vary by provision type.
