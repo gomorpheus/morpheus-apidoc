@@ -400,7 +400,7 @@ curl "$MORPHEUS_API_URL/api/library/instance-types/1/layouts" \
 }
 ```
 
-This endpoint retrieves all layouts.
+This endpoint retrieves all layouts for a specific instance type.
 
 ### HTTP Request
 
