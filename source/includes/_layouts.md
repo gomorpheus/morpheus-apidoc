@@ -714,8 +714,10 @@ description | N | Layout description
 instanceVersion | Y | Version of the layout
 creatable | N | Can be used to enable / disable the creatability of the layout. Default is on
 hasAutoScale | N | Can be used to enable / disable the horizontal scaling. Default is off
+supportsConvertToManaged | N | Can be used to enable / disable the supports convert to managed. Default is off
 memoryRequirement | N | Memory requirement in megabytes
-provisionType.id | Y | Provision type ID
+provisionTypeCode | Y | Provision type code
+provisionType.id | N | Provision type ID, can be used instead of `provisionTypeCode`.
 containerTypes | N | Array of layout node type IDs, see [Node Types](#node-types)
 optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
 specTemplates | N | Array of layout spec template IDs, see [Spec Templates](#spec-templates)
