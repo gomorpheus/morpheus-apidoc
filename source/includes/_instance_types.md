@@ -2,7 +2,7 @@
 
 Provides API interfaces for managing instance types within Morpheus.  
 
-This API is for management of the library.  To query instance types during provisioning, use [Get All Instance Types For Provisioning](#Get-All-Instance-Types-For-Provisioning).
+This API is for management of the library.  To query instance types during provisioning, use [Get All Instance Types For Provisioning](#get-all-instance-types-for-provisioning).
 
 ## Get All Instance Types
 
@@ -562,10 +562,10 @@ hasSettings | N | Enable Settings, set to `true` or `false`.
 hasAutoScale | N | Enable Scaling (Horizontal), set to `true` or `false`.
 hasDeployment | N | Supports Deployments, set to `true` or `false`.
 environmentPrefix | N | Environment Prefix, can be used to make exported evars unique.
-environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variables)
+environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variable-parameter)
 optionTypes | N | Array of instance type option type IDs, see [Option Types](#option-types)
 
-#### Environment Variables
+#### Environment Variable Parameter
 The `environmentVariables` parameter is array of env objects with following fields:
 
 Parameter | Required | Description
@@ -609,21 +609,9 @@ id | The ID of the instance type
 
 ### JSON Parameters
 
-name | Y | Instance type name
-description | N | Instance type description
-code | N | Instance type code
-visibility | N | Visibility. Default is `private`.
-featured | N | Featured, set to `true` or `false`.
-hasSettings | N | Enable Settings, set to `true` or `false`.
-hasAutoScale | N | Enable Scaling (Horizontal), set to `true` or `false`.
-hasDeployment | N | Supports Deployments, set to `true` or `false`.
-environmentPrefix | N | Environment Prefix, can be used to make exported evars unique.
-environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variables)
-optionTypes | N | Array of instance type option type IDs, see [Option Types](#option-types)
+Same as [Create](#create-an-instance-type).
 
 ## Toggle Featured For Instance Type
-
-Use this command to toggle the featured flag for an existing instance type.
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/:id/toggle-featured" \
@@ -639,6 +627,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/:id/toggle-featured" \
   "success": true
 }
 ```
+
+Use this command to toggle the featured flag for an existing instance type.  This will change the value from false to true, or from true to false.
 
 ### HTTP Request
 
