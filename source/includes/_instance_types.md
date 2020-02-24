@@ -644,7 +644,7 @@ id | The ID of the instance type
 ## Update Logo For Instance Type
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/:id/update-logo" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/:id/update-logo" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -F 'logo=@filename'
 ```
@@ -660,7 +660,7 @@ Use this command to update the logo image for an existing instance type. This en
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/library/instance-types/:id/update-logo`
+`POST https://api.gomorpheus.com/api/library/instance-types/:id/update-logo`
 
 ### URL Parameters
 
