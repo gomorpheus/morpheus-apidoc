@@ -562,10 +562,10 @@ hasSettings | N | Enable Settings, set to `true` or `false`.
 hasAutoScale | N | Enable Scaling (Horizontal), set to `true` or `false`.
 hasDeployment | N | Supports Deployments, set to `true` or `false`.
 environmentPrefix | N | Environment Prefix, can be used to make exported evars unique.
-environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variable-parameter)
+environmentVariables | N | Array of instance type env variables, see [Environment Variables](#environment-variable-parameters)
 optionTypes | N | Array of instance type option type IDs, see [Option Types](#option-types)
 
-#### Environment Variable Parameter
+#### Environment Variable Parameters
 The `environmentVariables` parameter is array of env objects with following fields:
 
 Parameter | Required | Description

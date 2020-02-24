@@ -53,7 +53,7 @@ curl "$MORPHEUS_API_URL/api/library/option-type-lists" \
       "name": "group1 clouds",
       "description": null,
       "type": "rest",
-      "sourceUrl": "http://localhost:8080/api/options/clouds?groupId=1",
+      "sourceUrl": "http://10.0.2.2:8080/api/options/clouds?groupId=1",
       "ignoreSSLErrors": false,
       "realTime": false,
       "sourceMethod": "GET",
