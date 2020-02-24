@@ -551,7 +551,7 @@ Will delete a route from a network router
 Parameter | Description
 --------- | -----------
 router_id | The ID of the network router
-route_id | The ID of the rule to be deleted
+route_id | The ID of the route to be deleted
 
 
 ## Update Network Router Permissions
@@ -666,7 +666,7 @@ curl "$MORPHEUS_API_URL/api/network-router-types" \
 }
 ```
 
-This endpoint retrieves all network routers types.
+This endpoint retrieves all network router types.
 
 ### HTTP Request
 
