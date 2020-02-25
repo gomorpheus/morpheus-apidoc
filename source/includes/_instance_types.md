@@ -516,7 +516,6 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types" \
     "code": "foobar",
     "description": "An example instance type",
     "category": "web",
-    "logo": null,
     "visibility": "private",
     "environmentPrefix": "FOOBAR_",
     "hasSettings": true,
@@ -556,6 +555,7 @@ Parameter | Required | Description
 name | Y | Instance type name
 description | N | Instance type description
 code | N | Instance type code
+category | N | Category
 visibility | N | Visibility. Default is `private`.
 featured | N | Featured, set to `true` or `false`.
 hasSettings | N | Enable Settings, set to `true` or `false`.
