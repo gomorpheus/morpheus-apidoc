@@ -249,16 +249,17 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Node type name
 shortName | Y | The short name is a name with no spaces used for display in your container list.
+code | N | Node type code. Default is auto-generated UUID.
 description | N | Node type description
 containerVersion | Y | Version of the node type
 provisionTypeCode | Y | Provision type code, eg. `amazon`, etc.
 scripts | N | Array of script IDs, see [Scripts](#scripts)
 templates | N | Array of file template IDs, see [File Templates](#file-templates)
-environmentVariables | N | Array of node type env variables, see [Environment Variables](#environment-variables)
+environmentVariables | N | Array of node type env variables, see [Environment Variables](#environment-variable-parameters)
 
 **note** The available configuration settings vary by provision type.
 
-#### Environment Variables
+#### Environment Variable Parameters
 The `environmentVariables` parameter is array of env objects with following fields:
 
 Parameter | Required | Description
