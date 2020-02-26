@@ -249,7 +249,7 @@ masked | N | Can be used to enable / disable masking of value, default is off
 Use this command to update an existing option list.
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/library/option-type-lists/:id" \
+curl -XPUT "$MORPHEUS_API_URL/api/library/option-type-lists/:id" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
