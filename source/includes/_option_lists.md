@@ -229,8 +229,8 @@ apiType | N | Api Type, The code of the api list to use, eg. `clouds`, `groups`,
 ignoreSSLErrors | N | Ignore SSL Errors. Default is `false`.
 realTime | N | Real Time. Default is `false`.
 initialDataset | N | Initial Dataset. Create an initial JSON or CSV dataset to be used as the collection for this option list. It should be a list containing objects with properties 'name', and 'value'. Required when type is `manual`.
-translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties name, and value. The input data is provided as data and the result should be put on the global variable results. 
-requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties name and value for a get. The input data is provided as data and the result should be put on the global variable results.
+translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties 'name' and 'value'. The input data is provided as data and the result should be put on the global variable results. 
+requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties 'name' and 'value' for a get. The input data is provided as data and the result should be put on the global variable results.
 config.sourceHeaders | N | Array of source headers to use when requesting data., see [Source Headers](#source-headers)
 
 
@@ -304,8 +304,8 @@ apiType | N | Api Type, The code of the api list to use, eg. `clouds`, `groups`,
 ignoreSSLErrors | N | Ignore SSL Errors. Default is `false`.
 realTime | N | Real Time. Default is `false`.
 initialDataset | N | Initial Dataset. Create an initial JSON or CSV dataset to be used as the collection for this option list. It should be a list containing objects with properties 'name', and 'value'.
-translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties name, and value. The input data is provided as data and the result should be put on the global variable results. 
-requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties name and value for a get. The input data is provided as data and the result should be put on the global variable results.
+translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties 'name' and 'value'. The input data is provided as data and the result should be put on the global variable results. 
+requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties 'name' and 'value' for a get. The input data is provided as data and the result should be put on the global variable results.
 config.sourceHeaders | N | Array of source headers to use when requesting data., see [Source Headers](#source-headers)
 
 ## Delete an Option List
