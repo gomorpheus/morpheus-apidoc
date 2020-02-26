@@ -241,7 +241,7 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Header name
 value | N | Header value
-masked | N | Can be used to enable / disable masking of value, default if off
+masked | N | Can be used to enable / disable masking of value, default is off
 
 
 ## Update an Option List

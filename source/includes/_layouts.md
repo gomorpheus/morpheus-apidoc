@@ -730,7 +730,7 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Environment variable name
 value | N | Sets fixed value for variable
-masked | N | Can be used to enable / disable masking of variable, default if off
+masked | N | Can be used to enable / disable masking of variable, default is off
 export | N | Can be used to enable / disable export of variable, default is off
 
 ## Update a Layout
