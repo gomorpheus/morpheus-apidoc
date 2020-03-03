@@ -78,8 +78,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Name, description and provision type name, restricts query to only load scripts which contain the phrase specified
-provisionType |  | Provision type code filter, restricts query to only load scripts of specified provision type 
+phrase |  | Name, restricts query to only load scripts which contain the phrase specified
+scriptType |  | Script type code filter, restricts query to only load scripts of specified type 
+scriptPhase |  | Script phase filter, restricts query to only load scripts of specified phase
 
 
 ## Get a Specific Script

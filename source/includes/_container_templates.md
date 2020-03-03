@@ -53,7 +53,7 @@ curl "$MORPHEUS_API_URL/api/library/container-templates" \
 
 This endpoint retrieves all file templates.
 
-The value of `template` will be masked as `************` for system owned scripts.
+The value of `template` will be masked as `************` for system owned file templates.
 
 ### HTTP Request
 
@@ -110,7 +110,7 @@ curl "$MORPHEUS_API_URL/api/library/container-templates/27" \
 
 This endpoint retrieves a specific file template.
 
-The value of `template` will be masked as `************` for system owned scripts.
+The value of `template` will be masked as `************` for system owned file templates.
 
 ### HTTP Request
 

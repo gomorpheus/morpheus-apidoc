@@ -400,7 +400,7 @@ curl "$MORPHEUS_API_URL/api/library/instance-types/1/layouts" \
 }
 ```
 
-This endpoint retrieves all layouts.
+This endpoint retrieves all layouts for a specific instance type.
 
 ### HTTP Request
 
@@ -660,7 +660,7 @@ id | ID of the layout
 Use this command to create a layout.
 
 ```shell
-curl -XPOST "http://localhost:8080/api/library/instance-types/132/layouts" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -714,22 +714,23 @@ description | N | Layout description
 instanceVersion | Y | Version of the layout
 creatable | N | Can be used to enable / disable the creatability of the layout. Default is on
 hasAutoScale | N | Can be used to enable / disable the horizontal scaling. Default is off
+supportsConvertToManaged | N | Can be used to enable / disable the supports convert to managed. Default is off
 memoryRequirement | N | Memory requirement in megabytes
-provisionType.id | Y | Provision type ID
+provisionTypeCode | Y | Provision type code
 containerTypes | N | Array of layout node type IDs, see [Node Types](#node-types)
 optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
 specTemplates | N | Array of layout spec template IDs, see [Spec Templates](#spec-templates)
 taskSetId | N | ID of [Workflow](#workflows)
-environmentVariables | N | Array of layout env variables, see [Environment Variables](#environment-variables)
+environmentVariables | N | Array of layout env variables, see [Environment Variables](#environment-variable-parameters)
 
-#### Environment Variables
+#### Environment Variable Parameters
 The `environmentVariables` parameter is array of env objects with following fields:
 
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Environment variable name
 value | N | Sets fixed value for variable
-masked | N | Can be used to enable / disable masking of variable, default if off
+masked | N | Can be used to enable / disable masking of variable, default is off
 export | N | Can be used to enable / disable export of variable, default is off
 
 ## Update a Layout
@@ -737,7 +738,7 @@ export | N | Can be used to enable / disable export of variable, default is off
 Use this command to update an existing layout.
 
 ```shell
-curl -XPOST "http://localhost:8080/api/library/instance-types/132/layouts" \
+curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -770,21 +771,7 @@ id | The ID of the layout
 
 ### JSON Parameters
 
-Parameter | Required | Description
---------- | -------- | -----------
-name | Y | Layout name
-description | N | Layout description
-instanceVersion | Y | Version of the layout
-creatable | N | Can be used to enable / disable the creatability of the layout. Default is on
-hasAutoScale | N | Can be used to enable / disable the horizontal scaling. Default is off
-memoryRequirement | N | Memory requirement in bytes
-provisionType.id | Y | Provision type ID
-containerTypes | N | Array of layout node type IDs, see [Node Types](#node-types)
-optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
-specTemplates | N | Array of layout spec template IDs, see [Spec Templates](#spec-templates)
-taskSetId | N | ID of [Workflow](#workflows)
-environmentVariables | N | Array of layout env variables, see [Environment Variables](#environment-variables)
-
+Same as [Create](#create-an-instance-type).
 
 ## Delete a Layout
 
