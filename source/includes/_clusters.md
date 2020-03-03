@@ -398,7 +398,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/clusters" \
                 "id": 1
             },
             "networkDomain": null,
-            "hostname": null
+            "hostname": null,
+            "nodeCount": 3
         }
     }}'
 ```
@@ -438,6 +439,7 @@ securityGroups | N |  | Key for security group configuration. It should be passe
 visibility | N | private | Visibility for server host
 userGroup.id | N |  | User Group ID for server host
 hostname | N |  | Hostname for server host
+nodeCount | N | Number of workers or hosts 
 
 #### Volumes
 
@@ -940,6 +942,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/clusters/:id/servers" \
         },
         "networkDomain": null,
         "hostname": null,
+        "nodeCount": 1, 
         "taskSet": {
           "id": 2
         }       
