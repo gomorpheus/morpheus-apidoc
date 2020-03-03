@@ -439,7 +439,7 @@ securityGroups | N |  | Key for security group configuration. It should be passe
 visibility | N | private | Visibility for server host
 userGroup.id | N |  | User Group ID for server host
 hostname | N |  | Hostname for server host
-nodeCount | N | Number of workers or hosts 
+nodeCount | N |  | Number of workers or hosts 
 
 #### Volumes
 
