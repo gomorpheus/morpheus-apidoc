@@ -181,6 +181,7 @@ phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
 startDate | (3 month ago) | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
 endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
+period |  | Only return records with a period that starts with the specified value. This is an alternative to using startDate/endDate. Format is YYYYMM.
 refType |  | If specified will return an exact match on refType
 refId |  | If specified will return an exact match on refId
 zoneId |  | If specified will return an exact match on zone (cloud) ID
