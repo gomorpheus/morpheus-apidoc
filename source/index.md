@@ -21,6 +21,7 @@ includes:
   - approvals
   - operations/activity
   - billing
+  - invoices
   - operations/processes
   - operations/health
 
