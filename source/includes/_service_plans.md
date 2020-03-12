@@ -302,7 +302,6 @@ curl -XPUT "$MORPHEUS_API_URL/api/service-plans/1" \
       "name": "stubby toes plan 1",
       "code": "stubby.toes.plan.1",
       "description": null,
-      "editable": true,
       "maxStorage": 10737418240,
       "config": {
         "storageSizeType": "gb",
@@ -380,7 +379,6 @@ Parameter | Required | Description
 name | Y | Service plan name
 code | Y | Service plan code, must be unique
 description | N | Service plan description
-editable | N | Can be used to enable / disable the editability of the service plan. Default is on
 maxStorage | Y | Max storage size in bytes
 maxMemory | Y | Max memory size in bytes
 maxCores | N | Max cores
@@ -394,6 +392,34 @@ addVolumes | N | Can be used to enable / disable ability to add volumes. Default
 sortOrder | N | Sort order
 priceSets.id | N | List of price sets to include in service plan
 config.ranges | N | Key for service plan custom configuration, see [Config](#config)
+ 
+ 
+## Activate a Service Plan
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/service-plans/1/activate" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will activate a service plan 
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/service-plans/:id/activate`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the service plan
  
 
 ## Deactivate a Service Plan
