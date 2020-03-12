@@ -204,13 +204,14 @@ Parameter | Description
 curl -XPOST "$MORPHEUS_API_URL/api/apps" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"app":{
-    "name": "sampleapp",
+  -d '{
+    "blueprintId": "existing",
+    "name": "sample",
     "description": "A sample app",
     "group": {
       "id": 1
     }
-  }}'
+  }'
 ```
 
 > The above command returns JSON structured like getting a single app.
@@ -223,24 +224,27 @@ curl -XPOST "$MORPHEUS_API_URL/api/apps" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  |  | A name for the app
-description     |  | Optional description field
+blueprintId  |  | The ID of the Blueprint. Use `existing` to create a blank app.
+name  |  | A unique name for the app
 group |  | A Map containing the id of the Group
+description     |  | Description
+environment |  | Environment code (appContext)
 
-
-## Updating an App Name or Description
+## Updating an App
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/apps/2" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"app":{
+  -d '{
     "name": "My Sample App",
     "description": "A new description of this app",
-  }}'
+  }'
 ```
 
 > The above command returns JSON structured like getting a single app.
+
+This endpoint provides updating of some basic app settings.
 
 ### HTTP Request
 
@@ -256,8 +260,9 @@ Parameter | Description
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name  |  | A name for the app
-description     |  | Optional description field
+name  |  | Name
+description     |  | Description
+environment     |  | Environment (appContext)
 
 
 ## Add Existing Instance to App
@@ -441,31 +446,3 @@ Parameter | Description
 --------- | -----------
 :id | ID of the app
 
-
-## Add Existing Instance to App
-
-```shell
-curl -XPOST "$MORPHEUS_API_URL/api/apps/1/add-instance" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"instanceId": 55, tierName: "App"}'
-```
-
-> The above command returns JSON structured like getting a single app.
-
-### HTTP Request
-
-`POST https://api.gomorpheus.com/api/apps/:id/add-instance`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-:id | ID of the app
-
-### JSON Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-instanceId  |  | The ID of the instance being added
-tierName     |  | The Name of the Tier
