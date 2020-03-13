@@ -187,7 +187,6 @@ refId |  | If specified will return an exact match on refId
 zoneId |  | If specified will return an exact match on zone (cloud) ID
 instanceId |  | If specified will return an exact match on instance ID
 serverId |  | If specified will return an exact match on server (host) ID
-clusterId |  | If specified will return an exact match on cluster ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 
