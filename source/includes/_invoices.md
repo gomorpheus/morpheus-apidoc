@@ -181,12 +181,15 @@ phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
 startDate |  | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
 endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
-period |  | Only return records with a period that starts with the specified value. This is an alternative to using startDate/endDate. Format is YYYYMM.
-refType |  | If specified will return an exact match on refType
+period |  | Only return records for period that matches with the specified value. This is an alternative to using startDate/endDate. Format is YYYY or YYYYMM.
+refType |  | If specified will return an exact match on refType. eg. ComputeSite (Group), ComputeZone (Cloud), ComputeServer (Host), Instance, Container, User.
 refId |  | If specified will return an exact match on refId
 zoneId |  | If specified will return an exact match on zone (cloud) ID
+siteId |  | If specified will return an exact match on site (group) ID
 instanceId |  | If specified will return an exact match on instance ID
+containerId |  | If specified will return an exact match on instance ID
 serverId |  | If specified will return an exact match on server (host) ID
+userId |  | If specified will return an exact match on user ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 
