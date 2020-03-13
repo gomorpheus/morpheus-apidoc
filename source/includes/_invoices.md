@@ -163,7 +163,7 @@ curl "$MORPHEUS_API_URL/api/invoices" \
 
 ```
 
-This endpoint retrieves all invoices for the specified parameters. The default timeframe is the last 3 months. This can be adjusted by passing the `startDate` parameter.
+This endpoint retrieves all invoices for the specified parameters.
 
 ### HTTP Request
 
@@ -179,7 +179,7 @@ sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
-startDate | (3 month ago) | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
+startDate |  | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
 endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
 period |  | Only return records with a period that starts with the specified value. This is an alternative to using startDate/endDate. Format is YYYYMM.
 refType |  | If specified will return an exact match on refType
