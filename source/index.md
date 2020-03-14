@@ -112,6 +112,7 @@ includes:
   - appliance_settings
   - backup_settings
   - provisioning_settings
+  - provisioning_licenses
   - log_settings
   - whitelabel_settings
   - license
