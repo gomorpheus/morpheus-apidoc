@@ -96,9 +96,12 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Name, description and provision type name, restricts query to only load licenses which contain the phrase specified
-name |  | Name filter, restricts query to only load license matching name specified
-
+phrase |  | Name, description, orgName, fullName restricts query to only load licenses which contain the phrase specified
+name |  | If specified will return an exact match on name
+licenseType |  | If specified will return an exact match on licenseType code
+licenseVersion |  | If specified will return an exact match on licenseVersion
+orgName |  | If specified will return an exact match on orgName
+fullName |  | If specified will return an exact match on fullName
 
 ## Get a Specific License
 
@@ -180,7 +183,7 @@ curl "$MORPHEUS_API_URL/api/provisioning-licenses/2/reservations" \
 }
 ```
 
-This endpoint retrieves all reserverations for a specific license. Each time a license is applied to a new server, a reservation is created, reducing the available copies for the license.
+This endpoint retrieves all reservations for a specific license. Each time a license is applied to a new server, a reservation is created, reducing the available copies for the license.
 
 ### HTTP Request
 
@@ -217,13 +220,13 @@ curl -XPOST "$MORPHEUS_API_URL/api/provisioning-licenses" \
 }'
 ```
 
-> The above command returns JSON Structured like this:
+> The above command returns JSON structured like getting a single license (abbreviated):
 
 ```json
 {
-  "success": true
+  "success": true,
   "license": {
-    "id":3
+    "id": 1
   }
 }
 ```
@@ -261,13 +264,13 @@ curl -XPUT "$MORPHEUS_API_URL/api/provisioning-licenses/:id" \
 }'
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured like getting a single license (abbreviated):
 
 ```json
 {
-  "success": true
+  "success": true,
   "license": {
-    "id":3
+    "id": 1
   }
 }
 ```
@@ -286,14 +289,14 @@ id | The ID of the license
 
 ### JSON Parameters
 
-Parameter | Required | Description
---------- | -------- | -----------
-name | Y | Name
-licenseVersion | N | License Version
-copies | N | Copies - The number of times the key can be used. Default is `1`.
-description | N | Description
-virtualImages | N | Virtual Images - Array of Virtual Image IDs to associate with license.
-tenants | N | Tenants - Array of tenants that are allowed to use the key.
+Parameter | Description
+--------- | -----------
+name | Name
+licenseVersion | License Version
+copies | Copies - The number of times the key can be used.
+description | Description
+virtualImages | Virtual Images - Array of Virtual Image IDs to associate with license.
+tenants | Tenants - Array of tenants that are allowed to use the key.
 
 ## Delete a License
 
