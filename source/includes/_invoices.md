@@ -187,7 +187,7 @@ refId |  | If specified will return an exact match on refId
 zoneId |  | If specified will return an exact match on zone (cloud) ID
 siteId |  | If specified will return an exact match on site (group) ID
 instanceId |  | If specified will return an exact match on instance ID
-containerId |  | If specified will return an exact match on instance ID
+containerId |  | If specified will return an exact match on container ID
 serverId |  | If specified will return an exact match on server (host) ID
 userId |  | If specified will return an exact match on user ID
 active |  | If specified will return an exact match on active flag.
