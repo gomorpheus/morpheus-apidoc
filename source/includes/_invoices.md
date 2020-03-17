@@ -75,8 +75,6 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "runningMultiplier": 0.2536250387,
       "lastCostDate": "2020-03-12T19:59:59+0000",
       "lastActualDate": null,
-      "rawData": {
-      },
       "runningCostRatio": 3.4807497380148065,
       "actualRunningCostRatio": null,
       "runningPriceRatio": 3.480749738014807,
@@ -84,7 +82,9 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "totalCostEstimateRatio": 0.0,
       "totalPriceEstimateRatio": 0.0,
       "dateCreated": "2020-03-04T23:35:07+0000",
-      "lastUpdated": "2020-03-12T19:00:01+0000"
+      "lastUpdated": "2020-03-12T19:00:01+0000",
+      "rawData": {
+      }
     },
     {
       "id": 11338,
@@ -141,8 +141,6 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "runningMultiplier": 0.2536250387,
       "lastCostDate": "2020-03-12T19:59:59+0000",
       "lastActualDate": null,
-      "rawData": {
-      },
       "runningCostRatio": 3.480749738014807,
       "actualRunningCostRatio": null,
       "runningPriceRatio": 3.480749738014807,
@@ -150,7 +148,9 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "totalCostEstimateRatio": 0.0,
       "totalPriceEstimateRatio": 0.0,
       "dateCreated": "2020-03-04T23:35:07+0000",
-      "lastUpdated": "2020-03-12T19:00:01+0000"
+      "lastUpdated": "2020-03-12T19:00:01+0000",
+      "rawData": {
+      }
     }
   ],
   "meta": {
@@ -260,8 +260,6 @@ curl "$MORPHEUS_API_URL/api/invoices/11338" \
     "runningMultiplier": 0.2536250387,
     "lastCostDate": "2020-03-12T19:59:59+0000",
     "lastActualDate": null,
-    "rawData": {
-    },
     "runningCostRatio": 3.480749738014807,
     "actualRunningCostRatio": null,
     "runningPriceRatio": 3.480749738014807,
@@ -269,7 +267,9 @@ curl "$MORPHEUS_API_URL/api/invoices/11338" \
     "totalCostEstimateRatio": 0.0,
     "totalPriceEstimateRatio": 0.0,
     "dateCreated": "2020-03-04T23:35:07+0000",
-    "lastUpdated": "2020-03-12T19:00:01+0000"
+    "lastUpdated": "2020-03-12T19:00:01+0000",
+    "rawData": {
+    }
   }
 }
 
