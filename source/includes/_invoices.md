@@ -173,6 +173,7 @@ This endpoint retrieves all invoices for the specified parameters.
 
 Parameter | Default | Description
 --------- | ------- | -----------
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
@@ -285,3 +286,9 @@ This endpoint retrieves a specific invoice.
 Parameter | Description
 --------- | -----------
 id | ID of the invoice
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
