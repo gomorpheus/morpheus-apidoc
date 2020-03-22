@@ -24,6 +24,7 @@ includes:
   - invoices
   - operations/processes
   - operations/health
+  - guidance
 
   - provisioning
   - provision_types
