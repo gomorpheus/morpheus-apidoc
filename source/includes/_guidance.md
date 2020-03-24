@@ -16,9 +16,6 @@ curl "$MORPHEUS_API_URL/api/guidance" \
   "discoveries": [
     {
       "id": 3405,
-      "processed": false,
-      "processedMessage": null,
-      "processDate": null,
       "dateCreated": "2019-03-05T23:05:02+0000",
       "lastUpdated": "2020-03-21T00:05:05+0000",
       "actionCategory": "reservation",
@@ -40,7 +37,8 @@ curl "$MORPHEUS_API_URL/api/guidance" \
           "name": "Azure (Public)"
         }
       },
-      "ignored": false,
+      "state": "processed",
+      "stateMessage": "shutdown resource",
       "severity": "info",
       "resolved": false,
       "resolvedMessage": null,
@@ -240,9 +238,6 @@ curl "$MORPHEUS_API_URL/api/guidance/2" \
 {
   "discovery": {
     "id": 2,
-    "processed": false,
-    "processedMessage": null,
-    "processDate": null,
     "dateCreated": "2020-03-18T17:36:09+0000",
     "lastUpdated": "2020-03-21T18:49:27+0000",
     "actionCategory": "power",
@@ -264,7 +259,8 @@ curl "$MORPHEUS_API_URL/api/guidance/2" \
         "name": "VMware vCenter"
       }
     },
-    "ignored": true,
+    "state": "processed",
+    "stateMessage": "shutdown resource",
     "severity": "info",
     "resolved": true,
     "resolvedMessage": null,
