@@ -223,7 +223,7 @@ sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Reference name, status message and action, restricts query to only load discoveries which contain the phrase specified
 severity |  | Severity level filter, restricts query to only load discoveries of specified severity level: info, low, warning, critical
-type |  | Discovery type filter, restricts query to only load discoveries of specified discover type. [See discovery types](#get-guidance-types)
+type |  | Discovery type filter, restricts query to only load discoveries of specified discover type. [See discovery types](#get-discovery-types)
 state |  | Filter by state, restricts query to only load discoveries by state: any, processed, ignored
 
 
@@ -304,13 +304,13 @@ curl "$MORPHEUS_API_URL/api/guidance/2" \
       "volumeId": null,
       "platform": null,
       "platformVersion": null,
-      "sshUsername": "root",
+      "sshUsername": "xxxxx",
       "sshPassword": null,
       "osDevice": "/dev/sda",
       "osType": "esxi",
       "dataDevice": "/dev/sdb",
       "lvmEnabled": true,
-      "apiKey": "87b86947-7898-406d-bd32-71b1312c8e12",
+      "apiKey": "xxxxx",
       "softwareRaid": false,
       "dateCreated": "2019-07-29T19:05:31+0000",
       "lastUpdated": "2020-02-26T07:10:59+0000",
@@ -359,7 +359,7 @@ curl "$MORPHEUS_API_URL/api/guidance/2" \
       "tagCompliant": null,
       "zone": {
         "id": 4,
-        "name": "Denver VMware Virtual Center Cloud"
+        "name": "VMware Virtual Center Cloud"
       },
       "plan": {
         "id": null,
