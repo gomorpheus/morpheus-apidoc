@@ -221,9 +221,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Name, description and provision type name, restricts query to only load discoveries which contain the phrase specified
+phrase |  | Reference name, status message and action, restricts query to only load discoveries which contain the phrase specified
 severity |  | Severity level filter, restricts query to only load discoveries of specified severity level: info, low, warning, critical
-type |  | Discovery type filter, restricts query to only load discoveries of specified discover type
+type |  | Discovery type filter, restricts query to only load discoveries of specified discover type. [See discovery types](#get-guidance-types)
 state |  | Filter by state, restricts query to only load discoveries by state: any, processed, ignored
 
 
@@ -433,8 +433,6 @@ id | ID of the discovery
 
 ## Get Guidance Stats
 
-Use this command to retrieve summary of actionable discoveries
-
 ```shell
 curl "$MORPHEUS_API_URL/api/guidance/stats" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
@@ -471,6 +469,71 @@ This endpoint retrieves a summary of actionable discoveries.
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/guidance/stats`
+
+
+## Get Discovery Types
+
+```shell
+curl "$MORPHEUS_API_URL/api/guidance/types" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "types": [
+    {
+      "id": 1,
+      "name": "Shutdown",
+      "code": "shutdown",
+      "category": "utilization",
+      "title": "Shutdown resource"
+    },
+    {
+      "id": 2,
+      "name": "Sizing",
+      "code": "size",
+      "category": "utilization",
+      "title": "Resize resource"
+    },
+    {
+      "id": 3,
+      "name": "Host Capacity",
+      "code": "hostCapacity",
+      "category": "utilization",
+      "title": "Add Capacity"
+    },
+    {
+      "id": 4,
+      "name": "Host Balancing",
+      "code": "hostBalancing",
+      "category": "utilization",
+      "title": "Balance Host"
+    },
+    {
+      "id": 5,
+      "name": "Datastore Capacity",
+      "code": "datastoreCapacity",
+      "category": "utilization",
+      "title": "Add Capacity"
+    },
+    {
+      "id": 6,
+      "name": "Reservation Recommendation",
+      "code": "reservations",
+      "category": "utilization",
+      "title": "Add Reservations"
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of discovery types.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/guidance/types`
 
 
 ## Execute a Discovery
