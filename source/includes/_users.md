@@ -102,7 +102,39 @@ curl "$MORPHEUS_API_URL/api/accounts/1/users/1" \
       "id": 1,
       "name": "Root Account"
     },
-    "instanceLimits": null
+    "instanceLimits": null,
+    "access": {
+      "features": [
+        {
+          "id": 11,
+          "code": "admin-appliance",
+          "name": "Admin: Appliance Settings",
+          "access": "full"
+        }
+      ],
+      "sites": [
+        {
+          "id": 1,
+          "name": "AWS",
+          "access": "full"
+        }
+      ],
+      "instanceTypes": [
+        {
+          "id": 1,
+          "code": "activemq",
+          "name": "ActiveMQ",
+          "access": "full"
+        }
+      ],
+      "appTemplates": [
+        {
+          "id": 1,
+          "name": "Blank Apache",
+          "access": "full"
+        }
+      ]
+    }
   }
 }
 ```
@@ -112,6 +144,13 @@ This endpoint will retrieve a specific user by id if the user has permission to 
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+includeAccess |  | Include access the user payload
+
 
 ## Create a User
 
@@ -134,6 +173,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/accounts/:accountId/users`
+
 
 ### JSON User Parameters
 
