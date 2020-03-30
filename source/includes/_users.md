@@ -246,3 +246,67 @@ This will disassociate the user from any instances they have previously provisio
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
+
+
+## Get a User Permissions
+
+```shell
+curl "$MORPHEUS_API_URL/api/accounts/1/permissions/1" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+>
+```json
+{
+  "access": {
+    "features": [
+      {
+        "id": 11,
+        "code": "admin-appliance",
+        "name": "Admin: Appliance Settings",
+        "access": "full"
+      },
+      {
+        "id": 13,
+        "code": "admin-backupSettings",
+        "name": "Admin: Backup Settings",
+        "access": "none"
+      }
+    ],
+    "sites": [
+      {
+        "id": 2,
+        "name": "aws",
+        "access": "none"
+      }
+    ],
+    "instanceTypes": [
+      {
+        "id": 1,
+        "code": "activemq",
+        "name": "ActiveMQ",
+        "access": "full"
+      }
+    ],
+    "appTemplates": [
+      {
+        "id": 1,
+        "name": "Blank Apache",
+        "access": "full"
+      },
+      {
+        "id": 4,
+        "name": "dand-azure-blueprint",
+        "access": "none"
+      }
+    ]
+  }
+}
+```
+
+This will list all the permissions for a specific user.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/accounts/:accountId/permissions/:id`
