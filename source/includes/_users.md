@@ -112,6 +112,13 @@ curl "$MORPHEUS_API_URL/api/accounts/1/users/1" \
           "access": "full"
         }
       ],
+      "zones": [
+        {
+          "id": 1,
+          "name": "zone1",
+          "access": "full"
+        }
+      ],
       "sites": [
         {
           "id": 1,
@@ -248,7 +255,7 @@ This will disassociate the user from any instances they have previously provisio
 `DELETE https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
 
 
-## Get a User Permissions
+## Get a Specific User Permissions
 
 ```shell
 curl "$MORPHEUS_API_URL/api/accounts/1/permissions/1" \
@@ -272,6 +279,13 @@ curl "$MORPHEUS_API_URL/api/accounts/1/permissions/1" \
         "code": "admin-backupSettings",
         "name": "Admin: Backup Settings",
         "access": "none"
+      }
+    ],
+    "zones": [
+      {
+        "id": 1,
+        "name": "zone1",
+        "access": "full"
       }
     ],
     "sites": [
