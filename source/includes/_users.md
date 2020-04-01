@@ -258,7 +258,7 @@ This will disassociate the user from any instances they have previously provisio
 ## Get a Specific User Permissions
 
 ```shell
-curl "$MORPHEUS_API_URL/api/accounts/1/permissions/1" \
+curl "$MORPHEUS_API_URL/api/accounts/1/users/1/permissions" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -323,4 +323,4 @@ This will list all the permissions for a specific user.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:accountId/permissions/:id`
+`GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id/permissions
