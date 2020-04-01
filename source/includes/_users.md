@@ -323,4 +323,4 @@ This will list all the permissions for a specific user.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id/permissions
+`GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id/permissions`
