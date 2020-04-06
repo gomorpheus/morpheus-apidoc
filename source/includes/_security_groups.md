@@ -167,6 +167,7 @@ zoneId      |  | Scoped Cloud ID.
 customOptions.vpc      |  | External ID of Amazon VPC.
 customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access.
+tenantPermissions.canManageAccounts  |  | Array of tenant account ids that can manage.
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
 
@@ -201,6 +202,7 @@ Parameter | Default | Description
 name      |  | Name for your security group
 description |  | Optional description field
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+tenantPermissions.canManageAccounts  |  | Array of tenant account ids that can manage.
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
 
