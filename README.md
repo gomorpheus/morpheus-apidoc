@@ -99,4 +99,4 @@ TODO
 
 #### Versioned documentation
 
-We need to host a version of the documentation for each release, and provide an easy way to switch betwen versions.
+We need to host a version of the documentation for each release, and provide an easy way to switch between versions.
