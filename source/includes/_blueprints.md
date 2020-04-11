@@ -490,6 +490,29 @@ Same as [Create](#create-a-blueprint).
 
 This overwrites the entire config, so the entire blueprint config should be passed.
 
+## Update Blueprint Owner
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/owner" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"ownerId": 2}'
+```
+
+> The above command returns JSON structured like getting a single blueprint.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/blueprints/:id/owner`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ownerId  |  | [User](#users) ID . Pass null to clear owner.
+
+This endpoint will change the owner of the blueprint.
+
 ## Update Blueprint Permissions
 
 ```shell
