@@ -1,7 +1,7 @@
 Morpheus API Documentation
 ========
 
-The Morpheus API Documentation are built on the [Slate](https://github.com/slatedocs/slate) framework. 
+The Morpheus API Documentation is built on the [Slate](https://github.com/slatedocs/slate) framework. 
 
 Github Pages is used for hosting. The latest published documentation can be viewed at [https://bertramdev.github.io/morpheus-apidoc/](https://bertramdev.github.io/morpheus-apidoc/).
 
@@ -68,7 +68,6 @@ git add [file] [file2]
 Lastly, commit the changes and push them.
 
 ```sh
-git add .
 git commit . -m "apidoc changes..."
 git push
 ```
