@@ -190,8 +190,9 @@ curl "$MORPHEUS_API_URL/api/instances?max=3"
       "statusPercent": null,
       "statusEta": null,
       "userStatus": null,
-      "createdBy": {
-        "id": 25
+      "owner": {
+        "id": 1,
+        "username": "admin"
       }
     }
   ],
@@ -325,8 +326,9 @@ curl "$MORPHEUS_API_URL/api/instances/1216" \
     "statusPercent": null,
     "statusEta": null,
     "userStatus": null,
-    "createdBy": {
-      "id": 1
+    "owner": {
+      "id": 1,
+      "username": "admin"
     }
   },
   "stats": {
@@ -1574,7 +1576,7 @@ instanceContext |  | Environment
 metadata |  | Array of metadata objects
 powerScheduleType |  | Power Schedule ID
 site.id |  | Group ID
-createdById |  | User ID, can be used to change instance owner.
+ownerId  |  | [User](#users) ID, can be used to change instance owner.
 
 ## Stop an Instance
 

@@ -18,11 +18,14 @@ curl "$MORPHEUS_API_URL/api/apps" \
       "id": 1,
       "name": "My Test App",
       "description": "Sample Description",
-      "accountId": 1,
+      "owner": {
+        "id": 1,
+        "username": "admin"
+      },
       "account": {
         "id": 1,
         "name": "root"
-      },
+      }
       "siteId": 1,
       "group": {
         "id": 1,
@@ -33,6 +36,7 @@ curl "$MORPHEUS_API_URL/api/apps" \
         "name": "Grails Example",
         "type": "morpheus"
       },
+      "type": "morpheus",
       "status": "running",
       "instanceCount": 2,
       "containerCount": 2,
@@ -122,11 +126,14 @@ curl "$MORPHEUS_API_URL/api/apps/4" \
     "id": 1,
     "name": "My Test App",
     "description": "Sample Description",
-    "accountId": 1,
-    "account": {
+    "owner": {
+      "id": 1,
+      "username": "admin"
+    },
+    "tenant": {
       "id": 1,
       "name": "root"
-    },
+    }
     "siteId": 1,
     "group": {
       "id": 1,
@@ -137,6 +144,7 @@ curl "$MORPHEUS_API_URL/api/apps/4" \
       "name": "Grails Example",
       "type": "morpheus"
     },
+    "type": "morpheus",
     "status": "running",
     "instanceCount": 2,
     "containerCount": 2,
@@ -263,7 +271,7 @@ Parameter | Default | Description
 name  |  | Name
 description     |  | Description
 environment     |  | Environment (appContext)
-
+ownerId  |  | [User](#users) ID, can be used to change instance owner.
 
 ## Add Existing Instance to App
 
