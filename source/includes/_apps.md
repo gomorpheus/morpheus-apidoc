@@ -271,7 +271,7 @@ Parameter | Default | Description
 name  |  | Name
 description     |  | Description
 environment     |  | Environment (appContext)
-ownerId  |  | [User](#users) ID, can be used to change instance owner.
+ownerId  |  | [User](#users) ID, can be used to change app owner. This also changes the owner for each instance in the app.
 
 ## Add Existing Instance to App
 
