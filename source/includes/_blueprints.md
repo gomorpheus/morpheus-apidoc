@@ -516,7 +516,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/blueprints/1/update-permissions" \
     "all":false,
     "sites": [
       {"id": 1}
-    ]
+    ],
+    "ownerId": 1
   }}'
 ```
 
@@ -532,7 +533,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 resourcePermission.all  |  | Enable access for all groups
 resourcePermission.sites  |  | Enable access for specific groups only
-ownerId  |  | [User](#users) ID, can be used to change instance owner.
+ownerId  |  | [User](#users) ID, can be used to change blueprint owner.
 
 
 ## Update Blueprint Image
