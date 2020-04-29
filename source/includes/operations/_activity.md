@@ -15,77 +15,62 @@ curl "$MORPHEUS_API_URL/api/activity" \
 
 ```json
 {
-  "success": true,
   "activity": [
     {
-      "date": "2019-10-23T04:00:00Z"
-    },
-    {
+      "_id": "ed970f86-c2bd-4ea2-8c3e-37494c8d8c67",
       "success": false,
-      "deleted": true,
-      "name": "test check",
-      "siteId": null,
-      "message": "Check has successfully been deleted by 'root.",
-      "ts": "2019-10-23T19:31:54Z",
       "activityType": "Alert",
-      "accountId": 1,
-      "userId": 1,
-      "userName": "root",
+      "name": "test check",
+      "message": "Check has successfully been deleted",
       "objectId": 239,
       "objectType": "MonitorCheck",
-      "_id": "ed970f86-c2bd-4ea2-8c3e-37494c8d8c67",
+      "user": {
+        "id": 22,
+        "username": "tester"
+      },
       "timestamp": "2019-10-23T19:31:54Z"
     },
     {
-      "date": "2019-10-22T04:00:00Z"
-    },
-    {
+      "_id": "247f122a-2dd6-4d92-a945-9e1fc35d8e51",
       "success": false,
+      "activityType": "Monitoring",
       "name": "dev-appliance",
       "message": "Check has successfully been updated.",
-      "ts": "2019-10-22T07:55:49Z",
-      "activityType": "Monitoring",
-      "accountId": 1,
-      "userId": 1,
-      "userName": "root",
       "objectId": 238,
       "objectType": "MonitorCheck",
-      "_id": "247f122a-2dd6-4d92-a945-9e1fc35d8e51",
-      "timestamp": "2019-10-22T07:55:49Z"
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-22T07:55:49Z"
     },
     {
-      "date": "2019-10-21T04:00:00Z"
-    },
-    {
+      "_id": "0276e1fc-214d-4cb3-bcf4-9ebda0b26542",
       "success": false,
+      "activityType": "Monitoring",
       "name": "dev-appliance",
       "message": "Check successfully been created.",
-      "ts": "2019-10-22T00:06:20Z",
-      "activityType": "Monitoring",
-      "accountId": 1,
-      "userId": 1,
-      "userName": "root",
       "objectId": 238,
       "objectType": "MonitorCheck",
-      "_id": "0276e1fc-214d-4cb3-bcf4-9ebda0b26542",
-      "timestamp": "2019-10-22T00:06:20Z"
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-22T00:06:20Z"
     },
     {
-      "date": "2019-10-08T04:00:00Z"
-    },
-    {
+      "_id": "26976fe0-a722-4d20-9849-9405a95d0db9",
       "success": true,
+      "activityType": "Admin",
       "name": "julius",
       "message": "User 'julius' updated. Password changed.",
-      "ts": "2019-10-08T21:17:52Z",
-      "activityType": "Admin",
-      "accountId": 1,
-      "userId": 1,
-      "userName": "root",
       "objectId": 96,
       "objectType": "User",
-      "_id": "26976fe0-a722-4d20-9849-9405a95d0db9",
-      "timestamp": "2019-10-08T21:17:52Z"
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-08T21:17:52Z"
     }
   ]
 }
@@ -94,12 +79,6 @@ curl "$MORPHEUS_API_URL/api/activity" \
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/activity`
-
-### HTTP Headers
-
-Header | Description
---------- | -----------
-Authorization     | A valid access token
 
 ### Query Parameters
 
@@ -111,23 +90,5 @@ sort | name | Sort order
 order | asc | Sort direction, use 'desc' to reverse sort
 name |  | Filter by name
 phrase |  | Filter by wildcard search of name and description
-createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
-
-
-### Response
-
-Name | Description
---------- | -----------
-activity | Array of [Activity Objects](#activity-object).
-
-#### Activity Object
-
-Name | Description
---------- | -----------
-name | A brief name for the activity.
-message | A description of the activity.
-userName | Username of the author.
-ts | Timestamp of when the activity occurred.
-objectId | Object ID
-objectType | Object Type
-
+userId |  | Filter by [User](#users) ID.
+tenantId |  | Filter by [Tenant](#tenants) ID. *Only available to the master account.*
