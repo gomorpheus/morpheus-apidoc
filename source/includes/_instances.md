@@ -249,6 +249,7 @@ lastUpdated |  | Date filter, restricts query to only load instances updated  ti
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 status |  | Filter by instance type status
 showDeleted | false | If true, includes instances in pending removal status.
+deleted |  | If true, only instances in pending removal status are returned.
 
 ## Get a Specific Instance
 
