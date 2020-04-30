@@ -657,8 +657,6 @@ id | ID of the layout
 
 ## Create a Layout
 
-Use this command to create a layout.
-
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
@@ -681,6 +679,11 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
     ],
     "specTemplates": [
       
+    ],
+    "permissions": {
+      "resourcePermissions": {
+        "allSites":true
+      }
     ]
   }
 }'
@@ -694,6 +697,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   "success": true
 }
 ```
+
+Use this command to create a layout.
 
 ### HTTP Request
 
@@ -722,6 +727,7 @@ optionTypes | N | Array of layout option type IDs, see [Option Types](#option-ty
 specTemplates | N | Array of layout spec template IDs, see [Spec Templates](#spec-templates)
 taskSetId | N | ID of [Workflow](#workflows)
 environmentVariables | N | Array of layout env variables, see [Environment Variables](#environment-variable-parameters)
+permissions | N | Permissions object for upgrading group access, see [Permissions](#permissions-parameters)
 
 #### Environment Variable Parameters
 The `environmentVariables` parameter is array of env objects with following fields:
@@ -733,9 +739,23 @@ value | N | Sets fixed value for variable
 masked | N | Can be used to enable / disable masking of variable, default is off
 export | N | Can be used to enable / disable export of variable, default is off
 
-## Update a Layout
+#### Permissions Parameters
+The `permissions` parameter is an object with following fields:
 
-Use this command to update an existing layout.
+Parameter | Required | Description
+--------- | -------- | -----------
+resourcePermissions | N | Object containing group access settings, see [Group Access Parameters](#group-access-parameters)
+
+##### Group Access Parameters
+The `resourcePermissions` parameter is an object with following fields:
+
+Parameter | Required | Description
+--------- | -------- | -----------
+allSites | N | Set to true to grant access to all sites
+sites | N | Array of objects identifying sites with access eg. `[{"id":1},{"id":2}]`
+
+
+## Update a Layout
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
@@ -759,6 +779,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
 }
 ```
 
+Use this command to update an existing layout.
+
 ### HTTP Request
 
 `PUT https://api.gomorpheus.com/api/library/layouts/:id`
@@ -772,6 +794,68 @@ id | The ID of the layout
 ### JSON Parameters
 
 Same as [Create](#create-an-instance-type).
+
+## Update Layout Permissions
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
+  -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "instanceTypeLayout": {
+    "permissions": {
+      "resourcePermissions": {
+        "allSites":false,
+        "sites": [
+          {"id": 2},
+          {"id": 3}
+        ]
+      }
+    ]
+  }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Use this command to update permissions for an existing layout.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/library/layouts/:id/permissions`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the layout
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+permissions | N | Permissions object for upgrading group access, see [Permissions](#permissions-parameters)
+
+#### Permissions Parameters
+The `permissions` parameter is an object with following fields:
+
+Parameter | Required | Description
+--------- | -------- | -----------
+resourcePermissions | N | Object containing permission settings, see [Group Access Parameters](#group-access-parameters)
+
+##### Group Access Parameters
+The `resourcePermissions` parameter is an object with following fields:
+
+Parameter | Required | Description
+--------- | -------- | -----------
+allSites | N | Set to true to grant access to all sites
+sites | N | Array of objects identifying sites with access eg. `[{"id":1},{"id":2}]`
 
 ## Delete a Layout
 
