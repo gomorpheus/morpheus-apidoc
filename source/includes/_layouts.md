@@ -682,7 +682,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
     ],
     "permissions": {
       "resourcePermissions": {
-        "allSites":true
+        "all":true
       }
     ]
   }
@@ -751,8 +751,8 @@ The `resourcePermissions` parameter is an object with following fields:
 
 Parameter | Required | Description
 --------- | -------- | -----------
-allSites | N | Set to true to grant access to all sites
-sites | N | Array of objects identifying sites with access eg. `[{"id":1},{"id":2}]`
+all | N | Set to true to grant access to all groups
+sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id":2}]`
 
 
 ## Update a Layout
@@ -805,7 +805,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   "instanceTypeLayout": {
     "permissions": {
       "resourcePermissions": {
-        "allSites":false,
+        "all":false,
         "sites": [
           {"id": 2},
           {"id": 3}
@@ -854,8 +854,8 @@ The `resourcePermissions` parameter is an object with following fields:
 
 Parameter | Required | Description
 --------- | -------- | -----------
-allSites | N | Set to true to grant access to all sites
-sites | N | Array of objects identifying sites with access eg. `[{"id":1},{"id":2}]`
+all | N | Set to true to grant access to all groups
+sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id":2}]`
 
 ## Delete a Layout
 
