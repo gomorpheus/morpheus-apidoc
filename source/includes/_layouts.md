@@ -798,7 +798,7 @@ Same as [Create](#create-an-instance-type).
 ## Update Layout Permissions
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
