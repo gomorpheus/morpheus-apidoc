@@ -88,7 +88,7 @@ This is the format for JSON parameters. These are parameters which are included 
 The Morpheus API returns **200 OK** for successful requests. 
 If a request fails, an HTTP [Error](#errors) will be returned.
 
-Most API endpoints respond with *Content-Type: application/json* and body that contains JSON data.
+Most endpoints respond with *Content-Type: application/json* and body that contains JSON data.
 
 This is an example of an API response that retrieves a [Contact](#contacts) record by ID.
 

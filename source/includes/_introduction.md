@@ -10,6 +10,7 @@ This document describes the Morpheus [API](#api) protocol and the endpoints it p
 
 Section |  Description
 --------- | -------
+[Authentication](#authentication) | [Get Access Token](#get-access-token), [Refresh Access Token](#refresh-access-token), [Whoami](#whoami)
 [Operations](#operations) | [Dashboard](#dashboard), [Reports](#reports), [Wiki](#wiki), [Budgets](#budgets), [Approvals](#approvals), [Activity](#activity), [Billing](#billing), [Invoices](#invoices), [History](#history), [Health](#health), [Guidance](#guidance)
 [Provisioning](#provisioning) | [Instances](#instances), [Apps](#apps), [Blueprints](#blueprints), [Jobs](#jobs), [Automation](#automation), [Virtual Images](#virtual-images), [Library](#library), [Deployments](#deployments)
 [Infrastructure](#infrastructure) | [Groups](#groups), [Clouds](#clouds), [Clusters](#clusters), [Hosts](#hosts), [Networks](#networks), [Storage](#storage), [Keys](#key-pairs) & [Certs](#ssl-certificates)

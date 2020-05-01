@@ -6,7 +6,7 @@ Authentication is done by passing an access token in the [Authorization](#author
 
 Use [Get Access Token](#get-access-token) to acquire a valid access token.
 
-Most `/api` endpoints require authentication.
+Most `/api` endpoints require authentication, and will respond with a HTTP 401 without a valid Authorization header.
 
 <aside class="info">
 Be sure to keep your access token a secret. Anyone with the token can interact with the API as your morpheus user.
@@ -14,11 +14,11 @@ Be sure to keep your access token a secret. Anyone with the token can interact w
 
 ## Authorization Header
 
-This header must be included in all requests that require authentication.
+This header must be included in all requests that require authorization.
 
 Header |  Description
 ---------  | -----------
-Authorization      | Use the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`
+Authorization      | Identifies the Morpheus API access token in the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`
 
 
 ## Get Access Token
