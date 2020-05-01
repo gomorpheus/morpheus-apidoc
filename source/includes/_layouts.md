@@ -758,7 +758,7 @@ sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id"
 ## Update a Layout
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
+curl -XPUT "$MORPHEUS_API_URL/api/library/layouts/:id" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -798,7 +798,7 @@ Same as [Create](#create-an-instance-type).
 ## Update Layout Permissions
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/layouts/:id" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
