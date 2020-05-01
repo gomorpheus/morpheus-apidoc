@@ -658,7 +658,7 @@ id | ID of the layout
 ## Create a Layout
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/132/layouts" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/instance-types/:instanceTypeId/layouts" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -798,7 +798,7 @@ Same as [Create](#create-an-instance-type).
 ## Update Layout Permissions
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/library/layouts/:id" \
+curl -XPOST "$MORPHEUS_API_URL/api/library/layouts/:id/permissions" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
