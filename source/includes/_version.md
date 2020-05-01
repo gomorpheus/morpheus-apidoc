@@ -4,4 +4,4 @@
 This document is for the Morpheus API version <b>4.2.1</b>
 </aside>
 
-You can determine your current version using [Check Appliance](#check-appliance).
+You can determine your current version using [Ping](#ping).

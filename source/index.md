@@ -117,6 +117,7 @@ includes:
   - log_settings
   - whitelabel_settings
   - license
+  - ping
   - setup
 
 search: true

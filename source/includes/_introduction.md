@@ -16,7 +16,7 @@ Section |  Description
 [Logs](#logs) | View logs for your hosts and containers.
 [Monitoring](#monitoring) | [Checks](#checks), [Incidents](#checks), [Alerts](#alerts), [Contacts](#contacts)
 [Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds)
-[Administration](#administration) | [Tenants](#tenants), [Roles](#roles), [Users](#users), [Plans](#service-plans) & [Pricing](#prices), [Policies](#policies), [Settings](#appliance-settings), [License](#license), [Setup](#setup)
+[Administration](#administration) | [Tenants](#tenants), [Roles](#roles), [Users](#users), [Plans](#service-plans) & [Pricing](#prices), [Policies](#policies), [Settings](#appliance-settings), [License](#license), [Ping](#ping), [Setup](#setup)
 
 To initialize a freshly installed Morpheus appliance, see [Setup](#setup).
 

@@ -1,35 +1,9 @@
 # Setup
 
-The Morpheus API can be used to initialize a fresh installation of the Morpheus appliance.
+<!-- The Morpheus API can be used to initialize a fresh installation of the Morpheus appliance.
 
-## Check Appliance
-
-```shell
-curl "$MORPHEUS_API_URL/api/setup/check"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "success":true,
-    "buildVersion":"3.5.1",
-    "setupNeeded":false
-}
-```
-
-This endpoint can be used to check if the appliance needs to be setup and what version it is running. 
-
-<aside class="info">
-This endpoint is public and does not require authorization.
-</aside>
-
-### HTTP Request
-
-`GET https://api.gomorpheus.com/api/setup/check`
-
-
-## Initialize Appliance
+## Initialize
+ -->
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/setup/init" \
@@ -56,7 +30,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/setup/init" \
 }
 ```
 
-This will initialize a brand new appliance by creating the master [Tenant] (#tenants) and [User](#users).
+This will initialize a freshly installed Morpheus appliance by creating the master [Tenant] (#tenants) and [User](#users).
 
 Setup includes connecting to the [Morpheus Hub](https://morpheushub.com). This is done either by registering a new account or logging in to an existing account, which connects your appliance to your organization's hub account. By default, a community license key will be generated and installed in your new appliance.
 
