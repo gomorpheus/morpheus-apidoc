@@ -63,6 +63,9 @@ sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Restricts query to only load prices with name or code containing the phrase specified
 includeInactive | false | If true, include inactive prices in the results
+priceType |  | Restricts query to only load only prices with specified priceType
+platform |  | Restricts query to only load only prices with specified platform
+currency |  | Restricts query to only load only prices with specified currency
 
 
 ## Get a Specific Price
