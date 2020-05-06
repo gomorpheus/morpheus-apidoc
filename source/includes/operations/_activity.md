@@ -92,3 +92,6 @@ name |  | Filter by name
 phrase |  | Filter by wildcard search of name and description
 userId |  | Filter by [User](#users) ID.
 tenantId |  | Filter by [Tenant](#tenants) ID. *Only available to the master account.*
+timeframe | month | Filter by a timeframe. eg. today,yesterday,week,month,3months.
+start | (1 month ago) | Filter by activity on or after a date(time)
+end | (current time) | Filter by activity on or before a date(time)
