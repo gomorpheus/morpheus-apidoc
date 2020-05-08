@@ -219,10 +219,10 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | A unique name for your project
 description |  | Description
-tags | [] | Metadata tags, Array of objects having a name and value
-instances | [] | Instances, Array of objects having an id
-servers | [] | Servers, Array of objects having an id
-clouds | [] | Clouds, Array of objects having an id
+tags |  | Metadata tags, Array of objects having a name and value
+instances |  | Instances, Array of objects having an id
+servers |  | Servers, Array of objects having an id
+clouds |  | Clouds, Array of objects having an id
 
 
 ## Update a Project
