@@ -115,7 +115,7 @@ instanceId |  | Filter by associated instance(s)
 serverId |  | Filter by associated servers(s)
 cloudId |  | Filter by associated cloud(s)
 ownerId |  | Filter by associated owner(s), [user(s)](#users)
-id |  | Filter by id(s)
+id |  | Filter by project id(s)
 
 
 
