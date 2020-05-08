@@ -22,6 +22,7 @@ includes:
   - operations/activity
   - billing
   - invoices
+  - projects
   - operations/processes
   - operations/health
   - guidance

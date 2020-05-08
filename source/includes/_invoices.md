@@ -15,120 +15,108 @@ curl "$MORPHEUS_API_URL/api/invoices" \
 {
   "invoices": [
     {
-      "id": 11337,
+      "id": 11868,
       "account": {
         "id": 1,
         "name": "root"
       },
       "group": {
         "id": 1,
-        "name": "G1"
+        "name": "lonestar"
       },
       "cloud": {
         "id": 39,
-        "name": "test-amazon"
+        "name": "qa-amazon"
       },
       "instance": {
-        "id": 330,
-        "name": "test-box"
-      },
-      "server": {
-        "id": 2070,
-        "name": "test-box"
-      },
-      "cluster": null,
-      "plan": {
-        "id": 1,
-        "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
-      },
-      "refType": "Container",
-      "refId": 326,
-      "refName": "test-box_326",
-      "refCategory": "vm",
-      "interval": "month",
-      "period": "202003",
-      "estimate": true,
-      "active": true,
-      "startDate": "2020-03-01T05:00:00+0000",
-      "endDate": "2020-04-01T03:59:59+0000",
-      "intervalPrice": 6.250800024,
-      "intervalCost": 6.2508,
-      "computePrice": 5.0508,
-      "computeCost": 5.0508,
-      "memoryPrice": 0.0,
-      "memoryCost": 0.0,
-      "storagePrice": 1.2,
-      "storageCost": 1.2,
-      "networkPrice": 0.0,
-      "networkCost": 0.0,
-      "licensePrice": 0.0,
-      "licenseCost": 0.0,
-      "extraPrice": 0.0,
-      "extraCost": 0.0,
-      "totalPrice": 5.488956027524173,
-      "totalCost": 5.488956006449279,
-      "runningPrice": 1.5853593979929612,
-      "runningCost": 1.58535939190596,
-      "actualComputeCost": 0.0,
-      "actualMemoryCost": 0.0,
-      "actualStorageCost": 0.0,
-      "actualNetworkCost": 0.0,
-      "actualLicenseCost": 0.0,
-      "actualExtraCost": 0.0,
-      "actualTotalCost": 0.0,
-      "actualRunningCost": 0.0,
-      "offTime": 0,
-      "powerState": "on",
-      "powerDate": "2020-03-04T23:33:23+0000",
-      "runningMultiplier": 0.2536250387,
-      "lastCostDate": "2020-03-12T19:59:59+0000",
-      "lastActualDate": null,
-      "runningCostRatio": 3.4807497380148065,
-      "actualRunningCostRatio": null,
-      "runningPriceRatio": 3.480749738014807,
-      "actualRunningPriceRatio": null,
-      "totalCostEstimateRatio": 0.0,
-      "totalPriceEstimateRatio": 0.0,
-      "dateCreated": "2020-03-04T23:35:07+0000",
-      "lastUpdated": "2020-03-12T19:00:01+0000",
-      "rawData": {
-      }
-    },
-    {
-      "id": 11338,
-      "account": {
-        "id": 1,
-        "name": "root"
-      },
-      "group": {
-        "id": 1,
-        "name": "G1"
-      },
-      "cloud": null,
-      "instance": {
-        "id": 330,
-        "name": "test-box"
+        "id": 331,
+        "name": "nginx21"
       },
       "server": null,
       "cluster": null,
+      "user": {
+        "id": 1,
+        "name": "admin"
+      },
       "plan": {
         "id": 1,
         "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
       },
+      "project": {
+        "id": 2,
+        "name": "test",
+        "tags": {
+          "agency": "Lonestar"
+        }
+      },
       "refType": "Instance",
-      "refId": 330,
-      "refName": "test-box",
+      "refId": 331,
+      "refName": "nginx21",
       "refCategory": "vm",
+      "resourceId": null,
+      "resourceUuid": null,
+      "resourceType": null,
+      "resourceName": null,
+      "resourceExternalId": null,
+      "resourceInternalId": null,
       "interval": "month",
-      "period": "202003",
-      "estimate": true,
+      "period": "202005",
+      "estimate": false,
       "active": true,
-      "startDate": "2020-03-01T05:00:00+0000",
-      "endDate": "2020-04-01T03:59:59+0000",
-      "intervalPrice": 6.250800024,
-      "intervalCost": 6.250800024,
-      "computePrice": 0.0,
-      "computeCost": 0.0,
+      "startDate": "2020-05-01T04:00:00+0000",
+      "endDate": "2020-06-01T03:59:59+0000",
+      "refStart": "2020-05-01T04:00:00+0000",
+      "refEnd": "2020-06-01T03:59:59+0000",
+      "estimatedComputePrice": 0.0,
+      "estimatedComputeCost": 0.0,
+      "estimatedMemoryPrice": 0.0,
+      "estimatedMemoryCost": 0.0,
+      "estimatedStoragePrice": 0.0,
+      "estimatedStorageCost": 0.0,
+      "estimatedNetworkPrice": 0.0,
+      "estimatedNetworkCost": 0.0,
+      "estimatedLicensePrice": 0.0,
+      "estimatedLicenseCost": 0.0,
+      "estimatedExtraPrice": 0.0,
+      "estimatedExtraCost": 0.0,
+      "estimatedTotalPrice": 6.250800024,
+      "estimatedTotalCost": 6.250800024,
+      "estimatedRunningPrice": 1.5038869430406268,
+      "estimatedRunningCost": 1.5038869430406268,
+      "invoiceComputePrice": 0.0,
+      "invoiceComputeCost": 0.0,
+      "invoiceMemoryPrice": 0.0,
+      "invoiceMemoryCost": 0.0,
+      "invoiceStoragePrice": 0.0,
+      "invoiceStorageCost": 0.0,
+      "invoiceNetworkPrice": 0.0,
+      "invoiceNetworkCost": 0.0,
+      "invoiceLicensePrice": 0.0,
+      "invoiceLicenseCost": 0.0,
+      "invoiceExtraPrice": 0.0,
+      "invoiceExtraCost": 0.0,
+      "invoiceTotalPrice": 0.0,
+      "invoiceTotalCost": 0.0,
+      "invoiceRunningPrice": 0.0,
+      "invoiceRunningCost": 0.0,
+      "actualComputePrice": 0.1709403426,
+      "actualComputeCost": 0.1709403426,
+      "actualMemoryPrice": 0.0,
+      "actualMemoryCost": 0.0,
+      "actualStoragePrice": 0.0,
+      "actualStorageCost": 0.0,
+      "actualNetworkPrice": 0.0,
+      "actualNetworkCost": 0.0,
+      "actualLicensePrice": 0.0,
+      "actualLicenseCost": 0.0,
+      "actualExtraPrice": 0.0,
+      "actualExtraCost": 0.0,
+      "actualTotalPrice": 0.7105014791842815,
+      "actualTotalCost": 0.7105014791842815,
+      "actualRunningPrice": 0.1709403426,
+      "actualRunningCost": 0.1709403426,
+      "computePrice": 0.1709403426,
+      "computeCost": 0.1709403426,
       "memoryPrice": 0.0,
       "memoryCost": 0.0,
       "storagePrice": 0.0,
@@ -139,44 +127,31 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "licenseCost": 0.0,
       "extraPrice": 0.0,
       "extraCost": 0.0,
-      "totalPrice": 5.488956027524173,
-      "totalCost": 5.488956027524173,
-      "runningPrice": 1.5853593979929612,
-      "runningCost": 1.5853593979929612,
-      "actualComputeCost": 0.0,
-      "actualMemoryCost": 0.0,
-      "actualStorageCost": 0.0,
-      "actualNetworkCost": 0.0,
-      "actualLicenseCost": 0.0,
-      "actualExtraCost": 0.0,
-      "actualTotalCost": 0.0,
-      "actualRunningCost": 0.0,
+      "totalPrice": 0.7105014791842815,
+      "totalCost": 0.7105014791842815,
+      "runningPrice": 0.1709403426,
+      "runningCost": 0.1709403426,
+      "costType": "actual",
       "offTime": 0,
       "powerState": "on",
-      "powerDate": "2020-03-04T23:33:23+0000",
-      "runningMultiplier": 0.2536250387,
-      "lastCostDate": "2020-03-12T19:59:59+0000",
-      "lastActualDate": null,
-      "runningCostRatio": 3.480749738014807,
-      "actualRunningCostRatio": null,
-      "runningPriceRatio": 3.480749738014807,
-      "actualRunningPriceRatio": null,
-      "totalCostEstimateRatio": 0.0,
-      "totalPriceEstimateRatio": 0.0,
-      "dateCreated": "2020-03-04T23:35:07+0000",
-      "lastUpdated": "2020-03-12T19:00:01+0000",
-      "rawData": {
-      }
+      "powerDate": "2020-05-01T04:00:00+0000",
+      "runningMultiplier": 0.2405911143,
+      "lastCostDate": "2020-05-08T14:59:59+0000",
+      "lastActualDate": "2020-05-08T14:59:59+0000",
+      "dateCreated": "2020-05-01T15:59:49+0000",
+      "lastUpdated": "2020-05-08T15:00:08+0000",
+      "lineItems": [
+
+      ]
     }
   ],
   "meta": {
-    "size": 25,
-    "total": 346,
+    "size": 1,
+    "total": 35021,
     "offset": 0,
-    "max": 25
+    "max": 1
   }
 }
-
 ```
 
 This endpoint retrieves all invoices for the specified parameters.
@@ -207,13 +182,14 @@ instanceId |  | If specified will return an exact match on instance ID
 containerId |  | If specified will return an exact match on container ID
 serverId |  | If specified will return an exact match on server (host) ID
 userId |  | If specified will return an exact match on user ID
+projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 
 ## Get a Specific Invoice
 
 ```shell
-curl "$MORPHEUS_API_URL/api/invoices/11338" \
+curl "$MORPHEUS_API_URL/api/invoices/11868" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -222,40 +198,108 @@ curl "$MORPHEUS_API_URL/api/invoices/11338" \
 ```json
 {
   "invoice": {
-    "id": 11338,
+    "id": 11868,
     "account": {
       "id": 1,
       "name": "root"
     },
     "group": {
       "id": 1,
-      "name": "G1"
+      "name": "lonestar"
     },
-    "cloud": null,
+    "cloud": {
+      "id": 39,
+      "name": "qa-amazon"
+    },
     "instance": {
-      "id": 330,
-      "name": "test-box"
+      "id": 331,
+      "name": "nginx21"
     },
     "server": null,
     "cluster": null,
+    "user": {
+      "id": 1,
+      "name": "admin"
+    },
     "plan": {
       "id": 1,
       "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
     },
+    "project": {
+      "id": 2,
+      "name": "test",
+      "tags": {
+        "agency": "Lonestar"
+      }
+    },
     "refType": "Instance",
-    "refId": 330,
-    "refName": "test-box",
+    "refId": 331,
+    "refName": "nginx21",
     "refCategory": "vm",
+    "resourceId": null,
+    "resourceUuid": null,
+    "resourceType": null,
+    "resourceName": null,
+    "resourceExternalId": null,
+    "resourceInternalId": null,
     "interval": "month",
-    "period": "202003",
-    "estimate": true,
+    "period": "202005",
+    "estimate": false,
     "active": true,
-    "startDate": "2020-03-01T05:00:00+0000",
-    "endDate": "2020-04-01T03:59:59+0000",
-    "intervalPrice": 6.250800024,
-    "intervalCost": 6.250800024,
-    "computePrice": 0.0,
-    "computeCost": 0.0,
+    "startDate": "2020-05-01T04:00:00+0000",
+    "endDate": "2020-06-01T03:59:59+0000",
+    "refStart": "2020-05-01T04:00:00+0000",
+    "refEnd": "2020-06-01T03:59:59+0000",
+    "estimatedComputePrice": 0.0,
+    "estimatedComputeCost": 0.0,
+    "estimatedMemoryPrice": 0.0,
+    "estimatedMemoryCost": 0.0,
+    "estimatedStoragePrice": 0.0,
+    "estimatedStorageCost": 0.0,
+    "estimatedNetworkPrice": 0.0,
+    "estimatedNetworkCost": 0.0,
+    "estimatedLicensePrice": 0.0,
+    "estimatedLicenseCost": 0.0,
+    "estimatedExtraPrice": 0.0,
+    "estimatedExtraCost": 0.0,
+    "estimatedTotalPrice": 6.250800024,
+    "estimatedTotalCost": 6.250800024,
+    "estimatedRunningPrice": 1.5038869430406268,
+    "estimatedRunningCost": 1.5038869430406268,
+    "invoiceComputePrice": 0.0,
+    "invoiceComputeCost": 0.0,
+    "invoiceMemoryPrice": 0.0,
+    "invoiceMemoryCost": 0.0,
+    "invoiceStoragePrice": 0.0,
+    "invoiceStorageCost": 0.0,
+    "invoiceNetworkPrice": 0.0,
+    "invoiceNetworkCost": 0.0,
+    "invoiceLicensePrice": 0.0,
+    "invoiceLicenseCost": 0.0,
+    "invoiceExtraPrice": 0.0,
+    "invoiceExtraCost": 0.0,
+    "invoiceTotalPrice": 0.0,
+    "invoiceTotalCost": 0.0,
+    "invoiceRunningPrice": 0.0,
+    "invoiceRunningCost": 0.0,
+    "actualComputePrice": 0.1709403426,
+    "actualComputeCost": 0.1709403426,
+    "actualMemoryPrice": 0.0,
+    "actualMemoryCost": 0.0,
+    "actualStoragePrice": 0.0,
+    "actualStorageCost": 0.0,
+    "actualNetworkPrice": 0.0,
+    "actualNetworkCost": 0.0,
+    "actualLicensePrice": 0.0,
+    "actualLicenseCost": 0.0,
+    "actualExtraPrice": 0.0,
+    "actualExtraCost": 0.0,
+    "actualTotalPrice": 0.7105014791842815,
+    "actualTotalCost": 0.7105014791842815,
+    "actualRunningPrice": 0.1709403426,
+    "actualRunningCost": 0.1709403426,
+    "computePrice": 0.1709403426,
+    "computeCost": 0.1709403426,
     "memoryPrice": 0.0,
     "memoryCost": 0.0,
     "storagePrice": 0.0,
@@ -266,37 +310,24 @@ curl "$MORPHEUS_API_URL/api/invoices/11338" \
     "licenseCost": 0.0,
     "extraPrice": 0.0,
     "extraCost": 0.0,
-    "totalPrice": 5.488956027524173,
-    "totalCost": 5.488956027524173,
-    "runningPrice": 1.5853593979929612,
-    "runningCost": 1.5853593979929612,
-    "actualComputeCost": 0.0,
-    "actualMemoryCost": 0.0,
-    "actualStorageCost": 0.0,
-    "actualNetworkCost": 0.0,
-    "actualLicenseCost": 0.0,
-    "actualExtraCost": 0.0,
-    "actualTotalCost": 0.0,
-    "actualRunningCost": 0.0,
+    "totalPrice": 0.7105014791842815,
+    "totalCost": 0.7105014791842815,
+    "runningPrice": 0.1709403426,
+    "runningCost": 0.1709403426,
+    "costType": "actual",
     "offTime": 0,
     "powerState": "on",
-    "powerDate": "2020-03-04T23:33:23+0000",
-    "runningMultiplier": 0.2536250387,
-    "lastCostDate": "2020-03-12T19:59:59+0000",
-    "lastActualDate": null,
-    "runningCostRatio": 3.480749738014807,
-    "actualRunningCostRatio": null,
-    "runningPriceRatio": 3.480749738014807,
-    "actualRunningPriceRatio": null,
-    "totalCostEstimateRatio": 0.0,
-    "totalPriceEstimateRatio": 0.0,
-    "dateCreated": "2020-03-04T23:35:07+0000",
-    "lastUpdated": "2020-03-12T19:00:01+0000",
-    "rawData": {
-    }
+    "powerDate": "2020-05-01T04:00:00+0000",
+    "runningMultiplier": 0.2405911143,
+    "lastCostDate": "2020-05-08T14:59:59+0000",
+    "lastActualDate": "2020-05-08T14:59:59+0000",
+    "dateCreated": "2020-05-01T15:59:49+0000",
+    "lastUpdated": "2020-05-08T15:00:08+0000",
+    "lineItems": [
+
+    ]
   }
 }
-
 ```
 
 This endpoint retrieves a specific invoice.
