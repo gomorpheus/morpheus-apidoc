@@ -146,10 +146,10 @@ curl "$MORPHEUS_API_URL/api/invoices" \
     }
   ],
   "meta": {
-    "size": 1,
+    "size": 25,
     "total": 35021,
     "offset": 0,
-    "max": 1
+    "max": 25
   }
 }
 ```
@@ -341,6 +341,97 @@ This endpoint retrieves a specific invoice.
 Parameter | Description
 --------- | -----------
 id | ID of the invoice
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
+
+
+## Get All Invoice Line Items
+
+```shell
+curl "$MORPHEUS_API_URL/api/invoice-line-items" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "lineItems": [
+    
+  ],
+  "meta": {
+    "size": 0,
+    "total": 0,
+    "offset": 0,
+    "max": 25
+  }
+}
+```
+
+This endpoint retrieves all invoice line items for the specified parameters.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/invoice-line-items`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | If specified will return a partial match on refName
+name |  | If specified will return an exact match on refName
+startDate |  | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
+endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
+period |  | Only return records for period that matches with the specified value. This is an alternative to using startDate/endDate. Format is YYYY or YYYYMM.
+refType |  | If specified will return an exact match on refType. eg. ComputeSite (Group), ComputeZone (Cloud), ComputeServer (Host), Instance, Container, User.
+refId |  | If specified will return an exact match on refId
+zoneId |  | If specified will return an exact match on zone (cloud) ID
+siteId |  | If specified will return an exact match on site (group) ID
+instanceId |  | If specified will return an exact match on instance ID
+containerId |  | If specified will return an exact match on container ID
+serverId |  | If specified will return an exact match on server (host) ID
+userId |  | If specified will return an exact match on user ID
+projectId |  | If specified will return an exact match on project ID
+active |  | If specified will return an exact match on active flag.
+accountId | (own account) | Allows master tenant users to view invoices for another tenant.
+
+## Get a Specific Invoice Line Item
+
+```shell
+curl "$MORPHEUS_API_URL/api/invoice-line-items/678" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "lineItem": {
+    "id": 678
+  }
+}
+```
+
+This endpoint retrieves a specific invoice.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/invoice-line-items/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the invoice line item
 
 ### Query Parameters
 
