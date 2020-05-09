@@ -172,7 +172,7 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
 startDate |  | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
-endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
+endDate |  | Only return records with an endDate less than or equal to the specified date. Format is YYYY-MM-DD.
 period |  | Only return records for period that matches with the specified value. This is an alternative to using startDate/endDate. Format is YYYY or YYYYMM.
 refType |  | If specified will return an exact match on refType. eg. ComputeSite (Group), ComputeZone (Cloud), ComputeServer (Host), Instance, Container, User.
 refId |  | If specified will return an exact match on refId
@@ -390,7 +390,7 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
 startDate |  | Only return records with a startDate greater than or equal to the specified date. Format is YYYY-MM-DD.
-endDate |  | Only return records with a startDate less than or equal to the specified date. Format is YYYY-MM-DD.
+endDate |  | Only return records with an endDate less than or equal to the specified date. Format is YYYY-MM-DD.
 period |  | Only return records for period that matches with the specified value. This is an alternative to using startDate/endDate. Format is YYYY or YYYYMM.
 refType |  | If specified will return an exact match on refType. eg. ComputeSite (Group), ComputeZone (Cloud), ComputeServer (Host), Instance, Container, User.
 refId |  | If specified will return an exact match on refId
