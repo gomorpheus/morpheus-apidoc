@@ -228,7 +228,7 @@ clouds |  | Clouds, Array of objects having an id
 ## Update a Project
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/projects/:id" \
+curl -XPUT "$MORPHEUS_API_URL/api/projects/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"project":{
