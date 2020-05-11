@@ -223,6 +223,7 @@ tags |  | Metadata tags, Array of objects having a name and value
 instances |  | Instances, Array of objects having an id
 servers |  | Servers, Array of objects having an id
 clouds |  | Clouds, Array of objects having an id
+resources |  | Resources, Array of objects having an id. These are discovered AccountResource records that do not belong to known instances or servers.
 
 
 ## Update a Project
@@ -270,6 +271,9 @@ addServers |  | Add Servers to the project, Array of objects having an id
 removeServers |  | Remove Servers to remove from the project, Array of objects having an id
 addClouds |  | Add Clouds to the project, Array of objects having an id
 removeClouds |  | Remove Clouds from the project, Array of objects having an id
+resources |  | Resources, Array of objects having an id. These are discovered AccountResource records that do not belong to known instances or servers.
+addResources |  | Add Resources to the project, Array of objects having an id
+removeResources |  | Remove Resources from the project, Array of objects having an id
 
 ## Delete a Project
 
