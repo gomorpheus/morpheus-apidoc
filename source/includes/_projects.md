@@ -213,7 +213,7 @@ Create a new project.
 
 `POST https://api.gomorpheus.com/api/projects`
 
-### JSON Project Parameters
+### JSON Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -252,7 +252,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the project
 
-### JSON Project Parameters
+### JSON Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
