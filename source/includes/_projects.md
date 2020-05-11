@@ -111,11 +111,12 @@ Parameter | Default | Description
 --------- | ------- | -----------
 phrase |  | Filter on partial match of name or description
 name |  | Filter on exact match of name
-instanceId |  | Filter by associated instance(s)
-serverId |  | Filter by associated servers(s)
-cloudId |  | Filter by associated cloud(s)
-ownerId |  | Filter by associated owner(s), [user(s)](#users)
-id |  | Filter by project id(s)
+instanceId |  | Filter by associated [Instance](#instances)
+serverId |  | Filter by associated [Server](#hosts)
+cloudId |  | Filter by associated [Cloud](#clouds)
+resourceId |  | Filter by associated AccountResource(s). These are discovered AccountResource records that do not belong to known instances or servers.
+ownerId |  | Filter by [owner](#users)
+id |  | Filter by Project id(s)
 
 
 
