@@ -164,7 +164,6 @@ This endpoint retrieves all invoices for the specified parameters.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
@@ -185,6 +184,8 @@ userId |  | If specified will return an exact match on user ID
 projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
+includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `invoiceTotals`.
 
 ## Get a Specific Invoice
 
@@ -361,12 +362,81 @@ curl "$MORPHEUS_API_URL/api/invoice-line-items" \
 ```json
 {
   "lineItems": [
-    
+    {
+      "id": 3247,
+      "invoiceId": 12347,
+      "refType": "AccountResource",
+      "refId": 3,
+      "refName": "ocid1.instance.oc1.iad.abuwcljsdtocgl7wumoxflvd7725dobh3zk2s3rdmtnp5ixt2x7nc3awllda",
+      "refCategory": "invoice",
+      "startDate": "2020-05-09T22:00:00+0000",
+      "endDate": "2020-05-09T23:00:00+0000",
+      "itemId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi3BHgE1epCBn5P5XcuFSmUd",
+      "itemType": null,
+      "itemName": "ocid1.instance.oc1.iad.abuwcljsdtocgl7wumoxflvd7725dobh3zk2s3rdmtnp5ixt2x7nc3awllda",
+      "itemDescription": null,
+      "productId": null,
+      "productCode": "B88514",
+      "productName": null,
+      "itemSeller": null,
+      "itemAction": null,
+      "externalId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi3BHgE1epCBn5P5XcuFSmUd",
+      "rateId": null,
+      "rateClass": null,
+      "rateUnit": "0.0638",
+      "rateTerm": null,
+      "usageType": "Virtual Machine Standard - X7",
+      "usageCategory": "compute",
+      "itemUsage": 1.0,
+      "itemRate": 0.0,
+      "itemCost": 0.0638,
+      "itemPrice": 0.0638,
+      "itemTax": 0.0,
+      "itemTerm": null,
+      "taxType": null,
+      "dateCreated": "2020-05-12T02:29:54+0000",
+      "lastUpdated": "2020-05-12T02:29:54+0000"
+    },
+    {
+      "id": 3246,
+      "invoiceId": 12431,
+      "refType": "AccountResource",
+      "refId": 2139,
+      "refName": "ow-oraclecloud-1",
+      "refCategory": "invoice",
+      "startDate": "2020-05-09T21:00:00+0000",
+      "endDate": "2020-05-09T22:00:00+0000",
+      "itemId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi39cmcwss32ZJP5XcuFSmUd",
+      "itemType": null,
+      "itemName": "ow-oraclecloud-1",
+      "itemDescription": null,
+      "productId": null,
+      "productCode": "B91962",
+      "productName": null,
+      "itemSeller": null,
+      "itemAction": null,
+      "externalId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi39cmcwss32ZJP5XcuFSmUd",
+      "rateId": null,
+      "rateClass": null,
+      "rateUnit": "0.0017",
+      "rateTerm": null,
+      "usageType": "Block Volume - Performance Units",
+      "usageCategory": "storage",
+      "itemUsage": 0.672043008681,
+      "itemRate": 0.0,
+      "itemCost": 0.001142473117,
+      "itemPrice": 0.001142473117,
+      "itemTax": 0.0,
+      "itemTerm": null,
+      "taxType": null,
+      "dateCreated": "2020-05-11T08:47:06+0000",
+      "lastUpdated": "2020-05-11T08:47:06+0000"
+    }
   ],
   "meta": {
-    "size": 0,
-    "total": 0,
-    "offset": 0,
+    "size": 2,
+    "total": 3269,
+    "offset": 22,
     "max": 25
   }
 }
@@ -382,7 +452,6 @@ This endpoint retrieves all invoice line items for the specified parameters.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
@@ -402,7 +471,10 @@ serverId |  | If specified will return an exact match on server (host) ID
 userId |  | If specified will return an exact match on user ID
 projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
+includeTotals | false | If true, `invoiceTotals` is returned containing sums of all the cost and prices for all the invoices found.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
+rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
+includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `lineItemTotals`.
 
 ## Get a Specific Invoice Line Item
 
@@ -416,7 +488,39 @@ curl "$MORPHEUS_API_URL/api/invoice-line-items/678" \
 ```json
 {
   "lineItem": {
-    "id": 678
+    "id": 3246,
+    "invoiceId": 12431,
+    "refType": "AccountResource",
+    "refId": 2139,
+    "refName": "ow-oraclecloud-1",
+    "refCategory": "invoice",
+    "startDate": "2020-05-09T21:00:00+0000",
+    "endDate": "2020-05-09T22:00:00+0000",
+    "itemId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi39cmcwss32ZJP5XcuFSmUd",
+    "itemType": null,
+    "itemName": "ow-oraclecloud-1",
+    "itemDescription": null,
+    "productId": null,
+    "productCode": "B91962",
+    "productName": null,
+    "itemSeller": null,
+    "itemAction": null,
+    "externalId": "zmtWmBaN56GdFZq3ZeMhaTwKAXcECByQNvnlRA8yfsws/41naer2wamK1pC4gGVoxDjEHXVuDi39cmcwss32ZJP5XcuFSmUd",
+    "rateId": null,
+    "rateClass": null,
+    "rateUnit": "0.0017",
+    "rateTerm": null,
+    "usageType": "Block Volume - Performance Units",
+    "usageCategory": "storage",
+    "itemUsage": 0.672043008681,
+    "itemRate": 0.0,
+    "itemCost": 0.001142473117,
+    "itemPrice": 0.001142473117,
+    "itemTax": 0.0,
+    "itemTerm": null,
+    "taxType": null,
+    "dateCreated": "2020-05-11T08:47:06+0000",
+    "lastUpdated": "2020-05-11T08:47:06+0000"
   }
 }
 ```
