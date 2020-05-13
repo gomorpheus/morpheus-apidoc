@@ -141,3 +141,30 @@ enableAllZoneTypes | Set all cloud types enabled status on, overrides enableZone
 enableZoneTypes | List of cloud type IDs to set enabled status on
 disableZoneTypes | List of cloud type IDs to set enabled status off
 disableAllZoneTypes | Set all cloud types enabled status off, can be used in conjunction with enableZoneTypes
+
+## Toggle Maintenance Mode
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/appliance-settings/maintenance?enabled=true" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/appliance-settings/maintenance`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+enabled | Pass `true` to turn on maintenance mode, or `false` to turn it off. If no value is given then it will be toggled from off to on or vice versa.
+
+This endpoint allows toggling the appliance maintenance mode.
