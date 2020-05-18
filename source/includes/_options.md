@@ -74,7 +74,7 @@ Option types can easily represent some common input types, including text, numbe
 Parameter   | Description
 ---------   | -----------
 name        | The name of the option type for handy reference
-description | Short description of hte option type (the CLI actually shows this when pressing `?` for help)
+description | Short description of the option type (the CLI actually shows this when pressing `?` for help)
 fieldName   | The property key for when posting this option type to a JSON POST request
 fieldLabel  | User friendly label for prompting a user for input
 fieldContext | Some properties need nested i.e. in a `config: {}` block. This is a `.` seperated context of where the property should be constructed
@@ -103,9 +103,26 @@ curl "$MORPHEUS_API_URL/api/options/keyPairs"
 ]
 ```
 
-
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/options/:optionSource`
 
-Returns a list of name/value pairs for option-type models. Some option-types depend on input data for proper representation. This typically includes zoneId or siteId for the item being provisioned as request parameters or sometimes previous option type parameters.
+Returns a list of name/value pairs for option-type models. Some option-types depend on input data for proper representation. This typically includes zoneId or siteId for the item being provisioned as request parameters or sometimes previous option type parameters.  Each option returned has a `value`, which is often the `id`, but may be a `code` or other attribute.
+
+
+## List Options For Code Repositories
+
+```shell
+curl "$MORPHEUS_API_URL/api/options/codeRepositories"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like the standard Get Option Source Data
+
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/options/codeRepositories`
+
+Returns a list code repositories, which are a certain type of integration.
+
