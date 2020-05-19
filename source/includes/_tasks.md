@@ -23,8 +23,15 @@ curl "$MORPHEUS_API_URL/api/tasks"
         "code": "script",
         "name": "Shell Script"
       },
+      "file": {
+        "id": 1275,
+        "sourceType": "local",
+        "contentRef": null,
+        "contentPath": null,
+        "repository": null,
+        "content": "apt-get upgrade -y"
+      },
       "taskOptions": {
-        "script": "apt-get upgrade -y"
       }
     },
   ],
@@ -75,8 +82,15 @@ curl "$MORPHEUS_API_URL/api/tasks/1" \
         "code": "script",
         "name": "Shell Script"
       },
+      "file": {
+        "id": 1275,
+        "sourceType": "local",
+        "contentRef": null,
+        "contentPath": null,
+        "repository": null,
+        "content": "apt-get upgrade -y"
+      },
       "taskOptions": {
-        "script": "apt-get upgrade -y"
       }
     }
 }
