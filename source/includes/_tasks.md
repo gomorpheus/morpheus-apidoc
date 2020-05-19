@@ -105,8 +105,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/tasks" \
     "taskType": {
       "code": "script"
     },
-    "taskOptions": {
-      "script": "rm -rf /var/www/app1/tmp/*\nrm -rf /var/www/app2/tmp/*"
+    "executeTarget": "resource",
+    "file": {
+      "sourceType": "local",
+      "content": "rm -rf /var/www/app1/tmp/*\nrm -rf /var/www/app2/tmp/*"
     }
   }}'
 ```
@@ -130,6 +132,16 @@ executeTarget      | <variable> | The execution target. eg. local,remote,resourc
 retryable      | false | If the task should be retried or not.
 retryCount      |  | The number of times to retry.
 retryDelaySeconds      |  | The delay, between retries.
+file |  | File, object specifying type and content, see [File Object](#file-object-parameter). This is required for task types that expect a script, having `scriptable:true` and an optionType of `type:"file-content"`.
+
+### File Object Parameter
+
+Parameter | Required | Description
+--------- | -------- | -----------
+sourceType | Y | File Source i.e. `local`, `repository`, `url`. Default is `local`.
+content | Y | File content, the script text. Only required when sourceType is `local`.
+contentPath | Y | Content Path, the repo file location or url. Required when sourceType is `repository` or `url`.
+contentRef | N | Content Ref, the branch/tag. Only used when sourceType is `repo`.
 
 ### JSON Parameters for Execute Target: Local
 
@@ -150,6 +162,7 @@ taskOptions.username      |  | Username for remote execution
 taskOptions.password      |  | Password for remote execution
 
 These additional task options are available when using executeTarget of `remote`.
+
 
 ## Updating a Task
 
