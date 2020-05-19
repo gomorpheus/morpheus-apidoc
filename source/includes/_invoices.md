@@ -166,7 +166,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-sort | name | Sort order
+sort | startDate desc | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
@@ -454,7 +454,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-sort | name | Sort order
+sort | startDate desc | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on refName
 name |  | If specified will return an exact match on refName
