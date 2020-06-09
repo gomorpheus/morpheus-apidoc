@@ -196,6 +196,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
 ## Billing For a Specific Zone
 
@@ -256,6 +258,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
 ## Billing For All Servers
 
@@ -306,6 +310,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
 ## Billing For a Specific Server
 
@@ -348,6 +354,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
 ## Billing For All Instances
 
@@ -396,6 +404,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
 ## Billing For a Specific Instance
 
@@ -446,3 +456,5 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
+accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
