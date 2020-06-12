@@ -47,24 +47,26 @@ This is an example of a Morpheus API request that retrieves details about a [Use
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances/:id`
+`GET https://api.gomorpheus.com/api/users/:id`
 
-This is the format for the request method and path of the endpoint. Most paths have a format like **/api/resources/:id**.
+HTTP Request describes the method and path of the endpoint. Most endpoints have a path formatted as */api/:resources/:id*.
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-:id | ID of the Instance.
+:id | ID of the User.
 
-This is the format for URL parameters. These are parameters that are included in the path of the request.
+URL Parameters are variables which are included inside the path of the request.
 
 ### HTTP Headers
 
 Header |  Description
 ---------  | -----------
-Authorization      | Use the format `bearer access_token`. Example: `Authorization: bearer e1d62c34-f7f5-4713-a874-31491e7707de`. Most endpoints require this header. Some exceptions include [Authentication](#authentication) and [Setup](#setup).
-Content-Type      | Use `application/json` for `POST` and `PUT` requests. This is needed to ensure your JSON payload is parsed.  Exceptions to this rule include file uploads where `application/x-www-form-urlencoded` and `application/octet-stream` may be needed instead.
+Authorization      | Use the format `BEARER ${access_token}`. Example: `Authorization: BEARER e1d62c34-f7f5-4713-a874-31491e7707de`. Most endpoints require this header. Some exceptions include [Authentication](#authentication) and [Setup](#setup).
+Content-Type      | Use `application/json` for `POST` and `PUT` requests. This is needed to ensure your JSON payload is parsed.  Exceptions to this rule include file uploads where `application/x-www-form-urlencoded` and `application/octet-stream` should be used instead.
+
+HTTP Headers are used to authorize the acting user via a valid access token, and to describe the type of content being sent, which is typically JSON.
 
 ### Query Parameters
 
@@ -72,7 +74,7 @@ Parameter | Description
 --------- | -------
 phrase | If specified will return a partial match on name.
 
-This is the format for query string parameters. These are parameters which are included in the query string of the request.
+Query Parameters are variables included in the query string portion of the request url, after the `?` and they are delimited by `&`. Be sure to html encode your parameters and values!
 
 ### JSON Parameters
 
@@ -80,19 +82,17 @@ Parameter | Description
 --------- | -----------
 name | A unique string.
 
-This is the format for JSON parameters. These are parameters which are included in the body of the request, with *Content-Type application/json*.
-
+JSON Parameters define the variables to be included in the body of the request. These are typically under the the context of an object, such as `"contact"`.
 
 ### HTTP Response
 
-The Morpheus API returns **200 OK** for successful requests. 
-If a request fails, an HTTP [Error](#errors) will be returned.
+The HTTP status **200 OK** will be returned when a request is successful and an HTTP [Error](#errors) status will be returned when a request fails.
 
-Most endpoints respond with *Content-Type: application/json* and body that contains JSON data.
+Most endpoints respond with *Content-Type: application/json* and a body that contains JSON data.
 
 This is an example of an API response that retrieves a [Contact](#contacts) record by ID.
 
-#### Success Example
+#### Example
 
 ```shell
 curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
@@ -103,7 +103,6 @@ curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
 
 ```json
 {
-  "success": true,
   "contact": {
     "id": 1,
     "name": "Morpheus Admin",
@@ -113,12 +112,12 @@ curl "$MORPHEUS_API_URL/api/monitoring/contacts/1" \
 }
 ```
 
-This is an example of a successful response that contains the requested record.
+This is an example of a successful response that contains the specified record.
 
 #### Error Example
 
 ```shell
-curl "$MORPHEUS_API_URL/api/monitoring/contacts/999" \
+curl "$MORPHEUS_API_URL/api/monitoring/contacts/999999" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -132,7 +131,7 @@ curl "$MORPHEUS_API_URL/api/monitoring/contacts/999" \
 }
 ```
 
-This is an example of a 404 error response caused when the specified record was not found.
+This is an example of a 404 error response returned when the specified record was not found.
 
 ## Environment Variables
 
