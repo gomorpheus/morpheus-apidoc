@@ -4,7 +4,6 @@ The License API can be used to view information about your currently installed l
 
 ## Get Current License
 
-This endpoint can be used to inspect the currently installed license.
 
 ```shell
 curl "$MORPHEUS_API_URL/api/license" \
@@ -92,6 +91,8 @@ curl "$MORPHEUS_API_URL/api/license" \
 }
 ```
 
+This endpoint can be used to inspect the currently installed license.
+
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/license`
@@ -113,14 +114,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/license" \
 }'
 ```
 
-> The above command returns JSON Structured like this:
-
-
-The same as [Get License](#get-current-license), or when the key is invalid:
-
-```json
-{"success":false,"msg":"Error decoding license"}
-```
+> The above command returns JSON structured the same as [Get License](#get-current-license)
 
 ### HTTP Request
 
@@ -137,17 +131,17 @@ Content-Type     | `application/json`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-license      |  | License Key Content. A very long and silly string.
+license      |  | License Key, an encrypted string that should be kept secret.
 
 This endpoint installs a new license in the Morpheus appliance.
 
 <aside class="info">
-Be careful. This will replace your current license key, which may impact the features available in the Morpheus appliance.
+Be careful. This will replace your current license key, which may impact the features available in the Morpheus appliance.  Make sure you have a copy of your current license key in case you want to roll-back by installing the previous key.
 </aside>
 
 ## Test License
 
-This endpoint can be used to decode a license to see if it is valid and other information about it.  This is just a test, it does not install the key.
+This endpoint can be used to decode a license to see if it is valid and inspect the license settings, such as who it belongs to and the enabled features.  This is only a test, it does not install the key, or make any changes to your appliance.
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/license/test" \
@@ -158,13 +152,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/license/test" \
 }'
 ```
 
-> The above command returns JSON Structured like this:
-
-The same as [Get License](#get-current-license), or when the key is invalid:
-
-```json
-{"success":false,"msg":"Error decoding license"}
-```
+> The above command returns JSON structured the same as [Get License](#get-current-license)
 
 ### HTTP Request
 
@@ -174,7 +162,7 @@ The same as [Get License](#get-current-license), or when the key is invalid:
 
 Parameter | Default | Description
 --------- | ------- | -----------
-license      |  | License Key Content. A very long and silly string.
+license      |  | License Key, an encrypted string that should be kept secret.
 
 <aside class="info">
 This is a way to inspect a license before you install it.

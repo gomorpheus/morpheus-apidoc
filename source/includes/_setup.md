@@ -34,7 +34,7 @@ This will initialize a freshly installed Morpheus appliance by creating the mast
 
 Setup includes connecting to the [Morpheus Hub](https://morpheushub.com). This is done either by registering a new account or logging in to an existing account, which connects your appliance to your organization's hub account. By default, a community license key will be generated and installed in your new appliance.
 
-If you choose not to connect to the hub, you will need to install a license key manually later on. This can be done with the [License](#license) api.  
+If you choose not to connect to the hub, you will need to install a license key manually later on. A license can be installed using the [Install License](#install-license) endpoint.
 
 Some community builds of the Morpheus appliance will come with a pre-installed license, so you can skip the license install step.
 
