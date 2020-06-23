@@ -62,12 +62,13 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort order
-phrase |  | Filter by matching firstName, lastName, username, or email
+phrase |  | Filter by matching any part of firstName, lastName, username, or email
 username |  | Filter by username
 firstName |  | Filter by firstName
 lastName |  | Filter by lastName
 email |  | Filter by email
 lastUpdated |  | Date filter, restricts query to only load users updated  timestamp is more recent or equal to the date specified
+tenantId |  | Filter by Tenant ID. This is only available to master tenant users with permission to manage tenants and users.
 global | false | Global (All Tenants), load users from all tenants. The default is to only see your own tenant. This is only available to master tenant users with permission to manage tenants and users.
 
 ## Get All Users Across All Tenants
