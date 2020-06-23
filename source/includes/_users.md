@@ -36,8 +36,7 @@ curl "$MORPHEUS_API_URL/api/users"
       "account": {
         "id": 1,
         "name": "Root Account"
-      },
-      "instanceLimits": null
+      }
     }
   ],
   "meta": {
@@ -124,7 +123,6 @@ curl "$MORPHEUS_API_URL/api/users/1" \
       "id": 1,
       "name": "Root Account"
     },
-    "instanceLimits": null,
     "access": {
       "features": [
         {
@@ -225,7 +223,6 @@ firstName |  | The user's first name (optional)
 lastName  |  | The user's last name (optional)
 password  |  | The password to apply to the user
 role      |  | A nested id of the role to assign to the user
-instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 This creates a user in your own tenant.
 
@@ -274,12 +271,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/users/2" \
     "firstName": "Jane",
     "lastName": "Doe",
     "password": "abc123",
-    "role": {"id": 1},
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    }
+    "role": {"id": 1}
   }}'
 ```
 
@@ -301,7 +293,6 @@ firstName |  | The user's first name (optional)
 lastName  |  | The user's last name (optional)
 password  |  | The password to apply to the user
 role      |  | A nested id of the role to assign to the user
-instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
 
 ## Delete a User
