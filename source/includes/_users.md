@@ -1,11 +1,11 @@
 # Users
 
-Managing users via the API is always scoped to a specific tenant. Most of the API's regarding user management require that the tenant Id of the user also be known
+Users are meant to represent people or services that will be using the Morpheus appliance. Users belong to a Tenant (Account).
 
-## Get All Users for a Tenant
+## Get All Users
 
 ```shell
-curl "$MORPHEUS_API_URL/api/accounts/1/users"
+curl "$MORPHEUS_API_URL/api/users"
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -49,11 +49,11 @@ curl "$MORPHEUS_API_URL/api/accounts/1/users"
 }
 ```
 
-This endpoint retrieves all tenants.
+This endpoint retrieves all users in the current user's tenant account. Master tenant users with permission to manage subtenants can use `global=true` to find users accross all tenants.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:accountId/users`
+`GET https://api.gomorpheus.com/api/users`
 
 ### Query Parameters
 
@@ -65,13 +65,35 @@ sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort order
 phrase |  | Filter by matching firstName, lastName, username, or email
 username |  | Filter by username
+firstName |  | Filter by firstName
+lastName |  | Filter by lastName
+email |  | Filter by email
 lastUpdated |  | Date filter, restricts query to only load users updated  timestamp is more recent or equal to the date specified
+global | false | Global (All Tenants), load users from all tenants. The default is to only see your own tenant. This is only available to master tenant users with permission to manage tenants and users.
 
+## Get All Users Across All Tenants
+
+```shell
+curl "$MORPHEUS_API_URL/api/users?global=true"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like Get All Users for a Tenant
+
+Using `global=true` is a way to list users across all tenants.  This is only available to master tenant users with permission to manage users and tenants.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/users?global=true`
+
+### Query Parameters
+
+The same as [Get All Users](#Get-All-Users).
 
 ## Get a Specific User
 
 ```shell
-curl "$MORPHEUS_API_URL/api/accounts/1/users/1" \
+curl "$MORPHEUS_API_URL/api/users/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -150,7 +172,13 @@ This endpoint will retrieve a specific user by id if the user has permission to 
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
+`GET https://api.gomorpheus.com/api/users/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the User
 
 ### Query Parameters
 
@@ -162,7 +190,7 @@ includeAccess |  | Include access the user payload
 ## Create a User
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
+curl -XPOST "$MORPHEUS_API_URL/api/users" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"user":{
@@ -175,12 +203,17 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/1/users" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single user:
+> The above command returns JSON structured like getting a single user
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/accounts/:accountId/users`
+`POST https://api.gomorpheus.com/api/users`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+accountId | The ID of the User
 
 ### JSON User Parameters
 
@@ -194,11 +227,46 @@ password  |  | The password to apply to the user
 role      |  | A nested id of the role to assign to the user
 instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
+This creates a user in your own tenant.
+
+## Create a User For a Tenant
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/accounts/2/users" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"user":{
+    "username": "testuser",
+    "email": "testuser@api.gomorpheus.com",
+    "firstName": "Test",
+    "lastName": "User",
+    "password": "aStrongpassword123!",
+    "role": {"id": 1}
+  }}'
+```
+
+> The above command returns JSON structured like getting a single user
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/accounts/:accountId/users`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+accountId | The ID of the Tenant
+
+### JSON User Parameters
+
+The same as [Create a User](#create-a-user).
+
+This creates a user in a specific tenant. This is only available to master tenant users with permission to manage users and tenants.
 
 ## Updating a User
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/accounts/1/users/2" \
+curl -XPUT "$MORPHEUS_API_URL/api/users/2" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"user":{
@@ -215,11 +283,13 @@ curl -XPUT "$MORPHEUS_API_URL/api/accounts/1/users/2" \
   }}'
 ```
 
-> The above command returns JSON structured like getting a single user:
+> The above command returns JSON structured like getting a single user
+
+Update a user.
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
+`PUT https://api.gomorpheus.com/api/users/:id`
 
 ### JSON User Parameters
 
@@ -233,10 +303,11 @@ password  |  | The password to apply to the user
 role      |  | A nested id of the role to assign to the user
 instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
 
+
 ## Delete a User
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/accounts/1/users/2" \
+curl -XDELETE "$MORPHEUS_API_URL/api/users/99" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -248,17 +319,17 @@ curl -XDELETE "$MORPHEUS_API_URL/api/accounts/1/users/2" \
 }
 ```
 
-This will disassociate the user from any instances they have previously provisioned.
+Delete a user.  This will disassociate the user from any instances they have previously provisioned.
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/accounts/:accountId/users/:id`
+`DELETE https://api.gomorpheus.com/api/users/:id`
 
 
 ## Get a Specific User Permissions
 
 ```shell
-curl "$MORPHEUS_API_URL/api/accounts/1/users/1/permissions" \
+curl "$MORPHEUS_API_URL/api/users/1/permissions" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -323,4 +394,6 @@ This will list all the permissions for a specific user.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/accounts/:accountId/users/:id/permissions`
+`GET https://api.gomorpheus.com/api/users/:id/permissions`
+
+
