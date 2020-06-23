@@ -48,7 +48,7 @@ curl "$MORPHEUS_API_URL/api/users"
 }
 ```
 
-This endpoint retrieves all users in the current user's tenant account. Master tenant users with permission to manage subtenants can use `global=true` to find users accross all tenants.
+This endpoint retrieves all users in the current user's tenant account. Master tenant users with permission to manage subtenants can use `global=true` to find users across all tenants.
 
 ### HTTP Request
 
