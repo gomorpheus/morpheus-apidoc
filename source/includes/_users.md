@@ -44,7 +44,8 @@ curl "$MORPHEUS_API_URL/api/users"
     "max": 25,
     "size": 1,
     "total": 1
-  }
+  },
+  "global" false
 }
 ```
 
