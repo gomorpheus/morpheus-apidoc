@@ -117,6 +117,12 @@ curl -XPOST "$MORPHEUS_API_URL/api/user-settings/avatar" \
 
 `POST https://api.gomorpheus.com/api/user-settings/avatar`
 
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+Content-Type     | `multipart/form-data` is expected.
+
 ### Query Parameters
 
 Parameter | Default | Description
@@ -150,7 +156,7 @@ curl -XDELETE "$MORPHEUS_API_URL/api/user-settings/avatar" \
 
 `DELETE https://api.gomorpheus.com/api/user-settings/avatar`
 
-Delete your avatar image.  Expects multipart form data as the request format, not JSON.
+Delete your avatar image.
 
 ### Query Parameters
 

@@ -155,10 +155,10 @@ labelCode | Label code for support menu link
 ```shell
 curl -XPOST "https://api.gomorpheus.com/api/whitelabel-settings/images" \
   -H "Authorization: BEARER access_token" \
-  -F 'headerLogo.file=@filename' \
-  -F 'footerLogo.file=@filename' \
-  -F 'loginLogo.file=@filename' \
-  -F 'favicon.file=@filename'
+  -F 'headerLogo.file=@filename.png;type=image/png' \
+  -F 'footerLogo.file=@filename.png;type=image/png' \
+  -F 'loginLogo.file=@filename.png;type=image/png' \
+  -F 'favicon.file=@filename.png;type=image/png'
 ```
 
 > The above command returns JSON Structured like this:
@@ -172,6 +172,12 @@ curl -XPOST "https://api.gomorpheus.com/api/whitelabel-settings/images" \
 ### HTTP Request
 
 `POST https://api.gomorpheus.com/api/whitelabel-settings/images`
+
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+Content-Type     | `multipart/form-data` is expected.
 
 ### Parameters
 
