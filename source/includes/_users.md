@@ -431,7 +431,7 @@ curl "$MORPHEUS_API_URL/api/users/available-roles" \
       "authority": "User Admin",
       "name": "User Admin",
       "description": "Sub Tenant User Template",
-      "roleType": "account",
+      "roleType": "user",
       "owner": null
     }
   ]
@@ -476,7 +476,7 @@ curl "$MORPHEUS_API_URL/api/users/available-roles?accountId={accountId}" \
       "authority": "User Admin",
       "name": "User Admin",
       "description": "Sub Tenant User Template",
-      "roleType": "account",
+      "roleType": "user",
       "owner": null
     }
   ]
