@@ -21,7 +21,6 @@ curl "$MORPHEUS_API_URL/api/roles"
       "dateCreated": "2016-08-27T23:26:19+0000",
       "lastUpdated": "2016-08-27T23:26:19+0000",
       "scope": "Account",
-      "instanceLimits": null,
       "ownerId": null,
       "owner": null
     },
@@ -32,7 +31,6 @@ curl "$MORPHEUS_API_URL/api/roles"
       "dateCreated": "2015-11-10T18:58:55+0000",
       "lastUpdated": "2015-11-10T18:58:55+0000",
       "scope": "Admin",
-      "instanceLimits": null,
       "ownerId": null,
       "owner": null
     },
@@ -43,7 +41,6 @@ curl "$MORPHEUS_API_URL/api/roles"
       "dateCreated": "2015-11-10T19:01:45+0000",
       "lastUpdated": "2015-11-10T19:02:01+0000",
       "scope": "Account",
-      "instanceLimits": null,
       "ownerId": 1,
       "owner": {
         "id": 1,
@@ -94,7 +91,6 @@ curl "$MORPHEUS_API_URL/api/roles/3" \
     "dateCreated": "2015-11-10T19:01:45+0000",
     "lastUpdated": "2015-11-10T19:02:01+0000",
     "scope": "Account",
-    "instanceLimits": null,
     "ownerId": 1,
     "owner": {
       "id": 1,

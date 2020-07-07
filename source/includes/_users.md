@@ -28,11 +28,13 @@ curl "$MORPHEUS_API_URL/api/users"
       "accountExpired": false,
       "accountLocked": false,
       "passwordExpired": false,
-      "role": {
-        "id": 1,
-        "authority": "System Admin",
-        "description": "Super User"
-      },
+      "roles": [
+        {
+          "id": 1,
+          "authority": "System Admin",
+          "description": "Super User"
+        }
+      ],
       "account": {
         "id": 1,
         "name": "Root Account"
@@ -116,11 +118,13 @@ curl "$MORPHEUS_API_URL/api/users/1" \
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
-    "role": {
-      "id": 1,
-      "authority": "System Admin",
-      "description": "Super User"
-    },
+    "roles": [
+      {
+        "id": 1,
+        "authority": "System Admin",
+        "description": "Super User"
+      }
+    ],
     "account": {
       "id": 1,
       "name": "Root Account"
@@ -198,8 +202,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/users" \
     "email": "testuser@api.gomorpheus.com",
     "firstName": "Test",
     "lastName": "User",
-    "password": "aStrongpassword123!",
-    "role": {"id": 1}
+    "password": "aStr0ngp@ssword",
+    "roles": [{"id": 1}]
   }}'
 ```
 
@@ -224,9 +228,13 @@ email     |  | The user's email
 firstName |  | The user's first name (optional)
 lastName  |  | The user's last name (optional)
 password  |  | The password to apply to the user
-role      |  | A nested id of the role to assign to the user
-
-This creates a user in your own tenant.
+roles      |  | Array of objects with id of the role(s) to assign to the user. See [Get Available Roles for a User](#get-available-roles-for-a-user).
+receiveNotifications  | true | Receive Notifications?
+linuxUsername  |  | Linux Username, user settings for provisioning
+linuxPassword  |  | Linux Password, user settings for provisioning
+linuxKeyPairId  |  | Linux SSH Key, user settings for provisioning
+windowsUsername  |  | Windows Username, user settings for provisioning
+windowsPassword  |  | Windows Password, user settings for provisioning
 
 ## Create a User For a Tenant
 
@@ -239,8 +247,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/2/users" \
     "email": "testuser@api.gomorpheus.com",
     "firstName": "Test",
     "lastName": "User",
-    "password": "aStrongpassword123!",
-    "role": {"id": 1}
+    "password": "aStr0ngp@ssword",
+    "roles": [{"id": 3}]
   }}'
 ```
 
@@ -262,6 +270,8 @@ The same as [Create a User](#create-a-user).
 
 This creates a user in a specific tenant. This is only available to master tenant users with permission to manage users and tenants.
 
+See [Get Available Roles for a Sub Tenant User](#get-available-roles-for-a-sub-tenant-user) to find roles available to the user.
+
 ## Updating a User
 
 ```shell
@@ -272,14 +282,13 @@ curl -XPUT "$MORPHEUS_API_URL/api/users/2" \
     "username": "testUser",
     "firstName": "Jane",
     "lastName": "Doe",
-    "password": "abc123",
-    "role": {"id": 1}
+    "password": "aStr0ngp@ssword",
+    "roles": [{"id": 1}]
   }}'
 ```
 
 > The above command returns JSON structured like getting a single user
 
-Update a user.
 
 ### HTTP Request
 
@@ -294,8 +303,15 @@ email     |  | The user's email
 firstName |  | The user's first name (optional)
 lastName  |  | The user's last name (optional)
 password  |  | The password to apply to the user
-role      |  | A nested id of the role to assign to the user
+roles      |  | Array of objects with id of the role(s) to assign to the user. See [Get Available Roles for a User](#get-available-roles-for-a-user).
+receiveNotifications  | true | Receive Notifications?
+linuxUsername  |  | Linux Username, user settings for provisioning
+linuxPassword  |  | Linux Password, user settings for provisioning
+linuxKeyPairId  |  | Linux SSH Key, user settings for provisioning
+windowsUsername  |  | Windows Username, user settings for provisioning
+windowsPassword  |  | Windows Password, user settings for provisioning
 
+Update a user.
 
 ## Delete a User
 
@@ -390,3 +406,93 @@ This will list all the permissions for a specific user.
 `GET https://api.gomorpheus.com/api/users/:id/permissions`
 
 
+## Get Available Roles for a User
+
+```shell
+curl "$MORPHEUS_API_URL/api/users/available-roles" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "roles": [
+     {
+      "id": 1,
+      "authority": "System Admin",
+      "name": "System Admin",
+      "description": "Super User",
+      "roleType": null,
+      "owner": null
+    },
+    {
+      "id": 3,
+      "authority": "User Admin",
+      "name": "User Admin",
+      "description": "Sub Tenant User Template",
+      "roleType": "account",
+      "owner": null
+    }
+  ]
+}
+```
+
+This endpoint will retrieve a list of roles that can be assigned to a user.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/accounts/available-roles`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+accountId      | (current tenant) | ID of Tenant *Only available to the master account.*
+
+
+## Get Available Roles for a Sub Tenant User
+
+```shell
+curl "$MORPHEUS_API_URL/api/users/available-roles?accountId={accountId}" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "roles": [
+     {
+      "id": 1,
+      "authority": "System Admin",
+      "name": "System Admin",
+      "description": "Super User",
+      "roleType": null,
+      "owner": null
+    },
+    {
+      "id": 3,
+      "authority": "User Admin",
+      "name": "User Admin",
+      "description": "Sub Tenant User Template",
+      "roleType": "account",
+      "owner": null
+    }
+  ]
+}
+```
+
+This endpoint will retrieve a list of roles that can be assigned to a user belonging to a sub tenant account.  
+
+**NOTE** Multitenant Role IDs will be different for each sub tenant account.  Multitenant roles are cloned and kept in sync for each sub tenant account, so that the permissions are pruned according to the sub tenant's assigned base role.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/users/available-roles?accountId=:accountId`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+accountId      | (current tenant) | ID of Tenant *Only available to the master account.*

@@ -27,10 +27,6 @@ curl "$MORPHEUS_API_URL/api/accounts" \
       "description": "The master tenant",
       "subdomain": null,
       "currency": "USD",
-      "confs": {
-        "isMasterAccount": "true"
-      },
-      "instanceLimits": null,
       "lastUpdated": "2015-11-10T18:58:55+0000",
       "dateCreated": "2015-11-10T18:58:55+0000",
       "role": {
@@ -87,10 +83,6 @@ curl "$MORPHEUS_API_URL/api/accounts/1" \
     "description": "The master tenant",
     "subdomain": null,
     "currency": "USD",
-    "confs": {
-      "isMasterAccount": "true"
-    },
-    "instanceLimits": null,
     "externalId": null,
     "lastUpdated": "2015-11-10T18:58:55+0000",
     "dateCreated": "2015-11-10T18:58:55+0000",
@@ -117,12 +109,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
-    "name": "My New Tenant",
+    "name": "My Account",
     "description": "My description",
-    "subdomain": "subdomain",
-    role: {
-      id: 2
-    }
+    "subdomain": "myaccount",
+    "role": {"id": 2}
   }}'
 ```
 
@@ -139,9 +129,7 @@ Parameter | Default | Description
 name      |  | A unique name for the account
 description |  | Optional description field if you want to put more info there
 subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
-role      | Account Admin | A nested id of the default role for the account
-instanceLimits |  | Optional JSON Map of maxCpu, maxMemory (bytes) and maxStorage (bytes) restrictions (0 means unlimited). The parameters maxMemoryMiB, maxMemoryGiB, maxStorageMiB and maxStorageGiB can be used to pass values in larger units.
-
+role      | Account Admin | A nested id of the default base role for the account. See [Get Available Roles for a Tenant](#get-available-roles-for-a-tenant).
 
 ## Updating a Tenant
 
@@ -150,17 +138,10 @@ curl -XPUT "$MORPHEUS_API_URL/api/accounts/2" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
-    "name": "My New Account",
+    "name": "My Tenant",
     "description": "My new description",
-    "subdomain": "subdomain",
-    "instanceLimits": {
-      "maxCpu": 0,
-      "maxMemory": 0,
-      "maxStorage": 0
-    },
-    "role": {
-      id: 3
-    }
+    "subdomain": "mytenant",
+    "role": {"id": 2}
   }}'
 ```
 
@@ -177,7 +158,7 @@ Parameter | Default | Description
 name      |  | A unique name for the account
 description |  | Optional description field if you want to put more info there
 subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
-role      |  | A nested id of the default role for the account
+role      |  | A nested id of the default base role for the account
 active |  | Set to false to deactvate the account
 
 ## Delete a Tenant
@@ -202,3 +183,42 @@ If a tenant still has users or instances tied to it, The delete will fail.
 ### HTTP Request
 
 `DELETE https://api.gomorpheus.com/api/accounts/:id`
+
+
+## Get Available Roles for a Tenant
+
+```shell
+curl "$MORPHEUS_API_URL/api/accounts/available-roles" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "roles": [
+     {
+      "id": 1,
+      "authority": "System Admin",
+      "name": "System Admin",
+      "description": "Super User",
+      "roleType": null,
+      "owner": null
+    },
+    {
+      "id": 2,
+      "authority": "Tenant Admin",
+      "name": "Tenant Admin",
+      "description": "Tenant Role Template",
+      "roleType": "account",
+      "owner": null
+    }
+  ]
+}
+```
+
+This endpoint will retrieve a list of roles that can be assigned as the base role for a tenant account.  These are roles that have `roleType` set to `account` or `null`.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/accounts/available-roles`
