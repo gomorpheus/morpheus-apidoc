@@ -28,6 +28,8 @@ curl "$MORPHEUS_API_URL/api/user-sources"
       "active": true,
       "deleted": false,
       "autoSyncOnLogin": true,
+      "externalLogin": false,
+      "allowCustomMappings": false,
       "account": {
         "id": 59,
         "name": "acme"
@@ -87,6 +89,8 @@ curl "$MORPHEUS_API_URL/api/user-sources/2" \
     "active": true,
     "deleted": false,
     "autoSyncOnLogin": true,
+    "externalLogin": false,
+    "allowCustomMappings": false,
     "account": {
       "id": 59,
       "name": "acme"
