@@ -158,7 +158,7 @@ curl -XPOST "https://api.gomorpheus.com/api/whitelabel-settings/images" \
   -F 'headerLogo.file=@filename.png;type=image/png' \
   -F 'footerLogo.file=@filename.png;type=image/png' \
   -F 'loginLogo.file=@filename.png;type=image/png' \
-  -F 'favicon.file=@filename.png;type=image/png'
+  -F 'favicon.file=@filename.ico;type=image/ico'
 ```
 
 > The above command returns JSON Structured like this:
