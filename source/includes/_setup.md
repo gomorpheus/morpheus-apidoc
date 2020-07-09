@@ -7,7 +7,6 @@
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/setup/init" \
-  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
   "applianceName": "myenterprise-morpheus",
