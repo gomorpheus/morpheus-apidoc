@@ -1,3 +1,4 @@
-require 'middleman-gh-pages'
-
-task :default => [:build]
+#require "bundler/gem_tasks"
+#require 'middleman-gh-pages'
+require "morpheus-apidoc/tasks/apidoc"
+#task :default => [:build]

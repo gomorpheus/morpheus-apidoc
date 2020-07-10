@@ -1,5 +1,17 @@
+PATH
+  remote: .
+  specs:
+    morpheus-apidoc (4.2.2)
+      middleman (~> 3.3.10)
+      middleman-gh-pages (~> 0.0.3)
+      middleman-syntax (~> 2.0.0)
+      rake (~> 12.3.3)
+      redcarpet (~> 3.2.2)
+      rouge (~> 1.8.0)
+      therubyracer (~> 0.12.1)
+
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (4.1.16)
       i18n (~> 0.6, >= 0.6.9)
@@ -39,7 +51,7 @@ GEM
     i18n (0.7.0)
     json (1.8.6)
     kramdown (1.17.0)
-    libv8 (3.16.14.19)
+    libv8 (3.16.14.19-x86_64-darwin-18)
     listen (2.10.1)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -126,13 +138,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  middleman (~> 3.3.10)
-  middleman-gh-pages (~> 0.0.3)
-  middleman-syntax (~> 2.0.0)
-  rake (~> 12.3.3)
-  redcarpet (~> 3.2.2)
-  rouge (~> 1.8.0)
-  therubyracer (~> 0.12.1)
+  morpheus-apidoc!
 
 BUNDLED WITH
    1.16.2
