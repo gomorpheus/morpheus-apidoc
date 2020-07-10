@@ -292,7 +292,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/task-sets/5/execute" \
 }
 ```
 
-This endpoint executes a workflow on the specified `instances` or `servers`, depending on which `targetType` is specified.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
+This endpoint executes a workflow on the specified `instances`, `servers` or the `appliance` itself, depending on which `targetType` is specified.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
 
 ### HTTP Request
 
@@ -311,7 +311,7 @@ The following parameters are passed inside an object named `job`.
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (workflow name) | A name for the execution job. Can be used to find execution results with `/api/processes?name=`.
-targetType      | | The type of object to execute on. Pass either `instance` or `server`.
+targetType      | | The type of object to execute on. Pass either `instance`, `server` or `appliance` (None, execute locally on the appliance itself)
 instances      | | Array of Instance IDs. Only applicable for `targetType` is `instance`.
 servers      | | Array of Server IDs. Only applicable for `targetType` is server`.
 customOptions | | Map of options to be used as values in the workflow tasks. These correspond to option types.
