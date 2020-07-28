@@ -146,7 +146,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $nav-subitem-text;
       text-decoration: none;
 
       &:hover {
@@ -183,7 +183,7 @@ html, body {
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    @include box-shadow(0px 1px 0px $nav-active-shadow);
+    //@include box-shadow(0px 1px 0px $nav-active-shadow);
     background-color: $nav-active-bg;
     color: $nav-active-text;
   }
@@ -197,6 +197,7 @@ html, body {
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
       font-size: 12px;
+      color: $nav-subitem-text;
     }
 
     // for embossed look:
