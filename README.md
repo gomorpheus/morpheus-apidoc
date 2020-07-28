@@ -1,9 +1,10 @@
 Morpheus API Documentation
 ========
 
-This repository contains the code the [Morpheus Data](https://morpheusdata.com) API documentation website.
+The Morpheus API Documentation is built on the [Slate](https://github.com/slatedocs/slate) framework. 
 
-The latest documentation is hosted at [https://apidocs.morpheusdata.com/](https://apidocs.github.io/morpheus-apidoc/).
+The latest published documentation can be viewed at [https://apidocs.morpheusdata.com/](https://bertramdev.github.io/morpheus-apidoc/).
+
 
 Getting Started
 ------------------------------
