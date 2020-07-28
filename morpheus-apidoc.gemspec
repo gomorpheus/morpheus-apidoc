@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   
   
   gem.add_dependency 'middleman', '~>3.3.10'
-  #gem.add_dependency 'middleman-gh-pages', '~> 0.0.3'
+  gem.add_dependency 'middleman-gh-pages', '~> 0.0.3'
   gem.add_dependency 'middleman-syntax', '~> 2.0.0'
   gem.add_dependency 'rouge', '~> 1.8.0'
   gem.add_dependency 'redcarpet', '~> 3.2.2'
