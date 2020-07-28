@@ -1,3 +1,5 @@
+require './lib/morpheus_apidoc.rb'
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
