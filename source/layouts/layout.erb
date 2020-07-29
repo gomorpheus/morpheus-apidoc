@@ -27,10 +27,10 @@ under the License.
         transition:none!important;
       }
       .logo-wrapper img.logo {
-        display: block;
+        display: block !important;
       }
       .logo-wrapper img.print-logo {
-        display: none;
+        display: none !important;
       }
       <%# this is in _syntax.scss.erb right now %>
       <%# Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
@@ -39,11 +39,11 @@ under the License.
       * {
         transition:none!important;
       }
-      .logo-wrapper img.logo {
-        display: none;
+      .tocify-wrapper .logo-wrapper img.logo {
+        display: none !important;
       }
-      .logo-wrapper img.print-logo {
-        display: block;
+      .tocify-wrapper .logo-wrapper img.print-logo {
+        display: block !important;
       }
       <%# meh, this looks kinda bad %>
       <%# Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
