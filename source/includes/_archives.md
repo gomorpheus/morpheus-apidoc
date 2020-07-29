@@ -662,7 +662,7 @@ Download an archive file lin
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/public-archives/link?s=:secretAccessToken`
+`GET https://api.gomorpheus.com/public-archives/link?s=:secretAccessToken`
 
 ### URL Parameters
 
