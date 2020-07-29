@@ -4,7 +4,7 @@ Welcome to the Morpheus API Documentation.
 
 [Morpheus](https://www.morpheusdata.com/) is a powerful cloud management tool that provides provisioning, monitoring, logging, backups, and application deployment strategies.
 
-This document describes the Morpheus [API](#api) protocol and the endpoints it provides.  Sections are organized in the same manner as they appear in the Morpheus UI.
+This document describes the Morpheus API protocol and the available endpoints.  Sections are organized in the same manner as they appear in the Morpheus UI.
 
 ### Sections
 

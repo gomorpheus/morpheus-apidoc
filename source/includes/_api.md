@@ -66,7 +66,7 @@ Header |  Description
 Authorization      | Use the format `BEARER ${access_token}`. Example: `Authorization: BEARER e1d62c34-f7f5-4713-a874-31491e7707de`. Most endpoints require this header. Some exceptions include [Authentication](#authentication) and [Setup](#setup).
 Content-Type      | Use `application/json` for `POST` and `PUT` requests. This is needed to ensure your JSON payload is parsed.  Exceptions to this rule include file uploads where `application/x-www-form-urlencoded` and `application/octet-stream` should be used instead.
 
-HTTP Headers are used to authorize the acting user via a valid access token, and to describe the type of content being sent, which is typically JSON.
+HTTP Headers are used to authorize the acting user via a valid [access token](#get-access-token), and to describe the type of content being sent, which is typically JSON.
 
 ### Query Parameters
 
