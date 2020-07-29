@@ -22,6 +22,32 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><%= current_page.data.title || "API Documentation" %></title>
     <%= favicon_tag 'images/morpheus_fav_64.png' %>
+    <style media="screen">
+      * {
+        transition:none!important;
+      }
+      .logo-wrapper img.logo {
+        display: block;
+      }
+      .logo-wrapper img.print-logo {
+        display: none;
+      }
+      <%# this is in _syntax.scss.erb right now %>
+      <%# Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
+    </style>
+    <style media="print">
+      * {
+        transition:none!important;
+      }
+      .logo-wrapper img.logo {
+        display: none;
+      }
+      .logo-wrapper img.print-logo {
+        display: block;
+      }
+      <%# meh, this looks kinda bad %>
+      <%# Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
+    </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :print, media: :print %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -30,7 +56,6 @@ under the License.
     <% else %>
       <%= javascript_include_tag  "all_nosearch" %>
     <% end %>
-
     <% if language_tabs %>
       <script>
         $(function() {
@@ -51,6 +76,7 @@ under the License.
       <div class="logo-wrapper">
         <a href="./index.html" class="logo-link">
           <%= image_tag("logo-white.svg", class: 'logo') %>
+          <%= image_tag("logo.svg", class: 'print-logo') %>
         </a>
         <div class="version"><%= Morpheus::Apidoc::VERSION %></div>
         <% if current_page.data.search %>

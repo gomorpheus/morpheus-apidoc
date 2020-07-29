@@ -3,7 +3,6 @@
 @import 'compass';
 @import 'variables';
 @import 'icon-font';
-@import 'morpheus';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -139,5 +138,153 @@ body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// MORPHEUS CUSTOMIZATIONS
+////////////////////////////////////////////////////////////////////////////////
+// These should go back to their own file
+
+.logo-wrapper {
+  display: block;
+  padding: .809em;
+  z-index: 200;
+  text-align: center;
+  display: block;
+  color: #fcfcfc;
+
+  &>.search {
+    position: relative;
+
+    input {
+      width: 100%;
+      @include box-sizing(border-box);
+      outline: none;
+      color: #000;
+      font-weight: normal;
+      border-radius: 0; /* ios has a default border radius */
+      border-radius: 50px;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 1px 3px #ddd;
+      border-radius: 50px;
+      padding: 6px 12px;
+      border-color: #2472a4;
+    }
+
+    // &:before {
+    //   position: absolute;
+    //   top: 17px;
+    //   left: $nav-padding;
+    //   color: $nav-text;
+    //   @extend %icon-search;
+    // }
+  }
+
+  .search-results {
+    margin-top: 12px;
+    @include box-sizing(border-box);
+    height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include transition-property(height margin);
+    @include transition-duration(180ms);
+    @include transition-timing-function(ease-in-out);
+    &.visible {
+      height: 30%;
+      margin-bottom: 1em;
+    }
+    li {
+      margin: 1em $nav-padding;
+      line-height: 1;
+      text-align: left;
+    }
+    a {
+      color: $nav-text;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.logo-link {
+  color: #fcfcfc;
+  font-size: 100%;
+  font-weight: bold;
+  display: inline-block;
+  padding: 1px 1px;
+  margin-bottom: .001em;
+  text-decoration: none;
+}
+
+img.logo {
+  width: 200px !important;
+  padding: 5px;
+  margin: 0 auto;
+  display: block;
+  height: auto;
+  //height: 29.25px;
+  max-width: 100%;
+  border-radius: 0;
+  max-width: 100%;
+  background: transparent;
+}
+
+img.print-logo {
+  width: 200px !important;
+  padding: 5px;
+  margin: 0 auto;
+  display: block;
+  height: auto;
+  //height: 29.25px;
+  max-width: 100%;
+  border-radius: 0;
+  max-width: 100%;
+  background: transparent;
+}
+
+.tocify-wrapper {
+  div.version {
+    text-align: center;
+    color: #ffffff;
+    margin-top: -.4045em;
+    margin-bottom: .809em;
+    font-weight: normal;
+    font-size: 16px;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+  }
+
+
+  div.caption {
+    //padding: 12px 0 0 0;
+    height: 32px;
+    line-height: 32px;
+    .caption-text {
+      padding: 0 15px;
+      color: $nav-caption-text;
+      text-transform: uppercase;
+    }
+  }
+
+}
+
+// tweakage
+
+pre.highlight > code {
+  border: 0 !important;
+  color: #000 !important;
+}
+
+.tocify-wrapper {
+  div.version {
+    color: #000000;
+  }
+  div.caption {
+    .caption-text {
+      color: #333;
+    }
   }
 }
