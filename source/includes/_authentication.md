@@ -51,7 +51,7 @@ This endpoint provides authentication via username and password of a morpheus [U
 
 Header | Description
 --------- | -----------
-Content-Type     | `application/x-www-form-urlencoded`. This endpoint does not currently accept `application/json`, it should in the future.
+Content-Type     | `application/x-www-form-urlencoded` must be passed, this endpoint **does not accept** `application/json`
 
 ### Query Parameters
 
