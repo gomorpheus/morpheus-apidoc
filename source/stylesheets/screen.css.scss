@@ -760,5 +760,29 @@ html, body {
       text-transform: uppercase;
     }
   }
-
+  .toc-footer {
+    li {
+      text-align: center;
+      color: $nav-caption-text;
+    }
+    .logo-footer {
+      width: 140px !important;
+      padding: 6px 12px;
+      margin: 6px auto;
+      display: block;
+      height: auto;
+      //height: 29.25px;
+      max-width: 100%;
+      border-radius: 0;
+      max-width: 100%;
+      background: #FFFFFF;
+    }
+    .home-link {
+      font-weight: bold;
+      color: $nav-active-bg;
+      &:hover {
+        color: #FFFFF;
+      }
+    }
+  }
 }
