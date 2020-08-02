@@ -9,7 +9,7 @@ curl "$MORPHEUS_API_URL/api/ping"
 ```json
 {
   "success": true,
-  "buildVersion": "4.2.1",
+  "buildVersion": "4.2.2",
   "applianceUrl": "https://api.morpheusdata.com/",
   "setupNeeded": false,
   "hub": {
@@ -26,10 +26,4 @@ curl "$MORPHEUS_API_URL/api/ping"
 
 This endpoint can be used to check the remote appliance build version and some other basic information.
 
-<aside class="info">
-This endpoint is public and does not require authorization.
-</aside>
-
-<aside class="info">
-<b>Deprecation notice.</b> API versions before 4.2.1 support this endpoint at <code>/api/setup/check</code>. This old path still works but may be deprecated in the future.
-</aside>
+This is is public and does not require authorization.
