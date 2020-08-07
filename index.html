@@ -6,11 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Morpheus Developer APIs</title>
     <link href="images/morpheus_fav_64.png" rel="icon" type="image/png" />
+    <style media="screen">
+      * {
+        transition:none!important;
+      }
+      .logo-wrapper img.logo {
+        display: block !important;
+      }
+      .logo-wrapper img.print-logo {
+        display: none !important;
+      }
+    </style>
+    <style media="print">
+      * {
+        transition:none!important;
+      }
+      .tocify-wrapper .logo-wrapper img.logo {
+        display: none !important;
+      }
+      .tocify-wrapper .logo-wrapper img.print-logo {
+        display: block !important;
+      }
+    </style>
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="javascripts/all.js" type="text/javascript"></script>
-
       <script>
         $(function() {
           setupLanguages(["shell"]);
@@ -26,17 +47,30 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <a href="./index.html" id="logo-link"><img src="images/logo.svg" alt="Logo" /></a>
+      <div class="logo-wrapper">
+        <a href="./index.html" class="logo-link">
+          <img class="logo" src="images/logo-white.svg" alt="Logo white" />
+          <img class="print-logo" src="images/logo.svg" alt="Logo" />
+        </a>
+        <div class="version">4.2.2-3</div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+      </div>
 
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
+      <ul class="search-results"></ul>
+      <div class="caption">
+        <div class="caption-text">MORPHEUS API</div>
+      </div>
       <div id="toc">
       </div>
+        <ul class="toc-footer">
+          <li><img class="logo-footer" src="images/morpheus_logo_footer.svg" alt="Morpheus logo footer" /></li>
+          <li>© Copyright 2020 <a href="https://morpheusdata.com" class="home-link">Morpheus Data</a></li>
+        </li>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -48,7 +82,7 @@
 
 <p><a href="https://www.morpheusdata.com/">Morpheus</a> is a powerful cloud management tool that provides provisioning, monitoring, logging, backups, and application deployment strategies.</p>
 
-<p>This document describes the Morpheus <a href="#api">API</a> protocol and the endpoints it provides.  Sections are organized in the same manner as they appear in the Morpheus UI.</p>
+<p>This document describes the Morpheus API protocol and the available endpoints.  Sections are organized in the same manner as they appear in the Morpheus UI.</p>
 
 <h3 id="sections">Sections</h3>
 
@@ -97,7 +131,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>4.2.2</b>
+This document is for the Morpheus API version <b>4.2.2-3</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -187,7 +221,7 @@ This document is for the Morpheus API version <b>4.2.2</b>
 </tr>
 </tbody></table>
 
-<p>HTTP Headers are used to authorize the acting user via a valid access token, and to describe the type of content being sent, which is typically JSON.</p>
+<p>HTTP Headers are used to authorize the acting user via a valid <a href="#get-access-token">access token</a>, and to describe the type of content being sent, which is typically JSON.</p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -483,16 +517,16 @@ As always, be careful not to copy and execute request examples in sensitive envi
 </tr>
 </thead><tbody>
 <tr>
-<td>Terminal</td>
-<td>The <a href="https://github.com/gomorpheus/morpheus-cli/">Morpheus CLI</a> binary can be used for scripting in any unix environment, or on Windows PowerShell.</td>
+<td>Shell</td>
+<td>The <a href="https://github.com/gomorpheus/morpheus-cli/">Morpheus CLI</a> gem provides the <code class="prettyprint">morpheus</code> binary for scripting in any unix environment, or on Windows PowerShell. It also provides <code class="prettyprint">morpheus shell</code>.</td>
 </tr>
 <tr>
 <td>Ruby</td>
-<td>The <a href="https://github.com/gomorpheus/morpheus-cli/">Morpheus CLI</a> is written in ruby and provides the <a href="https://github.com/gomorpheus/morpheus-cli/wiki/APIClient">APIClient</a> driver.</td>
+<td>The <a href="https://github.com/gomorpheus/morpheus-cli/">Morpheus CLI</a> gem provides the <a href="https://github.com/gomorpheus/morpheus-cli/wiki/APIClient">APIClient</a> driver for interfacing with the API in ruby.</td>
 </tr>
 <tr>
 <td>Java</td>
-<td>The <a href="https://github.com/gomorpheus/morpheus-java-sdk">Morpheus Java SDK</a> SDK is available for integration in Java or Groovy.</td>
+<td>The <a href="https://github.com/gomorpheus/morpheus-java-sdk">Morpheus Java SDK</a> is available for integration in Java or Groovy.</td>
 </tr>
 <tr>
 <td>Go</td>
@@ -571,7 +605,7 @@ Be sure to keep your access token a secret. Anyone with the token can interact w
 </thead><tbody>
 <tr>
 <td>Content-Type</td>
-<td><code class="prettyprint">application/x-www-form-urlencoded</code>. This endpoint does not currently accept <code class="prettyprint">application/json</code>, it should in the future.</td>
+<td><code class="prettyprint">application/x-www-form-urlencoded</code> must be passed, this endpoint <strong>does not accept</strong> <code class="prettyprint">application/json</code></td>
 </tr>
 </tbody></table>
 
@@ -37612,7 +37646,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.gomorpheus.com/public-archives/link?s=:secretAccessToken</code></p>
+<p><code class="prettyprint">GET https://api.gomorpheus.com/public-archives/link?s=:secretAccessToken</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -46882,7 +46916,7 @@ Be aware that the appliance functionality will be restricted without a license k
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"buildVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2.1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"buildVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.2.2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"applianceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.morpheusdata.com/"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"setupNeeded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"hub"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -46898,13 +46932,7 @@ Be aware that the appliance functionality will be restricted without a license k
 
 <p>This endpoint can be used to check the remote appliance build version and some other basic information.</p>
 
-<aside class="info">
-This endpoint is public and does not require authorization.
-</aside>
-
-<aside class="info">
-<b>Deprecation notice.</b> API versions before 4.2.1 support this endpoint at <code>/api/setup/check</code>. This old path still works but may be deprecated in the future.
-</aside>
+<p>This is is public and does not require authorization.</p>
 
           <h1 id="setup">Setup</h1>
 
