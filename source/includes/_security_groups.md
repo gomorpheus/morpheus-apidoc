@@ -168,7 +168,7 @@ Parameter | Default | Description
 name      |  | Name for your security group
 description |  | Optional description field
 zoneId      |  | Scoped Cloud ID.
-active      | | Set to `false` to disable a security group. Default is true.
+active      | | Set to `false` to disable a security group.
 customOptions.vpc      |  | External ID of Amazon VPC.
 customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access.
@@ -206,6 +206,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name for your security group
 description |  | Optional description field
+active      | | Set to `false` to disable a security group.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 tenantPermissions.canManageAccounts  |  | Array of tenant account ids that can manage.
 resourcePermissions.all  |  | Pass true to allow access all groups
