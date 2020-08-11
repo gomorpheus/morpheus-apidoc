@@ -23,6 +23,8 @@ curl "$MORPHEUS_API_URL/api/security-groups"
       "externalId": null,
       "enabled": null,
       "syncSource": "internal",
+      "visibility": "private",
+      "active": true,
       "zone": null,
       "locations": [
         {
@@ -107,6 +109,8 @@ curl "$MORPHEUS_API_URL/api/security-groups/18" \
     "externalId": null,
     "enabled": null,
     "syncSource": "internal",
+    "visibility": "private",
+    "active": true,
     "zone": null,
     "locations": [
       {
@@ -164,6 +168,7 @@ Parameter | Default | Description
 name      |  | Name for your security group
 description |  | Optional description field
 zoneId      |  | Scoped Cloud ID.
+active      | | Set to `false` to disable a security group. Default is true.
 customOptions.vpc      |  | External ID of Amazon VPC.
 customOptions.resourceGroup      |  | External ID of the Azure Resource Group to scope to.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access.
