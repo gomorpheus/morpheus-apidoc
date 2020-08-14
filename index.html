@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">4.2.2-3</div>
+        <div class="version">4.2.2</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -131,7 +131,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>4.2.2-3</b>
+This document is for the Morpheus API version <b>4.2.2</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -31166,6 +31166,8 @@ to list available options for that network router type.</p>
       </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"syncSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -31265,6 +31267,8 @@ to list available options for that network router type.</p>
     </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"syncSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -31348,6 +31352,11 @@ to list available options for that network router type.</p>
 <td>Scoped Cloud ID.</td>
 </tr>
 <tr>
+<td>active</td>
+<td></td>
+<td>Set to <code class="prettyprint">false</code> to disable a security group.</td>
+</tr>
+<tr>
 <td>customOptions.vpc</td>
 <td></td>
 <td>External ID of Amazon VPC.</td>
@@ -31429,6 +31438,11 @@ to list available options for that network router type.</p>
 <td>description</td>
 <td></td>
 <td>Optional description field</td>
+</tr>
+<tr>
+<td>active</td>
+<td></td>
+<td>Set to <code class="prettyprint">false</code> to disable a security group.</td>
 </tr>
 <tr>
 <td>tenantPermissions.accounts</td>
