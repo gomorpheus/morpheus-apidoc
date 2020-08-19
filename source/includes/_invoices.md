@@ -175,6 +175,7 @@ endDate |  | Only return records with an endDate less than or equal to the speci
 period |  | Only return records for period that matches with the specified value. This is an alternative to using startDate/endDate. Format is YYYY or YYYYMM.
 refType |  | If specified will return an exact match on refType. eg. ComputeSite (Group), ComputeZone (Cloud), ComputeServer (Host), Instance, Container, User.
 refId |  | If specified will return an exact match on refId
+refStatus |  | If specified, will filter on the associated StorageVolume status. eg. `provisioned` or `unattached`. This is only applicable when `refType=StorageVolume`.
 zoneId |  | If specified will return an exact match on zone (cloud) ID
 siteId |  | If specified will return an exact match on site (group) ID
 instanceId |  | If specified will return an exact match on instance ID
