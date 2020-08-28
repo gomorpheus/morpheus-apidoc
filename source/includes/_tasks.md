@@ -271,7 +271,7 @@ The following parameters are passed inside an object named `job`.
 Parameter | Default | Description
 --------- | ------- | -----------
 name      | (task name) | A name for the execution job. Can be used to find execution results with `/api/processes?name=`.
-targetType      | | The type of object to execute on. Pass either `instance` or `server`.
+targetType      | | The target context for task execution. Pass `instance`, `server` or `appliance` (None, execute locally on the appliance itself).  This is required for tasks with `executeTarget` set to `resource`.
 instances      | | Array of Instance IDs. Only applicable for `targetType` is `instance`.
 servers      | | Array of Server IDs. Only applicable for `targetType` is server`.
 customOptions | | Map of options to be used as values in the task. These correspond to option types.
