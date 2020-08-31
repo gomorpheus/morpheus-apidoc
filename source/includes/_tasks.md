@@ -252,7 +252,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/tasks/5/execute" \
 }
 ```
 
-This endpoint executes a task on the specified instances or servers.  The [History API](#get-all-processes) can be used to retrieve information about the execution results.
+This endpoint executes a task on the specified instances or servers.  Tasks are executed asynchronously, so to see the process and event results you may fetch the job execution record. See [Get a Specific Job Execution](#Get-a-Specific-Job-Execution).
 
 ### HTTP Request
 

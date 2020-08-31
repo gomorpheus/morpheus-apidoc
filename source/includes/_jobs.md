@@ -655,7 +655,7 @@ This endpoint retrieves a specific job execution.
 
 Parameter | Description
 --------- | -----------
-id | ID of the job
+id | ID of the job execution
 
 
 ## Get a Specific Job Execution Event
