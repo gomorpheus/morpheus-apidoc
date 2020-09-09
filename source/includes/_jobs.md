@@ -49,7 +49,8 @@ curl "$MORPHEUS_API_URL/api/jobs" \
           "refId": 20
         }
       ],
-      "customConfig": null
+      "customConfig": null,
+      "customOptions": {"hello":"world"}
     }
   ],
   "stats": {
@@ -143,7 +144,8 @@ curl "$MORPHEUS_API_URL/api/jobs/1" \
         "refId": 55
       }
     ],
-    "customConfig": null
+    "customConfig": null,
+    "customOptions": {"hello":"world"}
   },
   "executions": {
     "jobExecutions": [
@@ -302,7 +304,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/jobs" \
           }
         ],
         "scheduleMode": "manual",
-        "customConfig": "foo=bar"
+        "customOptions":{"dbVersion":"5.7"},
      }}'
 ```
 
@@ -329,7 +331,8 @@ workflow.id | Y if task.id not used | Use this to assign workflow to job. Not co
 targetType | Y | Target type where job will execute: appliance, instance, server
 targets | 1..n for instance or server target types | Key for targets configuration, see [Targets](#targets)
 scheduleMode | Y | Job execution schedule type ID or 'manual' or 'dateTime'
-customConfig | N | Job custom configuration
+customOptions | | Map of options to be used as values in the workflow tasks. These correspond to option types.
+customConfig | N | Job custom configuration (String in JSON format)
 dateTime | N | Date and Time to execute the job. Use UTC time in the format 2020-02-15T05:00:00Z. Required when scheduleMode is 'dateTime'.
 run | N | If true executes job
 
@@ -363,7 +366,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/jobs/1" \
           }
         ],
         "scheduleMode": "manual",
-        "customConfig": "foo=bar",
+        "customOptions":{"hello":"world"}
+        "customConfig": "{\"foo\":\"bar\"}",
         "run": true
      }}'
 ```
@@ -397,7 +401,8 @@ workflow.id | N | Use this to assign workflow to job. Not compatible with task
 targetType | N | Target type where job will execute: appliance, instance, server
 targets | N | Key for targets configuration, see [Targets](#targets)
 scheduleMode | Y | Job execution schedule type ID or 'manual' or 'dateTime'
-customConfig | N | Job custom configuration
+customOptions | | Map of options to be used as values in the workflow tasks. These correspond to option types.
+customConfig | N | Job custom configuration (String in JSON format)
 dateTime | N | Date and Time to execute the job. Use UTC time in the format 2020-02-15T05:00:00Z. Required when scheduleMode is 'dateTime'.
 run | N | If true executes job 
 
