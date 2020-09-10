@@ -304,7 +304,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/jobs" \
           }
         ],
         "scheduleMode": "manual",
-        "customOptions":{"dbVersion":"5.7"},
+        "customOptions":{"dbVersion":"5.7"}
      }}'
 ```
 
@@ -366,7 +366,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/jobs/1" \
           }
         ],
         "scheduleMode": "manual",
-        "customOptions":{"hello":"world"}
+        "customOptions":{"hello":"world"},
         "customConfig": "{\"foo\":\"bar\"}",
         "run": true
      }}'
