@@ -368,50 +368,6 @@ tiers |  | A Map containing a key for each tier and all their instances.
 
 The blueprint `tiers` can be structured so that instance configurations are scoped to a specific environment, group and/or cloud. The `environments` key is the environment name.  The `groups` key is the group name. The `clouds` key is the cloud name. The order of scoping must always be done in the order: environments, groups, and then clouds.
 
-Example:
-```json
- {
-  "name": "sample blueprint",
-  "type": "morpheus",
-  "tiers": {
-    "App": {
-      "tierIndex": 1
-      "linkedTiers": [],
-      "instances": [
-        {
-          "instance": {
-            "type": "activemq"
-          },
-          "environments": {
-            "Dev": {
-              "groups": {
-                "My Group": {
-                  "clouds": {
-                    "My Cloud": {
-                      "instance": {
-                        "layout": {
-                          "code": "nginx-vmware-1.9-single",
-                          "id": 179
-                        },
-                        "name": "test-nginx-${sequence}"
-                      },
-                      "plan": {
-                        "code": "vm-1024",
-                        "id": 76
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-    }
-  }
-}
-```
-
 ## Updating a Blueprint
 
 ```shell
