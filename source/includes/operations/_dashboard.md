@@ -9,12 +9,6 @@ curl "$MORPHEUS_API_URL/api/dashboard" \
 
 ```json
 {
-  "data": []
-}
-```
-
-```json
-{
   "success": true,
   "monitoring": {
     "avgHealth": 9.2,
