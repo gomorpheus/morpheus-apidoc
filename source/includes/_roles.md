@@ -169,7 +169,36 @@ curl "$MORPHEUS_API_URL/api/roles/3" \
     },
   ],
   "globalAppTemplateAccess": "full",
-  "appTemplatePermissions": []
+  "appTemplatePermissions": [],
+  "globalCatalogItemTypeAccess": "full",
+  "catalogItemTypePermissions": [
+    {
+      "id": 1,
+      "code": "app1",
+      "name": "App 1",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "code": "app2",
+      "name": "App 2",
+      "access": "full"
+    }
+  ],
+  "personaPermissions": [
+    {
+      "id": 1,
+      "code": "standard",
+      "name": "Standard",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "code": "serviceCatalog",
+      "name": "Service Catalog",
+      "access": "full"
+    }
+  ]
 }
 ```
 
@@ -211,6 +240,7 @@ baseRoleId |  | A role to copy feature permissions and access from (optional)
 roleType | | The type of role to be created. Accepted values are either 'user' to create a User role or 'account' to create a Tenant role
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
+defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
 
 
 ## Updating Basic Role Settings
@@ -508,6 +538,110 @@ Parameter | Default | Description
 --------- | ------- | -----------
 appTemplateId  |  | id of the blueprint (appTemplate)
 access     |  | **full**, **read**, or **none**
+
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-cloud`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+cloudId  |  | id of the cloud (zone)
+access     |  | **full**, **read**, or **none**
+
+## Global Catalog Item Type Access
+
+> Global Catalog Item Type Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-permission" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "CatalogItemType",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **CatalogItemType** is the code for Global Catalog Item Type Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Catalog Item Type Access
+
+> Global Catalog Item Type Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-catalog-item-type" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "catalogItemTypeId": 1,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-catalog-item-type`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+catalogItemTypeId  |  | id of the catalog item type
+access     |  | **full** or **none**
+
+
+## Customizing Persona Access
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/roles/4/update-persona" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "personaCode": "serviceCatalog",
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/roles/:id/update-persona`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+personaCode  |  | code of the Persona, eg. **standard** or **serviceCatalog**
+access     |  | **full** or **none**
 
 ## Delete a Role
 
