@@ -25,7 +25,12 @@ curl "$MORPHEUS_API_URL/api/user-settings" \
     "windowsUsername": null,
     "windowsPassword": null,
     "avatar": null,
-    "receiveNotifications": true
+    "receiveNotifications": true,
+    "defaultPersona": {
+      "id": 1,
+      "code": "standard",
+      "name": "Standard"
+    }
   },
   "accessTokens": [
     {
@@ -58,7 +63,10 @@ curl -XPUT "$MORPHEUS_API_URL/api/user-settings" \
   -H "Content-Type: application/json" \
   -d '{
   "user": {
-    "receiveNoticiations": true
+    "receiveNoticiations": true,
+    "defaultPersona": {
+      "code": "standard"
+    }
   }
 }'
 ```
@@ -96,6 +104,7 @@ linuxKeyPairId      |  | Linux Key Pair ID
 windowsUsername      |  | Windows Username
 windowsPassword      |  | Windows Password
 receiveNotifications      |  | Receive Notifications (true or false)
+defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
 
 ## Update Avatar Image
 

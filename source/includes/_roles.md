@@ -22,7 +22,8 @@ curl "$MORPHEUS_API_URL/api/roles"
       "lastUpdated": "2016-08-27T23:26:19+0000",
       "scope": "Account",
       "ownerId": null,
-      "owner": null
+      "owner": null,
+      "defaultPersona": null
     },
     {
       "id": 1,
@@ -32,7 +33,8 @@ curl "$MORPHEUS_API_URL/api/roles"
       "lastUpdated": "2015-11-10T18:58:55+0000",
       "scope": "Admin",
       "ownerId": null,
-      "owner": null
+      "owner": null,
+      "defaultPersona": null
     },
     {
       "id": 3,
@@ -45,7 +47,8 @@ curl "$MORPHEUS_API_URL/api/roles"
       "owner": {
         "id": 1,
         "name": "Root Account"
-      }
+      },
+      "defaultPersona": null
     },
   ],
   "meta": {
@@ -95,7 +98,8 @@ curl "$MORPHEUS_API_URL/api/roles/3" \
     "owner": {
       "id": 1,
       "name": "Root Account"
-    }
+    },
+    "defaultPersona": null
   },
   "featurePermissions": [
     {
@@ -217,7 +221,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/roles/4" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
-    "description": "A new description of test role"
+    "description": "A new description of test role",
+    "defaultPersona": {"code": "serviceCatalog"}
   }}'
 ```
 
@@ -235,6 +240,7 @@ authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
+defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
 
 ## Updating Role Feature Permissions
 
