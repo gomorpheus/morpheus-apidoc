@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">4.2.3</div>
+        <div class="version">5.0.0</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -131,7 +131,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>4.2.3</b>
+This document is for the Morpheus API version <b>5.0.0</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -942,10 +942,6 @@ This will render your current access token invalid, so you will need to update a
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"monitoring"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11178,50 +11174,6 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 
 <p>The blueprint <code class="prettyprint">tiers</code> can be structured so that instance configurations are scoped to a specific environment, group and/or cloud. The <code class="prettyprint">environments</code> key is the environment name.  The <code class="prettyprint">groups</code> key is the group name. The <code class="prettyprint">clouds</code> key is the cloud name. The order of scoping must always be done in the order: environments, groups, and then clouds.</p>
 
-<p>Example:
-<code class="prettyprint">json
- {
-  &quot;name&quot;: &quot;sample blueprint&quot;,
-  &quot;type&quot;: &quot;morpheus&quot;,
-  &quot;tiers&quot;: {
-    &quot;App&quot;: {
-      &quot;tierIndex&quot;: 1
-      &quot;linkedTiers&quot;: [],
-      &quot;instances&quot;: [
-        {
-          &quot;instance&quot;: {
-            &quot;type&quot;: &quot;activemq&quot;
-          },
-          &quot;environments&quot;: {
-            &quot;Dev&quot;: {
-              &quot;groups&quot;: {
-                &quot;My Group&quot;: {
-                  &quot;clouds&quot;: {
-                    &quot;My Cloud&quot;: {
-                      &quot;instance&quot;: {
-                        &quot;layout&quot;: {
-                          &quot;code&quot;: &quot;nginx-vmware-1.9-single&quot;,
-                          &quot;id&quot;: 179
-                        },
-                        &quot;name&quot;: &quot;test-nginx-${sequence}&quot;
-                      },
-                      &quot;plan&quot;: {
-                        &quot;code&quot;: &quot;vm-1024&quot;,
-                        &quot;id&quot;: 76
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-    }
-  }
-}
-</code></p>
-
 <h2 id="updating-a-blueprint">Updating a Blueprint</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/blueprints/2"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
@@ -11461,7 +11413,8 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
           </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"customConfig"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"customConfig"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"hello"</span><span class="p">:</span><span class="s2">"world"</span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11583,7 +11536,8 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
         </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"customConfig"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="s2">"customConfig"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"hello"</span><span class="p">:</span><span class="s2">"world"</span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"executions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"jobExecutions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -11750,7 +11704,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
           }
         ],
         "scheduleMode": "manual",
-        "customConfig": "foo=bar"
+        "customOptions":{"dbVersion":"5.7"}
      }}'</span>
 </code></pre>
 
@@ -11811,9 +11765,14 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>Job execution schedule type ID or &#39;manual&rsquo; or &#39;dateTime&rsquo;</td>
 </tr>
 <tr>
+<td>customOptions</td>
+<td></td>
+<td>Map of options to be used as values in the workflow tasks. These correspond to option types.</td>
+</tr>
+<tr>
 <td>customConfig</td>
 <td>N</td>
-<td>Job custom configuration</td>
+<td>Job custom configuration (String in JSON format)</td>
 </tr>
 <tr>
 <td>dateTime</td>
@@ -11864,7 +11823,8 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
           }
         ],
         "scheduleMode": "manual",
-        "customConfig": "foo=bar",
+        "customOptions":{"hello":"world"},
+        "customConfig": "{\"foo\":\"bar\"}",
         "run": true
      }}'</span>
 </code></pre>
@@ -11940,9 +11900,14 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>Job execution schedule type ID or &#39;manual&rsquo; or &#39;dateTime&rsquo;</td>
 </tr>
 <tr>
+<td>customOptions</td>
+<td></td>
+<td>Map of options to be used as values in the workflow tasks. These correspond to option types.</td>
+</tr>
+<tr>
 <td>customConfig</td>
 <td>N</td>
-<td>Job custom configuration</td>
+<td>Job custom configuration (String in JSON format)</td>
 </tr>
 <tr>
 <td>dateTime</td>
@@ -12253,7 +12218,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>ID of the job</td>
+<td>ID of the job execution</td>
 </tr>
 </tbody></table>
 
@@ -12746,7 +12711,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint executes a task on the specified instances or servers.  The <a href="#get-all-processes">History API</a> can be used to retrieve information about the execution results.</p>
+<p>This endpoint executes a task on the specified instances or servers.  Tasks are executed asynchronously, so to see the process and event results you may fetch the job execution record. See <a href="#Get-a-Specific-Job-Execution">Get a Specific Job Execution</a>.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -12785,7 +12750,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <tr>
 <td>targetType</td>
 <td></td>
-<td>The type of object to execute on. Pass either <code class="prettyprint">instance</code> or <code class="prettyprint">server</code>.</td>
+<td>The target context for task execution. Pass <code class="prettyprint">instance</code>, <code class="prettyprint">server</code> or <code class="prettyprint">appliance</code> (None, execute locally on the appliance itself).  This is required for tasks with <code class="prettyprint">executeTarget</code> set to <code class="prettyprint">resource</code>.</td>
 </tr>
 <tr>
 <td>instances</td>
@@ -13572,7 +13537,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint executes a workflow on the specified <code class="prettyprint">instances</code>, <code class="prettyprint">servers</code> or the <code class="prettyprint">appliance</code> itself, depending on which <code class="prettyprint">targetType</code> is specified.  The <a href="#get-all-processes">History API</a> can be used to retrieve information about the execution results.</p>
+<p>This endpoint executes a workflow on the specified <code class="prettyprint">instances</code>, <code class="prettyprint">servers</code> or the <code class="prettyprint">appliance</code> itself, depending on which <code class="prettyprint">targetType</code> is specified.  Workflows are executed asynchronously, so to see the process and event results you may fetch the job execution record. See <a href="#Get-a-Specific-Job-Execution">Get a Specific Job Execution</a>.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13611,7 +13576,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <tr>
 <td>targetType</td>
 <td></td>
-<td>The type of object to execute on. Pass either <code class="prettyprint">instance</code>, <code class="prettyprint">server</code> or <code class="prettyprint">appliance</code> (None, execute locally on the appliance itself)</td>
+<td>The target context for task execution. Pass <code class="prettyprint">instance</code>, <code class="prettyprint">server</code> or <code class="prettyprint">appliance</code> (None, execute locally on the appliance itself).  This is required for tasks with <code class="prettyprint">executeTarget</code> set to <code class="prettyprint">resource</code>.</td>
 </tr>
 <tr>
 <td>instances</td>
