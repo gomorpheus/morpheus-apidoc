@@ -97,6 +97,7 @@ includes:
   - image_builds
   - boot_scripts
   - preseed_scripts
+  - catalog_item_types
   
   - admin
   - accounts
