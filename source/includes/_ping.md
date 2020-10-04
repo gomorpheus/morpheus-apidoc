@@ -26,4 +26,4 @@ curl "$MORPHEUS_API_URL/api/ping"
 
 This endpoint can be used to check the remote appliance build version and some other basic information.
 
-This is is public and does not require authorization.
+This is an unsecured endpoint. It does not require authorization.
