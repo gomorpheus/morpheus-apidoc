@@ -250,6 +250,14 @@ createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 status |  | Filter by instance type status
 showDeleted | false | If true, includes instances in pending removal status.
 deleted |  | If true, only instances in pending removal status are returned.
+expireDate |  | Filter by expireDate less than equal to specified date
+expireDateMin |  | Filter expireDate greater than or equal to the specified date
+expireDays |  | Filter by expireDays less than or equal to the specified value
+expireDaysMin |  | Filter by expireDays greater than or equal to the specified value
+shutdownDate |  | Filter by shutdownDate less than equal to the specified date
+shutdownDateMin |  | Filter by shutdownDate greater than or equal to the specified date
+shutdownDays |  | Filter by shutdownDays less than or equal to the specified value
+shutdownDaysMin |  | Filter by shutdownDays greater than or equal to the specified value
 
 ## Get a Specific Instance
 
