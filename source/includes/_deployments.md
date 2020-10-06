@@ -580,7 +580,7 @@ This endpoint will upload a file for a specific deployment version. This will ov
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/deployments/:deploymentId/versions/versions/:id/files/:filePath`
+`POST https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filePath`
 
 ### URL Parameters
 
