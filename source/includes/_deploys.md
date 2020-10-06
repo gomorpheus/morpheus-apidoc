@@ -1,11 +1,15 @@
-# Deployments
+# Deploys
 
-Provides API's used for creating "Deployment archives" for use with deployable instance types (i.e. Tomcat, Nginx, Apache, etc.). These endpoints also provide a means to trigger a deploy as well as to rollback from a failed deploy. There is a flow to creating a deployment archive. First you must create an appDeploy record. Then you can freely upload files to that deployment archive. Once your upload is complete it is easy to simply trigger the deploy.
+Deploys are the execution and installation of [deployment](#deployments) versions on your instances. Each deploy represents the installation of a specific version to an instance. This usually involves the installation of one or more files. 
 
-## Get all Deployments
+Provides API to view the deploy history for instances and also a means to deploy a new version or rollback to a previous version.
+
+A deploy may also be referred to as an *instance deployment* or *appDeploy*.
+
+## Get all Deploys
 
 ```shell
-curl "$MORPHEUS_API_URL/api/instances/1/deploy" \
+curl "$MORPHEUS_API_URL/api/deploys" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -15,48 +19,213 @@ curl "$MORPHEUS_API_URL/api/instances/1/deploy" \
 {
   "appDeploys": [
     {
-      "config": null,
-      "dateCreated": "2015-11-14T23:49:24Z",
-      "deployDate": "2015-11-14T23:49:47Z",
-      "deployGroup": null,
-      "deployType": "browser",
-      "fetchUrl": null,
-      "gitRef": null,
-      "gitUrl": null,
-      "id": 2,
-      "instanceId": 5,
-      "keyPair": {
-        "id": 1,
-        "name": null
+      "id": 28,
+      "instanceId": 347,
+      "instance": {
+        "id": 347,
+        "name": "testsite-2"
       },
-      "lastUpdated": "2015-11-14T23:49:47Z",
+      "deployment": {
+        "id": 17,
+        "name": "testsite",
+        "deployType": "file"
+      },
+      "deploymentVersionId": 58,
+      "deploymentVersion": {
+        "id": 58,
+        "userVersion": "5.0.9",
+        "deployType": "file"
+      },
+      "config": {
+        
+      },
       "status": "committed",
-      "userVersion": null
+      "deployDate": "2020-10-03T00:33:35+0000",
+      "dateCreated": "2020-10-03T00:33:30+0000",
+      "lastUpdated": "2020-10-03T00:33:35+0000"
+    },
+    {
+      "id": 27,
+      "instanceId": 346,
+      "instance": {
+        "id": 346,
+        "name": "testsite-1"
+      },
+      "deployment": {
+        "id": 17,
+        "name": "testsite",
+        "deployType": "file"
+      },
+      "deploymentVersionId": 58,
+      "deploymentVersion": {
+        "id": 58,
+        "userVersion": "5.0.9",
+        "deployType": "file"
+      },
+      "config": {
+        
+      },
+      "status": "committed",
+      "deployDate": "2020-10-03T00:33:35+0000",
+      "dateCreated": "2020-10-03T00:33:30+0000",
+      "lastUpdated": "2020-10-03T00:33:35+0000"
+    },
+    {
+      "id": 26,
+      "instanceId": 346,
+      "instance": {
+        "id": 346,
+        "name": "testsite-1"
+      },
+      "deployment": {
+        "id": 17,
+        "name": "testsite",
+        "deployType": "file"
+      },
+      "deploymentVersionId": 57,
+      "deploymentVersion": {
+        "id": 57,
+        "userVersion": "5.0.8",
+        "deployType": "file"
+      },
+      "config": {
+        
+      },
+      "status": "archived",
+      "deployDate": "2020-10-03T00:30:44+0000",
+      "dateCreated": "2020-10-03T00:30:41+0000",
+      "lastUpdated": "2020-10-03T00:33:35+0000"
     }
   ],
-  "success": true
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 2,
+    "total": 2
+  }
 }
 ```
 
-This endpoint retrieves all deploys that were created for a given instance
+This endpoint retrieves all deploys.
 
 ### HTTP Request
 
 `GET https://api.gomorpheus.com/api/instances/1/deploy`
 
-
-## Create a new Deployment
+## Get all Deploys for an Instance
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/instances/1/deploy"
+curl "$MORPHEUS_API_URL/api/instances/:id/deploys" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "appDeploys": [
+    {
+      "id": 27,
+      "instanceId": 346,
+      "instance": {
+        "id": 346,
+        "name": "testsite-1"
+      },
+      "deployment": {
+        "id": 17,
+        "name": "testsite",
+        "deployType": "file"
+      },
+      "deploymentVersionId": 58,
+      "deploymentVersion": {
+        "id": 58,
+        "userVersion": "5.0.9",
+        "deployType": "file"
+      },
+      "config": {
+        
+      },
+      "status": "committed",
+      "deployDate": "2020-10-03T00:33:35+0000",
+      "dateCreated": "2020-10-03T00:33:30+0000",
+      "lastUpdated": "2020-10-03T00:33:35+0000"
+    },
+    {
+      "id": 26,
+      "instanceId": 346,
+      "instance": {
+        "id": 346,
+        "name": "testsite-1"
+      },
+      "deployment": {
+        "id": 17,
+        "name": "testsite",
+        "deployType": "file"
+      },
+      "deploymentVersionId": 57,
+      "deploymentVersion": {
+        "id": 57,
+        "userVersion": "5.0.8",
+        "deployType": "file"
+      },
+      "config": {
+        
+      },
+      "status": "archived",
+      "deployDate": "2020-10-03T00:30:44+0000",
+      "dateCreated": "2020-10-03T00:30:41+0000",
+      "lastUpdated": "2020-10-03T00:33:35+0000"
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 2,
+    "total": 2
+  }
+}
+```
+
+This endpoint retrieves all deploys that were created for a specific instance.
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/deploy`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+phrase |  | Filter by wildcard search of [deployment](#deployments) name, version number, and [instance](#instances) name
+name |  | Filter by [deployment](#deployments) name
+deploymentId |  | Filter by [deployment](#deployments) id
+instanceName |  | Filter by [instance](#instances) name
+instanceId |  | Filter by [instance](#instances) id
+version |  | Filter by deployment version number (userVersion)
+versionId |  | Filter by deployment version id
+createdById |  | Filter by owner ([user](#users)) id
+deployType |  | Filter by deployType: file, git, fetch
+dateCreated |  | Filter by deployDate, the created timestamp is more recent or equal to the date specified
+deployDate |  | Filter by deployDate, deployment completion timestamp is more recent or equal to the date specified
+status |  | Filter by status: staged, deploying, commited, archived
+
+## Deploy to an Instance
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/instances/:instanceId/deploy"
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
-    "deployType": "browser",
-    "gitUrl": null,
-    "fetchUrl": null,
-    "gitRef": null,
-    "userVersion": "1.0.0"
+    "deploymentId": 17,
+    "version": "5.0.9"
   }}'
 ```
 
@@ -65,40 +234,222 @@ curl -XPOST "$MORPHEUS_API_URL/api/instances/1/deploy"
 ```json
 {
   "appDeploy": {
-  	"deployType": "browser",
-    "gitUrl": null,
-    "fetchUrl": null,
-    "gitRef": null,
-    "userVersion": "1.0.0",
+    "id": 27,
+    "instanceId": 346,
+    "instance": {
+      "id": 346,
+      "name": "jd-testsite-2"
+    },
+    "deployment": {
+      "id": 17,
+      "name": "testsite",
+      "deployType": "file"
+    },
+    "deploymentVersionId": 58,
+    "deploymentVersion": {
+      "id": 58,
+      "userVersion": "5.0.9",
+      "version": "5.0.9",
+      "deployType": "file"
+    },
+    "config": {
+      "overwrite": true
+    },
     "status": "open",
-    "dateCreated": null,
-    "lastUpdated": null,
-    "config": null,
-    "deployGroup": null,
-    "userVersion": "1.0.0"
+    "deployDate": "2020-10-03T00:33:35+0000",
+    "createdBy": {
+      "id": 1,
+      "username": "admin"
+    },
+    "dateCreated": "2020-10-03T00:33:30+0000",
+    "lastUpdated": "2020-10-03T00:33:35+0000"
   }
 }
 ```
 
-This endpoint will create a new AppDeploy entry configured for the specific instance in the url. Depending on the deployment type you may want to upload files to the archive.
+This endpoint will deploy the specified deployment version to specified instance. The version to deploy can be identified with `deploymentId` and `version` or with `versionId` alone. 
+
+By default, the deployment is executed right away. To prevent this so that it can be [run manually](#run-a-deploy) later on.
+
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/instances/:id/deploy`
+`POST https://api.gomorpheus.com/api/instances/:instanceId/deploy`
 
-### JSON App Deploy Parameters
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+instanceId | ID of the instance
+
+### JSON Deploy Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userVersion |  | Deployment Version userVersion identifier.
-versionId |  | Deployment Version ID. This can be passed instead of userVersion.
-deployType | browser | The type of deployment. File based is browser, `git` for git and `fetch` for fetching from a url
-gitUrl |  | The ssh git url to use to fetch files for the archive
-gitRef |  | The branch or tag name to be used to fetch from on git.
-fetchUrl |  | Used for fetch deploy type. Can fetch a zip file or general file and extract into archive
-deployGroup |  | Not yet in use but used to organize deploys for multiple apps in the same group
-configMap |  | JSON encoded list of parameters that varies by instance type. See below for more information
+deploymentId |  | Deployment ID.
+version |  | Deployment Version number identifier (userVersion). Can be passed along with deploymentId to identify the version
+versionId |  | Deployment Version ID. This can be passed instead deploymentId and version.
+config |  | JSON encoded list of parameters that varies by instance type.
+stageOnly | false | Stage Only, do not run the deploy right away, set status to `staged`.
 
-## Upload Files to Deployment Archive
+## Update a Deploy
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/deploys/:id"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+  -H "Content-Type: application/json" \
+  -d '{"appDeploy":{
+    "config": { }
+  }}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "appDeploy": {
+    "id": 27,
+    "instanceId": 346,
+    "instance": {
+      "id": 346,
+      "name": "jd-testsite-2"
+    },
+    "deployment": {
+      "id": 17,
+      "name": "testsite",
+      "deployType": "file"
+    },
+    "deploymentVersionId": 58,
+    "deploymentVersion": {
+      "id": 58,
+      "userVersion": "5.0.9",
+      "version": "5.0.9",
+      "deployType": "file"
+    },
+    "config": {
+      "overwrite": true
+    },
+    "status": "staged",
+    "deployDate": "2020-10-03T00:33:35+0000",
+    "createdBy": {
+      "id": 1,
+      "username": "admin"
+    },
+    "dateCreated": "2020-10-03T00:33:30+0000",
+    "lastUpdated": "2020-10-03T00:33:35+0000"
+  }
+}
+```
+
+This endpoint will update an existing deploy. This is typically only needed change settings on a deploy that is `staged`, before it is run.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/deploys/:id/deploy`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the deploy (appDeploy)
+
+### JSON Deploy Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+config |  | JSON encoded list of parameters that varies by instance type.
+
+## Run a Deploy
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/deploys/:id/deploy"
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+  -H "Content-Type: application/json" \
+  -d '{"appDeploy":{
+    "config": { }
+  }}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "appDeploy": {
+    "id": 27,
+    "instanceId": 346,
+    "instance": {
+      "id": 346,
+      "name": "jd-testsite-2"
+    },
+    "deployment": {
+      "id": 17,
+      "name": "testsite",
+      "deployType": "file"
+    },
+    "deploymentVersionId": 58,
+    "deploymentVersion": {
+      "id": 58,
+      "userVersion": "5.0.9",
+      "version": "5.0.9",
+      "deployType": "file"
+    },
+    "config": {
+      "overwrite": true
+    },
+    "status": "deploying",
+    "deployDate": "2020-10-03T00:33:35+0000",
+    "createdBy": {
+      "id": 1,
+      "username": "admin"
+    },
+    "dateCreated": "2020-10-03T00:33:30+0000",
+    "lastUpdated": "2020-10-03T00:33:35+0000"
+  }
+}
+```
+
+This endpoint will run an existing instance deploy. This is for running a new `staged` deploy or to rollback to previous version by re-running a deploy that is `archived`.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/deploys/:id/deploy`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the deploy (appDeploy)
+
+### JSON Deploy Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+config |  | JSON encoded list of parameters that varies by instance type.
 
 
+## Delete a Deploy
+
+```shell
+curl -XDELETE "$MORPHEUS_API_URL/api/deploys/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint will delete an archived instance deploy.
+
+### HTTP Request
+
+`DELETE https://api.gomorpheus.com/api/deploys/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the deploy (appDeploy)

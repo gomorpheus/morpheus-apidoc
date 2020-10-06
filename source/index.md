@@ -53,6 +53,7 @@ includes:
   - spec_templates
   - cluster_layouts
   
+  - deployments
   - deploys
 
   - infrastructure
@@ -120,6 +121,7 @@ includes:
   - whitelabel_settings
   - license
   - ping
+  - search
   - setup
 
 search: true
