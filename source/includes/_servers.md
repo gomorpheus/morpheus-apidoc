@@ -205,6 +205,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 lastUpdated |  | Date filter, restricts query to only load servers updated  timestamp is more recent or equal to the date specified
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
+metadata |  | Filter by metadata tags. This allows filtering by arbitrary tag names and values like this `metadata.foo=bar`
 
 
 ## Get a Specific Host
