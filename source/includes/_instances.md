@@ -259,7 +259,8 @@ shutdownDateMin |  | Filter by shutdownDate greater than or equal to the specifi
 shutdownDays |  | Filter by shutdownDays less than or equal to the specified value
 shutdownDaysMin |  | Filter by shutdownDays greater than or equal to the specified value
 label |  | Filter by label(s).
-tags |  | Filter by metadata tags. This allows filtering by arbitrary tag names and values like this `metadata.foo=bar`.
+tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
+metadata |  | Alias for `tags`
 
 ## Get a Specific Instance
 
