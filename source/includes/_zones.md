@@ -163,7 +163,7 @@ config |  | Map containing zone configuration settings. See the section on speci
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
-## Refreshing a Cloud
+## Refresh a Cloud
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/zones/:id/refresh" \
