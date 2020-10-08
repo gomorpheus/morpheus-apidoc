@@ -61,7 +61,9 @@ curl "$MORPHEUS_API_URL/api/virtual-images"
           "id": 1,
           "name": "root"
         }
-      ]
+      ],
+      "config": {
+      }
     }
   ],
   "meta": {
@@ -148,7 +150,9 @@ curl "$MORPHEUS_API_URL/api/virtual-images/764" \
         "id": 1,
         "name": "root"
       }
-    ]
+    ],
+    "config": {
+    }
   },
   "cloudFiles": [
     {
@@ -194,7 +198,8 @@ curl -XPOST "$MORPHEUS_API_URL/api/virtual-images" \
     },
     "virtioSupported": true,
     "vmToolsInstalled": true,
-
+    "config": {
+    }
   }}'
 ```
 
@@ -230,6 +235,43 @@ trialVersion | false | Trial Version
 isSysprep | false | Sysprep Enabled?
 config |  | Map of configuration properties, varies by image type. See below for more information
 
+## Create an Azure Reference Virtual Image
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/virtual-images" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"virtualImage":{
+    "name": "azure-nginx-test",
+    "imageType": "azure-reference",
+    "isCloudInit": true,
+    "installAgent": true,
+    "sshUsername": "root",
+    "sshPassword": "mygoodpassword123",
+    "sshKey": null,
+    "osType": {
+      "id": 9
+    },
+    "config": {
+      "publisher": "miri-infotech-pvt-ltd",
+      "offer": "Nginx",
+      "sku": "nginx",
+      "version": "1.1.1"
+    }
+  }}'
+```
+
+> The above command returns JSON structured like getting a single virtual image.
+
+This endpoint creates a new Azure Reference virtual image.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/virtual-images`
+
+### Azure Reference Virtual Image Parameters
+
+Same as [Create](#create-a-virtual-image).
 
 #### Azure Reference Config Parameters
 
@@ -241,7 +283,6 @@ publisher  |  | The name of the publisher in the Azure Marketplace
 offer  |  | The name of the offer in the Azure Marketplace
 sku  |  | The name of the version in the Azure Marketplace
 version  |  | The name of the version in the Azure Marketplace
-
 
 ## Upload Virtual Image File
 
