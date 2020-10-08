@@ -228,6 +228,20 @@ vmToolsInstalled | true | VM Tools Installed?
 isForceCustomization | false | Force Guest Customization?
 trialVersion | false | Trial Version
 isSysprep | false | Sysprep Enabled?
+config |  | Map of configuration properties, varies by image type. See below for more information
+
+
+#### Azure Reference Config Parameters
+
+Creating a virtual image of type Azure Reference requires the following settings to be passed under `config`.
+
+Parameter | Default | Description
+--------- | ------- | -----------
+publisher  |  | The name of the publisher in the Azure Marketplace
+offer  |  | The name of the offer in the Azure Marketplace
+sku  |  | The name of the version in the Azure Marketplace
+version  |  | The name of the version in the Azure Marketplace
+
 
 ## Upload Virtual Image File
 
