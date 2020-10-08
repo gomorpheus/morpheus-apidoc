@@ -218,7 +218,7 @@ userData |  | Cloud-Init User Data, a bash script
 installAgent | false | Install Agent? true or false
 sshUsername |  | SSH Username
 sshPassword |  | SSH Password
-sshKey |  | SSK Key
+sshKey |  | SSH Key
 osType |  | A Map containing the id of the OS Type. This can also be passed as a string (code or name) instead.
 visibility | "private" | private or public
 accounts  |  | Array of tenant account ids that are allowed access.
