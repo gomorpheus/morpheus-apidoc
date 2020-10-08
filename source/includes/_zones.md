@@ -163,6 +163,29 @@ config |  | Map containing zone configuration settings. See the section on speci
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
+## Refreshing a Cloud
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/zones/:id/refresh" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to manually refresh a specific cloud. 
+Each cloud type varies when it comes to what refreshing entails, but it involves operations like discovering changes to servers and networks.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/zones/:id/refresh`
+
 ## Delete a Cloud
 
 ```shell
