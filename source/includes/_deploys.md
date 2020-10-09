@@ -110,12 +110,32 @@ This endpoint retrieves all deploys.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances/1/deploy`
+`GET https://api.gomorpheus.com/api/deploys`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+phrase |  | Filter by wildcard search of [deployment](#deployments) name, version number, and [instance](#instances) name
+name |  | Filter by [deployment](#deployments) name
+deploymentId |  | Filter by [deployment](#deployments) id
+instanceName |  | Filter by [instance](#instances) name
+instanceId |  | Filter by [instance](#instances) id
+version |  | Filter by deployment version number (userVersion)
+versionId |  | Filter by deployment version id
+createdById |  | Filter by owner ([user](#users)) id
+deployType |  | Filter by deployType: file, git, fetch
+dateCreated |  | Filter by dateCreated, the created timestamp is more recent or equal to the date specified
+lastUpdated |  | Filter by lastUpdated, the last modified timestamp is more recent or equal to the date specified
+deployDate |  | Filter by deployDate, deployment completion timestamp is more recent or equal to the date specified
+status |  | Filter by status: staged, deploying, commited, archived
 
 ## Get all Deploys for an Instance
 
 ```shell
-curl "$MORPHEUS_API_URL/api/instances/:id/deploys" \
+curl "$MORPHEUS_API_URL/api/instances/:instanceId/deploys" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -186,41 +206,26 @@ curl "$MORPHEUS_API_URL/api/instances/:id/deploys" \
 }
 ```
 
-This endpoint retrieves all deploys that were created for a specific instance.
+This endpoint retrieves all deploys for a specific instance.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances/:id/deploy`
+`GET https://api.gomorpheus.com/api/instances/:instanceId/deploys`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | ID of the instance
+instanceId | ID of the instance
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-max | 25 | Max number of results to return
-offset | 0 | Offset of records you want to load
-phrase |  | Filter by wildcard search of [deployment](#deployments) name, version number, and [instance](#instances) name
-name |  | Filter by [deployment](#deployments) name
-deploymentId |  | Filter by [deployment](#deployments) id
-instanceName |  | Filter by [instance](#instances) name
-instanceId |  | Filter by [instance](#instances) id
-version |  | Filter by deployment version number (userVersion)
-versionId |  | Filter by deployment version id
-createdById |  | Filter by owner ([user](#users)) id
-deployType |  | Filter by deployType: file, git, fetch
-dateCreated |  | Filter by deployDate, the created timestamp is more recent or equal to the date specified
-deployDate |  | Filter by deployDate, deployment completion timestamp is more recent or equal to the date specified
-status |  | Filter by status: staged, deploying, commited, archived
+Same as [get all deploys](#get-all-deploys).
 
 ## Deploy to an Instance
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/instances/:instanceId/deploy"
+curl -XPOST "$MORPHEUS_API_URL/api/instances/:instanceId/deploys"
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
@@ -274,7 +279,7 @@ By default, the deployment is executed right away. To prevent this so that it ca
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/instances/:instanceId/deploy`
+`POST https://api.gomorpheus.com/api/instances/:instanceId/deploys`
 
 ### URL Parameters
 
@@ -282,15 +287,17 @@ Parameter | Description
 --------- | -----------
 instanceId | ID of the instance
 
-### JSON Deploy Parameters
+### JSON Parameters
+
+These parameters should be passed under an object called `appDeploy`.
 
 Parameter | Default | Description
 --------- | ------- | -----------
 deploymentId |  | Deployment ID.
 version |  | Deployment Version number identifier (userVersion). Can be passed along with deploymentId to identify the version
-versionId |  | Deployment Version ID. This can be passed instead deploymentId and version.
-config |  | JSON encoded list of parameters that varies by instance type.
-stageOnly | false | Stage Only, do not run the deploy right away, set status to `staged`.
+versionId |  | Deployment Version ID. This can be passed instead of deploymentId and version.
+config |  | Map of configuration properties that vary by instance type.
+stageOnly | false | Stage Only, do not run the deploy right away and instead set status to `staged` so it can be deployed later on.
 
 ## Update a Deploy
 
@@ -341,11 +348,11 @@ curl -XPUT "$MORPHEUS_API_URL/api/deploys/:id"
 }
 ```
 
-This endpoint will update an existing deploy. This is typically only needed change settings on a deploy that is `staged`, before it is run.
+This endpoint will update an existing deploy. This is typically only needed to change settings on a deploy that is `staged`, before it is run.
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/deploys/:id/deploy`
+`PUT https://api.gomorpheus.com/api/deploys/:id/deploy`
 
 ### URL Parameters
 

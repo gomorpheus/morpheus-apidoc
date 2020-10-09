@@ -49,6 +49,8 @@ offset | 0 | Offset of records you want to load
 phrase |  | Filter by wildcard search of name and description
 name |  | Filter by name
 description |  | Filter by description
+dateCreated |  | Filter by dateCreated, the created timestamp is more recent or equal to the date specified
+lastUpdated |  | Filter by lastUpdated, the last modified timestamp is more recent or equal to the date specified
 
 ## Get a Specific Deployment
 
@@ -274,6 +276,9 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 phrase |  | Filter by wildcard search of version number
 version |  | Filter by version number (userVersion)
+type |  | Filter by type (deployType), file, git, fetch
+dateCreated |  | Filter by dateCreated, the created timestamp is more recent or equal to the date specified
+lastUpdated |  | Filter by lastUpdated, the last modified timestamp is more recent or equal to the date specified
 
 ## Get a Specific Deployment Version
 
@@ -315,12 +320,6 @@ Parameter | Description
 deploymentId | The ID of the deployment
 id | The ID of the deployment version
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-maxVersions | 5 | Max recent versions to return.
-
 ## Create a new Deployment Version
 
 ```shell
@@ -354,7 +353,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions"
 }
 ```
 
-This endpoint will create a new deployment version that is ready to have files uploaded to it. The default type is `file`, which has files directly [uploaded](#upload-a-deployment-file) via morpheus. Alternatively, the type `git` or `fetch` can be used to just point to a repository or remote url.
+This endpoint will create a new deployment version that is ready to have files uploaded to it. The default type is `file`, which has files directly [uploaded](#upload-a-deployment-file) via Morpheus. Alternatively, the type `git` or `fetch` can be used to just point to a repository or remote url.
 
 ### HTTP Request
 
@@ -495,18 +494,20 @@ curl "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files" \
 }
 ```
 
-This endpoint returns a of files for a specific deployment version. This only applies to deploy type `file`. Files are sorted alphabetically, with directories appearing at the beginning of the list. Only files in the specified directory are returned, not the entire file tree.
+This endpoint returns a of files for a specific deployment version. This only applies to deploy type `file`. Files are sorted alphabetically, with directories appearing at the beginning of the list. 
+
+The `filepath` parameter can be specified to search for specific files or directories.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filePath`
+`GET https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filepath`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 deploymentId | The ID of the deployment
-filePath | The path to to search for files under
+filepath | The path to to search for files under. Default is the root directory `/`.
 
 ### Query Parameters
 
@@ -520,7 +521,7 @@ version |  | Filter by version number (userVersion)
 ## Get a Specific Deployment File
 
 ```shell
-curl "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filePath" \
+curl "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filepath" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -539,9 +540,9 @@ curl "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filePa
 }
 ```
 
-This is the same endpoint as list files, but uses the `filePath` parameter to find file(s) by name. Only files matching the specified name and in the current directory are returned, not the entire file tree. 
+This is the same endpoint as [list deployment files](#list-deployment-files), but it uses the `filepath` parameter to find a specific file by name. Only files and directories matching the specified `filepath` or in specified directory are returned, not the entire file tree. 
 
-To list files under a sub directory, use a trailing `/` in the `filePath` list files in a sub directory.
+To list files under a directory, use a trailing `/` in the `filepath` parameter. For example `/api/deployments/1/versions/1/files/config/environments/`.
 
 ### HTTP Request
 
@@ -552,13 +553,7 @@ To list files under a sub directory, use a trailing `/` in the `filePath` list f
 Parameter | Description
 --------- | -----------
 deploymentId | The ID of the deployment
-filePath | The name of the file being fetched
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-maxVersions | 5 | Max recent versions to return.
+filepath | The name of the file or directory being fetched
 
 ## Upload a Deployment File
 
@@ -580,7 +575,7 @@ This endpoint will upload a file for a specific deployment version. This will ov
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filePath`
+`POST https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filepath`
 
 ### URL Parameters
 
@@ -588,14 +583,14 @@ Parameter | Description
 --------- | -----------
 deploymentId | The ID of the deployment
 id | The ID of the deployment version
-filePath | The name of the file being uploaded
+filepath | The name of the file being uploaded
 
 Expects multipart form data as the request format, not JSON.
 
 ## Delete a Deployment File
 
 ```shell
-curl -XDELETE "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filePath" \
+curl -XDELETE "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filepath" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -611,7 +606,7 @@ This endpoint will delete an existing deployment file. To recursively delete a d
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filePath`
+`DELETE https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filepath`
 
 ### URL Parameters
 
@@ -619,7 +614,7 @@ Parameter | Description
 --------- | -----------
 deploymentId | The ID of the deployment
 id | The ID of the deployment version
-filePath | The name of the file being uploaded
+filepath | The name of the file or directory being deleted
 
 ### Query Parameters
 
