@@ -540,13 +540,13 @@ curl "$MORPHEUS_API_URL/api/deployments/:deploymentId/versions/:id/files/:filepa
 }
 ```
 
-This is the same endpoint as [list deployment files](#list-deployment-files), but it uses the `filepath` parameter to find a specific file by name. Only files and directories matching the specified `filepath` or in specified directory are returned, not the entire file tree. 
+This is the same endpoint as [list deployment files](#list-deployment-files), but it uses the `filepath` parameter to find a specific file by name. Only files and directories matching the specified `filepath` or in a specified directory are returned, not the entire file tree. 
 
 To list files under a directory, use a trailing `/` in the `filepath` parameter. For example `/api/deployments/1/versions/1/files/config/environments/`.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/config.ini`
+`GET https://api.gomorpheus.com/api/deployments/:deploymentId/versions/:id/files/:filepath`
 
 ### URL Parameters
 
