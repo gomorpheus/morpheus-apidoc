@@ -352,7 +352,7 @@ This endpoint will update an existing deploy. This is typically only needed to c
 
 ### HTTP Request
 
-`PUT https://api.gomorpheus.com/api/deploys/:id/deploy`
+`PUT https://api.gomorpheus.com/api/deploys/:id`
 
 ### URL Parameters
 
