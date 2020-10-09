@@ -12,6 +12,7 @@ includes:
   - programming_languages
   - authentication
   - whoami
+  - forgot_password
 
   - operations
   - operations/dashboard
