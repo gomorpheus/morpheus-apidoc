@@ -66,6 +66,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 
 ## Billing For a Specific Tenant
 
@@ -133,6 +135,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 
 
 ## Billing For All Zones
@@ -196,6 +200,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
@@ -258,6 +264,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
@@ -310,6 +318,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
@@ -354,6 +364,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
@@ -404,6 +416,8 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
 
@@ -456,5 +470,7 @@ Parameter | Default                        | Description
 startDate | Beginning of the current month |
 endDate   | Now                            |
 includeUsages | true                       | Optional ability to suppress the usage records
+maxUsages | null                       | Optional ability to limit the usages returned
+offsetUsages | null                       | Optional ability to offset the usages returned, for use with maxUsages to paginate
 includeTenants | false                     | Optional ability to include all subtenant billing information when calling from a master tenant user
 accountId |                                | Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with "includeTenants=true" accountId is ignored
