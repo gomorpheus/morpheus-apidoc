@@ -566,7 +566,7 @@ Will delete a catalog inventory item, which by default will deprovision any asso
 
 Parameter | Description
 --------- | -----------
-id | The ID of the catalog item type
+id | The ID of the catalog item
 
 ### Query Parameters
 
