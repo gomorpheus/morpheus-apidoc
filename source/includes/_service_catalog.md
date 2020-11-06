@@ -476,7 +476,7 @@ Use this command to checkout, finalizing your cart and placing an order. This co
 `POST https://api.gomorpheus.com/api/catalog/checkout
 
 
-## Add Catalog Item to Cart
+## Place Catalog Order
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/catalog/orders" \
