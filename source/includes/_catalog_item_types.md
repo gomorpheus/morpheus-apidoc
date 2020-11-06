@@ -263,14 +263,61 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
   "catalogItemType": {
     "name": "Example App",
     "description": "Example catalog item type",
-    "type": "blueprint",
-    "iconPath": "/assets/containers-png/nginx.png",
-    "blueprint": {
-      "id": 13278
+    "type": "instance",
+    "iconPath": "/assets/containers-png/apache.png",
+    "config": {
+      "group": {
+        "id": "<%= customOptions.morphgroup %>"
+      },
+      "cloud": {
+        "id": "<%= customOptions.morphcloud %>"
+      },
+      "type": "apache",
+      "instance": {
+      },
+      "name": "${userInitials}-apache-${sequence}",
+      "config": {
+        "createUser": true,
+        "resourcePoolId": "<%= customOptions.morphpool %>"
+      },
+      "environment": "<%= customOptions.morphenv %>",
+      "volumes": [
+        {
+          "rootVolume": true,
+          "name": "root",
+          "size": 10,
+          "storageType": 5
+        }
+      ],
+      "hostName": "${userInitials}-apache-${sequence}",
+      "layout": {
+        "id": 31,
+        "code": "apache-amazon-2.4-single"
+      },
+      "networkInterfaces": [
+        {
+          "primaryInterface": true,
+          "network": {
+            "id": "<%= customOptions.morphnetwork %>",
+            "hasPool": false
+          },
+          "ipMode": "",
+          "showNetworkPoolLabel": false,
+          "showNetworkDhcpLabel": true
+        }
+      ],
+      "plan": {
+        "id": "<%= customOptions.morphplan %>"
+      },
+      "version": "2.4",
+      "securityGroups": [
+        {
+          "id": "<%= customOptions.morphsecgroup %>"
+        }
+      ]
     },
-    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example",
     "optionTypes": [
-      2926
+      34,35,36,37,38,39,40
     ]
   }
 }'
