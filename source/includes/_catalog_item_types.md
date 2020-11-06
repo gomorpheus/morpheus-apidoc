@@ -1,6 +1,8 @@
 # Self Service
 
-Provides API interfaces for managing catalog item types within Morpheus.
+Provides API interfaces for the Tools: Self Service functionality, which involves viewing and managing catalog item types. These are the types that become available for order by the [Service Catalog](#service-catalog) persona.
+
+This is the adminstrative api for the Tools: Self Service functionality.
 
 ## Get All Catalog Item Types
 
@@ -16,8 +18,8 @@ curl "$MORPHEUS_API_URL/api/catalog-item-types" \
   "catalogItemTypes": [
     {
       "id": 1,
-      "name": "Example Nginx",
-      "description": "An example catalog item",
+      "name": "Example Instance",
+      "description": "Example catalog item type",
       "type": "instance",
       "blueprint": null,
       "refType": "InstanceType",
@@ -51,6 +53,13 @@ curl "$MORPHEUS_API_URL/api/catalog-item-types" \
           "createUser": true,
           "resourcePoolId": 94944,
         },
+        "networkInterfaces": [
+          {
+            "network": {
+              "id": "network-3",
+            }
+          }
+        ],
         "volumes": [
           {
             "rootVolume": true,
@@ -72,12 +81,12 @@ curl "$MORPHEUS_API_URL/api/catalog-item-types" \
     },
         {
       "id": 2,
-      "name": "Example Blueprint",
-      "description": "An example catalog item for a blueprint using appSpec",
+      "name": "Example App",
+      "description": "Example catalog item type using a blueprint with scribe",
       "type": "blueprint",
       "blueprint": {
-        "id": 13278,
-        "name": "Catalog Blueprint"
+        "id": 15,
+        "name": "Example Blueprint"
       },
       "refType": "AppTemplate",
       "refId": null,
@@ -85,10 +94,7 @@ curl "$MORPHEUS_API_URL/api/catalog-item-types" \
       "enabled": true,
       "featured": true,
       "iconPath": "/assets/containers-png/docker.png",
-      "config": {
-        "templateId": "13278",
-        "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
-      },
+      "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: activemq\r\n          cloud: Example",
       "optionTypes": [
         {
           "id": 2926,
@@ -186,7 +192,7 @@ curl "$MORPHEUS_API_URL/api/catalog-item-types/1" \
     "active": true,
     "enabled": true,
     "featured": true,
-    "iconPath": "/assets/containers-png/nginx.png",
+    "iconPath": "/assets/containers-png/resource.png",
     "config": {
       "group": {
         "id": 20,
@@ -256,13 +262,13 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
   -d '{
   "catalogItemType": {
     "name": "Example App",
-    "description": "An example catalog item",
+    "description": "Example catalog item type",
     "type": "blueprint",
     "iconPath": "/assets/containers-png/nginx.png",
-    "config": {
-        "templateId": "13278",
-        "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
-    }
+    "blueprint": {
+      "id": 13278
+    },
+    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
     "optionTypes": [
       2926
     ]
@@ -285,7 +291,7 @@ Use this command to create a catalog item type.
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/library/catalog-item-types`
+`POST https://api.gomorpheus.com/api/catalog-item-types`
 
 ### JSON Parameters
 
@@ -293,12 +299,16 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Catalog Item Type name
 description | N | Catalog Item Type description
-type | N | Type, `instance` or `blueprint`. Determines whether an [Instance](#instances) or [App](#apps) is being provisioned, apps may have associated blueprints.
+type | N | Type, `instance`, `blueprint`. This determines whether an [Instance](#instances) or [App](#apps) will be provisioned. Instance types require a `config` and blueprint requires a `blueprint` and `appSpec`, while workflow types requires a `workflow` and `context`.
 iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/containers-png/nginx.png`.
 enabled | N | Can be used to enable / disable the catalog item type. Default is true
 featured | N | Can be used to feature the catalog item type. Default is false
-optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
-config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance) and [Catalog Config For Blueprint](#catalog-config-for-blueprint)
+optionTypes | N | Array of option type IDs, see [Option Types](#option-types). Only applies to type `instance` and `blueprint`. The `workflow` type always uses the option types from the workflow and its tasks instead.
+config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance) and [App Spec For Blueprint](#catalog-config-for-blueprint)
+blueprint | Y | [Blueprint](#blueprints) object, identified by id or name. Only applies to type `blueprint`
+appSpec | Y | App Spec YAML, see [App Spec For Blueprint](#app-spec-for-blueprint). Only applies to type `blueprint`
+workflow | Y | Operational [Workflow](#workflows) object, identified by id or name. Only applies to type `workflow`
+context | N | Context for running the workflow, determines if a resource must be selected. `instance`,`server`, or `appliance`.
 
 #### Catalog Config For Instance
 
@@ -315,16 +325,101 @@ plan | Y |  | Plan, id or code for the memory and storage option
 
 For the full list of instance provisioning options, see [Create an Instance](#create-an-instance)
 
-#### Catalog Config For Blueprint
+#### App Spec For Blueprint
 
-The `config` for **blueprint** type catalog items is an object with fields:
+The `appSpec` for **blueprint** type catalog items is a *string* in the SCribe YAML format with fields:
 
 Parameter | Required | Description
 --------- | -------- | -----------
-templateId | Y | ID of a blueprint, see [Blueprints](#blueprints)
-templateName | N | Name of blueprint, may be used instead of templateId
-value | N | Sets fixed value for variable
-appSpec | N | App specification, using Scribe notation
+name | N | Name of the app
+group | N | Name of group
+environment | N | Name of blueprint, may be used instead of templateId
+tiers | N | Object with each key is a tier name and its value is the tier configuration, including an array of `instances`, each with their own type and settings.
+
+## Create a Catalog Item Type For Blueprint
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
+  -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "catalogItemType": {
+    "name": "Example App",
+    "description": "Example catalog item type",
+    "type": "blueprint",
+    "iconPath": "/assets/containers-png/resource.png",
+    "blueprint": {
+      "id": 13278
+    },
+    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
+    "optionTypes": [
+      2926
+    ]
+  }
+}'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "catalogItemType": {
+    "id": 1
+  }
+}
+```
+
+Use this command to create a catalog item type for a **blueprint**. This type uses the specified `blueprint` and `appSpec` to provision an [App](#apps).
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/catalog-item-types`
+
+### JSON Parameters
+
+See [Create](#create-a-catalog-item-type).
+
+
+## Create a Catalog Item Type For Workflow
+
+```shell
+curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
+  -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "catalogItemType": {
+    "name": "Example Operation",
+    "description": "Example catalog item type",
+    "type": "workflow",
+    "workflow": {
+      "id": 13
+    },
+    "context": "instance"
+  }
+}'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "catalogItemType": {
+    "id": 1
+  }
+}
+```
+
+Use this command to create a catalog item type for a **workflow**. This type uses the specified `workflow` and `context` to execute an Operation Workflow(#workflows).  This type cannot be configured with its own option types, they come from the workflow and its tasks instead.
+
+### HTTP Request
+
+`POST https://api.gomorpheus.com/api/catalog-item-types`
+
+### JSON Parameters
+
+See [Create](#create-a-catalog-item-type).
 
 ## Update a Catalog Item Type
 
@@ -361,7 +456,20 @@ id | The ID of the catalog item type
 
 ### JSON Parameters
 
-Same as [Create](#create-a-catalog-item-type).
+Parameter | Required | Description
+--------- | -------- | -----------
+name | Y | Catalog Item Type name
+description | N | Catalog Item Type description
+iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/containers-png/nginx.png`.
+enabled | N | Can be used to enable / disable the catalog item type. Default is true
+featured | N | Can be used to feature the catalog item type. Default is false
+optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
+config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance) and [App Spec For Blueprint](#catalog-config-for-blueprint)
+blueprint | Y | [Blueprint](#blueprints) object, identified by id or name. Only applies to type: `blueprint`
+appSpec | Y | App Spec YAML, see [App Spec For Blueprint](#app-spec-for-blueprint). Only applies to type: `blueprint`
+workflow | Y | Operational [Workflow](#workflows) object, identified by id or name. Only applies to type: `workflow`
+context | N | Context for running the workflow, determines if a target resource must be selected. `instance`,`server`, or `appliance`.
+
 
 ## Delete a Catalog Item Type
 

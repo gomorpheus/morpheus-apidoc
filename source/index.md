@@ -21,6 +21,7 @@ includes:
   - operations/budgets
   - approvals
   - operations/activity
+  - usage
   - billing
   - invoices
   - projects
@@ -101,6 +102,8 @@ includes:
   - preseed_scripts
   - catalog_item_types
   
+  - service_catalog
+
   - admin
   - accounts
   - account_groups
