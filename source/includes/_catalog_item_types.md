@@ -268,7 +268,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
     "blueprint": {
       "id": 13278
     },
-    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
+    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example",
     "optionTypes": [
       2926
     ]
@@ -464,7 +464,7 @@ iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/conta
 enabled | N | Can be used to enable / disable the catalog item type. Default is true
 featured | N | Can be used to feature the catalog item type. Default is false
 optionTypes | N | Array of layout option type IDs, see [Option Types](#option-types)
-config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance) and [App Spec For Blueprint](#catalog-config-for-blueprint)
+config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance)
 blueprint | Y | [Blueprint](#blueprints) object, identified by id or name. Only applies to type: `blueprint`
 appSpec | Y | App Spec YAML, see [App Spec For Blueprint](#app-spec-for-blueprint). Only applies to type: `blueprint`
 workflow | Y | Operational [Workflow](#workflows) object, identified by id or name. Only applies to type: `workflow`

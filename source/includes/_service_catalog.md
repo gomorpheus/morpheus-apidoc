@@ -448,7 +448,7 @@ Use this command to empty your cart, deleting all the items in it.
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/catalog/checkout`
+`DELETE https://api.gomorpheus.com/api/catalog/cart`
 
 ## Checkout Catalog Cart
 
