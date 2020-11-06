@@ -53,7 +53,7 @@ This endpoint retrieves the types available for ordering.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/catalog-item-types`
+`GET https://api.gomorpheus.com/api/catalog/types`
 
 ### Query Parameters
 
@@ -133,7 +133,7 @@ This endpoint retrieves a specific catalog item type. This also returns an array
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/catalog-item-types/:id`
+`GET https://api.gomorpheus.com/api/catalog/types/:id`
 
 ### URL Parameters
 
@@ -479,17 +479,21 @@ Use this command to checkout, finalizing your cart and placing an order. This co
 ## Add Catalog Item to Cart
 
 ```shell
-curl -XPOST "$MORPHEUS_API_URL/api/catalog/cart/items" \
+curl -XPOST "$MORPHEUS_API_URL/api/catalog/orders" \
   -H "Authorization: Bearer $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-  "item": {
-    "type": {
-      "name": "example"
-    },
-    "config": {
-      "appName": "My App"
-    },
+  "order": {
+    "items": [
+      {
+        "type": {
+          "name": "example"
+        },
+        "config": {
+          "appName": "woot"
+        }
+      }
+    ]
   }
 }'
 ```
@@ -556,7 +560,7 @@ Will delete a catalog inventory item, which by default will deprovision any asso
 
 ### HTTP Request
 
-`DELETE https://api.gomorpheus.com/api/catalog-item-types/:id`
+`DELETE https://api.gomorpheus.com/api/catalog/items/:id`
 
 ### URL Parameters
 
