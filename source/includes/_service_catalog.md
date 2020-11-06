@@ -399,8 +399,8 @@ validate | false | Validate Only. Use `true`  to validate the configuration with
 Parameter | Required | Description
 --------- | -------- | -----------
 config | Y | Config Object, required options depend on the catalog item type's associated option types. The values passed in here are injected into the instance config or app spec or workflow script(s) defined by the type.
-context | Y | Context Type for running the workflow, determines if a target resource must be selected. `instance`,`server`, or `appliance`. This may only be passed if the type allows it, usually the type determines the context for the user. Only applies to type `workflow`.
-target | Y | Resource ([Instance](#instances) or [Server](#hosts)) ID for context when running the workflow. Only applies to type `workflow` and only required when context is instance or server. 
+context | N | Context Type for running the workflow, determines if a target resource must be selected. `instance`,`server`, or `appliance`. This may only be passed if the type allows it, usually the type determines the context for the user. Only applies to type `workflow`.
+target | N | Resource ([Instance](#instances) or [Server](#hosts)) ID for context when running the workflow. Only applies to type `workflow` and only required when context is instance or server. 
 
 ## Remove a Catalog Item From Cart
 
@@ -448,7 +448,7 @@ Use this command to empty your cart, deleting all the items in it.
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/catalog/checkout
+`DELETE https://api.gomorpheus.com/api/catalog/checkout`
 
 ## Checkout Catalog Cart
 
@@ -473,7 +473,7 @@ Use this command to checkout, finalizing your cart and placing an order. This co
 
 ### HTTP Request
 
-`POST https://api.gomorpheus.com/api/catalog/checkout
+`POST https://api.gomorpheus.com/api/catalog/checkout`
 
 
 ## Place Catalog Order

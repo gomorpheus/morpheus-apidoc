@@ -299,12 +299,12 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Catalog Item Type name
 description | N | Catalog Item Type description
-type | N | Type, `instance`, `blueprint`. This determines whether an [Instance](#instances) or [App](#apps) will be provisioned. Instance types require a `config` and blueprint requires a `blueprint` and `appSpec`, while workflow types requires a `workflow` and `context`.
+type | N | Type, `instance`, `blueprint` or `workflow`. This determines whether an [Instance](#instances) or [App](#apps) will be provisioned. Instance types require a `config` and blueprint requires a `blueprint` and `appSpec`, while workflow types requires a `workflow` and `context`.
 iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/containers-png/nginx.png`.
 enabled | N | Can be used to enable / disable the catalog item type. Default is true
 featured | N | Can be used to feature the catalog item type. Default is false
 optionTypes | N | Array of option type IDs, see [Option Types](#option-types). Only applies to type `instance` and `blueprint`. The `workflow` type always uses the option types from the workflow and its tasks instead.
-config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance) and [App Spec For Blueprint](#catalog-config-for-blueprint)
+config | Y | Config Object, see [Catalog Config For Instance](#catalog-config-for-instance)
 blueprint | Y | [Blueprint](#blueprints) object, identified by id or name. Only applies to type `blueprint`
 appSpec | Y | App Spec YAML, see [App Spec For Blueprint](#app-spec-for-blueprint). Only applies to type `blueprint`
 workflow | Y | Operational [Workflow](#workflows) object, identified by id or name. Only applies to type `workflow`
@@ -319,21 +319,21 @@ Parameter | Required | Description
 name | Y | Name of instance
 group | Y | Group, id or name of the group to associate the instance with
 cloud | Y | Cloud, id or name of the cloud being provisioned into
-type | Y |  | Instance Type, id or code for the type of instance eg. `nginx`
-layout |  Y |  | Layout, id or code for the instance type that you want to provision. i.e. single process or cluster
-plan | Y |  | Plan, id or code for the memory and storage option
+type | Y |  Instance Type, id or code for the type of instance eg. `nginx`
+layout |  Y | Layout, id or code for the instance type that you want to provision. i.e. single process or cluster
+plan | Y | Plan, id or code for the memory and storage option
 
 For the full list of instance provisioning options, see [Create an Instance](#create-an-instance)
 
 #### App Spec For Blueprint
 
-The `appSpec` for **blueprint** type catalog items is a *string* in the SCribe YAML format with fields:
+The `appSpec` for **blueprint** type catalog items is a *string* in the Scribe YAML format with fields:
 
 Parameter | Required | Description
 --------- | -------- | -----------
 name | N | Name of the app
 group | N | Name of group
-environment | N | Name of blueprint, may be used instead of templateId
+environment | N | Name of environment
 tiers | N | Object with each key is a tier name and its value is the tier configuration, including an array of `instances`, each with their own type and settings.
 
 ## Create a Catalog Item Type For Blueprint
