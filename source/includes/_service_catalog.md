@@ -522,7 +522,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog/orders" \
 }
 ```
 
-Use this command to place an order, adding one or more catalog items to your inventory immediately. This provides a way to place and order without using a cart.
+This will place an order for the specified items, providing add items to the inventory right away, without using the cart.
 
 ### HTTP Request
 
