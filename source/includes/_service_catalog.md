@@ -522,7 +522,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog/orders" \
 }
 ```
 
-This will place an order for the specified items, providing add items to the inventory right away, without using the cart.
+This will place an order for the specified items, adding items to the inventory right away, without using the cart.
 
 ### HTTP Request
 
