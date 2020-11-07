@@ -398,7 +398,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/catalog-item-types" \
     "blueprint": {
       "id": 13278
     },
-    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example"
+    "appSpec": "name: <%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: apache\r\n          cloud: Example",
     "optionTypes": [
       2926
     ]
