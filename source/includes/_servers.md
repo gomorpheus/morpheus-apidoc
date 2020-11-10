@@ -754,6 +754,33 @@ Parameter | Default | Description
 taskSet      |  | Object containing workflow configuration parameters
 taskSet.customOptions      |  | Object containing any custom option type configuration parameters
 
+
+## Get list of snapshots for a Host
+
+```shell
+curl "$MORPHEUS_API_URL/api/servers/:id/snapshots" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure that looks like this:
+
+```json
+{
+    "snapshots": [
+    ]
+}
+```
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/servers/:id/snapshots`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the server
+
 ## Delete a Host
 
 ```shell

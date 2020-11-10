@@ -1923,6 +1923,32 @@ Parameter | Description
 --------- | -----------
 :id | ID of the instance
 
+## Get list of snapshots for an Instance
+
+```shell
+curl "$MORPHEUS_API_URL/api/instances/1773/snapshots" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure that looks like this:
+
+```json
+{
+    "snapshots": [
+    ]
+}
+```
+
+### HTTP Request
+
+`GET https://api.gomorpheus.com/api/instances/:id/snapshots`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
 ## Snapshot an Instance
 
 ```shell
@@ -1957,7 +1983,9 @@ Parameter | Description
 :id | ID of the instance
 
 ### JSON Snapshot Parameters
-These parameters should be passed under an object named `snapshot`
+
+These parameters are passed under an object named `snapshot`.
+
 Parameter   | Default | Description
 ---------   | ------- | -----------
 name       | "{serverName}.{timestamp}"    | Optional name for the snapshot being created. 
