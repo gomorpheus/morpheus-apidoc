@@ -118,11 +118,15 @@
 </tr>
 <tr>
 <td><a href="#tools">Tools</a></td>
-<td><a href="#cypher">Cypher</a>, <a href="#archives">Archives</a>, <a href="#image-builds">Image Builder</a></td>
+<td><a href="#cypher">Cypher</a>, <a href="#archives">Archives</a>, <a href="#image-builds">Image Builder</a>, <a href="#self-service">Self Service</a></td>
 </tr>
 <tr>
 <td><a href="#administration">Administration</a></td>
 <td><a href="#tenants">Tenants</a>, <a href="#roles">Roles</a>, <a href="#users">Users</a>, <a href="#service-plans">Plans</a> &amp; <a href="#prices">Pricing</a>, <a href="#policies">Policies</a>, <a href="#appliance-settings">Settings</a>, <a href="#license">License</a>, <a href="#ping">Ping</a>, <a href="#setup">Setup</a></td>
+</tr>
+<tr>
+<td><a href="#personas">Personas</a></td>
+<td><a href="#service-catalog">Service Catalog</a></td>
 </tr>
 </tbody></table>
 
@@ -41647,9 +41651,13 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 </tr>
 </tbody></table>
 
+          <h1 id="personas">Personas</h1>
+
+<p>The API provides endpoints for the Service Catalog persona as well.</p>
+
           <h1 id="service-catalog">Service Catalog</h1>
 
-<p>Provides API endpoints for the Service Catalog persona.  This includes viewing the available types, viewing items in the inventory, as well placing orders for new items to be provisioned and added to the inventory.</p>
+<p>Provides API endpoints for the Service Catalog persona.  This includes viewing the available types, viewing items in the inventory, and placing orders for new items to added to the inventory.</p>
 
 <h2 id="list-catalog-types">List Catalog Types</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/catalog/types"</span> <span class="se">\</span>
