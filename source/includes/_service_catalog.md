@@ -42,9 +42,9 @@ curl "$MORPHEUS_API_URL/api/catalog/types" \
   ],
   "meta": {
     "offset": 0,
-    "max": 3,
+    "max": 25,
     "size": 3,
-    "total": 9
+    "total": 3
   }
 }
 ```

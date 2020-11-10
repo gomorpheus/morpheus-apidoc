@@ -260,7 +260,7 @@ curl "$MORPHEUS_API_URL/api/jobs/1" \
     "meta": {
       "size": 1,
       "total": 1,
-      "max": 3,
+      "max": 25,
       "offset": 0
     }
   }

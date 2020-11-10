@@ -222,7 +222,7 @@ curl "$MORPHEUS_API_URL/api/instances?max=3"
   "loadBalancers": [],
   "meta": {
     "offset": 0,
-    "max": 3,
+    "max": 25,
     "size": 3,
     "total": 21
   }
