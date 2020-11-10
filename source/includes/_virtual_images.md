@@ -106,64 +106,116 @@ curl "$MORPHEUS_API_URL/api/virtual-images/764" \
 ```json
 {
   "virtualImage": {
-    "id": 764,
-    "name": "testimage",
+    "id": 470,
+    "name": "Morpheus MongoDB 3.2 on Ubuntu 14.04.3 v2",
     "description": null,
-    "ownerId": 1,
-    "imageType": "vmware",
-    "userUploaded": true,
+    "ownerId": null,
+    "tenant": null,
+    "imageType": "ovf",
+    "userUploaded": false,
     "userDefined": false,
-    "systemImage": false,
+    "systemImage": true,
     "isCloudInit": true,
-    "sshUsername": "root",
-    "sshPassword": "****",
+    "sshUsername": "ubuntu",
+    "sshPassword": "************",
     "sshKey": null,
     "osType": {
-      "id": 9,
-      "name": "ubuntu 64-bit",
+      "id": 5,
+      "code": "ubuntu.14.04.64",
+      "name": "ubuntu 14 64-bit",
       "description": null,
       "vendor": "canonical",
       "category": "ubuntu",
       "osFamily": "debian",
-      "osVersion": "all",
+      "osVersion": "14.04",
       "bitCount": 64,
       "platform": "linux"
     },
-    "minDisk": null,
     "minRam": null,
-    "rawSize": 56077536,
+    "minRamGB": null,
+    "minDisk": 2147483648,
+    "minDiskGB": 2,
+    "rawSize": null,
+    "rawSizeGB": null,
     "trialVersion": false,
     "virtioSupported": true,
-    "isAutoJoinDomain": false,
+    "isAutoJoinDomain": null,
     "vmToolsInstalled": true,
-    "isForceCustomization": false,
-    "isSysprep": false,
+    "installAgent": true,
+    "isForceCustomization": null,
+    "isSysprep": null,
     "userData": null,
-    "storageProvider": {
-      "id": 2,
-      "name": "testdrive2"
-    },
+    "consoleKeymap": null,
+    "storageProvider": null,
     "externalId": null,
     "visibility": "private",
     "accounts": [
-      {
-        "id": 1,
-        "name": "root"
-      }
+
     ],
     "config": {
-    }
-  },
-  "cloudFiles": [
-    {
-      "name": "testimage.vmdk",
-      "size": 1034592
     },
-    {
-      "name": "testimage.ovf",
-      "size": 28038768
-    }
-  ]
+    "volumes": [
+      {
+        "name": "root",
+        "maxStorage": 2147483648,
+        "rawSize": 2147483648,
+        "size": 2,
+        "rootVolume": true,
+        "resizeable": true
+      }
+    ],
+    "storageControllers": [
+      {
+        "name": "SCSI 0",
+        "type": {
+          "id": 4,
+          "code": "vmware-lsiLogic",
+          "name": "SCSI LSI Logic Parallel"
+        },
+        "maxDevices": 15,
+        "reservedUnitNumber": 7
+      },
+      {
+        "name": "IDE 0",
+        "type": {
+          "id": 2,
+          "code": "vmware-ide",
+          "name": "IDE"
+        },
+        "maxDevices": 2,
+        "reservedUnitNumber": -1
+      },
+      {
+        "name": "IDE 1",
+        "type": {
+          "id": 2,
+          "code": "vmware-ide",
+          "name": "IDE"
+        },
+        "maxDevices": 2,
+        "reservedUnitNumber": -1
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "eth0",
+        "description": null,
+        "dhcp": true,
+        "primaryInterface": true,
+        "type": {
+          "id": 2,
+          "code": "e1000",
+          "name": "E1000"
+        },
+        "ipMode": null
+      }
+    ],
+    "tags": [
+
+    ],
+    "dateCreated": null,
+    "lastUpdated": null
+  }
 }
 ```
 
@@ -234,6 +286,7 @@ isForceCustomization | false | Force Guest Customization?
 trialVersion | false | Trial Version
 isSysprep | false | Sysprep Enabled?
 config |  | Map of configuration properties, varies by image type. See below for more information
+tags |  | Metadata tags, Array of objects having a name and value
 
 ## Create an Azure Reference Virtual Image
 
@@ -257,7 +310,10 @@ curl -XPOST "$MORPHEUS_API_URL/api/virtual-images" \
       "offer": "Nginx",
       "sku": "nginx",
       "version": "1.1.1"
-    }
+    },
+    "tags": [
+      {"name": "Category", "value": "Web"}
+    ]
   }}'
 ```
 
@@ -353,13 +409,19 @@ filename  |  | The name of the file to be deleted
 ## Update a Virtual Image
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/virtual-images/764" \
+curl -XPUT "$MORPHEUS_API_URL/api/virtual-images/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "installAgent": true,
     "sshUsername": "root",
     "sshPassword": "aGreatpassword12345!"
+    "addTags": [
+      {"name": "Category", "value": "Cache"}
+    ],
+    "removeTags": [
+      {"name": "OldThing"}
+    ]
   }}'
 ```
 
@@ -377,9 +439,32 @@ Parameter | Description
 --------- | -----------
 id | The ID of the virtual image
 
-### JSON Virtual Image Parameters
+### JSON Update Virtual Image Parameters
 
-The same parameters as [Create a Virtual Image](#Create-a-Virtual-Image) are supported.
+Parameter | Default | Description
+--------- | ------- | -----------
+name  |  | A name for the virtual image
+imageType  |  | Code of image type. eg. vmware, ami, etc.
+storageProvider |  | A Map containing the id of the Storage Provider
+isCloudInit | false | Cloud Init Enabled? true or false
+userData |  | Cloud-Init User Data, a bash script
+installAgent | false | Install Agent? true or false
+sshUsername |  | SSH Username
+sshPassword |  | SSH Password
+sshKey |  | SSH Key
+osType |  | A Map containing the id of the OS Type. This can also be passed as a string (code or name) instead.
+visibility | "private" | private or public
+accounts  |  | Array of tenant account ids that are allowed access.
+isAutoJoinDomain | false | Auto Join Domain?
+virtioSupported | true | VirtIO Drivers Loaded?
+vmToolsInstalled | true | VM Tools Installed?
+isForceCustomization | false | Force Guest Customization?
+trialVersion | false | Trial Version
+isSysprep | false | Sysprep Enabled?
+config |  | Map of configuration properties, varies by image type. See below for more information
+tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
+addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
+removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
 
 ## Delete a Virtual Image
 
