@@ -1923,6 +1923,46 @@ Parameter | Description
 --------- | -----------
 :id | ID of the instance
 
+## Snapshot an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1773/snapshot" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{ "snapshot": {
+    "name": "snapshot-test",
+    "description": "A snapshot created via the morpheus api",
+  }
+}'
+```
+
+> The above command returns JSON structure that looks like this:
+
+```json
+{
+    "success": true
+}
+```
+
+This endpoint will create a snapshot of an instance. This is done asychronously, so the ID of the snapshot is not returned.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/snapshot`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+### JSON Snapshot Parameters
+These parameters should be passed under an object named `snapshot`
+Parameter   | Default | Description
+---------   | ------- | -----------
+name       | "{serverName}.{timestamp}"    | Optional name for the snapshot being created. 
+description       |     | Optional description for the snapshot
+
 ## Import Snapshot of an Instance
 
 ```shell
