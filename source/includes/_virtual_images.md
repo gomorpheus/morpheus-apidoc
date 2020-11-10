@@ -16,54 +16,115 @@ curl "$MORPHEUS_API_URL/api/virtual-images"
 {
   "virtualImages": [
     {
-      "id": 764,
-      "name": "testimage",
+      "id": 470,
+      "name": "Morpheus MongoDB 3.2 on Ubuntu 14.04.3 v2",
       "description": null,
-      "ownerId": 1,
-      "imageType": "vmware",
-      "userUploaded": true,
+      "ownerId": null,
+      "tenant": null,
+      "imageType": "ovf",
+      "userUploaded": false,
       "userDefined": false,
-      "systemImage": false,
+      "systemImage": true,
       "isCloudInit": true,
-      "sshUsername": "root",
-      "sshPassword": "****",
+      "sshUsername": "ubuntu",
+      "sshPassword": "************",
       "sshKey": null,
       "osType": {
-        "id": 9,
-        "name": "ubuntu 64-bit",
+        "id": 5,
+        "code": "ubuntu.14.04.64",
+        "name": "ubuntu 14 64-bit",
         "description": null,
         "vendor": "canonical",
         "category": "ubuntu",
         "osFamily": "debian",
-        "osVersion": "all",
+        "osVersion": "14.04",
         "bitCount": 64,
         "platform": "linux"
       },
-      "minDisk": null,
       "minRam": null,
-      "rawSize": 56077536,
+      "minRamGB": null,
+      "minDisk": 2147483648,
+      "minDiskGB": 2,
+      "rawSize": null,
+      "rawSizeGB": null,
       "trialVersion": false,
       "virtioSupported": true,
-      "isAutoJoinDomain": false,
+      "isAutoJoinDomain": null,
       "vmToolsInstalled": true,
       "installAgent": true,
-      "isForceCustomization": false,
-      "isSysprep": false,
+      "isForceCustomization": null,
+      "isSysprep": null,
       "userData": null,
-      "storageProvider": {
-        "id": 2,
-        "name": "local-images"
-      },
+      "consoleKeymap": null,
+      "storageProvider": null,
       "externalId": null,
       "visibility": "private",
       "accounts": [
-        {
-          "id": 1,
-          "name": "root"
-        }
+
       ],
       "config": {
-      }
+      },
+      "volumes": [
+        {
+          "name": "root",
+          "maxStorage": 2147483648,
+          "rawSize": 2147483648,
+          "size": 2,
+          "rootVolume": true,
+          "resizeable": true
+        }
+      ],
+      "storageControllers": [
+        {
+          "name": "SCSI 0",
+          "type": {
+            "id": 4,
+            "code": "vmware-lsiLogic",
+            "name": "SCSI LSI Logic Parallel"
+          },
+          "maxDevices": 15,
+          "reservedUnitNumber": 7
+        },
+        {
+          "name": "IDE 0",
+          "type": {
+            "id": 2,
+            "code": "vmware-ide",
+            "name": "IDE"
+          },
+          "maxDevices": 2,
+          "reservedUnitNumber": -1
+        },
+        {
+          "name": "IDE 1",
+          "type": {
+            "id": 2,
+            "code": "vmware-ide",
+            "name": "IDE"
+          },
+          "maxDevices": 2,
+          "reservedUnitNumber": -1
+        }
+      ],
+      "networkInterfaces": [
+        {
+          "name": "eth0",
+          "description": null,
+          "dhcp": true,
+          "primaryInterface": true,
+          "type": {
+            "id": 2,
+            "code": "e1000",
+            "name": "E1000"
+          },
+          "ipMode": null
+        }
+      ],
+      "tags": [
+
+      ],
+      "dateCreated": null,
+      "lastUpdated": null
     }
   ],
   "meta": {
@@ -92,6 +153,7 @@ phrase |  | Filter by wildcard search of name
 lastUpdated |  | Date filter, restricts query to only records with a timestamp is more recent or equal to the date specified
 filterType | "User" | Filter by type, "User", "System" or "All"
 imageType |  | Filter by image type code, "vmware", "ami", etc
+tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
 
 ## Get a Specific Virtual Image
 
