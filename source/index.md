@@ -101,7 +101,8 @@ includes:
   - boot_scripts
   - preseed_scripts
   - catalog_item_types
-  
+
+  - personas
   - service_catalog
 
   - admin

@@ -16,7 +16,8 @@ Section |  Description
 [Infrastructure](#infrastructure) | [Groups](#groups), [Clouds](#clouds), [Clusters](#clusters), [Hosts](#hosts), [Networks](#networks), [Storage](#storage), [Keys](#key-pairs) & [Certs](#ssl-certificates)
 [Logs](#logs) | View logs for your hosts and containers.
 [Monitoring](#monitoring) | [Checks](#checks), [Incidents](#checks), [Alerts](#alerts), [Contacts](#contacts)
-[Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds)
+[Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds), [Self Service](#self-service)
+[Personas](#personas) | [Service Catalog](#service-catalog)
 [Administration](#administration) | [Tenants](#tenants), [Roles](#roles), [Users](#users), [Plans](#service-plans) & [Pricing](#prices), [Policies](#policies), [Settings](#appliance-settings), [License](#license), [Ping](#ping), [Setup](#setup)
 
 To initialize a freshly installed Morpheus appliance, see [Setup](#setup).
