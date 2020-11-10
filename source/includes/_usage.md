@@ -103,7 +103,7 @@ This endpoint retrieves a paginated list of usage records. The usages are scoped
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances`
+`GET https://api.gomorpheus.com/api/usage`
 
 ### Query Parameters
 
