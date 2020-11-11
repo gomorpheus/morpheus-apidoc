@@ -314,8 +314,11 @@ curl "$MORPHEUS_API_URL/api/instances/1216" \
     "name": "redistest",
     "description": null,
     "instanceVersion": null,
+    "labels": [
+      "web"
+    ],
     "tags": [
-
+      ["id": 55, "name": "Category", "value": "Web"]
     ],
     "maxMemory": 536870912,
     "maxStorage": 5368709120,
@@ -1447,7 +1450,9 @@ securityGroups | N |  | Key for security group configuration. It should be passe
 volumes | N |  | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
 config | Y |  | Key for specific type configuration, see [Config](#config)
-metadata | N |  | Array of name-value pairs for AWS metadata tags [Metadata](#metadata)
+labels | N |  | Array of strings (keywords)
+tags | N |  | Metadata tags, Array of objects having a name and value.
+metadata | N |  | Alias for `tags`
 ports | N |  | Array of port objects, see [Exposed Ports](#exposed-ports)
 taskSetId | N |  | The Workflow ID to execute.
 taskSetName | N |  | The Workflow Name to execute.
@@ -1535,12 +1540,10 @@ This is specific to AWS Metadata tags.  Name-Values pairs can be anything you li
   ...
   "metadata": [
     {
-      "id": null,
       "name": "SampleName",
       "value": "SampleValue"
     }
     {
-      "id": null,
       "name": "BusinessUnit",
       "value": "QualityAssurance"
     }
@@ -1583,9 +1586,11 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Unique name scoped to your account for the instance
 description |  | Optional description field
-tags |  | Tags
 instanceContext |  | Environment
-metadata |  | Array of metadata objects
+labels | N |  | Array of strings (keywords)
+tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
+addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
+removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
 powerScheduleType |  | Power Schedule ID
 site.id |  | Group ID
 ownerId  |  | [User](#users) ID, can be used to change instance owner.
