@@ -1422,6 +1422,13 @@ curl -X POST "https://api.gomorpheus.com/api/instances" \
     {"name": "MY_APP_VAR1", "value": "VALUE1"},
     {"name": "MY_APP_VAR2", "value": "VALUE2"}
   ],
+  "labels": [
+    "foo", "bar"
+  ],
+  "tags": [
+    {"name": "hello", "value": "world"},
+    {"name": "flash", "value": "bang"}
+  ]
 }'
 ```
 
