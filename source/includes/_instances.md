@@ -1553,8 +1553,6 @@ This is specific to AWS Metadata tags.  Name-Values pairs can be anything you li
 ```
 
 
-**Documentation on ALL of the provision types to come...**
-
 There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the `instance-types` api and getting available layouts as well as the provision type option types associated with the layout. Currently these input options are available from the option-types map. These however, can be overridden in the event a config options map exists on the layout object within. **NOTE**: See the API Document on OptionTypes for figuring out how to build property maps from them.
 
 ## Updating an Instance
@@ -1564,7 +1562,14 @@ curl -X PUT "https://api.gomorpheus.com/api/instances/1" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
-  "description": "my new redis"
+  "description": "my new redis",
+  "addTags": [
+    {"name": "hello", "value": "world"},
+    {"name": "flash", "value": "bang"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
   }}'
 ```
 

@@ -513,12 +513,18 @@ dataDevice  |  | the mount point for the lvm volume that needs to be created
 ## Updating a Host
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/servers/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/servers/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "name": "dre-matrix-3",
-  "description": "dre-matrix-3"
+  "description": "dre-matrix-3",
+  "addTags": [
+    {"name": "hello", "value": "world"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
   }}'
 ```
 
@@ -537,6 +543,9 @@ description |  | Optional description field
 sshUsername |  | SSH Username
 sshPassword |  | SSH Password
 powerScheduleType |  | Power Schedule ID
+tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
+addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
+removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
 
 ## Convert To Managed
 
