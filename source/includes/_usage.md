@@ -50,7 +50,7 @@ curl "$MORPHEUS_API_URL/api/usage"
             "startDate": "2020-10-26T16:48:54Z",
             "endDate": "2020-10-26T17:00:37Z",
             "status": "running",
-            "metadata": [],
+            "tags": [],
             "applicablePrices": [
               {
                 "startDate": "2020-10-26T16:48:54Z",

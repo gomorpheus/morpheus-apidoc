@@ -1545,7 +1545,7 @@ This is specific to AWS Metadata tags.  Name-Values pairs can be anything you li
     ...
   }
   ...
-  "metadata": [
+  "tags": [
     {
       "name": "SampleName",
       "value": "SampleValue"
