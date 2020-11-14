@@ -1599,7 +1599,7 @@ Parameter | Default | Description
 name      |  | Unique name scoped to your account for the instance
 description |  | Optional description field
 instanceContext |  | Environment
-labels | N |  | Array of strings (keywords)
+labels |  | Array of strings (keywords)
 tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
 addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
 removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
