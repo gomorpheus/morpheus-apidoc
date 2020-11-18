@@ -4,6 +4,10 @@ Provides API interfaces for the Tools: Self Service functionality, which involve
 
 This is the adminstrative api for the Tools: Self Service functionality.
 
+<aside class="info">
+This feature is only available in Morpheus API version <b>5.x</b>
+</aside>
+
 ## Get All Catalog Item Types
 
 ```shell

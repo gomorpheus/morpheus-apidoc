@@ -2,6 +2,10 @@
 
 Provides API endpoints for the Service Catalog persona.  This includes viewing the available types, viewing items in the inventory, and placing orders for new items to added to the inventory.
 
+<aside class="info">
+This feature is only available in Morpheus API version <b>5.x</b>
+</aside>
+
 ## List Catalog Types
 
 ```shell

@@ -1,5 +1,5 @@
 module Morpheus
   module Apidoc
-    VERSION = '5.2.0'
+    VERSION = '4.2.5'
   end
 end
