@@ -208,6 +208,10 @@ createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
 metadata |  | Alias for `tags`
 
+<aside class="info">
+<b>Deprecation notice.</b> The property <code>metadata</code> was renamed to <code>tags</code>. 
+API versions older than 4.2.5/5.2.1 still use the old property name: <code>metadata</code>
+</aside>
 
 ## Get a Specific Host
 

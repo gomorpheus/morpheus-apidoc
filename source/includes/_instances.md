@@ -258,9 +258,15 @@ shutdownDate |  | Filter by shutdownDate less than equal to the specified date
 shutdownDateMin |  | Filter by shutdownDate greater than or equal to the specified date
 shutdownDays |  | Filter by shutdownDays less than or equal to the specified value
 shutdownDaysMin |  | Filter by shutdownDays greater than or equal to the specified value
-label |  | Filter by label(s).
+labels |  | Filter by label(s).
 tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
-metadata |  | Alias for `tags`
+metadata |  | Alias for `tags`. 
+
+
+<aside class="info">
+<b>Deprecation notice.</b> The property <code>metadata</code> was renamed to <code>tags</code>. The previous <code>tags</code> property was renamed to <code>labels</code>. 
+API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <code>metadata</code> and Labels as <code>tags</code>
+</aside>
 
 ## Get a Specific Instance
 
