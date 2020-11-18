@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.2.0</div>
+        <div class="version">4.2.5</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.2.0</b>
+This document is for the Morpheus API version <b>4.2.5</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -3692,7 +3692,7 @@ The page will be created if it does not yet exist.</p>
             </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T16:48:54Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T17:00:37Z"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
             </span><span class="s2">"applicablePrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T16:48:54Z"</span><span class="p">,</span><span class="w">
@@ -8173,8 +8173,11 @@ By default only open alarms are returned. Open alarms are those that have not ye
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redistest"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instanceVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"web"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
+      </span><span class="p">[</span><span class="s2">"id"</span><span class="err">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Category"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Web"</span><span class="p">]</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">5368709120</span><span class="p">,</span><span class="w">
@@ -9336,6 +9339,13 @@ By default only open alarms are returned. Open alarms are those that have not ye
     {"name": "MY_APP_VAR1", "value": "VALUE1"},
     {"name": "MY_APP_VAR2", "value": "VALUE2"}
   ],
+  "labels": [
+    "foo", "bar"
+  ],
+  "tags": [
+    {"name": "hello", "value": "world"},
+    {"name": "flash", "value": "bang"}
+  ]
 }'</span>
 </code></pre>
 
@@ -9448,10 +9458,22 @@ By default only open alarms are returned. Open alarms are those that have not ye
 <td>Key for specific type configuration, see <a href="#config">Config</a></td>
 </tr>
 <tr>
+<td>labels</td>
+<td>N</td>
+<td></td>
+<td>Array of strings (keywords)</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>N</td>
+<td></td>
+<td>Metadata tags, Array of objects having a name and value.</td>
+</tr>
+<tr>
 <td>metadata</td>
 <td>N</td>
 <td></td>
-<td>Array of name-value pairs for AWS metadata tags <a href="#metadata">Metadata</a></td>
+<td>Alias for <code class="prettyprint">tags</code></td>
 </tr>
 <tr>
 <td>ports</td>
@@ -9712,14 +9734,12 @@ The Provision Types api can be used to see which options are available.</p>
     ...
   }
   ...
-  "metadata": [
+  "tags": [
     {
-      "id": null,
       "name": "SampleName",
       "value": "SampleValue"
     }
     {
-      "id": null,
       "name": "BusinessUnit",
       "value": "QualityAssurance"
     }
@@ -9728,8 +9748,6 @@ The Provision Types api can be used to see which options are available.</p>
 }
 </span></code></pre>
 
-<p><strong>Documentation on ALL of the provision types to come&hellip;</strong></p>
-
 <p>There can be additional properties to apply to the instance. For example mysql provisioning requires a set of initial credentials. You can get a list of what these input options are by fetching the instance-types list via the <code class="prettyprint">instance-types</code> api and getting available layouts as well as the provision type option types associated with the layout. Currently these input options are available from the option-types map. These however, can be overridden in the event a config options map exists on the layout object within. <strong>NOTE</strong>: See the API Document on OptionTypes for figuring out how to build property maps from them.</p>
 
 <h2 id="updating-an-instance">Updating an Instance</h2>
@@ -9737,7 +9755,14 @@ The Provision Types api can be used to see which options are available.</p>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "instance": {
-  "description": "my new redis"
+  "description": "my new redis",
+  "addTags": [
+    {"name": "hello", "value": "world"},
+    {"name": "flash", "value": "bang"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
   }}'</span>
 </code></pre>
 
@@ -9783,19 +9808,29 @@ The Provision Types api can be used to see which options are available.</p>
 <td>Optional description field</td>
 </tr>
 <tr>
-<td>tags</td>
-<td></td>
-<td>Tags</td>
-</tr>
-<tr>
 <td>instanceContext</td>
 <td></td>
 <td>Environment</td>
 </tr>
 <tr>
-<td>metadata</td>
+<td>labels</td>
 <td></td>
-<td>Array of metadata objects</td>
+<td>Array of strings (keywords)</td>
+</tr>
+<tr>
+<td>tags</td>
+<td></td>
+<td>Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.</td>
+</tr>
+<tr>
+<td>addTags</td>
+<td></td>
+<td>Add or update value of Metadata tags, Array of objects having a name and value</td>
+</tr>
+<tr>
+<td>removeTags</td>
+<td></td>
+<td>Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.</td>
 </tr>
 <tr>
 <td>powerScheduleType</td>
@@ -10272,6 +10307,38 @@ The Provision Types api can be used to see which options are available.</p>
 </tr>
 </tbody></table>
 
+<h2 id="get-list-of-snapshots-for-an-instance">Get list of snapshots for an Instance</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/instances/1773/snapshots"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure that looks like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"snapshots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.gomorpheus.com/api/instances/:id/snapshots</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
 <h2 id="snapshot-an-instance">Snapshot an Instance</h2>
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1773/snapshot"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
@@ -10313,11 +10380,26 @@ The Provision Types api can be used to see which options are available.</p>
 
 <h3 id="json-snapshot-parameters">JSON Snapshot Parameters</h3>
 
-<p>These parameters should be passed under an object named <code class="prettyprint">snapshot</code>
-Parameter   | Default | Description
-&mdash;&mdash;&mdash;   | &mdash;&mdash;- | &mdash;&mdash;&mdash;&ndash;
-name       | &ldquo;{serverName}.{timestamp}&rdquo;    | Optional name for the snapshot being created. 
-description       |     | Optional description for the snapshot</p>
+<p>These parameters are passed under an object named <code class="prettyprint">snapshot</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>&ldquo;{serverName}.{timestamp}&rdquo;</td>
+<td>Optional name for the snapshot being created.</td>
+</tr>
+<tr>
+<td>description</td>
+<td></td>
+<td>Optional description for the snapshot</td>
+</tr>
+</tbody></table>
 
 <h2 id="import-snapshot-of-an-instance">Import Snapshot of an Instance</h2>
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1/import-snapshot"</span> <span class="se">\</span>
@@ -28607,12 +28689,18 @@ The Provision Types api can be used to see which options are available.</p>
 </tbody></table>
 
 <h2 id="updating-a-host">Updating a Host</h2>
-<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/servers/1"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/servers/:id"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "server": {
   "name": "dre-matrix-3",
-  "description": "dre-matrix-3"
+  "description": "dre-matrix-3",
+  "addTags": [
+    {"name": "hello", "value": "world"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
   }}'</span>
 </code></pre>
 
@@ -28657,6 +28745,21 @@ The Provision Types api can be used to see which options are available.</p>
 <td>powerScheduleType</td>
 <td></td>
 <td>Power Schedule ID</td>
+</tr>
+<tr>
+<td>tags</td>
+<td></td>
+<td>Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.</td>
+</tr>
+<tr>
+<td>addTags</td>
+<td></td>
+<td>Add or update value of Metadata tags, Array of objects having a name and value</td>
+</tr>
+<tr>
+<td>removeTags</td>
+<td></td>
+<td>Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.</td>
 </tr>
 </tbody></table>
 
@@ -28963,6 +29066,38 @@ The Provision Types api can be used to see which options are available.</p>
 <td>taskSet.customOptions</td>
 <td></td>
 <td>Object containing any custom option type configuration parameters</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-list-of-snapshots-for-a-host">Get list of snapshots for a Host</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/servers/:id/snapshots"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure that looks like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"snapshots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api.gomorpheus.com/api/servers/:id/snapshots</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the server</td>
 </tr>
 </tbody></table>
 
@@ -40971,6 +41106,10 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 
 <p>This is the adminstrative api for the Tools: Self Service functionality.</p>
 
+<aside class="info">
+This feature is only available in Morpheus API version <b>5.x</b>
+</aside>
+
 <h2 id="get-all-catalog-item-types">Get All Catalog Item Types</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/catalog-item-types"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
@@ -41724,6 +41863,10 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
           <h1 id="service-catalog">Service Catalog</h1>
 
 <p>Provides API endpoints for the Service Catalog persona.  This includes viewing the available types, viewing items in the inventory, and placing orders for new items to added to the inventory.</p>
+
+<aside class="info">
+This feature is only available in Morpheus API version <b>5.x</b>
+</aside>
 
 <h2 id="list-catalog-types">List Catalog Types</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/catalog/types"</span> <span class="se">\</span>
