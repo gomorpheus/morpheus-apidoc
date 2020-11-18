@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">4.2.5</div>
+        <div class="version">5.2.0</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>4.2.5</b>
+This document is for the Morpheus API version <b>5.2.0</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -8108,7 +8108,7 @@ By default only open alarms are returned. Open alarms are those that have not ye
 <td>Filter by shutdownDays greater than or equal to the specified value</td>
 </tr>
 <tr>
-<td>label</td>
+<td>labels</td>
 <td></td>
 <td>Filter by label(s).</td>
 </tr>
@@ -8120,9 +8120,14 @@ By default only open alarms are returned. Open alarms are those that have not ye
 <tr>
 <td>metadata</td>
 <td></td>
-<td>Alias for <code class="prettyprint">tags</code></td>
+<td>Alias for <code class="prettyprint">tags</code>.</td>
 </tr>
 </tbody></table>
+
+<aside class="info">
+<b>Deprecation notice.</b> The property <code>metadata</code> was renamed to <code>tags</code>. The previous <code>tags</code> property was renamed to <code>labels</code>. 
+API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <code>metadata</code> and Labels as <code>tags</code>
+</aside>
 
 <h2 id="get-a-specific-instance">Get a Specific Instance</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/instances/1216"</span> <span class="se">\</span>
@@ -28340,6 +28345,11 @@ The Provision Types api can be used to see which options are available.</p>
 </tr>
 </tbody></table>
 
+<aside class="info">
+<b>Deprecation notice.</b> The property <code>metadata</code> was renamed to <code>tags</code>. 
+API versions older than 4.2.5/5.2.1 still use the old property name: <code>metadata</code>
+</aside>
+
 <h2 id="get-a-specific-host">Get a Specific Host</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/servers/1"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
@@ -41106,10 +41116,6 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 
 <p>This is the adminstrative api for the Tools: Self Service functionality.</p>
 
-<aside class="info">
-This feature is only available in Morpheus API version <b>5.x</b>
-</aside>
-
 <h2 id="get-all-catalog-item-types">Get All Catalog Item Types</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/catalog-item-types"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
@@ -41863,10 +41869,6 @@ This feature is only available in Morpheus API version <b>5.x</b>
           <h1 id="service-catalog">Service Catalog</h1>
 
 <p>Provides API endpoints for the Service Catalog persona.  This includes viewing the available types, viewing items in the inventory, and placing orders for new items to added to the inventory.</p>
-
-<aside class="info">
-This feature is only available in Morpheus API version <b>5.x</b>
-</aside>
 
 <h2 id="list-catalog-types">List Catalog Types</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/catalog/types"</span> <span class="se">\</span>
