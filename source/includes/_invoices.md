@@ -42,6 +42,18 @@ curl "$MORPHEUS_API_URL/api/invoices" \
         "id": 1,
         "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
       },
+      "tags": [
+        {
+          "id": 714462,
+          "name": "agency",
+          "value": "Lonestar"
+        },
+        {
+          "id": 714460,
+          "name": "hello",
+          "value": "world"
+        }
+      ],
       "project": {
         "id": 2,
         "name": "test",
@@ -154,7 +166,7 @@ curl "$MORPHEUS_API_URL/api/invoices" \
 }
 ```
 
-This endpoint retrieves all invoices for the specified parameters.
+This endpoint retrieves a list of invoices for the specified parameters.
 
 ### HTTP Request
 
@@ -187,6 +199,7 @@ active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `invoiceTotals`.
+tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
 
 ## Get a Specific Invoice
 
@@ -227,6 +240,18 @@ curl "$MORPHEUS_API_URL/api/invoices/11868" \
       "id": 1,
       "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
     },
+    "tags": [
+      {
+        "id": 714462,
+        "name": "agency",
+        "value": "Lonestar"
+      },
+      {
+        "id": 714460,
+        "name": "hello",
+        "value": "world"
+      }
+    ],
     "project": {
       "id": 2,
       "name": "test",
