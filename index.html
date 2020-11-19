@@ -4978,6 +4978,56 @@ user&rsquo;s account.</p>
 </tr>
 </tbody></table>
 
+<h2 id="update-invoice">Update Invoice</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/invoices/:id"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "invoice": {
+  "addTags": [
+    {"name": "hello", "value": "world"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
+  }}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns a similar JSON structure when submitting a GET request for a specific invoice</p>
+</blockquote>
+
+<p>This endpoint allows updating a specific invoice tags </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.gomorpheus.com/api/invoices/:id</code></p>
+
+<h3 id="json-invoice-parameters">JSON Invoice Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tags</td>
+<td></td>
+<td>Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.</td>
+</tr>
+<tr>
+<td>addTags</td>
+<td></td>
+<td>Add or update value of Metadata tags, Array of objects having a name and value</td>
+</tr>
+<tr>
+<td>removeTags</td>
+<td></td>
+<td>Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-all-invoice-line-items">Get All Invoice Line Items</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/invoice-line-items"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
@@ -28715,7 +28765,7 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </code></pre>
 
 <blockquote>
-<p>The above command returns a similar JSON structure when submitting a GET request for a single check</p>
+<p>The above command returns a similar JSON structure when submitting a GET request for a specific host</p>
 </blockquote>
 
 <h3 id="http-request">HTTP Request</h3>
