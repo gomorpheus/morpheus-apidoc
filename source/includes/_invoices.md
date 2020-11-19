@@ -376,7 +376,7 @@ Parameter | Default | Description
 rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 
 
-## Update Invoice
+## Update Invoice Tags
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/invoices/:id" \
@@ -394,7 +394,12 @@ curl -XPUT "$MORPHEUS_API_URL/api/invoices/:id" \
 
 > The above command returns a similar JSON structure when submitting a GET request for a specific invoice
 
-This endpoint allows updating tags for a specific invoice. 
+This endpoint allows updating the tags for a specific invoice. Invoice tags are automatically set to match the tags of the associated resource (ComputeServer/Instance/Container). 
+
+<aside class="info">
+Be aware that any changes to tags for invoices that are actively being calculated and of type ComputeServer/Instance/Container will be lost when the current period is recalculated (hourly/daily).  This may be enhanced in the future, so that tags added to an invoice will not be overwritten/removed.
+</aside> 
+ 
 
 ### HTTP Request
 
