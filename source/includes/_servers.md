@@ -532,7 +532,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/:id" \
   }}'
 ```
 
-> The above command returns a similar JSON structure when submitting a GET request for a single check
+> The above command returns a similar JSON structure when submitting a GET request for a specific host
 
 ### HTTP Request
 

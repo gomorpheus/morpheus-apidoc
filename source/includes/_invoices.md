@@ -351,6 +351,39 @@ Parameter | Default | Description
 rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 
 
+## Update Invoice
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/invoices/:id" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{ "invoice": {
+  "addTags": [
+    {"name": "hello", "value": "world"}
+  ],
+  "removeTags": [
+    {"name": "oldTag"}
+  ]
+  }}'
+```
+
+> The above command returns a similar JSON structure when submitting a GET request for a specific invoice
+
+This endpoint allows updating a specific invoice tags 
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/invoices/:id`
+
+### JSON Invoice Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
+addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
+removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
+
+
 ## Get All Invoice Line Items
 
 ```shell
