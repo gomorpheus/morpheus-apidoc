@@ -394,7 +394,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/invoices/:id" \
 
 > The above command returns a similar JSON structure when submitting a GET request for a specific invoice
 
-This endpoint allows updating a specific invoice tags 
+This endpoint allows updating tags for a specific invoice. 
 
 ### HTTP Request
 
