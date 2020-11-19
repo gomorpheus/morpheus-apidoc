@@ -199,7 +199,7 @@ active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `invoiceTotals`.
-tags |  | Filter by tags (metadata). This allows filtering by a tag name and value(s) like this `tags.env=qa` or `tags.env=qa&tags.env=test` which will matching any of the specified values (qa or test).
+tags |  | Filter by tags (metadata). This allows filtering by a tag name and value(s) like this `tags.env=qa` or `tags.env=qa&tags.env=test` which matches both: *env=qa* or *env=test*.
 
 ## Get a Specific Invoice
 
