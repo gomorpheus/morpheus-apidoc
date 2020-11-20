@@ -560,7 +560,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/1/make-managed" \
   -d '{ "server": {
   "sshUsername": "admin",
   "sshPassword": "asafepassword",
-  "serverOs": {"id": 1}
+  "serverOs": {"id": 1},
+  "plan": {"id": 9}
   }, "installAgent": true}'
 ```
 
@@ -593,7 +594,8 @@ Parameter | Default | Description
 sshUsername      |  | ssh username to use when provisioning
 sshPassword |  | ssh password to use, if not specified the account public key can be used
 serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osTypes
-provisionSiteId |  | Specific group to provision to
+plan.id |  | Service Plan to assign to the server
+provisionSiteId |  | Specific group to assign the server
 
 ## Upgrade Agent
 
