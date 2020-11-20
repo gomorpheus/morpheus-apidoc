@@ -4556,6 +4556,18 @@ user&rsquo;s account.</p>
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">714462</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agency"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lonestar"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">714460</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
@@ -4668,7 +4680,7 @@ user&rsquo;s account.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all invoices for the specified parameters.</p>
+<p>This endpoint retrieves a list of invoices for the specified parameters.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4798,6 +4810,11 @@ user&rsquo;s account.</p>
 <td>false</td>
 <td>Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called <code class="prettyprint">invoiceTotals</code>.</td>
 </tr>
+<tr>
+<td>tags</td>
+<td></td>
+<td>Filter by tags (metadata). This allows filtering by a tag name and value(s) like this <code class="prettyprint">tags.env=qa</code> or <code class="prettyprint">tags.env=qa&amp;tags.env=test</code> which matches both: <em>env=qa</em> or <em>env=test</em>.</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-a-specific-invoice">Get a Specific Invoice</h2>
@@ -4837,6 +4854,18 @@ user&rsquo;s account.</p>
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">714462</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agency"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lonestar"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">714460</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
@@ -4978,7 +5007,7 @@ user&rsquo;s account.</p>
 </tr>
 </tbody></table>
 
-<h2 id="update-invoice">Update Invoice</h2>
+<h2 id="update-invoice-tags">Update Invoice Tags</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/invoices/:id"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -4996,7 +5025,12 @@ user&rsquo;s account.</p>
 <p>The above command returns a similar JSON structure when submitting a GET request for a specific invoice</p>
 </blockquote>
 
-<p>This endpoint allows updating a specific invoice tags </p>
+<p>This endpoint allows updating the tags for a specific invoice. Invoice tags are automatically set to match the tags of the associated resource (ComputeServer/Instance/Container). </p>
+
+<aside class="info">
+Be aware that any changes to tags for invoices that are actively being calculated and of type ComputeServer/Instance/Container will be lost when the current period is recalculated (hourly/daily).  This may be enhanced in the future, so that tags added to an invoice will not be overwritten/removed.
+</aside> 
+ 
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -28830,7 +28864,8 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   -d <span class="s1">'{ "server": {
   "sshUsername": "admin",
   "sshPassword": "asafepassword",
-  "serverOs": {"id": 1}
+  "serverOs": {"id": 1},
+  "plan": {"id": 9}
   }, "installAgent": true}'</span>
 </code></pre>
 
@@ -28894,9 +28929,14 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <td>The ID os the OS Type for this server. See GET /api/options/osTypes</td>
 </tr>
 <tr>
+<td>plan.id</td>
+<td></td>
+<td>Service Plan to assign to the server</td>
+</tr>
+<tr>
 <td>provisionSiteId</td>
 <td></td>
-<td>Specific group to provision to</td>
+<td>Specific group to assign the server</td>
 </tr>
 </tbody></table>
 
