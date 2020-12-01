@@ -561,7 +561,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/1/make-managed" \
   "sshUsername": "admin",
   "sshPassword": "asafepassword",
   "serverOs": {"id": 1},
-  "plan": {"id": 9}
+  "plan": {"id": 9},
+  "account": {"id": 1}
   }, "installAgent": true}'
 ```
 
@@ -595,6 +596,7 @@ sshUsername      |  | ssh username to use when provisioning
 sshPassword |  | ssh password to use, if not specified the account public key can be used
 serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osTypes
 plan.id |  | Service Plan to assign to the server
+account.id |  | Tenant to assign the server to. Only available to Master Tenant users/
 provisionSiteId |  | Specific group to assign the server
 
 ## Upgrade Agent
@@ -795,6 +797,41 @@ curl "$MORPHEUS_API_URL/api/servers/:id/snapshots" \
 Parameter | Description
 --------- | -----------
 :id | ID of the server
+
+## Assign To Tenant
+
+```shell
+curl -XPUT "$MORPHEUS_API_URL/api/servers/1/assign-account?accountId=2" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will change the ownership of the host to the specified Tenant account. This is only available to Master Tenant users.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/servers/:id/assign-account?accountId=:accountId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the Server
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:accountId | ID of the Tenant
 
 ## Delete a Host
 
