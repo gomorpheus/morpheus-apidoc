@@ -178,7 +178,7 @@ roleMappings | | Map of Morpheus Role ID : Fully Qualified Role Name
 roleMappingNames | | Map of Morpheus Role ID : Role Name
 config | | Map of configuration options which vary by type.
 
-### JSON Parameters for LDAP
+### JSON Parameters for ldap
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -186,6 +186,7 @@ config.url      |  | URL
 config.bindingUsername      |  | Binding Username
 config.bindingPassword      |  | Binding Password
 config.requiredGroup      |  | Required group name (a.k.a. tag)
+config.userFqnExpression      |  | User DN Expression eg. `uid=$username,cn=users,cn=account,dc=example,dc=veritas,dc=com`
 
 ### JSON Parameters for jumpCloud
 
