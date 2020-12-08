@@ -11,116 +11,33 @@ curl "$MORPHEUS_API_URL/api/dashboard" \
 {
   "success": true,
   "monitoring": {
-    "avgHealth": 9.2,
-    "avgResponseTime": 0.6,
-    "warningApps": 5,
-    "warningChecks": 8,
+    "avgHealth": 8.3333333333,
+    "avgResponseTime": 22.3333333333,
+    "warningApps": 0,
+    "warningChecks": 0,
     "failApps": 0,
-    "failChecks": 0,
+    "totalApps": 2,
+    "failChecks": 1,
     "successApps": 2,
-    "mutedApps": 1,
-    "successChecks": 2,
-    "mutedChecks": 5,
-    "openIncidents": [
-      {
-        "id": 9,
-        "visibility": "private",
-        "channelId": "333206ed-9ba9-45b9-88f4-08ac0a9e64f2",
-        "lastError": "redis status: Error",
-        "severityId": 20,
-        "autoClose": true,
-        "endDate": null,
-        "duration": null,
-        "startDate": "2016-10-25T12:37:00Z",
-        "severity": "critical",
-        "app": null,
-        "resolution": null,
-        "comment": null,
-        "checks": [
-
-        ],
-        "incidentEvents": [
-          {
-            "id": 23
-          },
-          {
-            "id": 24
-          },
-          {
-            "id": 21
-          },
-          {
-            "id": 22
-          }
-        ],
-        "lastCheckTime": "2016-10-25T12:37:00Z",
-        "lastMessage": null,
-        "name": "testapp",
-        "checkGroups": [
-
-        ],
-        "account": {
-          "id": 1
-        },
-        "createdBy": null,
-        "status": "open",
-        "autoManaged": true,
-        "inUptime": true,
-        "notificationEvents": [
-
-        ]
-      },
-      {
-        "id": 12,
-        "visibility": "private",
-        "channelId": "cdff5f78-19df-41e0-b6dc-2ab87cedeae5",
-        "lastError": "unheard from beyond check interval limit.",
-        "severityId": 20,
-        "autoClose": true,
-        "endDate": null,
-        "duration": null,
-        "startDate": "2017-02-21T14:04:56Z",
-        "severity": "critical",
-        "app": null,
-        "resolution": "we fixed the issue",
-        "comment": "uh, something bad happened..",
-        "checks": [
-
-        ],
-        "incidentEvents": [
-          {
-            "id": 27
-          },
-          {
-            "id": 28
-          },
-          {
-            "id": 29
-          }
-        ],
-        "lastCheckTime": "2017-02-21T14:04:56Z",
-        "lastMessage": null,
-        "name": "testmysql2",
-        "checkGroups": [
-
-        ],
-        "account": {
-          "id": 1
-        },
-        "createdBy": null,
-        "status": "open",
-        "autoManaged": true,
-        "inUptime": true,
-        "notificationEvents": [
-
-        ]
-      }
+    "mutedApps": 0,
+    "successChecks": 5,
+    "totalChecks": 6,
+    "mutedChecks": 0,
+    "responseTimes": [
+      0,
+      2,
+      2,
+      125,
+      5,
+      0,
+      0
     ],
-    "allSuccess": false
+    "allSuccess": false,
+    "openIncidents": 0
   },
   "provisioning": {
     "instanceCount": 3,
-    "allInstances": [
+    "favoriteInstances": [
       {
         "id": 319,
         "accountId": 1,
@@ -205,47 +122,10 @@ curl "$MORPHEUS_API_URL/api/dashboard" \
     "usedStorage": 6202490880,
     "maxStorage": 55530786816,
     "running": 2,
-    "total": 3
+    "total": 3,
+    "totalContainers": 4
   },
   "backups": {
-    "backupStats": {
-      "1": {
-        "totalCompleted": 0,
-        "totalSize": 0,
-        "success": 0,
-        "failed": 0,
-        "avgSize": 0,
-        "successRate": 0,
-        "failRate": 0,
-        "lastFiveResults": [
-
-        ]
-      },
-      "10": {
-        "totalCompleted": 0,
-        "totalSize": 0,
-        "success": 0,
-        "failed": 0,
-        "avgSize": 0,
-        "successRate": 0,
-        "failRate": 0,
-        "lastFiveResults": [
-
-        ]
-      },
-      "16": {
-        "totalCompleted": 0,
-        "totalSize": 0,
-        "success": 0,
-        "failed": 0,
-        "avgSize": 0,
-        "successRate": 0,
-        "failRate": 0,
-        "lastFiveResults": [
-
-        ]
-      }
-    },
     "accountStats": {
       "totalSizeByDay": [
         0,
