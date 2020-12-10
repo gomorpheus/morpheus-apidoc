@@ -298,7 +298,7 @@ scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`
 scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
-costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[120.0,120.0,120.0,240.0]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
+costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[200,200,200,400]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Updating a Budget
 
@@ -344,7 +344,7 @@ scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`
 scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
-costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[120.0,120.0,120.0,240.0]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
+costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[200,200,200,400]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Delete a Budget
 
