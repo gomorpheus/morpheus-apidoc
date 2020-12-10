@@ -267,6 +267,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/budgets" \
     "name": "sample budget",
     "year": "2020",
     "interval": "year",
+    "scope": "account",
     "costs": [1000]
   }}'
 ```
