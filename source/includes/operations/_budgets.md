@@ -36,9 +36,9 @@ curl "$MORPHEUS_API_URL/api/budgets" \
       "active": true,
       "enabled": true,
       "rollover": false,
-      "costs": {
-        "year": 1000.0
-      },
+      "costs": [
+        1000.0
+      ],
       "averageCost": 83.33333333333333,
       "totalCost": 1000.0,
       "currency": "USD",
@@ -75,20 +75,20 @@ curl "$MORPHEUS_API_URL/api/budgets" \
       "active": true,
       "enabled": true,
       "rollover": false,
-      "costs": {
-        "january": 99.0,
-        "february": 99.0,
-        "march": 99.0,
-        "april": 99.0,
-        "may": 99.0,
-        "june": 99.0,
-        "july": 99.0,
-        "august": 99.0,
-        "september": 99.0,
-        "october": 99.0,
-        "november": 99.0,
-        "december": 99.0
-      },
+      "costs": [
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+        99.0,
+      ],
       "averageCost": 99.0,
       "totalCost": 1188.0,
       "currency": "USD",
@@ -125,12 +125,12 @@ curl "$MORPHEUS_API_URL/api/budgets" \
       "active": true,
       "enabled": true,
       "rollover": false,
-      "costs": {
-        "q1": 250.0,
-        "q2": 250.0,
-        "q3": 250.0,
-        "q4": 500.0
-      },
+      "costs": [
+        250.0,
+        250.0,
+        250.0,
+        500.0,
+      ],
       "averageCost": 312.5,
       "totalCost": 1250.0,
       "currency": "USD",
@@ -206,9 +206,9 @@ curl "$MORPHEUS_API_URL/api/budgets/1" \
     "active": true,
     "enabled": true,
     "rollover": false,
-    "costs": {
-      "year": 1000.0
-    },
+    "costs": [
+      1000.0
+    ],
     "averageCost": 83.33333333333333,
     "totalCost": 1000.0,
     "currency": "USD",
@@ -267,7 +267,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/budgets" \
     "name": "sample budget",
     "year": "2020",
     "interval": "year",
-    "costs": {"year":350}
+    "costs": [1000]
   }}'
 ```
 
@@ -288,24 +288,26 @@ Parameter | Default | Description
 name      |  | A unique name for the budget
 description      |  | A description of the budget
 period      | year | Budget period, year
-year      | 2020 | Budget period value, default is the current year.
+year      | 2020 | Budget period value, default is the current year. This can also be passed as `custom` along with a startDate and endDate.
+startDate      |  | Start Date for custom period budgets, should be the first of a month. eg. `2021-01-01`
+endDate      |  | End Date for custom period budgets, should be the last day of a month, and must be 12, 24, or 36 months after the start date. eg. `2021-12-31`
 interval      | year | Budget interval, `year`, `quarter`, `month`.
 scope      |  | The type of the scope for the budget, `account`, `group`, `cloud`, `user`.  The default scope is `account`, which means the entire account.
 scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`.
 scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
-costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
-
+costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[120.0,120.0,120.0,240.0]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Updating a Budget
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/budgets/1" \
+curl -XPUT "$MORPHEUS_API_URL/api/budgets/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
-    "costs": {"year":5000}
+    "interval": "quarter",
+    "costs": [1000,1000,1000,2000]
   }}'
 ```
 
@@ -332,14 +334,16 @@ Parameter | Default | Description
 name      |  | A unique name for the budget
 description      |  | A description of the budget
 period      | year | Budget period, year
-year      | 2020 | Budget period value, default is the current year.
+year      | 2020 | Budget period value, default is the current year. This can also be passed as `custom` along with a startDate and endDate.
+startDate      |  | Start Date for custom period budgets, should be the first of a month. eg. `2021-01-01`
+endDate      |  | End Date for custom period budgets, should be the last day of a month, and must be exactly 12, 24, or 36 months after the start date. eg. `2021-12-31`
 interval      | year | Budget interval, `year`, `quarter`, `month`.
-scope      |  | The type of the scope for the budget, `account`, `group`, `cloud`, `user`. 
+scope      |  | The type of the scope for the budget, `account`, `group`, `cloud`, `user`.  The default scope is `account`, which means the entire account.
 scopeTenantId      |  | The Tenant ID to scope to, for use with `"scope"=tenant`.
 scopeGroupId      |  | The Group ID to scope to, for use with `"scope"=group`.
 scopeCloudId      |  | The Cloud ID to scope to, for use with `"scope"=cloud`.
 scopeUserId      |  | The User ID to scope to, for use with `"scope"=user`.
-costs      |  | Map of budget cost amounts that varies by interval. For interval year use `{"year":1000}`. For interval quarter use `{"q1":120.0,"q2":120.0,"q3":120.0,"q4":120.0}`. For interval month use `{"january":30.0,"february":30.0}` (other 10 months omitted). When creating a new schedule the default cost for each interval is `0`, so be sure to specify an amount for every interval when creating a new budget.
+costs      |  | Array of budget cost amounts that varies in length by interval. For interval year use `[1000]`. For interval quarter use `[120.0,120.0,120.0,240.0]`. For interval month use `[99,99,99,99,99,99,99,99,99,99,99,299]` (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is `0` so be sure to specify a cost for every interval when creating a new budget.
 
 ## Delete a Budget
 
