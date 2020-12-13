@@ -175,7 +175,7 @@ markupPercent | N | Percent for percent price adjustment type
 customPrice | N | Custom price for custom price adjustment type
 platform | N | Platform, required for platform price type
 software | N | Software, required for software price type
-volumeType.id | N | Volume type ID, required for storage price type
+volumeType.id | N | Volume type ID, required for storage price type. The endpoint `/api/prices/volume-types` provides a list of available volume type options.
 datastore.id | N | Datastore ID, required for datastore price type
 crossCloudApply | N | Apply price across clouds, optional true/false flag for datastore price type
 
