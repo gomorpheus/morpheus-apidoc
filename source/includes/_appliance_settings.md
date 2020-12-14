@@ -21,6 +21,12 @@ curl "$MORPHEUS_API_URL/api/appliance-settings" \
     "defaultRoleId": "2",
     "defaultUserRoleId": "4",
     "dockerPrivilegedMode": true,
+    "passwordMinLength": "8",
+    "passwordMinUpperCase": "1",
+    "passwordMinNumbers": "1",
+    "passwordMinSymbols": "1",
+    "userBrowserSessionTimeout": "20",
+    "userBrowserSessionWarning": "15",
     "expirePwdDays": "1000",
     "disableAfterAttempts": "100",
     "disableAfterDaysInactive": "2000",
@@ -69,6 +75,12 @@ curl -XPUT "$MORPHEUS_API_URL/api/appliance-settings" \
         "internalApplianceUrl": null,
         "corsAllowed": null,
         "dockerPrivilegedMode": true,
+        "passwordMinLength": "8",
+        "passwordMinUpperCase": "1",
+        "passwordMinNumbers": "1",
+        "passwordMinSymbols": "1",
+        "userBrowserSessionTimeout": "20",
+        "userBrowserSessionWarning": "15",
         "expirePwdDays": 30,
         "disableAfterAttempts": 5,
         "disableAfterDaysInactive": 90,
@@ -118,6 +130,12 @@ registrationEnabled  | Registration enabled (true, false)
 defaultRoleId | Default tenant role ID
 defaultUserRoleId | Default user role ID
 dockerPrivilegedMode | Docker privileged mode (true, false)
+passwordMinLength | Min Password Length
+passwordMinUpperCase | Min Password Uppercase
+passwordMinNumbers | Min Password Numbers
+passwordMinSymbols | Min Password Symbols
+userBrowserSessionTimeout | User Browser Session Timeout (Minutes)
+dockerPrivilegedMode | User Browser Session Warning (Minutes)
 expirePwdDays | Expire password after days. Setting to 0 disabled this feature
 disableAfterAttempts | Disable user after number of attempts. Set to 0 to disable this feature
 disableAfterDaysInactive | Disable user if inactive for specified days. Set to 0 to disable this feature
