@@ -215,6 +215,10 @@ lastUpdated |  | Date filter, restricts query to only load servers updated  time
 createdBy |  | Filter by Created By (User) ID. Accepts multiple values.
 tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
 metadata |  | Alias for `tags`
+uuid |  | Filter by UUID
+externalId |  | Filter by External ID
+internalId |  | Filter by Internal ID
+externalUniqueId |  | Filter by External Unique ID
 
 <aside class="info">
 <b>Deprecation notice.</b> The property <code>metadata</code> was renamed to <code>tags</code>. 
