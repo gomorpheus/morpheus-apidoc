@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.2.0</div>
+        <div class="version">5.2.1</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.2.0</b>
+This document is for the Morpheus API version <b>5.2.1</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -1045,116 +1045,33 @@ This is an unauthorized endpoint and the response will always appear successful,
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"monitoring"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"avgHealth"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"avgResponseTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"warningApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"warningChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avgHealth"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.3333333333</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avgResponseTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.3333333333</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"warningApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"warningChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"failApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"failChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"successApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mutedApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"successChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mutedChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"openIncidents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"333206ed-9ba9-45b9-88f4-08ac0a9e64f2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastError"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redis status: Error"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"severityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"autoClose"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T12:37:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"critical"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"checks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"incidentEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"lastCheckTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T12:37:00Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testapp"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"checkGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"autoManaged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inUptime"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"notificationEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cdff5f78-19df-41e0-b6dc-2ab87cedeae5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastError"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unheard from beyond check interval limit."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"severityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"autoClose"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T14:04:56Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"critical"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"app"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"resolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"we fixed the issue"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uh, something bad happened.."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"checks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"incidentEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"lastCheckTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-21T14:04:56Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testmysql2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"checkGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"autoManaged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"inUptime"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"notificationEvents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"mutedApps"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mutedChecks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responseTimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="mi">125</span><span class="p">,</span><span class="w">
+      </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="mi">0</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"allSuccess"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"allSuccess"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"openIncidents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"provisioning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"instanceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"allInstances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"favoriteInstances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">319</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -1239,47 +1156,10 @@ This is an unauthorized endpoint and the response will always appear successful,
     </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6202490880</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">55530786816</span><span class="p">,</span><span class="w">
     </span><span class="s2">"running"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalContainers"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"backupStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"totalCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"avgSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"successRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastFiveResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"10"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"totalCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"avgSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"successRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastFiveResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"16"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"totalCompleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"avgSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"successRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"failRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastFiveResults"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"accountStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"totalSizeByDay"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2746,9 +2626,9 @@ The page will be created if it does not yet exist.</p>
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rollover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mf">1000.0</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"averageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">83.33333333333333</span><span class="p">,</span><span class="w">
       </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2785,20 +2665,20 @@ The page will be created if it does not yet exist.</p>
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rollover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"january"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"february"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"march"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"april"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"may"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"june"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"july"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"august"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"september"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"october"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"november"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"december"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"averageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1188.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2835,12 +2715,12 @@ The page will be created if it does not yet exist.</p>
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rollover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"q1"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"q2"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"q3"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"q4"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"averageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">312.5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1250.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2944,9 +2824,9 @@ The page will be created if it does not yet exist.</p>
     </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"rollover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">1000.0</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"averageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">83.33333333333333</span><span class="p">,</span><span class="w">
     </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -3011,7 +2891,8 @@ The page will be created if it does not yet exist.</p>
     "name": "sample budget",
     "year": "2020",
     "interval": "year",
-    "costs": {"year":350}
+    "scope": "account",
+    "costs": [1000]
   }}'</span>
 </code></pre>
 
@@ -3054,7 +2935,17 @@ The page will be created if it does not yet exist.</p>
 <tr>
 <td>year</td>
 <td>2020</td>
-<td>Budget period value, default is the current year.</td>
+<td>Budget period value, default is the current year. This can also be passed as <code class="prettyprint">custom</code> along with a startDate and endDate.</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td></td>
+<td>Start Date for custom period budgets, should be the first of a month. eg. <code class="prettyprint">2021-01-01</code></td>
+</tr>
+<tr>
+<td>endDate</td>
+<td></td>
+<td>End Date for custom period budgets, should be the last day of a month, and must be 12, 24, or 36 months after the start date. eg. <code class="prettyprint">2021-12-31</code></td>
 </tr>
 <tr>
 <td>interval</td>
@@ -3089,16 +2980,17 @@ The page will be created if it does not yet exist.</p>
 <tr>
 <td>costs</td>
 <td></td>
-<td>Map of budget cost amounts that varies by interval. For interval year use <code class="prettyprint">{&quot;year&quot;:1000}</code>. For interval quarter use <code class="prettyprint">{&quot;q1&quot;:120.0,&quot;q2&quot;:120.0,&quot;q3&quot;:120.0,&quot;q4&quot;:120.0}</code>. For interval month use <code class="prettyprint">{&quot;january&quot;:30.0,&quot;february&quot;:30.0}</code> (other 10 months omitted). When creating a new schedule, the default cost for a given interval is <code class="prettyprint">0</code> so be sure to specify a cost for every interval when creating a new budget.</td>
+<td>Array of budget cost amounts that varies in length by interval. For interval year use <code class="prettyprint">[1000]</code>. For interval quarter use <code class="prettyprint">[200,200,200,400]</code>. For interval month use <code class="prettyprint">[99,99,99,99,99,99,99,99,99,99,99,299]</code> (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is <code class="prettyprint">0</code> so be sure to specify a cost for every interval when creating a new budget.</td>
 </tr>
 </tbody></table>
 
 <h2 id="updating-a-budget">Updating a Budget</h2>
-<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/budgets/1"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/budgets/:id"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{"budget":{
-    "costs": {"year":5000}
+    "interval": "quarter",
+    "costs": [1000,1000,1000,2000]
   }}'</span>
 </code></pre>
 
@@ -3155,7 +3047,17 @@ The page will be created if it does not yet exist.</p>
 <tr>
 <td>year</td>
 <td>2020</td>
-<td>Budget period value, default is the current year.</td>
+<td>Budget period value, default is the current year. This can also be passed as <code class="prettyprint">custom</code> along with a startDate and endDate.</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td></td>
+<td>Start Date for custom period budgets, should be the first of a month. eg. <code class="prettyprint">2021-01-01</code></td>
+</tr>
+<tr>
+<td>endDate</td>
+<td></td>
+<td>End Date for custom period budgets, should be the last day of a month, and must be exactly 12, 24, or 36 months after the start date. eg. <code class="prettyprint">2021-12-31</code></td>
 </tr>
 <tr>
 <td>interval</td>
@@ -3165,7 +3067,7 @@ The page will be created if it does not yet exist.</p>
 <tr>
 <td>scope</td>
 <td></td>
-<td>The type of the scope for the budget, <code class="prettyprint">account</code>, <code class="prettyprint">group</code>, <code class="prettyprint">cloud</code>, <code class="prettyprint">user</code>.</td>
+<td>The type of the scope for the budget, <code class="prettyprint">account</code>, <code class="prettyprint">group</code>, <code class="prettyprint">cloud</code>, <code class="prettyprint">user</code>.  The default scope is <code class="prettyprint">account</code>, which means the entire account.</td>
 </tr>
 <tr>
 <td>scopeTenantId</td>
@@ -3190,7 +3092,7 @@ The page will be created if it does not yet exist.</p>
 <tr>
 <td>costs</td>
 <td></td>
-<td>Map of budget cost amounts that varies by interval. For interval year use <code class="prettyprint">{&quot;year&quot;:1000}</code>. For interval quarter use <code class="prettyprint">{&quot;q1&quot;:120.0,&quot;q2&quot;:120.0,&quot;q3&quot;:120.0,&quot;q4&quot;:120.0}</code>. For interval month use <code class="prettyprint">{&quot;january&quot;:30.0,&quot;february&quot;:30.0}</code> (other 10 months omitted). When creating a new schedule the default cost for each interval is <code class="prettyprint">0</code>, so be sure to specify an amount for every interval when creating a new budget.</td>
+<td>Array of budget cost amounts that varies in length by interval. For interval year use <code class="prettyprint">[1000]</code>. For interval quarter use <code class="prettyprint">[200,200,200,400]</code>. For interval month use <code class="prettyprint">[99,99,99,99,99,99,99,99,99,99,99,299]</code> (other 10 months omitted). Custom budgets of more than one year may have more cost values. When creating a new schedule, the default cost for a given interval is <code class="prettyprint">0</code> so be sure to specify a cost for every interval when creating a new budget.</td>
 </tr>
 </tbody></table>
 
@@ -28865,7 +28767,8 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   "sshUsername": "admin",
   "sshPassword": "asafepassword",
   "serverOs": {"id": 1},
-  "plan": {"id": 9}
+  "plan": {"id": 9},
+  "account": {"id": 1}
   }, "installAgent": true}'</span>
 </code></pre>
 
@@ -28932,6 +28835,11 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <td>plan.id</td>
 <td></td>
 <td>Service Plan to assign to the server</td>
+</tr>
+<tr>
+<td>account.id</td>
+<td></td>
+<td>Tenant to assign the server to. Only available to Master Tenant users/</td>
 </tr>
 <tr>
 <td>provisionSiteId</td>
@@ -29198,6 +29106,55 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <tr>
 <td>:id</td>
 <td>ID of the server</td>
+</tr>
+</tbody></table>
+
+<h2 id="assign-to-tenant">Assign To Tenant</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/servers/1/assign-account?accountId=2"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This will change the ownership of the host to the specified Tenant account. This is only available to Master Tenant users.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.gomorpheus.com/api/servers/:id/assign-account?accountId=:accountId</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the Server</td>
+</tr>
+</tbody></table>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:accountId</td>
+<td>ID of the Tenant</td>
 </tr>
 </tbody></table>
 
@@ -45605,7 +45562,7 @@ This API is only available to the master account.
 </tr>
 </tbody></table>
 
-<h3 id="json-parameters-for-ldap">JSON Parameters for LDAP</h3>
+<h3 id="json-parameters-for-ldap">JSON Parameters for ldap</h3>
 
 <table><thead>
 <tr>
@@ -45633,6 +45590,11 @@ This API is only available to the master account.
 <td>config.requiredGroup</td>
 <td></td>
 <td>Required group name (a.k.a. tag)</td>
+</tr>
+<tr>
+<td>config.userFqnExpression</td>
+<td></td>
+<td>User DN Expression eg. <code class="prettyprint">uid=$username,cn=users,cn=account,dc=example,dc=veritas,dc=com</code></td>
 </tr>
 </tbody></table>
 
@@ -47403,7 +47365,7 @@ If a user source is tied to existing users, a delete will fail.
 <tr>
 <td>volumeType.id</td>
 <td>N</td>
-<td>Volume type ID, required for storage price type</td>
+<td>Volume type ID, required for storage price type. The endpoint <code class="prettyprint">/api/prices/volume-types</code> provides a list of available volume type options.</td>
 </tr>
 <tr>
 <td>datastore.id</td>
@@ -49173,6 +49135,12 @@ This endpoint allows global environments to be updated by the master account.</p
     </span><span class="s2">"defaultRoleId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"defaultUserRoleId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dockerPrivilegedMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"passwordMinLength"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"passwordMinUpperCase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"passwordMinNumbers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"passwordMinSymbols"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userBrowserSessionTimeout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userBrowserSessionWarning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"expirePwdDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"disableAfterAttempts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"disableAfterDaysInactive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
@@ -49218,6 +49186,12 @@ This endpoint allows global environments to be updated by the master account.</p
         "internalApplianceUrl": null,
         "corsAllowed": null,
         "dockerPrivilegedMode": true,
+        "passwordMinLength": "8",
+        "passwordMinUpperCase": "1",
+        "passwordMinNumbers": "1",
+        "passwordMinSymbols": "1",
+        "userBrowserSessionTimeout": "20",
+        "userBrowserSessionWarning": "15",
         "expirePwdDays": 30,
         "disableAfterAttempts": 5,
         "disableAfterDaysInactive": 90,
@@ -49291,6 +49265,30 @@ This endpoint allows global environments to be updated by the master account.</p
 <tr>
 <td>dockerPrivilegedMode</td>
 <td>Docker privileged mode (true, false)</td>
+</tr>
+<tr>
+<td>passwordMinLength</td>
+<td>Min Password Length</td>
+</tr>
+<tr>
+<td>passwordMinUpperCase</td>
+<td>Min Password Uppercase</td>
+</tr>
+<tr>
+<td>passwordMinNumbers</td>
+<td>Min Password Numbers</td>
+</tr>
+<tr>
+<td>passwordMinSymbols</td>
+<td>Min Password Symbols</td>
+</tr>
+<tr>
+<td>userBrowserSessionTimeout</td>
+<td>User Browser Session Timeout (Minutes)</td>
+</tr>
+<tr>
+<td>dockerPrivilegedMode</td>
+<td>User Browser Session Warning (Minutes)</td>
 </tr>
 <tr>
 <td>expirePwdDays</td>
