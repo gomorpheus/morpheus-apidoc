@@ -18,6 +18,10 @@ curl "$MORPHEUS_API_URL/api/servers"
   "servers": [
     {
       "id": 1,
+      "uuid": "94789c56-7b33-41ca-97a1-6afe3779d448",
+      "externalId": "vm-78033",
+      "internalId": "501fed61-3175-b7dd-8793-eba5785f41b6",
+      "externalUniqueId": "421ffc71-b72b-4cdd-1b27-80485fbdab17",
       "accountId": 1,
       "name": "dre-matrix-1",
       "visibility": "public",
@@ -88,6 +92,10 @@ curl "$MORPHEUS_API_URL/api/servers"
     },
     {
       "id": 2,
+      "uuid": "ca0ee0ee-3959-4be7-b316-fb95bfd307d1",
+      "internalId": null,
+      "externalId": "host-58600",
+      "externalUniqueId": null
       "accountId": 1,
       "name": "dre-matrix-2",
       "visibility": "public",
@@ -228,6 +236,10 @@ curl "$MORPHEUS_API_URL/api/servers/1" \
   "success": true,
   "server": {
     "id": 1,
+    "uuid": "94789c56-7b33-41ca-97a1-6afe3779d448",
+    "externalId": "vm-78033",
+    "internalId": "501fed61-3175-b7dd-8793-eba5785f41b6",
+    "externalUniqueId": "421ffc71-b72b-4cdd-1b27-80485fbdab17",
     "accountId": 1,
     "name": "dre-matrix-1",
     "visibility": "public",
