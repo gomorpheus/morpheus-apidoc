@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.2.1</div>
+        <div class="version">5.2.2</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -69,7 +69,7 @@
       </div>
         <ul class="toc-footer">
           <li><img class="logo-footer" src="images/morpheus_logo_footer.svg" alt="Morpheus logo footer" /></li>
-          <li>© Copyright 2020 <a href="https://morpheusdata.com" class="home-link">Morpheus Data</a></li>
+          <li>© Copyright 2021 <a href="https://morpheusdata.com" class="home-link">Morpheus Data</a></li>
         </li>
     </div>
     <div class="page-wrapper">
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.2.1</b>
+This document is for the Morpheus API version <b>5.2.2</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -10441,6 +10441,72 @@ The Provision Types api can be used to see which options are available.</p>
 <td>storageProviderId</td>
 <td>null</td>
 <td>Optional storage provider to use.</td>
+</tr>
+</tbody></table>
+
+<h2 id="lock-an-instance">Lock an Instance</h2>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1/lock"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This will lock the instance. While locked, instances may not be removed.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.gomorpheus.com/api/instances/:id/lock</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h2 id="unlock-an-instance">Unlock an Instance</h2>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1/unlock"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This will unlock the instance.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT https://api.gomorpheus.com/api/instances/:id/unlock</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
 </tr>
 </tbody></table>
 
@@ -28055,6 +28121,10 @@ The Provision Types api can be used to see which options are available.</p>
   </span><span class="s2">"servers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94789c56-7b33-41ca-97a1-6afe3779d448"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-78033"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501fed61-3175-b7dd-8793-eba5785f41b6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"421ffc71-b72b-4cdd-1b27-80485fbdab17"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
@@ -28125,7 +28195,11 @@ The Provision Types api can be used to see which options are available.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0ee0ee-3959-4be7-b316-fb95bfd307d1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"host-58600"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-2"</span><span class="p">,</span><span class="w">
@@ -28329,6 +28403,26 @@ The Provision Types api can be used to see which options are available.</p>
 <td></td>
 <td>Alias for <code class="prettyprint">tags</code></td>
 </tr>
+<tr>
+<td>uuid</td>
+<td></td>
+<td>Filter by UUID</td>
+</tr>
+<tr>
+<td>externalId</td>
+<td></td>
+<td>Filter by External ID</td>
+</tr>
+<tr>
+<td>internalId</td>
+<td></td>
+<td>Filter by Internal ID</td>
+</tr>
+<tr>
+<td>externalUniqueId</td>
+<td></td>
+<td>Filter by External Unique ID</td>
+</tr>
 </tbody></table>
 
 <aside class="info">
@@ -28348,6 +28442,10 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94789c56-7b33-41ca-97a1-6afe3779d448"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-78033"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501fed61-3175-b7dd-8793-eba5785f41b6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"421ffc71-b72b-4cdd-1b27-80485fbdab17"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
