@@ -2050,6 +2050,62 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 storageProviderId       | null    | Optional storage provider to use.
 
+
+## Lock an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/lock" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will lock the instance. While locked, instances may not be removed.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/lock`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+## Unlock an Instance
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/unlock" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This will unlock the instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/unlock`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+
 ## Get Security Groups
 
 ```shell
