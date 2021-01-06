@@ -2083,7 +2083,7 @@ Parameter | Description
 
 Parameter   | Default | Description
 ---------   | ------- | -----------
-templateName |    | Image Template Name
+templateName |    | Image Template Name. Default is server name + timestamp.
 
 
 ## Lock an Instance
