@@ -2050,6 +2050,41 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 storageProviderId       | null    | Optional storage provider to use.
 
+## Clone to Image
+
+```shell
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/clone" \
+  -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{ "templateName": "Example Image" }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint allows creating an image template from an existing instance.
+
+### HTTP Request
+
+`PUT https://api.gomorpheus.com/api/instances/:id/clone-image`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+templateName |    | Image Template Name
+
 
 ## Lock an Instance
 
