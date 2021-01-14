@@ -1,3 +1,5 @@
+<img src="https://morpheusdata.com/wp-content/uploads/2020/04/morpheus-logo-v2.svg" width="200px">
+
 Morpheus API Documentation
 ========
 
