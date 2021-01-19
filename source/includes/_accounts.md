@@ -23,25 +23,57 @@ curl "$MORPHEUS_API_URL/api/accounts" \
     {
       "id": 1,
       "name": "Master",
-      "subdomain": "subdomain",
       "description": "The master tenant",
       "subdomain": null,
       "currency": "USD",
-      "lastUpdated": "2015-11-10T18:58:55+0000",
-      "dateCreated": "2015-11-10T18:58:55+0000",
+      "externalId": null,
+      "customerNumber": null,
+      "accountNumber": null,
+      "accountName": null,
+      "active": true,
+      "master": true,
       "role": {
         "id": 1,
         "authority": "System Admin",
         "description": "Super User"
       },
-      "active": true
+      "stats": {
+        "instanceCount": 42,
+        "userCount": 13
+      },
+      "lastUpdated": "2015-11-10T18:58:55Z",
+      "dateCreated": "2015-11-10T18:58:55Z",
+    },
+    {
+      "id": 2,
+      "name": "Acme",
+      "description": "The Acme corporation, a global manufacturer of outlandish products",
+      "subdomain": "acme",
+      "currency": "USD",
+      "externalId": null,
+      "customerNumber": "1920",
+      "accountNumber": "AC1920",
+      "accountName": "Acme Corporation",
+      "active": true,
+      "master": false,
+      "role": {
+        "id": 2,
+        "authority": "Tenant Admin",
+        "description": "Tenant Role Template"
+      },
+      "stats": {
+        "instanceCount": 2,
+        "userCount": 1
+      },
+      "dateCreated": "2020-11-18T17:40:40Z",
+      "lastUpdated": "2020-11-18T17:40:40Z"
     }
   ],
   "meta": {
     "offset": 0,
     "max": 25,
-    "size": 1,
-    "total": 1
+    "size": 2,
+    "total": 2
   }
 }
 ```
@@ -68,7 +100,7 @@ lastUpdated |  | Date filter, restricts query to only load tenants updated more 
 ## Get a Specific Tenant
 
 ```shell
-curl "$MORPHEUS_API_URL/api/accounts/1" \
+curl "$MORPHEUS_API_URL/api/accounts/2" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN"
 ```
 
@@ -77,21 +109,28 @@ curl "$MORPHEUS_API_URL/api/accounts/1" \
 ```json
 {
   "account": {
-    "id": 1,
-    "name": "Master",
-    "subdomain": "subdomain",
-    "description": "The master tenant",
-    "subdomain": null,
+    "id": 2,
+    "name": "Acme",
+    "description": "The Acme corporation, global manufacturer of outlandish products",
+    "subdomain": "acme",
     "currency": "USD",
     "externalId": null,
-    "lastUpdated": "2015-11-10T18:58:55+0000",
-    "dateCreated": "2015-11-10T18:58:55+0000",
+    "customerNumber": "1920",
+    "accountNumber": "AC1920",
+    "accountName": "Acme Corporation",
+    "active": true,
+    "master": false,
     "role": {
-      "id": 1,
-      "authority": "System Admin",
-      "description": "Super User"
+      "id": 2,
+      "authority": "Tenant Admin",
+      "description": "Tenant Role Template"
     },
-    "active": true
+    "stats": {
+      "instanceCount": 2,
+      "userCount": 1
+    },
+    "dateCreated": "2020-11-18T17:40:40Z",
+    "lastUpdated": "2020-11-18T17:40:40Z"
   }
 }
 ```
@@ -109,10 +148,17 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
-    "name": "My Account",
-    "description": "My description",
-    "subdomain": "myaccount",
-    "role": {"id": 2}
+    "name": "Acme",
+    "description": "The Acme corporation, global manufacturer of outlandish products",
+    "subdomain": "acme",
+    "role": {
+      "id": 2
+    },
+    "active": true,
+    "currency": "USD",
+    "customerNumber": "1920",
+    "accountNumber": "AC1920",
+    "accountName": "Acme Corporation"
   }}'
 ```
 
@@ -129,19 +175,31 @@ Parameter | Default | Description
 name      |  | A unique name for the account
 description |  | Optional description field if you want to put more info there
 subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
-role      | Account Admin | A nested id of the default base role for the account. See [Get Available Roles for a Tenant](#get-available-roles-for-a-tenant).
+role      | Tenant Admin | A nested id of the default base role for the account. See [Get Available Roles for a Tenant](#get-available-roles-for-a-tenant).
+active | true | Set to false to deactvate the account
+currency | USD | Currency ISO Code to be used for the account
+customerNumber |  | Customer Number, an optional field that can be used for billing and accounting.
+accountNumber |  | Account Number, an optional field that can be used for billing and accounting.
+accountName |  | Account Name, an optional field that can be used for billing and accounting.
 
 ## Updating a Tenant
 
 ```shell
-curl -XPUT "$MORPHEUS_API_URL/api/accounts/2" \
+curl -XPUT "$MORPHEUS_API_URL/api/accounts/3" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"account":{
-    "name": "My Tenant",
-    "description": "My new description",
-    "subdomain": "mytenant",
-    "role": {"id": 2}
+    "name": "Batman",
+    "description": "Crime fighter",
+    "subdomain": "batman",
+    "role": {
+      "id": 2
+    },
+    "active": true,
+    "currency": "USD",
+    "customerNumber": "1020",
+    "accountNumber": "A1020-GPD",
+    "accountName": "Gotham Police Department"
   }}'
 ```
 
@@ -160,6 +218,10 @@ description |  | Optional description field if you want to put more info there
 subdomain |  | Sets the custom login url or login prefix for logging into a sub-tenant user.
 role      |  | A nested id of the default base role for the account
 active |  | Set to false to deactvate the account
+currency |  | Currency ISO Code to be used for the account
+customerNumber |  | Customer Number, an optional field that can be used for billing and accounting.
+accountNumber |  | Account Number, an optional field that can be used for billing and accounting.
+accountName |  | Account Name, an optional field that can be used for billing and accounting.
 
 ## Delete a Tenant
 
