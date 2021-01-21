@@ -197,8 +197,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name |  | Filter by name
 phrase |  | Filter by wildcard search of name and description
-siteId |  | Filter by group ID
-zoneId |  | Filter by zone ID
+zoneId |  | Filter by zone (cloud) ID
+siteId |  | Filter by site (group) ID, restricts results to clouds in the specified group(s)
 clusterId |  | Filter by cluster ID
 managed |  | Filter by managed (true) or unmanaged (false)
 serverType |  | Filter by server type code
