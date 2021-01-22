@@ -17,170 +17,180 @@ curl "$MORPHEUS_API_URL/api/servers"
 {
   "servers": [
     {
-      "id": 1,
-      "uuid": "94789c56-7b33-41ca-97a1-6afe3779d448",
-      "externalId": "vm-78033",
-      "internalId": "501fed61-3175-b7dd-8793-eba5785f41b6",
-      "externalUniqueId": "421ffc71-b72b-4cdd-1b27-80485fbdab17",
-      "accountId": 1,
-      "name": "dre-matrix-1",
-      "visibility": "public",
-      "description": "dre-matrix-1",
-      "zoneId": 1,
-      "siteId": 1,
-      "sshHost": "10.100.54.2",
-      "internalIp": "10.100.54.2",
-      "externalIp": "10.100.54.2",
-      "sshPort": 22,
-      "volumeId": null,
-      "platform": null,
-      "platformVersion": null,
-      "sshUsername": "vagrant",
-      "sshPassword": "****",
-      "osDevice": "\/dev\/sda",
-      "dataDevice": "\/dev\/sdb",
-      "apiKey": "a3914182-0f2f-4e9c-a6d2-63822747b9cd",
-      "softwareRaid": false,
-      "config": null,
-      "capacityInfo": {
-        "class": "com.morpheus.ComputeCapacityInfo",
-        "id": 1,
-        "maxCores": null,
-        "maxMemory": 2099228672,
-        "maxStorage": 42945478656,
-        "server": {
-          "class": "com.morpheus.ComputeServer",
-          "id": 1
-        },
-        "usedMemory": 1073741824,
-        "usedStorage": 3221225472
-      },
-      "dateCreated": "2015-06-09T12:43:51Z",
-      "lastUpdated": "2015-06-09T12:47:42Z",
-      "lastStats": "{\"cpuIdleTime\":131115400,\"cpuSystemTime\":76300,\"cpuTotalTime\":131297000,\"cpuUsage\":0.13391375541687012,\"cpuUserTime\":105300,\"freeMemory\":91340800,\"freeSwap\":0,\"ts\":\"2015-06-10T13:11:45+0000\",\"usedMemory\":2007887872,\"usedSwap\":0}",
-      "status": "provisioned",
-      "interfaces": [
-        {
-          "id": 1,
-          "active": true,
-          "dhcp": true,
-          "ipAddress": "10.100.54.2",
-          "ipSubnet": null,
-          "ipv6Address": null,
-          "ipv6Subnet": null,
-          "name": "eth1",
-          "network": null,
-          "networkPosition": null,
-          "primaryInterface": true,
-          "publicIpAddress": null,
-          "publicIpv6Address": null,
-          "server": {
-            "id": 1
-          }
-        }
-      ],
-      "zone": {
-        "id": 1,
-        "accountId": 1,
-        "groupId": 1,
-        "name": "Davids Laptop",
-        "description": "My Laptop Vagrant",
-        "location": null,
-        "visibility": "public",
-        "zoneTypeId": 1
-      }
-    },
-    {
-      "id": 2,
-      "uuid": "ca0ee0ee-3959-4be7-b316-fb95bfd307d1",
+      "id": 2809,
+      "uuid": "01548a80-9c98-49b0-9d36-f438e6557156",
+      "externalId": "i-0ca3df01d3ea194eb",
       "internalId": null,
-      "externalId": "host-58600",
-      "externalUniqueId": null
+      "externalUniqueId": null,
+      "name": "test-nginx",
+      "externalName": "test-nginx",
+      "hostname": "test-nginx",
       "accountId": 1,
-      "name": "dre-matrix-2",
-      "visibility": "public",
-      "description": "dre-matrix-2",
-      "zoneId": 1,
-      "siteId": 1,
-      "sshHost": "10.100.54.3",
-      "internalIp": "10.100.54.3",
-      "externalIp": "10.100.54.3",
-      "sshPort": 22,
-      "volumeId": null,
-      "platform": null,
-      "platformVersion": null,
-      "sshUsername": "vagrant",
-      "sshPassword": "****",
-      "osDevice": "\/dev\/sda",
-      "dataDevice": "\/dev\/sdb",
-      "apiKey": "c3c12af8-1db2-44b3-930d-87f914b14577",
-      "softwareRaid": false,
-      "config": null,
-      "capacityInfo": {
-        "id": 2,
-        "maxCores": null,
-        "maxMemory": 2099228672,
-        "maxStorage": 42945478656,
-        "server": {
-          "id": 2
-        },
-        "usedMemory": 1073741824,
-        "usedStorage": 3221225472
+      "account": {
+        "id": 1,
+        "name": "root"
       },
-      "dateCreated": "2015-06-09T14:07:57Z",
-      "lastUpdated": "2015-06-09T14:17:51Z",
-      "lastStats": "{\"cpuIdleTime\":130016650,\"cpuSystemTime\":1041990,\"cpuTotalTime\":131172760,\"cpuUsage\":0.1677870750427246,\"cpuUserTime\":114120,\"freeMemory\":215248896,\"freeSwap\":0,\"ts\":\"2015-06-10T13:18:33+0000\",\"usedMemory\":1883979776,\"usedSwap\":0}",
+      "owner": {
+        "id": 1,
+        "username": "admin"
+      },
+      "zone": {
+        "id": 39,
+        "name": "test-aws"
+      },
+      "plan": {
+        "id": 1,
+        "code": "amazon-t2.nano",
+        "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
+      },
+      "computeServerType": {
+        "id": 45,
+        "code": "amazonVm",
+        "name": "Amazon Instance",
+        "managed": true,
+        "externalDelete": true
+      },
+      "visibility": "private",
+      "description": null,
+      "zoneId": 39,
+      "siteId": 1,
+      "resourcePoolId": 175,
+      "folderId": null,
+      "sshHost": null,
+      "sshPort": 22,
+      "externalIp": null,
+      "internalIp": "172.31.3.206",
+      "volumeId": null,
+      "platform": "ubuntu",
+      "platformVersion": "14.04",
+      "sshUsername": "admin",
+      "sshPassword": "************",
+      "osDevice": "/dev/xvda",
+      "osType": "linux",
+      "dataDevice": "/dev/sdb",
+      "lvmEnabled": false,
+      "apiKey": "cc58b29b-278b-4847-a001-0295e2f6c897",
+      "softwareRaid": false,
+      "dateCreated": "2020-09-15T20:24:31Z",
+      "lastUpdated": "2021-01-22T17:20:34Z",
+      "stats": {
+        "ts": "2021-01-22T17:20:34Z",
+        "maxMemory": 536870912,
+        "usedMemory": 0,
+        "maxStorage": 10737418240,
+        "usedStorage": 1423470592,
+        "cpuUsage": 0.0,
+        "freeMemory": 536870912,
+        "netTxUsage": 0,
+        "netRxUsage": 0,
+        "networkBandwidth": 0
+      },
       "status": "provisioned",
+      "statusMessage": null,
+      "errorMessage": null,
+      "statusDate": "2020-09-15T20:24:58Z",
+      "statusPercent": null,
+      "statusEta": null,
+      "powerState": "off",
+      "agentInstalled": true,
+      "lastAgentUpdate": "2020-11-02T16:11:58Z",
+      "agentVersion": "2.0.0",
+      "maxCores": 1,
+      "maxMemory": 536870912,
+      "maxStorage": 10737418240,
+      "maxCpu": null,
+      "hourlyCost": 0.0086816667,
+      "hourlyPrice": 0.0086816667,
+      "sourceImage": {
+        "id": 99,
+        "code": "amazon.ec2.image.morpheus.nginx.1.9",
+        "name": "ubuntu-14_04-nginx-1_9-morph.0.1"
+      },
+      "serverOs": {
+        "id": 5,
+        "code": "ubuntu.14.04.64",
+        "name": "ubuntu 14 64-bit",
+        "description": null,
+        "vendor": "canonical",
+        "category": "ubuntu",
+        "osFamily": "debian",
+        "osVersion": "14.04",
+        "bitCount": 64,
+        "platform": "linux"
+      },
       "interfaces": [
         {
-          "id": 2,
-          "active": true,
-          "dhcp": true,
-          "ipAddress": "10.100.54.3",
-          "ipSubnet": null,
-          "ipv6Address": null,
-          "ipv6Subnet": null,
-          "name": "eth1",
-          "network": null,
-          "networkPosition": null,
-          "primaryInterface": true,
-          "publicIpAddress": null,
+          "refType": null,
+          "refId": null,
+          "name": "eth0",
+          "internalId": null,
+          "externalId": "eni-040163be55f537561",
+          "uniqueId": "morpheus-nic-346-502-0",
+          "publicIpAddress": "52.53.211.255",
           "publicIpv6Address": null,
-          "server": {
-            "id": 2
-          }
+          "ipAddress": "172.31.3.206",
+          "ipv6Address": null,
+          "ipSubnet": null,
+          "ipv6Subnet": null,
+          "description": "",
+          "dhcp": true,
+          "active": true,
+          "poolAssigned": false,
+          "primaryInterface": true,
+          "network": null,
+          "subnet": null,
+          "networkGroup": null,
+          "networkPosition": null,
+          "networkPool": null,
+          "networkDomain": null,
+          "type": {
+            "id": 1,
+            "code": "standard",
+            "name": "standard"
+          },
+          "ipMode": null,
+          "macAddress": "06:d9:0e:f2:d3:01"
         }
       ],
-      "zone": {
-        "id": 1,
-        "accountId": 1,
-        "groupId": 1,
-        "name": "Davids Laptop",
-        "description": "My Laptop Vagrant",
-        "location": null,
-        "visibility": "public",
-        "zoneTypeId": 1
-      }
+      "labels": [
+
+      ],
+      "tags": [
+        {
+          "id": 43144,
+          "name": "foo",
+          "value": "bar"
+        },
+        {
+          "id": 43143,
+          "name": "hello",
+          "value": "world"
+        }
+      ],
+      "enabled": true,
+      "tagCompliant": null,
+      "containers": [
+        502
+      ]
     }
   ],
-  "serverCount": 2,
   "stats": {
-    "1": {
-      "usedStorage": 48861184,
-      "reservedStorage": 3221225472,
-      "maxStorage": 42945478656,
-      "usedMemory": 2007887872,
-      "reservedMemory": 1073741824,
-      "maxMemory": 2099228672
-    },
-    "2": {
-      "usedStorage": 18976768,
-      "reservedStorage": 3221225472,
-      "maxStorage": 42945478656,
-      "usedMemory": 1883979776,
-      "reservedMemory": 1073741824,
-      "maxMemory": 2099228672
+    "2809": {
+      "usedStorage": 1423470592,
+      "reservedStorage": 10737418240,
+      "maxStorage": 10737418240,
+      "usedMemory": 0,
+      "reservedMemory": 512217088,
+      "maxMemory": 512217088,
+      "cpuUsage": 0
     }
+  },
+  "multiTenant": true,
+  "meta": {
+    "max": 25,
+    "offset": 0,
+    "size": 1,
+    "total": 1
   }
 }
 ```
@@ -237,80 +247,177 @@ curl "$MORPHEUS_API_URL/api/servers/1" \
 
 ```json
 {
-  "success": true,
   "server": {
-    "id": 1,
-    "uuid": "94789c56-7b33-41ca-97a1-6afe3779d448",
-    "externalId": "vm-78033",
-    "internalId": "501fed61-3175-b7dd-8793-eba5785f41b6",
-    "externalUniqueId": "421ffc71-b72b-4cdd-1b27-80485fbdab17",
+    "id": 2809,
+    "uuid": "01548a80-9c98-49b0-9d36-f438e6557156",
+    "externalId": "i-0ca3df01d3ea194eb",
+    "internalId": null,
+    "externalUniqueId": null,
+    "name": "test-nginx",
+    "externalName": "test-nginx",
+    "hostname": "test-nginx",
     "accountId": 1,
-    "name": "dre-matrix-1",
-    "visibility": "public",
-    "description": "dre-matrix-1",
-    "zoneId": 1,
-    "siteId": 1,
-    "sshHost": "10.100.54.2",
-    "internalIp": "10.100.54.2",
-    "externalIp": "10.100.54.2",
-    "sshPort": 22,
-    "volumeId": null,
-    "platform": null,
-    "platformVersion": null,
-    "sshUsername": "vagrant",
-    "sshPassword": "****",
-    "osDevice": "\/dev\/sda",
-    "dataDevice": "\/dev\/sdb",
-    "apiKey": "a3914182-0f2f-4e9c-a6d2-63822747b9cd",
-    "softwareRaid": false,
-    "config": null,
-    "capacityInfo": {
-      "class": "com.morpheus.ComputeCapacityInfo",
+    "account": {
       "id": 1,
-      "maxCores": null,
-      "maxMemory": 2099228672,
-      "maxStorage": 42945478656,
-      "server": {
-        "class": "com.morpheus.ComputeServer",
-        "id": 1
-      },
-      "usedMemory": 1073741824,
-      "usedStorage": 3221225472
+      "name": "root"
     },
-    "dateCreated": "2015-06-09T12:43:51Z",
-    "lastUpdated": "2015-06-09T12:47:42Z",
-    "lastStats": "{\"cpuIdleTime\":131294520,\"cpuSystemTime\":76390,\"cpuTotalTime\":131476290,\"cpuUsage\":0.10046958923339844,\"cpuUserTime\":105380,\"freeMemory\":91181056,\"freeSwap\":0,\"ts\":\"2015-06-10T13:14:45+0000\",\"usedMemory\":2008047616,\"usedSwap\":0}",
+    "owner": {
+      "id": 1,
+      "username": "admin"
+    },
+    "zone": {
+      "id": 39,
+      "name": "test-aws"
+    },
+    "plan": {
+      "id": 1,
+      "code": "amazon-t2.nano",
+      "name": "Amazon T2 Nano - 1 Core, 0.5GB Memory"
+    },
+    "computeServerType": {
+      "id": 45,
+      "code": "amazonVm",
+      "name": "Amazon Instance",
+      "managed": true,
+      "externalDelete": true
+    },
+    "visibility": "private",
+    "description": null,
+    "zoneId": 39,
+    "siteId": 1,
+    "resourcePoolId": 175,
+    "folderId": null,
+    "sshHost": null,
+    "sshPort": 22,
+    "externalIp": null,
+    "internalIp": "172.31.3.206",
+    "volumeId": null,
+    "platform": "ubuntu",
+    "platformVersion": "14.04",
+    "sshUsername": "admin",
+    "sshPassword": "************",
+    "osDevice": "/dev/xvda",
+    "osType": "linux",
+    "dataDevice": "/dev/sdb",
+    "lvmEnabled": false,
+    "apiKey": "cc58b29b-278b-4847-a001-0295e2f6c897",
+    "softwareRaid": false,
+    "dateCreated": "2020-09-15T20:24:31Z",
+    "lastUpdated": "2021-01-22T17:15:10Z",
+    "stats": {
+      "ts": "2021-01-22T17:15:09Z",
+      "maxMemory": 536870912,
+      "usedMemory": 0,
+      "maxStorage": 10737418240,
+      "usedStorage": 1423470592,
+      "cpuUsage": 0.0,
+      "freeMemory": 536870912,
+      "netTxUsage": 0,
+      "netRxUsage": 0,
+      "networkBandwidth": 0
+    },
     "status": "provisioned",
+    "statusMessage": null,
+    "errorMessage": null,
+    "statusDate": "2020-09-15T20:24:58Z",
+    "statusPercent": null,
+    "statusEta": null,
+    "powerState": "off",
+    "agentInstalled": true,
+    "lastAgentUpdate": "2020-11-02T16:11:58Z",
+    "agentVersion": "2.0.0",
+    "maxCores": 1,
+    "maxMemory": 536870912,
+    "maxStorage": 10737418240,
+    "maxCpu": null,
+    "hourlyCost": 0.0086816667,
+    "hourlyPrice": 0.0086816667,
+    "sourceImage": {
+      "id": 99,
+      "code": "amazon.ec2.image.morpheus.nginx.1.9",
+      "name": "ubuntu-14_04-nginx-1_9-morph.0.1"
+    },
+    "serverOs": {
+      "id": 5,
+      "code": "ubuntu.14.04.64",
+      "name": "ubuntu 14 64-bit",
+      "description": null,
+      "vendor": "canonical",
+      "category": "ubuntu",
+      "osFamily": "debian",
+      "osVersion": "14.04",
+      "bitCount": 64,
+      "platform": "linux"
+    },
     "interfaces": [
       {
-        "id": 1,
-        "active": true,
-        "dhcp": true,
-        "ipAddress": "10.100.54.2",
-        "ipSubnet": null,
-        "ipv6Address": null,
-        "ipv6Subnet": null,
-        "name": "eth1",
-        "network": null,
-        "networkPosition": null,
-        "primaryInterface": true,
-        "publicIpAddress": null,
+        "refType": null,
+        "refId": null,
+        "name": "eth0",
+        "internalId": null,
+        "externalId": "eni-040163be55f537561",
+        "uniqueId": "morpheus-nic-346-502-0",
+        "publicIpAddress": "52.53.211.255",
         "publicIpv6Address": null,
-        "server": {
-          "id": 1
-        }
+        "ipAddress": "172.31.3.206",
+        "ipv6Address": null,
+        "ipSubnet": null,
+        "ipv6Subnet": null,
+        "description": "",
+        "dhcp": true,
+        "active": true,
+        "poolAssigned": false,
+        "primaryInterface": true,
+        "network": null,
+        "subnet": null,
+        "networkGroup": null,
+        "networkPosition": null,
+        "networkPool": null,
+        "networkDomain": null,
+        "type": {
+          "id": 1,
+          "code": "standard",
+          "name": "standard"
+        },
+        "ipMode": null,
+        "macAddress": "06:d9:0e:f2:d3:01"
       }
     ],
-    "zone": {
-      "id": 1,
-      "accountId": 1,
-      "groupId": 1,
-      "name": "Davids Laptop",
-      "description": "My Laptop Vagrant",
-      "location": null,
-      "visibility": "public",
-      "zoneTypeId": 1
+    "labels": [
+
+    ],
+    "tags": [
+      {
+        "id": 43144,
+        "name": "foo",
+        "value": "bar"
+      },
+      {
+        "id": 43143,
+        "name": "hello",
+        "value": "world"
+      }
+    ],
+    "enabled": true,
+    "tagCompliant": null,
+    "containers": [
+      502
+    ],
+    "config": {
+      "isEC2": "false",
+      "resourcePoolId": 175,
+      "publicIpType": "subnet",
+      "createUser": true
     }
+  },
+  "stats": {
+    "usedStorage": 1423470592,
+    "reservedStorage": 10737418240,
+    "maxStorage": 10737418240,
+    "usedMemory": 0,
+    "reservedMemory": 512217088,
+    "maxMemory": 512217088,
+    "cpuUsage": 0
   }
 }
 ```
@@ -499,16 +606,17 @@ curl -XPOST "$MORPHEUS_API_URL/api/servers" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
-  "name": "dre-matrix-3",
-  "description": "dre-matrix-3",
+  "name": "my-nginx",
+  "description": "my-nginx",
   "zone": {"id":1},
   "sshHost": "10.100.54.4",
   "sshUsername": "vagrant",
-  "sshPassword": "vagrant",
+  "sshPassword": "T8Hqq=cJhb*#",
   "dataDevice": "/dev/sdb"
   },
   "network": {
     "name": "eth1"
+  }
   }}'
 ```
 
@@ -537,8 +645,8 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/:id" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
-  "name": "dre-matrix-3",
-  "description": "dre-matrix-3",
+  "name": "my-nginx",
+  "description": "my-nginx",
   "addTags": [
     {"name": "hello", "value": "world"}
   ],
@@ -575,7 +683,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/servers/1/make-managed" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "sshUsername": "admin",
-  "sshPassword": "asafepassword",
+  "sshPassword": "93KL_&Tdst!e",
   "serverOs": {"id": 1},
   "plan": {"id": 9},
   "account": {"id": 1}
