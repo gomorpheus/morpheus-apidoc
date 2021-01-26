@@ -1349,20 +1349,19 @@ curl -XGET "https://api.gomorpheus.com/api/instances/service-plans?zoneId=1&layo
 }
 ```
 
-This returns a list of all of the service plans available for an instance type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *layoutId* are required.
-
-This endpoint can  be used to get the list of plans available for creating a new instance or resizing an existing instance.
+This endpoint retrieves all the [Service Plans](#service-plans) available for the specified cloud and instance layout. The response includes details about the plans and their configuration options. It may be used to get the list of available plans when creating a new instance or resizing an existing instance.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/instances/service-plans`
+`GET https://api.gomorpheus.com/api/instances/service-plans?zoneId=:zoneId&layoutId=:layoutId&siteId=:siteId`
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-zoneId | The ID of the [Cloud](#compute-zones)
-layoutId | The ID of the instance layout
+Parameter | Required | Description
+--------- | -------- | -----------
+zoneId | Y | The ID of the [Cloud](#clouds)
+layoutId | Y | The ID of the [Instance Layout](#layouts)
+siteId | N | The ID of the [Group](#groups)
 
 ## Create an Instance
 

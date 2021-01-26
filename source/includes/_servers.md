@@ -584,20 +584,19 @@ curl -XGET "https://api.gomorpheus.com/api/servers/service-plans?zoneId=2&server
 }
 ```
 
-This returns a list of all of the service plans available for a host type. The response includes details about the plans and their configuration options. The parameters *zoneId* and *serverTypeId* are required.  
-
-This endpoint can  be used to get the list of plans available for provisioning a new host or resizing a host.
+This endpoint retrieves all the [Service Plans](#service-plans) available for the specified cloud and host type. It may be used to get the list of available plans when creating a new host or resizing an existing host.
 
 ### HTTP Request
 
-`GET https://api.gomorpheus.com/api/servers/service-plans`
+`GET https://api.gomorpheus.com/api/servers/service-plans?zoneId=:zoneId&serverTypeId=:serverTypeId&siteId=:siteId`
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-zoneId | The ID of the [Cloud](#compute-zones)
-serverTypeId | The ID of the [Server Type](#compute-server-types)
+Parameter | Required | Description
+--------- | -------- | -----------
+zoneId | The ID of the [Cloud](#clouds)
+serverTypeId | Y | The ID of the [Host Type](#host-types)
+siteId | N | The ID of the [Group](#groups)
 
 ## Provision a Host
 
