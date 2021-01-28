@@ -9242,29 +9242,35 @@ API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <c
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This returns a list of all of the service plans available for an instance type. The response includes details about the plans and their configuration options. The parameters <em>zoneId</em> and <em>layoutId</em> are required.</p>
-
-<p>This endpoint can  be used to get the list of plans available for creating a new instance or resizing an existing instance.</p>
+<p>This endpoint retrieves all the <a href="#service-plans">Service Plans</a> available for the specified cloud and instance layout. The response includes details about the plans and their configuration options. It may be used to get the list of available plans when creating a new instance or resizing an existing instance.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.gomorpheus.com/api/instances/service-plans</code></p>
+<p><code class="prettyprint">GET https://api.gomorpheus.com/api/instances/service-plans?zoneId=:zoneId&amp;layoutId=:layoutId&amp;siteId=:siteId</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>zoneId</td>
-<td>The ID of the <a href="#compute-zones">Cloud</a></td>
+<td>Y</td>
+<td>The ID of the <a href="#clouds">Cloud</a></td>
 </tr>
 <tr>
 <td>layoutId</td>
-<td>The ID of the instance layout</td>
+<td>Y</td>
+<td>The ID of the <a href="#layouts">Instance Layout</a></td>
+</tr>
+<tr>
+<td>siteId</td>
+<td>N</td>
+<td>The ID of the <a href="#groups">Group</a></td>
 </tr>
 </tbody></table>
 
@@ -23391,16 +23397,196 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"zones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davids Laptop"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Laptop Vagrant"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"141e8db2-22e1-4fec-8c7f-28d8b5abda82"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Cloud"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Sandbox"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"guidanceMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lvm"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudInit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userDataLinux"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userDataWindows"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consoleKeymap"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"containerMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inventoryLevel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provisioningProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"applianceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configManagementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datacenterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"importExisting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkServer.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unmanaged"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unmanaged"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"securityMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"certificateProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"backupMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicationMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dnsIntegrationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configCmdbId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configCmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kubeToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kubeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://10.0.0.59:6443"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceRegistryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enableNetworkTypeSelection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28T19:36:46Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-28T17:55:43Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Clouds"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Automation"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"serverCounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"all"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"containerHost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"vm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"baremetal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unmanaged"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serverCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a217c80-c9e0-1459-97b9-1abb33a6c8b2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200121726117"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awstest"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Sandbox"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"guidanceMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storageMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudInit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userDataLinux"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userDataWindows"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consoleKeymap"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"containerMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inventoryLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provisioningProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-access-key"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stsAssumeRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isVpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageStoreId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ebsEncryption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingBucket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorg.billing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-west-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingFolder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reports"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingReport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudability"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingAccessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"costingSecretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linkedAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"applianceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datacenterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkServer.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1510"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1510"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"certificateProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"backupMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"replicationMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dnsIntegrationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceRegistryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configManagementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configCmdbId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configCmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T03:04:16Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-28T17:55:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42367</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Test"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"serverCounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"all"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"containerHost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"vm"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"baremetal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unmanaged"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serverCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -23450,16 +23636,99 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a217c80-c9e0-1459-97b9-1abb33a6c8b2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200121726117"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awstest"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davids Laptop"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Laptop Vagrant"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Sandbox"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"guidanceMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"storageMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"agentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudInit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userDataLinux"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userDataWindows"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consoleKeymap"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"containerMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"costingMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"inventoryLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"provisioningProxy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-access-key"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stsAssumeRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isVpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageStoreId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ebsEncryption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingBucket"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorg.billing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-west-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingFolder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reports"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingReport"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudability"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingAccessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"costingSecretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"linkedAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"applianceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"datacenterName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkServer.id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1510"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1510"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"certificateProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"backupMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replicationMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dnsIntegrationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceRegistryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"configManagementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"configCmdbId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"configCmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T03:04:16Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-28T17:55:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42367</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Test"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"securityServer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"serverCounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"all"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hypervisor"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"containerHost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vm"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baremetal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unmanaged"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"serverCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -28171,170 +28440,180 @@ The Provision Types api can be used to see which options are available.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"servers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94789c56-7b33-41ca-97a1-6afe3779d448"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-78033"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501fed61-3175-b7dd-8793-eba5785f41b6"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"421ffc71-b72b-4cdd-1b27-80485fbdab17"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vagrant"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"****"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"osDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sda"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dataDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sdb"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3914182-0f2f-4e9c-a6d2-63822747b9cd"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"softwareRaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"capacityInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.morpheus.ComputeCapacityInfo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2099228672</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">42945478656</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.morpheus.ComputeServer"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3221225472</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T12:43:51Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T12:47:42Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastStats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"cpuIdleTime\":131115400,\"cpuSystemTime\":76300,\"cpuTotalTime\":131297000,\"cpuUsage\":0.13391375541687012,\"cpuUserTime\":105300,\"freeMemory\":91340800,\"freeSwap\":0,\"ts\":\"2015-06-10T13:11:45+0000\",\"usedMemory\":2007887872,\"usedSwap\":0}"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provisioned"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"publicIpv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davids Laptop"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Laptop Vagrant"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0ee0ee-3959-4be7-b316-fb95bfd307d1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2809</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01548a80-9c98-49b0-9d36-f438e6557156"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-0ca3df01d3ea194eb"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"host-58600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vagrant"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sshPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"****"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"osDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sda"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dataDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sdb"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3c12af8-1db2-44b3-930d-87f914b14577"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"softwareRaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"capacityInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2099228672</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">42945478656</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3221225472</span><span class="w">
+      </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T14:07:57Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T14:17:51Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastStats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"cpuIdleTime\":130016650,\"cpuSystemTime\":1041990,\"cpuTotalTime\":131172760,\"cpuUsage\":0.1677870750427246,\"cpuUserTime\":114120,\"freeMemory\":215248896,\"freeSwap\":0,\"ts\":\"2015-06-10T13:18:33+0000\",\"usedMemory\":1883979776,\"usedSwap\":0}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aws"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"computeServerType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazonVm"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Instance"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"managed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalDelete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.206"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sshUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sshPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/xvda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dataDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/sdb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lvmEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc58b29b-278b-4847-a001-0295e2f6c897"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"softwareRaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T20:24:31Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-22T17:20:34Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-22T17:20:34Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1423470592</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"freeMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"netTxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"netRxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkBandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provisioned"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T20:24:58Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusPercent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statusEta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"powerState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agentInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastAgentUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:11:58Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hourlyCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hourlyPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon.ec2.image.morpheus.nginx.1.9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu-14_04-nginx-1_9-morph.0.1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serverOs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu.14.04.64"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu 14 64-bit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canonical"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"osFamily"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.3"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eni-040163be55f537561"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheus-nic-346-502-0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53.211.255"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"publicIpv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+          </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.206"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"poolAssigned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkPool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"ipMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:d9:0e:f2:d3:01"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davids Laptop"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Laptop Vagrant"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43144</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43143</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tagCompliant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">502</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"serverCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">48861184</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reservedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3221225472</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">42945478656</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2007887872</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reservedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2099228672</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">18976768</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reservedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3221225472</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">42945478656</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1883979776</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reservedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2099228672</span><span class="w">
+    </span><span class="s2">"2809"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1423470592</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reservedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reservedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">512217088</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">512217088</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"multiTenant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -28365,14 +28644,14 @@ The Provision Types api can be used to see which options are available.</p>
 <td>Filter by wildcard search of name and description</td>
 </tr>
 <tr>
-<td>siteId</td>
-<td></td>
-<td>Filter by group ID</td>
-</tr>
-<tr>
 <td>zoneId</td>
 <td></td>
-<td>Filter by zone ID</td>
+<td>Filter by zone (cloud) ID</td>
+</tr>
+<tr>
+<td>siteId</td>
+<td></td>
+<td>Filter by site (group) ID, restricts results to clouds in the specified group(s)</td>
 </tr>
 <tr>
 <td>clusterId</td>
@@ -28490,80 +28769,177 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94789c56-7b33-41ca-97a1-6afe3779d448"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vm-78033"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501fed61-3175-b7dd-8793-eba5785f41b6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"421ffc71-b72b-4cdd-1b27-80485fbdab17"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2809</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01548a80-9c98-49b0-9d36-f438e6557156"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-0ca3df01d3ea194eb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-nginx"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dre-matrix-1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sshUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vagrant"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sshPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"****"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"osDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sda"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dataDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"\/dev\/sdb"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3914182-0f2f-4e9c-a6d2-63822747b9cd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"softwareRaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"capacityInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.morpheus.ComputeCapacityInfo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">2099228672</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">42945478656</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.morpheus.ComputeServer"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">3221225472</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T12:43:51Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-09T12:47:42Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastStats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"cpuIdleTime\":131294520,\"cpuSystemTime\":76390,\"cpuTotalTime\":131476290,\"cpuUsage\":0.10046958923339844,\"cpuUserTime\":105380,\"freeMemory\":91181056,\"freeSwap\":0,\"ts\":\"2015-06-10T13:14:45+0000\",\"usedMemory\":2008047616,\"usedSwap\":0}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-aws"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"computeServerType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazonVm"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Instance"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"managed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalDelete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.206"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volumeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sshUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sshPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/xvda"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"osType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dataDevice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dev/sdb"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lvmEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc58b29b-278b-4847-a001-0295e2f6c897"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"softwareRaid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T20:24:31Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-22T17:15:10Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-22T17:15:09Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1423470592</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"freeMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"netTxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"netRxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"networkBandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provisioned"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T20:24:58Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusPercent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusEta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"powerState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"agentInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastAgentUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:11:58Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"agentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hourlyCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hourlyPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sourceImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon.ec2.image.morpheus.nginx.1.9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu-14_04-nginx-1_9-morph.0.1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"serverOs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu.14.04.64"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu 14 64-bit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canonical"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osFamily"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.54.2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eni-040163be55f537561"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheus-nic-346-502-0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.53.211.255"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"publicIpv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.31.3.206"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"poolAssigned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkPool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ipMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:d9:0e:f2:d3:01"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"groupId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davids Laptop"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Laptop Vagrant"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zoneTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43144</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43143</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tagCompliant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">502</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"isEC2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicIpType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1423470592</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reservedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reservedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">512217088</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">512217088</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -28735,29 +29111,35 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This returns a list of all of the service plans available for a host type. The response includes details about the plans and their configuration options. The parameters <em>zoneId</em> and <em>serverTypeId</em> are required.  </p>
-
-<p>This endpoint can  be used to get the list of plans available for provisioning a new host or resizing a host.</p>
+<p>This endpoint retrieves all the <a href="#service-plans">Service Plans</a> available for the specified cloud and host type. It may be used to get the list of available plans when creating a new host or resizing an existing host.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://api.gomorpheus.com/api/servers/service-plans</code></p>
+<p><code class="prettyprint">GET https://api.gomorpheus.com/api/servers/service-plans?zoneId=:zoneId&amp;serverTypeId=:serverTypeId&amp;siteId=:siteId</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>zoneId</td>
-<td>The ID of the <a href="#compute-zones">Cloud</a></td>
+<td>The ID of the <a href="#clouds">Cloud</a></td>
+<td></td>
 </tr>
 <tr>
 <td>serverTypeId</td>
-<td>The ID of the <a href="#compute-server-types">Server Type</a></td>
+<td>Y</td>
+<td>The ID of the <a href="#host-types">Host Type</a></td>
+</tr>
+<tr>
+<td>siteId</td>
+<td>N</td>
+<td>The ID of the <a href="#groups">Group</a></td>
 </tr>
 </tbody></table>
 
@@ -28766,16 +29148,17 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "server": {
-  "name": "dre-matrix-3",
-  "description": "dre-matrix-3",
+  "name": "my-nginx",
+  "description": "my-nginx",
   "zone": {"id":1},
   "sshHost": "10.100.54.4",
   "sshUsername": "vagrant",
-  "sshPassword": "vagrant",
+  "sshPassword": "T8Hqq=cJhb*#",
   "dataDevice": "/dev/sdb"
   },
   "network": {
     "name": "eth1"
+  }
   }}'</span>
 </code></pre>
 
@@ -28838,8 +29221,8 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "server": {
-  "name": "dre-matrix-3",
-  "description": "dre-matrix-3",
+  "name": "my-nginx",
+  "description": "my-nginx",
   "addTags": [
     {"name": "hello", "value": "world"}
   ],
@@ -28914,7 +29297,7 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "server": {
   "sshUsername": "admin",
-  "sshPassword": "asafepassword",
+  "sshPassword": "93KL_&amp;Tdst!e",
   "serverOs": {"id": 1},
   "plan": {"id": 9},
   "account": {"id": 1}
@@ -42822,25 +43205,57 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subdomain"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The master tenant"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55+0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55+0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"master"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System Admin"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super User"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instanceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55Z"</span><span class="p">,</span><span class="w">
+    </span><span class="err">}</span><span class="p">,</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Acme corporation, a global manufacturer of outlandish products"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1920"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AC1920"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"master"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tenant Admin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tenant Role Template"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instanceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T17:40:40Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T17:40:40Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -42898,7 +43313,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 </tbody></table>
 
 <h2 id="get-a-specific-tenant">Get a Specific Tenant</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/accounts/1"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/accounts/2"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
 </code></pre>
 
@@ -42907,21 +43322,28 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subdomain"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The master tenant"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Acme corporation, global manufacturer of outlandish products"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55+0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-10T18:58:55+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customerNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1920"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AC1920"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme Corporation"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"master"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System Admin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super User"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tenant Admin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tenant Role Template"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instanceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"userCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T17:40:40Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-18T17:40:40Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -42937,10 +43359,17 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{"account":{
-    "name": "My Account",
-    "description": "My description",
-    "subdomain": "myaccount",
-    "role": {"id": 2}
+    "name": "Acme",
+    "description": "The Acme corporation, global manufacturer of outlandish products",
+    "subdomain": "acme",
+    "role": {
+      "id": 2
+    },
+    "active": true,
+    "currency": "USD",
+    "customerNumber": "1920",
+    "accountNumber": "AC1920",
+    "accountName": "Acme Corporation"
   }}'</span>
 </code></pre>
 
@@ -42978,20 +43407,52 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 </tr>
 <tr>
 <td>role</td>
-<td>Account Admin</td>
+<td>Tenant Admin</td>
 <td>A nested id of the default base role for the account. See <a href="#get-available-roles-for-a-tenant">Get Available Roles for a Tenant</a>.</td>
+</tr>
+<tr>
+<td>active</td>
+<td>true</td>
+<td>Set to false to deactvate the account</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>USD</td>
+<td>Currency ISO Code to be used for the account</td>
+</tr>
+<tr>
+<td>customerNumber</td>
+<td></td>
+<td>Customer Number, an optional field that can be used for billing and accounting.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td></td>
+<td>Account Number, an optional field that can be used for billing and accounting.</td>
+</tr>
+<tr>
+<td>accountName</td>
+<td></td>
+<td>Account Name, an optional field that can be used for billing and accounting.</td>
 </tr>
 </tbody></table>
 
 <h2 id="updating-a-tenant">Updating a Tenant</h2>
-<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/accounts/2"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/accounts/3"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{"account":{
-    "name": "My Tenant",
-    "description": "My new description",
-    "subdomain": "mytenant",
-    "role": {"id": 2}
+    "name": "Batman",
+    "description": "Crime fighter",
+    "subdomain": "batman",
+    "role": {
+      "id": 2
+    },
+    "active": true,
+    "currency": "USD",
+    "customerNumber": "1020",
+    "accountNumber": "A1020-GPD",
+    "accountName": "Gotham Police Department"
   }}'</span>
 </code></pre>
 
@@ -43036,6 +43497,26 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 <td>active</td>
 <td></td>
 <td>Set to false to deactvate the account</td>
+</tr>
+<tr>
+<td>currency</td>
+<td></td>
+<td>Currency ISO Code to be used for the account</td>
+</tr>
+<tr>
+<td>customerNumber</td>
+<td></td>
+<td>Customer Number, an optional field that can be used for billing and accounting.</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td></td>
+<td>Account Number, an optional field that can be used for billing and accounting.</td>
+</tr>
+<tr>
+<td>accountName</td>
+<td></td>
+<td>Account Name, an optional field that can be used for billing and accounting.</td>
 </tr>
 </tbody></table>
 
