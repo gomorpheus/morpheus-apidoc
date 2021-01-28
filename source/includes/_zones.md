@@ -17,16 +17,196 @@ curl "$MORPHEUS_API_URL/api/zones"
 {
   "zones": [
     {
-      "id": 1,
-      "accountId": 1,
-      "groupId": 1,
-      "name": "Davids Laptop",
-      "description": "My Laptop Vagrant",
+      "id": 2,
+      "uuid": "141e8db2-22e1-4fec-8c7f-28d8b5abda82",
+      "externalId": null,
+      "name": "Test Cloud",
+      "code": "test",
       "location": null,
-      "visibility": "public",
-      "zoneTypeId": 1
+      "accountId": 1,
+      "account": {
+        "id": 1,
+        "name": "Morpheus Sandbox"
+      },
+      "visibility": "private",
+      "enabled": true,
+      "status": "ok",
+      "statusMessage": null,
+      "zoneType": {
+        "id": 1,
+        "code": "standard",
+        "name": "Morpheus"
+      },
+      "zoneTypeId": 1,
+      "guidanceMode": "off",
+      "storageMode": "lvm",
+      "agentMode": "cloudInit",
+      "userDataLinux": null,
+      "userDataWindows": null,
+      "consoleKeymap": null,
+      "containerMode": "all",
+      "serviceVersion": null,
+      "costingMode": "off",
+      "inventoryLevel": null,
+      "timezone": null,
+      "apiProxy": null,
+      "provisioningProxy": null,
+      "networkDomain": null,
+      "domainName": "localdomain",
+      "regionCode": null,
+      "autoRecoverPowerState": false,
+      "config": {
+        "applianceUrl": "",
+        "configManagementId": "",
+        "datacenterName": "",
+        "provider": "standard",
+        "importExisting": "on",
+        "networkServer.id": "unmanaged",
+        "networkServer": {
+          "id": "unmanaged"
+        },
+        "securityMode": "off",
+        "certificateProvider": "internal",
+        "backupMode": "internal",
+        "replicationMode": "-1",
+        "dnsIntegrationId": "",
+        "configCmdbId": "",
+        "configCmId": "",
+        "kubeToken": "************",
+        "kubeUrl": "https://10.0.0.59:6443",
+        "securityServer": "off",
+        "serviceRegistryId": "",
+        "enableNetworkTypeSelection": null
+      },
+      "dateCreated": "2017-03-28T19:36:46Z",
+      "lastUpdated": "2021-01-28T17:55:43Z",
+      "groups": [
+        {
+          "id": 2,
+          "name": "All Clouds",
+          "accountId": 1
+        },
+        {
+          "id": 14,
+          "name": "Automation",
+          "accountId": 1
+        }
+      ],
+      "securityServer": null,
+      "stats": {
+        "serverCounts": {
+          "all": 0,
+          "host": 0,
+          "hypervisor": 0,
+          "containerHost": 0,
+          "vm": 0,
+          "baremetal": 0,
+          "unmanaged": 0
+        }
+      },
+      "serverCount": 0
+    },
+    {
+      "id": 1,
+      "uuid": "9a217c80-c9e0-1459-97b9-1abb33a6c8b2",
+      "externalId": "200121726117",
+      "name": "AWS Test",
+      "code": "awstest",
+      "location": "",
+      "accountId": 1,
+      "account": {
+        "id": 1,
+        "name": "Morpheus Sandbox"
+      },
+      "visibility": "private",
+      "enabled": true,
+      "status": "ok",
+      "statusMessage": null,
+      "zoneType": {
+        "id": 3,
+        "code": "amazon",
+        "name": "Amazon"
+      },
+      "zoneTypeId": 3,
+      "guidanceMode": "off",
+      "storageMode": "standard",
+      "agentMode": "cloudInit",
+      "userDataLinux": null,
+      "userDataWindows": null,
+      "consoleKeymap": null,
+      "containerMode": "docker",
+      "serviceVersion": null,
+      "costingMode": "full",
+      "inventoryLevel": "full",
+      "timezone": null,
+      "apiProxy": null,
+      "provisioningProxy": null,
+      "networkDomain": null,
+      "domainName": "localdomain",
+      "regionCode": "ec2.us-west-1.amazonaws.com",
+      "autoRecoverPowerState": true,
+      "config": {
+        "endpoint": "ec2.us-west-1.amazonaws.com",
+        "accessKey": "my-access-key",
+        "secretKey": "************",
+        "stsAssumeRole": "",
+        "isVpc": "true",
+        "vpc": "",
+        "imageStoreId": "",
+        "ebsEncryption": "off",
+        "costingBucket": "myorg.billing",
+        "costingRegion": "us-west-1",
+        "costingFolder": "reports",
+        "costingReport": "cloudability",
+        "costingAccessKey": "",
+        "costingSecretKey": "",
+        "linkedAccountId": "",
+        "applianceUrl": "",
+        "datacenterName": "",
+        "networkServer.id": "1510",
+        "networkServer": {
+          "id": "1510"
+        },
+        "certificateProvider": "internal",
+        "backupMode": "internal",
+        "replicationMode": "-1",
+        "dnsIntegrationId": "",
+        "serviceRegistryId": "",
+        "configManagementId": "",
+        "configCmdbId": "",
+        "configCmId": "",
+        "securityServer": "null"
+      },
+      "dateCreated": "2020-05-08T03:04:16Z",
+      "lastUpdated": "2021-01-28T17:55:54Z",
+      "groups": [
+        {
+          "id": 42367,
+          "name": "AWS Test",
+          "accountId": 1
+        }
+      ],
+      "securityServer": null,
+      "stats": {
+        "serverCounts": {
+          "all": 0,
+          "host": 0,
+          "hypervisor": 0,
+          "containerHost": 0,
+          "vm": 55,
+          "baremetal": 0,
+          "unmanaged": 55
+        }
+      },
+      "serverCount": 0
     }
-  ]
+  ],
+  "meta": {
+    "offset": 0,
+    "max": "25",
+    "size": 2,
+    "total": 2
+  }
 }
 ```
 
@@ -58,16 +238,99 @@ curl "$MORPHEUS_API_URL/api/zones/1" \
 
 ```json
 {
-  "success": true,
   "zone": {
     "id": 1,
+    "uuid": "9a217c80-c9e0-1459-97b9-1abb33a6c8b2",
+    "externalId": "200121726117",
+    "name": "AWS Test",
+    "code": "awstest",
+    "location": "",
     "accountId": 1,
-    "groupId": 1,
-    "name": "Davids Laptop",
-    "description": "My Laptop Vagrant",
-    "location": null,
-    "visibility": "public",
-    "zoneTypeId": 1
+    "account": {
+      "id": 1,
+      "name": "Morpheus Sandbox"
+    },
+    "visibility": "private",
+    "enabled": true,
+    "status": "ok",
+    "statusMessage": null,
+    "zoneType": {
+      "id": 3,
+      "code": "amazon",
+      "name": "Amazon"
+    },
+    "zoneTypeId": 3,
+    "guidanceMode": "off",
+    "storageMode": "standard",
+    "agentMode": "cloudInit",
+    "userDataLinux": null,
+    "userDataWindows": null,
+    "consoleKeymap": null,
+    "containerMode": "docker",
+    "serviceVersion": null,
+    "costingMode": "full",
+    "inventoryLevel": "full",
+    "timezone": null,
+    "apiProxy": null,
+    "provisioningProxy": null,
+    "networkDomain": null,
+    "domainName": "localdomain",
+    "regionCode": "ec2.us-west-1.amazonaws.com",
+    "autoRecoverPowerState": true,
+    "config": {
+      "endpoint": "ec2.us-west-1.amazonaws.com",
+      "accessKey": "my-access-key",
+      "secretKey": "************",
+      "stsAssumeRole": "",
+      "isVpc": "true",
+      "vpc": "",
+      "imageStoreId": "",
+      "ebsEncryption": "off",
+      "costingBucket": "myorg.billing",
+      "costingRegion": "us-west-1",
+      "costingFolder": "reports",
+      "costingReport": "cloudability",
+      "costingAccessKey": "",
+      "costingSecretKey": "",
+      "linkedAccountId": "",
+      "applianceUrl": "",
+      "datacenterName": "",
+      "networkServer.id": "1510",
+      "networkServer": {
+        "id": "1510"
+      },
+      "certificateProvider": "internal",
+      "backupMode": "internal",
+      "replicationMode": "-1",
+      "dnsIntegrationId": "",
+      "serviceRegistryId": "",
+      "configManagementId": "",
+      "configCmdbId": "",
+      "configCmId": "",
+      "securityServer": "null"
+    },
+    "dateCreated": "2020-05-08T03:04:16Z",
+    "lastUpdated": "2021-01-28T17:55:54Z",
+    "groups": [
+      {
+        "id": 42367,
+        "name": "AWS Test",
+        "accountId": 1
+      }
+    ],
+    "securityServer": null,
+    "stats": {
+      "serverCounts": {
+        "all": 0,
+        "host": 0,
+        "hypervisor": 0,
+        "containerHost": 0,
+        "vm": 55,
+        "baremetal": 0,
+        "unmanaged": 55
+      }
+    },
+    "serverCount": 0
   }
 }
 ```
