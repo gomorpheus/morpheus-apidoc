@@ -1,13 +1,13 @@
-## User Sources
+# Identity Sources
 
-User Sources can be configured for each Tenant.
-Supported types include LDAP, JumpCloud, Active Directory, and others.
+Identity sources may be configured to allow users to authenticate with a separate service in order to gain access to the Morpheus appliance. When authenticating, Morpheus checks the credentials against the third party service and if successful will log the user into the appliance. If it's the first time for that username, the user is created before logging in. This way users and their passwords are not managed directly in Morpheus.  Each identity source has role mappings that determine the access level in Morpheus which users will receive when authenticating and successfully logging in.
 
-<aside class="notice">
-This API is only available to the master account.
-</aside>
+The supported identity source types are LDAP (`ldap`), JumpCloud (`jumpCloud`), Active Directory (`activeDirectory`), Okta (`okta`), One Login (`oneLogin`), SAML (`saml`) and Azure SAML (`azureSaml`). Custom types are also supported.
 
-<!--## Get All User Sources-->
+An Identity Source may also be referred to as a *User Source* or *userSource*.
+
+
+## Get All Identity Sources
 
 ```shell
 curl "$MORPHEUS_API_URL/api/user-sources"
@@ -20,10 +20,101 @@ curl "$MORPHEUS_API_URL/api/user-sources"
 {
   "userSources": [
     {
-      "id": 17,
-      "name": "jump cloud",
-      "description": "our jump cloud users",
-      "code": "KsUGxwhTU",
+      "id": 4761,
+      "name": "AD Example",
+      "description": "Active Directory Example",
+      "code": "vaRnweSFq",
+      "type": "activeDirectory",
+      "active": true,
+      "deleted": false,
+      "autoSyncOnLogin": true,
+      "externalLogin": false,
+      "allowCustomMappings": false,
+      "account": {
+        "id": 1552,
+        "name": "Auto Tenant 1"
+      },
+      "defaultAccountRole": {
+        "id": 19112,
+        "authority": "Default: User"
+      },
+      "config": {
+        "url": "10.10.20.1",
+        "domain": "qa.ad.myorg.com",
+        "useSSL": "off",
+        "bindingUsername": "admin",
+        "bindingPassword": "************",
+        "requiredGroup": "MyOrgUsers",
+        "searchMemberGroups": true,
+        "requiredGroupDN": "CN=MyOrgUsers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"
+      },
+      "roleMappings": [
+        {
+          "sourceRoleName": "Mathematicians",
+          "sourceRoleFqn": "CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+          "mappedRole": {
+            "id": 19117,
+            "authority": "Sub Role"
+          }
+        }
+      ],
+      "subdomain": "auto",
+      "loginURL": "https://dev.myorg.com/login/account/auto",
+      "providerSettings": {
+      },
+      "dateCreated": "2020-02-06T17:00:13Z",
+      "lastUpdated": "2021-01-30T08:54:21Z"
+    },
+    
+    
+    {
+      "id": 5400,
+      "name": "FreeIPA LDAP",
+      "description": null,
+      "code": "uciTGxHGT",
+      "type": "ldap",
+      "active": false,
+      "deleted": false,
+      "autoSyncOnLogin": true,
+      "externalLogin": false,
+      "allowCustomMappings": false,
+      "account": {
+        "id": 1633,
+        "name": "ctaylor"
+      },
+      "defaultAccountRole": {
+        "id": 24436,
+        "authority": "A Persona User Role"
+      },
+      "config": {
+        "url": "ldaps://gw-freeipa.prod.den.myorg.com:636",
+        "bindingUsername": "admin",
+        "bindingPassword": "************",
+        "userFqnExpression": "uid=$username,cn=users,cn=accounts,dc=prod,dc=den,dc=myorg,dc=com",
+        "requiredRoleFqn": "cn=ipausers,cn=groups,cn=accounts,dc=prod,dc=den,dc=myorg,dc=com",
+        "usernameAttribute": "",
+        "commonNameAttribute": "",
+        "firstNameAttribute": "",
+        "lastNameAttribute": "",
+        "emailAttribute": "",
+        "uniqueMemberAttribute": "",
+        "memberOfAttribute": "memberOf"
+      },
+      "roleMappings": [
+
+      ],
+      "subdomain": "ctaylor",
+      "loginURL": "https://dev.myorg.com/login/account/ctaylor",
+      "providerSettings": {
+      },
+      "dateCreated": "2021-01-07T09:03:52Z",
+      "lastUpdated": "2021-01-07T18:07:37Z"
+    },
+    {
+      "id": 4771,
+      "name": "Jump Cloud QA",
+      "description": "jumpcloud trial",
+      "code": "E81DYhKVN",
       "type": "jumpCloud",
       "active": true,
       "deleted": false,
@@ -31,31 +122,193 @@ curl "$MORPHEUS_API_URL/api/user-sources"
       "externalLogin": false,
       "allowCustomMappings": false,
       "account": {
-        "id": 59,
-        "name": "acme"
+        "id": 1552,
+        "name": "Auto Tenant 1"
       },
       "defaultAccountRole": {
-        "id": 19,
-        "authority": "Basic User"
+        "id": 19112,
+        "authority": "Default: User"
+      },
+      "config": {
+        "organizationId": "22ba1130591be3786b2343a1",
+        "bindingUsername": "jcgauss",
+        "bindingPassword": "************",
+        "requiredRole": "MyOrgTag"
       },
       "roleMappings": [
-
+        {
+          "sourceRoleName": "mathematicians",
+          "sourceRoleFqn": "cn=mathematicians,ou=Users,o=56ba8430591be3786b2343b0,dc=jumpcloud,dc=com",
+          "mappedRole": {
+            "id": 19117,
+            "authority": "Sub Role"
+          }
+        }
       ],
-      "subdomain": "acme",
-      "dateCreated": "2018-03-22T01:57:12+0000",
-      "lastUpdated": "2018-03-22T01:57:12+0000"
+      "subdomain": "auto",
+      "loginURL": "https://dev.myorg.com/login/account/auto",
+      "providerSettings": {
+      },
+      "dateCreated": "2020-02-06T17:52:07Z",
+      "lastUpdated": "2021-01-30T10:41:52Z"
+    },
+    {
+      "id": 4782,
+      "name": "Okta QA",
+      "description": "oktapreview trial",
+      "code": "eZiReLj9W",
+      "type": "okta",
+      "active": true,
+      "deleted": false,
+      "autoSyncOnLogin": true,
+      "externalLogin": false,
+      "allowCustomMappings": false,
+      "account": {
+        "id": 1552,
+        "name": "Auto Tenant 1"
+      },
+      "defaultAccountRole": {
+        "id": 19112,
+        "authority": "Default: User"
+      },
+      "config": {
+        "url": "https://dev-911522.oktapreview.com",
+        "administratorAPIToken": "************",
+        "requiredGroup": "myorg",
+        "requiredGroupId": "00g88dvxc64kvt6UR0h7"
+      },
+      "roleMappings": [
+        {
+          "sourceRoleName": "mathematicians",
+          "sourceRoleFqn": "00g86tlvyuJlw3OqZ0h7",
+          "mappedRole": {
+            "id": 19117,
+            "authority": "Sub Role"
+          }
+        }
+      ],
+      "subdomain": "auto",
+      "loginURL": "https://dev.myorg.com/login/account/auto",
+      "providerSettings": {
+      },
+      "dateCreated": "2020-02-06T18:16:40Z",
+      "lastUpdated": "2021-01-30T09:40:35Z"
+    },
+    {
+      "id": 4783,
+      "name": "OneLogin QA",
+      "description": "onelogin test",
+      "code": "stfG0VlIT",
+      "type": "oneLogin",
+      "active": true,
+      "deleted": false,
+      "autoSyncOnLogin": true,
+      "externalLogin": false,
+      "allowCustomMappings": false,
+      "account": {
+        "id": 1552,
+        "name": "Auto Tenant 1"
+      },
+      "defaultAccountRole": {
+        "id": 19112,
+        "authority": "Default: User"
+      },
+      "config": {
+        "subdomain": "myorg-labs-dev",
+        "region": "us",
+        "clientSecret": "************",
+        "clientId": "3c9f6960b4dd8af33dfd7e8022569a095c3d09256657082ea03d40f6b1583260",
+        "requiredRole": "MorpheusAdmin Role",
+        "requiredRoleId": "144498"
+      },
+      "roleMappings": [
+        {
+          "sourceRoleName": "Mathematician Role",
+          "sourceRoleFqn": "145780",
+          "mappedRole": {
+            "id": 19117,
+            "authority": "Sub Role"
+          }
+        }
+      ],
+      "subdomain": "auto",
+      "loginURL": "https://dev.myorg.com/login/account/auto",
+      "providerSettings": {
+      },
+      "dateCreated": "2020-02-06T18:16:46Z",
+      "lastUpdated": "2021-01-30T09:09:45Z"
+    },
+    {
+      "id": 207,
+      "name": "OneLogin SAML",
+      "description": "saml test",
+      "code": "cD9bPD9oa",
+      "type": "saml",
+      "active": false,
+      "deleted": false,
+      "autoSyncOnLogin": true,
+      "externalLogin": true,
+      "allowCustomMappings": false,
+      "account": {
+        "id": 1,
+        "name": "MyOrg QA"
+      },
+      "defaultAccountRole": {
+        "id": 17,
+        "authority": "Default: User"
+      },
+      "config": {
+        "roleAttributeName": "firstName",
+        "requiredAttributeValue": "Carl",
+        "givenNameAttribute": "firstName",
+        "surnameAttribute": "lastName",
+        "logoutUrl": "https://myorg-dev.onelogin.com/trust/saml2/http-redirect/slo/618040",
+        "doNotIncludeSAMLRequest": false,
+        "emailAttribute": "email",
+        "url": "https://myorg-dev.onelogin.com/trust/saml2/http-post/sso/618040",
+        "doNotValidateSignature": false,
+        "doNotValidateStatusCode": false,
+        "doNotValidateDestination": false,
+        "doNotValidateIssueInstants": false,
+        "doNotValidateAssertions": false,
+        "doNotValidateAuthStatements": false,
+        "doNotValidateSubject": false,
+        "doNotValidateConditions": false,
+        "doNotValidateAudiences": false,
+        "doNotValidateSubjectRecipients": false,
+        "SAMLSignatureMode": "SelfSigned"
+      },
+      "roleMappings": [
+        {
+          "sourceRoleName": "Carl",
+          "sourceRoleFqn": null,
+          "mappedRole": {
+            "id": 2486,
+            "authority": "Sub Admin"
+          }
+        }
+      ],
+      "subdomain": "1",
+      "loginURL": "https://dev.myorg.com/login/account/1",
+      "providerSettings": {
+        "entityId": "https://dev.myorg.com/saml/cD9bPD9oa",
+        "acsUrl": "https://dev.myorg.com/externalLogin/callback/cD9bPD9oa",
+        "spMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><EntityDescriptor entityID=\"https://dev.myorg.com/saml/cD9bPD9oa\" xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"><SPSSODescriptor AuthnRequestsSigned=\"true\" WantAssertionsSigned=\"true\" protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"><NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</NameIDFormat><AssertionConsumerService index=\"0\" isDefault=\"true\" Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Location=\"https://dev.myorg.com/externalLogin/callback/cD9bPD9oa\"/></SPSSODescriptor></EntityDescriptor>"
+      },
+      "dateCreated": "2017-05-24T03:52:51Z",
+      "lastUpdated": "2021-01-30T10:58:16Z"
     }
   ],
   "meta": {
-    "size": 1,
-    "total": 1,
+    "offset": 0,
     "max": 25,
-    "offset": 0
+    "size": 11,
+    "total": 11
   }
 }
 ```
 
-This endpoint retrieves all user sources.
+This endpoint retrieves all identity sources.  The master tenant will see identity sources for all tenants.
 
 ### HTTP Request
 
@@ -68,8 +321,9 @@ Parameter | Default | Description
 phrase |  | Filter on wildcard match of name or description
 name |  | Filter on exact match of name
 type |  | Filter on exact match of type code
+accountId |  | Filter on a Tenant ID. *Only available to the master tenant.*
 
-## Get a Specific User Source
+## Get a Specific Identity Source
 
 ```shell
 curl "$MORPHEUS_API_URL/api/user-sources/2" \
@@ -81,42 +335,56 @@ curl "$MORPHEUS_API_URL/api/user-sources/2" \
 ```json
 {
   "userSource": {
-    "id": 17,
-    "name": "jump cloud",
-    "description": "our jump cloud users",
-    "code": "KsUGxwhTU",
-    "type": "jumpCloud",
+    "id": 4761,
+    "name": "AD Example",
+    "description": "Example AD",
+    "code": "vaRnweSFq",
+    "type": "activeDirectory",
     "active": true,
     "deleted": false,
     "autoSyncOnLogin": true,
     "externalLogin": false,
     "allowCustomMappings": false,
     "account": {
-      "id": 59,
-      "name": "acme"
+      "id": 1552,
+      "name": "Auto Tenant 1"
     },
     "defaultAccountRole": {
-      "id": 19,
-      "authority": "Basic User"
+      "id": 19112,
+      "authority": "Default: User"
     },
     "config": {
-      "organizationId": "34a927g43e21be3786b2343b",
+      "url": "10.10.20.1",
+      "domain": "qa.ad.myorg.com",
+      "useSSL": "off",
+      "bindingUsername": "admin",
       "bindingPassword": "************",
-      "bindingUsername": "jumpadmin",
-      "requiredRole": "MorpheusTag"
+      "requiredGroup": "MyOrgUsers",
+      "searchMemberGroups": true,
+      "requiredGroupDN": "CN=MyOrgUsers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"
     },
     "roleMappings": [
-
+      {
+        "sourceRoleName": "Mathematicians",
+        "sourceRoleFqn": "CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+        "mappedRole": {
+          "id": 19117,
+          "authority": "Sub Role"
+        }
+      }
     ],
-    "subdomain": "acme",
-    "loginURL": "https://app.gomorpheusdata.com/login/account/acme",
-    "dateCreated": "2018-03-22T01:57:12+0000",
-    "lastUpdated": "2018-03-22T01:57:12+0000"
+    "subdomain": "auto",
+    "loginURL": "https://dev.myorg.com/login/account/auto",
+    "providerSettings": {
+    },
+    "dateCreated": "2020-02-06T17:00:13Z",
+    "lastUpdated": "2021-01-30T08:54:21Z"
   }
 }
+
 ```
 
-This endpoint retrieves a specific user source.
+This endpoint retrieves a specific identity source.
 
 
 ### HTTP Request
@@ -127,34 +395,35 @@ This endpoint retrieves a specific user source.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the user source
+ID | The ID of the identity source
 
-## Create a User Source
+## Create an Identity Source
 
 ```shell
 curl -XPOST "$MORPHEUS_API_URL/api/accounts/60/user-sources" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"userSource": {
+  -d '{
+  "userSource": {
     "type": "activeDirectory",
     "name": "Ninja AD",
     "config": {
-      "url": "10.30.10.155",
+      "url": "10.10.10.22",
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
-      "requiredGroup": "MorpheusUsers",
-      "searchMemberGroups": "off"
+      "requiredGroup": "MyOrgUsers",
+      "searchMemberGroups": false
     },
     "defaultAccountRole": {
-      "id": 1
+      "id": 19
     }
   }
 }'
 ```
 
-> The above command returns JSON structured like getting a single user source: 
+> The above command returns JSON structured like getting a single identity source: 
 
 ### HTTP Request
 
@@ -164,7 +433,7 @@ curl -XPOST "$MORPHEUS_API_URL/api/accounts/60/user-sources" \
 
 Parameter | Description
 --------- | -----------
-accountId | The ID of the subtenant account to associate the user source with
+accountId | The ID of the subtenant account to associate the identity source with
 
 ### JSON Parameters
 
@@ -255,32 +524,33 @@ config.apiStyle      |  | API Style ('Form URL Encoded [GET]','Form URL Encoded 
 config.encryptionAlgo      |  | Encryption Algorithm ('NONE','AES','DES','DESede','HmacSHA1', 'HmacSHA256')
 config.encryptionKey      |  | Encryption Key
 
-## Updating a User Source
+## Updating an Identity Source
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"userSource": {
+  -d '{
+  "userSource": {
     "type": "activeDirectory",
     "name": "Ninja AD",
     "config": {
-      "url": "10.30.10.155",
+      "url": "10.10.10.22",
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
-      "requiredGroup": "MorpheusUsers",
+      "requiredGroup": "MyOrgUsers",
       "searchMemberGroups": "off"
     },
     "defaultAccountRole": {
-      "id": 1
+      "id": 19
     }
   }
 }'
 ```
 
-> The above command returns JSON structured like getting a single user source: 
+> The above command returns JSON structured like getting a single identity source: 
 
 ### HTTP Request
 
@@ -290,7 +560,7 @@ curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3" \
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the user source
+ID | The ID of the identity source
 
 ### JSON Parameters
 
@@ -298,13 +568,13 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name
 description |  | Description (optional)
-active      |  | Activate (true) or disable (false) the user source
+active      |  | Activate (true) or disable (false) the identity source
 defaultAccountRole.id |  | Default Role ID
 roleMappings | | Map of Morpheus Role ID : Fully Qualified Role Name
 roleMappingNames | | Map of Morpheus Role ID : Role Name
 config | | Map of configuration options which vary by type.
 
-## Updating Subdomain for a User Source
+## Updating Subdomain for an Identity Source
 
 ```shell
 curl -XPUT "$MORPHEUS_API_URL/api/user-sources/3/subdomain" \
@@ -339,7 +609,7 @@ subdomain      |  | New Subdomain for account
 
 This endpoint updates the subdomain for the account associated with the user source.
 
-## Delete a User Source
+## Delete an Identity Source
 
 ```shell
 curl -XDELETE "$MORPHEUS_API_URL/api/user-sources/3" \
@@ -364,8 +634,8 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the user source
 
-Will delete a user source from the system and make it no longer usable.
+Will delete an identity source from the system and make it no longer usable.
 
 <aside class="info">
-If a user source is tied to existing users, a delete will fail.
+If an identity source is tied to existing users, delete will fail.
 </aside>
