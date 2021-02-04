@@ -2052,7 +2052,7 @@ storageProviderId       | null    | Optional storage provider to use.
 ## Clone to Image
 
 ```shell
-curl -X PUT "https://api.gomorpheus.com/api/instances/1/clone" \
+curl -X PUT "https://api.gomorpheus.com/api/instances/1/clone-image" \
   -H "Authorization: BEARER $MORPHEUS_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "templateName": "Example Image" }'
