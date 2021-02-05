@@ -152,9 +152,7 @@ curl "$MORPHEUS_API_URL/api/invoices" \
       "lastActualDate": "2020-05-08T14:59:59+0000",
       "dateCreated": "2020-05-01T15:59:49+0000",
       "lastUpdated": "2020-05-08T15:00:08+0000",
-      "lineItems": [
-
-      ]
+      "lineItemCount": 0
     }
   ],
   "meta": {
@@ -197,7 +195,7 @@ userId |  | If specified will return an exact match on user ID
 projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
+includeLineItems | false | Pass true to include the list of `lineItems` for each invoice, only `lineItemCount` is returned by default.
 includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `invoiceTotals`.
 tags |  | Filter by tags (metadata). This allows filtering by a tag name and value(s) like this `tags.env=qa` or `tags.env=qa&tags.env=test` which matches both: *env=qa* or *env=test*.
 
@@ -369,12 +367,6 @@ Parameter | Description
 --------- | -----------
 id | ID of the invoice
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
-
 
 ## Update Invoice Tags
 
@@ -537,7 +529,6 @@ projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
 includeTotals | false | If true, `invoiceTotals` is returned containing sums of all the cost and prices for all the invoices found.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
 includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `lineItemTotals`.
 
 ## Get a Specific Invoice Line Item
@@ -600,9 +591,3 @@ This endpoint retrieves a specific invoice.
 Parameter | Description
 --------- | -----------
 id | ID of the invoice line item
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-rawData | false | Pass true to include the cost data from the cloud provider's API in a property called `rawData`.
