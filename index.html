@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.2.2</div>
+        <div class="version">5.2.3</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.2.2</b>
+This document is for the Morpheus API version <b>5.2.3</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -4568,9 +4568,7 @@ user&rsquo;s account.</p>
       </span><span class="s2">"lastActualDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T14:59:59+0000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-01T15:59:49+0000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-08T15:00:08+0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lineItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
-      </span><span class="p">]</span><span class="w">
+      </span><span class="s2">"lineItemCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4703,9 +4701,9 @@ user&rsquo;s account.</p>
 <td>Allows master tenant users to view invoices for another tenant.</td>
 </tr>
 <tr>
-<td>rawData</td>
+<td>includeLineItems</td>
 <td>false</td>
-<td>Pass true to include the cost data from the cloud provider&rsquo;s API in a property called <code class="prettyprint">rawData</code>.</td>
+<td>Pass true to include the list of <code class="prettyprint">lineItems</code> for each invoice, only <code class="prettyprint">lineItemCount</code> is returned by default.</td>
 </tr>
 <tr>
 <td>includeTotals</td>
@@ -4890,22 +4888,6 @@ user&rsquo;s account.</p>
 <tr>
 <td>id</td>
 <td>ID of the invoice</td>
-</tr>
-</tbody></table>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>rawData</td>
-<td>false</td>
-<td>Pass true to include the cost data from the cloud provider&rsquo;s API in a property called <code class="prettyprint">rawData</code>.</td>
 </tr>
 </tbody></table>
 
@@ -5175,11 +5157,6 @@ Be aware that any changes to tags for invoices that are actively being calculate
 <td>Allows master tenant users to view invoices for another tenant.</td>
 </tr>
 <tr>
-<td>rawData</td>
-<td>false</td>
-<td>Pass true to include the cost data from the cloud provider&rsquo;s API in a property called <code class="prettyprint">rawData</code>.</td>
-</tr>
-<tr>
 <td>includeTotals</td>
 <td>false</td>
 <td>Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called <code class="prettyprint">lineItemTotals</code>.</td>
@@ -5250,22 +5227,6 @@ Be aware that any changes to tags for invoices that are actively being calculate
 <tr>
 <td>id</td>
 <td>ID of the invoice line item</td>
-</tr>
-</tbody></table>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>rawData</td>
-<td>false</td>
-<td>Pass true to include the cost data from the cloud provider&rsquo;s API in a property called <code class="prettyprint">rawData</code>.</td>
 </tr>
 </tbody></table>
 
@@ -10451,7 +10412,7 @@ The Provision Types api can be used to see which options are available.</p>
 </tbody></table>
 
 <h2 id="clone-to-image">Clone to Image</h2>
-<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1/clone"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X PUT <span class="s2">"https://api.gomorpheus.com/api/instances/1/clone-image"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{ "templateName": "Example Image" }'</span>
@@ -45949,16 +45910,15 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 </tr>
 </tbody></table>
 
-          <h2 id="user-sources">User Sources</h2>
+          <h1 id="identity-sources">Identity Sources</h1>
 
-<p>User Sources can be configured for each Tenant.
-Supported types include LDAP, JumpCloud, Active Directory, and others.</p>
+<p>Identity sources may be configured to allow users to authenticate with a separate service in order to gain access to the Morpheus appliance. When authenticating, Morpheus checks the credentials against the third party service and if successful will log the user into the appliance. If it&rsquo;s the first time for that username, the user is created before logging in. This way users and their passwords are not managed directly in Morpheus.  Each identity source has role mappings that determine the access level in Morpheus which users will receive when authenticating and successfully logging in.</p>
 
-<aside class="notice">
-This API is only available to the master account.
-</aside>
+<p>The supported identity source types are LDAP (<code class="prettyprint">ldap</code>), JumpCloud (<code class="prettyprint">jumpCloud</code>), Active Directory (<code class="prettyprint">activeDirectory</code>), Okta (<code class="prettyprint">okta</code>), One Login (<code class="prettyprint">oneLogin</code>), SAML (<code class="prettyprint">saml</code>) and Azure SAML (<code class="prettyprint">azureSaml</code>). Custom types are also supported.</p>
 
-<!--## Get All User Sources-->
+<p>An Identity Source may also be referred to as a <em>User Source</em> or <em>userSource</em>.</p>
+
+<h2 id="get-all-identity-sources">Get All Identity Sources</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/user-sources"</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
 </code></pre>
@@ -45969,10 +45929,101 @@ This API is only available to the master account.
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"userSources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jump cloud"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"our jump cloud users"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KsUGxwhTU"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4761</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AD Example"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active Directory Example"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaRnweSFq"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activeDirectory"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto Tenant 1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.20.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qa.ad.myorg.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"useSSL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyOrgUsers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"searchMemberGroups"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredGroupDN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN=MyOrgUsers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematicians"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Role"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T17:00:13Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T08:54:21Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+
+
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FreeIPA LDAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uciTGxHGT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ldap"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ctaylor"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24436</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A Persona User Role"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ldaps://gw-freeipa.prod.den.myorg.com:636"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userFqnExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uid=$username,cn=users,cn=accounts,dc=prod,dc=den,dc=myorg,dc=com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cn=ipausers,cn=groups,cn=accounts,dc=prod,dc=den,dc=myorg,dc=com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usernameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commonNameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstNameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastNameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emailAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uniqueMemberAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"memberOfAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memberOf"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ctaylor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/ctaylor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T09:03:52Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T18:07:37Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4771</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jump Cloud QA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jumpcloud trial"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E81DYhKVN"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jumpCloud"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -45980,31 +46031,193 @@ This API is only available to the master account.
       </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto Tenant 1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Basic User"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22ba1130591be3786b2343a1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jcgauss"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bindingPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyOrgTag"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mathematicians"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cn=mathematicians,ou=Users,o=56ba8430591be3786b2343b0,dc=jumpcloud,dc=com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Role"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-22T01:57:12+0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-22T01:57:12+0000"</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T17:52:07Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T10:41:52Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4782</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Okta QA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oktapreview trial"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eZiReLj9W"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okta"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto Tenant 1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-911522.oktapreview.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"administratorAPIToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00g88dvxc64kvt6UR0h7"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mathematicians"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00g86tlvyuJlw3OqZ0h7"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Role"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T18:16:40Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T09:40:35Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4783</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneLogin QA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onelogin test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stfG0VlIT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oneLogin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto Tenant 1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myorg-labs-dev"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientSecret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3c9f6960b4dd8af33dfd7e8022569a095c3d09256657082ea03d40f6b1583260"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MorpheusAdmin Role"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredRoleId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144498"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematician Role"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145780"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Role"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/auto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T18:16:46Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T09:09:45Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">207</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneLogin SAML"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cD9bPD9oa"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyOrg QA"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"roleAttributeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requiredAttributeValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenNameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"surnameAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logoutUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myorg-dev.onelogin.com/trust/saml2/http-redirect/slo/618040"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotIncludeSAMLRequest"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emailAttribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://myorg-dev.onelogin.com/trust/saml2/http-post/sso/618040"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateStatusCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateDestination"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateIssueInstants"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateAssertions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateAuthStatements"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateSubject"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateConditions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateAudiences"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doNotValidateSubjectRecipients"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SAMLSignatureMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SelfSigned"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carl"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2486</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Admin"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/saml/cD9bPD9oa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"acsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/externalLogin/callback/cD9bPD9oa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"spMetadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?&gt;&lt;EntityDescriptor entityID=\"https://dev.myorg.com/saml/cD9bPD9oa\" xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"&gt;&lt;SPSSODescriptor AuthnRequestsSigned=\"true\" WantAssertionsSigned=\"true\" protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"&gt;&lt;NameIDFormat&gt;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&lt;/NameIDFormat&gt;&lt;AssertionConsumerService index=\"0\" isDefault=\"true\" Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST\" Location=\"https://dev.myorg.com/externalLogin/callback/cD9bPD9oa\"/&gt;&lt;/SPSSODescriptor&gt;&lt;/EntityDescriptor&gt;"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-24T03:52:51Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T10:58:16Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all user sources.</p>
+<p>This endpoint retrieves all identity sources.  The master tenant will see identity sources for all tenants.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -46034,9 +46247,14 @@ This API is only available to the master account.
 <td></td>
 <td>Filter on exact match of type code</td>
 </tr>
+<tr>
+<td>accountId</td>
+<td></td>
+<td>Filter on a Tenant ID. <em>Only available to the master tenant.</em></td>
+</tr>
 </tbody></table>
 
-<h2 id="get-a-specific-user-source">Get a Specific User Source</h2>
+<h2 id="get-a-specific-identity-source">Get a Specific Identity Source</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/user-sources/2"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
 </code></pre>
@@ -46046,42 +46264,56 @@ This API is only available to the master account.
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"userSource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jump cloud"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"our jump cloud users"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KsUGxwhTU"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jumpCloud"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4761</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AD Example"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example AD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaRnweSFq"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activeDirectory"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"autoSyncOnLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"externalLogin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"allowCustomMappings"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auto Tenant 1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"defaultAccountRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Basic User"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19112</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default: User"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34a927g43e21be3786b2343b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.10.20.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qa.ad.myorg.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"useSSL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"off"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bindingUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bindingPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bindingUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jumpadmin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"requiredRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MorpheusTag"</span><span class="w">
+      </span><span class="s2">"requiredGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyOrgUsers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"searchMemberGroups"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"requiredGroupDN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN=MyOrgUsers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"roleMappings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sourceRoleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mathematicians"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sourceRoleFqn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mappedRole"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19117</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"authority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub Role"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.gomorpheusdata.com/login/account/acme"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-22T01:57:12+0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-22T01:57:12+0000"</span><span class="w">
+    </span><span class="s2">"subdomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loginURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev.myorg.com/login/account/auto"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"providerSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T17:00:13Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-30T08:54:21Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 
-<p>This endpoint retrieves a specific user source.</p>
+<p>This endpoint retrieves a specific identity source.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -46097,35 +46329,36 @@ This API is only available to the master account.
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the user source</td>
+<td>The ID of the identity source</td>
 </tr>
 </tbody></table>
 
-<h2 id="create-a-user-source">Create a User Source</h2>
+<h2 id="create-an-identity-source">Create an Identity Source</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/accounts/60/user-sources"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{"userSource": {
+  -d <span class="s1">'{
+  "userSource": {
     "type": "activeDirectory",
     "name": "Ninja AD",
     "config": {
-      "url": "10.30.10.155",
+      "url": "10.10.10.22",
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
-      "requiredGroup": "MorpheusUsers",
-      "searchMemberGroups": "off"
+      "requiredGroup": "MyOrgUsers",
+      "searchMemberGroups": false
     },
     "defaultAccountRole": {
-      "id": 1
+      "id": 19
     }
   }
 }'</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like getting a single user source: </p>
+<p>The above command returns JSON structured like getting a single identity source: </p>
 </blockquote>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -46142,7 +46375,7 @@ This API is only available to the master account.
 </thead><tbody>
 <tr>
 <td>accountId</td>
-<td>The ID of the subtenant account to associate the user source with</td>
+<td>The ID of the subtenant account to associate the identity source with</td>
 </tr>
 </tbody></table>
 
@@ -46465,31 +46698,32 @@ This API is only available to the master account.
 </tr>
 </tbody></table>
 
-<h2 id="updating-a-user-source">Updating a User Source</h2>
+<h2 id="updating-an-identity-source">Updating an Identity Source</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/user-sources/3"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{"userSource": {
+  -d <span class="s1">'{
+  "userSource": {
     "type": "activeDirectory",
     "name": "Ninja AD",
     "config": {
-      "url": "10.30.10.155",
+      "url": "10.10.10.22",
       "domain": "ad.morpheusdata.ninja",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
-      "requiredGroup": "MorpheusUsers",
+      "requiredGroup": "MyOrgUsers",
       "searchMemberGroups": "off"
     },
     "defaultAccountRole": {
-      "id": 1
+      "id": 19
     }
   }
 }'</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like getting a single user source: </p>
+<p>The above command returns JSON structured like getting a single identity source: </p>
 </blockquote>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -46506,7 +46740,7 @@ This API is only available to the master account.
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the user source</td>
+<td>The ID of the identity source</td>
 </tr>
 </tbody></table>
 
@@ -46532,7 +46766,7 @@ This API is only available to the master account.
 <tr>
 <td>active</td>
 <td></td>
-<td>Activate (true) or disable (false) the user source</td>
+<td>Activate (true) or disable (false) the identity source</td>
 </tr>
 <tr>
 <td>defaultAccountRole.id</td>
@@ -46556,7 +46790,7 @@ This API is only available to the master account.
 </tr>
 </tbody></table>
 
-<h2 id="updating-subdomain-for-a-user-source">Updating Subdomain for a User Source</h2>
+<h2 id="updating-subdomain-for-an-identity-source">Updating Subdomain for an Identity Source</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/user-sources/3/subdomain"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -46607,7 +46841,7 @@ This API is only available to the master account.
 
 <p>This endpoint updates the subdomain for the account associated with the user source.</p>
 
-<h2 id="delete-a-user-source">Delete a User Source</h2>
+<h2 id="delete-an-identity-source">Delete an Identity Source</h2>
 <pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$MORPHEUS_API_URL</span><span class="s2">/api/user-sources/3"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$MORPHEUS_API_TOKEN</span><span class="s2">"</span>
 </code></pre>
@@ -46638,10 +46872,10 @@ This API is only available to the master account.
 </tr>
 </tbody></table>
 
-<p>Will delete a user source from the system and make it no longer usable.</p>
+<p>Will delete an identity source from the system and make it no longer usable.</p>
 
 <aside class="info">
-If a user source is tied to existing users, a delete will fail.
+If an identity source is tied to existing users, delete will fail.
 </aside>
 
           <h1 id="service-plans">Service Plans</h1>
