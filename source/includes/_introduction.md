@@ -18,7 +18,7 @@ Section |  Description
 [Monitoring](#monitoring) | [Checks](#checks), [Incidents](#checks), [Alerts](#alerts), [Contacts](#contacts)
 [Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds), [Self Service](#self-service)
 [Personas](#personas) | [Service Catalog](#service-catalog)
-[Administration](#administration) | [Tenants](#tenants), [Roles](#roles), [Users](#users), [Plans](#service-plans) & [Pricing](#prices), [Policies](#policies), [Settings](#appliance-settings), [License](#license), [Ping](#ping), [Setup](#setup)
+[Administration](#administration) | [Tenants](#tenants), [Roles](#roles), [Users](#users), [Identity Sources](#identity-sources), [Plans](#service-plans) & [Pricing](#prices), [Policies](#policies), [Settings](#appliance-settings), [License](#license), [Ping](#ping), [Setup](#setup)
 
 To initialize a freshly installed Morpheus appliance, see [Setup](#setup).
 
