@@ -18,14 +18,15 @@ curl "$MORPHEUS_API_URL/api/apps" \
       "id": 1,
       "name": "My Test App",
       "description": "Sample Description",
-      "owner": {
-        "id": 1,
-        "username": "admin"
-      },
+      "accountId": 1,
       "account": {
         "id": 1,
         "name": "root"
-      }
+      },
+      "owner": {
+        "id": 127,
+        "username": "admin"
+      },
       "siteId": 1,
       "group": {
         "id": 1,
@@ -126,14 +127,15 @@ curl "$MORPHEUS_API_URL/api/apps/4" \
     "id": 1,
     "name": "My Test App",
     "description": "Sample Description",
-    "owner": {
-      "id": 1,
-      "username": "admin"
-    },
-    "tenant": {
+    "accountId": 1,
+    "account": {
       "id": 1,
       "name": "root"
-    }
+    },
+    "owner": {
+      "id": 127,
+      "username": "admin"
+    },
     "siteId": 1,
     "group": {
       "id": 1,
