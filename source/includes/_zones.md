@@ -55,6 +55,7 @@ curl "$MORPHEUS_API_URL/api/zones"
       "domainName": "localdomain",
       "regionCode": null,
       "autoRecoverPowerState": false,
+      "scalePriority": 1,
       "config": {
         "applianceUrl": "",
         "configManagementId": "",
@@ -145,6 +146,7 @@ curl "$MORPHEUS_API_URL/api/zones"
       "domainName": "localdomain",
       "regionCode": "ec2.us-west-1.amazonaws.com",
       "autoRecoverPowerState": true,
+      "scalePriority": 1,
       "config": {
         "endpoint": "ec2.us-west-1.amazonaws.com",
         "accessKey": "my-access-key",
@@ -277,6 +279,7 @@ curl "$MORPHEUS_API_URL/api/zones/1" \
     "domainName": "localdomain",
     "regionCode": "ec2.us-west-1.amazonaws.com",
     "autoRecoverPowerState": true,
+    "scalePriority": 1,
     "config": {
       "endpoint": "ec2.us-west-1.amazonaws.com",
       "accessKey": "my-access-key",
@@ -384,6 +387,7 @@ groupId  |  | Specifies which Server group this cloud should be assigned to
 accountId |  | Specifies which Tenant this cloud should be assigned to
 enabled | true | Can be used to disable the cloud
 autoRecoverPowerState | false | Automatically Power on VMs
+scalePriority | 1 | Scale Priority
 config |  | Map containing zone configuration settings. See the section on specific zone types for details.
 
 Additional config properties are dynamic and depend on the specified type of cloud. See [Cloud Types](#cloud-types).
@@ -422,6 +426,7 @@ visibility      | private | private or public
 accountId |  | Specifies which Tenant this zone should be assigned to
 enabled | true | Can be used to disable the cloud
 autoRecoverPowerState |  | Automatically Power on VMs
+scalePriority |  | Scale Priority
 config |  | Map containing zone configuration settings. See the section on specific zone types for details.
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
