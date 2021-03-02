@@ -23,6 +23,10 @@ curl "$MORPHEUS_API_URL/api/zones"
       "name": "Test Cloud",
       "code": "test",
       "location": null,
+      "owner": {
+        "id": 1,
+        "name": "Morpheus Sandbox"
+      },
       "accountId": 1,
       "account": {
         "id": 1,
@@ -247,6 +251,10 @@ curl "$MORPHEUS_API_URL/api/zones/1" \
     "name": "AWS Test",
     "code": "awstest",
     "location": "",
+    "owner": {
+        "id": 1,
+        "name": "Morpheus Sandbox"
+      },
     "accountId": 1,
     "account": {
       "id": 1,
