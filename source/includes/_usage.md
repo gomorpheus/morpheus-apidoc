@@ -111,7 +111,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
-sort | name | Sort order, default is `startDate desc`
+sort | startDate desc | Sort order, default is `startDate desc`
 direction | asc | Sort direction: asc or desc
 phrase |  | Filter by wildcard search of resource name
 type |  | Filter by a specific resource type: container, server, discoveredServer or loadBalancer
