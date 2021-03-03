@@ -1,6 +1,6 @@
 # Usage
 
-Provides endpoints for viewing a list of usage for all your  Containers and [Servers](#servers). Morpheus keeps track of resource usage as the periods of time it was on or off. A new usage record is created every time a resource is started or stopped. Each usage record includes the applied pricing and accumualated charges during the interval. Price is based on the assigned [service plan](#service-plans).
+Provides endpoints for viewing a list of usage for all your Containers and [Servers](#hosts). Morpheus keeps track of resource usage as the time periods  that a resource was in use. A new usage record is created every time a resource is started or stopped. Each usage record includes the applied pricing and accumulated charges during the interval. Price is based on the assigned [service plan](#service-plans).
 
 This endpoint outputs usage data in the same format as the [Billing](#billing) api.
 
