@@ -9,7 +9,6 @@ includes:
   - version
   - api
   - errors
-#  - feature_availability
   - programming_languages
   - authentication
   - whoami
