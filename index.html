@@ -3546,7 +3546,7 @@ The page will be created if it does not yet exist.</p>
 
           <h1 id="usage">Usage</h1>
 
-<p>Provides endpoints for viewing a list of usage for all your  Containers and <a href="#servers">Servers</a>. Morpheus keeps track of resource usage as the periods of time it was on or off. A new usage record is created every time a resource is started or stopped. Each usage record includes the applied pricing and accumualated charges during the interval. Price is based on the assigned <a href="#service-plans">service plan</a>.</p>
+<p>Provides endpoints for viewing a list of usage for all your Containers and <a href="#hosts">Servers</a>. Morpheus keeps track of resource usage as the time periods  that a resource was in use. A new usage record is created every time a resource is started or stopped. Each usage record includes the applied pricing and accumulated charges during the interval. Price is based on the assigned <a href="#service-plans">service plan</a>.</p>
 
 <p>This endpoint outputs usage data in the same format as the <a href="#billing">Billing</a> api.</p>
 
@@ -3670,7 +3670,7 @@ The page will be created if it does not yet exist.</p>
 </tr>
 <tr>
 <td>sort</td>
-<td>name</td>
+<td>startDate desc</td>
 <td>Sort order, default is <code class="prettyprint">startDate desc</code></td>
 </tr>
 <tr>
@@ -23366,6 +23366,10 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Cloud"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Sandbox"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -23398,6 +23402,7 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
       </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scalePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"applianceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"configManagementId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -23488,6 +23493,7 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
       </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scalePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-access-key"</span><span class="p">,</span><span class="w">
@@ -23606,6 +23612,10 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Test"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awstest"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Sandbox"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -23638,6 +23648,7 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
     </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"autoRecoverPowerState"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scalePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2.us-west-1.amazonaws.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"accessKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-access-key"</span><span class="p">,</span><span class="w">
@@ -23798,6 +23809,11 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <td>Automatically Power on VMs</td>
 </tr>
 <tr>
+<td>scalePriority</td>
+<td>1</td>
+<td>Scale Priority</td>
+</tr>
+<tr>
 <td>config</td>
 <td></td>
 <td>Map containing zone configuration settings. See the section on specific zone types for details.</td>
@@ -23876,6 +23892,11 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <td>autoRecoverPowerState</td>
 <td></td>
 <td>Automatically Power on VMs</td>
+</tr>
+<tr>
+<td>scalePriority</td>
+<td></td>
+<td>Scale Priority</td>
 </tr>
 <tr>
 <td>config</td>
