@@ -91,11 +91,9 @@ set :favicon_path, "favicon.png"
 You will also want to modify [source/index.md.erb](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/index.md.erb) and comment out (or remove) any unwanted documents from the list of includes or perhaps add your own documents to the list.
 
 Certain documents still refer to Morpheus:
-* [Programming Languages](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/includes/_programming_languages.md.erb) The CLI and SDKs all refer to `morpheus` of course.
 * [Setup](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/includes/_setup.md.erb) refers to the [Morpheus Hub](https://morpheushub.com), though setup is unlikely needed for your whitelabel API documentation.
 
 To remove these, modify source/index.md.erb to remove the following includes:
-- programming_languages
 - setup
 
 #### White Labeling Caveats

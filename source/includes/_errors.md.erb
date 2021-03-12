@@ -5,7 +5,7 @@ When the <%= application_name %> API encounters an error, the response will have
 ### 400 Bad Request
 
 ```shell
-curl -XPOST "<%= api_url %>/api/contacts" \
+curl -XPOST "<%= curl_url %>/api/contacts" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -d '{"contact":{"name":"example"}}'
 ```
