@@ -1,4 +1,4 @@
-require './lib/morpheus-apidoc.rb'
+require 'lib/morpheus-apidoc'
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -36,13 +36,17 @@ end
 
 
 # Morpheus API Documentation Settings
-# For whitelabeling, adjust these to match your service.
+# To rebrand this site, create a file called whitelabel_config.rb 
+# and override the settings below.
+#
+# You will also want to modify source/index.md.erb to remove any unwanted includes
+# or perhaps add your own documents to be included.
 #
 # Some documents still refer to Morpheus
 # * [Programming Languages](#programming-languages) The CLI and SDKs all refer to morpheus of course.
 # * [Setup](#setup) refers to the Morpheus Hub, but setup is unlikely needed for your whitelabel API documentation.
 # 
-# To remove these, modify source/index.md.erb to comment out the following includes:
+# To remove these, modify source/index.md.erb to remove the following includes:
 # - programming_languages
 # - setup
 #
@@ -99,3 +103,11 @@ set :footer_logo_path, "morpheus_logo_footer.svg"
 
 # The favicon
 set :favicon_path, "images/morpheus_fav_64.png"
+
+
+# Load custom user settings from whitelabel_config.rb
+whitelabel_fn = "whitelabel_config.rb"
+if File.exists?(whitelabel_fn)
+  puts "Loading #{whitelabel_fn}..."
+  load(whitelabel_fn)
+end
