@@ -1,0 +1,108 @@
+# Provisioning Settings
+
+Provides API interfaces for managing provisioning settings within <%= application_name %>
+
+## Get Provisioning Settings
+
+```shell
+curl "<%= shell_url %>/api/provisioning-settings" \
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "provisioningSettings": {
+    "allowZoneSelection": true,
+    "allowServerSelection": true,
+    "requireEnvironments": true,
+    "showPricing": true,
+    "hideDatastoreStats": true,
+    "crossTenantNamingPolicies": false,
+    "reuseSequence": true,
+    "cloudInitUsername": "root",
+    "cloudInitPassword": "****",
+    "cloudInitKeyPair": {
+      "id": 3,
+      "name": "stubby.toes"
+    },
+    "windowsPassword": null,
+    "pxeRootPassword": null,
+    "defaultTemplateType": {
+      "id": 1,
+      "name": "morpheus",
+      "code": "morpheus"
+    },
+    "deployStorageProvider": {
+      "id": 42,
+      "name": "default-storage"
+    }
+  }
+} 
+```
+
+This endpoint retrieves provisioning settings.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/provisioning-settings`
+
+
+## Update Provisioning Settings
+
+```shell
+curl -XPUT "<%= shell_url %>/api/provisioning-settings" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "provisioningSettings": {
+          "allowZoneSelection": true,
+          "allowServerSelection": true,
+          "requireEnvironments": true,
+          "showPricing": true,
+          "hideDatastoreStats": true,
+          "crossTenantNamingPolicies": true,
+          "reuseSequence": true,
+          "cloudInitUsername": "stubbytoes",
+          "cloudInitPassword": "supersecret",
+          "deployStorageProvider": {
+            "id": 42
+          },
+          "defaultTemplateType": {
+            "id": 2
+          }
+        }
+      }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/provisioning-settings`
+
+### JSON Parameters
+
+Parameter | Description
+--------- | -----------
+allowZoneSelection | Use this to enable / disable allowing cloud selection
+allowServerSelection | Use this to enable / disable allowing host selection
+requireEnvironments | Use this to enable / disable requiring environment selection
+showPricing | Use this to enable / disable showing pricing
+hideDatastoreStats | Use this to enable / disable hiding datastore stats
+crossTenantNamingPolicies | Use this to enable / disable cross-tenant naming policies
+reuseSequence | Use this to enable / disable reusing naming sequence numbers
+cloudInitUsername | Cloud-init username
+cloudInitPassword | Cloud-init password
+cloudInitKeyPair.id | Cloud-init key pair ID
+deployStorageProvider.id | Deployment archive storage provider ID
+windowsPassword | Windows administrator password
+pxeRootPassword | PXE Boot default root password
+defaultTemplateType.id | Default blueprint type ID

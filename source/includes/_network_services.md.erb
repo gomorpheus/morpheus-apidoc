@@ -1,0 +1,52 @@
+## Network Services
+
+Provides API for managing Network Services.
+
+Only the list endpoint is currently the only available endpoint. Network Service management will be available with the Integration API endpoints.
+
+## Get All Network Services
+
+```shell
+curl "<%= shell_url %>/api/networks/services"
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkServices": [
+    {
+      "serviceType": "networkPool",
+      "serviceTypeName": "Network Pool",
+      "type": "phpipam",
+      "typeName": "phpIPAM",
+      "name": "phpIPAM",
+      "id": 30,
+      "integrationId": 26
+    },
+    {
+      "serviceType": "dns",
+      "serviceTypeName": "DNS",
+      "type": "amazonDns",
+      "name": "aws-cloud",
+      "id": 31,
+      "integrationId": 31,
+      "typeName": "Route 53"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all Network Services associated with the account.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/services`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name

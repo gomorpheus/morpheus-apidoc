@@ -1,0 +1,665 @@
+# Roles
+
+Provides API interfaces for managing the creation and modification of roles within <%= application_name %>. This API is scoped to the roles owned by the current user's account. System Admin users will also be able to access the system roles: *System Admin* and *Account Admin*.
+
+## Get All Roles
+
+```shell
+curl "<%= shell_url %>/api/roles"
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "roles": [
+		{
+      "id": 2,
+      "authority": "Account Admin",
+      "description": "Service account holder",
+      "dateCreated": "2016-08-27T23:26:19+0000",
+      "lastUpdated": "2016-08-27T23:26:19+0000",
+      "scope": "Account",
+      "ownerId": null,
+      "owner": null,
+      "defaultPersona": null
+    },
+    {
+      "id": 1,
+      "authority": "System Admin",
+      "description": "Super User",
+      "dateCreated": "2015-11-10T18:58:55+0000",
+      "lastUpdated": "2015-11-10T18:58:55+0000",
+      "scope": "Admin",
+      "ownerId": null,
+      "owner": null,
+      "defaultPersona": null
+    },
+    {
+      "id": 3,
+      "authority": "Another Role",
+      "description": "A custom role",
+      "dateCreated": "2015-11-10T19:01:45+0000",
+      "lastUpdated": "2015-11-10T19:02:01+0000",
+      "scope": "Account",
+      "ownerId": 1,
+      "owner": {
+        "id": 1,
+        "name": "Root Account"
+      },
+      "defaultPersona": null
+    },
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 3,
+    "total": 3
+  }
+}
+```
+
+This endpoint retrieves all roles.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/roles`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+phrase |  | Filter by matching authority
+authority |  | Filter by authority
+
+
+## Get a Specific Role
+
+```shell
+curl "<%= shell_url %>/api/roles/3" \
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+	"role": {
+    "id": 3,
+    "authority": "Another Role",
+    "description": "A custom role",
+    "dateCreated": "2015-11-10T19:01:45+0000",
+    "lastUpdated": "2015-11-10T19:02:01+0000",
+    "scope": "Account",
+    "ownerId": 1,
+    "owner": {
+      "id": 1,
+      "name": "Root Account"
+    },
+    "defaultPersona": null
+  },
+  "featurePermissions": [
+    {
+      "id": 8,
+      "code": "admin-users",
+      "name": "Admin: Users",
+      "access": "full"
+    },
+    {
+      "id": 18,
+      "code": "backups",
+      "name": "Backups",
+      "access": "full"
+    },
+    {
+      "id": 19,
+      "code": "dashboard",
+      "name": "Dashboard",
+      "access": "read"
+    },
+  ],
+  "globalSiteAccess": "custom",
+  "sites": [
+    {
+      "id": 1,
+      "name": "group1",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "name": "group2",
+      "access": "none"
+    }
+  ],
+  "globalZoneAccess": "full",
+  "zones": [
+    {
+      "id": 1,
+      "name": "zone1",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "name": "zone2",
+      "access": "full"
+    },
+  ],
+  "globalInstanceTypeAccess": "custom",
+  "instanceTypePermissions": [
+    {
+      "id": 1,
+      "code": "activemq",
+      "name": "ActiveMQ",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "code": "amazon",
+      "name": "Amazon",
+      "access": "full"
+    },
+    {
+      "id": 5,
+      "code": "ansible",
+      "name": "Ansible",
+      "access": "full"
+    },
+  ],
+  "globalAppTemplateAccess": "full",
+  "appTemplatePermissions": [],
+  "globalCatalogItemTypeAccess": "full",
+  "catalogItemTypePermissions": [
+    {
+      "id": 1,
+      "code": "app1",
+      "name": "App 1",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "code": "app2",
+      "name": "App 2",
+      "access": "full"
+    }
+  ],
+  "personaPermissions": [
+    {
+      "id": 1,
+      "code": "standard",
+      "name": "Standard",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "code": "serviceCatalog",
+      "name": "Service Catalog",
+      "access": "full"
+    }
+  ]
+}
+```
+
+> The sample JSON above shows only a small subset of the featurePermissions and instanceTypePermissions that exist.
+
+This endpoint will retrieve a specific role by id if the user has permission to access the role.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/roles/:id`
+
+## Create a Role
+
+```shell
+curl -XPOST "<%= shell_url %>/api/roles" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{"role":{
+    "authority": "Test Role",
+    "description": "A test role",
+    "baseRoleId": 2,
+    "roleType": "user"
+  }}'
+```
+
+> The above command returns JSON structured like getting a single role:
+
+### HTTP Request
+
+`POST <%= api_url %>/api/roles`
+
+### JSON Role Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+baseRoleId |  | A role to copy feature permissions and access from (optional)
+roleType | | The type of role to be created. Accepted values are either 'user' to create a User role or 'account' to create a Tenant role
+multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
+multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
+defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+
+
+## Updating Basic Role Settings
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{"role":{
+    "authority": "Test Role",
+    "description": "A new description of test role",
+    "defaultPersona": {"code": "serviceCatalog"}
+  }}'
+```
+
+> The above command returns JSON structured like getting a single role:
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id`
+
+### JSON Role Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+authority  |  | A name for the role
+description     |  | Optional description field if you want to put more info there
+multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use
+multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
+defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+
+## Updating Role Feature Permissions
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "admin-users",
+    "access": "read"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "read"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | The code of the permission being changed
+access     |  | The new access level. **full**, **read**, **none**
+
+## Global Group Access
+
+> Global Group Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "ComputeSite",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **ComputeSite** is the code for Global Group Access
+access     |  | **full**, **custom**, **read**, or **none**
+
+## Customizing Group Access
+
+> Global Group Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-group" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "groupId": 2,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-group`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+groupId  |  | id of the group (site)
+access     |  | **full**, **read**, or **none**
+
+## Global Cloud Access
+
+> Global Cloud Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "ComputeZone",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **ComputeZone** is the code for Global Cloud Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Cloud Access
+
+> Global Cloud Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-cloud" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cloudId": 2,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-cloud`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+cloudId  |  | id of the cloud (zone)
+access     |  | **full**, **read**, or **none**
+
+## Global Instance Type Access
+
+> Global Instance Type Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "InstanceType",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **InstanceType** is the code for Global Instance Type Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Instance Type Access
+
+> Global Instance Type Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-instance-type" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "instanceTypeId": 1,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-instance-type`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+instanceTypeId  |  | id of the instance type
+access     |  | **full** or **none**
+
+## Global Blueprint Access
+
+> Global Blueprint Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "AppTemplate",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **AppTemplate** is the code for Global Blueprint Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Blueprint Access
+
+> Global Blueprint Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-blueprint" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appTemplateId": 2,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-blueprint`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+appTemplateId  |  | id of the blueprint (appTemplate)
+access     |  | **full**, **read**, or **none**
+
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-cloud`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+cloudId  |  | id of the cloud (zone)
+access     |  | **full**, **read**, or **none**
+
+## Global Catalog Item Type Access
+
+> Global Catalog Item Type Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "CatalogItemType",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **CatalogItemType** is the code for Global Catalog Item Type Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Catalog Item Type Access
+
+> Global Catalog Item Type Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-catalog-item-type" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "catalogItemTypeId": 1,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-catalog-item-type`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+catalogItemTypeId  |  | id of the catalog item type
+access     |  | **full** or **none**
+
+
+## Customizing Persona Access
+
+```shell
+curl -XPUT "<%= shell_url %>/api/roles/4/update-persona" \
+  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "personaCode": "serviceCatalog",
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-persona`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+personaCode  |  | code of the Persona, eg. **standard** or **serviceCatalog**
+access     |  | **full** or **none**
+
+## Delete a Role
+
+```shell
+curl -XDELETE "<%= shell_url %>/api/roles/4" \
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/roles/:id`
+
+If a role still has accounts or users tied to it, The delete will fail.

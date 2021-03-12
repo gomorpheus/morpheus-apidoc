@@ -1,0 +1,36 @@
+# Integrations
+
+Provides API interfaces for managing integrations within <%= application_name %>
+
+## Get All Integrations
+
+```shell
+curl "<%= shell_url %>/api/integrations" \
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "integrations": [
+    {
+      "id": 3,
+      "name": "aws cloud",
+      "enabled": true,
+      "status": "ok",
+      "integrationType": {
+        "id": 12,
+        "code": "amazonDns",
+        "name": "Route 53"
+      }
+    }
+  ]
+}    
+```
+
+This endpoint retrieves list of integrations.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integrations`

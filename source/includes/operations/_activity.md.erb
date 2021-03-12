@@ -1,0 +1,97 @@
+# Activity
+
+This endpoint provides data about activity with the <%= application_name %> appliance. User activity and other <%= application_name %> events can be seen here.
+
+The most recent activity is returned by default.
+
+## Get All Activity
+
+```shell
+curl "<%= shell_url %>/api/activity" \
+  -H "Authorization: BEARER <%= shell_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "activity": [
+    {
+      "_id": "ed970f86-c2bd-4ea2-8c3e-37494c8d8c67",
+      "success": false,
+      "activityType": "Alert",
+      "name": "test check",
+      "message": "Check has successfully been deleted",
+      "objectId": 239,
+      "objectType": "MonitorCheck",
+      "user": {
+        "id": 22,
+        "username": "tester"
+      },
+      "timestamp": "2019-10-23T19:31:54Z"
+    },
+    {
+      "_id": "247f122a-2dd6-4d92-a945-9e1fc35d8e51",
+      "success": false,
+      "activityType": "Monitoring",
+      "name": "dev-appliance",
+      "message": "Check has successfully been updated.",
+      "objectId": 238,
+      "objectType": "MonitorCheck",
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-22T07:55:49Z"
+    },
+    {
+      "_id": "0276e1fc-214d-4cb3-bcf4-9ebda0b26542",
+      "success": false,
+      "activityType": "Monitoring",
+      "name": "dev-appliance",
+      "message": "Check successfully been created.",
+      "objectId": 238,
+      "objectType": "MonitorCheck",
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-22T00:06:20Z"
+    },
+    {
+      "_id": "26976fe0-a722-4d20-9849-9405a95d0db9",
+      "success": true,
+      "activityType": "Admin",
+      "name": "julius",
+      "message": "User 'julius' updated. Password changed.",
+      "objectId": 96,
+      "objectType": "User",
+      "user": {
+        "id": 1,
+        "username": "root"
+      },
+      "ts": "2019-10-08T21:17:52Z"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET <%= api_url %>/api/activity`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+order | asc | Sort direction, use 'desc' to reverse sort
+name |  | Filter by name
+phrase |  | Filter by wildcard search of name and description
+userId |  | Filter by [User](#users) ID.
+tenantId |  | Filter by [Tenant](#tenants) ID. *Only available to the master account.*
+timeframe | month | Filter by a timeframe. eg. today,yesterday,week,month,3months.
+start | (1 month ago) | Filter by activity on or after a date(time)
+end | (current time) | Filter by activity on or before a date(time)
