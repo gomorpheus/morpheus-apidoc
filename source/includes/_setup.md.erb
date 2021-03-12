@@ -9,12 +9,12 @@
 curl -XPOST "<%= api_url %>/api/setup/init" \
   -H "Content-Type: application/json" \
   -d '{
-  "applianceName": "myenterprise-morpheus",
-  "applianceUrl": "https://morpheus.myenterprise.com",
+  "applianceName": "myappliance",
+  "applianceUrl": "https://myappliance.<%= company_domain %>",
   "accountName": "root",
   "username": "admin",
   "password": "69f49632b13e",
-  "email": "admin@myenterprise.com",
+  "email": "admin@<%= company_domain %>",
   "firstName": "Admin"
     
   }
@@ -31,7 +31,7 @@ curl -XPOST "<%= api_url %>/api/setup/init" \
 
 This will initialize a freshly installed <%= application_name %> appliance by creating the master [Tenant] (#tenants) and [User](#users).
 
-Setup includes connecting to the [Morpheus Hub](https://morpheushub.com). This is done either by registering a new account or logging in to an existing account, which connects your appliance to your organization's hub account. By default, a community license key will be generated and installed in your new appliance.
+Setup includes connecting to the [<%= application_name %> Hub](<%= hub_url %>). This is done either by registering a new account or logging in to an existing account, which connects your appliance to your organization's hub account. By default, a community license key will be generated and installed in your new appliance.
 
 If you choose not to connect to the hub, you will need to install a license key manually later on. A license can be installed using the [Install License](#install-license) endpoint.
 
@@ -61,7 +61,7 @@ lastName      |  | Last Name
 backups      | false | Enable Backups
 monitoring      | false | Enable Monitoring
 logs      | false | Enable Logs
-hubMode      | skip | Hub Mode ie. `register`, `login`, `skip`. The default is `skip`, which means do not connect to the hub. Pass `login` or `register` to connect with the [Morpheus Hub](https://morpheushub.com) during setup.
+hubMode      | skip | Hub Mode ie. `register`, `login`, `skip`. The default is `skip`, which means do not connect to the hub. Pass `login` or `register` to connect with the [<%= application_name %> Hub](<%= hub_url %>) during setup.
 hub      | | Object containing <%= application_name %> Hub connection settings. Either [Hub Register Parameters](#hub-register-parameters) or [Hub Login Parameters](#hub-login-parameters). This is only required if `hubMode` is `register` or `login`.
 
 ### Hub Register Parameters
