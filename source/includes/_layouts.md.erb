@@ -658,7 +658,7 @@ id | ID of the layout
 ## Create a Layout
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/instance-types/:instanceTypeId/layouts" \
+curl -XPOST "<%= curl_url %>/api/library/instance-types/:instanceTypeId/layouts" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -758,7 +758,7 @@ sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id"
 ## Update a Layout
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/layouts/:id" \
+curl -XPUT "<%= curl_url %>/api/library/layouts/:id" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -798,7 +798,7 @@ Same as [Create](#create-an-instance-type).
 ## Update Layout Permissions
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/layouts/:id/permissions" \
+curl -XPOST "<%= curl_url %>/api/library/layouts/:id/permissions" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -860,7 +860,7 @@ sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id"
 ## Delete a Layout
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/layouts/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/layouts/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -174,7 +174,7 @@ id | ID of the option type
 Use this command to create an option type.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/option-types" \
+curl -XPOST "<%= curl_url %>/api/library/option-types" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"optionType": {
@@ -219,7 +219,7 @@ optionList.id | N | ID of [Option List](#option-lists). For use with type `selec
 Use this command to update an existing option type.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/option-types/:id" \
+curl -XPUT "<%= curl_url %>/api/library/option-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"optionType": {
@@ -263,7 +263,7 @@ optionList.id | N | ID of [Option List](#option-lists). For use with type `selec
 ## Delete an Option Type
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/option-types/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/option-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

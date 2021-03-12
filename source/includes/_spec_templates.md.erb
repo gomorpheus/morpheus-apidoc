@@ -145,7 +145,7 @@ id | ID of the spec template
 Use this command to create a spec template.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/spec-templates" \
+curl -XPOST "<%= curl_url %>/api/library/spec-templates" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -214,7 +214,7 @@ config.cloudformation.CAPABILITY_AUTO_EXPAND | Y | CAPABILITY_AUTO_EXPAND
 Use this command to update an existing spec template.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/spec-templates/:id" \
+curl -XPUT "<%= curl_url %>/api/library/spec-templates/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"specTemplate": {
@@ -251,7 +251,7 @@ file | Y | File, object specifying file type and content, see [File Object](#fil
 ## Delete a Spec Template
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/spec-templates/1" \
+curl -XDELETE "<%= curl_url %>/api/library/spec-templates/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

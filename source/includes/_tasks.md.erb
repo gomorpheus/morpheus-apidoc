@@ -111,7 +111,7 @@ ID | The ID of the task
 ## Create a Task
 
 ```shell
-curl -XPOST "<%= api_url %>/api/tasks" \
+curl -XPOST "<%= curl_url %>/api/tasks" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"task": {
@@ -181,7 +181,7 @@ These additional task options are available when using executeTarget of `remote`
 ## Updating a Task
 
 ```shell
-curl -XPUT "<%= api_url %>/api/tasks/5" \
+curl -XPUT "<%= curl_url %>/api/tasks/5" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"task":{
@@ -208,7 +208,7 @@ Same as [Create](#create-a-task).
 ## Delete a Task
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/tasks/1" \
+curl -XDELETE "<%= curl_url %>/api/tasks/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -235,7 +235,7 @@ If a task is still tied to workflows, the delete will fail.
 ## Execute a Task
 
 ```shell
-curl -XPOST "<%= api_url %>/api/tasks/5/execute" \
+curl -XPOST "<%= curl_url %>/api/tasks/5/execute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job":{

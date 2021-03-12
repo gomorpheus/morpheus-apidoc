@@ -335,7 +335,7 @@ id | ID of the cluster layout
 Use this command to create a cluster layout.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/cluster-layouts" \
+curl -XPOST "<%= curl_url %>/api/library/cluster-layouts" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"layout": {
@@ -456,7 +456,7 @@ containerType.id | Y | Container type ID
 Use this command to update an existing cluster layout.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/cluster-layouts/1" \
+curl -XPUT "<%= curl_url %>/api/library/cluster-layouts/1" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
@@ -552,7 +552,7 @@ workers | N | Array of cluster layout worker nodes, see [Nodes](#nodes)
 Use this command to clone a cluster layout.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/cluster-layouts/7/clone" \
+curl -XPOST "<%= curl_url %>/api/library/cluster-layouts/7/clone" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
@@ -582,7 +582,7 @@ computeVersion | N | Version of cluster layout. Defaults to cloned layout versio
 ## Delete a Cluster Layout
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/cluster-layouts/1" \
+curl -XDELETE "<%= curl_url %>/api/library/cluster-layouts/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

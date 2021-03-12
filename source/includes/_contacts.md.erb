@@ -82,7 +82,7 @@ ID | ID of the contact
 ## Create a Contact
 
 ```shell
-curl -XPOST "<%= api_url %>/api/monitoring/contacts" \
+curl -XPOST "<%= curl_url %>/api/monitoring/contacts" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
@@ -110,7 +110,7 @@ slackHook      |  | Slack Hook
 ## Updating a Contact
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/contacts/3" \
+curl -XPUT "<%= curl_url %>/api/monitoring/contacts/3" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
@@ -142,7 +142,7 @@ slackHook      |  | Slack Hook
 ## Delete a Contact
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/monitoring/contacts/1" \
+curl -XDELETE "<%= curl_url %>/api/monitoring/contacts/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

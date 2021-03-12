@@ -251,7 +251,7 @@ ID | ID of the check to retrieve
 ## Create a Check Group
 
 ```shell
-curl -XPOST "<%= api_url %>/api/monitoring/groups" \
+curl -XPOST "<%= curl_url %>/api/monitoring/groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
@@ -282,7 +282,7 @@ checks | [] | Array of [Check](#checks) IDs
 ## Updating a Check Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/groups/1" \
+curl -XPUT "<%= curl_url %>/api/monitoring/groups/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
@@ -310,7 +310,7 @@ checks |  | Array of [Check](#checks) IDs
 ## Mute a Check Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/groups/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/groups/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
@@ -339,7 +339,7 @@ muted | true | Set to false to unmute
 ## Unmute a Check Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/groups/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/groups/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -359,7 +359,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Mute All Check Groups
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/groups/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/groups/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
@@ -388,7 +388,7 @@ muted | true | Set to false to unmute
 ## Unmute All Check Groups
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/groups/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/groups/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -409,7 +409,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Check Group
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/monitoring/groups/1" \
+curl -XDELETE "<%= curl_url %>/api/monitoring/groups/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -194,7 +194,7 @@ includeAccess |  | Include access the user payload
 ## Create a User
 
 ```shell
-curl -XPOST "<%= api_url %>/api/users" \
+curl -XPOST "<%= curl_url %>/api/users" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
@@ -239,7 +239,7 @@ windowsPassword  |  | Windows Password, user settings for provisioning
 ## Create a User For a Tenant
 
 ```shell
-curl -XPOST "<%= api_url %>/api/accounts/2/users" \
+curl -XPOST "<%= curl_url %>/api/accounts/2/users" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
@@ -275,7 +275,7 @@ See [Get Available Roles for a Sub Tenant User](#get-available-roles-for-a-sub-t
 ## Updating a User
 
 ```shell
-curl -XPUT "<%= api_url %>/api/users/2" \
+curl -XPUT "<%= curl_url %>/api/users/2" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
@@ -316,7 +316,7 @@ Update a user.
 ## Delete a User
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/users/99" \
+curl -XDELETE "<%= curl_url %>/api/users/99" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

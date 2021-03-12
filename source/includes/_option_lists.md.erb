@@ -175,7 +175,7 @@ id | ID of the option list
 Use this command to create an option list.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/option-type-lists" \
+curl -XPOST "<%= curl_url %>/api/library/option-type-lists" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -249,7 +249,7 @@ masked | N | Can be used to enable / disable masking of value, default is off
 Use this command to update an existing option list.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/option-type-lists/:id" \
+curl -XPUT "<%= curl_url %>/api/library/option-type-lists/:id" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -311,7 +311,7 @@ config.sourceHeaders | N | Array of source headers to use when requesting data.,
 ## Delete an Option List
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/option-type-lists/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/option-type-lists/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -64,10 +64,10 @@ set :company_website, "https://www.morpheusdata.com"
 # A domain to use in example email addresses, etc.
 set :company_domain, "morpheusdata.com"
 
-# The base url used to document each HTTP Request path
-set :api_url, "https://api.morpheusdata.com"
+# The base url used to document each HTTP Request path, use your actual service url if desired
+set :api_url, "$serverUrl"
 
-# The URL value to use in the shell curl examples, just a variable name
+# The URL value to use in the shell curl examples, use your actual service url if desired
 set :curl_url, "$serverUrl"
 
 # The API Token used in shell examples (curl), never a real valid token of course

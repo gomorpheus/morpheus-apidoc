@@ -194,7 +194,7 @@ id | ID of the service plan
 Use this command to create a service plan.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/service-plans" \
+curl -XPOST "<%= curl_url %>/api/service-plans" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"servicePlan": {
@@ -295,7 +295,7 @@ range.maxCores | N | Custom max cores
 ## Update a Service Plan
 
 ```shell
-curl -XPUT "<%= api_url %>/api/service-plans/1" \
+curl -XPUT "<%= curl_url %>/api/service-plans/1" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"servicePlan": {  
@@ -397,7 +397,7 @@ config.ranges | N | Key for service plan custom configuration, see [Config](#con
 ## Activate a Service Plan
 
 ```shell
-curl -XPUT "<%= api_url %>/api/service-plans/1/activate" \
+curl -XPUT "<%= curl_url %>/api/service-plans/1/activate" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -425,7 +425,7 @@ id | The ID of the service plan
 ## Deactivate a Service Plan
 
 ```shell
-curl -XPUT "<%= api_url %>/api/service-plans/1/deactivate" \
+curl -XPUT "<%= curl_url %>/api/service-plans/1/deactivate" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

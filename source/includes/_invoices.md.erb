@@ -371,7 +371,7 @@ id | ID of the invoice
 ## Update Invoice Tags
 
 ```shell
-curl -XPUT "<%= api_url %>/api/invoices/:id" \
+curl -XPUT "<%= curl_url %>/api/invoices/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "invoice": {

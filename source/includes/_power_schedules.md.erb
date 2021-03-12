@@ -123,7 +123,7 @@ ID | The ID of the power schedule to retrieve
 ## Create a Power Schedule
 
 ```shell
-curl -XPOST "<%= api_url %>/api/power-schedules" \
+curl -XPOST "<%= curl_url %>/api/power-schedules" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -186,7 +186,7 @@ saturdayOff | 24 | Saturday Stop
 ## Update a Power Schedule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/power-schedules/2" \
+curl -XPUT "<%= curl_url %>/api/power-schedules/2" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -214,7 +214,7 @@ See [Create](#create-a-power-schedule).
 ## Delete a Power Schedule
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/power-schedules/1" \
+curl -XDELETE "<%= curl_url %>/api/power-schedules/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -241,7 +241,7 @@ ID | The ID of the power schedule
 ## Add Instances to a Power Schedule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/power-schedules/2/add-instances" \
+curl -XPUT "<%= curl_url %>/api/power-schedules/2/add-instances" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -280,7 +280,7 @@ instances      |  | Array of Instance IDs to add
 ## Remove Instances from a Power Schedule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/power-schedules/2/remove-instances" \
+curl -XPUT "<%= curl_url %>/api/power-schedules/2/remove-instances" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -319,7 +319,7 @@ instances      |  | Array of Instance IDs to remove
 ## Add Servers to a Power Schedule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/power-schedules/2/add-servers" \
+curl -XPUT "<%= curl_url %>/api/power-schedules/2/add-servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -358,7 +358,7 @@ servers      |  | Array of Server IDs to add
 ## Remove Servers from a Power Schedule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/power-schedules/2/remove-servers" \
+curl -XPUT "<%= curl_url %>/api/power-schedules/2/remove-servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{

@@ -256,7 +256,7 @@ id | ID of the Catalog Item Type
 ## Create a Catalog Item Type
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+curl -XPOST "<%= curl_url %>/api/catalog-item-types" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -386,7 +386,7 @@ tiers | N | Object with each key is a tier name and its value is the tier config
 ## Create a Catalog Item Type For Blueprint
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+curl -XPOST "<%= curl_url %>/api/catalog-item-types" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -431,7 +431,7 @@ See [Create](#create-a-catalog-item-type).
 ## Create a Catalog Item Type For Workflow
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+curl -XPOST "<%= curl_url %>/api/catalog-item-types" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -471,7 +471,7 @@ See [Create](#create-a-catalog-item-type).
 ## Update a Catalog Item Type
 
 ```shell
-curl -XPUT "<%= api_url %>/api/catalog-item-types/:id" \
+curl -XPUT "<%= curl_url %>/api/catalog-item-types/:id" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -521,7 +521,7 @@ context | N | Context for running the workflow, determines if a target resource 
 ## Delete a Catalog Item Type
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/catalog-item-types/:id" \
+curl -XDELETE "<%= curl_url %>/api/catalog-item-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

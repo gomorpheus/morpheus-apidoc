@@ -209,7 +209,7 @@ ID | The ID of the Network to retrieve
 ## Create a Network
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks" \
+curl -XPOST "<%= curl_url %>/api/networks" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -275,7 +275,7 @@ This endpoint allows creating a Network.  Only certain types of clouds support c
 ## Update a Network
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/1" \
+curl -XPUT "<%= curl_url %>/api/networks/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -321,7 +321,7 @@ This endpoint allows updating a Network.  Configuration options vary by [Network
 ## Delete a Network
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/:id" \
+curl -XDELETE "<%= curl_url %>/api/networks/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

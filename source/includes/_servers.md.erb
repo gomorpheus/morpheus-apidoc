@@ -601,7 +601,7 @@ siteId | N | The ID of the [Group](#groups)
 ## Provision a Host
 
 ```shell
-curl -XPOST "<%= api_url %>/api/servers" \
+curl -XPOST "<%= curl_url %>/api/servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
@@ -640,7 +640,7 @@ dataDevice  |  | the mount point for the lvm volume that needs to be created
 ## Updating a Host
 
 ```shell
-curl -XPUT "<%= api_url %>/api/servers/:id" \
+curl -XPUT "<%= curl_url %>/api/servers/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
@@ -677,7 +677,7 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 ## Convert To Managed
 
 ```shell
-curl -XPUT "<%= api_url %>/api/servers/1/make-managed" \
+curl -XPUT "<%= curl_url %>/api/servers/1/make-managed" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
@@ -725,7 +725,7 @@ provisionSiteId |  | Specific group to assign the server
 ## Upgrade Agent
 
 ```shell
-curl -XPUT "<%= api_url %>/api/servers/1/upgrade" \
+curl -XPUT "<%= curl_url %>/api/servers/1/upgrade" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -746,7 +746,7 @@ This will upgrade the version of the install installed on the host.
 ## Resize a Host
 
 ```shell
-curl -XPUT "<%= api_url %>/api/servers/1/resize" \
+curl -XPUT "<%= curl_url %>/api/servers/1/resize" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{
@@ -924,7 +924,7 @@ Parameter | Description
 ## Assign To Tenant
 
 ```shell
-curl -XPUT "<%= api_url %>/api/servers/1/assign-account?accountId=2" \
+curl -XPUT "<%= curl_url %>/api/servers/1/assign-account?accountId=2" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{}'
@@ -959,7 +959,7 @@ Parameter | Description
 ## Delete a Host
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/servers/1" \
+curl -XDELETE "<%= curl_url %>/api/servers/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

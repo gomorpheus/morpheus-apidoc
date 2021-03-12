@@ -106,7 +106,7 @@ ID | The ID of the group to retrieve
 ## Create a Group
 
 ```shell
-curl -XPOST "<%= api_url %>/api/groups" \
+curl -XPOST "<%= curl_url %>/api/groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
@@ -133,7 +133,7 @@ location  |  | Optional location argument for your group
 ## Updating a Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/groups/1" \
+curl -XPUT "<%= curl_url %>/api/groups/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
@@ -159,7 +159,7 @@ location  |  | Optional location for your group
 ## Updating Group Zones
 
 ```shell
-curl -XPUT "<%= api_url %>/api/groups/1/update-zones" \
+curl -XPUT "<%= curl_url %>/api/groups/1/update-zones" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
@@ -194,7 +194,7 @@ zones      |  | An array of all the zones assigned to this group.
 ## Delete a Group
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/groups/1" \
+curl -XDELETE "<%= curl_url %>/api/groups/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

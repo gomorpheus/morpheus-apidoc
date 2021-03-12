@@ -442,7 +442,7 @@ ID | The ID of the Subnet to retrieve
 ## Create a Subnet
 
 ```shell
-curl -XPOST "<%= api_url %>/api/1/subnets" \
+curl -XPOST "<%= curl_url %>/api/1/subnets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -490,7 +490,7 @@ This endpoint allows creating a Subnet.  Only certain types of clouds support cr
 ## Update a Subnet
 
 ```shell
-curl -XPUT "<%= api_url %>/api/subnets/1" \
+curl -XPUT "<%= curl_url %>/api/subnets/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -530,7 +530,7 @@ This endpoint allows updating a Subnet.  Only certain types of clouds support th
 ## Delete a Subnet
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/subnets/1" \
+curl -XDELETE "<%= curl_url %>/api/subnets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -174,7 +174,7 @@ lease | Your execution lease token
 ## Create a Cypher
 
 ```shell
-curl -XPOST "<%= api_url %>/api/cypher" \
+curl -XPOST "<%= curl_url %>/api/cypher" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"cypher":{
@@ -230,7 +230,7 @@ Year      | 31536000000
 ## Delete a Cypher
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/cypher/1" \
+curl -XDELETE "<%= curl_url %>/api/cypher/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

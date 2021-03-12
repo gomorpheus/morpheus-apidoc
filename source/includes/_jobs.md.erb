@@ -286,7 +286,7 @@ includeExecCount | Number of most recent job executions to include in response
 Use this command to create a job. This command requires either a task `task.id` or workflow `workflow.id` (not both).
 
 ```shell
-curl -XPOST "<%= api_url %>/api/jobs" \
+curl -XPOST "<%= curl_url %>/api/jobs" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job": {
@@ -348,7 +348,7 @@ refId | Y | ID for instance or server depending on target type
 ## Update a Job
 
 ```shell
-curl -XPUT "<%= api_url %>/api/jobs/1" \
+curl -XPUT "<%= curl_url %>/api/jobs/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job": {
@@ -412,7 +412,7 @@ run | N | If true executes job
 Use this command to execute a job.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/jobs/3/execute" \
+curl -XPUT "<%= curl_url %>/api/jobs/3/execute" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -441,7 +441,7 @@ customConfig | Optional custom config
 Use this command to delete a job.
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/jobs/3" \
+curl -XDELETE "<%= curl_url %>/api/jobs/3" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

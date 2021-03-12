@@ -269,7 +269,7 @@ This endpoint retrieves a specific blueprint.
 ## Create a Blueprint
 
 ```shell
-curl -XPOST "<%= api_url %>/api/blueprints" \
+curl -XPOST "<%= curl_url %>/api/blueprints" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -371,7 +371,7 @@ The blueprint `tiers` can be structured so that instance configurations are scop
 ## Updating a Blueprint
 
 ```shell
-curl -XPUT "<%= api_url %>/api/blueprints/2" \
+curl -XPUT "<%= curl_url %>/api/blueprints/2" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -465,7 +465,7 @@ This overwrites the entire config, so the entire blueprint config should be pass
 ## Update Blueprint Permissions
 
 ```shell
-curl -XPOST "<%= api_url %>/api/blueprints/1/update-permissions" \
+curl -XPOST "<%= curl_url %>/api/blueprints/1/update-permissions" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "resourcePermission": {
@@ -495,7 +495,7 @@ ownerId  |  | [User](#users) ID, can be used to change blueprint owner.
 ## Update Blueprint Image
 
 ```shell
-curl -XPOST "<%= api_url %>/api/blueprints/1/image" \
+curl -XPOST "<%= curl_url %>/api/blueprints/1/image" \
   -H "Authorization: BEARER <%= curl_token %>"
   -F 'templateImage=@filename'
 ```
@@ -518,7 +518,7 @@ Upload a new logo image.  Expects multipart form data as the request format, not
 ## Delete a Blueprint
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/blueprints/1" \
+curl -XDELETE "<%= curl_url %>/api/blueprints/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

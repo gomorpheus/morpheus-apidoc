@@ -128,7 +128,7 @@ id | ID of the file template
 Use this command to create a file template.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/container-templates" \
+curl -XPOST "<%= curl_url %>/api/library/container-templates" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
@@ -173,7 +173,7 @@ settingCategory | N | Setting Category
 Use this command to update an existing file template.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/container-templates/:id" \
+curl -XPUT "<%= curl_url %>/api/library/container-templates/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
@@ -218,7 +218,7 @@ settingCategory | N | Setting Category
 ## Delete a File Template
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/container-templates/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/container-templates/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -206,7 +206,7 @@ id | ID of the node type
 Use this command to create a node type.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/container-types" \
+curl -XPOST "<%= curl_url %>/api/library/container-types" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -274,7 +274,7 @@ export | N | Can be used to enable / disable export of variable, default is off
 Use this command to update an existing node type.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/container-types/:id" \
+curl -XPUT "<%= curl_url %>/api/library/container-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
@@ -324,7 +324,7 @@ environmentVariables | N | Array of node type env variables, see [Environment Va
 ## Delete a Node Type
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/container-types/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/container-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

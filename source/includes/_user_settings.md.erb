@@ -58,7 +58,7 @@ userId      | (current user) | ID of User *Only available to the master account.
 ## Update User Settings
 
 ```shell
-curl -XPUT "<%= api_url %>/api/user-settings" \
+curl -XPUT "<%= curl_url %>/api/user-settings" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -109,7 +109,7 @@ defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatal
 ## Update Avatar Image
 
 ```shell
-curl -XPOST "<%= api_url %>/api/user-settings/avatar" \
+curl -XPOST "<%= curl_url %>/api/user-settings/avatar" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -F 'user.avatar=@filename'
 ```
@@ -149,7 +149,7 @@ Upload a new avatar image.  Expects multipart form data as the request format, n
 ## Delete Avatar Image
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/user-settings/avatar" \
+curl -XDELETE "<%= curl_url %>/api/user-settings/avatar" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -176,7 +176,7 @@ userId      | (current user) | ID of User *Only available to the master account.
 ## Regenerate API Access Token
 
 ```shell
-curl -XPUT "<%= api_url %>/api/user-settings/regenerate-access-token?clientId=morph-api" \
+curl -XPUT "<%= curl_url %>/api/user-settings/regenerate-access-token?clientId=morph-api" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
@@ -215,7 +215,7 @@ This endpoint regenerates your API access token for the specified client. If a c
 ## Revoke API Access Token
 
 ```shell
-curl -XPUT "<%= api_url %>/api/user-settings/clear-access-token?clientId=morph-api" \
+curl -XPUT "<%= curl_url %>/api/user-settings/clear-access-token?clientId=morph-api" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```

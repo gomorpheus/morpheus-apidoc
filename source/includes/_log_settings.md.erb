@@ -49,7 +49,7 @@ This endpoint retrieves log settings.
 ## Update Log Settings
 
 ```shell
-curl -XPUT "<%= api_url %>/api/log-settings" \
+curl -XPUT "<%= curl_url %>/api/log-settings" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"logSettings": {
@@ -117,7 +117,7 @@ port | - | Port of the integration, required when enabled is true
 ## Add Syslog Rule
 
 ```shell
-curl -XPOST "<%= api_url %>/api/log-settings/syslog-rules" \
+curl -XPOST "<%= curl_url %>/api/log-settings/syslog-rules" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"syslogRule": {"name": "foo", "rule": "*.* @@bar.com:8080"}}'
@@ -150,7 +150,7 @@ syslogRule.rule | Y | Syslog rule, example: `*.* @@server:port`
 ## Delete Syslog Rules
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/log-settings/syslog-rules/1" \
+curl -XDELETE "<%= curl_url %>/api/log-settings/syslog-rules/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

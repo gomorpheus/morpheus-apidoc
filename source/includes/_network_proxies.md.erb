@@ -108,7 +108,7 @@ ID | The ID of the Network Proxy to retrieve
 ## Create a Network Proxy
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/proxies" \
+curl -XPOST "<%= curl_url %>/api/networks/proxies" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -146,7 +146,7 @@ account.id |  | Tenant Account ID
 ## Update a Network Proxy
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/proxies/:id" \
+curl -XPUT "<%= curl_url %>/api/networks/proxies/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -175,7 +175,7 @@ Same as [Create](#create-a-network-proxy).
 ## Delete a Network Proxy
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/proxies/1" \
+curl -XDELETE "<%= curl_url %>/api/networks/proxies/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -85,7 +85,7 @@ ID | The ID of the key pair to retrieve
 ## Create a Certificate
 
 ```shell
-curl -XPOST "<%= api_url %>/api/certificates" \
+curl -XPOST "<%= curl_url %>/api/certificates" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
@@ -116,7 +116,7 @@ domainName |  | The domain name this certificate is tied to
 ## Updating a Certificate
 
 ```shell
-curl -XPUT "<%= api_url %>/api/certificates/1" \
+curl -XPUT "<%= curl_url %>/api/certificates/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
@@ -147,7 +147,7 @@ domainName |  | The domain name this certificate is tied to
 ## Delete a Certificate
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/certificates/1" \
+curl -XDELETE "<%= curl_url %>/api/certificates/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -507,7 +507,7 @@ id | ID of the instance type
 Use this command to create an instance type.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/instance-types" \
+curl -XPOST "<%= curl_url %>/api/library/instance-types" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -581,7 +581,7 @@ export | N | Can be used to enable / disable export of variable, default is off
 Use this command to update an existing instance type.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/instance-types/:id" \
+curl -XPUT "<%= curl_url %>/api/library/instance-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"instanceType": {
@@ -614,7 +614,7 @@ Same as [Create](#create-an-instance-type).
 ## Toggle Featured For Instance Type
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/instance-types/:id/toggle-featured" \
+curl -XPUT "<%= curl_url %>/api/library/instance-types/:id/toggle-featured" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{}'
@@ -644,7 +644,7 @@ id | The ID of the instance type
 ## Update Logo For Instance Type
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/instance-types/:id/update-logo" \
+curl -XPOST "<%= curl_url %>/api/library/instance-types/:id/update-logo" \
   -H "Authorization: BEARER <%= curl_token %>"
   -F 'logo=@filename'
 ```
@@ -677,7 +677,7 @@ logo      |  | Logo File png,jpg,svg
 ## Delete an Instance Type
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/instance-types/:id" \
+curl -XDELETE "<%= curl_url %>/api/library/instance-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

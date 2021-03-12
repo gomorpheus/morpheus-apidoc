@@ -125,7 +125,7 @@ id | The ID of the data store to retrieve
 ## Updating a Data Store
 
 ```shell
-curl -XPUT "<%= api_url %>/api/zones/5/data-stores/50" \
+curl -XPUT "<%= curl_url %>/api/zones/5/data-stores/50" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"datastore":{

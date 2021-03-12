@@ -362,7 +362,7 @@ ID | The ID of the zone to retrieve
 ## Create a Cloud
 
 ```shell
-curl -XPOST "<%= api_url %>/api/zones" \
+curl -XPOST "<%= curl_url %>/api/zones" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
@@ -403,7 +403,7 @@ Additional config properties are dynamic and depend on the specified type of clo
 ## Updating a Cloud
 
 ```shell
-curl -XPUT "<%= api_url %>/api/zones/1" \
+curl -XPUT "<%= curl_url %>/api/zones/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
@@ -442,7 +442,7 @@ Additional config properties are dynamic and depend on the type of cloud. See [C
 ## Refresh a Cloud
 
 ```shell
-curl -XPUT "<%= api_url %>/api/zones/:id/refresh" \
+curl -XPUT "<%= curl_url %>/api/zones/:id/refresh" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
@@ -465,7 +465,7 @@ Each cloud type varies when it comes to what refreshing entails, but it involves
 ## Delete a Cloud
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/zones/1" \
+curl -XDELETE "<%= curl_url %>/api/zones/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -517,7 +517,7 @@ This returns a list of all of the security groups applied to a zone and whether 
 ## Set Security Groups
 
 ```shell
-curl -XPOST "<%= api_url %>/api/zones/1/security-groups" \
+curl -XPOST "<%= curl_url %>/api/zones/1/security-groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'

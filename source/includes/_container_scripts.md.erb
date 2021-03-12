@@ -135,7 +135,7 @@ id | ID of the script
 Use this command to create a script.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/library/container-scripts" \
+curl -XPOST "<%= curl_url %>/api/library/container-scripts" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
@@ -180,7 +180,7 @@ sudoUser | N | Sudo, whether or not to run with sudo. Default is `false`.
 Use this command to update an existing script.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/library/container-scripts/:id" \
+curl -XPUT "<%= curl_url %>/api/library/container-scripts/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
@@ -226,7 +226,7 @@ sudoUser | N | Sudo, whether or not to run with sudo. Default is `false`.
 ## Delete a Script
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/library/container-scripts/1" \
+curl -XDELETE "<%= curl_url %>/api/library/container-scripts/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

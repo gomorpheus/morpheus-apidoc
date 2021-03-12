@@ -193,7 +193,7 @@ ID | The ID of the project
 ## Create a Project
 
 ```shell
-curl -XPOST "<%= api_url %>/api/projects" \
+curl -XPOST "<%= curl_url %>/api/projects" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
@@ -230,7 +230,7 @@ resources |  | Resources, Array of objects having an id. These are discovered Ac
 ## Update a Project
 
 ```shell
-curl -XPUT "<%= api_url %>/api/projects/:id" \
+curl -XPUT "<%= curl_url %>/api/projects/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
@@ -279,7 +279,7 @@ removeResources |  | Remove Resources from the project, Array of objects having 
 ## Delete a Project
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/projects/:id" \
+curl -XDELETE "<%= curl_url %>/api/projects/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

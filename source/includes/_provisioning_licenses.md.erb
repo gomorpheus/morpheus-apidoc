@@ -200,7 +200,7 @@ id | ID of the license
 Use this command to create a new license.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/provisioning-licenses" \
+curl -XPOST "<%= curl_url %>/api/provisioning-licenses" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -253,7 +253,7 @@ tenants | N | Tenants - Array of tenants that are allowed to use the key.
 ## Update a License
 
 ```shell
-curl -XPUT "<%= api_url %>/api/provisioning-licenses/:id" \
+curl -XPUT "<%= curl_url %>/api/provisioning-licenses/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{
@@ -301,7 +301,7 @@ tenants | Tenants - Array of tenants that are allowed to use the key.
 ## Delete a License
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/provisioning-licenses/:id" \
+curl -XDELETE "<%= curl_url %>/api/provisioning-licenses/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

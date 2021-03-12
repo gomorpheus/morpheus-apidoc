@@ -41,7 +41,7 @@ This endpoint retrieves backup settings.
 ## Update Backup Settings
 
 ```shell
-curl -XPUT "<%= api_url %>/api/backup-settings" \
+curl -XPUT "<%= curl_url %>/api/backup-settings" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"backupSettings": {

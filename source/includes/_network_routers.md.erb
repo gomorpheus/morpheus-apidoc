@@ -239,7 +239,7 @@ id | ID of the network router
 Use this command to create a network router.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/routers" \
+curl -XPOST "<%= curl_url %>/api/networks/routers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -307,7 +307,7 @@ networkServer.id | N | Required when type supports a network server
 Use this command to update an existing network router.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/routers/1" \
+curl -XPUT "<%= curl_url %>/api/networks/routers/1" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{
@@ -356,7 +356,7 @@ enabled | N | Can be used to enable / disable the network router (true, false). 
 ## Delete a Network Router
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/routers/1" \
+curl -XDELETE "<%= curl_url %>/api/networks/routers/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -386,7 +386,7 @@ id | The ID of the network router
 Use this command to create a firewall rule for an existing network router.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/routers/1/firewall-rules" \
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -446,7 +446,7 @@ portRange | N | Port range
 ## Delete a Network Router Firewall Rule
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/routers/1/firewall-rules/2" \
+curl -XDELETE "<%= curl_url %>/api/networks/routers/1/firewall-rules/2" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -477,7 +477,7 @@ rule_id | The ID of the rule to be deleted
 Use this command to create a route for an existing network router.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/routers/1/routes" \
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/routes" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -528,7 +528,7 @@ networkMtu | Y | MTU
 ## Delete a Network Router Route
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/routers/1/routes/2" \
+curl -XDELETE "<%= curl_url %>/api/networks/routers/1/routes/2" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -557,7 +557,7 @@ route_id | The ID of the route to be deleted
 ## Update Network Router Permissions
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/routers/1/permissions" \
+curl -XPUT "<%= curl_url %>/api/networks/routers/1/permissions" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{

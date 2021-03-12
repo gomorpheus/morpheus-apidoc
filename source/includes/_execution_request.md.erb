@@ -7,7 +7,7 @@ Provides API interfaces for executing an arbitrary script or command on an insta
 -->
 
 ```shell
-curl -XPOST "<%= api_url %>/api/execution-request/execute?instanceId=256" \
+curl -XPOST "<%= curl_url %>/api/execution-request/execute?instanceId=256" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{

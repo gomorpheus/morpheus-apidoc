@@ -185,7 +185,7 @@ ID | The ID of the Network Pool to retrieve
 ## Create a Network Pool
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/pools" \
+curl -XPOST "<%= curl_url %>/api/networks/pools" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -230,7 +230,7 @@ endAddress | Y | Ending IP Address
 ## Update a Network Pool
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/pools/:id" \
+curl -XPUT "<%= curl_url %>/api/networks/pools/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -259,7 +259,7 @@ Same as [Create](#create-a-network-pool).
 ## Delete a Network Pool
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/pools/:id" \
+curl -XDELETE "<%= curl_url %>/api/networks/pools/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

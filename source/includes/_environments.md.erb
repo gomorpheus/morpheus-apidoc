@@ -131,7 +131,7 @@ ID | The ID of the environment
 ## Create an Environment
 
 ```shell
-curl -XPOST "<%= api_url %>/api/environments" \
+curl -XPOST "<%= curl_url %>/api/environments" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -165,7 +165,7 @@ sortOrder | 0 | Sort order
 ## Updating an Environment
 
 ```shell
-curl -XPUT "<%= api_url %>/api/environments/5" \
+curl -XPUT "<%= curl_url %>/api/environments/5" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -202,7 +202,7 @@ Only user created environments may be updated.
 ## Toggle an Environment
 
 ```shell
-curl -XPUT "<%= api_url %>/api/environments/5/toggle-active" \
+curl -XPUT "<%= curl_url %>/api/environments/5/toggle-active" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -230,7 +230,7 @@ This endpoint allows global environments to be updated by the master account.
 ## Delete an Environment
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/environments/5" \
+curl -XDELETE "<%= curl_url %>/api/environments/5" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

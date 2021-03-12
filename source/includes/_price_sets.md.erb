@@ -156,7 +156,7 @@ id | ID of the price set
 Use this command to create a price set.
 
 ```shell
-curl -XPOST "<%= api_url %>/api/price-sets" \
+curl -XPOST "<%= curl_url %>/api/price-sets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"priceSet": {
@@ -212,7 +212,7 @@ prices | N | List of price IDs to associate with price set
 ## Update a Price Set
 
 ```shell
-curl -XPUT "<%= api_url %>/api/price-sets/1" \
+curl -XPUT "<%= curl_url %>/api/price-sets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"priceSet": {
@@ -260,7 +260,7 @@ prices | N | List of price IDs to associate with price set
 ## Deactivate a Price Set
 
 ```shell
-curl -XPUT "<%= api_url %>/api/price-sets/1/deactivate" \
+curl -XPUT "<%= curl_url %>/api/price-sets/1/deactivate" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

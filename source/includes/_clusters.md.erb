@@ -346,7 +346,7 @@ ID | ID of the cluster
 ## Create a Cluster
 
 ```shell
-curl -XPOST "<%= api_url %>/api/clusters" \
+curl -XPOST "<%= curl_url %>/api/clusters" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"cluster": {
@@ -479,7 +479,7 @@ The Provision Types api can be used to see which options are available.
 ## Update Cluster
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/1" \
+curl -XPUT "<%= curl_url %>/api/clusters/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"cluster": {
@@ -516,7 +516,7 @@ refresh |  | Queue cluster refresh
 ## Update Cluster Permissions
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/1/permissions" \
+curl -XPUT "<%= curl_url %>/api/clusters/1/permissions" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"permissions": {
@@ -564,7 +564,7 @@ tenantPermissions.accounts  |  | Array of tenant account ids that are allowed ac
 ## Delete a Cluster
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/1" \
+curl -XDELETE "<%= curl_url %>/api/clusters/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -753,7 +753,7 @@ id | The ID of the namespace
 ## Add Namespace (Kubernetes)
 
 ```shell
-curl -XPOST "<%= api_url %>/api/clusters/1/namespaces" \
+curl -XPOST "<%= curl_url %>/api/clusters/1/namespaces" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"namespace": {
@@ -819,7 +819,7 @@ plans | N | n/a | Array of service plans that are allowed access
 ## Update Namespace (Kubernetes)
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/1/namespaces/1" \
+curl -XPUT "<%= curl_url %>/api/clusters/1/namespaces/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"namespace": {
@@ -861,7 +861,7 @@ permissions | N |  | Key for resource permission configuration, see [Permissions
 ## Delete a Namespace (Kubernetes)
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/1/namespaces/1" \
+curl -XDELETE "<%= curl_url %>/api/clusters/1/namespaces/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -896,7 +896,7 @@ force | off | Force Delete
 ## Add Worker
 
 ```shell
-curl -XPOST "<%= api_url %>/api/clusters/:id/servers" \
+curl -XPOST "<%= curl_url %>/api/clusters/:id/servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"server": {
@@ -1183,7 +1183,7 @@ phrase |  | Name or internalId filter, restricts query to only load volumes whic
 ## Delete a Volume
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/volumes/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/volumes/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1640,7 +1640,7 @@ resourceLevel |  | Resource level filter: app, system, storage, logging
 ## Delete Container
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/containers/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/containers/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1675,7 +1675,7 @@ force | off | Force Delete
 ## Delete a Deployment
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/deployments/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/deployments/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1710,7 +1710,7 @@ force | off | Force Delete
 ## Delete a Job
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/jobs/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/jobs/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1745,7 +1745,7 @@ force | off | Force Delete
 ## Delete a Service
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/services/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/services/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1780,7 +1780,7 @@ force | off | Force Delete
 ## Delete a Stateful Set
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/clusters/:clusterId/statefulsets/:id" \
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/statefulsets/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1815,7 +1815,7 @@ force | off | Force Delete
 ## Restart a Container
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/:clusterId/containers/:id/restart" \
+curl -XPUT "<%= curl_url %>/api/clusters/:clusterId/containers/:id/restart" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1844,7 +1844,7 @@ id | The ID of the container to restart
 ## Restart a Deployment
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/:clusterId/deployments/:id/restart" \
+curl -XPUT "<%= curl_url %>/api/clusters/:clusterId/deployments/:id/restart" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1873,7 +1873,7 @@ id | The ID of the deployment to restart
 ## Restart a Pod
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/:clusterId/pods/:id/restart" \
+curl -XPUT "<%= curl_url %>/api/clusters/:clusterId/pods/:id/restart" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1902,7 +1902,7 @@ id | The ID of the pod to restart
 ## Restart a Stateful Set
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/:clusterId/statefulsets/:id/restart" \
+curl -XPUT "<%= curl_url %>/api/clusters/:clusterId/statefulsets/:id/restart" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -2302,7 +2302,7 @@ ID | ID of datastore
 ## Update Datastore
 
 ```shell
-curl -XPUT "<%= api_url %>/api/clusters/1/datastores/1" \
+curl -XPUT "<%= curl_url %>/api/clusters/1/datastores/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"datastore": {

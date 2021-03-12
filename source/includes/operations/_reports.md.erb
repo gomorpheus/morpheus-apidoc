@@ -281,7 +281,7 @@ format | Format of the rendered report file, `json` or `csv`. The default is `.j
 ## Run a Report
 
 ```shell
-curl -XPOST "<%= api_url %>/api/reports" \
+curl -XPOST "<%= curl_url %>/api/reports" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -320,7 +320,7 @@ cloudId     |  | The Cloud ID filter for the report
 ## Delete a Report
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/reports/1" \
+curl -XDELETE "<%= curl_url %>/api/reports/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

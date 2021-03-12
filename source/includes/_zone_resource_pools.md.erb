@@ -152,7 +152,7 @@ id | The ID of the resource pool to retrieve
 ## Create a Resource Pool
 
 ```shell
-curl -XPOST "<%= api_url %>/api/zones/5/resource-pools" \
+curl -XPOST "<%= curl_url %>/api/zones/5/resource-pools" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool": {
@@ -220,7 +220,7 @@ config.auditors      | [] | Array of auditor usernames
 ## Updating a Resource Pool
 
 ```shell
-curl -XPUT "<%= api_url %>/api/zones/5/resource-pools/50" \
+curl -XPUT "<%= curl_url %>/api/zones/5/resource-pools/50" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool":{
@@ -268,7 +268,7 @@ resourcePermissions.plans  |  | Array of plans that are allowed access
 ## Delete a Resource Pool
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/zones/5/resource-pools/50" \
+curl -XDELETE "<%= curl_url %>/api/zones/5/resource-pools/50" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

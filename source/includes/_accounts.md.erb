@@ -144,7 +144,7 @@ This endpoint will retrieve a specific account by ID.
 ## Create a Tenant
 
 ```shell
-curl -XPOST "<%= api_url %>/api/accounts" \
+curl -XPOST "<%= curl_url %>/api/accounts" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
@@ -185,7 +185,7 @@ accountName |  | Account Name, an optional field that can be used for billing an
 ## Updating a Tenant
 
 ```shell
-curl -XPUT "<%= api_url %>/api/accounts/3" \
+curl -XPUT "<%= curl_url %>/api/accounts/3" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
@@ -226,7 +226,7 @@ accountName |  | Account Name, an optional field that can be used for billing an
 ## Delete a Tenant
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/accounts/1" \
+curl -XDELETE "<%= curl_url %>/api/accounts/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

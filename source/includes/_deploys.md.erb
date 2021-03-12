@@ -225,7 +225,7 @@ Same as [get all deploys](#get-all-deploys).
 ## Deploy to an Instance
 
 ```shell
-curl -XPOST "<%= api_url %>/api/instances/:instanceId/deploys"
+curl -XPOST "<%= curl_url %>/api/instances/:instanceId/deploys"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
@@ -302,7 +302,7 @@ stageOnly | false | Stage Only, do not run the deploy right away and instead set
 ## Update a Deploy
 
 ```shell
-curl -XPUT "<%= api_url %>/api/deploys/:id"
+curl -XPUT "<%= curl_url %>/api/deploys/:id"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
@@ -369,7 +369,7 @@ config |  | JSON encoded list of parameters that varies by instance type.
 ## Run a Deploy
 
 ```shell
-curl -XPOST "<%= api_url %>/api/deploys/:id/deploy"
+curl -XPOST "<%= curl_url %>/api/deploys/:id/deploy"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
@@ -437,7 +437,7 @@ config |  | JSON encoded list of parameters that varies by instance type.
 ## Delete a Deploy
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/deploys/:id" \
+curl -XDELETE "<%= curl_url %>/api/deploys/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

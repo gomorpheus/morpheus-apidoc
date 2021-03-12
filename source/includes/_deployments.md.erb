@@ -111,7 +111,7 @@ maxVersions | 5 | Max number of recent versions to return.
 ## Create a new Deployment
 
 ```shell
-curl -XPOST "<%= api_url %>/api/deployments"
+curl -XPOST "<%= curl_url %>/api/deployments"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"deployment":{
@@ -153,7 +153,7 @@ description |  | Description
 ## Update a Deployment
 
 ```shell
-curl -XPUT "<%= api_url %>/api/deployments/:id"
+curl -XPUT "<%= curl_url %>/api/deployments/:id"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"deployment":{
@@ -195,7 +195,7 @@ description |  | Description
 ## Delete a Deployment
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/deployments/:id" \
+curl -XDELETE "<%= curl_url %>/api/deployments/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -323,7 +323,7 @@ id | The ID of the deployment version
 ## Create a new Deployment Version
 
 ```shell
-curl -XPOST "<%= api_url %>/api/deployments/:deploymentId/versions"
+curl -XPOST "<%= curl_url %>/api/deployments/:deploymentId/versions"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"version":{
@@ -379,7 +379,7 @@ fetchUrl |  | Fetch URL, location to fetch files from, only applies to type fetc
 ## Update a Deployment Version
 
 ```shell
-curl -XPUT "<%= api_url %>/api/deployments/:deploymentId/versions/:id"
+curl -XPUT "<%= curl_url %>/api/deployments/:deploymentId/versions/:id"
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"deployment":{
@@ -432,7 +432,7 @@ fetchUrl |  | Fetch URL, location to fetch files from, only applies to type fetc
 ## Delete a Deployment Version
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/deployments/:deploymentId/versions/:id" \
+curl -XDELETE "<%= curl_url %>/api/deployments/:deploymentId/versions/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -558,7 +558,7 @@ filepath | The name of the file or directory being fetched
 ## Upload a Deployment File
 
 ```shell
-curl -XPOST "<%= api_url %>/api/deployments/:deploymentId/versions/:id/files/config.ini"
+curl -XPOST "<%= curl_url %>/api/deployments/:deploymentId/versions/:id/files/config.ini"
   -H "Authorization: BEARER <%= curl_token %>"
   -F 'file=@filename'
 ```
@@ -590,7 +590,7 @@ Expects multipart form data as the request format, not JSON.
 ## Delete a Deployment File
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/deployments/:deploymentId/versions/:id/files/:filepath" \
+curl -XDELETE "<%= curl_url %>/api/deployments/:deploymentId/versions/:id/files/:filepath" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -537,7 +537,7 @@ This endpoint retrieves a list of discovery types.
 Use this command to execute a discovery.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/guidance/1/execute" \
+curl -XPUT "<%= curl_url %>/api/guidance/1/execute" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" 
 ```
@@ -566,7 +566,7 @@ id | The ID of the discovery
 Use this command to ignore a discovery.
 
 ```shell
-curl -XPUT "<%= api_url %>/api/guidance/1/ignore" \
+curl -XPUT "<%= curl_url %>/api/guidance/1/ignore" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" 
 ```

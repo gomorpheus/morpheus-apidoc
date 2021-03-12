@@ -132,7 +132,7 @@ ID | The ID of the workflow
 ## Create a Workflow
 
 ```shell
-curl -XPOST "<%= api_url %>/api/task-sets" \
+curl -XPOST "<%= curl_url %>/api/task-sets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
@@ -173,7 +173,7 @@ tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workf
 ## Create an Operational Workflow
 
 ```shell
-curl -XPOST "<%= api_url %>/api/task-sets" \
+curl -XPOST "<%= curl_url %>/api/task-sets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
@@ -210,7 +210,7 @@ tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workf
 ## Updating a Workflow
 
 ```shell
-curl -XPUT "<%= api_url %>/api/task-sets/5" \
+curl -XPUT "<%= curl_url %>/api/task-sets/5" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet":{
@@ -247,7 +247,7 @@ tasks.taskPhase | provision | Task Phase.
 ## Delete a Workflow
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/task-sets/1" \
+curl -XDELETE "<%= curl_url %>/api/task-sets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -272,7 +272,7 @@ ID | The ID of the workflow
 ## Execute a Workflow
 
 ```shell
-curl -XPOST "<%= api_url %>/api/task-sets/5/execute" \
+curl -XPOST "<%= curl_url %>/api/task-sets/5/execute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job":{

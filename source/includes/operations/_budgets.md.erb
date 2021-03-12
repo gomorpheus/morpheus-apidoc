@@ -260,7 +260,7 @@ ID | The ID of the budget
 ## Create a Budget
 
 ```shell
-curl -XPOST "<%= api_url %>/api/budgets" \
+curl -XPOST "<%= curl_url %>/api/budgets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
@@ -303,7 +303,7 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 ## Updating a Budget
 
 ```shell
-curl -XPUT "<%= api_url %>/api/budgets/:id" \
+curl -XPUT "<%= curl_url %>/api/budgets/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
@@ -349,7 +349,7 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 ## Delete a Budget
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/budgets/1" \
+curl -XDELETE "<%= curl_url %>/api/budgets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

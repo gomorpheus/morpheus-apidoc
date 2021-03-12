@@ -132,7 +132,7 @@ ID | The ID of the alarm
 ## Acknowledge a Health Alarm
 
 ```shell
-curl -XPUT "<%= api_url %>/api/health/alarms/1/acknowledge" \
+curl -XPUT "<%= curl_url %>/api/health/alarms/1/acknowledge" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"alarm":{
@@ -170,7 +170,7 @@ acknowledged      |  | Pass `true` to ackowledge an alarm, or pass `false` to un
 ## Acknowledge Many Health Alarms
 
 ```shell
-curl -XPUT "<%= api_url %>/api/health/alarms/acknowledge" \
+curl -XPUT "<%= curl_url %>/api/health/alarms/acknowledge" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{

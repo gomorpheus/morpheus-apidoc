@@ -296,7 +296,7 @@ id | The ID of the virtual image
 ## Create a Virtual Image
 
 ```shell
-curl -XPOST "<%= api_url %>/api/virtual-images" \
+curl -XPOST "<%= curl_url %>/api/virtual-images" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
@@ -353,7 +353,7 @@ tags |  | Metadata tags, Array of objects having a name and value
 ## Create an Azure Reference Virtual Image
 
 ```shell
-curl -XPOST "<%= api_url %>/api/virtual-images" \
+curl -XPOST "<%= curl_url %>/api/virtual-images" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
@@ -405,7 +405,7 @@ version  |  | The name of the version in the Azure Marketplace
 ## Upload Virtual Image File
 
 ```shell
-curl -XPOST "<%= api_url %>/api/virtual-images/765/upload?filename=disk-0.vmdk" \
+curl -XPOST "<%= curl_url %>/api/virtual-images/765/upload?filename=disk-0.vmdk" \
   -H "Authorization: BEARER <%= curl_token %>" \
   --data-binary '@/path/to/file'
 ```
@@ -440,7 +440,7 @@ filename | Specify a filename for new file.
 ## Remove Virtual Image File
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/virtual-images/765/files?filename=testimage.ovf" \
+curl -XDELETE "<%= curl_url %>/api/virtual-images/765/files?filename=testimage.ovf" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -471,7 +471,7 @@ filename  |  | The name of the file to be deleted
 ## Update a Virtual Image
 
 ```shell
-curl -XPUT "<%= api_url %>/api/virtual-images/:id" \
+curl -XPUT "<%= curl_url %>/api/virtual-images/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
@@ -531,7 +531,7 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 ## Delete a Virtual Image
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/virtual-images/765" \
+curl -XDELETE "<%= curl_url %>/api/virtual-images/765" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

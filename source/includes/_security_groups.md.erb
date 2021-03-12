@@ -146,7 +146,7 @@ id | The ID of the security group
 ## Create a Security Group
 
 ```shell
-curl -XPOST "<%= api_url %>/api/security-groups" \
+curl -XPOST "<%= curl_url %>/api/security-groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
@@ -179,7 +179,7 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 ## Updating a Security Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/security-groups/18" \
+curl -XPUT "<%= curl_url %>/api/security-groups/18" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
@@ -215,7 +215,7 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 ## Delete a Security Group
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/security-groups/1" \
+curl -XDELETE "<%= curl_url %>/api/security-groups/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -243,7 +243,7 @@ id | The ID of the security group
 ## Create a Security Group Location
 
 ```shell
-curl -XPOST "<%= api_url %>/api/security-groups/18/locations" \
+curl -XPOST "<%= curl_url %>/api/security-groups/18/locations" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupLocation": {
@@ -273,7 +273,7 @@ customOptions.resourceGroup      |  | External ID of the Azure Resource Group to
 ## Delete a Security Group Location
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/security-groups/18/locations/29" \
+curl -XDELETE "<%= curl_url %>/api/security-groups/18/locations/29" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

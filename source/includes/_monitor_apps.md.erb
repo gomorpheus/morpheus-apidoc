@@ -225,7 +225,7 @@ ID | ID of the monitor app
 ## Create a Monitor App
 
 ```shell
-curl -XPOST "<%= api_url %>/api/monitoring/apps" \
+curl -XPOST "<%= curl_url %>/api/monitoring/apps" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
@@ -255,7 +255,7 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Updating a Monitor App
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/apps/3" \
+curl -XPUT "<%= curl_url %>/api/monitoring/apps/3" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
@@ -292,7 +292,7 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Mute a Monitor App
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/apps/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/apps/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
@@ -313,7 +313,7 @@ This endpoint can be used to toggle the mute state of a monitor app. This sets `
 ## Unmute a Monitor App
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/apps/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/apps/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -344,7 +344,7 @@ muted | true | Set to false to unmute
 ## Mute All Monitor Apps
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/apps/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/apps/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -375,7 +375,7 @@ This endpoint can be used to toggle the mute state of all monitor apps. This set
 ## Unmute All Monitor App
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/apps/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/apps/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -396,7 +396,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Monitor App
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/monitoring/apps/1" \
+curl -XDELETE "<%= curl_url %>/api/monitoring/apps/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -343,7 +343,7 @@ This endpoint retrieves the current catalog cart and all the items in it.
 ## Add Catalog Item to Cart
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog/cart/items" \
+curl -XPOST "<%= curl_url %>/api/catalog/cart/items" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -405,7 +405,7 @@ target | N | Resource ([Instance](#instances) or [Server](#hosts)) ID for contex
 ## Remove a Catalog Item From Cart
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/catalog/cart/items/:id" \
+curl -XDELETE "<%= curl_url %>/api/catalog/cart/items/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -432,7 +432,7 @@ id | The ID of the catalog item
 ## Clear Catalog Cart
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/catalog/cart" \
+curl -XDELETE "<%= curl_url %>/api/catalog/cart" \
   -H "Authorization: Bearer <%= curl_token %>"
 ```
 
@@ -453,7 +453,7 @@ Use this command to empty your cart, deleting all the items in it.
 ## Checkout Catalog Cart
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog/checkout" \
+curl -XPOST "<%= curl_url %>/api/catalog/checkout" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -479,7 +479,7 @@ Use this command to checkout, finalizing your cart and placing an order. This co
 ## Place Catalog Order
 
 ```shell
-curl -XPOST "<%= api_url %>/api/catalog/orders" \
+curl -XPOST "<%= curl_url %>/api/catalog/orders" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -544,7 +544,7 @@ items | N | Array of Item objects, each item in the order can be configured indi
 ## Delete a Catalog Inventory Item
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/catalog/items/:id" \
+curl -XDELETE "<%= curl_url %>/api/catalog/items/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

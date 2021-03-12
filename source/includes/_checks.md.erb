@@ -147,7 +147,7 @@ ID | ID of the check to retrieve
 ## Create a Check
 
 ```shell
-curl -XPOST "<%= api_url %>/api/monitoring/checks" \
+curl -XPOST "<%= curl_url %>/api/monitoring/checks" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"check":{
@@ -189,7 +189,7 @@ config |  | JSON encoded list of parameters that varies by check type. See below
 ## Updating a Check
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/checks/1" \
+curl -XPUT "<%= curl_url %>/api/monitoring/checks/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"check":{
@@ -435,7 +435,7 @@ sshPassword | No        | Password for user, if not using key based authenticati
 ## Mute a Check
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/checks/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/checks/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
@@ -456,7 +456,7 @@ This sets `createIncident` the opposite of `muted`.
 ## Unmute a Check
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/checks/1/mute" \
+curl -XPUT "<%= curl_url %>/api/monitoring/checks/1/mute" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -487,7 +487,7 @@ muted | true | Set to false to unmute
 ## Mute All Checks
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/checks/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/checks/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
@@ -518,7 +518,7 @@ This endpoint can be used to toggle the mute state of all checks. This sets `cre
 ## Unmute All Checks
 
 ```shell
-curl -XPUT "<%= api_url %>/api/monitoring/checks/mute-all" \
+curl -XPUT "<%= curl_url %>/api/monitoring/checks/mute-all" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
@@ -539,7 +539,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Check
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/monitoring/checks/1" \
+curl -XDELETE "<%= curl_url %>/api/monitoring/checks/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

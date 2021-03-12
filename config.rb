@@ -58,10 +58,8 @@ set :company_website, "https://www.morpheusdata.com"
 set :company_domain, "morpheusdata.com"
 
 # The base url used to document each HTTP Request path
-set :api_url, "https://api.morpheusdata.com"
-
-# The Morpheus Hub URL (not really whitelabel ready this point, do not include setup doc)
-set :hub_url, "https://morpheushub.com"
+# set :api_url, "https://api.morpheusdata.com"
+set :api_url, "$serverUrl"
 
 # The URL value to use in the shell curl examples, just a variable name
 set :curl_url, "$serverUrl"
@@ -81,6 +79,8 @@ set :footer_logo_path, "logo_footer.svg"
 # The favicon
 set :favicon_path, "favicon.png"
 
+# The Morpheus Hub URL (not really whitelabel ready this point, do not include setup doc)
+set :hub_url, "https://morpheushub.com"
 
 # Load custom settings from whitelabel_config.rb
 whitelabel_fn = "whitelabel_config.rb"

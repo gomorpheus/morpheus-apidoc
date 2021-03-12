@@ -2208,7 +2208,7 @@ This defines the list of all the security groups applied to an instance.
 ## Delete an Instance
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/instances/1" \
+curl -XDELETE "<%= curl_url %>/api/instances/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -2244,7 +2244,7 @@ force | off | Force Delete
 ## Undo Delete of an Instance
 
 ```shell
-curl -XPUT "<%= api_url %>/api/instances/2/cancel-removal" \
+curl -XPUT "<%= curl_url %>/api/instances/2/cancel-removal" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```

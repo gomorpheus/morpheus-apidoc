@@ -66,7 +66,7 @@ This endpoint retrieves appliance settings.
 ## Update Appliance Settings
 
 ```shell
-curl -XPUT "<%= api_url %>/api/appliance-settings" \
+curl -XPUT "<%= curl_url %>/api/appliance-settings" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"applianceSettings": {
@@ -163,7 +163,7 @@ disableAllZoneTypes | Set all cloud types enabled status off, can be used in con
 ## Toggle Maintenance Mode
 
 ```shell
-curl -XPOST "<%= api_url %>/api/appliance-settings/maintenance?enabled=true" \
+curl -XPOST "<%= curl_url %>/api/appliance-settings/maintenance?enabled=true" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

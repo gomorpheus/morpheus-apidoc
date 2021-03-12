@@ -115,7 +115,7 @@ This endpoint retrieves a specific security group rule.
 ## Create a Security Group Rule
 
 ```shell
-curl -XPOST "<%= api_url %>/api/security-groups/19/rules" \
+curl -XPOST "<%= curl_url %>/api/security-groups/19/rules" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
@@ -162,7 +162,7 @@ instanceTypeId |  | The id of an Instance Type.  If specified, the source CIDR w
 ## Updating a Security Group Rule
 
 ```shell
-curl -XPUT "<%= api_url %>/api/security-groups/19/rules/30" \
+curl -XPUT "<%= curl_url %>/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
@@ -185,7 +185,7 @@ Same parameters as specified in the creation of a Security Group Rule
 ## Delete a Security Group Rule
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/security-groups/19/rules/30" \
+curl -XDELETE "<%= curl_url %>/api/security-groups/19/rules/30" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

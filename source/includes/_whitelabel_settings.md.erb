@@ -58,7 +58,7 @@ This endpoint retrieves whitelabel settings.
 ## Update Whitelabel Settings
 
 ```shell
-curl -XPUT "<%= api_url %>/api/whitelabel-settings" \
+curl -XPUT "<%= curl_url %>/api/whitelabel-settings" \
   -H "Authorization: BEARER access_token" \
   -H "Content-Type: application/json" \
   -d '{"whitelabelSettings": {
@@ -153,7 +153,7 @@ labelCode | Label code for support menu link
 ## Update Images
 
 ```shell
-curl -XPOST "<%= api_url %>/api/whitelabel-settings/images" \
+curl -XPOST "<%= curl_url %>/api/whitelabel-settings/images" \
   -H "Authorization: BEARER access_token" \
   -F 'headerLogo.file=@filename.png;type=image/png' \
   -F 'footerLogo.file=@filename.png;type=image/png' \
@@ -198,7 +198,7 @@ Uploads whitelabel images.  Expects multipart form data as the request format, n
 ## Reset Image
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/whitelabel-settings/images/:imageType" \
+curl -XDELETE "<%= curl_url %>/api/whitelabel-settings/images/:imageType" \
   -H "Authorization: BEARER access_token" 
 ```
 

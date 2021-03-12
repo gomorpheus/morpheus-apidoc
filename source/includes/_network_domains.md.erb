@@ -127,7 +127,7 @@ ID | The ID of the Network Domain to retrieve
 ## Create a Network Domain
 
 ```shell
-curl -XPOST "http://<%= api_url %>/api/networks/domains" \
+curl -XPOST "<%= curl_url %>/api/networks/domains" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -165,7 +165,7 @@ guestPassword |  | Guest Password
 ## Update a Network Domain
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/domains/:id" \
+curl -XPUT "<%= curl_url %>/api/networks/domains/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -194,7 +194,7 @@ Same as [Create](#create-a-network-domain).
 ## Delete a Network Domain
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/domains/:id" \
+curl -XDELETE "<%= curl_url %>/api/networks/domains/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

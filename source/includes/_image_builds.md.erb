@@ -304,7 +304,7 @@ ID | The ID of the image build to retrieve
 ## Create an Image Build
 
 ```shell
-curl -XPOST "<%= api_url %>/api/image-builds" \
+curl -XPOST "<%= curl_url %>/api/image-builds" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -412,7 +412,7 @@ keepResults      |  0 | Keep Results - Keep only the most recent builds. Older e
 ## Update an Image Build
 
 ```shell
-curl -XPUT "<%= api_url %>/api/image-builds/1" \
+curl -XPUT "<%= curl_url %>/api/image-builds/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -442,7 +442,7 @@ See [Create](#create-an-image-build).
 ## Delete an Image Build
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/image-builds/1" \
+curl -XDELETE "<%= curl_url %>/api/image-builds/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -469,7 +469,7 @@ ID | The ID of the image build
 ## Run an Image Build
 
 ```shell
-curl -XPOST "<%= api_url %>/api/image-builds/1/run" \
+curl -XPOST "<%= curl_url %>/api/image-builds/1/run" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

@@ -199,7 +199,7 @@ ID | The ID of the Network Group to retrieve
 ## Create a Network Group
 
 ```shell
-curl -XPOST "<%= api_url %>/api/networks/groups" \
+curl -XPOST "<%= curl_url %>/api/networks/groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -232,7 +232,7 @@ description      |  | Description
 ## Update a Network Group
 
 ```shell
-curl -XPUT "<%= api_url %>/api/networks/groups/:id" \
+curl -XPUT "<%= curl_url %>/api/networks/groups/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -268,7 +268,7 @@ Same as [Create](#create-a-network-group).
 ## Delete a Network Group
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/networks/groups/1" \
+curl -XDELETE "<%= curl_url %>/api/networks/groups/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

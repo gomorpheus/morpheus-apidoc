@@ -400,7 +400,7 @@ ID | The ID of the identity source
 ## Create an Identity Source
 
 ```shell
-curl -XPOST "<%= api_url %>/api/accounts/60/user-sources" \
+curl -XPOST "<%= curl_url %>/api/accounts/60/user-sources" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -527,7 +527,7 @@ config.encryptionKey      |  | Encryption Key
 ## Updating an Identity Source
 
 ```shell
-curl -XPUT "<%= api_url %>/api/user-sources/3" \
+curl -XPUT "<%= curl_url %>/api/user-sources/3" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -577,7 +577,7 @@ config | | Map of configuration options which vary by type.
 ## Updating Subdomain for an Identity Source
 
 ```shell
-curl -XPUT "<%= api_url %>/api/user-sources/3/subdomain" \
+curl -XPUT "<%= curl_url %>/api/user-sources/3/subdomain" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"subdomain": "ninjas"}'
@@ -612,7 +612,7 @@ This endpoint updates the subdomain for the account associated with the user sou
 ## Delete an Identity Source
 
 ```shell
-curl -XDELETE "<%= api_url %>/api/user-sources/3" \
+curl -XDELETE "<%= curl_url %>/api/user-sources/3" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
