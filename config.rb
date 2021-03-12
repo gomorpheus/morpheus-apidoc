@@ -99,10 +99,10 @@ set :logo_path, "logo-white.svg"
 set :print_logo_path, "logo.svg"
 
 # The logo in the footer
-set :footer_logo_path, "morpheus_logo_footer.svg"
+set :footer_logo_path, "logo_footer.svg"
 
 # The favicon
-set :favicon_path, "images/morpheus_fav_64.png"
+set :favicon_path, "favicon.png"
 
 
 # Load custom user settings from whitelabel_config.rb
