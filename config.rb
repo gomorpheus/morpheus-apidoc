@@ -35,11 +35,25 @@ end
 
 
 
-# Morpheus Whitelabel Settings
-# adjust these to your liking
-
-# relative filepath of the logo asset
-set :favicon_path, "images/morpheus_fav_64.png"
+# Morpheus API Documentation Settings
+# For whitelabeling, adjust these to match your service.
+#
+# Some documents still refer to Morpheus
+# * [Programming Languages](#programming-languages) The CLI and SDKs all refer to morpheus of course.
+# * [Setup](#setup) refers to the Morpheus Hub, but setup is unlikely needed for your whitelabel API documentation.
+# 
+# To remove these, modify source/index.md.erb to comment out the following includes:
+# - programming_languages
+# - setup
+#
+# Caveats:
+# The Morpheus API does still refer to 'morpheus' in several ways.
+# * Type codes, Default image codes, and other things of that nature.
+#   example: "type": "morpheus" is the default for both Blueprint and Cloud (Zone)
+# * Authentication Client IDs: the string `morph-` is always used as client prefix. 
+#   example: "client_id": "morph-api" is required for authentication.
+# Future versions of the Morpheus appliance may address these issues.
+#
 
 # The title of the site
 set :title, "Morpheus API Documentation"
@@ -59,7 +73,7 @@ set :company_website, "https://www.morpheusdata.com"
 # A domain to use in example email addresses, etc.
 set :example_domain, "gomorpheus.com"
 
-# The API url used to document http request paths
+# The API URL used in the HTTP Request paths to document each api endpoint.
 set :api_url, "https://api.gomorpheus.com"
 
 # The API URL used in shell examples (curl)
@@ -73,3 +87,15 @@ set :api_url_evar, "MORPHEUS_API_URL"
 
 # The name of the API token environment variable
 set :api_token_evar, "MORPHEUS_API_TOKEN"
+
+# The logo in the header
+set :logo_path, "logo-white.svg"
+
+# The logo in the header when printing
+set :print_logo_path, "logo.svg"
+
+# The logo in the footer
+set :footer_logo_path, "morpheus_logo_footer.svg"
+
+# The favicon
+set :favicon_path, "images/morpheus_fav_64.png"
