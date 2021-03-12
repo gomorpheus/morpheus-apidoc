@@ -5,8 +5,8 @@ Provides API interfaces for managing log settings within <%= application_name %>
 ## Get Log Settings
 
 ```shell
-curl "<%= shell_url %>/api/log-settings" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/log-settings" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -49,8 +49,8 @@ This endpoint retrieves log settings.
 ## Update Log Settings
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/log-settings" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/log-settings" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"logSettings": {
         "enabled": true,
@@ -117,8 +117,8 @@ port | - | Port of the integration, required when enabled is true
 ## Add Syslog Rule
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/log-settings/syslog-rules" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/log-settings/syslog-rules" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"syslogRule": {"name": "foo", "rule": "*.* @@bar.com:8080"}}'
 ```
@@ -150,8 +150,8 @@ syslogRule.rule | Y | Syslog rule, example: `*.* @@server:port`
 ## Delete Syslog Rules
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/log-settings/syslog-rules/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/log-settings/syslog-rules/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -7,8 +7,8 @@ Provides API for viewing Network Subnet Types and their configuration options.
 -->
 
 ```shell
-curl "<%= shell_url %>/api/subnet-types"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/subnet-types"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -206,8 +206,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/subnet-types/9" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/subnet-types/9" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

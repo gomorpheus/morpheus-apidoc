@@ -24,7 +24,7 @@ Authorization      | Identifies the <%= application_name %> API access token in 
 ## Get Access Token
 
 ```shell
-curl -XPOST "<%= shell_url %>/oauth/token?grant_type=password&scope=write&client_id=morph-api" \
+curl -XPOST "<%= api_url %>/oauth/token?grant_type=password&scope=write&client_id=morph-api" \
   -d 'username=admin' -d 'password=foobar'
 ```
 
@@ -88,7 +88,7 @@ scope | The scope, this will be `write`.
 ## Refresh Access Token
 
 ```shell
-curl -XPOST "<%= shell_url %>/oauth/token?grant_type=refresh_token&client_id=morph-api&scope=write" \
+curl -XPOST "<%= api_url %>/oauth/token?grant_type=refresh_token&client_id=morph-api&scope=write" \
   -d 'refresh_token=718cc628-b89f-43f5-bef7-f39887b47e68'
 ```
 

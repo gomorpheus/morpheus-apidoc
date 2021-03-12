@@ -5,8 +5,8 @@ These entities define a collection of monitoring checks and/or check groups that
 <!--## Get All Monitor Apps-->
 
 ```shell
-curl "<%= shell_url %>/api/monitoring/apps"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/monitoring/apps"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -81,8 +81,8 @@ phrase |  | If specified will return a partial match on name or email or sms
 ## Get a Specific Monitor App
 
 ```shell
-curl "<%= shell_url %>/api/monitoring/apps/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/monitoring/apps/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -225,8 +225,8 @@ ID | ID of the monitor app
 ## Create a Monitor App
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/monitoring/apps" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/monitoring/apps" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
     "name": "My App Checks",
@@ -255,8 +255,8 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Updating a Monitor App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/monitoring/apps/3" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/monitoring/apps/3" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"monitorApp":{
     "checks": [],
@@ -292,8 +292,8 @@ checkGroups |  | Array of [Check Group](#check-groups) IDs
 ## Mute a Monitor App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/monitoring/apps/1/mute" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -313,8 +313,8 @@ This endpoint can be used to toggle the mute state of a monitor app. This sets `
 ## Unmute a Monitor App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/monitoring/apps/1/mute" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/monitoring/apps/1/mute" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -344,8 +344,8 @@ muted | true | Set to false to unmute
 ## Mute All Monitor Apps
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/monitoring/apps/mute-all" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -375,8 +375,8 @@ This endpoint can be used to toggle the mute state of all monitor apps. This set
 ## Unmute All Monitor App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/monitoring/apps/mute-all" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/monitoring/apps/mute-all" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -396,8 +396,8 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 ## Delete a Monitor App
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/monitoring/apps/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/monitoring/apps/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

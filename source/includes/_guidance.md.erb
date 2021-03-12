@@ -5,8 +5,8 @@ Provides API interfaces for managing guidance within <%= application_name %>
 ## Get All Discoveries
 
 ```shell
-curl "<%= shell_url %>/api/guidance" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/guidance" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -228,8 +228,8 @@ state |  | Filter by state, restricts query to only load discoveries by state: a
 ## Get a Specific Discovery
 
 ```shell
-curl "<%= shell_url %>/api/guidance/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/guidance/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -430,8 +430,8 @@ id | ID of the discovery
 ## Get Guidance Stats
 
 ```shell
-curl "<%= shell_url %>/api/guidance/stats" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/guidance/stats" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -470,8 +470,8 @@ This endpoint retrieves a summary of actionable discoveries.
 ## Get Discovery Types
 
 ```shell
-curl "<%= shell_url %>/api/guidance/types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/guidance/types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -537,8 +537,8 @@ This endpoint retrieves a list of discovery types.
 Use this command to execute a discovery.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/guidance/1/execute" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/guidance/1/execute" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" 
 ```
 
@@ -566,8 +566,8 @@ id | The ID of the discovery
 Use this command to ignore a discovery.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/guidance/1/ignore" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/guidance/1/ignore" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" 
 ```
 

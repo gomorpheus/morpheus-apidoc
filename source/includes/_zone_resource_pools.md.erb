@@ -5,8 +5,8 @@ Resource Pools can be managed for each Compute Zone (Cloud) in your infrastructu
 <!--## Get All Resource Pools for Cloud-->
 
 ```shell
-curl "<%= shell_url %>/api/zones/5/resource-pools"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/5/resource-pools"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -85,8 +85,8 @@ name |  | Filter on exact match of name
 ## Get a Specific Resource Pool
 
 ```shell
-curl "<%= shell_url %>/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -152,8 +152,8 @@ id | The ID of the resource pool to retrieve
 ## Create a Resource Pool
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/zones/5/resource-pools" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/zones/5/resource-pools" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool": {
     "name": "mypool",
@@ -220,8 +220,8 @@ config.auditors      | [] | Array of auditor usernames
 ## Updating a Resource Pool
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"resourcePool":{
     "active": true,
@@ -268,8 +268,8 @@ resourcePermissions.plans  |  | Array of plans that are allowed access
 ## Delete a Resource Pool
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/zones/5/resource-pools/50" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/zones/5/resource-pools/50" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

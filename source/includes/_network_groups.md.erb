@@ -5,8 +5,8 @@ Provides API for managing Network Groups.
 <!--## Get All Network Groups-->
 
 ```shell
-curl "<%= shell_url %>/api/networks/groups"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/groups"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -60,8 +60,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/networks/groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/groups/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -199,8 +199,8 @@ ID | The ID of the Network Group to retrieve
 ## Create a Network Group
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/networks/groups" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/networks/groups" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkGroup": {
@@ -232,8 +232,8 @@ description      |  | Description
 ## Update a Network Group
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/networks/groups/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/networks/groups/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkGroup": {
@@ -268,8 +268,8 @@ Same as [Create](#create-a-network-group).
 ## Delete a Network Group
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/networks/groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/networks/groups/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

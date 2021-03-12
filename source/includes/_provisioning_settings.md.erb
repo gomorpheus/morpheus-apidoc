@@ -5,8 +5,8 @@ Provides API interfaces for managing provisioning settings within <%= applicatio
 ## Get Provisioning Settings
 
 ```shell
-curl "<%= shell_url %>/api/provisioning-settings" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provisioning-settings" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -52,8 +52,8 @@ This endpoint retrieves provisioning settings.
 ## Update Provisioning Settings
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/provisioning-settings" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/provisioning-settings" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "provisioningSettings": {

@@ -7,8 +7,8 @@ Blueprints are templates for creating apps. They are a set of instance configura
 ## Get All Blueprints
 
 ```shell
-curl "<%= shell_url %>/api/blueprints" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/blueprints" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -147,8 +147,8 @@ phrase |  | Filter by wildcard search of name and description
 
 
 ```shell
-curl "<%= shell_url %>/api/blueprints/4" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/blueprints/4" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -269,8 +269,8 @@ This endpoint retrieves a specific blueprint.
 ## Create a Blueprint
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/blueprints" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/blueprints" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -371,8 +371,8 @@ The blueprint `tiers` can be structured so that instance configurations are scop
 ## Updating a Blueprint
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/blueprints/2" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/blueprints/2" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "sample",
@@ -465,8 +465,8 @@ This overwrites the entire config, so the entire blueprint config should be pass
 ## Update Blueprint Permissions
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/blueprints/1/update-permissions" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/blueprints/1/update-permissions" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "resourcePermission": {
     "all":false,
@@ -495,8 +495,8 @@ ownerId  |  | [User](#users) ID, can be used to change blueprint owner.
 ## Update Blueprint Image
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/blueprints/1/image" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPOST "<%= api_url %>/api/blueprints/1/image" \
+  -H "Authorization: BEARER <%= api_token %>"
   -F 'templateImage=@filename'
 ```
 
@@ -518,8 +518,8 @@ Upload a new logo image.  Expects multipart form data as the request format, not
 ## Delete a Blueprint
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/blueprints/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/blueprints/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

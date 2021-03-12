@@ -5,8 +5,8 @@ Provides API interfaces for checking health status.  This is the status of the <
 ## Get Health Status
 
 ```shell
-curl "<%= shell_url %>/api/health" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/health" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -57,8 +57,8 @@ This endpoint retrieves health info about the <%= application_name %> appliance 
 ## Get All Health Alarms
 
 ```shell
-curl "<%= shell_url %>/api/health/alarms" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/health/alarms" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -99,8 +99,8 @@ acknowledged |  | Filter by acknowledged flag
 ## Get a Specific Health Alarm
 
 ```shell
-curl "<%= shell_url %>/api/health/alarms/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/health/alarms/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -132,8 +132,8 @@ ID | The ID of the alarm
 ## Acknowledge a Health Alarm
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/health/alarms/1/acknowledge" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/health/alarms/1/acknowledge" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"alarm":{
     "acknowledged": true,
@@ -170,8 +170,8 @@ acknowledged      |  | Pass `true` to ackowledge an alarm, or pass `false` to un
 ## Acknowledge Many Health Alarms
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/health/alarms/acknowledge" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/health/alarms/acknowledge" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "ids": [1,2,3,4,5],
@@ -205,8 +205,8 @@ acknowledged      | true | Pass `false` to unacknowledge the alarm(s) instead of
 ## Get All Health Logs
 
 ```shell
-curl "<%= shell_url %>/api/health/logs" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/health/logs" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

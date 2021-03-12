@@ -26,8 +26,8 @@ leaseToken | URL Parameter | An execution lease token.
 ## List Cypher Keys
 
 ```shell
-curl -XLIST "<%= shell_url %>/api/cypher?list=true" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XLIST "<%= api_url %>/api/cypher?list=true" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,8 +97,8 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 
 
 ```shell
-curl "<%= shell_url %>/api/cypher/secret/foo" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/cypher/secret/foo" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -148,7 +148,7 @@ readonly | false | Do not automatically create a key. This only applies to mount
 ## Read a Cypher with Lease
 
 ```shell
-curl "<%= shell_url %>/api/cypher/password/15/mypassword" \
+curl "<%= api_url %>/api/cypher/password/15/mypassword" \
   -H "X-Lease-Token: 6f4d3563-22ef-404f-8b81-c13d093cd55a"
 ```
 
@@ -190,8 +190,8 @@ ttl | `0` | Time to Live. The lease duration in seconds, or a human readable for
 ## Write a Cypher
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/cypher/secret/foo" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/cypher/secret/foo" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"foo":"bar", "zip":"zap"}'
 ```
@@ -267,8 +267,8 @@ Year      | 31536000000
 ## Delete a Cypher
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/cypher/secret/foo" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/cypher/secret/foo" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

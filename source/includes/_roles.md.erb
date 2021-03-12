@@ -5,8 +5,8 @@ Provides API interfaces for managing the creation and modification of roles with
 ## Get All Roles
 
 ```shell
-curl "<%= shell_url %>/api/roles"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/roles"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -79,8 +79,8 @@ authority |  | Filter by authority
 ## Get a Specific Role
 
 ```shell
-curl "<%= shell_url %>/api/roles/3" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/roles/3" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -213,8 +213,8 @@ This endpoint will retrieve a specific role by id if the user has permission to 
 ## Create a Role
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/roles" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/roles" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
@@ -246,8 +246,8 @@ defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatal
 ## Updating Basic Role Settings
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"role":{
     "authority": "Test Role",
@@ -275,8 +275,8 @@ defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatal
 ## Updating Role Feature Permissions
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "admin-users",
@@ -309,8 +309,8 @@ access     |  | The new access level. **full**, **read**, **none**
 > Global Group Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "ComputeSite",
@@ -334,8 +334,8 @@ access     |  | **full**, **custom**, **read**, or **none**
 > Global Group Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-group" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-group" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "groupId": 2,
@@ -368,8 +368,8 @@ access     |  | **full**, **read**, or **none**
 > Global Cloud Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "ComputeZone",
@@ -393,8 +393,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Cloud Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-cloud" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-cloud" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "cloudId": 2,
@@ -427,8 +427,8 @@ access     |  | **full**, **read**, or **none**
 > Global Instance Type Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "InstanceType",
@@ -452,8 +452,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Instance Type Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-instance-type" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-instance-type" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "instanceTypeId": 1,
@@ -486,8 +486,8 @@ access     |  | **full** or **none**
 > Global Blueprint Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "AppTemplate",
@@ -511,8 +511,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Blueprint Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-blueprint" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-blueprint" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "appTemplateId": 2,
@@ -556,8 +556,8 @@ access     |  | **full**, **read**, or **none**
 > Global Catalog Item Type Access is controlled via the **update-permission** API
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-permission" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "permissionCode": "CatalogItemType",
@@ -581,8 +581,8 @@ access     |  | **full**, **custom**, or **none**
 > Global Catalog Item Type Access must first be changed to **custom** as seen above.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-catalog-item-type" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-catalog-item-type" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "catalogItemTypeId": 1,
@@ -614,8 +614,8 @@ access     |  | **full** or **none**
 ## Customizing Persona Access
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/roles/4/update-persona" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/roles/4/update-persona" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "personaCode": "serviceCatalog",
@@ -646,8 +646,8 @@ access     |  | **full** or **none**
 ## Delete a Role
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/roles/4" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/roles/4" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

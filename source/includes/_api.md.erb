@@ -3,8 +3,8 @@
 The <%= application_name %> API is an HTTP interface for interacting with the [<%= application_name %>](<%= company_website %>) appliance. It provides a RESTful interface where `GET` reads, `POST` creates, `PUT` updates and `DELETE` destroys resources.
 
 ```shell
-curl "<%= shell_url %>/api/users/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -16,7 +16,7 @@ curl "<%= shell_url %>/api/users/1" \
     "accountId": 1,
     "username": "admin",
     "displayName": "<%= application_name %> Admin",
-    "email": "admin@<%= example_domain %>",
+    "email": "admin@<%= company_domain %>",
     "firstName": "<%= application_name %>",
     "lastName": "Admin",
     "dateCreated": "2017-03-16T21:26:39+0000",
@@ -95,8 +95,8 @@ This is an example of an API response that retrieves a [Contact](#contacts) reco
 #### Example
 
 ```shell
-curl "<%= shell_url %>/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/monitoring/contacts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns HTTP 200 and JSON structured like this:
@@ -106,7 +106,7 @@ curl "<%= shell_url %>/api/monitoring/contacts/1" \
   "contact": {
     "id": 1,
     "name": "<%= application_name %> Admin",
-    "emailAddress": "admin@<%= example_domain %>",
+    "emailAddress": "admin@<%= company_domain %>",
     "smsAddresss": null
   }
 }
@@ -117,8 +117,8 @@ This is an example of a successful response that contains the specified record.
 #### Error Example
 
 ```shell
-curl "<%= shell_url %>/api/monitoring/contacts/999999" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/monitoring/contacts/999999" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 
@@ -132,21 +132,3 @@ curl "<%= shell_url %>/api/monitoring/contacts/999999" \
 ```
 
 This is an example of a 404 error response returned when the specified record was not found.
-
-## Environment Variables
-
-```bash
-export <%= api_url_evar %>="<%= api_url %>"
-export <%= api_token_evar %>="e1d62c34-f7f5-4713-a874-31491e7707de"
-```
-
-The following environment variables are used throughout the examples in this document.
-
-Environment Variable | Description
---------- | ------- | -----------
-<%= api_url_evar %> | The URL of your appliance. Example: <code><%= api_url %></code>
-<%= api_token_evar %> | Your access token. Example: <code>e1d62c34-f7f5-4713-a874-31491e7707de</code>. See [Get Access Token](#get-access-token).
-
-<aside class="info">
-As always, be careful not to copy and execute request examples in sensitive environments, such as production.
-</aside>

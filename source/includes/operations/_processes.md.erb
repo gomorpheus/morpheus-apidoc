@@ -5,8 +5,8 @@ Provides API interfaces for viewing the process history for instances.
 ## Get All Processes
 
 ```shell
-curl "<%= shell_url %>/api/processes" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/processes" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -89,8 +89,8 @@ appId |  | Filter by app id(s)
 ## Get a Specific Process
 
 ```shell
-curl "<%= shell_url %>/api/processes/250" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/processes/250" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -495,8 +495,8 @@ ID | The ID of the process
 ## Get a Specific Process Event
 
 ```shell
-curl "<%= shell_url %>/api/processes/events/940" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/processes/events/940" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

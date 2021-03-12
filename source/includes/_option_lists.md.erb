@@ -7,8 +7,8 @@ An Option List may also be referred to as an *Option Type List* or *optionTypeLi
 ## Get All Option Lists
 
 ```shell
-curl "<%= shell_url %>/api/library/option-type-lists" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/option-type-lists" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -110,8 +110,8 @@ name |  | Name filter, restricts query to only load option list of specified nam
 ## Get a Specific Option List
 
 ```shell
-curl "<%= shell_url %>/api/library/option-type-lists/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/option-type-lists/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,8 +175,8 @@ id | ID of the option list
 Use this command to create an option list.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/option-type-lists" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/option-type-lists" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "optionTypeList": {
@@ -249,8 +249,8 @@ masked | N | Can be used to enable / disable masking of value, default is off
 Use this command to update an existing option list.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/option-type-lists/:id" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/library/option-type-lists/:id" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "optionTypeList": {
@@ -311,8 +311,8 @@ config.sourceHeaders | N | Array of source headers to use when requesting data.,
 ## Delete an Option List
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/option-type-lists/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/option-type-lists/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

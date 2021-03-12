@@ -5,8 +5,8 @@ Provides API interfaces for viewing billing usage information by tenant, zone, i
 ## Billing By Tenant
 
 ```shell
-curl "<%= shell_url %>/api/billing/account" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/account" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -75,8 +75,8 @@ Will retrieve billing information for a specific tenant, if it is the current ac
 user's account.
 
 ```shell
-curl "<%= shell_url %>/api/billing/account/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/account/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -142,8 +142,8 @@ offsetUsages | null                       | Optional ability to offset the usage
 ## Billing For All Zones
 
 ```shell
-curl "<%= shell_url %>/api/billing/zones" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/zones" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -208,8 +208,8 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For a Specific Zone
 
 ```shell
-curl "<%= shell_url %>/api/billing/zones/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/zones/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -272,8 +272,8 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For All Servers
 
 ```shell
-curl "<%= shell_url %>/api/billing/servers" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/servers" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -326,8 +326,8 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For a Specific Server
 
 ```shell
-curl "<%= shell_url %>/api/billing/servers/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/servers/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -372,8 +372,8 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For All Instances
 
 ```shell
-curl "<%= shell_url %>/api/billing/instances" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/instances" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -424,8 +424,8 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For a Specific Instance
 
 ```shell
-curl "<%= shell_url %>/api/billing/instances/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/billing/instances/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

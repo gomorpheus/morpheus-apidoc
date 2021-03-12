@@ -75,22 +75,13 @@ set :company_name, "Morpheus Data"
 set :company_website, "https://www.morpheusdata.com"
 
 # A domain to use in example email addresses, etc.
-set :example_domain, "gomorpheus.com"
+set :company_domain, "morpheusdata.com"
 
-# The API URL used in the HTTP Request paths to document each api endpoint.
-set :api_url, "https://api.gomorpheus.com"
+# The base url used to document each HTTP Request path and used in shell examples
+set :api_url, "https://api.morpheusdata.com"
 
-# The API URL used in shell examples (curl)
-set :shell_url, "$MORPHEUS_API_URL"
-
-# The API Token used in shell examples (curl)
-set :shell_token, "$MORPHEUS_API_TOKEN"
-
-# The name of the API URL environment variable
-set :api_url_evar, "MORPHEUS_API_URL"
-
-# The name of the API token environment variable
-set :api_token_evar, "MORPHEUS_API_TOKEN"
+# The API Token used in shell examples (curl), never a real valid token of course
+set :api_token, "********-****-****-****-************"
 
 # The logo in the header
 set :logo_path, "logo-white.svg"

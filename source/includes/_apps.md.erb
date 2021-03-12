@@ -5,8 +5,8 @@ Apps are groupings of instances that are linked together to form a full applicat
 ## Get All Apps
 
 ```shell
-curl "<%= shell_url %>/api/apps" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/apps" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -115,8 +115,8 @@ showDeleted | false | If true, includes apps in pending removal status.
 
 
 ```shell
-curl "<%= shell_url %>/api/apps/4" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/apps/4" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -211,8 +211,8 @@ Parameter | Description
 ## Create an App
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/apps" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/apps" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "blueprintId": "existing",
@@ -243,8 +243,8 @@ environment |  | Environment code (appContext)
 ## Updating an App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/apps/2" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/apps/2" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "My Sample App",
@@ -278,8 +278,8 @@ ownerId  |  | [User](#users) ID, can be used to change app owner. This also chan
 ## Add Existing Instance to App
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/apps/1/add-instance" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/apps/1/add-instance" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"instanceId": 55, tierName: "App"}'
 ```
@@ -307,8 +307,8 @@ tierName     |  | The Name of the Tier
 ## Remove Instance from App
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/apps/1/remove-instance" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/apps/1/remove-instance" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"instanceId": 55}'
 ```
@@ -336,7 +336,7 @@ instanceId  |  | The ID of the instance being removed
 
 ```shell
 curl -XGET "<%= api_url %>/api/apps/1/security-groups" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -371,8 +371,8 @@ Parameter | Description
 ## Set Security Groups
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/apps/1/security-groups" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/apps/1/security-groups" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```
@@ -398,8 +398,8 @@ securityGroupIds |  | List of all security groups ids which should be applied.  
 ## Delete an App
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/apps/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/apps/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -437,8 +437,8 @@ force | off | Force Delete
 ## Undo Delete of an App
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/apps/2/cancel-removal" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/apps/2/cancel-removal" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json"
 ```
 

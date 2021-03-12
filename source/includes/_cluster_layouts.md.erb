@@ -5,8 +5,8 @@ Provides API interfaces for managing cluster layouts within <%= application_name
 ## Get All Cluster Layouts
 
 ```shell
-curl "<%= shell_url %>/api/library/cluster-layouts" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/cluster-layouts" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -194,8 +194,8 @@ provisionType |  | Provision type code filter, restricts query to only load clus
 ## Get a Specific Cluster Layout
 
 ```shell
-curl "<%= shell_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/cluster-layouts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -335,8 +335,8 @@ id | ID of the cluster layout
 Use this command to create a cluster layout.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/cluster-layouts" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/cluster-layouts" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"layout": {
        "name": "Stubby Toes Docker Cluster",
@@ -456,8 +456,8 @@ containerType.id | Y | Container type ID
 Use this command to update an existing cluster layout.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/library/cluster-layouts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
         "name": "Cluster Name",
@@ -552,8 +552,8 @@ workers | N | Array of cluster layout worker nodes, see [Nodes](#nodes)
 Use this command to clone a cluster layout.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/cluster-layouts/7/clone" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/cluster-layouts/7/clone" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json"
 ```
 
@@ -582,8 +582,8 @@ computeVersion | N | Version of cluster layout. Defaults to cloned layout versio
 ## Delete a Cluster Layout
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/cluster-layouts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

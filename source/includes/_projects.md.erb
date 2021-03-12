@@ -5,8 +5,8 @@
 ## Get All Projects
 
 ```shell
-curl "<%= shell_url %>/api/projects"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/projects"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -124,8 +124,8 @@ id |  | Filter by Project id(s)
 
 
 ```shell
-curl "<%= shell_url %>/api/projects/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/projects/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -193,8 +193,8 @@ ID | The ID of the project
 ## Create a Project
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/projects" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/projects" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
     "name": "Test Project",
@@ -230,8 +230,8 @@ resources |  | Resources, Array of objects having an id. These are discovered Ac
 ## Update a Project
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/projects/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/projects/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
     "addInstances":[
@@ -279,8 +279,8 @@ removeResources |  | Remove Resources from the project, Array of objects having 
 ## Delete a Project
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/projects/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/projects/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

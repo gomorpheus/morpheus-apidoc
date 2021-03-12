@@ -5,8 +5,8 @@ Provides API interfaces for viewing account invoices.
 ## Get All Invoices
 
 ```shell
-curl "<%= shell_url %>/api/invoices" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/invoices" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -202,8 +202,8 @@ tags |  | Filter by tags (metadata). This allows filtering by a tag name and val
 ## Get a Specific Invoice
 
 ```shell
-curl "<%= shell_url %>/api/invoices/11868" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/invoices/11868" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -371,8 +371,8 @@ id | ID of the invoice
 ## Update Invoice Tags
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/invoices/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/invoices/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "invoice": {
   "addTags": [
@@ -409,8 +409,8 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 ## Get All Invoice Line Items
 
 ```shell
-curl "<%= shell_url %>/api/invoice-line-items" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/invoice-line-items" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -534,8 +534,8 @@ includeTotals | false | Pass true to include the summed totals (cost/price value
 ## Get a Specific Invoice Line Item
 
 ```shell
-curl "<%= shell_url %>/api/invoice-line-items/678" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/invoice-line-items/678" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

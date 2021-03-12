@@ -5,8 +5,8 @@ Provides API interfaces for managing provisioning licenses within <%= applicatio
 ## Get All Licenses
 
 ```shell
-curl "<%= shell_url %>/api/provisioning-licenses" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provisioning-licenses" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -106,8 +106,8 @@ fullName |  | If specified will return an exact match on fullName
 ## Get a Specific License
 
 ```shell
-curl "<%= shell_url %>/api/provisioning-licenses/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provisioning-licenses/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -162,8 +162,8 @@ id | ID of the license
 ## Get Reservations for Specific License
 
 ```shell
-curl "<%= shell_url %>/api/provisioning-licenses/2/reservations" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provisioning-licenses/2/reservations" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -200,8 +200,8 @@ id | ID of the license
 Use this command to create a new license.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/provisioning-licenses" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/provisioning-licenses" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "license": {
@@ -253,8 +253,8 @@ tenants | N | Tenants - Array of tenants that are allowed to use the key.
 ## Update a License
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/provisioning-licenses/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/provisioning-licenses/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{
     "license": {
@@ -301,8 +301,8 @@ tenants | Tenants - Array of tenants that are allowed to use the key.
 ## Delete a License
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/provisioning-licenses/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/provisioning-licenses/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -5,8 +5,8 @@ Users are meant to represent people or services that will be using the <%= appli
 ## Get All Users
 
 ```shell
-curl "<%= shell_url %>/api/users"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -77,8 +77,8 @@ global | false | Global (All Tenants), load users from all tenants. The default 
 ## Get All Users Across All Tenants
 
 ```shell
-curl "<%= shell_url %>/api/users?global=true"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users?global=true"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like Get All Users for a Tenant
@@ -96,8 +96,8 @@ The same as [Get All Users](#Get-All-Users).
 ## Get a Specific User
 
 ```shell
-curl "<%= shell_url %>/api/users/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -194,12 +194,12 @@ includeAccess |  | Include access the user payload
 ## Create a User
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/users" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/users" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testuser",
-    "email": "testuser@<%= example_domain %>",
+    "email": "testuser@<%= company_domain %>",
     "firstName": "Test",
     "lastName": "User",
     "password": "aStr0ngp@ssword",
@@ -239,12 +239,12 @@ windowsPassword  |  | Windows Password, user settings for provisioning
 ## Create a User For a Tenant
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/accounts/2/users" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/accounts/2/users" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testuser",
-    "email": "testuser@<%= example_domain %>",
+    "email": "testuser@<%= company_domain %>",
     "firstName": "Test",
     "lastName": "User",
     "password": "aStr0ngp@ssword",
@@ -275,8 +275,8 @@ See [Get Available Roles for a Sub Tenant User](#get-available-roles-for-a-sub-t
 ## Updating a User
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/users/2" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/users/2" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"user":{
     "username": "testUser",
@@ -316,8 +316,8 @@ Update a user.
 ## Delete a User
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/users/99" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/users/99" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -338,8 +338,8 @@ Delete a user.  This will disassociate the user from any instances they have pre
 ## Get a Specific User Permissions
 
 ```shell
-curl "<%= shell_url %>/api/users/1/permissions" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users/1/permissions" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -409,8 +409,8 @@ This will list all the permissions for a specific user.
 ## Get Available Roles for a User
 
 ```shell
-curl "<%= shell_url %>/api/users/available-roles" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users/available-roles" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -454,8 +454,8 @@ accountId      | (current tenant) | ID of Tenant *Only available to the master a
 ## Get Available Roles for a Sub Tenant User
 
 ```shell
-curl "<%= shell_url %>/api/users/available-roles?accountId={accountId}" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/users/available-roles?accountId={accountId}" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

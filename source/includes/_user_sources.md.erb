@@ -10,8 +10,8 @@ An Identity Source may also be referred to as a *User Source* or *userSource*.
 ## Get All Identity Sources
 
 ```shell
-curl "<%= shell_url %>/api/user-sources"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/user-sources"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -326,8 +326,8 @@ accountId |  | Filter on a Tenant ID. *Only available to the master tenant.*
 ## Get a Specific Identity Source
 
 ```shell
-curl "<%= shell_url %>/api/user-sources/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/user-sources/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -400,8 +400,8 @@ ID | The ID of the identity source
 ## Create an Identity Source
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/accounts/60/user-sources" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/accounts/60/user-sources" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "userSource": {
@@ -409,7 +409,7 @@ curl -XPOST "<%= shell_url %>/api/accounts/60/user-sources" \
     "name": "Ninja AD",
     "config": {
       "url": "10.10.10.22",
-      "domain": "ad.<%= example_domain %>",
+      "domain": "ad.<%= company_domain %>",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
@@ -527,8 +527,8 @@ config.encryptionKey      |  | Encryption Key
 ## Updating an Identity Source
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/user-sources/3" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/user-sources/3" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "userSource": {
@@ -536,7 +536,7 @@ curl -XPUT "<%= shell_url %>/api/user-sources/3" \
     "name": "Ninja AD",
     "config": {
       "url": "10.10.10.22",
-      "domain": "ad.<%= example_domain %>",
+      "domain": "ad.<%= company_domain %>",
       "useSSL": "on",
       "bindingUsername": "adadmin",
       "bindingPassword": "96119ec75001",
@@ -577,8 +577,8 @@ config | | Map of configuration options which vary by type.
 ## Updating Subdomain for an Identity Source
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/user-sources/3/subdomain" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/user-sources/3/subdomain" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"subdomain": "ninjas"}'
 ```
@@ -612,8 +612,8 @@ This endpoint updates the subdomain for the account associated with the user sou
 ## Delete an Identity Source
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/user-sources/3" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/user-sources/3" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

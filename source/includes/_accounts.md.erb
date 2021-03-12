@@ -11,8 +11,8 @@ A Tenant may also be referred to as an *Account* or *account*.
 ## Get All Tenants
 
 ```shell
-curl "<%= shell_url %>/api/accounts" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/accounts" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ lastUpdated |  | Date filter, restricts query to only load tenants updated more 
 ## Get a Specific Tenant
 
 ```shell
-curl "<%= shell_url %>/api/accounts/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/accounts/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -144,8 +144,8 @@ This endpoint will retrieve a specific account by ID.
 ## Create a Tenant
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/accounts" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/accounts" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
     "name": "Acme",
@@ -185,8 +185,8 @@ accountName |  | Account Name, an optional field that can be used for billing an
 ## Updating a Tenant
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/accounts/3" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/accounts/3" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
     "name": "Batman",
@@ -226,8 +226,8 @@ accountName |  | Account Name, an optional field that can be used for billing an
 ## Delete a Tenant
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/accounts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/accounts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -250,8 +250,8 @@ If a tenant still has users or instances tied to it, The delete will fail.
 ## Get Available Roles for a Tenant
 
 ```shell
-curl "<%= shell_url %>/api/accounts/available-roles" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/accounts/available-roles" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

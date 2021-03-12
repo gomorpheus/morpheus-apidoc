@@ -7,8 +7,8 @@ This document is for the <%= application_name %> API version <b><%= Morpheus::Ap
 You can determine your current version using [Ping](#ping).
 
 ```shell
-curl -XGET "<%= shell_url %>/api/ping" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XGET "<%= api_url %>/api/ping" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

@@ -7,8 +7,8 @@ This is the adminstrative api for the Tools: Self Service functionality.
 ## Get All Catalog Item Types
 
 ```shell
-curl "<%= shell_url %>/api/catalog-item-types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/catalog-item-types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -173,8 +173,8 @@ featured |  | Filter by featured, eg. `true` or `false`
 ## Get a Specific Catalog Item Type
 
 ```shell
-curl "<%= shell_url %>/api/catalog-item-types/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/catalog-item-types/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -256,8 +256,8 @@ id | ID of the Catalog Item Type
 ## Create a Catalog Item Type
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/catalog-item-types" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "catalogItemType": {
@@ -386,8 +386,8 @@ tiers | N | Object with each key is a tier name and its value is the tier config
 ## Create a Catalog Item Type For Blueprint
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/catalog-item-types" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "catalogItemType": {
@@ -431,8 +431,8 @@ See [Create](#create-a-catalog-item-type).
 ## Create a Catalog Item Type For Workflow
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/catalog-item-types" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/catalog-item-types" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "catalogItemType": {
@@ -471,8 +471,8 @@ See [Create](#create-a-catalog-item-type).
 ## Update a Catalog Item Type
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/catalog-item-types/:id" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/catalog-item-types/:id" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "catalogItemType": {
@@ -521,8 +521,8 @@ context | N | Context for running the workflow, determines if a target resource 
 ## Delete a Catalog Item Type
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/catalog-item-types/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/catalog-item-types/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

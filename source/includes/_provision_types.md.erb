@@ -6,8 +6,8 @@
 Fetch the list of available provision types.
 
 ```shell
-curl "<%= shell_url %>/api/provision-types"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provision-types"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -208,8 +208,8 @@ code |  | Code filter, restricts query to only load type matching code specified
 ## Get Specific Provision Type
 
 ```shell
-curl "<%= shell_url %>/api/provision-types/9"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/provision-types/9"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this

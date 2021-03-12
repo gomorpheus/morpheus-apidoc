@@ -7,8 +7,8 @@ A File Template may also be referred to as a *Container Template* or *containerT
 ## Get All File Templates
 
 ```shell
-curl "<%= shell_url %>/api/library/container-templates" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-templates" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -75,8 +75,8 @@ fileName |  | Filename filter, restricts query to only load file template matchi
 ## Get a Specific File Template
 
 ```shell
-curl "<%= shell_url %>/api/library/container-templates/27" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-templates/27" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -128,8 +128,8 @@ id | ID of the file template
 Use this command to create a file template.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/container-templates" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/container-templates" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
     "templatePhase": "provision",
@@ -173,8 +173,8 @@ settingCategory | N | Setting Category
 Use this command to update an existing file template.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/container-templates/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/library/container-templates/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
     "name":"appconfig.yml"
@@ -218,8 +218,8 @@ settingCategory | N | Setting Category
 ## Delete a File Template
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/container-templates/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/container-templates/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

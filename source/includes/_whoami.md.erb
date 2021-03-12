@@ -1,8 +1,8 @@
 ## Whoami
 
 ```shell
-curl "<%= shell_url %>/api/whoami" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/whoami" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -14,7 +14,7 @@ curl "<%= shell_url %>/api/whoami" \
     "accountId": 1,
     "username": "test",
     "displayName": "Test U",
-    "email": "testuser@<%= example_domain %>",
+    "email": "testuser@<%= company_domain %>",
     "firstName": "Test",
     "lastName": "User",
     "dateCreated": "2016-08-27T19:28:09+0000",

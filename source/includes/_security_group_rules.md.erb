@@ -5,8 +5,8 @@ A Security Group Rule specifies that a certain CIDR is able to access a particul
 <!--## Get All Security Group Rules for a Security Group-->
 
 ```shell
-curl "<%= shell_url %>/api/security-groups/19/rules"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/security-groups/19/rules"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +73,8 @@ This endpoint retrieves all security group rules for a Security Gorup.
 ## Get a Specific Security Group Rule
 
 ```shell
-curl "<%= shell_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -115,8 +115,8 @@ This endpoint retrieves a specific security group rule.
 ## Create a Security Group Rule
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/security-groups/19/rules" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/security-groups/19/rules" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "name": "port 55",
@@ -162,8 +162,8 @@ instanceTypeId |  | The id of an Instance Type.  If specified, the source CIDR w
 ## Updating a Security Group Rule
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "portRange": "55-56"
@@ -185,8 +185,8 @@ Same parameters as specified in the creation of a Security Group Rule
 ## Delete a Security Group Rule
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

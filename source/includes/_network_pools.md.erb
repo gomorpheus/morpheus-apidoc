@@ -5,8 +5,8 @@ Provides API for managing Network Pools.
 ## Get All Network Pools
 
 ```shell
-curl "<%= shell_url %>/api/networks/pools"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/pools"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -99,8 +99,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/networks/pools/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/pools/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -185,8 +185,8 @@ ID | The ID of the Network Pool to retrieve
 ## Create a Network Pool
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/networks/pools" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/networks/pools" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkPool": {
@@ -230,8 +230,8 @@ endAddress | Y | Ending IP Address
 ## Update a Network Pool
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/networks/pools/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/networks/pools/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkPool": {
@@ -259,8 +259,8 @@ Same as [Create](#create-a-network-pool).
 ## Delete a Network Pool
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/networks/pools/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/networks/pools/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

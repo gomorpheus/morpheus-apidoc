@@ -5,8 +5,8 @@
 ## Get All Wiki Pages
 
 ```shell
-curl "<%= shell_url %>/api/wiki/pages"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/wiki/pages"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ phrase |  | If specified will return a partial match on name
 ## Get All Wiki Categories
 
 ```shell
-curl "<%= shell_url %>/api/wiki/categories"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/wiki/categories"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -153,8 +153,8 @@ pagePhrase |  | If specified will return a partial match on page name
 ## Get a Specific Wiki Page
 
 ```shell
-curl "<%= shell_url %>/api/wiki/pages/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/wiki/pages/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -201,8 +201,8 @@ ID | The ID of the Wiki Page
 ## Create a Wiki Page
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/wiki/pages" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/wiki/pages" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "name": "Sample Doc",
@@ -229,8 +229,8 @@ content |  | The content of the page (markdown).
 ## Update a Wiki Page
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/wiki/pages/4" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/wiki/pages/4" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "#Sample Doc\nAn updated sample document in **markdown**.\nCheers!"
@@ -260,8 +260,8 @@ content |  | The content of the page (markdown).
 ## Delete a Wiki Page
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/wiki/pages/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/wiki/pages/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page
@@ -289,8 +289,8 @@ ID | The ID of the Wiki Page
 ## Get a Wiki Page For Instance
 
 ```shell
-curl "<%= shell_url %>/api/instances/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -311,8 +311,8 @@ ID | The ID of the Instance
 ## Update a Wiki Page For Instance
 
 ```shell
-curl -XPUT "<%= shell_url %>/instances/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/instances/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this instance."
@@ -346,8 +346,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For App
 
 ```shell
-curl "<%= shell_url %>/api/apps/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/apps/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -368,8 +368,8 @@ ID | The ID of the App
 ## Update a Wiki Page For App
 
 ```shell
-curl -XPUT "<%= shell_url %>/apps/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/apps/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this app."
@@ -402,8 +402,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Cluster
 
 ```shell
-curl "<%= shell_url %>/api/clusters/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/clusters/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -424,8 +424,8 @@ ID | The ID of the Cluster
 ## Update a Wiki Page For Cluster
 
 ```shell
-curl -XPUT "<%= shell_url %>/clusters/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/clusters/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this cluster."
@@ -457,8 +457,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Server
 
 ```shell
-curl "<%= shell_url %>/api/servers/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/servers/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -479,8 +479,8 @@ ID | The ID of the Server
 ## Update a Wiki Page For Server
 
 ```shell
-curl -XPUT "<%= shell_url %>/servers/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/servers/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this server."
@@ -514,8 +514,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Cloud
 
 ```shell
-curl "<%= shell_url %>/api/zones/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -536,8 +536,8 @@ ID | The ID of the Cloud
 ## Update a Wiki Page For Cloud
 
 ```shell
-curl -XPUT "<%= shell_url %>/zones/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/zones/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this cloud."
@@ -570,8 +570,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Group
 
 ```shell
-curl "<%= shell_url %>/api/groups/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/groups/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -592,8 +592,8 @@ ID | The ID of the Group
 ## Update a Wiki Page For Group
 
 ```shell
-curl -XPUT "<%= shell_url %>/groups/1/wiki" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/groups/1/wiki" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this group."

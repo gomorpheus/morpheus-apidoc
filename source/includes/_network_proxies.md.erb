@@ -5,8 +5,8 @@ Provides API for managing Network Proxies.
 ## Get All Network Proxies
 
 ```shell
-curl "<%= shell_url %>/api/networks/proxies"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/proxies"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -61,8 +61,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/networks/proxies/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/proxies/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -108,8 +108,8 @@ ID | The ID of the Network Proxy to retrieve
 ## Create a Network Proxy
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/networks/proxies" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/networks/proxies" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkProxy": {
@@ -146,8 +146,8 @@ account.id |  | Tenant Account ID
 ## Update a Network Proxy
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/networks/proxies/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/networks/proxies/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkProxy": {
@@ -175,8 +175,8 @@ Same as [Create](#create-a-network-proxy).
 ## Delete a Network Proxy
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/networks/proxies/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/networks/proxies/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

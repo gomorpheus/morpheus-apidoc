@@ -7,8 +7,8 @@
 ## Get All Hosts
 
 ```shell
-curl "<%= shell_url %>/api/servers"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/servers"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -239,8 +239,8 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 
 
 ```shell
-curl "<%= shell_url %>/api/servers/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/servers/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -439,7 +439,7 @@ ID | ID of the check to retrieve
 
 ```shell
 curl -XGET "<%= api_url %>/api/servers/service-plans?zoneId=2&serverTypeId=60" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -601,8 +601,8 @@ siteId | N | The ID of the [Group](#groups)
 ## Provision a Host
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/servers" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/servers" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "name": "my-nginx",
@@ -640,8 +640,8 @@ dataDevice  |  | the mount point for the lvm volume that needs to be created
 ## Updating a Host
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/servers/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/servers/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "name": "my-nginx",
@@ -677,8 +677,8 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 ## Convert To Managed
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/servers/1/make-managed" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/servers/1/make-managed" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "server": {
   "sshUsername": "admin",
@@ -725,8 +725,8 @@ provisionSiteId |  | Specific group to assign the server
 ## Upgrade Agent
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/servers/1/upgrade" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/servers/1/upgrade" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -746,8 +746,8 @@ This will upgrade the version of the install installed on the host.
 ## Resize a Host
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/servers/1/resize" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/servers/1/resize" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{
     "server": {
@@ -798,7 +798,7 @@ deleteOriginalVolumes | false | Delete the original volumes after resizing. (Ama
 
 ```shell
 curl -X PUT "<%= api_url %>/api/servers/1/start" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -825,7 +825,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/servers/1/stop" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -852,7 +852,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/servers/1/workflow?workflowId=33" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -d '{ "taskSet": {
     "customOptions": {"mysqlVersion":"5.6.17"}
     }}'
@@ -898,8 +898,8 @@ taskSet.customOptions      |  | Object containing any custom option type configu
 ## Get list of snapshots for a Host
 
 ```shell
-curl "<%= shell_url %>/api/servers/:id/snapshots" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/servers/:id/snapshots" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -924,8 +924,8 @@ Parameter | Description
 ## Assign To Tenant
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/servers/1/assign-account?accountId=2" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/servers/1/assign-account?accountId=2" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -959,8 +959,8 @@ Parameter | Description
 ## Delete a Host
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/servers/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/servers/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

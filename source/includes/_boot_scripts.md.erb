@@ -5,8 +5,8 @@ Boot Scripts are used in the Image Builder service. See [Image Builds](#image-bu
 <!--## Get All Boot Scripts-->
 
 ```shell
-curl "<%= shell_url %>/api/boot-scripts" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/boot-scripts" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -55,8 +55,8 @@ phrase |  | If specified will return a partial match on fileName
 
 
 ```shell
-curl "<%= shell_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/boot-scripts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -97,13 +97,13 @@ ID | The ID of the boot script to retrieve
 ## Create a Boot Script
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/boot-scripts" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/boot-scripts" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
     "fileName": "debian standard",
-    "content": "<esc><wait>install <wait> preseed/url=<%%=preseedUrl%> <wait>debian-installer=en_US.UTF-8 <wait>auto <wait>locale=en_US.UTF-8 <wait>kbd-chooser/method=us <wait>keyboard-configuration/xkb-keymap=us <wait>netcfg/get_hostname=<%%=container.hostname%> <wait>netcfg/get_domain=<%= example_domain %> <wait>fb=false <wait>debconf/frontend=noninteractive <wait>console-setup/ask_detect=false <wait>console-keymaps-at/keymap=us <wait>grub-installer/bootdev=/dev/sda <wait><enter><wait>"
+    "content": "<esc><wait>install <wait> preseed/url=<%%=preseedUrl%> <wait>debian-installer=en_US.UTF-8 <wait>auto <wait>locale=en_US.UTF-8 <wait>kbd-chooser/method=us <wait>keyboard-configuration/xkb-keymap=us <wait>netcfg/get_hostname=<%%=container.hostname%> <wait>netcfg/get_domain=<%= company_domain %> <wait>fb=false <wait>debconf/frontend=noninteractive <wait>console-setup/ask_detect=false <wait>console-keymaps-at/keymap=us <wait>grub-installer/bootdev=/dev/sda <wait><enter><wait>"
   }
 }'
 ```
@@ -124,8 +124,8 @@ content      |  | The script content
 ## Update a Boot Script
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/boot-scripts/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
@@ -153,8 +153,8 @@ Same as [Create](#create-a-boot-script).
 ## Delete a Boot Script
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/boot-scripts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

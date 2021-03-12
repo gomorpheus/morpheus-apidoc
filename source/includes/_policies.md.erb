@@ -5,8 +5,8 @@ Provides API interfaces for managing Policies.
 ## Get All Policies
 
 ```shell
-curl "<%= shell_url %>/api/policies"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/policies"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -157,8 +157,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/policies/4" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/policies/4" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -213,8 +213,8 @@ ID | The ID of the policy to retrieve
 ## Policy Types
 
 ```shell
-curl "<%= shell_url %>/api/policy-types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/policy-types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -413,8 +413,8 @@ config.createUser | false | Create User [true, false]
 ## Create a Policy
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/policies" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/policies" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "policy": {
@@ -496,8 +496,8 @@ refId      | The ID of the role
 ## Update a Policy
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/policies/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/policies/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "policy": {
@@ -534,8 +534,8 @@ accounts      |  | Array of tenants to scope the policy to.
 ## Delete a Policy
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/policies/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/policies/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -563,8 +563,8 @@ ID | The ID of the policy
 Policies scoped to a specific group can also be managed at another endpoint. 
 
 ```shell
-curl "<%= shell_url %>/api/groups/1/policies"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/groups/1/policies"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -630,8 +630,8 @@ This resource also provides endpoints for GET, POST, PUT and DELETE that work ju
 Policies scoped to a specific cloud can also be managed at another endpoint. 
 
 ```shell
-curl "<%= shell_url %>/api/zones/1/policies"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/1/policies"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:

@@ -7,8 +7,8 @@ Provides API interfaces for managing spec templates within <%= application_name 
 ## Get All Spec Templates
 
 ```shell
-curl "<%= shell_url %>/api/library/spec-templates" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/spec-templates" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -84,8 +84,8 @@ name |  | Name filter, restricts query to only load template matching name speci
 ## Get a Specific Spec Template
 
 ```shell
-curl "<%= shell_url %>/api/library/spec-templates/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/spec-templates/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -145,8 +145,8 @@ id | ID of the spec template
 Use this command to create a spec template.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/spec-templates" \
-  -H "Authorization: Bearer <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/spec-templates" \
+  -H "Authorization: Bearer <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "specTemplate": {
@@ -214,8 +214,8 @@ config.cloudformation.CAPABILITY_AUTO_EXPAND | Y | CAPABILITY_AUTO_EXPAND
 Use this command to update an existing spec template.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/spec-templates/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/library/spec-templates/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{"specTemplate": {
         "name": "cftest2"
@@ -251,8 +251,8 @@ file | Y | File, object specifying file type and content, see [File Object](#fil
 ## Delete a Spec Template
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/spec-templates/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/spec-templates/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

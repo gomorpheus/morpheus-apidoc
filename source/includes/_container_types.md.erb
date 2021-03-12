@@ -7,8 +7,8 @@ A Node Type may also be referred to as a *Container Type* or *containerType*.
 ## Get All Node Types
 
 ```shell
-curl "<%= shell_url %>/api/library/container-types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -104,8 +104,8 @@ provisionType |  | Provision type code filter, restricts query to only load node
 ## Get a Specific Node Type
 
 ```shell
-curl "<%= shell_url %>/api/library/container-types/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-types/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -206,8 +206,8 @@ id | ID of the node type
 Use this command to create a node type.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/container-types" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/container-types" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "containerType": {
@@ -274,8 +274,8 @@ export | N | Can be used to enable / disable export of variable, default is off
 Use this command to update an existing node type.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/container-types/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/library/container-types/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
         "name": "Custom Node Name",
@@ -324,8 +324,8 @@ environmentVariables | N | Array of node type env variables, see [Environment Va
 ## Delete a Node Type
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/container-types/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/container-types/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -7,8 +7,8 @@ A Group may also be referred to as a *Site* or *site*.
 ## Get All Groups
 
 ```shell
-curl "<%= shell_url %>/api/groups"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/groups"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -58,8 +58,8 @@ name |  | If specified will return an exact match group
 
 
 ```shell
-curl "<%= shell_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/groups/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -106,8 +106,8 @@ ID | The ID of the group to retrieve
 ## Create a Group
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/groups" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/groups" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -133,8 +133,8 @@ location  |  | Optional location argument for your group
 ## Updating a Group
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/groups/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -159,8 +159,8 @@ location  |  | Optional location for your group
 ## Updating Group Zones
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/groups/1/update-zones" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/groups/1/update-zones" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "zones": [
@@ -194,8 +194,8 @@ zones      |  | An array of all the zones assigned to this group.
 ## Delete a Group
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/groups/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

@@ -5,8 +5,8 @@ Provides API interfaces for managing prices within <%= application_name %>
 ## Get All Prices
 
 ```shell
-curl "<%= shell_url %>/api/prices" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/prices" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -71,8 +71,8 @@ currency |  | Restricts query to only load only prices with specified currency
 ## Get a Specific Price
 
 ```shell
-curl "<%= shell_url %>/api/prices/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/prices/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -123,8 +123,8 @@ id | ID of the price
 Use this command to create a price.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/prices" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/prices" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "price": {
@@ -195,8 +195,8 @@ Software | software
 ## Update a Price
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/prices/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/prices/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "price": {
@@ -259,8 +259,8 @@ restartUsage | N | Apply changes to usage
 ## Deactivate a Price
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/prices/1/deactivate" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/prices/1/deactivate" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

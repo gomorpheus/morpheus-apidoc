@@ -5,8 +5,8 @@ Provides API for managing Networks.
 ## Get All Networks
 
 ```shell
-curl "<%= shell_url %>/api/networks"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -111,8 +111,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/networks/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/networks/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -209,8 +209,8 @@ ID | The ID of the Network to retrieve
 ## Create a Network
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/networks" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/networks" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "network": {
@@ -275,8 +275,8 @@ This endpoint allows creating a Network.  Only certain types of clouds support c
 ## Update a Network
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/networks/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/networks/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "network": {
@@ -321,8 +321,8 @@ This endpoint allows updating a Network.  Configuration options vary by [Network
 ## Delete a Network
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/networks/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/networks/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

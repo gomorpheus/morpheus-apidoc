@@ -5,8 +5,8 @@ Provides API interfaces for viewing report results and executing new reports.
 ## Get All Report Types
 
 ```shell
-curl "<%= shell_url %>/api/report-types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/report-types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -96,8 +96,8 @@ category |  | If specified will return an exact match on category
 ## Get All Reports
 
 ```shell
-curl "<%= shell_url %>/api/reports" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/reports" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -184,8 +184,8 @@ category |  | If specified will return an exact match on report type category, a
 ## Get a Specific Report
 
 ```shell
-curl "<%= shell_url %>/api/reports/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/reports/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -258,8 +258,8 @@ id | ID of the report result
 ## Download a Specific Report
 
 ```shell
-curl "<%= shell_url %>/api/reports/download/2" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/reports/download/2" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns `Content-Type: "application/octet-stream"` and `Content-disposition: attachment;filename=reportTitle.json`.
@@ -281,8 +281,8 @@ format | Format of the rendered report file, `json` or `csv`. The default is `.j
 ## Run a Report
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/reports" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/reports" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "report": {
@@ -320,8 +320,8 @@ cloudId     |  | The Cloud ID filter for the report
 ## Delete a Report
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/reports/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/reports/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

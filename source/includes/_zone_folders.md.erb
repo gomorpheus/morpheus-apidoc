@@ -5,8 +5,8 @@ Resource Folders can be managed for each Compute Zone (Cloud) in your infrastruc
 <!--## Get All Resource Folders for Cloud-->
 
 ```shell
-curl "<%= shell_url %>/api/zones/5/folders"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/5/folders"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -81,8 +81,8 @@ name |  | Filter on exact match of name
 ## Get a Specific Resource Folder
 
 ```shell
-curl "<%= shell_url %>/api/zones/5/folders/50" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/zones/5/folders/50" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -143,8 +143,8 @@ id | The ID of the resource folder to retrieve
 ## Updating a Resource Folder
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/zones/5/folders/50" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/zones/5/folders/50" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"folder":{
     "active": true,

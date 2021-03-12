@@ -8,8 +8,8 @@ Provides a list of all available app templates that can be used for creating an 
 ## Get All App Templates
 
 ```shell
-curl "<%= shell_url %>/api/app-types" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/app-types" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -35,8 +35,8 @@ curl "<%= shell_url %>/api/app-types" \
 ## Get Specific App Template
 
 ```shell
-curl "<%= shell_url %>/api/app-types/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/app-types/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this

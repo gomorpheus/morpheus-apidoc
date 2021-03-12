@@ -5,8 +5,8 @@ Provides API interfaces for managing appliance settings within <%= application_n
 ## Get Appliance Settings
 
 ```shell
-curl "<%= shell_url %>/api/appliance-settings" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/appliance-settings" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -66,8 +66,8 @@ This endpoint retrieves appliance settings.
 ## Update Appliance Settings
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/appliance-settings" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/appliance-settings" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"applianceSettings": {
         "registrationEnabled": true,
@@ -163,8 +163,8 @@ disableAllZoneTypes | Set all cloud types enabled status off, can be used in con
 ## Toggle Maintenance Mode
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/appliance-settings/maintenance?enabled=true" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPOST "<%= api_url %>/api/appliance-settings/maintenance?enabled=true" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

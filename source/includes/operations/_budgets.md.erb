@@ -5,8 +5,8 @@ Provides API interfaces for managing budgets.
 ## Get All Budgets
 
 ```shell
-curl "<%= shell_url %>/api/budgets" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/budgets" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,8 +175,8 @@ name |  | Filter by name
 ## Get a Specific Budget
 
 ```shell
-curl "<%= shell_url %>/api/budgets/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/budgets/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -260,8 +260,8 @@ ID | The ID of the budget
 ## Create a Budget
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/budgets" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/budgets" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
     "name": "sample budget",
@@ -303,8 +303,8 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 ## Updating a Budget
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/budgets/:id" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/budgets/:id" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
     "interval": "quarter",
@@ -349,8 +349,8 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 ## Delete a Budget
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/budgets/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/budgets/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

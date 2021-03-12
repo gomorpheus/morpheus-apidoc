@@ -5,8 +5,8 @@ A Security Group is a grouping of rules.  Each rule is a whitelist entry for a p
 ## Get All Security Groups
 
 ```shell
-curl "<%= shell_url %>/api/security-groups"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/security-groups"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -92,8 +92,8 @@ phrase |  | Name or description filter, restricts query to only load security gr
 
 
 ```shell
-curl "<%= shell_url %>/api/security-groups/18" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/security-groups/18" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -146,8 +146,8 @@ id | The ID of the security group
 ## Create a Security Group
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/security-groups" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/security-groups" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -179,8 +179,8 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 ## Updating a Security Group
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/security-groups/18" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/security-groups/18" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -215,8 +215,8 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 ## Delete a Security Group
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/security-groups/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/security-groups/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -243,8 +243,8 @@ id | The ID of the security group
 ## Create a Security Group Location
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/security-groups/18/locations" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/security-groups/18/locations" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupLocation": {
     "zoneId": 5,
@@ -273,8 +273,8 @@ customOptions.resourceGroup      |  | External ID of the Azure Resource Group to
 ## Delete a Security Group Location
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/security-groups/18/locations/29" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/security-groups/18/locations/29" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group rule 

@@ -7,8 +7,8 @@ Provides API interfaces for managing Storage Buckets (Object Stores and File Sha
 <!--## Get All Storage Buckets-->
 
 ```shell
-curl "<%= shell_url %>/api/storage/buckets"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/storage/buckets"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -75,8 +75,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= shell_url %>/api/storage/buckets/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/storage/buckets/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -122,8 +122,8 @@ ID | The ID of the storage bucket to retrieve
 ## Create a Storage Bucket
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/storage/buckets" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/storage/buckets" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "storageBucket": {
@@ -234,8 +234,8 @@ createBucket | false | Create the bucket if it does not exist
 ## Update a Storage Bucket
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/storage/buckets/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/storage/buckets/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "storageBucket": {
@@ -258,8 +258,8 @@ See [Create](#create-a-storage-bucket).
 ## Delete a Storage Bucket
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/storage/buckets/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/storage/buckets/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

@@ -7,8 +7,8 @@ A Script may also be referred to as a *Container Script* or *containerScript*.
 ## Get All Scripts
 
 ```shell
-curl "<%= shell_url %>/api/library/container-scripts" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-scripts" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -86,8 +86,8 @@ scriptPhase |  | Script phase filter, restricts query to only load scripts of sp
 ## Get a Specific Script
 
 ```shell
-curl "<%= shell_url %>/api/library/container-scripts/10" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/library/container-scripts/10" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -135,8 +135,8 @@ id | ID of the script
 Use this command to create a script.
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/library/container-scripts" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/library/container-scripts" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
     "scriptType": "bash",
@@ -180,8 +180,8 @@ sudoUser | N | Sudo, whether or not to run with sudo. Default is `false`.
 Use this command to update an existing script.
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/library/container-scripts/:id" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/library/container-scripts/:id" \
+  -H "Authorization: BEARER <%= api_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
     "script": "echo 'hello world' > /tmp/hello.txt",
@@ -226,8 +226,8 @@ sudoUser | N | Sudo, whether or not to run with sudo. Default is `false`.
 ## Delete a Script
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/library/container-scripts/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/library/container-scripts/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:

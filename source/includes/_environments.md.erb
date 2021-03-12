@@ -5,8 +5,8 @@ Provides API interfaces for managing the creation and modification of provisioni
 ## Get All Environments
 
 ```shell
-curl "<%= shell_url %>/api/environments"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/environments"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -93,8 +93,8 @@ code |  | Filter by code
 ## Get a Specific Environment
 
 ```shell
-curl "<%= shell_url %>/api/environments/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/environments/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -131,8 +131,8 @@ ID | The ID of the environment
 ## Create an Environment
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/environments" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/environments" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -165,8 +165,8 @@ sortOrder | 0 | Sort order
 ## Updating an Environment
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/environments/5" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/environments/5" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -202,8 +202,8 @@ Only user created environments may be updated.
 ## Toggle an Environment
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/environments/5/toggle-active" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XPUT "<%= api_url %>/api/environments/5/toggle-active" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like getting a single environment:
@@ -230,8 +230,8 @@ This endpoint allows global environments to be updated by the master account.
 ## Delete an Environment
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/environments/5" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/environments/5" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:

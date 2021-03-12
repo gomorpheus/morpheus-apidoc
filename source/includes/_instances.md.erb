@@ -5,8 +5,8 @@ Instances are sets of containers or vms (<%= application_name %> API represents 
 ## Get All Instances
 
 ```shell
-curl "<%= shell_url %>/api/instances?max=3"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances?max=3"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -272,8 +272,8 @@ API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <c
 
 
 ```shell
-curl "<%= shell_url %>/api/instances/1216" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1216" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -377,8 +377,8 @@ Parameter | Description
 ## Get Env Variables
 
 ```shell
-curl "<%= shell_url %>/api/instances/1216/envs" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1216/envs" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 > The above command returns JSON structured like this:
 
@@ -603,8 +603,8 @@ Parameter | Description
 ## Get Instance History
 
 ```shell
-curl "<%= shell_url %>/api/instances/238/history" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/238/history" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -692,8 +692,8 @@ zoneId |  | Filter by zone id(s)
 ## Get Container Details
 
 ```shell
-curl "<%= shell_url %>/api/instances/1216/containers" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1216/containers" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 > The above command returns JSON structured like this:
 
@@ -835,8 +835,8 @@ Parameter | Description
 ## Get All Instance Types for Provisioning
 
 ```shell
-curl "<%= shell_url %>/api/instance-types"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instance-types"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -1155,8 +1155,8 @@ Fetch the list of available instance types. These can vary in range from databas
 ## Get Specific Instance Type for Provisioning
 
 ```shell
-curl "<%= shell_url %>/api/instance-types/12"
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instance-types/12"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -1204,7 +1204,7 @@ Parameter | Description
 
 ```shell
 curl -XGET "<%= api_url %>/api/instances/service-plans?zoneId=1&layoutId=75" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1367,7 +1367,7 @@ siteId | N | The ID of the [Group](#groups)
 
 ```shell
 curl -X POST "<%= api_url %>/api/instances" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "zoneId": 6,
@@ -1571,7 +1571,7 @@ There can be additional properties to apply to the instance. For example mysql p
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "instance": {
   "description": "my new redis",
@@ -1616,7 +1616,7 @@ ownerId  |  | [User](#users) ID, can be used to change instance owner.
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/stop" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1643,7 +1643,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/start" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1670,7 +1670,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/restart" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1697,7 +1697,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/suspend" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1724,7 +1724,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/eject" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -1751,7 +1751,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/resize" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instance": {
@@ -1807,7 +1807,7 @@ deleteOriginalVolumes | no | false | Delete the original volumes after resizing.
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/workflow?workflowId=99" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -d '{ "taskSet": {
     "customOptions": {"foo":"bar"}
     }}'
@@ -1853,7 +1853,7 @@ taskSet.customOptions      |  | Object containing any custom option type configu
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/clone" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "name": "New Name",
     "group": {
@@ -1895,7 +1895,7 @@ This endpoint also supports all of the same parameters as [Create and Instance][
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1773/backup" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -1919,8 +1919,8 @@ Parameter | Description
 ## Get list of backups for an Instance
 
 ```shell
-curl "<%= shell_url %>/api/instances/1773/backups" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1773/backups" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -1948,8 +1948,8 @@ Parameter | Description
 ## Get list of snapshots for an Instance
 
 ```shell
-curl "<%= shell_url %>/api/instances/1773/snapshots" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/instances/1773/snapshots" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure that looks like this:
@@ -1975,7 +1975,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1773/snapshot" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "snapshot": {
     "name": "snapshot-test",
@@ -2017,7 +2017,7 @@ description       |     | Optional description for the snapshot
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/import-snapshot" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "storageProviderId": 1
   }'
@@ -2053,7 +2053,7 @@ storageProviderId       | null    | Optional storage provider to use.
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/clone-image" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "templateName": "Example Image" }'
 ```
@@ -2089,7 +2089,7 @@ templateName |    | Image Template Name. Default is server name + timestamp.
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/lock" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -2116,7 +2116,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT "<%= api_url %>/api/instances/1/unlock" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -2144,7 +2144,7 @@ Parameter | Description
 
 ```shell
 curl -XGET "<%= api_url %>/api/instances/1/security-groups" \
-  -H "Authorization: BEARER <%= shell_token %>"
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -2180,7 +2180,7 @@ Parameter | Description
 
 ```shell
 curl -X POST "<%= api_url %>/api/instances/1/security-groups" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```
@@ -2208,8 +2208,8 @@ This defines the list of all the security groups applied to an instance.
 ## Delete an Instance
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/instances/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/instances/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -2244,8 +2244,8 @@ force | off | Force Delete
 ## Undo Delete of an Instance
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/instances/2/cancel-removal" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/instances/2/cancel-removal" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json"
 ```
 

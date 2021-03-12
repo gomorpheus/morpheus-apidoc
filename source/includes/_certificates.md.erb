@@ -5,8 +5,8 @@
 ## Get All SSL Certificates
 
 ```shell
-curl "<%= shell_url %>/api/certificates" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/certificates" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -47,8 +47,8 @@ name |  | If specified will return an exact match certificate
 
 
 ```shell
-curl "<%= shell_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl "<%= api_url %>/api/certificates/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -85,8 +85,8 @@ ID | The ID of the key pair to retrieve
 ## Create a Certificate
 
 ```shell
-curl -XPOST "<%= shell_url %>/api/certificates" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPOST "<%= api_url %>/api/certificates" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -116,8 +116,8 @@ domainName |  | The domain name this certificate is tied to
 ## Updating a Certificate
 
 ```shell
-curl -XPUT "<%= shell_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= shell_token %>" \
+curl -XPUT "<%= api_url %>/api/certificates/1" \
+  -H "Authorization: BEARER <%= api_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -147,8 +147,8 @@ domainName |  | The domain name this certificate is tied to
 ## Delete a Certificate
 
 ```shell
-curl -XDELETE "<%= shell_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= shell_token %>"
+curl -XDELETE "<%= api_url %>/api/certificates/1" \
+  -H "Authorization: BEARER <%= api_token %>"
 ```
 
 > The above command returns JSON Structured like this:
