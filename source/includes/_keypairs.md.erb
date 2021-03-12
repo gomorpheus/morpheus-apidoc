@@ -5,8 +5,8 @@
 <!--## Get All Key Pairs-->
 
 ```shell
-curl "<%= api_url %>/api/key-pairs"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/key-pairs"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -45,8 +45,8 @@ name |  | If specified will return an exact match keypair
 
 
 ```shell
-curl "<%= api_url %>/api/key-pairs/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/key-pairs/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -81,7 +81,7 @@ ID | The ID of the key pair
 
 ```shell
 curl -XPOST "<%= api_url %>/api/key-pairs" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"keyPair":{
     "name": "My Key",
@@ -110,7 +110,7 @@ privateKey |  | The private key pair value (optional)
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/key-pairs/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

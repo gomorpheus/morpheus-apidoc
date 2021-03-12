@@ -3,8 +3,8 @@
 The <%= application_name %> API is an HTTP interface for interacting with the [<%= application_name %>](<%= company_website %>) appliance. It provides a RESTful interface where `GET` reads, `POST` creates, `PUT` updates and `DELETE` destroys resources.
 
 ```shell
-curl "<%= api_url %>/api/users/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/users/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -95,8 +95,8 @@ This is an example of an API response that retrieves a [Contact](#contacts) reco
 #### Example
 
 ```shell
-curl "<%= api_url %>/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/contacts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns HTTP 200 and JSON structured like this:
@@ -117,8 +117,8 @@ This is an example of a successful response that contains the specified record.
 #### Error Example
 
 ```shell
-curl "<%= api_url %>/api/monitoring/contacts/999999" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/contacts/999999" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 

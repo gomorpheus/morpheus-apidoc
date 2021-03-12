@@ -5,8 +5,8 @@ Provides API interfaces for managing service plans within <%= application_name %
 ## Get All Service Plans
 
 ```shell
-curl "<%= api_url %>/api/service-plans" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/service-plans" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -105,8 +105,8 @@ includeInactive | false | Can be used to include inactive service plans
 ## Get a Specific Service Plan
 
 ```shell
-curl "<%= api_url %>/api/service-plans/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/service-plans/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -195,7 +195,7 @@ Use this command to create a service plan.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/service-plans" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"servicePlan": {
         "name": "stubby toes plan 1",
@@ -296,7 +296,7 @@ range.maxCores | N | Custom max cores
 
 ```shell
 curl -XPUT "<%= api_url %>/api/service-plans/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"servicePlan": {  
       "name": "stubby toes plan 1",
@@ -398,7 +398,7 @@ config.ranges | N | Key for service plan custom configuration, see [Config](#con
 
 ```shell
 curl -XPUT "<%= api_url %>/api/service-plans/1/activate" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -426,7 +426,7 @@ id | The ID of the service plan
 
 ```shell
 curl -XPUT "<%= api_url %>/api/service-plans/1/deactivate" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -5,8 +5,8 @@ Provides API for managing Network Domains.
 ## Get All Network Domains
 
 ```shell
-curl "<%= api_url %>/api/networks/domains"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/domains"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -70,8 +70,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= api_url %>/api/networks/domains/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/domains/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -128,7 +128,7 @@ ID | The ID of the Network Domain to retrieve
 
 ```shell
 curl -XPOST "http://<%= api_url %>/api/networks/domains" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkDomain": {
@@ -166,7 +166,7 @@ guestPassword |  | Guest Password
 
 ```shell
 curl -XPUT "<%= api_url %>/api/networks/domains/:id" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "networkDomain": {
@@ -195,7 +195,7 @@ Same as [Create](#create-a-network-domain).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/networks/domains/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

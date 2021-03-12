@@ -11,8 +11,8 @@ A Tenant may also be referred to as an *Account* or *account*.
 ## Get All Tenants
 
 ```shell
-curl "<%= api_url %>/api/accounts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/accounts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ lastUpdated |  | Date filter, restricts query to only load tenants updated more 
 ## Get a Specific Tenant
 
 ```shell
-curl "<%= api_url %>/api/accounts/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/accounts/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -145,7 +145,7 @@ This endpoint will retrieve a specific account by ID.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/accounts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
     "name": "Acme",
@@ -186,7 +186,7 @@ accountName |  | Account Name, an optional field that can be used for billing an
 
 ```shell
 curl -XPUT "<%= api_url %>/api/accounts/3" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"account":{
     "name": "Batman",
@@ -227,7 +227,7 @@ accountName |  | Account Name, an optional field that can be used for billing an
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/accounts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -250,8 +250,8 @@ If a tenant still has users or instances tied to it, The delete will fail.
 ## Get Available Roles for a Tenant
 
 ```shell
-curl "<%= api_url %>/api/accounts/available-roles" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/accounts/available-roles" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

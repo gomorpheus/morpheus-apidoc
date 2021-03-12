@@ -6,8 +6,8 @@ Virtual Images can be managed via the API.
 ## Get List of Virtual Images
 
 ```shell
-curl "<%= api_url %>/api/virtual-images"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/virtual-images"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -159,8 +159,8 @@ tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag name
 
 
 ```shell
-curl "<%= api_url %>/api/virtual-images/764" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/virtual-images/764" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -297,7 +297,7 @@ id | The ID of the virtual image
 
 ```shell
 curl -XPOST "<%= api_url %>/api/virtual-images" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "name": "testimage2",
@@ -354,7 +354,7 @@ tags |  | Metadata tags, Array of objects having a name and value
 
 ```shell
 curl -XPOST "<%= api_url %>/api/virtual-images" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "name": "azure-nginx-test",
@@ -406,7 +406,7 @@ version  |  | The name of the version in the Azure Marketplace
 
 ```shell
 curl -XPOST "<%= api_url %>/api/virtual-images/765/upload?filename=disk-0.vmdk" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   --data-binary '@/path/to/file'
 ```
 
@@ -441,7 +441,7 @@ filename | Specify a filename for new file.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/virtual-images/765/files?filename=testimage.ovf" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -472,7 +472,7 @@ filename  |  | The name of the file to be deleted
 
 ```shell
 curl -XPUT "<%= api_url %>/api/virtual-images/:id" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"virtualImage":{
     "installAgent": true,
@@ -532,7 +532,7 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/virtual-images/765" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

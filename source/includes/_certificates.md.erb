@@ -5,8 +5,8 @@
 ## Get All SSL Certificates
 
 ```shell
-curl "<%= api_url %>/api/certificates" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/certificates" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -47,8 +47,8 @@ name |  | If specified will return an exact match certificate
 
 
 ```shell
-curl "<%= api_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/certificates/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -86,7 +86,7 @@ ID | The ID of the key pair to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/certificates" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -117,7 +117,7 @@ domainName |  | The domain name this certificate is tied to
 
 ```shell
 curl -XPUT "<%= api_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"certificate":{
     "name": "My Cert",
@@ -148,7 +148,7 @@ domainName |  | The domain name this certificate is tied to
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/certificates/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

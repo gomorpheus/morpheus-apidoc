@@ -5,8 +5,8 @@ Provides API interfaces for managing cluster layouts within <%= application_name
 ## Get All Cluster Layouts
 
 ```shell
-curl "<%= api_url %>/api/library/cluster-layouts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/cluster-layouts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -194,8 +194,8 @@ provisionType |  | Provision type code filter, restricts query to only load clus
 ## Get a Specific Cluster Layout
 
 ```shell
-curl "<%= api_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/cluster-layouts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -336,7 +336,7 @@ Use this command to create a cluster layout.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/cluster-layouts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"layout": {
        "name": "Stubby Toes Docker Cluster",
@@ -457,7 +457,7 @@ Use this command to update an existing cluster layout.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
         "name": "Cluster Name",
@@ -553,7 +553,7 @@ Use this command to clone a cluster layout.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/cluster-layouts/7/clone" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
 
@@ -583,7 +583,7 @@ computeVersion | N | Version of cluster layout. Defaults to cloned layout versio
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/cluster-layouts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

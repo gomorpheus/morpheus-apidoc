@@ -7,8 +7,8 @@
 Fetch a paginated list of available cloud types. This returns the configuration options for each type.
 
 ```shell
-curl "<%= api_url %>/api/zone-types"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zone-types"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -64,8 +64,8 @@ provisionType |  | Filter by [Provision Type](#provision-types) code
 ## Get Specific Cloud Type
 
 ```shell
-curl "<%= api_url %>/api/zone-types/1"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zone-types/1"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this

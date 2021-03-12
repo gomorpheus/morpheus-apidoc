@@ -5,8 +5,8 @@ A Security Group is a grouping of rules.  Each rule is a whitelist entry for a p
 ## Get All Security Groups
 
 ```shell
-curl "<%= api_url %>/api/security-groups"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/security-groups"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -92,8 +92,8 @@ phrase |  | Name or description filter, restricts query to only load security gr
 
 
 ```shell
-curl "<%= api_url %>/api/security-groups/18" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/security-groups/18" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -147,7 +147,7 @@ id | The ID of the security group
 
 ```shell
 curl -XPOST "<%= api_url %>/api/security-groups" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -180,7 +180,7 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 
 ```shell
 curl -XPUT "<%= api_url %>/api/security-groups/18" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroup": {
   "name": "My New Security Group",
@@ -216,7 +216,7 @@ resourcePermissions.sites  |  | Array of groups that are allowed access
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/security-groups/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -244,7 +244,7 @@ id | The ID of the security group
 
 ```shell
 curl -XPOST "<%= api_url %>/api/security-groups/18/locations" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupLocation": {
     "zoneId": 5,
@@ -274,7 +274,7 @@ customOptions.resourceGroup      |  | External ID of the Azure Resource Group to
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/security-groups/18/locations/29" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single security group rule 

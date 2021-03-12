@@ -9,8 +9,8 @@ A deploy may also be referred to as an *instance deployment* or *appDeploy*.
 ## Get all Deploys
 
 ```shell
-curl "<%= api_url %>/api/deploys" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/deploys" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -135,8 +135,8 @@ status |  | Filter by status: staged, deploying, commited, archived
 ## Get all Deploys for an Instance
 
 ```shell
-curl "<%= api_url %>/api/instances/:instanceId/deploys" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/instances/:instanceId/deploys" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -226,7 +226,7 @@ Same as [get all deploys](#get-all-deploys).
 
 ```shell
 curl -XPOST "<%= api_url %>/api/instances/:instanceId/deploys"
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
     "deploymentId": 17,
@@ -303,7 +303,7 @@ stageOnly | false | Stage Only, do not run the deploy right away and instead set
 
 ```shell
 curl -XPUT "<%= api_url %>/api/deploys/:id"
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
     "config": { }
@@ -370,7 +370,7 @@ config |  | JSON encoded list of parameters that varies by instance type.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/deploys/:id/deploy"
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"appDeploy":{
     "config": { }
@@ -438,7 +438,7 @@ config |  | JSON encoded list of parameters that varies by instance type.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/deploys/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

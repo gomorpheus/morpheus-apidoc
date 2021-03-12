@@ -5,8 +5,8 @@ Provides API for managing Network Subnets.
 <!--## Get All Subnets-->
 
 ```shell
-curl "<%= api_url %>/api/subnets"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/subnets"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -173,8 +173,8 @@ phrase |  | If specified will return a partial match on name
 ## Get Subnets for a Network
 
 ```shell
-curl "<%= api_url %>/api/networks/55/subnets"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/55/subnets"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -349,8 +349,8 @@ phrase |  | If specified will return a partial match on name
 ## Get a Specific Subnet
 
 ```shell
-curl "<%= api_url %>/api/subnets/77" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/subnets/77" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -443,7 +443,7 @@ ID | The ID of the Subnet to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/1/subnets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "subnet": {
@@ -491,7 +491,7 @@ This endpoint allows creating a Subnet.  Only certain types of clouds support cr
 
 ```shell
 curl -XPUT "<%= api_url %>/api/subnets/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "subnet": {
@@ -531,7 +531,7 @@ This endpoint allows updating a Subnet.  Only certain types of clouds support th
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/subnets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

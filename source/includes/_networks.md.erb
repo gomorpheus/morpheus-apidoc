@@ -5,8 +5,8 @@ Provides API for managing Networks.
 ## Get All Networks
 
 ```shell
-curl "<%= api_url %>/api/networks"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -111,8 +111,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= api_url %>/api/networks/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -210,7 +210,7 @@ ID | The ID of the Network to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/networks" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "network": {
@@ -276,7 +276,7 @@ This endpoint allows creating a Network.  Only certain types of clouds support c
 
 ```shell
 curl -XPUT "<%= api_url %>/api/networks/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "network": {
@@ -322,7 +322,7 @@ This endpoint allows updating a Network.  Configuration options vary by [Network
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/networks/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

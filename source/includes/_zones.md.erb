@@ -7,8 +7,8 @@ A Cloud may also be referred to as a *Zone* or *zone*.
 ## Get All Clouds
 
 ```shell
-curl "<%= api_url %>/api/zones"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zones"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -236,8 +236,8 @@ groupId |  | If specified will return all zones assigned to a server group by id
 
 
 ```shell
-curl "<%= api_url %>/api/zones/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zones/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -363,7 +363,7 @@ ID | The ID of the zone to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/zones" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
     "name": "My Cloud",
@@ -404,7 +404,7 @@ Additional config properties are dynamic and depend on the specified type of clo
 
 ```shell
 curl -XPUT "<%= api_url %>/api/zones/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"zone":{
     "name": "My Cloud",
@@ -443,7 +443,7 @@ Additional config properties are dynamic and depend on the type of cloud. See [C
 
 ```shell
 curl -XPUT "<%= api_url %>/api/zones/:id/refresh" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
 
@@ -466,7 +466,7 @@ Each cloud type varies when it comes to what refreshing entails, but it involves
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/zones/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -487,7 +487,7 @@ If a zone has zones or servers still tied to it, a delete action will fail
 
 ```shell
 curl -XGET "<%= api_url %>/api/zones/1/security-groups" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -518,7 +518,7 @@ This returns a list of all of the security groups applied to a zone and whether 
 
 ```shell
 curl -XPOST "<%= api_url %>/api/zones/1/security-groups" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "securityGroupIds": [19, 2] }'
 ```

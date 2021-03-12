@@ -64,11 +64,14 @@ set :company_website, "https://www.morpheusdata.com"
 # A domain to use in example email addresses, etc.
 set :company_domain, "morpheusdata.com"
 
-# The base url used to document each HTTP Request path and used in shell examples
+# The base url used to document each HTTP Request path
 set :api_url, "https://api.morpheusdata.com"
 
+# The URL value to use in the shell curl examples, just a variable name
+set :curl_url, "$serverUrl"
+
 # The API Token used in shell examples (curl), never a real valid token of course
-set :api_token, "********-****-****-****-************"
+set :curl_token, "$accessToken"
 
 # The logo in the header
 set :logo_path, "logo-white.svg"

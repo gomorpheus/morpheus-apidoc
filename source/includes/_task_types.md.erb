@@ -7,8 +7,8 @@ A Task Type is a type of automation task. Each type defines its own set of optio
 -->
 
 ```shell
-curl "<%= api_url %>/api/task-types"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/task-types"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -250,8 +250,8 @@ code |  | If specified will return an exact match on code
 ## Get a Specific Task Type
 
 ```shell
-curl "<%= api_url %>/api/task-types/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/task-types/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

@@ -5,8 +5,8 @@ Preseed Scripts are used in the Image Builder service. See [Image Builds](#image
 <!--## Get All Preseed Scripts-->
 
 ```shell
-curl "<%= api_url %>/api/preseed-scripts"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/preseed-scripts"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -54,8 +54,8 @@ phrase |  | If specified will return a partial match on fileName
 
 
 ```shell
-curl "<%= api_url %>/api/preseed-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/preseed-scripts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -96,7 +96,7 @@ ID | The ID of the preseed script to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/preseed-scripts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "preseedScript": {
@@ -123,7 +123,7 @@ content      |  | The script content
 
 ```shell
 curl -XPUT "<%= api_url %>/api/preseed-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "preseedScript": {
@@ -152,7 +152,7 @@ See [Create](#create-a-preseed-script).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/preseed-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

@@ -7,8 +7,8 @@ A Workflow may also be referred to as a *Task Set* or *taskSet*.
 <!--## Get All Workflows-->
 
 ```shell
-curl "<%= api_url %>/api/task-sets" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/task-sets" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -76,8 +76,8 @@ name |  | Filter by name
 ## Get a Specific Workflow
 
 ```shell
-curl "<%= api_url %>/api/task-sets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/task-sets/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -133,7 +133,7 @@ ID | The ID of the workflow
 
 ```shell
 curl -XPOST "<%= api_url %>/api/task-sets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
     "name": "my workflow",
@@ -174,7 +174,7 @@ tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workf
 
 ```shell
 curl -XPOST "<%= api_url %>/api/task-sets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet": {
     "name": "test workflow",
@@ -211,7 +211,7 @@ tasks.taskPhase | provision | Task Phase. Pass `operation` for operational workf
 
 ```shell
 curl -XPUT "<%= api_url %>/api/task-sets/5" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"taskSet":{
     "tasks": [
@@ -248,7 +248,7 @@ tasks.taskPhase | provision | Task Phase.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/task-sets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -273,7 +273,7 @@ ID | The ID of the workflow
 
 ```shell
 curl -XPOST "<%= api_url %>/api/task-sets/5/execute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job":{
     "targetType": "instance",

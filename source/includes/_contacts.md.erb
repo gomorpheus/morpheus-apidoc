@@ -5,8 +5,8 @@ These entities are notification settings such as name, email and phone number. C
 ## Get All Contacts
 
 ```shell
-curl "<%= api_url %>/api/monitoring/contacts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/contacts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -49,8 +49,8 @@ phrase |  | If specified will return a partial match on name or email or sms
 ## Get a Specific Contact
 
 ```shell
-curl "<%= api_url %>/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/contacts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -83,7 +83,7 @@ ID | ID of the contact
 
 ```shell
 curl -XPOST "<%= api_url %>/api/monitoring/contacts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
     "name": "IT Admin",
@@ -111,7 +111,7 @@ slackHook      |  | Slack Hook
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/contacts/3" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"contact":{
     "name": "Jane Doe"
@@ -143,7 +143,7 @@ slackHook      |  | Slack Hook
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/monitoring/contacts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

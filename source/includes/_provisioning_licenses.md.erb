@@ -5,8 +5,8 @@ Provides API interfaces for managing provisioning licenses within <%= applicatio
 ## Get All Licenses
 
 ```shell
-curl "<%= api_url %>/api/provisioning-licenses" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/provisioning-licenses" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -106,8 +106,8 @@ fullName |  | If specified will return an exact match on fullName
 ## Get a Specific License
 
 ```shell
-curl "<%= api_url %>/api/provisioning-licenses/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/provisioning-licenses/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -162,8 +162,8 @@ id | ID of the license
 ## Get Reservations for Specific License
 
 ```shell
-curl "<%= api_url %>/api/provisioning-licenses/2/reservations" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/provisioning-licenses/2/reservations" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -201,7 +201,7 @@ Use this command to create a new license.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/provisioning-licenses" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "license": {
@@ -254,7 +254,7 @@ tenants | N | Tenants - Array of tenants that are allowed to use the key.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/provisioning-licenses/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{
     "license": {
@@ -302,7 +302,7 @@ tenants | Tenants - Array of tenants that are allowed to use the key.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/provisioning-licenses/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

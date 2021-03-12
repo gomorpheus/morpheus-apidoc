@@ -5,8 +5,8 @@ Power Schedules can be configured to automatically power on and off your instanc
 <!--## Get All Power Schedules-->
 
 ```shell
-curl "<%= api_url %>/api/power-schedules" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/power-schedules" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -65,8 +65,8 @@ phrase |  | If specified will return a partial match on name
 ## Get a Specific Power Schedule
 
 ```shell
-curl "<%= api_url %>/api/power-schedules/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/power-schedules/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -124,7 +124,7 @@ ID | The ID of the power schedule to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/power-schedules" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -187,7 +187,7 @@ saturdayOff | 24 | Saturday Stop
 
 ```shell
 curl -XPUT "<%= api_url %>/api/power-schedules/2" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -215,7 +215,7 @@ See [Create](#create-a-power-schedule).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/power-schedules/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -242,7 +242,7 @@ ID | The ID of the power schedule
 
 ```shell
 curl -XPUT "<%= api_url %>/api/power-schedules/2/add-instances" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instances": [
@@ -281,7 +281,7 @@ instances      |  | Array of Instance IDs to add
 
 ```shell
 curl -XPUT "<%= api_url %>/api/power-schedules/2/remove-instances" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instances": [
@@ -320,7 +320,7 @@ instances      |  | Array of Instance IDs to remove
 
 ```shell
 curl -XPUT "<%= api_url %>/api/power-schedules/2/add-servers" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "servers": [
@@ -359,7 +359,7 @@ servers      |  | Array of Server IDs to add
 
 ```shell
 curl -XPUT "<%= api_url %>/api/power-schedules/2/remove-servers" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "servers": [

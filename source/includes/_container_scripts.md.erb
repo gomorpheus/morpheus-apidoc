@@ -7,8 +7,8 @@ A Script may also be referred to as a *Container Script* or *containerScript*.
 ## Get All Scripts
 
 ```shell
-curl "<%= api_url %>/api/library/container-scripts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-scripts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -86,8 +86,8 @@ scriptPhase |  | Script phase filter, restricts query to only load scripts of sp
 ## Get a Specific Script
 
 ```shell
-curl "<%= api_url %>/api/library/container-scripts/10" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-scripts/10" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -136,7 +136,7 @@ Use this command to create a script.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/container-scripts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
     "scriptType": "bash",
@@ -181,7 +181,7 @@ Use this command to update an existing script.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/container-scripts/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerScript": {
     "script": "echo 'hello world' > /tmp/hello.txt",
@@ -227,7 +227,7 @@ sudoUser | N | Sudo, whether or not to run with sudo. Default is `false`.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/container-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

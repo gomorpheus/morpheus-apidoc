@@ -7,8 +7,8 @@ Provides API interfaces for managing spec templates within <%= application_name 
 ## Get All Spec Templates
 
 ```shell
-curl "<%= api_url %>/api/library/spec-templates" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/spec-templates" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -84,8 +84,8 @@ name |  | Name filter, restricts query to only load template matching name speci
 ## Get a Specific Spec Template
 
 ```shell
-curl "<%= api_url %>/api/library/spec-templates/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/spec-templates/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -146,7 +146,7 @@ Use this command to create a spec template.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/spec-templates" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "specTemplate": {
@@ -215,7 +215,7 @@ Use this command to update an existing spec template.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/spec-templates/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"specTemplate": {
         "name": "cftest2"
@@ -252,7 +252,7 @@ file | Y | File, object specifying file type and content, see [File Object](#fil
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/spec-templates/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

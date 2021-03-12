@@ -7,8 +7,8 @@ A File Template may also be referred to as a *Container Template* or *containerT
 ## Get All File Templates
 
 ```shell
-curl "<%= api_url %>/api/library/container-templates" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-templates" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -75,8 +75,8 @@ fileName |  | Filename filter, restricts query to only load file template matchi
 ## Get a Specific File Template
 
 ```shell
-curl "<%= api_url %>/api/library/container-templates/27" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-templates/27" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -129,7 +129,7 @@ Use this command to create a file template.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/container-templates" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
     "templatePhase": "provision",
@@ -174,7 +174,7 @@ Use this command to update an existing file template.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/container-templates/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"containerTemplate": {
     "name":"appconfig.yml"
@@ -219,7 +219,7 @@ settingCategory | N | Setting Category
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/container-templates/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

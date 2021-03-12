@@ -7,8 +7,8 @@ Groups belonging to a subtenant can be managed by the master account.
 -->
 
 ```shell
-curl "<%= api_url %>/api/accounts/20/groups" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/accounts/20/groups" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -70,8 +70,8 @@ lastUpdated |  | A date filter, restricts query to only load groups updated more
 ## Get a Specific Group for Subtenant
 
 ```shell
-curl "<%= api_url %>/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/accounts/20/groups/365" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -120,7 +120,7 @@ id | The ID of the group to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/accounts/20/groups" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -154,7 +154,7 @@ location  |  | Optional location argument for the group
 
 ```shell
 curl -XPUT "<%= api_url %>/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -189,7 +189,7 @@ location  |  | Optional location for the group
 
 ```shell
 curl -XPUT "<%= api_url %>/api/accounts/20/groups/365/update-zones" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "zones": [
@@ -224,7 +224,7 @@ zones      |  | An array of all the zones assigned to this group.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/accounts/20/groups/365" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

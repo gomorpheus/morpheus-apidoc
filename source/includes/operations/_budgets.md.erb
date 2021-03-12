@@ -5,8 +5,8 @@ Provides API interfaces for managing budgets.
 ## Get All Budgets
 
 ```shell
-curl "<%= api_url %>/api/budgets" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/budgets" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,8 +175,8 @@ name |  | Filter by name
 ## Get a Specific Budget
 
 ```shell
-curl "<%= api_url %>/api/budgets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/budgets/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -261,7 +261,7 @@ ID | The ID of the budget
 
 ```shell
 curl -XPOST "<%= api_url %>/api/budgets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
     "name": "sample budget",
@@ -304,7 +304,7 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 
 ```shell
 curl -XPUT "<%= api_url %>/api/budgets/:id" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"budget":{
     "interval": "quarter",
@@ -350,7 +350,7 @@ costs      |  | Array of budget cost amounts that varies in length by interval. 
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/budgets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

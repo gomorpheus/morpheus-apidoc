@@ -8,8 +8,8 @@ Fetch the list of available instance types. These can vary in range from databas
 .
 
 ```shell
-curl "<%= api_url %>/api/instance-types"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/instance-types"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -325,8 +325,8 @@ curl "<%= api_url %>/api/instance-types"
 ## Get Specific Instance Type for Provisioning
 
 ```shell
-curl "<%= api_url %>/api/instance-types/12"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/instance-types/12"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this

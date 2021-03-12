@@ -5,8 +5,8 @@ A Security Group Rule specifies that a certain CIDR is able to access a particul
 <!--## Get All Security Group Rules for a Security Group-->
 
 ```shell
-curl "<%= api_url %>/api/security-groups/19/rules"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/security-groups/19/rules"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -73,8 +73,8 @@ This endpoint retrieves all security group rules for a Security Gorup.
 ## Get a Specific Security Group Rule
 
 ```shell
-curl "<%= api_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/security-groups/19/rules/30" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -116,7 +116,7 @@ This endpoint retrieves a specific security group rule.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/security-groups/19/rules" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "name": "port 55",
@@ -163,7 +163,7 @@ instanceTypeId |  | The id of an Instance Type.  If specified, the source CIDR w
 
 ```shell
 curl -XPUT "<%= api_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "rule": {
     "portRange": "55-56"
@@ -186,7 +186,7 @@ Same parameters as specified in the creation of a Security Group Rule
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/security-groups/19/rules/30" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

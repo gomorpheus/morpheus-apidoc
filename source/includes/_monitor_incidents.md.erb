@@ -5,8 +5,8 @@ These entities are incidents that result from [Checks](#checks). The API provide
 ## Get All Incidents
 
 ```shell
-curl "<%= api_url %>/api/monitoring/incidents"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/incidents"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -74,8 +74,8 @@ severity |  | Filter by severity
 
 
 ```shell
-curl "<%= api_url %>/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/incidents/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -165,7 +165,7 @@ ID | ID of the incident to retrieve
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
     "resolution": "We fixed the problem",
@@ -203,7 +203,7 @@ endDate |  | Set end time
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -234,7 +234,7 @@ muted | true | Set to false to unmute
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/1/mute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -254,7 +254,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -285,7 +285,7 @@ muted | true | Set to false to unmute
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/mute-all" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -306,7 +306,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/monitoring/incidents/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -327,7 +327,7 @@ curl -XDELETE "<%= api_url %>/api/monitoring/incidents/1" \
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/incidents/1/reopen" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -352,7 +352,7 @@ This endpoint can be used to toggle the status of an incident back to `open`.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/monitoring/incidents" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"incident":{
         "comment": "This is a summary of the incident",

@@ -7,8 +7,8 @@ This API is for management of the library.  To query instance types during provi
 ## Get All Instance Types
 
 ```shell
-curl "<%= api_url %>/api/library/instance-types" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/instance-types" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -74,8 +74,8 @@ code |  | Code filter, restricts query to only load type matching code specified
 ## Get a Specific Instance Type
 
 ```shell
-curl "<%= api_url %>/api/library/instance-types/6" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/instance-types/6" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -508,7 +508,7 @@ Use this command to create an instance type.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/instance-types" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instanceType": {
@@ -582,7 +582,7 @@ Use this command to update an existing instance type.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/instance-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"instanceType": {
         "description": "This is a test."
@@ -615,7 +615,7 @@ Same as [Create](#create-an-instance-type).
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/instance-types/:id/toggle-featured" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{}'
 ```
@@ -645,7 +645,7 @@ id | The ID of the instance type
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/instance-types/:id/update-logo" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -F 'logo=@filename'
 ```
 
@@ -678,7 +678,7 @@ logo      |  | Logo File png,jpg,svg
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/instance-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

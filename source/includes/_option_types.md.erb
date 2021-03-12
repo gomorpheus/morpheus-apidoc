@@ -5,8 +5,8 @@ Provides API interfaces for managing Library: Option Types within <%= applicatio
 ## Get All Option Types
 
 ```shell
-curl "<%= api_url %>/api/library/option-types" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/option-types" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -114,8 +114,8 @@ fieldLabel |  | Field Label filter, restricts query to only load type matching f
 ## Get a Specific Option Type
 
 ```shell
-curl "<%= api_url %>/api/library/option-types/811" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/option-types/811" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,7 +175,7 @@ Use this command to create an option type.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/option-types" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"optionType": {
        "name": "Test Input",
@@ -220,7 +220,7 @@ Use this command to update an existing option type.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/option-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"optionType": {
         "description": "An example input"
@@ -264,7 +264,7 @@ optionList.id | N | ID of [Option List](#option-lists). For use with type `selec
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/option-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

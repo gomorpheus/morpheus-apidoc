@@ -5,8 +5,8 @@
 ## Get All Alerts
 
 ```shell
-curl "<%= api_url %>/api/monitoring/alerts"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/alerts"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -72,8 +72,8 @@ lastUpdated |  | Date filter, restricts query to only load alerts updated  times
 
 
 ```shell
-curl "<%= api_url %>/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/alerts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,7 +130,7 @@ Parameter | Description
 
 ```shell
 curl -XPOST "<%= api_url %>/api/monitoring/alerts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '"alert": {
     "name": "My Alert",
@@ -197,7 +197,7 @@ Be sure to pass `"method":"emailAddress"` and `"notify":true`, otherwise notific
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '"alert": {
     "minSeverity": "critical",
@@ -248,7 +248,7 @@ contacts      |  | Array of objects. See [Alert Contact Parameters](#alert-conta
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/monitoring/alerts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -7,8 +7,8 @@ A Node Type may also be referred to as a *Container Type* or *containerType*.
 ## Get All Node Types
 
 ```shell
-curl "<%= api_url %>/api/library/container-types" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-types" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -104,8 +104,8 @@ provisionType |  | Provision type code filter, restricts query to only load node
 ## Get a Specific Node Type
 
 ```shell
-curl "<%= api_url %>/api/library/container-types/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/container-types/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -207,7 +207,7 @@ Use this command to create a node type.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/container-types" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "containerType": {
@@ -275,7 +275,7 @@ Use this command to update an existing node type.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/container-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"layout": {
         "name": "Custom Node Name",
@@ -325,7 +325,7 @@ environmentVariables | N | Array of node type env variables, see [Environment Va
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/container-types/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

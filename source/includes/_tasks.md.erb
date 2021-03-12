@@ -5,8 +5,8 @@ Provides API interfaces for managing the creation and modification of automation
 <!--## Get All Tasks-->
 
 ```shell
-curl "<%= api_url %>/api/tasks"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/tasks"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -65,8 +65,8 @@ taskTypeCodes |  | Filter by task type code(s).
 ## Get a Specific Task
 
 ```shell
-curl "<%= api_url %>/api/tasks/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/tasks/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -112,7 +112,7 @@ ID | The ID of the task
 
 ```shell
 curl -XPOST "<%= api_url %>/api/tasks" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"task": {
     "name": "cleanup tmp files",
@@ -182,7 +182,7 @@ These additional task options are available when using executeTarget of `remote`
 
 ```shell
 curl -XPUT "<%= api_url %>/api/tasks/5" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"task":{
     "name": "my task",
@@ -209,7 +209,7 @@ Same as [Create](#create-a-task).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/tasks/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -236,7 +236,7 @@ If a task is still tied to workflows, the delete will fail.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/tasks/5/execute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job":{
     "targetType": "instance",

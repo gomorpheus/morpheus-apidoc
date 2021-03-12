@@ -8,7 +8,7 @@ Provides API interfaces for executing an arbitrary script or command on an insta
 
 ```shell
 curl -XPOST "<%= api_url %>/api/execution-request/execute?instanceId=256" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "script": "uname -a"
@@ -59,8 +59,8 @@ This endpoint executes the provided script on the specified instance, container 
 ## Get a Specific Execution Request
 
 ```shell
-curl "<%= api_url %>/api/execution-request/f22e1292-4407-44c0-b2c7-698ee2241491" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/execution-request/f22e1292-4407-44c0-b2c7-698ee2241491" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

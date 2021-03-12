@@ -5,8 +5,8 @@
 ## Get All Wiki Pages
 
 ```shell
-curl "<%= api_url %>/api/wiki/pages"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/wiki/pages"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -100,8 +100,8 @@ phrase |  | If specified will return a partial match on name
 ## Get All Wiki Categories
 
 ```shell
-curl "<%= api_url %>/api/wiki/categories"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/wiki/categories"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -153,8 +153,8 @@ pagePhrase |  | If specified will return a partial match on page name
 ## Get a Specific Wiki Page
 
 ```shell
-curl "<%= api_url %>/api/wiki/pages/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/wiki/pages/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -202,7 +202,7 @@ ID | The ID of the Wiki Page
 
 ```shell
 curl -XPOST "<%= api_url %>/api/wiki/pages" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "name": "Sample Doc",
@@ -230,7 +230,7 @@ content |  | The content of the page (markdown).
 
 ```shell
 curl -XPUT "<%= api_url %>/api/wiki/pages/4" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "#Sample Doc\nAn updated sample document in **markdown**.\nCheers!"
@@ -261,7 +261,7 @@ content |  | The content of the page (markdown).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/wiki/pages/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page
@@ -289,8 +289,8 @@ ID | The ID of the Wiki Page
 ## Get a Wiki Page For Instance
 
 ```shell
-curl "<%= api_url %>/api/instances/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/instances/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -312,7 +312,7 @@ ID | The ID of the Instance
 
 ```shell
 curl -XPUT "<%= api_url %>/instances/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this instance."
@@ -346,8 +346,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For App
 
 ```shell
-curl "<%= api_url %>/api/apps/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/apps/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -369,7 +369,7 @@ ID | The ID of the App
 
 ```shell
 curl -XPUT "<%= api_url %>/apps/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this app."
@@ -402,8 +402,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Cluster
 
 ```shell
-curl "<%= api_url %>/api/clusters/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/clusters/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -425,7 +425,7 @@ ID | The ID of the Cluster
 
 ```shell
 curl -XPUT "<%= api_url %>/clusters/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this cluster."
@@ -457,8 +457,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Server
 
 ```shell
-curl "<%= api_url %>/api/servers/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/servers/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -480,7 +480,7 @@ ID | The ID of the Server
 
 ```shell
 curl -XPUT "<%= api_url %>/servers/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this server."
@@ -514,8 +514,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Cloud
 
 ```shell
-curl "<%= api_url %>/api/zones/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zones/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -537,7 +537,7 @@ ID | The ID of the Cloud
 
 ```shell
 curl -XPUT "<%= api_url %>/zones/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this cloud."
@@ -570,8 +570,8 @@ content |  | The content of the page (markdown).
 ## Get a Wiki Page For Group
 
 ```shell
-curl "<%= api_url %>/api/groups/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/groups/1/wiki" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single wiki page.
@@ -593,7 +593,7 @@ ID | The ID of the Group
 
 ```shell
 curl -XPUT "<%= api_url %>/groups/1/wiki" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
     "content": "Lots of good information about this group."

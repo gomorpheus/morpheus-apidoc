@@ -5,8 +5,8 @@ Image Builds are used to generate [Virtual Images](#virtual-images) for  your <%
 ## Get All Image Builds
 
 ```shell
-curl "<%= api_url %>/api/image-builds" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/image-builds" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -113,8 +113,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= api_url %>/api/image-builds/4" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/image-builds/4" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this *(config omited)* :
@@ -305,7 +305,7 @@ ID | The ID of the image build to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/image-builds" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "imageBuild": {
@@ -413,7 +413,7 @@ keepResults      |  0 | Keep Results - Keep only the most recent builds. Older e
 
 ```shell
 curl -XPUT "<%= api_url %>/api/image-builds/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "imageBuild": {
@@ -443,7 +443,7 @@ See [Create](#create-an-image-build).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/image-builds/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -470,7 +470,7 @@ ID | The ID of the image build
 
 ```shell
 curl -XPOST "<%= api_url %>/api/image-builds/1/run" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -496,8 +496,8 @@ ID | The ID of the image build
 ## List Image Build Executions
 
 ```shell
-curl "<%= api_url %>/api/image-builds/1/list-executions" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/image-builds/1/list-executions" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

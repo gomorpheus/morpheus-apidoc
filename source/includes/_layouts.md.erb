@@ -7,8 +7,8 @@ A Layout may also be referred to as an *Instance Type Layout* or *instanceTypeLa
 ## Get All Layouts
 
 ```shell
-curl "<%= api_url %>/api/library/layouts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/layouts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -175,8 +175,8 @@ provisionType |  | Provision type code filter, restricts query to only load layo
 ## Get All Layouts For an Instance Type
 
 ```shell
-curl "<%= api_url %>/api/library/instance-types/1/layouts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/instance-types/1/layouts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -428,8 +428,8 @@ provisionType |  | Provision type code filter, restricts query to only load layo
 ## Get a Specific Layout
 
 ```shell
-curl "<%= api_url %>/api/library/layouts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/library/layouts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -659,7 +659,7 @@ id | ID of the layout
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/instance-types/:instanceTypeId/layouts" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instanceTypeLayout": {
@@ -759,7 +759,7 @@ sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id"
 
 ```shell
 curl -XPUT "<%= api_url %>/api/library/layouts/:id" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instanceTypeLayout": {
@@ -799,7 +799,7 @@ Same as [Create](#create-an-instance-type).
 
 ```shell
 curl -XPOST "<%= api_url %>/api/library/layouts/:id/permissions" \
-  -H "Authorization: Bearer <%= api_token %>" \
+  -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "instanceTypeLayout": {
@@ -861,7 +861,7 @@ sites | N | Array of objects identifying groups with access eg. `[{"id":1},{"id"
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/library/layouts/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

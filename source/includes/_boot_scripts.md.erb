@@ -5,8 +5,8 @@ Boot Scripts are used in the Image Builder service. See [Image Builds](#image-bu
 <!--## Get All Boot Scripts-->
 
 ```shell
-curl "<%= api_url %>/api/boot-scripts" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/boot-scripts" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -55,8 +55,8 @@ phrase |  | If specified will return a partial match on fileName
 
 
 ```shell
-curl "<%= api_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/boot-scripts/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -98,7 +98,7 @@ ID | The ID of the boot script to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/boot-scripts" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
@@ -125,7 +125,7 @@ content      |  | The script content
 
 ```shell
 curl -XPUT "<%= api_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "bootScript": {
@@ -154,7 +154,7 @@ Same as [Create](#create-a-boot-script).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/boot-scripts/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

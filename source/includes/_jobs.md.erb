@@ -5,8 +5,8 @@ Provides API interfaces for managing jobs within <%= application_name %>
 ## Get All Jobs
 
 ```shell
-curl "<%= api_url %>/api/jobs" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/jobs" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -101,8 +101,8 @@ itemSource |  | Source filter, restricts query to only load jobs of specified so
 ## Get a Specific Job
 
 ```shell
-curl "<%= api_url %>/api/jobs/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/jobs/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -287,7 +287,7 @@ Use this command to create a job. This command requires either a task `task.id` 
 
 ```shell
 curl -XPOST "<%= api_url %>/api/jobs" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job": {
         "name": "Job 1",
@@ -349,7 +349,7 @@ refId | Y | ID for instance or server depending on target type
 
 ```shell
 curl -XPUT "<%= api_url %>/api/jobs/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"job": {
         "name": "Job 1",
@@ -413,7 +413,7 @@ Use this command to execute a job.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/jobs/3/execute" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -442,7 +442,7 @@ Use this command to delete a job.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/jobs/3" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -467,8 +467,8 @@ id | ID of the job
 ## Get Job Executions
 
 ```shell
-curl "<%= api_url %>/api/job-executions" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/job-executions" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -573,8 +573,8 @@ phrase |  | Name or external ID filter, restricts query to only load job executi
 ## Get a Specific Job Execution
 
 ```shell
-curl "<%= api_url %>/api/job-executions/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/job-executions/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -666,8 +666,8 @@ id | ID of the job execution
 ## Get a Specific Job Execution Event
 
 ```shell
-curl "<%= api_url %>/api/job-executions/1/events/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/job-executions/1/events/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

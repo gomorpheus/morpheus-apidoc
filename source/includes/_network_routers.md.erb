@@ -5,8 +5,8 @@ Provides API interfaces for managing network routers within <%= application_name
 ## Get All Network Routers
 
 ```shell
-curl "<%= api_url %>/api/networks/routers" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/routers" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -111,8 +111,8 @@ phrase |  | Restricts query to only load network routers layouts which contain t
 ## Get a Specific Network Router
 
 ```shell
-curl "<%= api_url %>/api/networks/routers/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/networks/routers/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -240,7 +240,7 @@ Use this command to create a network router.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/networks/routers" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
           "networkRouter": {
@@ -308,7 +308,7 @@ Use this command to update an existing network router.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/networks/routers/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{
         "networkRouter": {
@@ -357,7 +357,7 @@ enabled | N | Can be used to enable / disable the network router (true, false). 
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/networks/routers/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -387,7 +387,7 @@ Use this command to create a firewall rule for an existing network router.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/networks/routers/1/firewall-rules" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
           "rule": {
@@ -447,7 +447,7 @@ portRange | N | Port range
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/networks/routers/1/firewall-rules/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -478,7 +478,7 @@ Use this command to create a route for an existing network router.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/networks/routers/1/routes" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "route": {
@@ -529,7 +529,7 @@ networkMtu | Y | MTU
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/networks/routers/1/routes/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -558,7 +558,7 @@ route_id | The ID of the route to be deleted
 
 ```shell
 curl -XPUT "<%= api_url %>/api/networks/routers/1/permissions" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "permissions": {
@@ -603,8 +603,8 @@ permissions.tenantPermissions.account | N | Array of tenant account IDs
 ## Get all Network Router Types
 
 ```shell
-curl "<%= api_url %>/api/network-router-types" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/network-router-types" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -676,8 +676,8 @@ This endpoint retrieves all network router types.
 ## Get a Specific Network Router Type
 
 ```shell
-curl "<%= api_url %>/api/network-router-types/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/network-router-types/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

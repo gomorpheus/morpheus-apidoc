@@ -7,8 +7,8 @@ A Group may also be referred to as a *Site* or *site*.
 ## Get All Groups
 
 ```shell
-curl "<%= api_url %>/api/groups"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/groups"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -58,8 +58,8 @@ name |  | If specified will return an exact match group
 
 
 ```shell
-curl "<%= api_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/groups/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -107,7 +107,7 @@ ID | The ID of the group to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/groups" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -134,7 +134,7 @@ location  |  | Optional location argument for your group
 
 ```shell
 curl -XPUT "<%= api_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "name": "My Group",
@@ -160,7 +160,7 @@ location  |  | Optional location for your group
 
 ```shell
 curl -XPUT "<%= api_url %>/api/groups/1/update-zones" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"group":{
     "zones": [
@@ -195,7 +195,7 @@ zones      |  | An array of all the zones assigned to this group.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

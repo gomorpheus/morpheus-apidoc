@@ -5,8 +5,8 @@ Execute Schedules are definitions for recurring schedules. These schedules can b
 <!--## Get All Execute Schedules-->
 
 ```shell
-curl "<%= api_url %>/api/execute-schedules" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/execute-schedules" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -62,8 +62,8 @@ phrase |  | If specified will return a partial match on name
 ## Get a Specific Execute Schedule
 
 ```shell
-curl "<%= api_url %>/api/execute-schedules/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/execute-schedules/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -101,7 +101,7 @@ ID | The ID of the execute schedule to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/execute-schedules" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -137,7 +137,7 @@ enabled      | true | Enabled
 
 ```shell
 curl -XPUT "<%= api_url %>/api/execute-schedules/2" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
@@ -162,7 +162,7 @@ See [Create](#create-an-execute-schedule).
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/execute-schedules/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

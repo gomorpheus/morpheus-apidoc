@@ -5,8 +5,8 @@ Data Stores can be managed for each Compute Zone (Cloud) in your infrastructure.
 <!--## Get All Data Stores for Cloud-->
 
 ```shell
-curl "<%= api_url %>/api/zones/5/data-stores"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zones/5/data-stores"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -65,8 +65,8 @@ name |  | Filter on exact match of name
 ## Get a Specific Data Store
 
 ```shell
-curl "<%= api_url %>/api/zones/5/data-stores/50" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/zones/5/data-stores/50" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -126,7 +126,7 @@ id | The ID of the data store to retrieve
 
 ```shell
 curl -XPUT "<%= api_url %>/api/zones/5/data-stores/50" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"datastore":{
     "active": true,

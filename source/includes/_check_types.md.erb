@@ -5,8 +5,8 @@ A set of APIs for fetching a list of available check types is also provided. Thi
 ## Get All Check Types
 -->
 ```shell
-curl "<%= api_url %>mand/api/monitoring/check-types"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>mand/api/monitoring/check-types"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -169,8 +169,8 @@ curl "<%= api_url %>mand/api/monitoring/check-types"
 ## Get Specific Check Type
 
 ```shell
-curl "<%= api_url %>/api/monitoring/check-types/10" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/check-types/10" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this

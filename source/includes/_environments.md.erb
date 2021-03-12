@@ -5,8 +5,8 @@ Provides API interfaces for managing the creation and modification of provisioni
 ## Get All Environments
 
 ```shell
-curl "<%= api_url %>/api/environments"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/environments"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -93,8 +93,8 @@ code |  | Filter by code
 ## Get a Specific Environment
 
 ```shell
-curl "<%= api_url %>/api/environments/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/environments/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -132,7 +132,7 @@ ID | The ID of the environment
 
 ```shell
 curl -XPOST "<%= api_url %>/api/environments" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -166,7 +166,7 @@ sortOrder | 0 | Sort order
 
 ```shell
 curl -XPUT "<%= api_url %>/api/environments/5" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "environment": {
@@ -203,7 +203,7 @@ Only user created environments may be updated.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/environments/5/toggle-active" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like getting a single environment:
@@ -231,7 +231,7 @@ This endpoint allows global environments to be updated by the master account.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/environments/5" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

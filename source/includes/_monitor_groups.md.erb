@@ -5,8 +5,8 @@ These entities define Check Groups, a collection of checks.
 <!--## Get All Check Groups-->
 
 ```shell
-curl "<%= api_url %>/api/monitoring/groups"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/groups"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -130,8 +130,8 @@ deleted | false | Pass true to see checks that have been deleted.
 ## Get a Specific Check Group
 
 ```shell
-curl "<%= api_url %>/api/monitoring/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/monitoring/groups/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -252,7 +252,7 @@ ID | ID of the check to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/monitoring/groups" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
     "name": "My Check Group",
@@ -283,7 +283,7 @@ checks | [] | Array of [Check](#checks) IDs
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"checkGroup":{
     checks: [5,6,7,8,9]
@@ -311,7 +311,7 @@ checks |  | Array of [Check](#checks) IDs
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/groups/1/mute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -340,7 +340,7 @@ muted | true | Set to false to unmute
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/groups/1/mute" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -360,7 +360,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/groups/mute-all" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":true}'
 ```
@@ -389,7 +389,7 @@ muted | true | Set to false to unmute
 
 ```shell
 curl -XPUT "<%= api_url %>/api/monitoring/groups/mute-all" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"muted":false}'
 ```
@@ -410,7 +410,7 @@ The same endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/monitoring/groups/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

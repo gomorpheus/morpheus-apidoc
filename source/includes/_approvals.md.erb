@@ -5,8 +5,8 @@ Provides API interfaces for managing approvals within <%= application_name %>
 ## Get All Approvals
 
 ```shell
-curl "<%= api_url %>/api/approvals" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/approvals" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -67,8 +67,8 @@ name |  | Name filter, restricts query to only load approval matching name speci
 ## Get a Specific Approval
 
 ```shell
-curl "<%= api_url %>/api/approvals/3" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/approvals/3" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -142,8 +142,8 @@ id | ID of the approval
 ## Get a Specific Approval Item
 
 ```shell
-curl "<%= api_url %>/api/approval-items/3" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/approval-items/3" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -194,7 +194,7 @@ id | ID of the approval item
 
 ```shell
 curl -XPUT "<%= api_url %>/api/approval-items/3/approve" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:

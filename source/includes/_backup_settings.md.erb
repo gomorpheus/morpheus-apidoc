@@ -5,8 +5,8 @@ Provides API interfaces for managing backup settings within <%= application_name
 ## Get Backup Settings
 
 ```shell
-curl "<%= api_url %>/api/backup-settings" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/backup-settings" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -42,7 +42,7 @@ This endpoint retrieves backup settings.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/backup-settings" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"backupSettings": {
          "backupsEnabled": false,

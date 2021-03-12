@@ -5,8 +5,8 @@ Provides API interfaces for managing prices within <%= application_name %>
 ## Get All Prices
 
 ```shell
-curl "<%= api_url %>/api/prices" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/prices" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -71,8 +71,8 @@ currency |  | Restricts query to only load only prices with specified currency
 ## Get a Specific Price
 
 ```shell
-curl "<%= api_url %>/api/prices/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/prices/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -124,7 +124,7 @@ Use this command to create a price.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/prices" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "price": {
@@ -196,7 +196,7 @@ Software | software
 
 ```shell
 curl -XPUT "<%= api_url %>/api/prices/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
         "price": {
@@ -260,7 +260,7 @@ restartUsage | N | Apply changes to usage
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/prices/1/deactivate" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

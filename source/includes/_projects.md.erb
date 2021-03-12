@@ -5,8 +5,8 @@
 ## Get All Projects
 
 ```shell
-curl "<%= api_url %>/api/projects"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/projects"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -124,8 +124,8 @@ id |  | Filter by Project id(s)
 
 
 ```shell
-curl "<%= api_url %>/api/projects/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/projects/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -194,7 +194,7 @@ ID | The ID of the project
 
 ```shell
 curl -XPOST "<%= api_url %>/api/projects" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
     "name": "Test Project",
@@ -231,7 +231,7 @@ resources |  | Resources, Array of objects having an id. These are discovered Ac
 
 ```shell
 curl -XPUT "<%= api_url %>/api/projects/:id" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"project":{
     "addInstances":[
@@ -280,7 +280,7 @@ removeResources |  | Remove Resources from the project, Array of objects having 
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/projects/:id" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:

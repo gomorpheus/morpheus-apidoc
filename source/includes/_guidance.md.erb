@@ -5,8 +5,8 @@ Provides API interfaces for managing guidance within <%= application_name %>
 ## Get All Discoveries
 
 ```shell
-curl "<%= api_url %>/api/guidance" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/guidance" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -228,8 +228,8 @@ state |  | Filter by state, restricts query to only load discoveries by state: a
 ## Get a Specific Discovery
 
 ```shell
-curl "<%= api_url %>/api/guidance/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/guidance/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -430,8 +430,8 @@ id | ID of the discovery
 ## Get Guidance Stats
 
 ```shell
-curl "<%= api_url %>/api/guidance/stats" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/guidance/stats" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -470,8 +470,8 @@ This endpoint retrieves a summary of actionable discoveries.
 ## Get Discovery Types
 
 ```shell
-curl "<%= api_url %>/api/guidance/types" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/guidance/types" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -538,7 +538,7 @@ Use this command to execute a discovery.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/guidance/1/execute" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" 
 ```
 
@@ -567,7 +567,7 @@ Use this command to ignore a discovery.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/guidance/1/ignore" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" 
 ```
 

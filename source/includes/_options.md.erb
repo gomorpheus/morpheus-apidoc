@@ -91,8 +91,8 @@ config:      | Any special configuration options pertaining to specific input ty
 ## Get Option Source Data
 
 ```shell
-curl "<%= api_url %>/api/options/keyPairs"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/options/keyPairs"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this
@@ -113,8 +113,8 @@ Returns a list of name/value pairs for option-type models. Some option-types dep
 ## List Options For Code Repositories
 
 ```shell
-curl "<%= api_url %>/api/options/codeRepositories"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/options/codeRepositories"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like the standard Get Option Source Data

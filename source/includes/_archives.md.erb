@@ -7,8 +7,8 @@ Archives are organized by buckets. Each bucket has a unique name that is used to
 ## Get All Archive Buckets
 
 ```shell
-curl "<%= api_url %>/api/archives/buckets" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/archives/buckets" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -94,8 +94,8 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= api_url %>/api/archives/buckets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/archives/buckets/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -147,7 +147,7 @@ ID | The ID of the archive bucket to retrieve
 
 ```shell
 curl -XPOST "<%= api_url %>/api/archives/buckets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "archiveBucket": {
@@ -183,7 +183,7 @@ accounts      |  | Tenants - Grant read only access to certain tenants
 
 ```shell
 curl -XPUT "<%= api_url %>/api/archives/buckets/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "archiveBucket": {
@@ -220,7 +220,7 @@ accounts      |  | Tenants - Grant read only access to certain tenants
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/archives/buckets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
@@ -248,8 +248,8 @@ ID | The ID of the archive bucket
 ## Get All Archive Files
 
 ```shell
-curl "<%= api_url %>/api/archives/buckets/mybucket/files/" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/archives/buckets/mybucket/files/" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -356,8 +356,8 @@ fullTree | false | Include files under sub directories too. This is always true 
 
 
 ```shell
-curl "<%= api_url %>/api/archives/files/954" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/archives/files/954" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -404,7 +404,7 @@ fileId | The ID of the archive file
 
 ```shell
 curl -XPOST "<%= api_url %>/api/archives/buckets/mybucket/files/myapp/config/?filename=application.rb" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   --data-binary '@/path/to/file'
 ```
 
@@ -441,7 +441,7 @@ filename | Specify a filename for archive file. The base filename of the uploade
 
 ```shell
 curl -XGET "<%= api_url %>/api/archives/download/mybucket/myapp/config/application.rb" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns the contents of the specified file as an attachment with Content-Type dicated by the file
@@ -487,7 +487,7 @@ filePath | The full path of the file being downloaded
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/archives/files/99" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:
@@ -519,8 +519,8 @@ fileId | The ID of the archive file
 ### HTTP Request
 
 ```shell
-curl "<%= api_url %>/api/archives/files/1/links"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/archives/files/1/links"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 ```json
@@ -586,7 +586,7 @@ fileId | The ID of the archive file
 
 ```shell
 curl -XPOST "<%= api_url %>/api/archives/files/:fileId/links" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
 ```
 
@@ -624,7 +624,7 @@ expireSeconds      | 0 | Time to live in seconds. 0 means do not expire.
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/archives/files/1/links/1" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
 ```
 

@@ -5,8 +5,8 @@ Provides API interfaces for managing price sets within <%= application_name %>
 ## Get All Price Sets
 
 ```shell
-curl "<%= api_url %>/api/price-sets" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/price-sets" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -86,8 +86,8 @@ includeInactive | false | If true, include inactive prices in the results
 ## Get a Specific Price Set
 
 ```shell
-curl "<%= api_url %>/api/price-sets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/price-sets/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -157,7 +157,7 @@ Use this command to create a price set.
 
 ```shell
 curl -XPOST "<%= api_url %>/api/price-sets" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"priceSet": {
         "name": "price set 1",
@@ -213,7 +213,7 @@ prices | N | List of price IDs to associate with price set
 
 ```shell
 curl -XPUT "<%= api_url %>/api/price-sets/1" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
   -d '{"priceSet": {
           "name": "new price set name",
@@ -261,7 +261,7 @@ prices | N | List of price IDs to associate with price set
 
 ```shell
 curl -XPUT "<%= api_url %>/api/price-sets/1/deactivate" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structure like this:

@@ -10,8 +10,8 @@ An Identity Source may also be referred to as a *User Source* or *userSource*.
 ## Get All Identity Sources
 
 ```shell
-curl "<%= api_url %>/api/user-sources"
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/user-sources"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -326,8 +326,8 @@ accountId |  | Filter on a Tenant ID. *Only available to the master tenant.*
 ## Get a Specific Identity Source
 
 ```shell
-curl "<%= api_url %>/api/user-sources/2" \
-  -H "Authorization: BEARER <%= api_token %>"
+curl "<%= curl_url %>/api/user-sources/2" \
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON structured like this:
@@ -401,7 +401,7 @@ ID | The ID of the identity source
 
 ```shell
 curl -XPOST "<%= api_url %>/api/accounts/60/user-sources" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "userSource": {
@@ -528,7 +528,7 @@ config.encryptionKey      |  | Encryption Key
 
 ```shell
 curl -XPUT "<%= api_url %>/api/user-sources/3" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "userSource": {
@@ -578,7 +578,7 @@ config | | Map of configuration options which vary by type.
 
 ```shell
 curl -XPUT "<%= api_url %>/api/user-sources/3/subdomain" \
-  -H "Authorization: BEARER <%= api_token %>" \
+  -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"subdomain": "ninjas"}'
 ```
@@ -613,7 +613,7 @@ This endpoint updates the subdomain for the account associated with the user sou
 
 ```shell
 curl -XDELETE "<%= api_url %>/api/user-sources/3" \
-  -H "Authorization: BEARER <%= api_token %>"
+  -H "Authorization: BEARER <%= curl_token %>"
 ```
 
 > The above command returns JSON Structured like this:
