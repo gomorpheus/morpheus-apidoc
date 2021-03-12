@@ -40,7 +40,6 @@ Now you can view the documentation you just built with `open build/index.html`.
 
 ### White Labeling
 
-Morpheus API Documentation Settings
 To rebrand this site, create a file called `whitelabel_config.rb` 
 and override the settings seen in the example below.
 
@@ -104,5 +103,4 @@ The Morpheus API does still refer to `morpheus` in several ways.
   example: "client_id": "morph-api" is required for authentication.
 Future versions of the Morpheus appliance may address these issues.
 
-To rebrand the docs site for your own company, create a file called `whitelabel_config.rb` and modify the settings to your liking.
 
