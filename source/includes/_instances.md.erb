@@ -1203,7 +1203,7 @@ Parameter | Description
 ## Get Available Service Plans for an Instance
 
 ```shell
-curl -XGET "<%= api_url %>/api/instances/service-plans?zoneId=1&layoutId=75" \
+curl -XGET "<%= curl_url %>/api/instances/service-plans?zoneId=1&layoutId=75" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -2143,7 +2143,7 @@ Parameter | Description
 ## Get Security Groups
 
 ```shell
-curl -XGET "<%= api_url %>/api/instances/1/security-groups" \
+curl -XGET "<%= curl_url %>/api/instances/1/security-groups" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 

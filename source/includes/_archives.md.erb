@@ -440,7 +440,7 @@ filename | Specify a filename for archive file. The base filename of the uploade
 ## Download an Archive File
 
 ```shell
-curl -XGET "<%= api_url %>/api/archives/download/mybucket/myapp/config/application.rb" \
+curl -XGET "<%= curl_url %>/api/archives/download/mybucket/myapp/config/application.rb" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -464,7 +464,7 @@ filePath | The full path of the file being downloaded
 ## Download a Public Archive File
 
 ```shell
-curl -XGET "<%= api_url %>/public-archives/download/mybucket/pubdemo/GREETINGS.md"
+curl -XGET "<%= curl_url %>/public-archives/download/mybucket/pubdemo/GREETINGS.md"
 ```
 
 > The above command returns the contents of the file as an attachment with Content-Type dicated by the file
@@ -653,7 +653,7 @@ linkId | The ID of the archive file link
 ## Download an Archive File Link
 
 ```shell
-curl -XGET "<%= api_url %>/public-archives/link?s=45a214fce9a546b9"
+curl -XGET "<%= curl_url %>/public-archives/link?s=45a214fce9a546b9"
 ```
 
 > The above command returns the contents of the file as an attachment with Content-Type dicated by the file

@@ -486,7 +486,7 @@ If a zone has zones or servers still tied to it, a delete action will fail
 ## Get Security Groups
 
 ```shell
-curl -XGET "<%= api_url %>/api/zones/1/security-groups" \
+curl -XGET "<%= curl_url %>/api/zones/1/security-groups" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
