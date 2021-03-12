@@ -80,5 +80,6 @@ set :favicon_path, "favicon.png"
 whitelabel_fn = "whitelabel_config.rb"
 if File.exists?(whitelabel_fn)
   puts "Loading #{whitelabel_fn}..."
-  load(whitelabel_fn)
+  # load(whitelabel_fn)
+  eval(File.read(whitelabel_fn))
 end
