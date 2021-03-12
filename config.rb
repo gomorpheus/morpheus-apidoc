@@ -38,26 +38,6 @@ end
 # Morpheus API Documentation Settings
 # To rebrand this site, create a file called whitelabel_config.rb 
 # and override the settings below.
-#
-# You will also want to modify source/index.md.erb to remove any unwanted includes
-# or perhaps add your own documents to be included.
-#
-# Some documents still refer to Morpheus
-# * [Programming Languages](#programming-languages) The CLI and SDKs all refer to morpheus of course.
-# * [Setup](#setup) refers to the Morpheus Hub, but setup is unlikely needed for your whitelabel API documentation.
-# 
-# To remove these, modify source/index.md.erb to remove the following includes:
-# - programming_languages
-# - setup
-#
-# Caveats:
-# The Morpheus API does still refer to 'morpheus' in several ways.
-# * Type codes, Default image codes, and other things of that nature.
-#   example: "type": "morpheus" is the default for both Blueprint and Cloud (Zone)
-# * Authentication Client IDs: the string `morph-` is always used as client prefix. 
-#   example: "client_id": "morph-api" is required for authentication.
-# Future versions of the Morpheus appliance may address these issues.
-#
 
 # The title of the site
 set :title, "Morpheus API Documentation"
@@ -96,7 +76,7 @@ set :footer_logo_path, "logo_footer.svg"
 set :favicon_path, "favicon.png"
 
 
-# Load custom user settings from whitelabel_config.rb
+# Load custom settings from whitelabel_config.rb
 whitelabel_fn = "whitelabel_config.rb"
 if File.exists?(whitelabel_fn)
   puts "Loading #{whitelabel_fn}..."
