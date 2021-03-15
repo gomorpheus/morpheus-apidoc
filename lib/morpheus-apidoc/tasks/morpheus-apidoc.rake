@@ -7,14 +7,14 @@ def remote_name
   ENV.fetch("REMOTE_NAME", "origin")
 end
 
-def publish_branch
-  #ENV.fetch("PUBLISH_BRANCH", "gh-pages")
-  ENV.fetch("PUBLISH_BRANCH", "latest-build")
+def release_branch
+  #ENV.fetch("release_branch", "gh-pages")
+  ENV.fetch("release_branch", "latest-build")
 end
 
 PROJECT_ROOT = `git rev-parse --show-toplevel`.strip
 BUILD_DIR    = File.join(PROJECT_ROOT, "build")
-GH_PAGES_REF = File.join(BUILD_DIR, ".git/refs/remotes/#{remote_name}/#{publish_branch}")
+GH_PAGES_REF = File.join(BUILD_DIR, ".git/refs/remotes/#{remote_name}/#{release_branch}")
 
 directory BUILD_DIR
 
@@ -31,14 +31,14 @@ file GH_PAGES_REF => BUILD_DIR do
     sh "git fetch #{remote_name}"
     sh "git checkout master"
 
-    if `git branch -r` =~ /#{publish_branch}/
-      sh "git checkout #{publish_branch}"
+    if `git branch -r` =~ /#{release_branch}/
+      sh "git checkout #{release_branch}"
     else
-      sh "git checkout --orphan #{publish_branch}"
+      sh "git checkout --orphan #{release_branch}"
       sh "touch index.html"
       sh "git add ."
-      sh "git commit -m 'initial #{publish_branch} commit'"
-      sh "git push #{remote_name} #{publish_branch}"
+      sh "git commit -m 'initial #{release_branch} commit'"
+      sh "git push #{remote_name} #{release_branch}"
     end
   end
 end
@@ -46,11 +46,11 @@ end
 # Alias to something meaningful
 task :prepare_git_remote_in_build_dir => GH_PAGES_REF
 
-# Fetch upstream changes on #{publish_branch} branch
+# Fetch upstream changes on #{release_branch} branch
 task :sync do
   cd BUILD_DIR do
     sh "git fetch #{remote_name}"
-    sh "git reset --hard #{remote_name}/#{publish_branch}"
+    sh "git reset --hard #{remote_name}/#{release_branch}"
   end
 end
 
@@ -76,7 +76,7 @@ task :build_verbose do
   end
 end
 
-desc "Build and publish to Github Pages"
+desc "Build and publish to release branch: #{release_branch}"
 task :publish => [:not_dirty, :prepare_git_remote_in_build_dir, :sync, :build] do
   message = nil
   suffix = ENV["COMMIT_MESSAGE_SUFFIX"]
@@ -93,6 +93,6 @@ task :publish => [:not_dirty, :prepare_git_remote_in_build_dir, :sync, :build] d
     else
       sh "git commit -m \"#{message}\""
     end
-    sh "git push #{remote_name} #{publish_branch}"
+    sh "git push #{remote_name} #{release_branch}"
   end
 end
