@@ -643,6 +643,65 @@ Parameter | Default | Description
 personaCode  |  | code of the Persona, eg. **standard** or **serviceCatalog**
 access     |  | **full** or **none**
 
+## Global VDI Pool Access
+
+> Global VDI Pool Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= curl_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "VdiPools",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **VdiPools** is the code for Global VDI Pool Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing VDI Pool Access
+
+> Global VDI Pool Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= curl_url %>/api/roles/4/update-vdi-pool" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "vdiPoolId": 1,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-vdi-pool`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+vdiPoolId  |  | id of the VDI pool
+access     |  | **full** or **none**
+
 ## Delete a Role
 
 ```shell

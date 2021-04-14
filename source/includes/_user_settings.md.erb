@@ -25,6 +25,7 @@ curl "<%= curl_url %>/api/user-settings" \
     "windowsUsername": null,
     "windowsPassword": null,
     "avatar": null,
+    "desktopBackground": null,
     "receiveNotifications": true,
     "defaultPersona": {
       "id": 1,
@@ -53,7 +54,7 @@ This endpoint retrieves your user settings and API access token information.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ## Update User Settings
 
@@ -87,7 +88,7 @@ curl -XPUT "<%= curl_url %>/api/user-settings" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ### JSON Parameters
 
@@ -106,7 +107,7 @@ windowsPassword      |  | Windows Password
 receiveNotifications      |  | Receive Notifications (true or false)
 defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
 
-## Update Avatar Image
+## Update Avatar
 
 ```shell
 curl -XPOST "<%= curl_url %>/api/user-settings/avatar" \
@@ -122,6 +123,8 @@ curl -XPOST "<%= curl_url %>/api/user-settings/avatar" \
 }
 ```
 
+This endpoint updates your avatar image.  Expects multipart form data as the request format, not JSON.
+
 ### HTTP Request
 
 `POST <%= api_url %>/api/user-settings/avatar`
@@ -136,7 +139,7 @@ Content-Type     | `multipart/form-data` is expected.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ### Parameters
 
@@ -144,9 +147,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 user.avatar      |  | Image File png,jpg,svg
 
-Upload a new avatar image.  Expects multipart form data as the request format, not JSON.
-
-## Delete Avatar Image
+## Delete Avatar
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/user-settings/avatar" \
@@ -171,7 +172,75 @@ Delete your avatar image.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
+
+## Update Desktop Background
+
+```shell
+curl -XPOST "<%= curl_url %>/api/user-settings/desktop-background" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -F 'user.desktopBackground=@filename'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint updates your desktop background image that is used in the Virtual Desktop persona. *Expects multipart form data as the request format, not JSON*.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/user-settings/desktop-background`
+
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+Content-Type     | `multipart/form-data` is expected.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+userId      | (current user) | ID of User *Only available to the master tenant.*
+
+### Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+user.desktopBackground      |  | Image File png,jpg,svg
+
+
+## Delete Desktop Background
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/user-settings/desktop-background" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Delete your desktop background image.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/user-settings/desktop-background`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ## Regenerate API Access Token
 
@@ -198,7 +267,7 @@ curl -XPUT "<%= curl_url %>/api/user-settings/regenerate-access-token?clientId=m
 Parameter | Default | Description
 --------- | ------- | -----------
 clientId      |  | Client ID
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 
 > The above command returns JSON structured like this:
@@ -228,6 +297,8 @@ curl -XPUT "<%= curl_url %>/api/user-settings/clear-access-token?clientId=morph-
 }
 ```
 
+This endpoint revokes your API access token for the specified client.
+
 ### HTTP Request
 
 `PUT <%= api_url %>/api/user-settings/clear-access-token?clientId=:clientId`
@@ -237,9 +308,7 @@ curl -XPUT "<%= curl_url %>/api/user-settings/clear-access-token?clientId=morph-
 Parameter | Default | Description
 --------- | ------- | -----------
 clientId      |  | Client ID
-userId      | (current user) | ID of User *Only available to the master account.*
-
-This endpoint revokes your API access token for the specified client.
+userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ## Get Available API Clients
 
@@ -263,14 +332,14 @@ curl "<%= curl_url %>/api/user-settings/api-clients" \
 }
 ```
 
+This endpoint retrieves a list of available API clients.
+
 ### HTTP Request
 
 `GET <%= api_url %>/api/user-settings/api-clients`
-
-This endpoint retrieves a list of available API clients.
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-userId      | (current user) | ID of User *Only available to the master account.*
+userId      | (current user) | ID of User *Only available to the master tenant.*
