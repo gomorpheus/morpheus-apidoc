@@ -89,6 +89,12 @@ curl -XPUT "<%= curl_url %>/api/user-settings" \
   -d '{
   "user": {
     "receiveNoticiations": true,
+    "defaultGroup": {
+      "id": 1
+    },
+    "defaultCloud": {
+      "id": 1
+    },
     "defaultPersona": {
       "code": "standard"
     }
@@ -116,6 +122,8 @@ userId      | (current user) | ID of User *Only available to the master tenant.*
 
 ### JSON Parameters
 
+These parameters should be passed under an object called `user`.
+
 Parameter | Default | Description
 --------- | ------- | -----------
 username      |  | Username
@@ -129,7 +137,11 @@ linuxKeyPairId      |  | Linux Key Pair ID
 windowsUsername      |  | Windows Username
 windowsPassword      |  | Windows Password
 receiveNotifications      |  | Receive Notifications (true or false)
+defaultGroup.id      |  | Default Group ID
+defaultCloud.id      |  | Default Cloud ID
 defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+avatar      |  | Avatar Image File png,jpg,svg (requires `Content-Type: multipart/form-data`)
+desktopBackground      |  | Desktop Background for VDI Persona. Image File png,jpg,svg (requires `Content-Type: multipart/form-data`)
 
 ## Update Avatar
 
