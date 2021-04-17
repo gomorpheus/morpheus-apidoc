@@ -17,17 +17,20 @@ curl "<%= curl_url %>/api/users"
     {
       "id": 1,
       "accountId": 1,
-      "username": "davydotcom",
-      "displayName": "David Estes",
-      "email": "destes@bcap.com",
-      "firstName": "David",
-      "lastName": "Estes",
-      "dateCreated": "2015-11-10T18:58:55+0000",
-      "lastUpdated": "2015-11-10T18:58:55+0000",
+      "username": "admin",
+      "displayName": "<%= application_name %> Admin",
+      "email": "admin@<%= company_domain %>",
+      "firstName": "<%= application_name %>",
+      "lastName": "Admin",
       "enabled": true,
+      "receiveNotifications": true,
+      "isUsing2FA": true,
       "accountExpired": false,
       "accountLocked": false,
       "passwordExpired": false,
+      "loginCount": 42,
+      "loginAttempts": 0,
+      "lastLoginDate": "2021-04-17T00:12:01Z",
       "roles": [
         {
           "id": 1,
@@ -37,8 +40,20 @@ curl "<%= curl_url %>/api/users"
       ],
       "account": {
         "id": 1,
-        "name": "Root Account"
-      }
+        "name": "<%= company_domain %>"
+      },
+      "linuxUsername": "morphadmin",
+      "linuxPassword": null,
+      "linuxKeyPairId": 5,
+      "windowsUsername": "morphadmin",
+      "windowsPassword": "************",
+      "defaultPersona": {
+        "id": 1,
+        "code": "standard",
+        "name": "Standard"
+      },
+      "dateCreated": "2016-08-27T19:28:09Z",
+      "lastUpdated": "2021-04-17T00:12:01Z"
     }
   ],
   "meta": {
@@ -107,17 +122,20 @@ curl "<%= curl_url %>/api/users/1" \
   "user": {
     "id": 1,
     "accountId": 1,
-    "username": "davydotcom",
-    "displayName": "David Estes",
-    "email": "destes@bcap.com",
-    "firstName": "David",
-    "lastName": "Estes",
-    "dateCreated": "2015-11-10T18:58:55+0000",
-    "lastUpdated": "2015-11-10T18:58:55+0000",
+    "username": "admin",
+    "displayName": "<%= application_name %> Admin",
+    "email": "admin@<%= company_domain %>",
+    "firstName": "<%= application_name %>",
+    "lastName": "Admin",
     "enabled": true,
+    "receiveNotifications": true,
+    "isUsing2FA": true,
     "accountExpired": false,
     "accountLocked": false,
     "passwordExpired": false,
+    "loginCount": 42,
+    "loginAttempts": 0,
+    "lastLoginDate": "2021-04-17T00:12:01Z",
     "roles": [
       {
         "id": 1,
@@ -127,8 +145,20 @@ curl "<%= curl_url %>/api/users/1" \
     ],
     "account": {
       "id": 1,
-      "name": "Root Account"
+      "name": "<%= company_domain %>"
     },
+    "linuxUsername": "morphadmin",
+    "linuxPassword": null,
+    "linuxKeyPairId": 5,
+    "windowsUsername": "morphadmin",
+    "windowsPassword": "************",
+    "defaultPersona": {
+      "id": 1,
+      "code": "standard",
+      "name": "Standard"
+    },
+    "dateCreated": "2016-08-27T19:28:09Z",
+    "lastUpdated": "2021-04-17T00:12:01Z"
     "access": {
       "features": [
         {
@@ -188,7 +218,7 @@ id | The ID of the User
 
 Parameter | Default | Description
 --------- | ------- | -----------
-includeAccess |  | Include access the user payload
+includeAccess |  | Include `access` information in the response.  This is the permissions, clouds, instanceTypes, etc. that the user is authorized for based on their assigned [Role(s)](#roles).
 
 
 ## Create a User
