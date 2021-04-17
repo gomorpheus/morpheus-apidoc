@@ -1,6 +1,6 @@
 # VDI Pools
 
-Provides API interfaces for the Tools: VDI Pools functionality, which involves viewing and managing VDI Pools, Apps and Gateways. VDI Pools are the virtual desktops that become available for allocation and use by the [Virtual Desktop Persona](#vdi).
+Provides API interfaces for the Tools: VDI Pools functionality, which involves viewing and managing VDI Pools, Apps and Gateways. VDI Pools are the virtual desktops that become available for allocation and use by the [Virtual Desktop Persona](#virtual-desktop).
 
 ## List VDI Pools
 
@@ -17,7 +17,7 @@ curl "<%= curl_url %>/api/vdi-pools" \
     {
       "id": 1,
       "name": "Windows Desktop",
-      "description": "An example of a VDI pool",
+      "description": "A fancy windows desktop",
       "minIdle": 0,
       "maxIdle": 0,
       "initialPoolSize": 0,
@@ -119,7 +119,7 @@ curl "<%= curl_url %>/api/vdi-pools" \
     {
       "id": 2,
       "name": "Test Desktop",
-      "description": "Another example of a VDI pool",
+      "description": "Our test machine",
       "minIdle": 0,
       "maxIdle": 0,
       "initialPoolSize": 0,
@@ -279,7 +279,7 @@ curl "<%= curl_url %>/api/vdi-pools/1" \
   "vdiPool": {
       "id": 1,
       "name": "Windows Desktop",
-      "description": "An example of a VDI pool",
+      "description": "A fancy windows desktop",
       "minIdle": 0,
       "maxIdle": 0,
       "initialPoolSize": 0,
@@ -403,7 +403,7 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
   -d '{
   "vdiPool": {
     "name": "Windows Desktop",
-    "description": "An example of a VDI pool",
+    "description": "A fancy windows desktop",
     "owner": 1,
     "minIdle": 0,
     "initialPoolSize": 0,
@@ -435,7 +435,7 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
   "vdiPool": {
     "id": 1,
     "name": "Windows Desktop",
-    "description": "An example of a VDI pool",
+    "description": "A fancy windows desktop",
     "minIdle": 0,
     "maxIdle": 0,
     "initialPoolSize": 0,
@@ -537,7 +537,7 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
 }
 ```
 
-This endpoint creates a new VDI Pool. Instances will be provisioned right away if the pool is enabled and has an intial pool size greater than 0.
+This endpoint creates a new VDI Pool. Instances will be provisioned right away if the pool is enabled and has an `initialPoolSize` greater than 0.
 
 ### HTTP Request
 
@@ -549,30 +549,30 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | Y |  | Virtual Desktop name
 description | N |  | Virtual Desktop description
-owner | Y | (current user) | Owner (User) ID
+owner | N | (current user) | Owner (User) ID
 minIdle | N | 0 | Min Idle - Sets the minimum number of idle instances on standby in the pool. The pool will always try to maintain this number of available instances on standby.
 initialPoolSize | N | 0 | Initial Pool Size - The initial size of the pool to be allocated on creation.
 maxIdle | N | 0 | Max Idle - Sets the maximum number of idle instances on standby in the pool. If the number of idle instances supersedes this, the pool will start removing instances
-maxSize | Y |  | Max Size - Max limit on number of allocations and instances within the pool.
+maxPoolSize | Y |  | Max Size - Max limit on number of allocations and instances within the pool.
 allocationTimeoutMinutes | N | 0 | Lease Timeout - Time (in minutes) after a user disconnects before an allocation is recycled or shutdown depending on persistence.
 persistentUser | N |  | Persistent User
 allowCopy | N |  | Allow Copy
 allowPrinter | N |  | Allow Printer
 allowFileshare | N |  | Allow File Share
 allowHypervisorConsole | N |  | Allow Hypervisor Console
-Auto Create Local Upon Reservation | N |  | autoCreateLocalUserOnReservation
-enabled | N |  | Can be used to enable / disable the VDI pool. Default is true
+autoCreateLocalUserOnReservation | N |  | Auto Create Local Upon Reservation
+enabled | N | Y | Can be used to enable / disable the VDI pool. Default is true
 iconPath | N |  | Icon Path, relative location of an icon image, eg. `/assets/containers-png/windows.png`.
 logo | N |  | Logo File, upload a custom logo, requires `Content-Type: multipart/form-data`
 apps | N |  | Array of VDI App IDs, see [VDI App](#list-vdi-apps).
 gateway | N |  | VDI Gateway ID, see [VDI Gateway](#list-vdi-gateways).
-instanceConfig | Y | Instance Config JSON, see [VDI Pool Instance Config](#vdi-pool-instance-config). Passing as a string will preserve property order.
-config | N |  | Config Object, see [VDI Pool Instance Config](#vdi-pool-instance-config) This can be passed in place of `instanceConfig`, but will not preserve the config property order.
+instanceConfig | Y |  | Instance Config JSON, see [VDI Pool Instance Config](#vdi-pool-instance-config). Passing as a string will preserve property order.
+config | N |  | Config Object, see [VDI Pool Instance Config](#vdi-pool-instance-config). This can be passed in place of `instanceConfig`, but will not preserve the config property order.
 guestConsoleJumpHost | N |  | Guest Console Jump Host
 guestConsoleJumpPort | N |  | Guest Console Jump Port
 guestConsoleJumpUsername | N |  | Guest Console Jump Username
 guestConsoleJumpPassword | N |  | Guest Console Jump Password
-guestConsoleJumpKeypair | N |  | Guest Console Jump Key Paid. see [Key Pair](#key-pairs)
+guestConsoleJumpKeypair | N |  | Guest Console Jump Key Pair. see [Key Pair](#key-pairs)
 
 #### VDI Pool Instance Config
 
@@ -598,7 +598,7 @@ curl -XPUT "<%= curl_url %>/api/vdi-pools/:id" \
   -H "Content-Type: application/json" \
   -d '{
   "vdiPool": {
-    "maxSize": 10
+    "maxPoolSize": 10
   }
 }'
 ```
@@ -645,12 +645,6 @@ curl -XPUT "<%= curl_url %>/api/vdi-pools/:id" \
 
 This uses `Content-Type: multipart/form-data` to upload a custom logo file. The `vdiPool.logo` parameter can be a multipart file for both the create (`POST`) and update (`PUT`) endpoints.
 
-### HTTP Headers
-
-Header | Description
---------- | -----------
-Content-Type     | `multipart/form-data` is expected.
-
 ### HTTP Request
 
 `PUT <%= api_url %>/api/vdi-pools/:id`
@@ -660,6 +654,12 @@ Content-Type     | `multipart/form-data` is expected.
 Parameter | Description
 --------- | -----------
 id | The ID of the VDI pool
+
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+Content-Type     | `multipart/form-data` is expected.
 
 ### Parameters
 
@@ -751,7 +751,6 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Filter by wildcard search of name and description
 name |  | Filter by name, wildcard may be specified as **%**, eg. `example-%`
 description |  | Filter by description, wildcard may be specified as **%**. eg. `example-%`
-enabled |  | Filter by enabled, eg. `true` or `false`
 
 ## Get a Specific VDI App
 
@@ -893,12 +892,6 @@ curl -XPUT "<%= curl_url %>/api/vdi-apps/:id" \
 
 This uses `Content-Type: multipart/form-data` to upload a custom logo file. The `vdiApp.logo` parameter can be a multipart file for both the create (`POST`) and update (`PUT`) endpoints.
 
-### HTTP Headers
-
-Header | Description
---------- | -----------
-Content-Type     | `multipart/form-data` is expected.
-
 ### HTTP Request
 
 `PUT <%= api_url %>/api/vdi-apps/:id`
@@ -908,6 +901,12 @@ Content-Type     | `multipart/form-data` is expected.
 Parameter | Description
 --------- | -----------
 id | The ID of the VDI app
+
+### HTTP Headers
+
+Header | Description
+--------- | -----------
+Content-Type     | `multipart/form-data` is expected.
 
 ### Parameters
 
@@ -990,7 +989,6 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Filter by wildcard search of name and description
 name |  | Filter by name, wildcard may be specified as **%**, eg. `example-%`
 description |  | Filter by description, wildcard may be specified as **%**. eg. `example-%`
-enabled |  | Filter by enabled, eg. `true` or `false`
 
 ## Get a Specific VDI Gateway
 
