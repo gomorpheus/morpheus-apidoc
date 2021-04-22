@@ -105,9 +105,6 @@ curl "<%= curl_url %>/api/vdi-pools" \
         "id": 34,
         "name": "vmware"
       },
-      "allocations": [
-
-      ],
       "usedCount": 0,
       "reservedCount": 0,
       "preparingCount": 0,
@@ -204,29 +201,6 @@ curl "<%= curl_url %>/api/vdi-pools" \
         "id": 34,
         "name": "vmware"
       },
-      "allocations": [
-        {
-          "id": 11,
-          "poolId": 1,
-          "instance": {
-            "id": 433,
-            "name": "vdi-test-1",
-            "status": "running"
-          },
-          "user": {
-            "id": 1,
-            "name": "Admin",
-            "username": "admin"
-          },
-          "localUserCreated": true,
-          "persistent": false,
-          "status": "reserved",
-          "dateCreated": "2021-04-13T12:48:15Z",
-          "lastUpdated": "2021-04-13T15:40:52Z",
-          "lastReserved": "2021-04-13T13:01:07Z",
-          "releaseDate": "2021-04-13T21:40:52Z"
-        }
-      ],
       "usedCount": 1,
       "reservedCount": 1,
       "preparingCount": 0,
@@ -246,7 +220,7 @@ curl "<%= curl_url %>/api/vdi-pools" \
 
 ```
 
-This endpoint retrieves all VDI Pools. The allocations are also returned for each one.
+This endpoint retrieves all VDI Pools.
 
 ### HTTP Request
 
@@ -367,9 +341,6 @@ curl "<%= curl_url %>/api/vdi-pools/1" \
         "id": 34,
         "name": "vmware"
       },
-      "allocations": [
-
-      ],
       "usedCount": 0,
       "reservedCount": 0,
       "preparingCount": 0,
@@ -381,7 +352,7 @@ curl "<%= curl_url %>/api/vdi-pools/1" \
 }
 ```
 
-This endpoint retrieves a specific VDI Pool. The allocations are also returned.
+This endpoint retrieves a specific VDI Pool.
 
 ### HTTP Request
 
@@ -523,9 +494,6 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
       "id": 34,
       "name": "vmware"
     },
-    "allocations": [
-
-    ],
     "usedCount": 0,
     "reservedCount": 0,
     "preparingCount": 0,
@@ -693,6 +661,123 @@ This endpoint deletes an existing VDI pool.
 Parameter | Description
 --------- | -----------
 id | The ID of the VDI pool
+
+## List VDI Allocations
+
+```shell
+curl "<%= curl_url %>/api/vdi-allocations" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "vdiAllocations": [
+    {
+      "id": 5,
+      "pool": {
+        "id": 3,
+        "name": "My Desktop"
+      },
+      "instance": {
+        "id": 397,
+        "name": "my-desktop-12",
+        "status": "provisioning"
+      },
+      "user": {
+        "id": 53,
+        "name": "Joseph D",
+        "username": "jdoe"
+      },
+      "localUserCreated": false,
+      "persistent": false,
+      "status": "preparing",
+      "dateCreated": "2021-04-22T18:38:38Z",
+      "lastUpdated": "2021-04-22T18:38:39Z",
+      "lastReserved": null,
+      "releaseDate": "2021-04-22T20:38:39Z"
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 1,
+    "total": 1
+  }
+}
+```
+
+This endpoint retrieves all VDI Allocations.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/vdi-allocations`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+id |  | Filter by allocation ID
+status |  | Filter by allocation status
+poolId |  | Filter by [VDI Pool](#vdi-pools) ID
+userId |  | Filter by [User](#users) ID
+
+## Get a Specific VDI Allocation
+
+```shell
+curl "<%= curl_url %>/api/vdi-allocations/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "vdiAllocation": {
+    "id": 5,
+    "pool": {
+      "id": 3,
+      "name": "My Desktop"
+    },
+    "instance": {
+      "id": 397,
+      "name": "my-desktop-12",
+      "status": "provisioning"
+    },
+    "user": {
+      "id": 53,
+      "name": "Joseph D",
+      "username": "jdoe"
+    },
+    "localUserCreated": false,
+    "persistent": false,
+    "status": "preparing",
+    "dateCreated": "2021-04-22T18:38:38Z",
+    "lastUpdated": "2021-04-22T18:38:39Z",
+    "lastReserved": null,
+    "releaseDate": "2021-04-22T20:38:39Z"
+  }
+}
+```
+
+This endpoint retrieves a specific VDI Allocation
+
+### HTTP Request
+
+`GET <%= api_url %>/api/vdi-allocations/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the VDI Allocation
+
 
 ## List VDI Apps
 
