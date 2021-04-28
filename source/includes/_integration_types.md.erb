@@ -1,0 +1,411 @@
+## Integration Types
+
+A Integration Type is specific third party software that the appliance can be configured to integrate with, such as Chef, Git, Jenkins, etc.
+
+<!--
+## Get All Integration Types
+-->
+
+```shell
+curl "<%= curl_url %>/api/integration-types"
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "integrationTypes": [
+    {
+      "id": 19,
+      "code": "aci",
+      "name": "ACI",
+      "description": null,
+      "category": "network",
+      "enabled": true,
+      "creatable": false,
+      "hasCMDB": false,
+      "hasCMDBDiscovery": false,
+      "hasCM": false,
+      "hasDNS": null,
+      "hasApprovals": false,
+      "isPlugin": null
+    },
+    {
+      "id": 3,
+      "code": "ansible",
+      "name": "Ansible",
+      "description": null,
+      "category": "automation",
+      "enabled": true,
+      "creatable": true,
+      "hasCMDB": false,
+      "hasCMDBDiscovery": false,
+      "hasCM": false,
+      "hasDNS": null,
+      "hasApprovals": false,
+      "isPlugin": null
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 25,
+    "total": 25
+  }
+}
+```
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integration-types`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+optionTypes | false | Pass `true` to include optionTypes in the response for each integration type.
+phrase |  | Filter by wildcard search of name and code
+name |  | Filter by name
+code |  | Filter by code
+description |  | Filter by description
+category |  | Filter by category
+creatable |  | Filter by creatable
+enabled |  | Filter by enabled
+hasCMDB |  | Filter by hasCMDB
+hasCMDBDiscovery |  | Filter by hasCMDBDiscovery
+hasCM |  | Filter by hasCM
+hasDNS |  | Filter by hasDNS
+hasApprovals |  | Filter by hasApprovals
+isPlugin |  | Filter by isPlugin
+
+
+## Get a Specific Integration Type
+
+```shell
+curl "<%= curl_url %>/api/integration-types/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "integrationType": {
+    "id": 16,
+    "code": "github",
+    "name": "GitHub",
+    "description": null,
+    "category": "code",
+    "enabled": true,
+    "creatable": true,
+    "hasCMDB": false,
+    "hasCMDBDiscovery": false,
+    "hasCM": false,
+    "hasDNS": null,
+    "hasApprovals": false,
+    "isPlugin": null
+  }
+}
+```
+This endpoint will retrieve a specific integration type by id.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integration-types/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the integration type
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+optionTypes | false | Pass `true` to include optionTypes in the response.
+phrase |  | Filter by wildcard search of name and code
+name |  | Filter by name
+code |  | Filter by code
+description |  | Filter by description
+category |  | Filter by category
+creatable |  | Filter by creatable
+enabled |  | Filter by enabled
+hasCMDB |  | Filter by hasCMDB
+hasCMDBDiscovery |  | Filter by hasCMDBDiscovery
+hasCM |  | Filter by hasCM
+hasDNS |  | Filter by hasDNS
+hasApprovals |  | Filter by hasApprovals
+isPlugin |  | Filter by isPlugin
+
+## Get Integration Type Option Types
+
+```shell
+curl "<%= curl_url %>/api/integration-types/10/option-types" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "optionTypes": [
+    {
+      "id": 434,
+      "name": "serviceUrl",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowUrl",
+      "fieldName": "serviceUrl",
+      "fieldLabel": "ServiceNow Host",
+      "fieldCode": "gomorpheus.optiontype.ServicenowHost",
+      "fieldContext": "integration",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": null,
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "text",
+      "advanced": false,
+      "required": true,
+      "exportMeta": null,
+      "editable": true,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 0,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": null,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": null,
+      "displayValueOnDetails": null
+    },
+    {
+      "id": 435,
+      "name": "serviceUsername",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowUser",
+      "fieldName": "serviceUsername",
+      "fieldLabel": "User",
+      "fieldCode": "gomorpheus.optiontype.User",
+      "fieldContext": "integration",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": null,
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "text",
+      "advanced": false,
+      "required": true,
+      "exportMeta": null,
+      "editable": true,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 1,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": null,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": null,
+      "displayValueOnDetails": null
+    },
+    {
+      "id": 436,
+      "name": "servicePassword",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowPassword",
+      "fieldName": "servicePassword",
+      "fieldLabel": "Password",
+      "fieldCode": "gomorpheus.optiontype.Password",
+      "fieldContext": "integration",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": null,
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "password",
+      "advanced": false,
+      "required": true,
+      "exportMeta": null,
+      "editable": true,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 2,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": null,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": null,
+      "displayValueOnDetails": null
+    },
+    {
+      "id": 1128,
+      "name": "serviceNowCustomCmdbMapping",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowCustomCmdbMapping",
+      "fieldName": "serviceNowCustomCmdbMapping",
+      "fieldLabel": "CMDB Custom Mapping",
+      "fieldCode": "gomorpheus.optiontype.CmdbCustomMapping",
+      "fieldContext": "config",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": null,
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "code-editor",
+      "advanced": false,
+      "required": false,
+      "exportMeta": false,
+      "editable": true,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 7,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": false,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": false,
+      "displayValueOnDetails": null
+    },
+    {
+      "id": 1734,
+      "name": "serviceNowCmdbClassMapping",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowCmdbClassMapping",
+      "fieldName": "serviceNowCmdbClassMapping.id",
+      "fieldLabel": "CMDB Class Mapping",
+      "fieldCode": "gomorpheus.optiontype.CmdbClassMapping",
+      "fieldContext": "config",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": "nowClass",
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "Define the mapping between Morpheus server types and ServiceNow CI classes",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": "serviceNowServerMappings",
+      "optionList": null,
+      "type": "multiSelect",
+      "advanced": false,
+      "required": false,
+      "exportMeta": false,
+      "editable": true,
+      "creatable": true,
+      "config": {
+        "addOnSelect": true
+      },
+      "displayOrder": 8,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": false,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": false,
+      "displayValueOnDetails": false
+    },
+    {
+      "id": 1129,
+      "name": "CMDB Business Object",
+      "description": null,
+      "code": "accountIntegration.serviceNow.serviceNowCMDBBusinessObject",
+      "fieldName": "serviceNowCMDBBusinessObject",
+      "fieldLabel": "CMDB Business Object",
+      "fieldCode": "gomorpheus.optiontype.CmdbBusinessObject",
+      "fieldContext": "config",
+      "fieldGroup": null,
+      "fieldClass": null,
+      "fieldAddOn": null,
+      "fieldComponent": null,
+      "fieldInput": null,
+      "placeHolder": null,
+      "verifyPattern": null,
+      "helpBlock": "Specify a default CI class to use when creating the CMDB record.  By default, Configuration - Base Items - All (cmdb_ci_vm_instance) is used.",
+      "helpBlockFieldCode": null,
+      "defaultValue": null,
+      "optionSource": null,
+      "optionList": null,
+      "type": "text",
+      "advanced": false,
+      "required": false,
+      "exportMeta": false,
+      "editable": true,
+      "creatable": true,
+      "config": {
+      },
+      "displayOrder": 10,
+      "wrapperClass": null,
+      "enabled": true,
+      "noBlank": false,
+      "dependsOnCode": null,
+      "visibleOnCode": null,
+      "requireOnCode": null,
+      "contextualDefault": false,
+      "displayValueOnDetails": null
+    }
+  ]
+}
+```
+
+This endpoint will retrieve the list of option types for a specific integration type.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integration-types/:id/option-types`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the integration type
