@@ -792,9 +792,19 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
   "integration": {
     "name": "<%= company_name %> Ansible",
     "type": "ansible",
-    "serviceUrl": "https://service-url",
-    "serviceUsername": "service-user",
-    "servicePassword": "************"
+    "serviceUrl": "https://ansible-url",
+    "serviceUsername": "ansible-user",
+    "servicePassword": "************",
+    "config": {
+      "ansibleDefaultBranch": "main",
+      "ansiblePlaybooks": "/",
+      "ansibleRoles": "/roles",
+      "ansibleGroupVars": "/vars",
+      "ansibleHostVars": "/hosts",
+      "ansibleGalaxyEnabled": false,
+      "ansibleVerbose": true,
+      "ansibleCommandBus": true
+    }
   }
 }'
 ```
@@ -816,7 +826,7 @@ This is an example of [create](#create-an-integrataion) for a new Ansible integr
 
 `POST <%= api_url %>/api/integrations`
 
-### Ansible Parameters
+### Ansible Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
@@ -826,12 +836,14 @@ servicePassword | N |  | Git Options: Password
 serviceToken | N |  | Git Options: Access Token
 serviceKey | N |  | Git Options: Key Pair ID
 servicePath | N |  | Working Directory
-serviceVersion | N |  | Salt Version
-serviceWindowsVersion | N |  | Salt Version (Windows)
-repoUrl | N |  | Repo URL
-serviceConfig | N |  | Minion Config
-config.saltApplyOnMinion | N |  | Apply State via Minion instead of Master (salt-call)
-serviceCommand | N |  | Post Provision Commands
+config.ansibleDefaultBranch | N | main / master | Default Branch
+config.ansiblePlaybooks | N |  | Playbooks Path
+config.ansibleRoles | N |  | Roles Path
+config.ansibleGroupVars | N |  | Group Variables Path
+config.ansibleHostVars | N |  | Host Variables Path
+config.ansibleGalaxyEnabled | N |  | Use Ansible Galaxy
+config.ansibleVerbose | N |  | Use Verbose Logging
+config.ansibleCommandBus | N |  | Use Morpheus Agent Command Bus
 
 ## Service Now Integration
 
@@ -953,7 +965,7 @@ This example creates a new Service Now integration.
 
 `POST <%= api_url %>/api/integrations`
 
-### Service Now Parameters
+### Service Now Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
@@ -974,12 +986,10 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
   "integration": {
     "name": "<%= company_name %> Salt Master",
     "type": "saltMaster",
-    "serviceUrl": "service-url",
-    "serviceUsername": "remote-username",
-    "servicePassword": "remote-password",
-    "servicePort": "22",
-    "serviceVersion": "22",
-
+    "serviceUrl": "salt-host",
+    "serviceUsername": "salt-username",
+    "servicePassword": "salt-password",
+    "servicePort": "22"
   }
 }'
 ```
@@ -1001,7 +1011,7 @@ This is an example of [create](#create-an-integrataion) for a new Salt Master in
 
 `POST <%= api_url %>/api/integrations`
 
-### Salt Master Parameters
+### Salt Master Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
@@ -1053,7 +1063,7 @@ This is an example of [create](#create-an-integrataion) for a new Docker Reposit
 
 `POST <%= api_url %>/api/integrations`
 
-### Docker Repository Parameters
+### Docker Repository Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
@@ -1145,7 +1155,7 @@ This is an example of [create](#create-an-integrataion) for a new Github integra
 
 `POST <%= api_url %>/api/integrations`
 
-### Github Parameters
+### Github Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
@@ -1167,7 +1177,7 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
     "type": "jenkins",
     "serviceUrl": "https://jenkins-url",
     "serviceUsername": "jenkins-user",
-    "servicePassword": "************",
+    "servicePassword": "************"
   }
 }'
 ```
@@ -1189,22 +1199,13 @@ This is an example of [create](#create-an-integrataion) for a new Jenkins integr
 
 `POST <%= api_url %>/api/integrations`
 
-### Jenkins Parameters
+### Jenkins Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-serviceUrl | Y |  | Salt Master
-serviceSlave | N |  | Salt Syndic
-servicePort | N | 22 | SSH Port
+serviceUrl | Y |  | Jenkins Url
 serviceUsername | Y |  | User
 servicePassword | N |  | Password
-servicePath | N |  | Working Directory
-serviceVersion | N |  | Salt Version
-serviceWindowsVersion | N |  | Salt Version (Windows)
-repoUrl | N |  | Repo URL
-serviceConfig | N |  | Minion Config
-config.saltApplyOnMinion | N |  | Apply State via Minion instead of Master (salt-call)
-serviceCommand | N |  | Post Provision Commands
 
 ## Venafi Integration
 
@@ -1216,9 +1217,9 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
   "integration": {
     "name": "<%= company_name %> Venafi",
     "type": "venafi",
-    "serviceUrl": "https://venafi-url",
+    "serviceHost": "https://venafi-url",
     "serviceUsername": "venafi-user",
-    "servicePassword": "************",
+    "servicePassword": "************"
   }
 }'
 ```
@@ -1240,7 +1241,7 @@ This is an example of [create](#create-an-integrataion) for a new Venafi integra
 
 `POST <%= api_url %>/api/integrations`
 
-### Venafi Parameters
+### Venafi Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
