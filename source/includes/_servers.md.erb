@@ -787,7 +787,7 @@ curl -XPUT "<%= curl_url %>/api/servers/1/resize" \
 }
 ```
 
-Will resize a host asynchronously.
+Will resize a host asynchronously. This endpoint also allows for NIC reconfiguration by passing a new array of `networkInterfaces`.
 
 ### HTTP Request
 
@@ -800,8 +800,7 @@ Parameter | Default | Description
 server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](##get-available-service-plans-for-a-server)
 volumes |  | List of volumes with their new sizes, see [Volumes](#volumes).
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
-This endpoint also allows for NIC reconfiguration by passing a new array of `networkInterfaces`.
-networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
+networkInterfaces |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
 
 ## Start a Host
 
