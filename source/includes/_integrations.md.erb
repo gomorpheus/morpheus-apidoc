@@ -672,7 +672,7 @@ name | Y |  | Name, a unique identifier for the integration
 type | Y |  | [Integration Type](#integration-types) code
 enabled | N | true | Enabled
 
-These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [Service Now](#service-now-integration), and [Github](#github-integration).
+These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#service-now-integration), and [Github](#github-integration).
 
 ## Update an Integration
 
@@ -721,7 +721,7 @@ Parameter | Required | Default | Description
 name | N |  | Name, a unique identifier for the integration
 enabled | N |  | Enabled
 
-These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [Service Now](#service-now-integration), and [Github](#github-integration).
+These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#service-now-integration), and [Github](#github-integration).
 
 ## Refresh an Integration
 
@@ -845,7 +845,7 @@ config.ansibleGalaxyEnabled | N |  | Use Ansible Galaxy
 config.ansibleVerbose | N |  | Use Verbose Logging
 config.ansibleCommandBus | N |  | Use Morpheus Agent Command Bus
 
-## Service Now Integration
+## ServiceNow Integration
 
 ```shell
 curl -XPOST "<%= curl_url %>/api/integrations" \
@@ -853,7 +853,7 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
   -H "Content-Type: application/json" \
   -d '{
   "integration": {
-    "name": "<%= company_name %> Service Now",
+    "name": "<%= company_name %> ServiceNow",
     "type": "serviceNow",
     "url": "https://my-sevicenow-server/",
     "username": "automation",
@@ -959,13 +959,13 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
 }
 ```
 
-This example creates a new Service Now integration.
+This example creates a new ServiceNow integration.
 
 ### HTTP Request
 
 `POST <%= api_url %>/api/integrations`
 
-### Service Now Integration Parameters
+### ServiceNow Integration Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
