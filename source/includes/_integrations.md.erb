@@ -726,7 +726,7 @@ These are the common parameters for all types of integrations. They are passed u
 ## Refresh an Integration
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/integrations/:id/refresh" \
+curl -XPOST "<%= curl_url %>/api/integrations/:id/refresh" \
   -H "Authorization: Bearer <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{}'

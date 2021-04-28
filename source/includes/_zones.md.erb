@@ -442,7 +442,7 @@ Additional config properties are dynamic and depend on the type of cloud. See [C
 ## Refresh a Cloud
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/zones/:id/refresh" \
+curl -XPOST "<%= curl_url %>/api/zones/:id/refresh" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
