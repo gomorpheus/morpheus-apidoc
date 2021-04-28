@@ -702,7 +702,7 @@ curl -XPUT "<%= curl_url %>/api/integrations/:id" \
 }
 ```
 
-This endpoint updates an existing Integration. For some types, update triggers a [refresh](#refresh-an-integration) to be performed, unless `refresh=false` is passed.
+This endpoint updates an existing Integration. For some types, update triggers a [refresh](#refresh-an-integration) to be performed. Refresh can be avoided by passing `refresh=false`.
 
 ### HTTP Request
 
