@@ -720,7 +720,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | N |  | Name, a unique identifier for the integration
 enabled | N |  | Enabled
-refresh | N | true | Pass `false` to skip refresh. When the integration type supports it, a refresh is invoked on update by default.
+refresh | N | true | Pass `false` to skip refresh. By default, refresh is done on update, when it is supported by the integration type.
 
 These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#service-now-integration), and [Github](#github-integration).
 
