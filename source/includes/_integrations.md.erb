@@ -24,7 +24,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "ansible",
         "name": "Ansible"
       },
-      "category": "cm-server",
       "url": "git@github.com:organization/ansible.git",
       "isPlugin": false,
       "config": {
@@ -55,7 +54,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "github",
         "name": "GitHub"
       },
-      "category": "cm-server",
       "username": "neo",
       "serviceKey": {
         "id": 3,
@@ -83,8 +81,7 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "ansibleTower",
         "name": "Ansible Tower"
       },
-      "category": "automation",
-      "url": "https://10.30.20.66",
+      "url": "https://10.0.0.91",
       "username": "admin",
       "password": "************",
       "version": "v2",
@@ -108,8 +105,7 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "bluecat",
         "name": "Bluecat"
       },
-      "category": "ipam",
-      "url": "https://10.10.0.9",
+      "url": "https://10.0.0.99",
       "port": "22",
       "username": "neo",
       "password": "************",
@@ -134,7 +130,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "cherwell",
         "name": "Cherwell"
       },
-      "category": "cm-server",
       "url": "https://cherwell-host",
       "username": "CSDAdmin",
       "password": "************",
@@ -165,7 +160,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "infoblox",
         "name": "Infoblox"
       },
-      "category": "ipam",
       "url": "https://infoblox-host/wapi/v2.9",
       "port": "22",
       "username": "admin",
@@ -194,7 +188,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "jenkins",
         "name": "Jenkins"
       },
-      "category": "cm-server",
       "url": "https://jenkins-host",
       "username": "neo",
       "password": "************",
@@ -218,8 +211,7 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "microsoft.dns",
         "name": "Microsoft DNS"
       },
-      "category": "cm-server",
-      "url": "10.30.20.53",
+      "url": "10.0.0.53",
       "username": "administrator",
       "password": "************",
       "serviceFlag": true,
@@ -243,8 +235,7 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "phpipam",
         "name": "phpIPAM"
       },
-      "category": "ipam",
-      "url": "http://10.30.20.168/api/",
+      "url": "http://10.0.0.168/api/",
       "port": "22",
       "username": "Admin",
       "password": "************",
@@ -269,7 +260,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "powerDns",
         "name": "PowerDNS"
       },
-      "category": "cm-server",
       "url": "https://powerdns-host",
       "password": "************",
       "version": "4",
@@ -293,7 +283,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "puppet",
         "name": "Puppet"
       },
-      "category": "cm-server",
       "isPlugin": false,
       "config": {
         "cm": {
@@ -320,7 +309,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "chef",
         "name": "Chef"
       },
-      "category": "cm-server",
       "url": "https://chef-host",
       "username": "neo",
       "isPlugin": false,
@@ -359,7 +347,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "remedy",
         "name": "Remedy"
       },
-      "category": "cm-server",
       "url": "http://remedy-host",
       "username": "neo",
       "password": "************",
@@ -386,7 +373,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "serviceNow",
         "name": "ServiceNow"
       },
-      "category": "cm-server",
       "url": "https://my-sevicenow-server/",
       "username": "automation",
       "password": "************",
@@ -494,8 +480,7 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "solarwindsipam",
         "name": "SolarWinds IPAM"
       },
-      "category": "ipam",
-      "url": "https://10.30.22.213:17778",
+      "url": "https://10.0.0.13:17778",
       "port": "22",
       "username": "admin",
       "password": "************",
@@ -520,7 +505,6 @@ curl "<%= curl_url %>/api/integrations" \
         "code": "venafi",
         "name": "Venafi"
       },
-      "category": "cm-server",
       "host": "https://venafi-url",
       "username": "tppadmin",
       "password": "************",
@@ -562,13 +546,13 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 id |  | Filter by id
 name |  | Filter by integration Name
 type |  | Filter by integration Type Code
-category |  | Filter by integration Status
 url |  | Filter by integration Service URL
 host |  | Filter by integration Host
 port |  | Filter by integration Port
 username |  | Filter by integration Username
 version |  | Filter by integration Version
 windowsVersion |  | Filter by integration Windows Version
+status |  | Filter by integration status
 
 ## Get a Specific Integration
 
@@ -592,7 +576,6 @@ curl "<%= curl_url %>/api/integrations/2" \
       "code": "git",
       "name": "Git repository"
     },
-    "category": null,
     "url": "https://github.com/organization/repo.git",
     "username": "neo",
     "password": "",
@@ -1017,7 +1000,7 @@ This is an example of [create](#create-an-integration) for a new Salt Master int
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 serviceUrl | Y |  | Salt Master
-serviceSlave | N |  | Salt Syndic
+serviceSecondary | N |  | Salt Syndic
 servicePort | N | 22 | SSH Port
 serviceUsername | Y |  | User
 servicePassword | N |  | Password
@@ -1159,7 +1142,6 @@ Parameter | Required | Default | Description
 serviceUsername | Y |  | User
 servicePassword | N |  | Password
 serviceToken | N |  | Access Token
-config.defaultBranch | N | main / master | Default Branch or Tag name
 serviceKey | N |  | Key Pair ID
 
 ## Jenkins Integration
