@@ -655,7 +655,7 @@ name | Y |  | Name, a unique identifier for the integration
 type | Y |  | [Integration Type](#integration-types) code
 enabled | N | true | Enabled
 
-These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#service-now-integration), and [Github](#github-integration).
+These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#servicenow-integration), and [Github](#github-integration).
 
 ## Update an Integration
 
@@ -705,7 +705,7 @@ name | N |  | Name, a unique identifier for the integration
 enabled | N |  | Enabled
 refresh | N | true | Pass `false` to skip refresh. By default, refresh is done on update, when it is supported by the integration type.
 
-These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#service-now-integration), and [Github](#github-integration).
+These are the common parameters for all types of integrations. They are passed under an object called `integration`. Each integration type may support additional parameters which can be determined by the [Integration Type Option Types](#get-integration-type-option-types) endpoint. See examples below, such as [Jenkins](#jenkins-integration), [ServiceNow](#servicenow-integration), and [Github](#github-integration).
 
 ## Refresh an Integration
 
@@ -819,8 +819,7 @@ serviceUsername | N |  | Git Options: User
 servicePassword | N |  | Git Options: Password
 serviceToken | N |  | Git Options: Access Token
 serviceKey | N |  | Git Options: Key Pair ID
-servicePath | N |  | Working Directory
-config.ansibleDefaultBranch | N | main / master | Default Branch
+config.defaultBranch | N | main / master | Default Branch
 config.ansiblePlaybooks | N |  | Playbooks Path
 config.ansibleRoles | N |  | Roles Path
 config.ansibleGroupVars | N |  | Group Variables Path
@@ -956,9 +955,9 @@ Parameter | Required | Default | Description
 serviceUrl | Y |  | ServiceNow Host
 serviceUsername | Y |  | User
 servicePassword | Y |  | Password
-serviceNowCustomCmdbMapping | N |  | CMDB Custom Mapping
-serviceNowCmdbClassMapping | N |  | CMDB Class Mapping
-serviceNowCMDBBusinessObject | N |  | CMDB Business Object
+config.serviceNowCustomCmdbMapping | N |  | CMDB Custom Mapping
+config.serviceNowCmdbClassMapping | N |  | CMDB Class Mapping
+config.serviceNowCMDBBusinessObject | N |  | CMDB Business Object
 
 ## Salt Master Integration
 
@@ -1005,6 +1004,8 @@ secondary | N |  | Salt Syndic
 servicePort | N | 22 | SSH Port
 serviceUsername | Y |  | User
 servicePassword | N |  | Password
+serviceKey | N |  | Master Key Pair
+authKey | N |  | Signing Key
 servicePath | N |  | Working Directory
 serviceVersion | N |  | Salt Version
 serviceWindowsVersion | N |  | Salt Version (Windows)
@@ -1102,6 +1103,7 @@ serviceUsername | Y |  | User
 servicePassword | N |  | Password
 serviceToken | N |  | Access Token
 serviceKey | N |  | Key Pair ID
+config.defaultBranch | N | main / master | Default Branch
 
 ## Github Integration
 
