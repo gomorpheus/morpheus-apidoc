@@ -770,8 +770,16 @@ curl -XPUT "<%= curl_url %>/api/servers/1/resize" \
     "deleteOriginalVolumes": true,
     "networkInterfaces": [
       {
+        "id": 612,
+        "name": "eth0",
         "network": {
-          "id": "network-20"
+          "id": "network-22"
+        }
+      },
+      {
+        "name": "eth1",
+        "network": {
+          "id": "network-22"
         }
       }
     ]

@@ -1498,6 +1498,8 @@ Parameter | Required | Default | Description
 network.id | Y | n/a | id of the network to be used. A network group can be specified instead by prefixing its ID  with `networkGroup-`.
 networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
 ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
+id | N | n/a | The interface id. Applicable when resizing and you want to identify (by id) an interface that already exists.
+name | N | n/a | The interface name. Applicable when resizing and you want to identify (by name) an interface that already exists.
 
 #### Exposed Ports
 
@@ -1775,6 +1777,14 @@ curl -X PUT "<%= api_url %>/api/instances/1/resize" \
   "deleteOriginalVolumes": true,
   "networkInterfaces": [
     {
+      "id": 534,
+      "name": "eth0",
+      "network": {
+        "id": "network-20"
+      }
+    },
+    {
+      "name": "eth1",
       "network": {
         "id": "network-20"
       }
