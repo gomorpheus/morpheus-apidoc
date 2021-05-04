@@ -1498,8 +1498,7 @@ Parameter | Required | Default | Description
 network.id | Y | n/a | id of the network to be used. A network group can be specified instead by prefixing its ID  with `networkGroup-`.
 networkInterfaceTypeId | Y | n/a | The id of type of the network interface.
 ipAddress | Y | n/a | The ip address. Not applicable when using DHCP or IP Pools.
-id | N | n/a | The interface id. Applicable when resizing and you want to identify (by id) an interface that already exists.
-name | N | n/a | The interface name. Applicable when resizing and you want to identify (by name) an interface that already exists.
+id | N | n/a | The interface id. Applicable when resizing and you want to identify an interface to update that already exists.
 
 #### Exposed Ports
 
@@ -1820,7 +1819,7 @@ Parameter   | Required | Default | Description
 instance.plan.id | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
 volumes | no | defaults to plan config | Can be used to grow just the logical volume of the instance instead of choosing a plan, see [Volumes](#volumes).
 deleteOriginalVolumes | no | false | Delete the original volumes after resizing. (Amazon only)
-networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces). Note that the primary interface cannot be modified so to avoid creating a duplicate interface, do not pass it in the array or identify if by `id` or `name`.
+networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces). Include `id` to update an existing interface. The existing interfaces and their `id` can be retrieved with the [hosts](#get-a-specific-host) API.
 
 ## Run Workflow on an Instance
 
