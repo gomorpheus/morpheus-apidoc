@@ -262,6 +262,7 @@ shutdownDaysMin |  | Filter by shutdownDays greater than or equal to the specifi
 labels |  | Filter by label(s).
 tags |  | Filter by tags (metadata). This allows filtering by arbitrary tag names and values like this `tags.foo=bar`.
 metadata |  | Alias for `tags`. 
+details | false | Include `details=true` to return more details about the instance, ie. `containerDetails`. Available in api version 5.2.7/5.3.2.
 
 
 <aside class="info">
@@ -374,6 +375,12 @@ This endpoint retrieves a specific instance.
 Parameter | Description
 --------- | -----------
 :id | ID of the instance
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+details | false | Include `details=true` to return more details about the instance, ie. `containerDetails`. Available in api version 5.2.7/5.3.2.
 
 ## Get Env Variables
 
