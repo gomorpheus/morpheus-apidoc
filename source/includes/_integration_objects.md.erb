@@ -1,0 +1,497 @@
+<!--
+# Integration Objects
+
+Provides API interfaces for managing integration objects within <%= application_name %>.  Certain integration types support cofigurating exposed objects. eg. [ServiceNow](#servicenow-integration)
+-->
+
+## List Integration Objects
+
+```shell
+curl "<%= curl_url %>/api/integrations/:integration_id/objects" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "objects": [
+    {
+      "id": 1,
+      "name": "Dev AWS",
+      "type": "cloud",
+      "refType": "ComputeZone",
+      "refId": 39,
+      "cloud": {
+        "id": 39,
+        "name": "Dev AWS",
+        "zoneType": {
+          "id": 3,
+          "code": "amazon",
+          "name": "Amazon"
+        }
+      },
+      "group": {
+        "id": 1,
+        "name": "thegroup"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Amazon NGINX",
+      "type": "layout",
+      "refType": "InstanceTypeLayout",
+      "refId": 183,
+      "layout": {
+        "id": 183,
+        "name": "Amazon NGINX",
+        "code": "nginx-amazon-1.9",
+        "provisionType": {
+          "id": 10,
+          "name": "Amazon",
+          "code": "amazon"
+        },
+        "instanceType": {
+          "id": 37,
+          "name": "Nginx",
+          "code": "nginx"
+        },
+        "instanceVersion": "1.9"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Dev Nginx",
+      "type": "blueprint",
+      "refType": "AppTemplate",
+      "refId": 146,
+      "blueprint": {
+        "id": 146,
+        "name": "Dev Nginx",
+        "type": "morpheus"
+      },
+      "group": {
+        "id": 1,
+        "name": "thegroup"
+      },
+      "defaultCloud": {
+        "id": 39,
+        "name": "Dev AWS"
+      },
+      "config": {
+        "tiers": {
+          "Web": {
+            "tierIndex": 1,
+            "instances": [
+              {
+                "instance": {
+                  "type": "nginx"
+                },
+                "groups": {
+                  "Dev": {
+                    "clouds": {
+                      "Dev AWS": {
+                        "instance": {
+                          "layout": {
+                            "provisionTypeCode": "amazon",
+                            "code": "nginx-amazon-1.9",
+                            "instanceVersion": "1.9",
+                            "name": "Amazon NGINX",
+                            "id": 183
+                          },
+                          "name": "${userInitials}-dev-nginx-${sequence}",
+                          "type": "nginx"
+                        },
+                        "networkInterfaces": [
+                          {
+                            "network": {
+                              "id": "network-360"
+                            }
+                          }
+                        ],
+                        "volumes": [
+                          {
+                            "size": 10,
+                            "name": "data",
+                            "rootVolume": true,
+                            "storageType": 5
+                          }
+                        ],
+                        "plan": {
+                          "code": "amazon-t2.nano",
+                          "id": 1
+                        },
+                        "config": {
+                          "resourcePoolId": 175,
+                          "createUser": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "templateName": "Dev Nginx",
+        "name": "Dev Nginx",
+        "id": 146
+      }
+    },
+    {
+      "id": 4,
+      "name": "Dev Apache",
+      "type": "catalog",
+      "refType": "CatalogItemType",
+      "refId": 27,
+      "catalogItemType": {
+        "id": 27,
+        "name": "Dev Apache"
+      }
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 4,
+    "total": 4
+  }
+}
+```
+
+This endpoint retrieves a list of exposed objects for a specific integration. Certain integration types support cofigurating exposed objects. eg. [ServiceNow](#servicenow-integration)
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integrations/:integration_id/objects`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | Filter by wildcard search of name
+id |  | Filter by id
+name |  | Filter by name
+type |  | Filter by type: `cloud`, `layout`, `blueprint`, `catalog`
+refId |  | Filter by refId
+
+## Get a Specific Integration Object
+
+```shell
+curl "<%= curl_url %>/api/integrations/:integration_id/objects/:id" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+```
+
+This endpoint retrieves a specific integration object.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/integrations/:integration_id/objects/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+id | ID of the Integration Object
+
+## Create an Exposed Cloud
+
+```shell
+curl -XPOST "<%= curl_url %>/api/integrations/:integration_id/objects" \
+  -H "Authorization: Bearer <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "object": {
+    "type": "cloud",
+    "layout": 39
+  }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "object": {
+    "id": 1
+  }
+}
+```
+
+This endpoint creates an Exposed Cloud. This is an integration object of type `cloud` that references a [Cloud](#clouds).
+
+### HTTP Request
+
+`POST <%= api_url %>/api/integrations/:integration_id/objects`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+
+### Create an Exposed Cloud Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+name | N | (cloud name) | Name to display
+type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
+cloud | Y |  | [Cloud][#clouds] ID
+group | Y |  | [Group][#groups] ID
+
+## Create an Exposed Layout
+
+```shell
+curl -XPOST "<%= curl_url %>/api/integrations/:integration_id/objects" \
+  -H "Authorization: Bearer <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "object": {
+    "type": "layout",
+    "layout": 183
+  }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "object": {
+    "id": 2
+  }
+}
+```
+
+This endpoint creates an Exposed Layout (Library). This is an integration object of type `layout` that references a [Layout](#layouts).
+
+### HTTP Request
+
+`POST <%= api_url %>/api/integrations/:integration_id/objects`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+
+### Create an Exposed Layout Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+name | N | (layout name) | Name to display
+type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
+layout | Y |  | [Layout][#layouts] ID
+
+## Create an Exposed Blueprint
+
+```shell
+curl -XPOST "<%= curl_url %>/api/integrations/:integration_id/objects" \
+  -H "Authorization: Bearer <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "object": {
+    "type": "blueprint",
+    "blueprint": 146,
+    "group": 1,
+    "defaultCloud": 39,
+    "config": {
+      "tiers": {
+        "Web": {
+          "tierIndex": 1,
+          "instances": [
+            {
+              "instance": {
+                "type": "nginx"
+              },
+              "groups": {
+                "Dev": {
+                  "clouds": {
+                    "Dev AWS": {
+                      "instance": {
+                        "layout": {
+                          "provisionTypeCode": "amazon",
+                          "code": "nginx-amazon-1.9",
+                          "instanceVersion": "1.9",
+                          "name": "Amazon NGINX",
+                          "id": 183
+                        },
+                        "name": "${userInitials}-dev-nginx-${sequence}",
+                        "type": "nginx"
+                      },
+                      "networkInterfaces": [
+                        {
+                          "network": {
+                            "id": "network-360"
+                          }
+                        }
+                      ],
+                      "volumes": [
+                        {
+                          "size": 10,
+                          "name": "data",
+                          "rootVolume": true,
+                          "storageType": 5
+                        }
+                      ],
+                      "plan": {
+                        "code": "amazon-t2.nano",
+                        "id": 1
+                      },
+                      "config": {
+                        "resourcePoolId": 175,
+                        "createUser": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "templateName": "Dev Nginx",
+      "name": "Dev Nginx",
+      "id": 146
+    }
+  }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "object": {
+    "id": 3
+  }
+}
+```
+
+This endpoint creates an Exposed Blueprint. This is an integration object of type `blueprint` that references a [Blueprint](#blueprint).
+
+### HTTP Request
+
+`POST <%= api_url %>/api/integrations/:integration_id/objects`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+
+### Create an Exposed Blueprint Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+name | N | (blueprint name) | Name to display
+type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
+blueprint | Y |  | [Blueprint][#blueprints] ID
+config | Y | Config Object, see [Config For Exposed Blueprint](#config-for-exposed-blueprint)
+
+#### Config For Exposed Blueprint
+
+The `config` for **blueprint** type integration objects is an object with fields:
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | N | Name of the app
+group | Y |  | [Group][#groups] ID
+defaultCloud | Y |  | [Cloud][#clouds] ID
+environment | N | Name of environment
+tiers | N | Object with each key is a tier name and its value is the tier configuration, including an array of `instances`, each with their own type and settings.
+
+<aside class="info">A more detailed specification of the `config` is needed. The UI can be used to generate a configuration.</aside>
+
+## Create an Exposed Catalog Item
+
+```shell
+curl -XPOST "<%= curl_url %>/api/integrations/:integration_id/objects" \
+  -H "Authorization: Bearer <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "object": {
+    "type": "catalog",
+    "catalogItemType": 27
+  }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "object": {
+    "id": 4
+  }
+}
+```
+
+This endpoint creates an Exposed Catalog Item. This is an integration object of type `catalog` that references a [Catalog Item Type](#self-service).
+
+### HTTP Request
+
+`POST <%= api_url %>/api/integrations/:integration_id/objects`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+
+### Create an Exposed Catalog Item Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+name | N | (catalog item name) | Name to display
+type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
+catalogItemType | Y |  | [Catalog Item Type][#self-service] ID
+
+## Delete an Integration Object
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/integrations/:integration_id/objects/:id" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint deletes an existing integration object.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/integrations/:integration_id/objects/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+integration_id | ID of the Integration
+id | The ID of the Integration Object
