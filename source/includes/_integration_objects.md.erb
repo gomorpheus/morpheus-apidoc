@@ -254,8 +254,8 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | N | (cloud name) | Name to display
 type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
-cloud | Y |  | [Cloud][#clouds] ID
-group | Y |  | [Group][#groups] ID
+cloud | Y |  | [Cloud](#clouds) ID
+group | Y |  | [Group](#groups) ID
 
 ## Create an Exposed Layout
 
@@ -300,7 +300,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | N | (layout name) | Name to display
 type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
-layout | Y |  | [Layout][#layouts] ID
+layout | Y |  | [Layout](#layouts) ID
 
 ## Create an Exposed Blueprint
 
@@ -406,7 +406,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | N | (blueprint name) | Name to display
 type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
-blueprint | Y |  | [Blueprint][#blueprints] ID
+blueprint | Y |  | [Blueprint](#blueprints) ID
 config | Y | Config Object, see [Config For Exposed Blueprint](#config-for-exposed-blueprint)
 
 #### Config For Exposed Blueprint
@@ -416,8 +416,8 @@ The `config` for **blueprint** type integration objects is an object with fields
 Parameter | Required | Description
 --------- | -------- | -----------
 name | N | Name of the app
-group | Y |  | [Group][#groups] ID
-defaultCloud | Y |  | [Cloud][#clouds] ID
+group | Y |  | [Group](#groups) ID
+defaultCloud | Y |  | [Cloud](#clouds) ID
 environment | N | Name of environment
 tiers | N | Object with each key is a tier name and its value is the tier configuration, including an array of `instances`, each with their own type and settings.
 
@@ -466,7 +466,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 name | N | (catalog item name) | Name to display
 type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
-catalogItemType | Y |  | [Catalog Item Type][#self-service] ID
+catalogItemType | Y |  | [Catalog Item Type](#self-service) ID
 
 ## Delete an Integration Object
 
