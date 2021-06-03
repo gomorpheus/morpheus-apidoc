@@ -407,7 +407,7 @@ Parameter | Required | Default | Description
 name | N | (blueprint name) | Name to display
 type | Y |  | Integration Object Type code: `cloud`, `layout`, `blueprint`, `catalog`
 blueprint | Y |  | [Blueprint](#blueprints) ID
-config | Y | Config Object, see [Config For Exposed Blueprint](#config-for-exposed-blueprint)
+config | Y |  | Config Object, see [Config For Exposed Blueprint](#config-for-exposed-blueprint)
 
 #### Config For Exposed Blueprint
 
@@ -421,7 +421,7 @@ defaultCloud | Y |  | [Cloud](#clouds) ID
 environment | N | Name of environment
 tiers | N | Object with each key is a tier name and its value is the tier configuration, including an array of `instances`, each with their own type and settings.
 
-<aside class="info">A more detailed specification of the `config` is needed. The UI can be used to generate a configuration.</aside>
+<aside class="info">A more detailed specification is needed for the blueprint *config*. An example *config* can be seen by viewing records created via the UI.</aside>
 
 ## Create an Exposed Catalog Item
 
