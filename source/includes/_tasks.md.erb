@@ -156,6 +156,7 @@ sourceType | Y | File Source i.e. `local`, `repository`, `url`. Default is `loca
 content | Y | File content, the script text. Only required when sourceType is `local`.
 contentPath | Y | Content Path, the repo file location or url. Required when sourceType is `repository` or `url`.
 contentRef | N | Content Ref, the branch/tag. Only used when sourceType is `repo`.
+repository.id | N | Code Repository ID, required for type `repository`. Use `/api/options/codeRepositories` to see available repositories. 
 
 ### JSON Parameters for Execute Target: Local
 
