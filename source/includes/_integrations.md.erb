@@ -994,7 +994,7 @@ curl "<%= curl_url %>/api/integrations/:integration_id/objects" \
       },
       "group": {
         "id": 1,
-        "name": "thegroup"
+        "name": "Dev AWS"
       }
     },
     {
@@ -1033,7 +1033,7 @@ curl "<%= curl_url %>/api/integrations/:integration_id/objects" \
       },
       "group": {
         "id": 1,
-        "name": "thegroup"
+        "name": "Dev AWS"
       },
       "defaultCloud": {
         "id": 39,
@@ -1181,7 +1181,8 @@ curl -XPOST "<%= curl_url %>/api/integrations/:integration_id/objects" \
   -d '{
   "object": {
     "type": "cloud",
-    "cloud": 39
+    "cloud": 39,
+    "group": 1
   }
 }'
 ```
