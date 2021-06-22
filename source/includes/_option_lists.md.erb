@@ -22,31 +22,19 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       "description": "My List",
       "type": "manual",
       "sourceUrl": null,
+      "sourceMethod": "GET",
+      "apiType": null,
       "ignoreSSLErrors": false,
       "realTime": false,
-      "sourceMethod": "GET",
       "config": {
       },
       "initialDataset": "foo,Foo\nbar,Bar\nbaz,Baz\nhello,world",
       "translationScript": null,
-      "listItems": [
-        {
-          "name": "foo",
-          "value": "Foo"
-        },
-        {
-          "name": "bar",
-          "value": "Bar"
-        },
-        {
-          "name": "baz",
-          "value": "Baz"
-        },
-        {
-          "name": "hello",
-          "value": "world"
-        }
-      ]
+      "requestScript": null,
+      "account": {
+        "id": 1,
+        "name": "<%= company_domain %>"
+      }
     },
     {
       "id": 56,
@@ -54,9 +42,10 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       "description": null,
       "type": "rest",
       "sourceUrl": "http://10.0.2.2:8080/api/options/clouds?groupId=1",
+      "sourceMethod": "GET",
+      "apiType": null,
       "ignoreSSLErrors": false,
       "realTime": false,
-      "sourceMethod": "GET",
       "config": {
         "sourceHeaders": [
           {
@@ -68,23 +57,18 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       },
       "initialDataset": null,
       "translationScript": "for(var x=0;x < data.data.length; x++) {\n    results.push(data.data[x]);\n}",
-      "listItems": [
-        {
-          "name": "testcloud",
-          "value": "35"
-        },
-        {
-          "name": "den-vcenter",
-          "value": "29"
-        }
-      ]
+      "requestScript": null,
+      "account": {
+        "id": 1,
+        "name": "<%= company_domain %>"
+      }
     }
   ],
   "meta": {
     "offset": 0,
     "max": 25,
     "size": 2,
-    "total": 8
+    "total": 2
   }
 }
 ```
@@ -124,9 +108,9 @@ curl "<%= curl_url %>/api/library/option-type-lists/1" \
     "description": "A list of my groups",
     "type": "rest",
     "sourceUrl": "http://myapp/api/options/groups",
+    "sourceMethod": "GET",
     "ignoreSSLErrors": false,
     "realTime": false,
-    "sourceMethod": "GET",
     "config": {
       "sourceHeaders": [
         {
@@ -143,16 +127,11 @@ curl "<%= curl_url %>/api/library/option-type-lists/1" \
     },
     "initialDataset": null,
     "translationScript": "for(var x=0;x < data['data'].length; x++) {\r\n    results.push(data.data[x]);\r\n}",
-    "listItems": [
-      {
-        "name": "anothergroup",
-        "value": "335"
-      },
-      {
-        "name": "group2",
-        "value": "284"
-      }
-    ]
+    "requestScript": null,
+    "account": {
+      "id": 1,
+      "name": "<%= company_domain %>"
+    }
   }
 }
 ```
@@ -169,6 +148,49 @@ Parameter | Description
 --------- | -----------
 id | ID of the option list
 
+## List Items for a Specific Option List
+
+```shell
+curl "<%= curl_url %>/api/library/option-type-lists/1/items" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "listItems": [
+    {
+      "name": "foo",
+      "value": "Foo"
+    },
+    {
+      "name": "bar",
+      "value": "Bar"
+    },
+    {
+      "name": "baz",
+      "value": "Baz"
+    },
+    {
+      "name": "hello",
+      "value": "world"
+    }
+  ]
+}
+```
+
+This endpoint retrieves the items for a specific option list.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/library/option-type-lists/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the option list
 
 ## Create an Option List
 
@@ -183,10 +205,10 @@ curl -XPOST "<%= curl_url %>/api/library/option-type-lists" \
     "name": "resty",
     "description": "A resty list",
     "type": "rest",
-    "sourceUrl": "http://myapp/api/options/mydata",
+    "sourceUrl": "<%= curl_url %>/api/options/mydata",
+    "sourceMethod": "GET",
     "ignoreSSLErrors": true,
     "realTime": false,
-    "sourceMethod": "GET",
     "initialDataset": null,
     "translationScript": null,
     "config": {
