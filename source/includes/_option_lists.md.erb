@@ -259,7 +259,7 @@ type | N | Option List Type eg. `rest` `api` or `manual`. Default is `rest`.
 sourceUrl | N | Source URL, the http(s) URL to request data from. Required when type is rest.
 visibility | N | Visibility. Default is `private`.
 sourceMethod | N | Source Method, the HTTP method. Default is `GET`.
-apiType | N | Api Type, The code of the api list to use, eg. `clouds`, `groups`, etc. Required when type is `api`.
+apiType | N | Api Type, The code of the api option list to use, eg. `clouds`, `environments`, `groups`, `instances`, `instance-wiki`, `networks`, `servicePlans`, `resourcePools`, `securityGroups`, `servers`, `server-wiki`. Required when type is `api`.
 ignoreSSLErrors | N | Ignore SSL Errors. Default is `false`.
 realTime | N | Real Time. Default is `false`.
 initialDataset | N | Initial Dataset. Create an initial JSON or CSV dataset to be used as the collection for this option list. It should be a list containing objects with properties 'name', and 'value'. Required when type is `manual`.
