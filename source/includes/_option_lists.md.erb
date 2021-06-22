@@ -26,6 +26,7 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       "apiType": null,
       "ignoreSSLErrors": false,
       "realTime": false,
+      "visibility": "private",
       "config": {
       },
       "initialDataset": "foo,Foo\nbar,Bar\nbaz,Baz\nhello,world",
@@ -46,6 +47,7 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       "apiType": null,
       "ignoreSSLErrors": false,
       "realTime": false,
+      "visibility": "private",
       "config": {
         "sourceHeaders": [
           {
@@ -111,6 +113,7 @@ curl "<%= curl_url %>/api/library/option-type-lists/1" \
     "sourceMethod": "GET",
     "ignoreSSLErrors": false,
     "realTime": false,
+    "visibility": "private",
     "config": {
       "sourceHeaders": [
         {
@@ -209,6 +212,7 @@ curl -XPOST "<%= curl_url %>/api/library/option-type-lists" \
     "sourceMethod": "GET",
     "ignoreSSLErrors": true,
     "realTime": false,
+    "visibility": "private",
     "initialDataset": null,
     "translationScript": null,
     "config": {
