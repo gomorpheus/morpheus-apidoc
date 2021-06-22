@@ -118,6 +118,38 @@ curl "<%= curl_url %>/api/servers"
         "bitCount": 64,
         "platform": "linux"
       },
+      "serverOs": {
+        "id": 50,
+        "code": "linux",
+        "name": "linux",
+        "description": null,
+        "vendor": "linux",
+        "category": "linux",
+        "osFamily": null,
+        "osVersion": "all",
+        "bitCount": 64,
+        "platform": "linux"
+      },
+      "volumes": [
+        {
+          "id": 164967,
+          "name": "root",
+          "controllerId": null,
+          "controllerMountPoint": null,
+          "resizeable": true,
+          "rootVolume": true,
+          "unitNumber": null,
+          "typeId": 14,
+          "configurableIOPS": false,
+          "datastoreId": null,
+          "maxStorage": 32212254720,
+          "displayOrder": 0,
+          "maxIOPS": null
+        }
+      ],
+      "controllers": [
+
+      ],
       "interfaces": [
         {
           "refType": null,
@@ -349,6 +381,26 @@ curl "<%= curl_url %>/api/servers/1" \
       "bitCount": 64,
       "platform": "linux"
     },
+    "volumes": [
+      {
+        "id": 164967,
+        "name": "root",
+        "controllerId": null,
+        "controllerMountPoint": null,
+        "resizeable": true,
+        "rootVolume": true,
+        "unitNumber": null,
+        "typeId": 14,
+        "configurableIOPS": false,
+        "datastoreId": null,
+        "maxStorage": 32212254720,
+        "displayOrder": 0,
+        "maxIOPS": null
+      }
+    ],
+    "controllers": [
+
+    ],
     "interfaces": [
       {
         "refType": null,
