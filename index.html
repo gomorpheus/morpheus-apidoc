@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.1</div>
+        <div class="version">5.3.2</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.1</b>
+This document is for the Morpheus API version <b>5.3.2</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -3093,7 +3093,7 @@ The page will be created if it does not yet exist.</p>
 
           <h1 id="approvals">Approvals</h1>
 
-<p>Provides API interfaces for managing approvals within Morpheus</p>
+<p>Provides API interfaces for managing approvals within Morpheus.</p>
 
 <h2 id="get-all-approvals">Get All Approvals</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/approvals"</span> <span class="se">\</span>
@@ -6616,7 +6616,7 @@ By default only open alarms are returned. Open alarms are those that have not ye
 
           <h1 id="guidance">Guidance</h1>
 
-<p>Provides API interfaces for managing guidance within Morpheus</p>
+<p>Provides API interfaces for managing guidance within Morpheus.</p>
 
 <h2 id="get-all-discoveries">Get All Discoveries</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/guidance"</span> <span class="se">\</span>
@@ -8036,6 +8036,11 @@ By default only open alarms are returned. Open alarms are those that have not ye
 <td></td>
 <td>Alias for <code class="prettyprint">tags</code>.</td>
 </tr>
+<tr>
+<td>details</td>
+<td>false</td>
+<td>Include <code class="prettyprint">details=true</code> to return more details about the instance, ie. <code class="prettyprint">containerDetails</code>. Available in api version 5.2.8/5.3.2.</td>
+</tr>
 </tbody></table>
 
 <aside class="info">
@@ -8052,59 +8057,264 @@ API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <c
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"instance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1698</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">392</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ccf1fa9-da1f-4318-841e-7bf30c4522c6"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tenant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Data"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"instanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redis"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cache"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Redis"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apache"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Mateo VMware"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">19</span><span class="w">
+      </span><span class="mi">945</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"servers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">2</span><span class="w">
+      </span><span class="mi">4002</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"connectionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.211.55.11"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">221</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Apache on Ubuntu 14.04"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"provisionTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container-512"</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redistest"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"instanceVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"environment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"createUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isEC2"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isVpcSelectable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noAgent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"availabilityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"securityId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"publicIpType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subnet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instanceProfile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"173"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"poolProviderType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${userInitials}-apache-${sequence}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hostName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${userInitials}-apache-${sequence}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"environmentPrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache-amazon-2.4-single"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"memoryDisplay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"securityGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg-21dd8144"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"customOptions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createBackup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"backup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"createBackup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"jobAction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"jobRetentionCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"veeamManagedServer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"backupRepository"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"jobSchedule"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="mi">37006</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"layoutSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lbInstances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"configGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"configId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"configRole"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"controllerId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datastoreId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">177034</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resizeable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rootVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"storageType"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controllerMountPoint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"365"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dhcpServer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labs1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"networkInterfaceTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"customOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"instanceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.4"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"web"</span><span class="w">
+      </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bar"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"id"</span><span class="err">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Category"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Web"</span><span class="p">]</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70539</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70541</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Instance Id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"392"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70538</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Labels"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo,bar"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70540</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Server Id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4002"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70530</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"evars"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_IP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_HOST"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container945"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_HTTP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_80_TCP_PORT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_80_TCP_PROTO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_80_TCP_ADDR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_80_TCP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp://10.100.1.8:80"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_HTTPS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_443_TCP_PORT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_443_TCP_PROTO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_443_TCP_ADDR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APACHE_PORT_443_TCP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp://10.100.1.8:443"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"masked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">5368709120</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T15:12:06+0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-13T19:22:00+0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hostName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redistest"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hourlyCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hourlyPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instancePrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.2508</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.2508</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:36:32Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T21:00:01Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hostName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"environmentPrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firewallEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -8112,24 +8322,365 @@ API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <c
     </span><span class="s2">"autoScale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instanceContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"currentDeployId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"statusDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T15:12:41+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statusDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:38:12Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"statusPercent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"statusEta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userStatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expireDays"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"renewDays"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expireCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expireDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expireWarningDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expireWarningSent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownDays"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownRenewDays"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownWarningDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shutdownWarningSent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"removalDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">2951</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">266240</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">268435456</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usedCpu"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0418375032</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">233500000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">500212000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedCpu"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0667445352</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0667445352</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUsagePeak"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0667445352</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpuUsageAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0667445352</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"powerSchedule"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isScalable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instanceThreshold"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isBusy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"currentLoadBalancerInstances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"currentLoadBalancerContainersIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currentLoadBalancerContainersOut"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastDeploy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"containerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">945</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c19f7209-df3a-443c-93a8-ccefacb3783c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1_945"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"internalHostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container945"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalHostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localdomain"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalFqdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1.localdomain"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">392</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"containerType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache-amazon-2.4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apache 2.4"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"containerTypeSet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache-amazon-2.4-set"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"server"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4002</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbf4234d-cd25-47b5-bdd1-49a9132d2871"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i-033fbb2f1a9c2c225"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"externalUniqueId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"externalName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Data"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"computeServerType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazonVm"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon Instance"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"managed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalDelete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"zoneId"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"siteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="mi">173</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sshHost"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sshPort"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"platformVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:36:32Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T18:06:32Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T18:06:28+0000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"freeMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">266712000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">233500000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"freeSwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usedSwap"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cpuIdleTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">692815380</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cpuSystemTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">224850</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cpuUserTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">382640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cpuTotalTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">693422870</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06674528121948242</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1568661504</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reservedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10423046144</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"netTxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"netRxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"networkBandwidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provisioned"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"statusMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"statusDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:36:50Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"statusPercent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"statusEta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"powerState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"agentInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lastAgentUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T18:06:32Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"agentVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"hourlyCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"hourlyPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sourceImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon.ec2.image.morpheus.apache.2.4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu-14_04-apache-2_4-morph.0.1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"serverOs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu.14.04.64"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu 14 64-bit"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canonical"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubuntu"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"osFamily"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debian"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.04"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">177034</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"controllerId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"controllerMountPoint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"resizeable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rootVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"unitNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"typeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"configurableIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"datastoreId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"maxIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">297842</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eni-0689d61ea999db573"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"uniqueId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheus-nic-392-945-0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"publicIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"publicIpv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.100.1.8"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ipv6Address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ipSubnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"ipv6Subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dhcp"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"poolAssigned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"primaryInterface"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labs1"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"networkGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"networkPosition"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"networkPool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"networkDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"ipMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:92:59:62:73:a3"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70536</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Id"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"945"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70535</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Instance Id"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"392"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70537</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Labels"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo,bar"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70534</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morpheus Server Id"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4002"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70531</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tagCompliant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internal"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Http"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primaryPort"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exportName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTP"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loadBalanceProtocol"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loadBalance"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">193</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internal"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Https"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"primaryPort"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"export"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exportName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HTTPS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loadBalanceProtocol"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loadBalance"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internalIp"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon T2 Nano - 1 Core, 0.5GB Memory"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"configGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configRole"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-02T16:36:32Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T18:06:32Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"statsEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"environmentPrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T18:06:28+0000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"userCpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0333722676</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"systemCpuUsage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0333722676</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"usedMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">233500000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">500212000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cacheMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">190968000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"usedStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"readIOPS"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"writeIOPS"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2333333333</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalIOPS"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2333333333</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"iops"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"netTxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"netRxUsage"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"runtimeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"containerVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"repositoryImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"planCategory"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa-apache-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"volumeCreated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"containerCreated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10737418240</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxMemory"</span><span class="p">:</span><span class="w"> </span><span class="mi">536870912</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxCores"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxCpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hourlyCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hourlyPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0086816667</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8151,6 +8702,22 @@ API versions older than 4.2.5/5.2.1 still use the old property names: Tags as <c
 <tr>
 <td>:id</td>
 <td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>details</td>
+<td>true</td>
+<td>More details about the instance are returned by default, ie. <code class="prettyprint">containerDetails</code>. Available in api version 5.2.8/5.3.2.</td>
 </tr>
 </tbody></table>
 
@@ -10191,7 +10758,7 @@ The Provision Types api can be used to see which options are available.</p>
 </tr>
 </tbody></table>
 
-<p>This endpoint also supports all of the same parameters as [Create and Instance][#create-an-instance], so you can override any configuration options when provisioning the clone.</p>
+<p>This endpoint also supports all of the same parameters as <a href="#create-an-instance">Create and Instance</a>, so you can override any configuration options when provisioning the clone.</p>
 
 <h2 id="backup-an-instance">Backup an Instance</h2>
 <pre class="highlight shell"><code>curl -X PUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/1773/backup"</span> <span class="se">\</span>
@@ -11957,7 +12524,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 
           <h1 id="jobs">Jobs</h1>
 
-<p>Provides API interfaces for managing jobs within Morpheus</p>
+<p>Provides API interfaces for managing jobs within Morpheus.</p>
 
 <h2 id="get-all-jobs">Get All Jobs</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/jobs"</span> <span class="se">\</span>
@@ -13157,6 +13724,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>contentRef</td>
 <td>N</td>
 <td>Content Ref, the branch/tag. Only used when sourceType is <code class="prettyprint">repo</code>.</td>
+</tr>
+<tr>
+<td>repository.id</td>
+<td>N</td>
+<td>Code Repository ID, required for type <code class="prettyprint">repository</code>. Use <code class="prettyprint">/api/options/codeRepositories</code> to see available repositories.</td>
 </tr>
 </tbody></table>
 
@@ -19664,31 +20236,20 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My List"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manual"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sourceUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ignoreSSLErrors"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"realTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"initialDataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo,Foo\nbar,Bar\nbaz,Baz\nhello,world"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"translationScript"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"listItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Baz"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="s2">"requestScript"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheusdata.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
@@ -19696,9 +20257,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rest"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sourceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://10.0.2.2:8080/api/options/clouds?groupId=1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ignoreSSLErrors"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"realTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"sourceHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -19710,28 +20273,27 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"initialDataset"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"translationScript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"for(var x=0;x &lt; data.data.length; x++) {\n    results.push(data.data[x]);\n}"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"listItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testcloud"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"den-vcenter"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="s2">"requestScript"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheusdata.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves all option lists.</p>
+
+<aside class="info">
+<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A sepearate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
+</aside>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -19793,9 +20355,10 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A list of my groups"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rest"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sourceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://myapp/api/options/groups"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ignoreSSLErrors"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"realTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sourceMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"sourceHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -19812,25 +20375,74 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"initialDataset"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"translationScript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"for(var x=0;x &lt; data['data'].length; x++) {\r\n    results.push(data.data[x]);\r\n}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"listItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anothergroup"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"335"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"284"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"requestScript"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheusdata.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a specific option list.</p>
 
+<aside class="info">
+<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A sepearate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
+</aside>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET $serverUrl/api/library/option-type-lists/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>ID of the option list</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-items-for-a-specific-option-list">List Items for a Specific Option List</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/library/option-type-lists/1/items"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"listItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Baz"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the items for a specific option list.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/library/option-type-lists/:id/items</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -19857,10 +20469,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
     "name": "resty",
     "description": "A resty list",
     "type": "rest",
-    "sourceUrl": "http://myapp/api/options/mydata",
+    "sourceUrl": "$serverUrl/api/options/mydata",
+    "sourceMethod": "GET",
     "ignoreSSLErrors": true,
     "realTime": false,
-    "sourceMethod": "GET",
+    "visibility": "private",
     "initialDataset": null,
     "translationScript": null,
     "config": {
@@ -19930,7 +20543,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <tr>
 <td>apiType</td>
 <td>N</td>
-<td>Api Type, The code of the api list to use, eg. <code class="prettyprint">clouds</code>, <code class="prettyprint">groups</code>, etc. Required when type is <code class="prettyprint">api</code>.</td>
+<td>Api Type, The code of the api option list to use, eg. <code class="prettyprint">clouds</code>, <code class="prettyprint">environments</code>, <code class="prettyprint">groups</code>, <code class="prettyprint">instances</code>, <code class="prettyprint">instance-wiki</code>, <code class="prettyprint">networks</code>, <code class="prettyprint">servicePlans</code>, <code class="prettyprint">resourcePools</code>, <code class="prettyprint">securityGroups</code>, <code class="prettyprint">servers</code>, <code class="prettyprint">server-wiki</code>. Required when type is <code class="prettyprint">api</code>.</td>
 </tr>
 <tr>
 <td>ignoreSSLErrors</td>
@@ -20589,6 +21202,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>N</td>
 <td>Content Ref, the branch/tag. Only used when sourceType is <code class="prettyprint">repo</code>.</td>
 </tr>
+<tr>
+<td>repository.id</td>
+<td>N</td>
+<td>Code Repository ID, required for type <code class="prettyprint">repository</code>. Use <code class="prettyprint">/api/options/codeRepositories</code> to see available repositories.</td>
+</tr>
 </tbody></table>
 
 <h4 id="cloud-formation-capability-parameters">Cloud Formation Capability Parameters</h4>
@@ -20717,7 +21335,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 
           <h1 id="cluster-layouts">Cluster Layouts</h1>
 
-<p>Provides API interfaces for managing cluster layouts within Morpheus</p>
+<p>Provides API interfaces for managing cluster layouts within Morpheus.</p>
 
 <h2 id="get-all-cluster-layouts">Get All Cluster Layouts</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/library/cluster-layouts"</span> <span class="se">\</span>
@@ -23808,6 +24426,11 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <td>Scale Priority</td>
 </tr>
 <tr>
+<td>linkedAccountId</td>
+<td></td>
+<td>Linked Account ID (enter commercial ID to get costing for AWS Govcloud)</td>
+</tr>
+<tr>
 <td>config</td>
 <td></td>
 <td>Map containing zone configuration settings. See the section on specific zone types for details.</td>
@@ -23891,6 +24514,11 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <td>scalePriority</td>
 <td></td>
 <td>Scale Priority</td>
+</tr>
+<tr>
+<td>linkedAccountId</td>
+<td></td>
+<td>Linked Account ID (enter commercial ID to get costing for AWS Govcloud)</td>
 </tr>
 <tr>
 <td>config</td>
@@ -28519,6 +29147,38 @@ The Provision Types api can be used to see which options are available.</p>
         </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
         </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serverOs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"osFamily"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">164967</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"controllerId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"controllerMountPoint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"resizeable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rootVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unitNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"typeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"configurableIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"datastoreId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">32212254720</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -28849,6 +29509,26 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
       </span><span class="s2">"bitCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
       </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">164967</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controllerId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"controllerMountPoint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resizeable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rootVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unitNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"typeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"configurableIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"datastoreId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxStorage"</span><span class="p">:</span><span class="w"> </span><span class="mi">32212254720</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxIOPS"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -32985,7 +33665,7 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 
           <h2 id="network-routers">Network Routers</h2>
 
-<p>Provides API interfaces for managing network routers within Morpheus</p>
+<p>Provides API interfaces for managing network routers within Morpheus.</p>
 
 <h2 id="get-all-network-routers">Get All Network Routers</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers"</span> <span class="se">\</span>
@@ -49089,7 +49769,7 @@ If an identity source is tied to existing users, delete will fail.
 
           <h1 id="service-plans">Service Plans</h1>
 
-<p>Provides API interfaces for managing service plans within Morpheus</p>
+<p>Provides API interfaces for managing service plans within Morpheus.</p>
 
 <h2 id="get-all-service-plans">Get All Service Plans</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/service-plans"</span> <span class="se">\</span>
@@ -49775,7 +50455,7 @@ If an identity source is tied to existing users, delete will fail.
 
           <h1 id="price-sets">Price Sets</h1>
 
-<p>Provides API interfaces for managing price sets within Morpheus</p>
+<p>Provides API interfaces for managing price sets within Morpheus.</p>
 
 <h2 id="get-all-price-sets">Get All Price Sets</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/price-sets"</span> <span class="se">\</span>
@@ -50157,7 +50837,7 @@ If an identity source is tied to existing users, delete will fail.
 
           <h1 id="prices">Prices</h1>
 
-<p>Provides API interfaces for managing prices within Morpheus</p>
+<p>Provides API interfaces for managing prices within Morpheus.</p>
 
 <h2 id="get-all-prices">Get All Prices</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/prices"</span> <span class="se">\</span>
@@ -50668,7 +51348,7 @@ If an identity source is tied to existing users, delete will fail.
 
           <h1 id="integrations">Integrations</h1>
 
-<p>Provides API interfaces for managing integrations within Morpheus</p>
+<p>Provides API interfaces for managing integrations within Morpheus.</p>
 
 <h2 id="get-all-integrations">Get All Integrations</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations"</span> <span class="se">\</span>
@@ -51195,7 +51875,7 @@ If an identity source is tied to existing users, delete will fail.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves list of integrations.</p>
+<p>This endpoint retrieves a list of integrations.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -51280,6 +51960,11 @@ If an identity source is tied to existing users, delete will fail.
 <td></td>
 <td>Filter by integration status</td>
 </tr>
+<tr>
+<td>objects</td>
+<td>false</td>
+<td>Include <code class="prettyprint">objects=true</code> to return the <a href="#list-integration-objects">Integration Objects</a> for each integration. Available in api version 5.2.8/5.3.2.</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-a-specific-integration">Get a Specific Integration</h2>
@@ -51342,6 +52027,22 @@ If an identity source is tied to existing users, delete will fail.
 <tr>
 <td>id</td>
 <td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>objects</td>
+<td>false</td>
+<td>Include <code class="prettyprint">objects=true</code> to return the <a href="#list-integration-objects">Integration Objects</a> for the integration. Available in api version 5.2.8/5.3.2.</td>
 </tr>
 </tbody></table>
 
@@ -51803,7 +52504,7 @@ If an identity source is tied to existing users, delete will fail.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This example creates a new ServiceNow integration.</p>
+<p>This example creates a new ServiceNow integration. See <a href="#list-integration-objects">Integration Objects</a> for configuring the Exposed Clouds, etc.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -51854,6 +52555,721 @@ If an identity source is tied to existing users, delete will fail.
 <td>N</td>
 <td></td>
 <td>CMDB Business Object</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-servicenow-integration-objects">List ServiceNow Integration Objects</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev AWS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ComputeZone"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev AWS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zoneType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev AWS"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon NGINX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layout"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InstanceTypeLayout"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">183</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">183</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon NGINX"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx-amazon-1.9"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"provisionType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"instanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nginx"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"instanceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.9"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Nginx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blueprint"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AppTemplate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">146</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blueprint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">146</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Nginx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morpheus"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev AWS"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"defaultCloud"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev AWS"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"Web"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tierIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"instance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"Dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"clouds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="s2">"Dev AWS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"instance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                          </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"provisionTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx-amazon-1.9"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"instanceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.9"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon NGINX"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">183</span><span class="w">
+                          </span><span class="p">},</span><span class="w">
+                          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${userInitials}-dev-nginx-${sequence}"</span><span class="p">,</span><span class="w">
+                          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nginx"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"networkInterfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                          </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"network-360"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                          </span><span class="p">}</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                          </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"rootVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"storageType"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+                          </span><span class="p">}</span><span class="w">
+                        </span><span class="p">],</span><span class="w">
+                        </span><span class="s2">"plan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon-t2.nano"</span><span class="p">,</span><span class="w">
+                          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                          </span><span class="s2">"resourcePoolId"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+                          </span><span class="s2">"createUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                      </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"templateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Nginx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Nginx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">146</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Apache"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"catalog"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CatalogItemType"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"catalogItemType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev Apache"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a list of exposed objects for a specific integration.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/integrations/:integration_id/objects</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>25</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>asc</td>
+<td>Sort direction, use &#39;desc&rsquo; to reverse sort</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Filter by wildcard search of name</td>
+</tr>
+<tr>
+<td>id</td>
+<td></td>
+<td>Filter by id</td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>Filter by name</td>
+</tr>
+<tr>
+<td>type</td>
+<td></td>
+<td>Filter by type: <code class="prettyprint">cloud</code>, <code class="prettyprint">layout</code>, <code class="prettyprint">blueprint</code>, <code class="prettyprint">catalog</code></td>
+</tr>
+<tr>
+<td>refId</td>
+<td></td>
+<td>Filter by refId</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-servicenow-integration-object">Get a Specific ServiceNow Integration Object</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects/:id"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific integration object.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/integrations/:integration_id/objects/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the Integration Object</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-servicenow-exposed-cloud">Create a ServiceNow Exposed Cloud</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "object": {
+    "type": "cloud",
+    "cloud": 39,
+    "group": 1
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates an Exposed Cloud. This is an integration object of type <code class="prettyprint">cloud</code> that references a <a href="#clouds">Cloud</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/integrations/:integration_id/objects</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="exposed-cloud-parameters">Exposed Cloud Parameters</h3>
+
+<p>The parameters for creating an integration object are passed under an object named <code class="prettyprint">object</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>(cloud name)</td>
+<td>Name to display</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td></td>
+<td>Integration Object Type code: <code class="prettyprint">cloud</code></td>
+</tr>
+<tr>
+<td>cloud</td>
+<td>Y</td>
+<td></td>
+<td><a href="#clouds">Cloud</a> ID</td>
+</tr>
+<tr>
+<td>group</td>
+<td>Y</td>
+<td></td>
+<td><a href="#groups">Group</a> ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-servicenow-exposed-layout">Create a ServiceNow Exposed Layout</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "object": {
+    "type": "layout",
+    "layout": 183
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates an Exposed Layout (Library). This is an integration object of type <code class="prettyprint">layout</code> that references a <a href="#layouts">Layout</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/integrations/:integration_id/objects</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="exposed-layout-parameters">Exposed Layout Parameters</h3>
+
+<p>The parameters for creating an integration object are passed under an object named <code class="prettyprint">object</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>(layout name)</td>
+<td>Name to display</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td></td>
+<td>Integration Object Type code: <code class="prettyprint">layout</code></td>
+</tr>
+<tr>
+<td>layout</td>
+<td>Y</td>
+<td></td>
+<td><a href="#layouts">Layout</a> ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-servicenow-exposed-blueprint">Create a ServiceNow Exposed Blueprint</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "object": {
+    "type": "blueprint",
+    "blueprint": 146,
+    "group": 1,
+    "defaultCloud": 39,
+    "config": {
+      "tiers": {
+        "Web": {
+          "tierIndex": 1,
+          "instances": [
+            {
+              "instance": {
+                "type": "nginx"
+              },
+              "groups": {
+                "Dev": {
+                  "clouds": {
+                    "Dev AWS": {
+                      "instance": {
+                        "layout": {
+                          "provisionTypeCode": "amazon",
+                          "code": "nginx-amazon-1.9",
+                          "instanceVersion": "1.9",
+                          "name": "Amazon NGINX",
+                          "id": 183
+                        },
+                        "name": "${userInitials}-dev-nginx-${sequence}",
+                        "type": "nginx"
+                      },
+                      "networkInterfaces": [
+                        {
+                          "network": {
+                            "id": "network-360"
+                          }
+                        }
+                      ],
+                      "volumes": [
+                        {
+                          "size": 10,
+                          "name": "data",
+                          "rootVolume": true,
+                          "storageType": 5
+                        }
+                      ],
+                      "plan": {
+                        "code": "amazon-t2.nano",
+                        "id": 1
+                      },
+                      "config": {
+                        "resourcePoolId": 175,
+                        "createUser": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "templateName": "Dev Nginx",
+      "name": "Dev Nginx",
+      "id": 146
+    }
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates an Exposed Blueprint. This is an integration object of type <code class="prettyprint">blueprint</code> that references a <a href="#blueprints">Blueprint</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/integrations/:integration_id/objects</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="exposed-blueprint-parameters">Exposed Blueprint Parameters</h3>
+
+<p>The parameters for creating an integration object are passed under an object named <code class="prettyprint">object</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>(blueprint name)</td>
+<td>Name to display</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td></td>
+<td>Integration Object Type code: <code class="prettyprint">blueprint</code></td>
+</tr>
+<tr>
+<td>blueprint</td>
+<td>Y</td>
+<td></td>
+<td><a href="#blueprints">Blueprint</a> ID</td>
+</tr>
+<tr>
+<td>config</td>
+<td>Y</td>
+<td></td>
+<td>Config Object, see <a href="#config-for-exposed-blueprint">Config For Exposed Blueprint</a></td>
+</tr>
+</tbody></table>
+
+<h4 id="config-for-exposed-blueprint">Config For Exposed Blueprint</h4>
+
+<p>The <code class="prettyprint">config</code> for <strong>blueprint</strong> type integration objects is an object with fields:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>Name of the app</td>
+</tr>
+<tr>
+<td>group</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>defaultCloud</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>environment</td>
+<td>N</td>
+<td>Name of environment</td>
+</tr>
+<tr>
+<td>tiers</td>
+<td>N</td>
+<td>Object with each key is a tier name and its value is the tier configuration, including an array of <code class="prettyprint">instances</code>, each with their own type and settings.</td>
+</tr>
+</tbody></table>
+
+<aside class="info">A more detailed specification is needed for the blueprint *config*. An example *config* can be seen by viewing records created via the UI.</aside>
+
+<h2 id="create-a-servicenow-exposed-catalog-item">Create a ServiceNow Exposed Catalog Item</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "object": {
+    "type": "catalog",
+    "catalogItemType": 27
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates an Exposed Catalog Item. This is an integration object of type <code class="prettyprint">catalog</code> that references a <a href="#self-service">Catalog Item Type</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/integrations/:integration_id/objects</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="exposed-catalog-item-parameters">Exposed Catalog Item Parameters</h3>
+
+<p>The parameters for creating an integration object are passed under an object named <code class="prettyprint">object</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>(catalog item name)</td>
+<td>Name to display</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td></td>
+<td>Integration Object Type code: <code class="prettyprint">catalog</code></td>
+</tr>
+<tr>
+<td>catalogItemType</td>
+<td>Y</td>
+<td></td>
+<td><a href="#self-service">Catalog Item Type</a> ID</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-an-integration-object">Delete an Integration Object</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/integrations/:integration_id/objects/:id"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint deletes an existing integration object.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/integrations/:integration_id/objects/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integration_id</td>
+<td>ID of the Integration</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the Integration Object</td>
 </tr>
 </tbody></table>
 
@@ -54309,7 +55725,7 @@ This endpoint allows global environments to be updated by the master account.</p
 
           <h1 id="appliance-settings">Appliance Settings</h1>
 
-<p>Provides API interfaces for managing appliance settings within Morpheus</p>
+<p>Provides API interfaces for managing appliance settings within Morpheus.</p>
 
 <h2 id="get-appliance-settings">Get Appliance Settings</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/appliance-settings"</span> <span class="se">\</span>
@@ -54612,7 +56028,7 @@ This endpoint allows global environments to be updated by the master account.</p
 
           <h1 id="backup-settings">Backup Settings</h1>
 
-<p>Provides API interfaces for managing backup settings within Morpheus</p>
+<p>Provides API interfaces for managing backup settings within Morpheus.</p>
 
 <h2 id="get-backup-settings">Get Backup Settings</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/backup-settings"</span> <span class="se">\</span>
@@ -54736,7 +56152,7 @@ This endpoint allows global environments to be updated by the master account.</p
 
           <h1 id="provisioning-settings">Provisioning Settings</h1>
 
-<p>Provides API interfaces for managing provisioning settings within Morpheus</p>
+<p>Provides API interfaces for managing provisioning settings within Morpheus.</p>
 
 <h2 id="get-provisioning-settings">Get Provisioning Settings</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/provisioning-settings"</span> <span class="se">\</span>
@@ -55348,7 +56764,7 @@ This endpoint allows global environments to be updated by the master account.</p
 
           <h1 id="log-settings">Log Settings</h1>
 
-<p>Provides API interfaces for managing log settings within Morpheus</p>
+<p>Provides API interfaces for managing log settings within Morpheus.</p>
 
 <h2 id="get-log-settings">Get Log Settings</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/log-settings"</span> <span class="se">\</span>
@@ -55593,7 +57009,7 @@ This command will update existing syslog rule by specified name if already exist
 
           <h1 id="whitelabel-settings">Whitelabel Settings</h1>
 
-<p>Provides API interfaces for managing whitelabel settings within Morpheus</p>
+<p>Provides API interfaces for managing whitelabel settings within Morpheus.</p>
 
 <h2 id="get-whitelabel-settings">Get Whitelabel Settings</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/whitelabel-settings"</span> <span class="se">\</span>
