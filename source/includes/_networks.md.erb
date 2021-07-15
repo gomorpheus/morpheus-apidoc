@@ -228,13 +228,19 @@ curl -XPOST "<%= curl_url %>/api/networks" \
     "subnetCidr": "192.168.2.0/28",
     "scanNetwork": "off",
     "applianceUrlProxyBypass": "on",
-    "noProxy": null
-  },
-  "tenantPermissions": {
-    "accounts": [1]
-  },
-  "resourcePermissions": {
-    "all": true
+    "noProxy": null,
+    "resourcePermission": {
+      "all": true
+    },
+    "tenants": [
+      {
+        "id": 2
+      },
+      {
+        "id": 1
+      }
+    ],
+    "visibility": "private"
   }
 }'
 ```
