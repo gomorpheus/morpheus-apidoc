@@ -120,102 +120,323 @@ curl "<%= curl_url %>/api/networks/routers/1" \
 ```json
 {
   "networkRouter": {
-    "id": 32,
-    "code": "openstack.router.10.93126dd8-023b-44f5-8100-be2980439419",
-    "name": "stubbytoes-router",
+    "id": 99,
+    "code": "nsxt.router.13.b05d6532-2742-4dbd-98f2-a62aa8a62ae0",
+    "name": "dand-nsxt-t0-0425.1",
     "description": null,
-    "category": "openstack.router.10",
-    "dateCreated": "2020-02-19T03:08:34+0000",
-    "lastUpdated": "2020-02-19T04:13:47+0000",
-    "routerType": "neutron",
+    "category": "nsxt.router.13",
+    "dateCreated": "2021-04-25T16:19:27Z",
+    "lastUpdated": "2021-07-14T19:12:16Z",
+    "routerType": "internal",
     "status": "ok",
     "enabled": true,
     "externalIp": null,
-    "externalId": "93126dd8-023b-44f5-8100-be2980439419",
-    "providerId": null,
+    "externalId": "b05d6532-2742-4dbd-98f2-a62aa8a62ae0",
+    "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0",
     "type": {
-      "id": 3,
-      "code": "huaweiNeutronRouter",
-      "name": "Huawei Router",
-      "description": "Neutron Router",
+      "id": 5,
+      "code": "nsx-t-tier0-gateway",
+      "name": "NSX-T Tier-0 Gateway",
+      "description": "NSX-T Tier-0 Gateway",
       "enabled": true,
       "creatable": true,
       "selectable": true,
-      "hasFirewall": false,
+      "hasFirewall": true,
       "hasDhcp": false,
-      "hasRouting": false,
-      "hasNetworkServer": false,
-      "optionTypes": [       
+      "hasRouting": true,
+      "hasNat": true,
+      "hasNetworkServer": true,
+      "hasFirewallGroups": true,
+      "hasSecurityGroupPriority": true,
+      "optionTypes": [
         {
-          "id": 1022,
-          "name": "cidr",
+          "id": 1220,
+          "name": "TIER0_IPSEC_LOCAL_IP",
           "description": null,
-          "code": "networkRouter.opentelekom.cidr",
-          "fieldName": "cidr",
-          "fieldLabel": "cidr",
+          "code": "networkRouter.nsxt.edge.tier0.route.redist.TIER0_IPSEC_LOCAL_IP",
+          "fieldName": "TIER0_IPSEC_LOCAL_IP",
+          "fieldLabel": "IP Sec Local IP",
+          "fieldCode": "gomorpheus.label.nsxt.tier0.route.redist.TIER0_IPSEC_LOCAL_IP",
+          "fieldContext": "config",
+          "fieldGroup": "Route Re-distribution - Tier-0",
+          "fieldClass": null,
+          "fieldAddOn": null,
+          "fieldComponent": null,
+          "fieldInput": null,
+          "placeHolder": null,
+          "verifyPattern": null,
+          "helpBlock": null,
+          "helpBlockFieldCode": null,
+          "defaultValue": null,
+          "optionSource": null,
+          "optionSourceType": null,
+          "optionList": null,
+          "type": "checkbox",
+          "advanced": false,
+          "required": false,
+          "exportMeta": false,
+          "editable": true,
+          "creatable": true,
+          "config": {
+          },
+          "displayOrder": 2030,
+          "wrapperClass": null,
+          "enabled": true,
+          "noBlank": false,
+          "dependsOnCode": null,
+          "visibleOnCode": null,
+          "requireOnCode": null,
+          "contextualDefault": false,
+          "displayValueOnDetails": null,
+          "showOnCreate": true,
+          "showOnEdit": true
+        }
+      ],
+      "ruleOptionTypes": [
+        {
+          "id": 1186,
+          "name": "profile",
+          "description": null,
+          "code": "networkRouter.nsxt.firewall.rule.profiles",
+          "fieldName": "profile",
+          "fieldLabel": "Profiles",
+          "fieldCode": "gomorpheus.label.profiles",
           "fieldContext": "config",
           "fieldGroup": null,
           "fieldClass": null,
           "fieldAddOn": null,
           "fieldComponent": null,
           "fieldInput": null,
-          "placeHolder": "x.x.x.x/x",
-          "helpBlock": "Recommended CIDR Block: 10.0.0.0/8-24, 172.16.0.0/12-24, and 192.168.0.0/16-24",
+          "placeHolder": "Any",
+          "verifyPattern": null,
+          "helpBlock": "",
+          "helpBlockFieldCode": null,
           "defaultValue": null,
-          "optionSource": null,
+          "optionSource": "nsxtFirewallRuleProfiles",
+          "optionSourceType": null,
           "optionList": null,
-          "type": "text",
+          "type": "multiTypeahead",
           "advanced": false,
-          "required": true,
+          "required": false,
+          "exportMeta": false,
           "editable": true,
           "creatable": true,
           "config": {
           },
-          "displayOrder": 17,
+          "displayOrder": 400,
           "wrapperClass": null,
           "enabled": true,
           "noBlank": false,
           "dependsOnCode": null,
-          "contextualDefault": false
+          "visibleOnCode": null,
+          "requireOnCode": null,
+          "contextualDefault": false,
+          "displayValueOnDetails": null,
+          "showOnCreate": true,
+          "showOnEdit": true
         }
       ],
-      "ruleOptionTypes": [
-
+      "firewallGroupOptionTypes": [
+        {
+          "id": 1548,
+          "name": "externalType",
+          "description": null,
+          "code": "networkRouter.nsxt.firewall.externalType",
+          "fieldName": "externalType",
+          "fieldLabel": "externalType",
+          "fieldCode": null,
+          "fieldContext": "group",
+          "fieldGroup": null,
+          "fieldClass": null,
+          "fieldAddOn": null,
+          "fieldComponent": null,
+          "fieldInput": null,
+          "placeHolder": null,
+          "verifyPattern": null,
+          "helpBlock": "",
+          "helpBlockFieldCode": null,
+          "defaultValue": "GatewayPolicy",
+          "optionSource": null,
+          "optionSourceType": null,
+          "optionList": null,
+          "type": "hidden",
+          "advanced": false,
+          "required": true,
+          "exportMeta": false,
+          "editable": false,
+          "creatable": true,
+          "config": {
+          },
+          "displayOrder": 0,
+          "wrapperClass": null,
+          "enabled": true,
+          "noBlank": false,
+          "dependsOnCode": null,
+          "visibleOnCode": null,
+          "requireOnCode": null,
+          "contextualDefault": false,
+          "displayValueOnDetails": false,
+          "showOnCreate": true,
+          "showOnEdit": true
+        }
+      ],
+      "natOptionTypes": [
+        {
+          "id": 1038,
+          "name": "description",
+          "description": null,
+          "code": "networkRouter.global.description",
+          "fieldName": "description",
+          "fieldLabel": "Description",
+          "fieldCode": "gomorpheus.optiontype.Description",
+          "fieldContext": "nat",
+          "fieldGroup": null,
+          "fieldClass": null,
+          "fieldAddOn": null,
+          "fieldComponent": null,
+          "fieldInput": null,
+          "placeHolder": null,
+          "verifyPattern": null,
+          "helpBlock": "",
+          "helpBlockFieldCode": null,
+          "defaultValue": null,
+          "optionSource": null,
+          "optionSourceType": null,
+          "optionList": null,
+          "type": "text",
+          "advanced": false,
+          "required": false,
+          "exportMeta": false,
+          "editable": true,
+          "creatable": true,
+          "config": {
+          },
+          "displayOrder": 10,
+          "wrapperClass": null,
+          "enabled": true,
+          "noBlank": false,
+          "dependsOnCode": null,
+          "visibleOnCode": null,
+          "requireOnCode": null,
+          "contextualDefault": false,
+          "displayValueOnDetails": null,
+          "showOnCreate": null,
+          "showOnEdit": null
+        }
       ]
     },
-    "networkServer": null,
+    "networkServer": {
+      "id": 13,
+      "name": "Labs NSX-T",
+      "integration": {
+        "id": 14,
+        "name": "Labs NSX-T",
+        "enabled": true,
+        "type": "nsx-t",
+        "integrationType": {
+          "id": 28,
+          "code": "nsx-t",
+          "name": "NSX-T"
+        },
+        "url": "https://10.32.23.7",
+        "port": "22",
+        "username": "admin",
+        "password": "************",
+        "refType": "NetworkServer",
+        "refId": "13",
+        "isPlugin": false,
+        "config": {
+        },
+        "status": "error",
+        "statusDate": "2021-07-15T11:48:33Z",
+        "statusMessage": "nsx-t api not reachable",
+        "lastSync": "2021-07-14T19:10:59Z",
+        "lastSyncDuration": 108394
+      }
+    },
     "zone": {
-      "id": 10,
-      "code": "huawei",
-      "name": "huawei"
+      "id": 20,
+      "code": "nsxt",
+      "name": "QA VMware NSX-T"
     },
     "instance": null,
-    "externalNetwork": {
-      "id": 76,
-      "code": "openstack.network.10.0a2228f2-7f8a-45f1-8e09-9039e1d09975",
-      "name": "admin_external_net"
-    },
+    "externalNetwork": null,
     "site": null,
     "interfaces": [
-      {
-        "id": 204,
-        "name": null,
-        "code": null,
-        "interfaceType": null,
-        "networkPosition": null,
-        "ipAddress": null,
-        "cidr": null,
-        "externalLink": null,
-        "enabled": true,
-        "network": {
-          "id": 76,
-          "name": "admin_external_net",
-          "code": "openstack.network.10.0a2228f2-7f8a-45f1-8e09-9039e1d09975"
+
+    ],
+    "firewall": {
+      "enabled": true,
+      "version": null,
+      "defaultPolicy": null,
+      "global": null,
+      "groups": [
+        {
+          "id": 321,
+          "name": "Policy_Default_Infra",
+          "description": null,
+          "externalId": "Policy_Default_Infra",
+          "iacId": null,
+          "zone": null,
+          "zonePool": null,
+          "status": "available",
+          "priority": 10,
+          "groupLayer": "Default",
+          "rules": [
+            {
+              "id": 1056,
+              "name": "dand-nsxt-t0-0425.1",
+              "code": null,
+              "enabled": true,
+              "groupName": "Policy_Default_Infra",
+              "direction": "any",
+              "ruleType": "custom",
+              "policy": "accept",
+              "source": [
+                "ANY"
+              ],
+              "sourceType": "cidr",
+              "destination": [
+                "ANY"
+              ],
+              "destinationType": "instance",
+              "profiles": [
+                "ANY"
+              ],
+              "protocol": null,
+              "application": null,
+              "applicationType": "port",
+              "portRange": null,
+              "sourcePortRange": null,
+              "sourceGroup": null,
+              "sourceTier": null,
+              "applications": [
+                {
+                  "id": 432,
+                  "name": "ANY"
+                }
+              ]
+            }
+          ]
         }
-      }
+      ]
+    },
+    "routes": [
+
+    ],
+    "nats": [
+
     ],
     "config": {
-      "cidr": "172.16.0.0/24"
+
+    },
+    "permissions": {
+      "visibility": "private",
+      "tenantPermissions": {
+        "accounts": [
+          1
+        ]
+      }
     }
   }
 }
@@ -351,7 +572,7 @@ to list available options for that network router type.
 Parameter | Required | Description
 --------- | -------- | -----------
 enabled | N | Can be used to enable / disable the network router (true, false). Default is on
- 
+
 
 ## Delete a Network Router
 
@@ -368,7 +589,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1" \
 }
 ```
 
-Will delete a network router 
+Will delete a network router
 
 ### HTTP Request
 
@@ -458,7 +679,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1/firewall-rules/2" \
 }
 ```
 
-Will delete a firewall rule from a network router 
+Will delete a firewall rule from a network router
 
 ### HTTP Request
 
@@ -540,7 +761,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1/routes/2" \
 }
 ```
 
-Will delete a route from a network router 
+Will delete a route from a network router
 
 ### HTTP Request
 
@@ -571,7 +792,7 @@ curl -XPUT "<%= curl_url %>/api/networks/routers/1/permissions" \
             ]
           }
         }
-      }' 
+      }'
 ```
 
 > The above command returns JSON structure like this:
@@ -624,7 +845,7 @@ curl "<%= curl_url %>/api/network-router-types" \
       "hasDhcp": false,
       "hasRouting": false,
       "hasNetworkServer": false,
-      "optionTypes": [        
+      "optionTypes": [
         {
           "id": 471,
           "name": "networkSubnet",
@@ -659,6 +880,12 @@ curl "<%= curl_url %>/api/network-router-types" \
         }
       ],
       "ruleOptionTypes": [
+
+      ],
+      "natOptionTypes": [
+
+      ],
+      "firewallGroupOptionTypes": [
 
       ]
     }
@@ -696,7 +923,7 @@ curl "<%= curl_url %>/api/network-router-types/2" \
     "hasDhcp": false,
     "hasRouting": false,
     "hasNetworkServer": false,
-    "optionTypes": [      
+    "optionTypes": [
       {
         "id": 1023,
         "name": "enableSnat",
@@ -748,3 +975,261 @@ This endpoint retrieves a specific network router type. Use this API to retrieve
 Parameter | Description
 --------- | -----------
 id | The ID of the network router type
+
+
+## Create a Network Router Firewall Group
+
+Use this command to create a firewall group for an existing network router.
+
+```shell
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "group": {
+          "name": "Test Group",
+          "description": "Group description",
+          "priority": 100,
+          "externalType": "GatewayPolicy",
+          "groupLayer": "LocalGatewayRules"
+          }
+      }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "id": 800,
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST <%= api_url %>/api/networks/routers/:router_id/firewall-groups`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | Y | Firewall group name
+description | N | Firewall group description
+priority | N | Group priority
+externalType | Y | Platform / vendor specific type
+groupLayer | Y | Platform / vendor specific category
+
+
+## Update Network Router Firewall Group
+
+```shell
+curl -XPUT "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "group": {
+          "name": "Test Group",
+          "description": "Group description",
+          "priority": 100
+        }
+      }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/networks/routers/:id/firewall-groups/:group_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the network router
+group_id | The ID of the firewall group
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | N | Sets name of firewall group
+description | N | Sets description of firewall group
+priority | N | Sets priority of the firewall group
+
+
+
+## Delete a Network Router Firewall Group
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a firewall group from a network router
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/networks/routers/:router_id/firewall-groups/:group_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+group_id | The ID of the firewall group to be deleted
+
+
+
+## Create a Network Router NAT
+
+Use this command to create a NAT for an existing network router.
+
+```shell
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "nat": {
+          "name": "Name of NAT",
+          "description": "Description of NAT",
+          "enabled": "on",
+          "config": {
+            "action": "SNAT",
+            "service": "/infra/services/TELNET",
+            "firewall": "MATCH_INTERNAL_ADDRESS",
+            "scope": null,
+            "logging": "off"
+         },
+         "sourceNetwork": "1.1.1.1",
+         "destinationNetwork": "1.2.3.4",
+         "translatedNetwork": "2.2.2.2",
+         "translatedPorts": "2222",
+         "priority": 100
+       }
+     }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "id": 800,
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST <%= api_url %>/api/networks/routers/:router_id/nats`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | Y | NAT name
+description | N | NAT description
+enabled | N | On / off, default off
+config.* | N | Platform / vendor specific settings for the NAT
+sourceNetwork | N | NAT source network
+destinationNetwork | N | NAT destination network
+translatedNetwork | N | NAT translated network
+translatedPorts | N | NAT translated ports
+priority | N | Group priority
+
+
+
+## Update Network Router NAT
+
+```shell
+curl -XPUT "<%= curl_url %>/api/networks/routers/100/nats/477" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "nat": {
+          "name": "Test Group",
+        }
+      }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/networks/routers/:id/firewall-groups/:nat_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the network router
+nat_id | The ID of the network router NAT
+
+### JSON Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | N | Sets name of firewall group
+
+For a full list of available NAT options, see natOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
+
+
+
+## Delete a Network Router NAT
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/networks/routers/100/nats/477" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a NAT from a network router
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/networks/routers/:router_id/nats/:nat_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+nat_id | The ID of the NAT to be deleted
