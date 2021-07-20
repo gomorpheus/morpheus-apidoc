@@ -2,7 +2,7 @@
 
 Provides API interfaces for managing network routers within <%= application_name %>.
 
-## Get All Network Routers
+## Get all Network Routers
 
 ```shell
 curl "<%= curl_url %>/api/networks/routers" \
@@ -76,10 +76,7 @@ curl "<%= curl_url %>/api/networks/routers" \
             "code": "openstack.network.10.815f77ba-e5fa-410e-b633-17bb620dd99b"
           }
         }
-      ],
-      "config": {
-        "cidr": "172.16.0.0/24"
-      }    
+      ]
     }
   ],
   "meta": {
@@ -370,7 +367,7 @@ curl "<%= curl_url %>/api/networks/routers/1" \
       "version": null,
       "defaultPolicy": null,
       "global": null,
-      "groups": [
+      "ruleGroups": [
         {
           "id": 321,
           "name": "Policy_Default_Infra",
@@ -427,9 +424,6 @@ curl "<%= curl_url %>/api/networks/routers/1" \
     "nats": [
 
     ],
-    "config": {
-
-    },
     "permissions": {
       "visibility": "private",
       "tenantPermissions": {
@@ -602,6 +596,125 @@ Parameter | Description
 id | The ID of the network router
 
 
+## Get all Firewall Rules for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "rules": [
+    {
+      "id": 1056,
+      "name": "dand-nsxt-t0-0425.1",
+      "code": null,
+      "enabled": true,
+      "groupName": "Policy_Default_Infra",
+      "direction": "any",
+      "ruleType": "custom",
+      "policy": "accept",
+      "source": [
+        "ANY"
+      ],
+      "sourceType": "cidr",
+      "destination": [
+        "ANY"
+      ],
+      "destinationType": "instance",
+      "profiles": [
+        "ANY"
+      ],
+      "protocol": null,
+      "application": null,
+      "applicationType": "port",
+      "portRange": null,
+      "sourcePortRange": null,
+      "sourceGroup": null,
+      "sourceTier": null,
+      "applications": [
+        {
+          "id": 432,
+          "name": "ANY"
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves all firewall rules for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/firewall-rules`
+
+
+## Get a Firewall Rule for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/firewall-rules/1056" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "rule": {
+    "id": 1056,
+    "name": "dand-nsxt-t0-0425.1",
+    "code": null,
+    "enabled": true,
+    "groupName": "Policy_Default_Infra",
+    "direction": "any",
+    "ruleType": "custom",
+    "policy": "accept",
+    "source": [
+      "ANY"
+    ],
+    "sourceType": "cidr",
+    "destination": [
+      "ANY"
+    ],
+    "destinationType": "instance",
+    "profiles": [
+      "ANY"
+    ],
+    "protocol": null,
+    "application": null,
+    "applicationType": "port",
+    "portRange": null,
+    "sourcePortRange": null,
+    "sourceGroup": null,
+    "sourceTier": null,
+    "applications": [
+      {
+        "id": 432,
+        "name": "ANY"
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves a firewall rule.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/firewall-rules/:rule_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+rule_id | The ID of the firewall rule
+
+
 ## Create a Network Router Firewall Rule
 
 Use this command to create a firewall rule for an existing network router.
@@ -613,19 +726,19 @@ curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
   -d '{
           "rule": {
               "name": "stubbytoes-rule",
-              "direction": "ingress",
-              "policy": "accept",
-              "sourceType": "any",
-              "source": "99.99.99.99",
-              "destinationType": "any",
-              "destination": "any",
-              "ruleType": [
-                  963,
-                  972
-              ],
-              "protocol": "tcp",
-              "portRange": "80"
-          }
+              "config": {
+                  "source": null,
+                  "destination": null,
+                  "application": [
+                      "TELNET"
+                  ],
+                  "profile": null
+              },
+              "enabled": true,
+              "priority": 10,
+              "direction": "egress",
+              "policy": "accept"
+            }
       }'
 ```
 
@@ -653,15 +766,58 @@ router_id | The ID of the network router
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Firewall rule name
-direction | Y | Direction of traffic for rule: ingress, egress
-policy | Y | Rule policy: accept, deny
-sourceType | Y | Source type
-source | Y | Source address or range
-destinationType | Y | Destination type
-destination | Y | Destination address or range
-ruleType | Y | Array of rule type IDs
-protocol | N | Protocol: tcp, udp, icmp
-portRange | N | Port range
+enabled | N | Can be used to enable / disable the rule (true, false). Default is on
+priority | N | Priority for rule
+
+For a full list of available firewall rule options, see ruleOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
+
+
+## Update a Network Router Firewall Rule
+
+Use this command to update an existing network router firewall rule.
+
+```shell
+curl -XPUT "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+  -H "Authorization: BEARER <%= curl_token %>"
+  -H "Content-Type: application/json" \
+  -d '{
+        "rule": {
+            "enabled": true,
+            "priority": 10,
+            "name": "New Rule Name"
+        }
+    }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/networks/routers/:router_id/firewall-rules/:rule_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+rule_id | The ID of the network router rule
+
+### JSON Parameters
+
+The parameters for updating a network router is type dependent. The following lists the common parameters. See [get a specific type](#get-a-specific-network-router-type)
+to list available options for that network router type.
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | N | Sets name of firewall rule
+enabled | N | Can be used to enable / disable the network router (true, false). Default is on
+priority | N | Sets priority of firewall rule
 
 
 ## Delete a Network Router Firewall Rule
@@ -693,6 +849,108 @@ router_id | The ID of the network router
 rule_id | The ID of the rule to be deleted
 
 
+## Get all Routes for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/routes" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRoutes": [
+    {
+      "id": 58,
+      "name": "api-test-route3",
+      "code": null,
+      "description": null,
+      "priority": null,
+      "routeType": "static",
+      "source": "10.10.0.0/24",
+      "sourceType": "cidr",
+      "destination": "10.20.0.0",
+      "destinationType": "cidr",
+      "defaultRoute": false,
+      "networkMtu": null,
+      "externalInterface": null,
+      "internalId": null,
+      "externalId": "58ee0c3a-9223-4d01-a1bb-517f48e7b04e",
+      "uniqueId": null,
+      "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/static-routes/58ee0c3a-9223-4d01-a1bb-517f48e7b04e",
+      "externalType": null,
+      "enabled": true,
+      "visible": true
+    }
+  ]
+}
+```
+
+This endpoint retrieves all routes for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/routes`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+
+## Get a Route for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/routes/59" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRoute": {
+    "id": 59,
+    "name": "api-test-route3",
+    "code": "nsxt.router.static.route.13.99.58ee0c3a-9223-4d01-a1bb-517f48e7b04e.10.20.0.0",
+    "description": null,
+    "priority": null,
+    "routeType": "static",
+    "source": "10.10.0.0/24",
+    "sourceType": "cidr",
+    "destination": "10.20.0.0",
+    "destinationType": "cidr",
+    "defaultRoute": false,
+    "networkMtu": null,
+    "externalInterface": null,
+    "internalId": null,
+    "externalId": "58ee0c3a-9223-4d01-a1bb-517f48e7b04e.10.20.0.0",
+    "uniqueId": null,
+    "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/static-routes/58ee0c3a-9223-4d01-a1bb-517f48e7b04e",
+    "externalType": null,
+    "enabled": true,
+    "visible": true
+  }
+}
+```
+
+This endpoint retrieves a network router route.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/routes/:route_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+route_id | The ID of the route
+
+
+
 ## Create a Network Router Route
 
 Use this command to create a route for an existing network router.
@@ -702,7 +960,7 @@ curl -XPOST "<%= curl_url %>/api/networks/routers/1/routes" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-        "route": {
+        "networkRoute": {
           "name": "stubbytoes-route",
           "description": "my description",
           "enabled": true,
@@ -885,7 +1143,7 @@ curl "<%= curl_url %>/api/network-router-types" \
       "natOptionTypes": [
 
       ],
-      "firewallGroupOptionTypes": [
+      "ruleGroupOptionTypes": [
 
       ]
     }
@@ -900,7 +1158,7 @@ This endpoint retrieves all network router types.
 `GET <%= api_url %>/api/network-router-types`
 
 
-## Get a Specific Network Router Type
+## Get a Network Router Type
 
 ```shell
 curl "<%= curl_url %>/api/network-router-types/2" \
@@ -977,16 +1235,169 @@ Parameter | Description
 id | The ID of the network router type
 
 
-## Create a Network Router Firewall Group
-
-Use this command to create a firewall group for an existing network router.
+## Get all Firewall Rule Groups for Network Router
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+curl "<%= curl_url %>/api/networks/routers/1/firewall-rule-groups" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ruleGroups": [
+    {
+      "id": 321,
+      "name": "Policy_Default_Infra",
+      "description": null,
+      "externalId": "Policy_Default_Infra",
+      "iacId": null,
+      "zone": null,
+      "zonePool": null,
+      "status": "available",
+      "priority": 20,
+      "groupLayer": "Default",
+      "rules": [
+        {
+          "id": 1056,
+          "name": "dand-nsxt-t0-0425.1",
+          "code": null,
+          "enabled": true,
+          "groupName": "Policy_Default_Infra",
+          "direction": "any",
+          "ruleType": "custom",
+          "policy": "accept",
+          "source": [
+            "ANY"
+          ],
+          "sourceType": "cidr",
+          "destination": [
+            "ANY"
+          ],
+          "destinationType": "instance",
+          "profiles": [
+            "ANY"
+          ],
+          "protocol": null,
+          "application": null,
+          "applicationType": "port",
+          "portRange": null,
+          "sourcePortRange": null,
+          "sourceGroup": null,
+          "sourceTier": null,
+          "applications": [
+            {
+              "id": 432,
+              "name": "ANY"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves all firewall rule groups for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/firewall-rule-groups`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+
+## Get a Firewall Rule Group for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/firewall-rule-groups/488" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ruleGroup": {
+    "id": 488,
+    "name": "Test Group",
+    "description": "foo2",
+    "externalId": "c85ab668-9de2-4e6b-a460-6a376f61e0f5",
+    "iacId": null,
+    "zone": null,
+    "zonePool": null,
+    "status": "available",
+    "priority": 10,
+    "groupLayer": "LocalGatewayRules",
+    "rules": [
+      {
+        "id": 1444,
+        "name": "api-test-rule-2",
+        "code": null,
+        "enabled": true,
+        "groupName": "Test Group",
+        "direction": "any",
+        "ruleType": "custom",
+        "policy": "accept",
+        "source": [
+          "ANY"
+        ],
+        "sourceType": "cidr",
+        "destination": [
+          "ANY"
+        ],
+        "destinationType": "instance",
+        "profiles": [
+          "ANY"
+        ],
+        "protocol": null,
+        "application": null,
+        "applicationType": "port",
+        "portRange": null,
+        "sourcePortRange": null,
+        "sourceGroup": null,
+        "sourceTier": null,
+        "applications": [
+          {
+            "id": 466,
+            "name": "ANY"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves a firewall rule group.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/firewall-rule-groups/:group_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+group_id | The ID of the firewall rule group
+
+
+## Create a Network Router Firewall Rule Group
+
+Use this command to create a firewall rule group for an existing network router.
+
+```shell
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rule-groups" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-        "group": {
+        "ruleGroup": {
           "name": "Test Group",
           "description": "Group description",
           "priority": 100,
@@ -1007,7 +1418,7 @@ curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/networks/routers/:router_id/firewall-groups`
+`POST <%= api_url %>/api/networks/routers/:router_id/firewall-rule-groups`
 
 ### URL Parameters
 
@@ -1019,9 +1430,9 @@ router_id | The ID of the network router
 
 Parameter | Required | Description
 --------- | -------- | -----------
-name | Y | Firewall group name
-description | N | Firewall group description
-priority | N | Group priority
+name | Y | Firewall rule group name
+description | N | Firewall rule group description
+priority | N | Firewall rule group priority
 externalType | Y | Platform / vendor specific type
 groupLayer | Y | Platform / vendor specific category
 
@@ -1029,11 +1440,11 @@ groupLayer | Y | Platform / vendor specific category
 ## Update Network Router Firewall Group
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
+curl -XPUT "<%= curl_url %>/api/networks/routers/100/firewall-rule-groups/477" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-        "group": {
+        "ruleGroup": {
           "name": "Test Group",
           "description": "Group description",
           "priority": 100
@@ -1051,29 +1462,28 @@ curl -XPUT "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/networks/routers/:id/firewall-groups/:group_id`
+`PUT <%= api_url %>/api/networks/routers/:id/firewall-rule-groups/:group_id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 id | The ID of the network router
-group_id | The ID of the firewall group
+group_id | The ID of the firewall rule group
 
 ### JSON Parameters
 
 Parameter | Required | Description
 --------- | -------- | -----------
-name | N | Sets name of firewall group
-description | N | Sets description of firewall group
-priority | N | Sets priority of the firewall group
-
+name | N | Sets name of firewall rule group
+description | N | Sets description of firewall rule group
+priority | N | Sets priority of the firewall rule group
 
 
 ## Delete a Network Router Firewall Group
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
+curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-rule-groups/477" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1085,19 +1495,123 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-groups/477" \
 }
 ```
 
-Will delete a firewall group from a network router
+Will delete a firewall rule group from a network router
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/networks/routers/:router_id/firewall-groups/:group_id`
+`DELETE <%= api_url %>/api/networks/routers/:router_id/firewall-rule-groups/:group_id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 router_id | The ID of the network router
-group_id | The ID of the firewall group to be deleted
+group_id | The ID of the firewall rule group to be deleted
 
+
+## Get all Network Router NATs for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/99/nats" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRouterNATs": [
+    {
+      "id": 11,
+      "name": "api-test-nat",
+      "description": "description",
+      "enabled": true,
+      "sourceNetwork": "1.1.1.1",
+      "destinationNetwork": null,
+      "translatedNetwork": "2.2.2.2",
+      "sourcePorts": null,
+      "destinationPorts": null,
+      "translatedPorts": null,
+      "priority": 100,
+      "protocol": null,
+      "matchIpv6DestinationPrefix": null,
+      "translatedIpv4SourcePrefix": null,
+      "refType": null,
+      "refId": null,
+      "syncSource": "external",
+      "internalId": null,
+      "externalId": "15efe516-af3a-4e37-af7b-dff5a62c6faa",
+      "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/nat/USER/nat-rules/15efe516-af3a-4e37-af7b-dff5a62c6faa",
+      "dateCreated": "2021-07-20T12:54:46Z",
+      "lastUpdated": "2021-07-20T12:56:11Z"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all NATs for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/nats`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+
+## Get a Network Router NAT
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/nats/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRouterNAT": {
+    "id": 11,
+    "name": "api-test-nat",
+    "description": "description",
+    "enabled": true,
+    "sourceNetwork": "1.1.1.1",
+    "destinationNetwork": null,
+    "translatedNetwork": "2.2.2.2",
+    "sourcePorts": null,
+    "destinationPorts": null,
+    "translatedPorts": null,
+    "priority": 100,
+    "protocol": null,
+    "matchIpv6DestinationPrefix": null,
+    "translatedIpv4SourcePrefix": null,
+    "refType": null,
+    "refId": null,
+    "syncSource": "external",
+    "internalId": null,
+    "externalId": "15efe516-af3a-4e37-af7b-dff5a62c6faa",
+    "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/nat/USER/nat-rules/15efe516-af3a-4e37-af7b-dff5a62c6faa",
+    "dateCreated": "2021-07-20T12:54:46Z",
+    "lastUpdated": "2021-07-20T12:56:11Z"
+  }
+}
+```
+
+This endpoint retrieves a network router NAT.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/nats/:nat_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+nat_id | The ID of the NAT
 
 
 ## Create a Network Router NAT
@@ -1105,11 +1619,11 @@ group_id | The ID of the firewall group to be deleted
 Use this command to create a NAT for an existing network router.
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/networks/routers/1/firewall-rules" \
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/nats" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-        "nat": {
+        "networkRouterNAT": {
           "name": "Name of NAT",
           "description": "Description of NAT",
           "enabled": "on",
@@ -1153,15 +1667,8 @@ router_id | The ID of the network router
 Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | NAT name
-description | N | NAT description
-enabled | N | On / off, default off
-config.* | N | Platform / vendor specific settings for the NAT
-sourceNetwork | N | NAT source network
-destinationNetwork | N | NAT destination network
-translatedNetwork | N | NAT translated network
-translatedPorts | N | NAT translated ports
-priority | N | Group priority
 
+For a full list of available NAT options, see natOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
 
 
 ## Update Network Router NAT
@@ -1171,8 +1678,8 @@ curl -XPUT "<%= curl_url %>/api/networks/routers/100/nats/477" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-        "nat": {
-          "name": "Test Group",
+        "networkRouterNAT": {
+          "name": "Test NAT",
         }
       }'
 ```
@@ -1187,7 +1694,7 @@ curl -XPUT "<%= curl_url %>/api/networks/routers/100/nats/477" \
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/networks/routers/:id/firewall-groups/:nat_id`
+`PUT <%= api_url %>/api/networks/routers/:id/nats/:nat_id`
 
 ### URL Parameters
 
@@ -1200,7 +1707,7 @@ nat_id | The ID of the network router NAT
 
 Parameter | Required | Description
 --------- | -------- | -----------
-name | N | Sets name of firewall group
+name | N | Sets name of NAT
 
 For a full list of available NAT options, see natOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
 
