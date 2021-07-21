@@ -1382,7 +1382,7 @@ curl "<%= curl_url %>/api/networks/routers/1/firewall-rule-groups/488" \
 }
 ```
 
-This endpoint retrieves a firewall rule group.
+This endpoint retrieves a firewall rule group for specified network router.
 
 ### HTTP Request
 
@@ -1445,7 +1445,7 @@ externalType | Y | Platform / vendor specific type
 groupLayer | Y | Platform / vendor specific category
 
 
-## Update Network Router Firewall Group
+## Update Network Router Firewall Rule Group
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/networks/routers/100/firewall-rule-groups/477" \
@@ -1488,7 +1488,7 @@ description | N | Sets description of firewall rule group
 priority | N | Sets priority of the firewall rule group
 
 
-## Delete a Network Router Firewall Group
+## Delete a Network Router Firewall Rule Group
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-rule-groups/477" \
