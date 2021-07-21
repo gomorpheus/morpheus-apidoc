@@ -35283,7 +35283,7 @@ to list available options for that network router type.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a firewall rule group.</p>
+<p>This endpoint retrieves a firewall rule group for specified network router.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -35387,7 +35387,7 @@ to list available options for that network router type.</p>
 </tr>
 </tbody></table>
 
-<h2 id="update-network-router-firewall-group">Update Network Router Firewall Group</h2>
+<h2 id="update-network-router-firewall-rule-group">Update Network Router Firewall Rule Group</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/100/firewall-rule-groups/477"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -35456,7 +35456,7 @@ to list available options for that network router type.</p>
 </tr>
 </tbody></table>
 
-<h2 id="delete-a-network-router-firewall-group">Delete a Network Router Firewall Group</h2>
+<h2 id="delete-a-network-router-firewall-rule-group">Delete a Network Router Firewall Rule Group</h2>
 <pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/100/firewall-rule-groups/477"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
 </code></pre>
