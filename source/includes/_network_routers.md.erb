@@ -583,7 +583,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1" \
 }
 ```
 
-Will delete a network router
+Will delete a network router.
 
 ### HTTP Request
 
@@ -837,7 +837,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1/firewall-rules/2" \
 }
 ```
 
-Will delete a firewall rule from a network router
+Will delete a firewall rule from a network router.
 
 ### HTTP Request
 
@@ -938,7 +938,7 @@ curl "<%= curl_url %>/api/networks/routers/1/routes/59" \
 }
 ```
 
-This endpoint retrieves a network router route.
+This endpoint retrieves a network router route for specified network router.
 
 ### HTTP Request
 
@@ -1021,7 +1021,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/1/routes/2" \
 }
 ```
 
-Will delete a route from a network router
+Will delete a route from a network router.
 
 ### HTTP Request
 
@@ -1503,7 +1503,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/100/firewall-rule-groups/477
 }
 ```
 
-Will delete a firewall rule group from a network router
+Will delete a firewall rule group from a network router.
 
 ### HTTP Request
 
@@ -1608,7 +1608,7 @@ curl "<%= curl_url %>/api/networks/routers/1/nats/1" \
 }
 ```
 
-This endpoint retrieves a network router NAT.
+This endpoint retrieves a network router NAT for specified network router.
 
 ### HTTP Request
 
@@ -1720,7 +1720,6 @@ name | N | Sets name of NAT
 For a full list of available NAT options, see natOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
 
 
-
 ## Delete a Network Router NAT
 
 ```shell
@@ -1736,7 +1735,7 @@ curl -XDELETE "<%= curl_url %>/api/networks/routers/100/nats/477" \
 }
 ```
 
-Will delete a NAT from a network router
+Will delete a NAT from a network router.
 
 ### HTTP Request
 
