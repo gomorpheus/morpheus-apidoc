@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.2</div>
+        <div class="version">5.3.3</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.2</b>
+This document is for the Morpheus API version <b>5.3.3</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -47274,13 +47274,27 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>If a tenant still has users or instances tied to it, The delete will fail.</p>
-
-<aside class="info">This restriction should be lifted in a forthcoming API release</aside>
+<p>If a tenant still has instances tied to it, the delete will fail unless <code class="prettyprint">removeResources=on</code> is passed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">DELETE $serverUrl/api/accounts/:id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>removeResources</td>
+<td>on</td>
+<td>Remove Infrastructure.</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-available-roles-for-a-tenant">Get Available Roles for a Tenant</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/accounts/available-roles"</span> <span class="se">\</span>
