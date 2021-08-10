@@ -23,18 +23,7 @@ curl "<%= curl_url %>/api/log-settings" \
         "rule": "*.* @@localhost:1234"
       }
     ],
-    "integrations": [
-      {
-        "name": "splunk",
-        "enabled": true,
-        "host": "foo.com",
-        "port": "80"
-      },
-      {
-        "name": "logrhythm",
-        "enabled": false
-      }
-    ]
+    "integrations": []
   }
 }
 ```
@@ -61,14 +50,7 @@ curl -XPUT "<%= curl_url %>/api/log-settings" \
             "rule": "*.* @@localhost:4567"
           }
         ],
-        "integrations": [
-          {
-            "name": "splunk",
-            "enabled": true,
-            "host": "foo.com",
-            "port": 8080
-          }
-        ]
+        "integrations": []
       }}'
 ```
 
