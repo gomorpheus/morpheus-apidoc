@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.3</div>
+        <div class="version">5.3.2</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.3</b>
+This document is for the Morpheus API version <b>5.3.2</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -57961,18 +57961,7 @@ This endpoint allows global environments to be updated by the master account.</p
         </span><span class="s2">"rule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*.* @@localhost:1234"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"splunk"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"logrhythm"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"integrations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -57996,14 +57985,7 @@ This endpoint allows global environments to be updated by the master account.</p
             "rule": "*.* @@localhost:4567"
           }
         ],
-        "integrations": [
-          {
-            "name": "splunk",
-            "enabled": true,
-            "host": "foo.com",
-            "port": 8080
-          }
-        ]
+        "integrations": []
       }}'</span>
 </code></pre>
 
