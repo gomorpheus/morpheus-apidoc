@@ -25,7 +25,7 @@ Authorization      | Identifies the <%= application_name %> API access token in 
 
 ```shell
 curl -XPOST "<%= curl_url %>/oauth/token?grant_type=password&scope=write&client_id=morph-api" \
-  -d 'username=admin' -d 'password=foobar'
+  --data-urlencode 'username=admin' --data-urlencode 'password=foobar'
 ```
 
 > The above command returns JSON structured like this:
