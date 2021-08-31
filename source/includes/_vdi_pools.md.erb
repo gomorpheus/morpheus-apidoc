@@ -24,6 +24,7 @@ curl "<%= curl_url %>/api/vdi-pools" \
       "maxPoolSize": 5,
       "allocationTimeoutMinutes": 60,
       "persistentUser": false,
+      "recyclable": false,
       "enabled": true,
       "autoCreateLocalUserOnReservation": false,
       "allowHypervisorConsole": false,
@@ -123,6 +124,7 @@ curl "<%= curl_url %>/api/vdi-pools" \
       "maxPoolSize": 1,
       "allocationTimeoutMinutes": 360,
       "persistentUser": false,
+      "recyclable": false,
       "enabled": true,
       "autoCreateLocalUserOnReservation": false,
       "allowHypervisorConsole": false,
@@ -260,6 +262,7 @@ curl "<%= curl_url %>/api/vdi-pools/1" \
       "maxPoolSize": 5,
       "allocationTimeoutMinutes": 60,
       "persistentUser": false,
+      "recyclable": false,
       "enabled": true,
       "autoCreateLocalUserOnReservation": false,
       "allowHypervisorConsole": false,
@@ -382,6 +385,7 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
     "maxPoolSize": 5,
     "allocationTimeoutMinutes": 60,
     "persistentUser": false,
+    "recyclable": false,
     "allowCopy": false,
     "allowPrinter": false,
     "allowFileshare": false,
@@ -413,6 +417,7 @@ curl -XPOST "<%= curl_url %>/api/vdi-pools" \
     "maxPoolSize": 5,
     "allocationTimeoutMinutes": 60,
     "persistentUser": false,
+    "recyclable": false,
     "enabled": true,
     "autoCreateLocalUserOnReservation": false,
     "allowHypervisorConsole": false,
@@ -523,7 +528,8 @@ initialPoolSize | N | 0 | Initial Pool Size - The initial size of the pool to be
 maxIdle | N | 0 | Max Idle - Sets the maximum number of idle instances on standby in the pool. If the number of idle instances supersedes this, the pool will start removing instances
 maxPoolSize | Y |  | Max Size - Max limit on number of allocations and instances within the pool.
 allocationTimeoutMinutes | N | 0 | Lease Timeout - Time (in minutes) after a user disconnects before an allocation is recycled or shutdown depending on persistence.
-persistentUser | N |  | Persistent User
+persistentUser | N | N | Persistent User
+recyclable | N | N | Recyclable. Recyclable VDI Pools only work with cloud types that support snapshot management (i.e. Vmware, Nutanix, VCD)
 allowCopy | N |  | Allow Copy
 allowPrinter | N |  | Allow Printer
 allowFileshare | N |  | Allow File Share
@@ -692,6 +698,7 @@ curl "<%= curl_url %>/api/vdi-allocations" \
       },
       "localUserCreated": false,
       "persistent": false,
+      "recyclable": false,
       "status": "preparing",
       "dateCreated": "2021-04-22T18:38:38Z",
       "lastUpdated": "2021-04-22T18:38:39Z",
@@ -757,6 +764,7 @@ curl "<%= curl_url %>/api/vdi-allocations/1" \
     },
     "localUserCreated": false,
     "persistent": false,
+    "recyclable": false,
     "status": "preparing",
     "dateCreated": "2021-04-22T18:38:38Z",
     "lastUpdated": "2021-04-22T18:38:39Z",
