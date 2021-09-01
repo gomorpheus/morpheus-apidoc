@@ -2833,3 +2833,115 @@ This operation will undo the delete of an instance that is pending removal.
 Parameter | Description
 --------- | -----------
 :id | ID of the instance
+
+## Extend Expiration of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/2/extend-expiration" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This operation will extend the expiration of an instance.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/extend-expiration`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+## Cancel Expiration of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/2/cancel-expiration" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This operation will cancel the expiration of an instance.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/cancel-expiration`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+## Cancel Shutdown of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/2/cancel-shutdown" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This operation will cancel the shutdown of an instance.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/cancel-shutdown`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+## Extend Shutdown of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/2/extend-shutdown" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This operation will extend the shutdown of an instance.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/extend-shutdown`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
