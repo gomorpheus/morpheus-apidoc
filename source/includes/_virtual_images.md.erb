@@ -543,7 +543,7 @@ curl -XDELETE "<%= curl_url %>/api/virtual-images/765" \
 }
 ```
 
-Will delete a virtual image and any associated files.
+Will delete a virtual image and any associated files, use `removeFromCloud=true` to all also delete image locations from all clouds as well.
 
 ### HTTP Request
 
@@ -554,3 +554,120 @@ Will delete a virtual image and any associated files.
 Parameter | Description
 --------- | -----------
 id | The ID of the virtual image
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+removeFromCloud | false | Remove from all clouds, all the image locations will be deleted from the cloud as well.
+
+## Get a List of Virtual Image Locations
+
+
+```shell
+curl "<%= curl_url %>/api/virtual-images/17600/locations" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "locations": [
+    {
+      "id": 796792,
+      "cloud": {
+        "id": 39,
+        "code": "dev-amazon",
+        "name": "dev-amazon"
+      },
+      "code": "amazon.ec2.image.39.ami-04d00cc409aeccd32",
+      "internalId": null,
+      "externalId": "ami-04d00cc409aeccd32",
+      "externalDiskId": "snap-0ad5833d9dcc3ce1f",
+      "remotePath": null,
+      "imagePath": null,
+      "imageName": "CentOS-8.2-x86_64-Minimal-8GiB-HVM-20200616_131752-84a857fb-30b1-429f-8e92-3065cf289a61-ami-07f119b85966cd8a5.4",
+      "imageRegion": "us-west-1",
+      "imageFolder": null,
+      "refType": "ComputeZone",
+      "refId": 39,
+      "nodeRefType": null,
+      "nodeRefId": null,
+      "subRefType": null,
+      "subRefId": null,
+      "isPublic": false,
+      "systemImage": false,
+      "diskIndex": 0,
+      "pricePlan": null,
+      "volumes": [
+
+      ],
+      "storageControllers": [
+
+      ],
+      "networkInterfaces": [
+
+      ],
+      "virtualImage": {
+        "id": 17600,
+        "code": "amazon.ec2.image.39.ami-04d00cc409aeccd32",
+        "name": "CentOS-8.2-x86_64-Minimal-8GiB-HVM-20200616_131752-84a857fb-30b1-429f-8e92-3065cf289a61-ami-07f119b85966cd8a5.4",
+        "imageType": "ami"
+      }
+    }
+  ],
+  "meta": {
+    "offset": 0,
+    "max": 25,
+    "size": 1,
+    "total": 1
+  }
+}
+```
+
+This endpoint retrieves a specific virtual image and its files.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/virtual-images/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
+
+## Delete a Virtual Image Location
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/virtual-images/17600/locations/796792" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a virtual image location, use `removeFromCloud=true` to all also delete image locations from all clouds as well.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/virtual-images/:id/locations/:locationId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the virtual image
+locationId | ID of the virtual image location
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+removeFromCloud | false | Remove from cloud, the location will be deleted from the cloud as well.
