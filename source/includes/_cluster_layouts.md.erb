@@ -58,6 +58,7 @@ curl "<%= curl_url %>/api/library/cluster-layouts" \
       "actions": [
   
       ],
+      "installContainerRuntime": true,
       "computeServers": [
         {
           "id": 1,
@@ -216,6 +217,7 @@ curl "<%= curl_url %>/api/library/cluster-layouts/1" \
     "actions": [
 
     ],
+    "installContainerRuntime": true,
     "computeServers": [
       {
         "id": 1,
@@ -403,6 +405,7 @@ description | N | Cluster layout description
 computeVersion | Y | Version of the cluster layout
 creatable | N | Can be used to enable / disable the creatability of the cluster layout. Default is on
 hasAutoScale | N | Can be used to enable / disable the horizontal scaling. Default is off
+installContainerRuntime | N | Install Docker (container runtime). Default is off
 memoryRequirement | N | Memory requirement in bytes
 groupType.id | Y | Cluster type ID
 provisionType.id | Y | Provision type ID
@@ -537,6 +540,7 @@ description | N | Cluster layout description
 computeVersion | Y | Version of the cluster layout
 creatable | N | Can be used to enable / disable the creatability of the cluster layout. Default is on
 hasAutoScale | N | Can be used to enable / disable the horizontal scaling. Default is off
+installContainerRuntime | N | Install Docker (container runtime).
 memoryRequirement | N | Memory requirement in bytes
 groupType.id | Y | Cluster type ID
 provisionType.id | Y | Provision type ID
