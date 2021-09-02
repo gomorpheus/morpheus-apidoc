@@ -2812,21 +2812,27 @@ keepBackups | off | Preserve copy of backups
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
-## Undo Delete of an Instance
+## Cancel Expiration of an Instance
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/instances/2/cancel-removal" \
+curl -XPUT "<%= curl_url %>/api/instances/2/cancel-expiration" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like getting a single instance.
+> The above command returns JSON structure like this:
 
-This operation will undo the delete of an instance that is pending removal.
+```json
+{
+  "success": true
+}
+```
+
+This operation will cancel the expiration of an instance.
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/instances/:id/cancel-removal`
+`PUT <%= api_url %>/api/instances/:id/cancel-expiration`
 
 ### URL Parameters
 
@@ -2850,39 +2856,11 @@ curl -XPUT "<%= curl_url %>/api/instances/2/extend-expiration" \
 }
 ```
 
-This operation will extend the expiration of an instance.
+This operation will extend the expiration of an instance. The period of time it is extended is equal to the number of renewal days in the shutdown policy.
 
 ### HTTP Request
 
 `PUT <%= api_url %>/api/instances/:id/extend-expiration`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-:id | ID of the instance
-
-## Cancel Expiration of an Instance
-
-```shell
-curl -XPUT "<%= curl_url %>/api/instances/2/cancel-expiration" \
-  -H "Authorization: BEARER <%= curl_token %>" \
-  -H "Content-Type: application/json"
-```
-
-> The above command returns JSON structure like this:
-
-```json
-{
-  "success": true
-}
-```
-
-This operation will cancel the expiration of an instance.
-
-### HTTP Request
-
-`PUT <%= api_url %>/api/instances/:id/cancel-expiration`
 
 ### URL Parameters
 
@@ -2934,11 +2912,33 @@ curl -XPUT "<%= curl_url %>/api/instances/2/extend-shutdown" \
 }
 ```
 
-This operation will extend the shutdown of an instance.
+This operation will extend the shutdown of an instance.  The period of time it is extended is equal to the number of renewal days in the expiration policy.
 
 ### HTTP Request
 
 `PUT <%= api_url %>/api/instances/:id/extend-shutdown`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+
+## Cancel Removal of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/2/cancel-removal" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like getting a single instance.
+
+This operation will undo the delete of an instance that is pending removal.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/cancel-removal`
 
 ### URL Parameters
 
