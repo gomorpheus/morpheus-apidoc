@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.2</div>
+        <div class="version">5.3.3</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.2</b>
+This document is for the Morpheus API version <b>5.3.3</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -540,7 +540,7 @@ Be sure to keep your access token a secret. Anyone with the token can interact w
 
 <h2 id="get-access-token">Get Access Token</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/oauth/token?grant_type=password&amp;scope=write&amp;client_id=morph-api"</span> <span class="se">\</span>
-  -d <span class="s1">'username=admin'</span> -d <span class="s1">'password=foobar'</span>
+  --data-urlencode <span class="s1">'username=admin'</span> --data-urlencode <span class="s1">'password=foobar'</span>
 </code></pre>
 
 <blockquote>
@@ -4473,22 +4473,8 @@ user&rsquo;s account.</p>
       </span><span class="s2">"estimatedTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.250800024</span><span class="p">,</span><span class="w">
       </span><span class="s2">"estimatedRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5038869430406268</span><span class="p">,</span><span class="w">
       </span><span class="s2">"estimatedRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5038869430406268</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceComputePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceComputeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceMemoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceMemoryCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceStoragePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceStorageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceNetworkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceNetworkCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceLicensePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceLicenseCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceExtraPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceExtraCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceTotalPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimatedCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimatedConversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"actualComputePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"actualComputeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"actualMemoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
@@ -4505,6 +4491,8 @@ user&rsquo;s account.</p>
       </span><span class="s2">"actualTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7105014791842815</span><span class="p">,</span><span class="w">
       </span><span class="s2">"actualRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"actualRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actualCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actualConversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"computePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"computeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"memoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
@@ -4521,6 +4509,8 @@ user&rsquo;s account.</p>
       </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7105014791842815</span><span class="p">,</span><span class="w">
       </span><span class="s2">"runningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
       </span><span class="s2">"runningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"conversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"costType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"actual"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"offTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"powerState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
@@ -4769,22 +4759,8 @@ user&rsquo;s account.</p>
     </span><span class="s2">"estimatedTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.250800024</span><span class="p">,</span><span class="w">
     </span><span class="s2">"estimatedRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5038869430406268</span><span class="p">,</span><span class="w">
     </span><span class="s2">"estimatedRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5038869430406268</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceComputePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceComputeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceMemoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceMemoryCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceStoragePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceStorageCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceNetworkPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceNetworkCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceLicensePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceLicenseCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceExtraPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceExtraCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceTotalPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"invoiceRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"estimatedCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"estimatedConversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"actualComputePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"actualComputeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"actualMemoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
@@ -4801,6 +4777,8 @@ user&rsquo;s account.</p>
     </span><span class="s2">"actualTotalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7105014791842815</span><span class="p">,</span><span class="w">
     </span><span class="s2">"actualRunningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"actualRunningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"actualCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"actualConversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"computePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"computeCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"memoryPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
@@ -4817,6 +4795,8 @@ user&rsquo;s account.</p>
     </span><span class="s2">"totalCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7105014791842815</span><span class="p">,</span><span class="w">
     </span><span class="s2">"runningPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
     </span><span class="s2">"runningCost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1709403426</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"conversionRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"costType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"actual"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"offTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"powerState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
@@ -11242,7 +11222,143 @@ The Provision Types api can be used to see which options are available.</p>
 </tr>
 </tbody></table>
 
-<h2 id="undo-delete-of-an-instance">Undo Delete of an Instance</h2>
+<h2 id="cancel-expiration-of-an-instance">Cancel Expiration of an Instance</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/2/cancel-expiration"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This operation will cancel the expiration of an instance.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/instances/:id/cancel-expiration</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h2 id="extend-expiration-of-an-instance">Extend Expiration of an Instance</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/2/extend-expiration"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This operation will extend the expiration of an instance. The period of time it is extended is equal to the number of renewal days in the expiration policy.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/instances/:id/extend-expiration</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancel-shutdown-of-an-instance">Cancel Shutdown of an Instance</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/2/cancel-shutdown"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This operation will cancel the shutdown of an instance.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/instances/:id/cancel-shutdown</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h2 id="extend-shutdown-of-an-instance">Extend Shutdown of an Instance</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/2/extend-shutdown"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This operation will extend the shutdown of an instance.  The period of time it is extended is equal to the number of renewal days in the expiration policy.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/instances/:id/extend-shutdown</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the instance</td>
+</tr>
+</tbody></table>
+
+<h2 id="cancel-removal-of-an-instance">Cancel Removal of an Instance</h2>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/instances/2/cancel-removal"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -16518,7 +16634,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Will delete a virtual image and any associated files.</p>
+<p>Will delete a virtual image and any associated files, use <code class="prettyprint">removeFromCloud=true</code> to also delete image locations from all clouds.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -16535,6 +16651,157 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <tr>
 <td>id</td>
 <td>The ID of the virtual image</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>removeFromCloud</td>
+<td>false</td>
+<td>Remove from all clouds, all the image locations will be deleted from the cloud as well.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-list-of-virtual-image-locations">Get a List of Virtual Image Locations</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/virtual-images/17600/locations"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">796792</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cloud"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev-amazon"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev-amazon"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon.ec2.image.39.ami-04d00cc409aeccd32"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-04d00cc409aeccd32"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalDiskId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snap-0ad5833d9dcc3ce1f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remotePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS-8.2-x86_64-Minimal-8GiB-HVM-20200616_131752-84a857fb-30b1-429f-8e92-3065cf289a61-ami-07f119b85966cd8a5.4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageRegion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-west-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageFolder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ComputeZone"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodeRefType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nodeRefId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subRefType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subRefId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isPublic"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"systemImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"diskIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pricePlan"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"storageControllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"networkInterfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"virtualImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17600</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon.ec2.image.39.ami-04d00cc409aeccd32"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CentOS-8.2-x86_64-Minimal-8GiB-HVM-20200616_131752-84a857fb-30b1-429f-8e92-3065cf289a61-ami-07f119b85966cd8a5.4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific virtual image and its files.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/virtual-images/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the virtual image</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-virtual-image-location">Delete a Virtual Image Location</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/virtual-images/17600/locations/796792"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Will delete a virtual image location, use <code class="prettyprint">removeFromCloud=true</code> to all also delete image locations from all clouds as well.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/virtual-images/:id/locations/:locationId</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the virtual image</td>
+</tr>
+<tr>
+<td>locationId</td>
+<td>ID of the virtual image location</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>removeFromCloud</td>
+<td>false</td>
+<td>Remove from cloud, the location will be deleted from the cloud as well.</td>
 </tr>
 </tbody></table>
 
@@ -21391,6 +21658,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
       </span><span class="s2">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
       </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"installContainerRuntime"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"computeServers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -21576,6 +21844,7 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
     </span><span class="s2">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
     </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"installContainerRuntime"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"computeServers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -21792,6 +22061,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>hasAutoScale</td>
 <td>N</td>
 <td>Can be used to enable / disable the horizontal scaling. Default is off</td>
+</tr>
+<tr>
+<td>installContainerRuntime</td>
+<td>N</td>
+<td>Install Docker (container runtime). Default is off</td>
 </tr>
 <tr>
 <td>memoryRequirement</td>
@@ -22049,6 +22323,11 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <td>hasAutoScale</td>
 <td>N</td>
 <td>Can be used to enable / disable the horizontal scaling. Default is off</td>
+</tr>
+<tr>
+<td>installContainerRuntime</td>
+<td>N</td>
+<td>Install Docker (container runtime).</td>
 </tr>
 <tr>
 <td>memoryRequirement</td>
@@ -37830,14 +38109,34 @@ If a certificate is actively in use, a delete will fail.
 <td>Offset of records you want to load</td>
 </tr>
 <tr>
+<td>sort</td>
+<td>health</td>
+<td>Sort order</td>
+</tr>
+<tr>
 <td>name</td>
 <td></td>
-<td>If specified will return an exact match on name</td>
+<td>Filter by name</td>
 </tr>
 <tr>
 <td>phrase</td>
 <td></td>
-<td>If specified will return a partial match on name or email or sms</td>
+<td>Filter by wildcard search of name and description</td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>Filter by health status: <code class="prettyprint">error</code>, <code class="prettyprint">healthy</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">muted</code></td>
+</tr>
+<tr>
+<td>lastUpdated</td>
+<td></td>
+<td>Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>false</td>
+<td>Pass true to see checks that have been deleted.</td>
 </tr>
 </tbody></table>
 
@@ -38303,6 +38602,7 @@ If a certificate is actively in use, a delete will fail.
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03850a42-b97a-4426-8733-924b8cf6e262"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.9804109</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checkAgent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checkIntegrations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -38368,6 +38668,26 @@ If a certificate is actively in use, a delete will fail.
 <td>Offset of records you want to load</td>
 </tr>
 <tr>
+<td>sort</td>
+<td>health</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>Filter by name</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Filter by wildcard search of name and description</td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>Filter by health status: <code class="prettyprint">error</code>, <code class="prettyprint">healthy</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">muted</code></td>
+</tr>
+<tr>
 <td>lastUpdated</td>
 <td></td>
 <td>Date filter, restricts query to only load checks updated  timestamp is more recent or equal to the date specified</td>
@@ -38395,6 +38715,7 @@ If a certificate is actively in use, a delete will fail.
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03850a42-b97a-4426-8733-924b8cf6e262"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.9804109</span><span class="p">,</span><span class="w">
     </span><span class="s2">"checkAgent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"checkIntegrations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -39470,6 +39791,26 @@ curl &quot;$serverUrlmand/api/monitoring/check-types&quot;
 <td>offset</td>
 <td>0</td>
 <td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>health</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>Filter by name</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Filter by wildcard search of name and description</td>
+</tr>
+<tr>
+<td>status</td>
+<td></td>
+<td>Filter by health status: <code class="prettyprint">error</code>, <code class="prettyprint">healthy</code>, <code class="prettyprint">warning</code>, <code class="prettyprint">muted</code></td>
 </tr>
 <tr>
 <td>lastUpdated</td>
@@ -44295,6 +44636,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
       </span><span class="s2">"maxPoolSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allocationTimeoutMinutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
       </span><span class="s2">"persistentUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"autoCreateLocalUserOnReservation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allowHypervisorConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -44394,6 +44736,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
       </span><span class="s2">"maxPoolSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allocationTimeoutMinutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="w">
       </span><span class="s2">"persistentUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"autoCreateLocalUserOnReservation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allowHypervisorConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -44567,6 +44910,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
       </span><span class="s2">"maxPoolSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allocationTimeoutMinutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
       </span><span class="s2">"persistentUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"autoCreateLocalUserOnReservation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"allowHypervisorConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -44694,6 +45038,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
     "maxPoolSize": 5,
     "allocationTimeoutMinutes": 60,
     "persistentUser": false,
+    "recyclable": false,
     "allowCopy": false,
     "allowPrinter": false,
     "allowFileshare": false,
@@ -44725,6 +45070,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
     </span><span class="s2">"maxPoolSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="s2">"allocationTimeoutMinutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
     </span><span class="s2">"persistentUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"autoCreateLocalUserOnReservation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"allowHypervisorConsole"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -44884,8 +45230,14 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
 <tr>
 <td>persistentUser</td>
 <td>N</td>
-<td></td>
+<td>N</td>
 <td>Persistent User</td>
+</tr>
+<tr>
+<td>recyclable</td>
+<td>N</td>
+<td>N</td>
+<td>Recyclable. Recyclable VDI Pools only work with cloud types that support snapshot management (i.e. Vmware, Nutanix, VCD)</td>
 </tr>
 <tr>
 <td>allowCopy</td>
@@ -45204,6 +45556,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"localUserCreated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"persistent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preparing"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-22T18:38:38Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-22T18:38:39Z"</span><span class="p">,</span><span class="w">
@@ -45305,6 +45658,7 @@ The type depends on the cypher mount&rsquo;s capabilities and what type of data 
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"localUserCreated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"persistent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recyclable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preparing"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-22T18:38:38Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-22T18:38:39Z"</span><span class="p">,</span><span class="w">
