@@ -77,6 +77,15 @@ curl "<%= curl_url %>/api/networks"
         "name": "ARMUbuntu16"
       },
       "allowStaticOverride": false,
+      "config": {
+        "vlanIDs": null,
+        "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+        "subnetIpManagementType": "dhcpLocal",
+        "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+        "dhcpRange": "192.168.123.10-192.168.123.100",
+        "subnetDhcpServerAddress": "192.168.123.1/24",
+        "subnetDhcpLeaseTime": "86400"
+      },
       "tenants": [
         {
           "id": 1,
@@ -182,6 +191,15 @@ curl "<%= curl_url %>/api/networks/1" \
       "name": "ARMUbuntu16"
     },
     "allowStaticOverride": false,
+    "config": {
+      "vlanIDs": null,
+      "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+      "subnetIpManagementType": "dhcpLocal",
+      "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+      "dhcpRange": "192.168.123.10-192.168.123.100",
+      "subnetDhcpServerAddress": "192.168.123.1/24",
+      "subnetDhcpLeaseTime": "86400"
+    },
     "tenants": [
       {
         "id": 1,
@@ -232,6 +250,15 @@ curl -XPOST "<%= curl_url %>/api/networks" \
     "resourcePermission": {
       "all": true
     },
+    "config": {
+      "vlanIDs": null,
+	  "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+	  "subnetIpManagementType": "dhcpLocal",
+      "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+      "dhcpRange": "192.168.123.10-192.168.123.100",
+	  "subnetDhcpServerAddress": "192.168.123.1/24",
+	  "subnetDhcpLeaseTime": "86400"
+    },
     "tenants": [
       {
         "id": 2
@@ -271,6 +298,7 @@ networkProxy.id      |  | Network Proxy ID
 applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
 noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
 visibility      | private | private or public
+config      |  | Configuration object. Settings vary by type.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
@@ -286,7 +314,16 @@ curl -XPUT "<%= curl_url %>/api/networks/1" \
   -H "Content-Type: application/json" \
   -d '{
   "network": {
-    "description": "a test network"
+    "description": "a test network",
+    "config": {
+      "vlanIDs": null,
+      "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+      "subnetIpManagementType": "dhcpLocal",
+      "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+      "dhcpRange": "192.168.123.10-192.168.123.100",
+      "subnetDhcpServerAddress": "192.168.123.1/24",
+      "subnetDhcpLeaseTime": "86400"
+    }
   }
 }'
 ```
@@ -318,6 +355,7 @@ networkProxy.id      |  | Network Proxy ID
 applianceUrlProxyBypass      | on |  Bypass Proxy for Appliance URL 
 noProxy      |  | List of ip addresses or name servers to exclude proxy traversal for. Typically locally routable servers are excluded.
 visibility      | private | private or public
+config      |  | Configuration object. Settings vary by type.
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
