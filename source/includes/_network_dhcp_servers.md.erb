@@ -142,7 +142,13 @@ curl -XPOST "<%= curl_url %>/api/networks/servers/1/dhcp-servers" \
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/networks/servers/1/dhcp-servers`
+`POST <%= api_url %>/api/networks/servers/:serverId/dhcp-servers`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+serverId | ID of the network server
 
 ### JSON Parameters
 
@@ -256,4 +262,5 @@ Will delete a Network DHCP Server from the system and make it no longer usable.
 
 Parameter | Description
 --------- | -----------
+serverId | ID of the network server
 id | The ID of the Network DHCP Server
