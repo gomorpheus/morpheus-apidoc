@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.3</div>
+        <div class="version">5.3.4</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.3</b>
+This document is for the Morpheus API version <b>5.3.4</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -3755,6 +3755,36 @@ The page will be created if it does not yet exist.</p>
 <td>null</td>
 <td>Optional ability to offset the usages returned, for use with maxUsages to paginate</td>
 </tr>
+<tr>
+<td>includeComputeServers</td>
+<td>true</td>
+<td>Optional ability to exclude compute servers</td>
+</tr>
+<tr>
+<td>includeInstances</td>
+<td>true</td>
+<td>Optional ability to exclude instances</td>
+</tr>
+<tr>
+<td>includeDiscoveredServers</td>
+<td>true</td>
+<td>Optional ability to exclude discovered servers</td>
+</tr>
+<tr>
+<td>includeLoadBalancers</td>
+<td>true</td>
+<td>Optional ability to exclude load balancers</td>
+</tr>
+<tr>
+<td>includeVirtualImages</td>
+<td>true</td>
+<td>Optional ability to exclude virtual images</td>
+</tr>
+<tr>
+<td>includeSnapshots</td>
+<td>true</td>
+<td>Optional ability to exclude snapshots</td>
+</tr>
 </tbody></table>
 
 <h2 id="billing-for-a-specific-tenant">Billing For a Specific Tenant</h2>
@@ -3847,6 +3877,36 @@ user&rsquo;s account.</p>
 <td>offsetUsages</td>
 <td>null</td>
 <td>Optional ability to offset the usages returned, for use with maxUsages to paginate</td>
+</tr>
+<tr>
+<td>includeComputeServers</td>
+<td>true</td>
+<td>Optional ability to exclude compute servers</td>
+</tr>
+<tr>
+<td>includeInstances</td>
+<td>true</td>
+<td>Optional ability to exclude instances</td>
+</tr>
+<tr>
+<td>includeDiscoveredServers</td>
+<td>true</td>
+<td>Optional ability to exclude discovered servers</td>
+</tr>
+<tr>
+<td>includeLoadBalancers</td>
+<td>true</td>
+<td>Optional ability to exclude load balancers</td>
+</tr>
+<tr>
+<td>includeVirtualImages</td>
+<td>true</td>
+<td>Optional ability to exclude virtual images</td>
+</tr>
+<tr>
+<td>includeSnapshots</td>
+<td>true</td>
+<td>Optional ability to exclude snapshots</td>
 </tr>
 </tbody></table>
 
@@ -3946,6 +4006,36 @@ user&rsquo;s account.</p>
 <td></td>
 <td>Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with &ldquo;includeTenants=true&rdquo; accountId is ignored</td>
 </tr>
+<tr>
+<td>includeComputeServers</td>
+<td>true</td>
+<td>Optional ability to exclude compute servers</td>
+</tr>
+<tr>
+<td>includeInstances</td>
+<td>true</td>
+<td>Optional ability to exclude instances</td>
+</tr>
+<tr>
+<td>includeDiscoveredServers</td>
+<td>true</td>
+<td>Optional ability to exclude discovered servers</td>
+</tr>
+<tr>
+<td>includeLoadBalancers</td>
+<td>true</td>
+<td>Optional ability to exclude load balancers</td>
+</tr>
+<tr>
+<td>includeVirtualImages</td>
+<td>true</td>
+<td>Optional ability to exclude virtual images</td>
+</tr>
+<tr>
+<td>includeSnapshots</td>
+<td>true</td>
+<td>Optional ability to exclude snapshots</td>
+</tr>
 </tbody></table>
 
 <h2 id="billing-for-a-specific-zone">Billing For a Specific Zone</h2>
@@ -4041,6 +4131,36 @@ user&rsquo;s account.</p>
 <td>accountId</td>
 <td></td>
 <td>Optional ability to scope billing information to a subtenant when calling from a master tenant user. When specified with &ldquo;includeTenants=true&rdquo; accountId is ignored</td>
+</tr>
+<tr>
+<td>includeComputeServers</td>
+<td>true</td>
+<td>Optional ability to exclude compute servers</td>
+</tr>
+<tr>
+<td>includeInstances</td>
+<td>true</td>
+<td>Optional ability to exclude instances</td>
+</tr>
+<tr>
+<td>includeDiscoveredServers</td>
+<td>true</td>
+<td>Optional ability to exclude discovered servers</td>
+</tr>
+<tr>
+<td>includeLoadBalancers</td>
+<td>true</td>
+<td>Optional ability to exclude load balancers</td>
+</tr>
+<tr>
+<td>includeVirtualImages</td>
+<td>true</td>
+<td>Optional ability to exclude virtual images</td>
+</tr>
+<tr>
+<td>includeSnapshots</td>
+<td>true</td>
+<td>Optional ability to exclude snapshots</td>
 </tr>
 </tbody></table>
 
@@ -31628,6 +31748,259 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </tr>
 </tbody></table>
 
+          <h2 id="network-edge-clusters">Network Edge Clusters</h2>
+
+<p>Provides API interfaces for managing Network Edge Clusters for a Network Service within Morpheus.</p>
+
+<h2 id="get-all-network-edge-clusters-for-network-server">Get all Network Edge Clusters for Network Server</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/edge-clusters"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkEdgeClusters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T23:02:22Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-04T21:23:59Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-edge-cluster"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-edge-cluster"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"clusterProfileBindings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nsx-default-edge-high-availability-profile"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"members"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"deploymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIRTUAL_MACHINE"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"memberNodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EDGE_NODE"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stubby Toes Inc."</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all Network Edge Clusters for a specified Network Service.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:id/edge-clusters</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>25</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>asc</td>
+<td>Sort direction, use &lsquo;desc&rsquo; to reverse sort</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Restricts query to only load network edge clusters that contain the phrase specified in name or description</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-network-edge-cluster">Get a Specific Network Edge Cluster</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/edge-clusters/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkEdgeCluster"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T23:02:22Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-04T21:23:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-edge-cluster-rename"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-edge-cluster-rename"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"clusterProfileBindings"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nsx-default-edge-high-availability-profile"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"members"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deploymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIRTUAL_MACHINE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"memberNodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EDGE_NODE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stubby Toes Inc."</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific network edge cluster.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:serverId/edge-clusters/:edgeClusterId</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>edgeClusterId</td>
+<td>ID of the network edge cluster</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-network-edge-cluster">Update a Network Edge Cluster</h2>
+
+<p>Use this command to update an existing network edge cluster.</p>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/edge-clusters/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "networkEdgeCluster": {
+          "name": "stubby-toes-edge-cluster",
+          "description": null,
+          "visibility": "public",
+          "tenants": [
+            {
+              "id": 1
+            },
+            {
+              "id": 2
+            }
+          ]
+        }
+    }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/networks/servers/:serverId/edge-clusters/:edgeClusterId</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>edgeClusterId</td>
+<td>ID of the network edge cluster</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<p>The parameters for update a network edge cluster is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+to list available options for the network server type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Network edge cluster name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Network edge cluster description</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>private or public</td>
+</tr>
+<tr>
+<td>tenants</td>
+<td>Array of tenant account ids that are allowed access</td>
+</tr>
+</tbody></table>
+
           <h2 id="network-types">Network Types</h2>
 
 <p>Provides API for viewing Network Types and their configuration options.</p>
@@ -35395,6 +35768,8 @@ to list available options for that network router type.</p>
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"natOptionTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"bgpOptionTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -36055,6 +36430,283 @@ to list available options for that network router type.</p>
 <tr>
 <td>nat_id</td>
 <td>The ID of the NAT to be deleted</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-bgp-neighbors-for-network-router">Get all BGP Neighbors for Network Router</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/99/bgp-neighbors"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"networkRouterBgpNeighbors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.16.2.22"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"forwardingAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"protocolAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"remoteAs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"keepAlive"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdDown"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"routeFilteringType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPV4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"routeFilteringIn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefixlist-out-default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"routeFilteringOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefixlist-out-default"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bfdEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bfdInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bfdMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowAsIn"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hopLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"restartMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HELPER_ONLY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/locale-services/default/bgp/neighbors/d20fc560-35e3-11ec-b68f-c788e632ae30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"syncSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d20fc560-35e3-11ec-b68f-c788e632ae30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sourceAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"12.12.22.22"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"10.22.12.2"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-25T22:37:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T15:08:12Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all BGP Neighbors for specified network router.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/routers/:router_id/bgp-neighbors</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>router_id</td>
+<td>The ID of the network router</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-network-router-bgp-neighbor">Get a Network Router BGP Neighbor</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/1/bgp-neighbors/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"networkRouterBgpNeighbor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"172.16.2.22"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"forwardingAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"protocolAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remoteAs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21345"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"keepAlive"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"holdDown"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"routeFilteringType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IPV4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"routeFilteringIn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefixlist-out-default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"routeFilteringOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prefixlist-out-default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bfdEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bfdInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bfdMultiple"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"allowAsIn"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hopLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"restartMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HELPER_ONLY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/locale-services/default/bgp/neighbors/d20fc560-35e3-11ec-b68f-c788e632ae30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"syncSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"external"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d20fc560-35e3-11ec-b68f-c788e632ae30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sourceAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"12.12.22.22"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"10.22.12.2"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-25T22:37:54Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T15:08:12Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a network router BGP Neighbor for specified network router.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/routers/:router_id/bgp-neighbors/:bgp_neighbor_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>router_id</td>
+<td>The ID of the network router</td>
+</tr>
+<tr>
+<td>bgp_neighbor_id</td>
+<td>The ID of the BGP neighbor</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-network-router-bgp-neighbor">Create a Network Router BGP Neighbor</h2>
+
+<p>Use this command to create a BGP Neighbor for an existing network router.</p>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/1/bgp-neighbors"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "networkRouterBgpNeighbor": {
+          "ipAddress": "172.16.2.23",
+          "config": {
+              "sourceAddresses": [
+                  "10.22.12.2"
+              ]
+          },
+          "remoteAs": "21346",
+          "keepAlive": 60,
+          "holdDown": 180,
+          "routeFilteringType": "IPV4",
+          "routeFilteringIn": "prefixlist-out-default",
+          "routeFilteringOut": "prefixlist-out-default",
+          "bfdEnabled": "off",
+          "bfdInterval": 1000,
+          "bfdMultiple": 3,
+          "allowAsIn": "off",
+          "hopLimit": 1,
+          "restartMode": "HELPER_ONLY"
+        }
+     }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/networks/routers/:router_id/bgp-neighbors</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>router_id</td>
+<td>The ID of the network router</td>
+</tr>
+</tbody></table>
+
+<p>For a full list of available options, see bgpOptionTypes in <a href="#get-a-specific-network-router-type">Get a Specific Network Router Type</a></p>
+
+<h2 id="update-network-router-bgp-neighbor">Update Network Router BGP Neighbor</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/1/bgp-neighbors/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "networkRouterBgpNeighbor": {
+          "ipAddress": "172.16.0.1",
+        }
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/networks/routers/:id/bgp-neighbors/:bgp_neighbor_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the network router</td>
+</tr>
+<tr>
+<td>bgp_neighbor_id</td>
+<td>The ID of the network router BGP neighbor</td>
+</tr>
+</tbody></table>
+
+<p>For a full list of available BGP Neighbor options, see bgpOptionTypes in <a href="#get-a-specific-network-router-type">Get a Specific Network Router Type</a></p>
+
+<h2 id="delete-a-network-router-bgp-neighbor">Delete a Network Router BGP Neighbor</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/routers/100/bgp-neighbors/477"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Will delete a BGP Neighbor from a network router.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/networks/routers/:router_id/bgp-neighbors/:bgp_neighbor_id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>router_id</td>
+<td>The ID of the network router</td>
+</tr>
+<tr>
+<td>bgp_neighbor_id</td>
+<td>The ID of the BGP Neighbor to be deleted</td>
 </tr>
 </tbody></table>
 
@@ -59337,6 +59989,8 @@ Be aware that the appliance functionality will be restricted without a license k
 <p>If you choose not to connect to the hub, you will need to install a license key manually later on. A license can be installed using the <a href="#install-license">Install License</a> endpoint.</p>
 
 <p>Some community builds of the Morpheus appliance will come with a pre-installed license, so you can skip the license install step.</p>
+
+<p>The <a href="#ping">Ping</a> api can be used to check if setup is needed or not, it returns a boolean flag called <code class="prettyprint">setupNeeded</code>.</p>
 
 <aside class="info">
 This api can only be used successfully one time. Subsequent attempts will return an HTTP 400 error indicating the appliance is already setup.
