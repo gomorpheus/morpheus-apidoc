@@ -1225,6 +1225,8 @@ curl "<%= curl_url %>/api/network-router-types/2" \
     ],
     "natOptionTypes": [
 
+    ],
+    "bgpOptionTypes": [
     ]
   }
 }
@@ -1747,3 +1749,246 @@ Parameter | Description
 --------- | -----------
 router_id | The ID of the network router
 nat_id | The ID of the NAT to be deleted
+
+
+## Get all BGP Neighbors for Network Router
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/99/bgp-neighbors" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRouterBgpNeighbors": [
+    {
+      "id": 15,
+      "ipAddress": "172.16.2.22",
+      "forwardingAddress": null,
+      "protocolAddress": null,
+      "remoteAs": "12345",
+      "weight": 60,
+      "keepAlive": 60,
+      "holdDown": 180,
+      "password": null,
+      "routeFilteringType": "IPV4",
+      "routeFilteringIn": "prefixlist-out-default",
+      "routeFilteringOut": "prefixlist-out-default",
+      "bfdEnabled": false,
+      "bfdInterval": 1000,
+      "bfdMultiple": 3,
+      "allowAsIn": false,
+      "hopLimit": 1,
+      "restartMode": "HELPER_ONLY",
+      "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/locale-services/default/bgp/neighbors/d20fc560-35e3-11ec-b68f-c788e632ae30",
+      "syncSource": "external",
+      "internalId": null,
+      "externalId": "d20fc560-35e3-11ec-b68f-c788e632ae30",
+      "refType": null,
+      "refId": null,
+      "config": {
+        "sourceAddresses": [
+          "12.12.22.22",
+          "10.22.12.2"
+        ]
+      },
+      "dateCreated": "2021-10-25T22:37:54Z",
+      "lastUpdated": "2021-10-27T15:08:12Z"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all BGP Neighbors for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/bgp-neighbors`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+
+## Get a Network Router BGP Neighbor
+
+```shell
+curl "<%= curl_url %>/api/networks/routers/1/bgp-neighbors/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "networkRouterBgpNeighbor": {
+    "id": 15,
+    "ipAddress": "172.16.2.22",
+    "forwardingAddress": null,
+    "protocolAddress": null,
+    "remoteAs": "21345",
+    "weight": 60,
+    "keepAlive": 60,
+    "holdDown": 180,
+    "password": null,
+    "routeFilteringType": "IPV4",
+    "routeFilteringIn": "prefixlist-out-default",
+    "routeFilteringOut": "prefixlist-out-default",
+    "bfdEnabled": false,
+    "bfdInterval": 1000,
+    "bfdMultiple": 3,
+    "allowAsIn": false,
+    "hopLimit": 1,
+    "restartMode": "HELPER_ONLY",
+    "providerId": "/infra/tier-0s/b05d6532-2742-4dbd-98f2-a62aa8a62ae0/locale-services/default/bgp/neighbors/d20fc560-35e3-11ec-b68f-c788e632ae30",
+    "syncSource": "external",
+    "internalId": null,
+    "externalId": "d20fc560-35e3-11ec-b68f-c788e632ae30",
+    "refType": null,
+    "refId": null,
+    "config": {
+      "sourceAddresses": [
+        "12.12.22.22",
+        "10.22.12.2"
+      ]
+    },
+    "dateCreated": "2021-10-25T22:37:54Z",
+    "lastUpdated": "2021-10-27T15:08:12Z"
+  }
+}
+```
+
+This endpoint retrieves a network router BGP Neighbor for specified network router.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/networks/routers/:router_id/bgp-neighbors/:bgp_neighbor_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+bgp_neighbor_id | The ID of the BGP neighbor
+
+
+## Create a Network Router BGP Neighbor
+
+Use this command to create a BGP Neighbor for an existing network router.
+
+```shell
+curl -XPOST "<%= curl_url %>/api/networks/routers/1/bgp-neighbors" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "networkRouterBgpNeighbor": {
+          "ipAddress": "172.16.2.23",
+          "config": {
+              "sourceAddresses": [
+                  "10.22.12.2"
+              ]
+          },
+          "remoteAs": "21346",
+          "keepAlive": 60,
+          "holdDown": 180,
+          "routeFilteringType": "IPV4",
+          "routeFilteringIn": "prefixlist-out-default",
+          "routeFilteringOut": "prefixlist-out-default",
+          "bfdEnabled": "off",
+          "bfdInterval": 1000,
+          "bfdMultiple": 3,
+          "allowAsIn": "off",
+          "hopLimit": 1,
+          "restartMode": "HELPER_ONLY"
+        }
+     }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "id": 800,
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST <%= api_url %>/api/networks/routers/:router_id/bgp-neighbors`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+
+For a full list of available options, see bgpOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
+
+
+## Update Network Router BGP Neighbor
+
+```shell
+curl -XPUT "<%= curl_url %>/api/networks/routers/1/bgp-neighbors/1" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "networkRouterBgpNeighbor": {
+          "ipAddress": "172.16.0.1",
+        }
+      }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/networks/routers/:id/bgp-neighbors/:bgp_neighbor_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the network router
+bgp_neighbor_id | The ID of the network router BGP neighbor
+
+For a full list of available BGP Neighbor options, see bgpOptionTypes in [Get a Specific Network Router Type](#get-a-specific-network-router-type)
+
+
+## Delete a Network Router BGP Neighbor
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/networks/routers/100/bgp-neighbors/477" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a BGP Neighbor from a network router.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/networks/routers/:router_id/bgp-neighbors/:bgp_neighbor_id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+router_id | The ID of the network router
+bgp_neighbor_id | The ID of the BGP Neighbor to be deleted
