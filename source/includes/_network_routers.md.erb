@@ -516,6 +516,9 @@ enabled | N | Can be used to enable / disable the network router (true, false). 
 zone.id | N | Required when type does not support a network server
 networkServer.id | N | Required when type supports a network server
 
+<aside class="info">
+  Note: when creating an router on NSX-T v3.0+ some BGP configuration settings require BGP to be disabled during initial creation. The BGP feature can be enabled in a subsequent router update API call.
+</aside>
 
 ## Update a Network Router
 
