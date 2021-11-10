@@ -456,3 +456,62 @@ Parameter | Description
 --------- | -----------
 :id | ID of the app
 
+## Refresh State of an App
+
+```shell
+curl -XPOST "<%= curl_url %>/api/apps/:id/refresh" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to refresh the state of an app.
+This action only applies to terraform, cloudformation and arm.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/apps/:id/refresh`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
+
+## Apply State of an App
+
+```shell
+curl -XPOST "<%= curl_url %>/api/apps/:id/apply" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to apply the state of an app.
+This action only applies to terraform, cloudformation and arm.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/apps/:id/apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the app
+
