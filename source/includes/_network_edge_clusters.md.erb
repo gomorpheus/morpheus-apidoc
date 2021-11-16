@@ -73,7 +73,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | name | Sort order
 direction | asc | Sort direction, use 'desc' to reverse sort
-phrase |  | Restricts query to only load network edge clusters that contain the phrase specified in name or description
+phrase |  | Restricts query to only load network Edge Clusters that contain the phrase specified in name or description
 
 
 ## Get a Specific Network Edge Cluster
@@ -124,7 +124,7 @@ curl "<%= curl_url %>/api/networks/servers/1/edge-clusters/1" \
 }
 ```
 
-This endpoint retrieves a specific network edge cluster.
+This endpoint retrieves a specific network Edge Cluster.
 
 ### HTTP Request
 
@@ -135,11 +135,11 @@ This endpoint retrieves a specific network edge cluster.
 Parameter | Description
 --------- | -----------
 serverId | ID of the network server
-edgeClusterId | ID of the network edge cluster
+edgeClusterId | ID of the network Edge Cluster
 
 ## Update a Network Edge Cluster
 
-Use this command to update an existing network edge cluster.
+Use this command to update an existing network Edge Cluster.
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/networks/servers/1/edge-clusters/1" \
@@ -179,16 +179,16 @@ curl -XPUT "<%= curl_url %>/api/networks/servers/1/edge-clusters/1" \
 Parameter | Description
 --------- | -----------
 serverId | ID of the network server
-edgeClusterId | ID of the network edge cluster
+edgeClusterId | ID of the network Edge Cluster
 
 ### JSON Parameters
 
-The parameters for update a network edge cluster is type dependent. The following lists the common parameters. See [get a specific type](#get-a-specific-network-type)
+The parameters for update a network Edge Cluster is type dependent. The following lists the common parameters. See [get a specific type](#get-a-specific-network-type)
 to list available options for the network server type.
 
 Parameter | Description
 --------- | -----------
-name | Network edge cluster name
-description | Network edge cluster description
+name | Network Edge Cluster name
+description | Network Edge Cluster description
 visibility | private or public
 tenants | Array of tenant account ids that are allowed access
