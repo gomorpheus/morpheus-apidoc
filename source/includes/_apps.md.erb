@@ -461,7 +461,8 @@ Parameter | Description
 ```shell
 curl -XPOST "<%= curl_url %>/api/apps/:id/refresh" \
   -H "Authorization: BEARER <%= curl_token %>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{}'
 ```
 
 > The above command returns JSON Structured like this:
@@ -491,7 +492,8 @@ Parameter | Description
 ```shell
 curl -XPOST "<%= curl_url %>/api/apps/:id/apply" \
   -H "Authorization: BEARER <%= curl_token %>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{}'
 ```
 
 > The above command returns JSON Structured like this:
