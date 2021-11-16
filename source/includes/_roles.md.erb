@@ -198,11 +198,39 @@ curl "<%= curl_url %>/api/roles/3" \
       "name": "Service Catalog",
       "access": "full"
     }
-  ]
+  ],
+  "globalVdiPoolAccess": "custom",
+  "vdiPoolPermissions": [
+    {
+      "id": 1,
+      "name": "Desktop 1",
+      "access": "full"
+    },
+    {
+      "id": 2,
+      "name": "Desktop 2",
+      "access": "none"
+    }
+  ],
+  "globalReportTypeAccess": "custom",
+  "reportTypePermissions": [
+    {
+      "id": 21,
+      "code": "appCost",
+      "name": "Application Cost",
+      "access": "full"
+    },
+    {
+      "id": 5,
+      "code": "cloudCost",
+      "name": "cloud Cost",
+      "access": "none"
+    }
+  ],
 }
 ```
 
-> The sample JSON above shows only a small subset of the featurePermissions and instanceTypePermissions that exist.
+> The sample JSON above shows only a small subset of the featurePermissions, instanceTypePermissions and reportTypePermissions that exist.
 
 This endpoint will retrieve a specific role by id if the user has permission to access the role.
 
@@ -700,6 +728,66 @@ curl -XPUT "<%= curl_url %>/api/roles/4/update-vdi-pool" \
 Parameter | Default | Description
 --------- | ------- | -----------
 vdiPoolId  |  | id of the VDI pool
+access     |  | **full** or **none**
+
+
+## Global Report Type Access
+
+> Global Report Type Access is controlled via the **update-permission** API
+
+```shell
+curl -XPUT "<%= curl_url %>/api/roles/4/update-permission" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "permissionCode": "ReportTypes",
+    "access": "custom"
+  }'
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-permission`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+permissionCode  |  | **ReportTypes** is the code for Global Report Type Access
+access     |  | **full**, **custom**, or **none**
+
+## Customizing Report Type Access
+
+> Global Report Type Access must first be changed to **custom** as seen above.
+
+```shell
+curl -XPUT "<%= curl_url %>/api/roles/4/update-report-type" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "reportTypeId": 1,
+    "access": "full"
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "access": "full"
+}
+```
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/roles/:id/update-report-type`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+reportTypeId  |  | id of the report type
 access     |  | **full** or **none**
 
 ## Delete a Role
