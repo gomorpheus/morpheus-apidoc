@@ -260,7 +260,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | ts | Sort order
 direction | desc | Sort direction
-query |  | Filter by wildcard search of fields
+phrase |  | Filter by wildcard search of fields
 startDate | 24 hours ago | Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified. 
 endDate |  | Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.
 
@@ -288,6 +288,6 @@ offset | 0 | Offset of records you want to load
 sort | ts | Sort order
 direction | desc | Sort direction
 reverse | true | Reverse order of records. this true by default when `sort` and `direction` are not passed, but `false` by default if either is passed. This means that by default the newest log entries are the bottom of the file.
-query |  | Filter by wildcard search of fields
+phrase |  | Filter by wildcard search of fields
 startDate | 24 hours ago | Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified. 
 endDate |  | Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.
