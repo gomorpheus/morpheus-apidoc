@@ -259,10 +259,10 @@ Parameter | Default | Description
 max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | ts | Sort order
-order | desc | Sort direction
+direction | desc | Sort direction
 query |  | Filter by wildcard search of fields
-startMs |  | Date filter, restricts query to only load logs updated more recently than the date specified.
-endMs |  | Date filter, restricts query to only load logs updated before the date specified.
+startDate | 24 hours ago | Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified. 
+endDate |  | Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.
 
 ## Export Health Logs
 
@@ -273,7 +273,7 @@ curl "<%= curl_url %>/api/health/logs/export" \
 
 > The above command returns `Content-Type: "application/octet-stream"` and `Content-disposition: attachment;filename="morpheus-2021-11-17-03-56-03.log"`.
 
-This endpoint downloads the morpheus appliance logs as a file attachment. By default, the most recent 10,0000 log entries are returned, with the newest at the end of the file. The format for each log entry is `[$timestamp] $level $message`.
+This endpoint downloads the morpheus appliance logs as a file attachment. By default, the most recent 10,000 log entries are returned, with the newest at the end of the file. The format for each log entry is `[$timestamp] $level $message`.
 
 ### HTTP Request
 
@@ -286,7 +286,8 @@ Parameter | Default | Description
 max | 10000 | Max number of results to return
 offset | 0 | Offset of records you want to load
 sort | ts | Sort order
-order | desc | Sort direction
+direction | desc | Sort direction
+reverse | true | Reverse order of records. this true by default when `sort` and `direction` are not passed, but `false` by default if either is passed. This means that by default the newest log entries are the bottom of the file.
 query |  | Filter by wildcard search of fields
-startMs |  | Date filter, restricts query to only load logs updated more recently than the date specified.
-endMs |  | Date filter, restricts query to only load logs updated before the date specified.
+startDate | 24 hours ago | Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified. 
+endDate |  | Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.
