@@ -77,7 +77,7 @@ direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | Restricts query to only load network transport zones that contain the phrase specified in name or description
 
 
-## Get a Specific Network Transport Zones
+## Get a Specific Network Transport Zone
 
 ```shell
 curl "<%= curl_url %>/api/networks/servers/1/scopes/1" \
@@ -250,7 +250,7 @@ tenants | Array of tenant account ids that are allowed access
 ## Delete a Network Transport Zone
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/networks/servers/1/scope/1" \
+curl -XDELETE "<%= curl_url %>/api/networks/servers/1/scopes/1" \
 -H "Authorization: BEARER <%= curl_token %>"
 ```
 
