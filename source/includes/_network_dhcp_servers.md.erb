@@ -156,14 +156,14 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name |  | Name
 serverIpAddress |  | Server Address for the DHCP Server
-leaseTime |  | Lease time for the DHCP Server
+leaseTime | 86400 | Optional lease time for the DHCP Server
 config |  | Configuration object with parameters that vary by pool type.
 
 #### NSX-T Config Options
 
 Parameter | Required | Description
 --------- | -------- | -----------
-edgeCluster | N | Edge Cluster See [edge clusters](#network-edge-clusters)
+edgeCluster | N | Edge Cluster See [Edge Clusters](#network-edge-clusters)
 preferredEdgeNode1 | N | Active Edge Node Options obtained by calling [option source](#get-option-source-data) with `:optionSource` = `nsxtEdgeNodes` and `networkServerId` param
 preferredEdgeNode2 | N | Standby Edge Node Options obtained by calling [option source](#get-option-source-data) with `optionSource` = `nsxtEdgeNodes` and `networkServerId` param
 
@@ -233,7 +233,7 @@ description | Network DHCP Server description
 
 Parameter | Required | Description
 --------- | -------- | -----------
-edgeCluster | N | Edge Cluster See [edge clusters](#network-edge-clusters)
+edgeCluster | N | Edge Cluster See [Edge Clusters](#network-edge-clusters)
 preferredEdgeNode1 | N | Active Edge Node Options obtained by calling [option source](#get-option-source-data) with `:optionSource` = `nsxtEdgeNodes` and `networkServerId` param
 preferredEdgeNode2 | N | Standby Edge Node Options obtained by calling [option source](#get-option-source-data) with `optionSource` = `nsxtEdgeNodes` and `networkServerId` param
 
