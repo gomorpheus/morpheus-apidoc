@@ -344,7 +344,7 @@ ruleId | ID of the network firewall rule
 ## Get all Network Firewall Rule Groups for Network Server
 
 ```shell
-curl "<%= curl_url %>/api/networks/servers/1/firewall-groups" \
+curl "<%= curl_url %>/api/networks/servers/1/firewall-rule-groups" \
 -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -433,7 +433,7 @@ This endpoint retrieves all Network Firewall Rule Groups for a specified Network
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/networks/servers/:id/firewall-groups`
+`GET <%= api_url %>/api/networks/servers/:id/firewall-rule-groups`
 
 ### Query Parameters
 
@@ -449,7 +449,7 @@ phrase |  | Restricts query to only load network firewall rule groups that conta
 ## Get a Specific Network Firewall Rule Group
 
 ```shell
-curl "<%= curl_url %>/api/networks/servers/1/firewall-groups/1" \
+curl "<%= curl_url %>/api/networks/servers/1/firewall-rule-groups/1" \
 -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -534,7 +534,7 @@ This endpoint retrieves a specific network firewall rule group.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/networks/servers/:serverId/firewall-groups/:groupId`
+`GET <%= api_url %>/api/networks/servers/:serverId/firewall-rule-groups/:groupId`
 
 ### URL Parameters
 
@@ -549,7 +549,7 @@ groupId | ID of the network firewall rule group
 Use this command to create a network firewall rule group.
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/networks/servers/1/firewall-groups" \
+curl -XPOST "<%= curl_url %>/api/networks/servers/1/firewall-rule-groups" \
 -H "Authorization: BEARER <%= curl_token %>" \
 -H "Content-Type: application/json" \
 -d '{
@@ -574,7 +574,7 @@ curl -XPOST "<%= curl_url %>/api/networks/servers/1/firewall-groups" \
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/networks/servers/:serverId/firewall-groups`
+`POST <%= api_url %>/api/networks/servers/:serverId/firewall-rule-groups`
 
 ### JSON Parameters
 
@@ -594,7 +594,7 @@ externalType | Y | Use SecurityPolicy
 Use this command to update an existing network firewall rule group.
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/networks/servers/1/firewall-groups/1" \
+curl -XPUT "<%= curl_url %>/api/networks/servers/1/firewall-rule-groups/1" \
 -H "Authorization: BEARER <%= curl_token %>"
 -H "Content-Type: application/json" \
 -d '{
@@ -616,7 +616,7 @@ curl -XPUT "<%= curl_url %>/api/networks/servers/1/firewall-groups/1" \
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/networks/servers/:serverId/firewall-groups/:groupId`
+`PUT <%= api_url %>/api/networks/servers/:serverId/firewall-rule-groups/:groupId`
 
 ### URL Parameters
 
@@ -640,7 +640,7 @@ priority | Network firewall rule group priority
 ## Delete a Network firewall rule group
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/networks/servers/1/firewall-groups/1" \
+curl -XDELETE "<%= curl_url %>/api/networks/servers/1/firewall-rule-groups/1" \
 -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -656,7 +656,7 @@ Will delete a network firewall rule group.
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/networks/servers/:serverId/firewall-groups/:groupId`
+`DELETE <%= api_url %>/api/networks/servers/:serverId/firewall-rule-groups/:groupId`
 
 ### URL Parameters
 
