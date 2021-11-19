@@ -306,7 +306,7 @@ to list available options for the network server type.
 
 Parameter | Description
 --------- | -----------
-name | Y | Network firewall rule name
+name | N | Network firewall rule name
 description | N | Network firewall rule description
 priority | N | Network firewall rule priority
 enabled | N | Use this to set enabled state
@@ -632,7 +632,7 @@ to list available options for the network server type.
 
 Parameter | Description
 --------- | -----------
-name | Y | Network firewall rule group name
+name | N | Network firewall rule group name
 description | N | Network firewall rule group description
 priority | N | Network firewall rule group priority
 
@@ -656,7 +656,7 @@ Will delete a network firewall rule group.
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/networks/servers/:serverId/firewall-rules/:groupId`
+`DELETE <%= api_url %>/api/networks/servers/:serverId/firewall-groups/:groupId`
 
 ### URL Parameters
 
