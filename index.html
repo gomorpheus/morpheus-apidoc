@@ -52,7 +52,7 @@
           <img class="logo" src="images/logo-white.svg" alt="Logo white" />
           <img class="print-logo" src="images/logo.svg" alt="Logo" />
         </a>
-        <div class="version">5.3.4</div>
+        <div class="version">5.4.0</div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -135,7 +135,7 @@
           <h2 id="version">Version</h2>
 
 <aside class="info">
-This document is for the Morpheus API version <b>5.3.4</b>
+This document is for the Morpheus API version <b>5.4.0</b>
 </aside>
 
 <p>You can determine your current version using <a href="#ping">Ping</a>.</p>
@@ -6703,14 +6703,90 @@ By default only open alarms are returned. Open alarms are those that have not ye
 <td>Sort order</td>
 </tr>
 <tr>
-<td>order</td>
+<td>direction</td>
 <td>desc</td>
 <td>Sort direction</td>
 </tr>
 <tr>
-<td>query</td>
+<td>phrase</td>
 <td></td>
 <td>Filter by wildcard search of fields</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>24 hours ago</td>
+<td>Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td></td>
+<td>Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.</td>
+</tr>
+</tbody></table>
+
+<h2 id="export-health-logs">Export Health Logs</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/health/logs/export"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns <code class="prettyprint">Content-Type: &quot;application/octet-stream&quot;</code> and <code class="prettyprint">Content-disposition: attachment;filename=&quot;morpheus-2021-11-17-03-56-03.log&quot;</code>.</p>
+</blockquote>
+
+<p>This endpoint downloads the morpheus appliance logs as a file attachment. By default, the most recent 10,000 log entries are returned, with the newest at the end of the file. The format for each log entry is <code class="prettyprint">[$timestamp] $level $message</code>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/health/logs/export</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>10000</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>ts</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>desc</td>
+<td>Sort direction</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>true</td>
+<td>Reverse order of records. this true by default when <code class="prettyprint">sort</code> and <code class="prettyprint">direction</code> are not passed, but <code class="prettyprint">false</code> by default if either is passed. This means that by default the newest log entries are the bottom of the file.</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Filter by wildcard search of fields</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>24 hours ago</td>
+<td>Date filter in standard iso8601 format, restricts query to only load logs updated more recently than the date specified.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td></td>
+<td>Date filter in standard iso8601 format, restricts query to only load logs updated before the date specified.</td>
 </tr>
 </tbody></table>
 
@@ -12141,6 +12217,78 @@ Use <code class="prettyprint">removeInstances=on</code> to also delete the insta
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">PUT $serverUrl/api/apps/:id/cancel-removal</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the app</td>
+</tr>
+</tbody></table>
+
+<h2 id="refresh-state-of-an-app">Refresh State of an App</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/apps/:id/refresh"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint provides a way to refresh the state of an app.
+This action only applies to Terraform, CloudFormation and ARM.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/apps/:id/refresh</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>ID of the app</td>
+</tr>
+</tbody></table>
+
+<h2 id="apply-state-of-an-app">Apply State of an App</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/apps/:id/apply"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint provides a way to apply the state of an app.
+This action only applies to Terraform, CloudFormation and ARM.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/apps/:id/apply</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -31300,6 +31448,15 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARMUbuntu16"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"allowStaticOverride"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"vlanIDs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"connectedGateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subnetIpManagementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dhcpLocal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subnetIpServerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dhcpRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.10-192.168.123.100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subnetDhcpServerAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.1/24"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subnetDhcpLeaseTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86400"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -31416,6 +31573,15 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARMUbuntu16"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"allowStaticOverride"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"vlanIDs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"connectedGateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetIpManagementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dhcpLocal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetIpServerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dhcpRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.10-192.168.123.100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetDhcpServerAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.1/24"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subnetDhcpLeaseTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86400"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -31469,6 +31635,15 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
     "noProxy": null,
     "resourcePermission": {
       "all": true
+    },
+    "config": {
+      "vlanIDs": null,
+      "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+      "subnetIpManagementType": "dhcpLocal",
+      "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+      "dhcpRange": "192.168.123.10-192.168.123.100",
+      "subnetDhcpServerAddress": "192.168.123.1/24",
+      "subnetDhcpLeaseTime": "86400"
     },
     "tenants": [
       {
@@ -31581,6 +31756,11 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <td>private or public</td>
 </tr>
 <tr>
+<td>config</td>
+<td></td>
+<td>Configuration object. Settings vary by type.</td>
+</tr>
+<tr>
 <td>tenantPermissions.accounts</td>
 <td></td>
 <td>Array of tenant account ids that are allowed access</td>
@@ -31605,7 +31785,16 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
   "network": {
-    "description": "a test network"
+    "description": "a test network",
+    "config": {
+      "vlanIDs": null,
+      "connectedGateway": "/infra/tier-1s/51b5f3c3-cc7e-4cef-89b5-dd576e8df454",
+      "subnetIpManagementType": "dhcpLocal",
+      "subnetIpServerId": "/infra/dhcp-server-configs/f1137d64-8402-41a2-abd8-7347743e5f4f",
+      "dhcpRange": "192.168.123.10-192.168.123.100",
+      "subnetDhcpServerAddress": "192.168.123.1/24",
+      "subnetDhcpLeaseTime": "86400"
+    }
   }
 }'</span>
 </code></pre>
@@ -31697,6 +31886,11 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <td>private or public</td>
 </tr>
 <tr>
+<td>config</td>
+<td></td>
+<td>Configuration object. Settings vary by type.</td>
+</tr>
+<tr>
 <td>tenantPermissions.accounts</td>
 <td></td>
 <td>Array of tenant account ids that are allowed access</td>
@@ -31745,6 +31939,701 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <tr>
 <td>ID</td>
 <td>The ID of the Network</td>
+</tr>
+</tbody></table>
+
+          <h2 id="network-dhcp-servers">Network DHCP Servers</h2>
+
+<p>Provides API interfaces for managing Network DHCP Servers for a Network Service within Morpheus.</p>
+
+<h2 id="get-all-network-dhcp-servers-for-network-server">Get all Network DHCP Servers for Network Server</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-servers"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkDhcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-server-configs/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serverIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.100/24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:01Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"leaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-server"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"edgeCluster"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"preferredEdgeNode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"preferredEdgeNode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all Network DHCP Servers for a specified Network Service.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:id/dhcp-servers</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>25</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>asc</td>
+<td>Sort direction, use &lsquo;desc&rsquo; to reverse sort</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Restricts query to only load Network DHCP Servers that contain the phrase specified in name or description</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-network-dhcp-server">Get a Specific Network DHCP Server</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-servers/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkDhcpServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:01Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-server-configs/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serverIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.123.100/24"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:01Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"leaseTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-server"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"edgeCluster"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"preferredEdgeNode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"preferredEdgeNode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific Network DHCP Server.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:serverId/dhcp-servers/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the Network DHCP Server</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-network-dhcp-server">Create a Network DHCP Server</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-servers"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "networkDhcpServer": {
+      "serverIpAddress": "192.168.123.100/24",
+      "leaseTime": 86400,
+      "name": "test-dhcp-server",
+      "config": {
+          "edgeCluster": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "preferredEdgeNode1": "/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "preferredEdgeNode2": "/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like getting a single Network DHCP Server:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/networks/servers/:serverId/dhcp-servers</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td></td>
+<td>Name</td>
+</tr>
+<tr>
+<td>serverIpAddress</td>
+<td></td>
+<td>Server Address for the DHCP Server</td>
+</tr>
+<tr>
+<td>leaseTime</td>
+<td>86400</td>
+<td>Optional lease time for the DHCP Server</td>
+</tr>
+<tr>
+<td>config</td>
+<td></td>
+<td>Configuration object with parameters that vary by pool type.</td>
+</tr>
+</tbody></table>
+
+<h4 id="nsx-t-config-options">NSX-T Config Options</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>edgeCluster</td>
+<td>N</td>
+<td>Edge Cluster See <a href="#network-edge-clusters">Edge Clusters</a></td>
+</tr>
+<tr>
+<td>preferredEdgeNode1</td>
+<td>N</td>
+<td>Active Edge Node Options obtained by calling <a href="#get-option-source-data">option source</a> with <code class="prettyprint">:optionSource</code> = <code class="prettyprint">nsxtEdgeNodes</code> and <code class="prettyprint">networkServerId</code> param</td>
+</tr>
+<tr>
+<td>preferredEdgeNode2</td>
+<td>N</td>
+<td>Standby Edge Node Options obtained by calling <a href="#get-option-source-data">option source</a> with <code class="prettyprint">optionSource</code> = <code class="prettyprint">nsxtEdgeNodes</code> and <code class="prettyprint">networkServerId</code> param</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-network-dhcp-server">Update a Network DHCP Server</h2>
+
+<p>Use this command to update an existing Network DHCP Server.</p>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-servers/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "networkDhcpServer": {
+          "id": 5,
+          "dateCreated": "2021-11-02T20:06:01Z",
+          "providerId": "/infra/dhcp-server-configs/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "serverIpAddress": "192.168.123.100/24",
+          "lastUpdated": "2021-11-02T20:06:01Z",
+          "leaseTime": 86400,
+          "name": "test-dhcp-server",
+          "externalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "config": {
+              "edgeCluster": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+              "preferredEdgeNode1": "/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+              "preferredEdgeNode2": "/infra/sites/default/enforcement-points/default/dhcp-servers/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/edge-nodes/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          },
+          "owner": {
+              "id": 1
+          },
+          "networkServer": {
+              "id": 5
+          }
+        }
+    }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/networks/servers/:serverId/dhcp-servers/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the Network DHCP Server</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<p>The parameters for update a Network DHCP Server is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+to list available options for the network server type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Network DHCP Server name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Network DHCP Server description</td>
+</tr>
+</tbody></table>
+
+<h4 id="nsx-t-config-options">NSX-T Config Options</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>edgeCluster</td>
+<td>N</td>
+<td>Edge Cluster See <a href="#network-edge-clusters">Edge Clusters</a></td>
+</tr>
+<tr>
+<td>preferredEdgeNode1</td>
+<td>N</td>
+<td>Active Edge Node Options obtained by calling <a href="#get-option-source-data">option source</a> with <code class="prettyprint">:optionSource</code> = <code class="prettyprint">nsxtEdgeNodes</code> and <code class="prettyprint">networkServerId</code> param</td>
+</tr>
+<tr>
+<td>preferredEdgeNode2</td>
+<td>N</td>
+<td>Standby Edge Node Options obtained by calling <a href="#get-option-source-data">option source</a> with <code class="prettyprint">optionSource</code> = <code class="prettyprint">nsxtEdgeNodes</code> and <code class="prettyprint">networkServerId</code> param</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-network-dhcp-server">Delete a Network DHCP Server</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/:serverId/dhcp-servers/:id</span><span class="sb">`</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Will delete a Network DHCP Server from the system and make it no longer usable.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/networks/servers/:serverId/dhcp-servers/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the Network DHCP Server</td>
+</tr>
+</tbody></table>
+
+          <h2 id="network-dhcp-relays">Network DHCP Relays</h2>
+
+<p>Provides API interfaces for managing Network DHCP Relays for a Network Service within Morpheus.</p>
+
+<h2 id="get-all-network-dhcp-relays-for-network-server">Get all Network DHCP Relays for Network Server</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-relays"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkDhcpRelays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:02Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-relay-configs/test-dhcp-repay"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-08T21:30:07Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-relay"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-repay"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serverIpAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"192.168.127.128"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all Network DHCP Relays for a specified Network Service.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:id/dhcp-relays</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>25</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>asc</td>
+<td>Sort direction, use &lsquo;desc&rsquo; to reverse sort</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Restricts query to only load Network DHCP Relays that contain the phrase specified in name or description</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-network-dhcp-relay">Get a Specific Network DHCP Relay</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-relays/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"networkDhcpRelay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-02T20:06:02Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/infra/dhcp-relay-configs/dd-test-dhcp-repay"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-08T21:30:07Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-relay"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-dhcp-repay"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serverIpAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"192.168.127.128"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific Network DHCP Relay.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:serverId/dhcp-relays/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the Network DHCP Relay</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-network-dhcp-relay">Create a Network DHCP Relay</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-relays"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "networkDhcpRelay": {
+      "name": "test-dhcp-relay",
+      "serverIpAddresses": [
+          "192.168.127.129"
+      ]
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like getting a single Network DHCP Relay:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/networks/servers/:serverId/dhcp-relays</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td></td>
+<td>Name</td>
+</tr>
+<tr>
+<td>serverIpAddresses</td>
+<td></td>
+<td>Server IP Addresses for the DHCP Relay</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-network-dhcp-relay">Update a Network DHCP Relay</h2>
+
+<p>Use this command to update an existing Network DHCP Relay.</p>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/dhcp-relays/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "networkDhcpRelay": {
+        "name": "test-dhcp-relay",
+        "serverIpAddresses": [
+            "192.168.127.129"
+        ]
+    }
+    }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/networks/servers/:serverId/dhcp-relays/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the Network DHCP Relay</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<p>The parameters for update a Network DHCP Relay is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+to list available options for the network server type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Network DHCP Relay name</td>
+</tr>
+<tr>
+<td>serverIpAddresses</td>
+<td>Server IP Addresses for the DHCP Relay</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-network-dhcp-relay">Delete a Network DHCP Relay</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/:serverId/dhcp-relays/:id</span><span class="sb">`</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Will delete a Network DHCP Relay from the system and make it no longer usable.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/networks/servers/:serverId/dhcp-relays/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the Network DHCP Relay</td>
 </tr>
 </tbody></table>
 
@@ -31845,7 +32734,7 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 <tr>
 <td>phrase</td>
 <td></td>
-<td>Restricts query to only load network edge clusters that contain the phrase specified in name or description</td>
+<td>Restricts query to only load network Edge Clusters that contain the phrase specified in name or description</td>
 </tr>
 </tbody></table>
 
@@ -31895,7 +32784,7 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific network edge cluster.</p>
+<p>This endpoint retrieves a specific network Edge Cluster.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -31915,13 +32804,13 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </tr>
 <tr>
 <td>edgeClusterId</td>
-<td>ID of the network edge cluster</td>
+<td>ID of the network Edge Cluster</td>
 </tr>
 </tbody></table>
 
 <h2 id="update-a-network-edge-cluster">Update a Network Edge Cluster</h2>
 
-<p>Use this command to update an existing network edge cluster.</p>
+<p>Use this command to update an existing network Edge Cluster.</p>
 <pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/edge-clusters/1"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -31968,13 +32857,13 @@ API versions older than 4.2.5/5.2.1 still use the old property name: <code>metad
 </tr>
 <tr>
 <td>edgeClusterId</td>
-<td>ID of the network edge cluster</td>
+<td>ID of the network Edge Cluster</td>
 </tr>
 </tbody></table>
 
 <h3 id="json-parameters">JSON Parameters</h3>
 
-<p>The parameters for update a network edge cluster is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+<p>The parameters for update a network Edge Cluster is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
 to list available options for the network server type.</p>
 
 <table><thead>
@@ -31985,11 +32874,11 @@ to list available options for the network server type.</p>
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>Network edge cluster name</td>
+<td>Network Edge Cluster name</td>
 </tr>
 <tr>
 <td>description</td>
-<td>Network edge cluster description</td>
+<td>Network Edge Cluster description</td>
 </tr>
 <tr>
 <td>visibility</td>
@@ -34905,6 +35794,10 @@ to list available options for that network router type.</p>
 </tr>
 </tbody></table>
 
+<aside class="info">
+  Note: when creating a router on NSX-T v3.0+ some BGP configuration settings require BGP to be disabled during initial creation. The BGP feature can be enabled in a subsequent router update API call.
+</aside>
+
 <h2 id="update-a-network-router">Update a Network Router</h2>
 
 <p>Use this command to update an existing network router.</p>
@@ -36772,6 +37665,366 @@ to list available options for that network router type.</p>
 <td>phrase</td>
 <td></td>
 <td>If specified will return a partial match on name</td>
+</tr>
+</tbody></table>
+
+          <h2 id="network-transport-zones">Network Transport Zones</h2>
+
+<p>Provides API interfaces for managing Network Transport Zones for a Network Service within Morpheus.</p>
+
+<h2 id="get-all-network-transport-zones-for-network-server">Get all Network Transport Zones for Network Server</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/scopes"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"networkScopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-03T14:23:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-03T14:25:05Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streamType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OVERLAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"nvdsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hostMembershipCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STANDARD"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stubby Toes Inc."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all Network Transport Zones for a specified Network Service.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:id/scopes</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>max</td>
+<td>25</td>
+<td>Max number of results to return</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>0</td>
+<td>Offset of records you want to load</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name</td>
+<td>Sort order</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>asc</td>
+<td>Sort direction, use &lsquo;desc&rsquo; to reverse sort</td>
+</tr>
+<tr>
+<td>phrase</td>
+<td></td>
+<td>Restricts query to only load network transport zones that contain the phrase specified in name or description</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-network-transport-zone">Get a Specific Network Transport Zone</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/scopes/1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"networkScope"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"internalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-03T14:23:17Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-03T14:25:05Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streamType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OVERLAY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"nvdsName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transport-zone-a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hostMembershipCriteria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STANDARD"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"networkServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"zone"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tenants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stubby Toes Inc."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific network transport zone.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET $serverUrl/api/networks/servers/:serverId/scopes/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the network transport zone</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-a-network-transport-zone">Create a Network Transport Zone</h2>
+
+<p>Use this command to create a network transport zone.</p>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/scopes"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{
+  "networkScope": {
+    "name": "stubby-toes-tz",
+    "description": null,
+    "visibility": "public",
+    "tenants": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ]
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST $serverUrl/api/networks/servers/:serverId/scopes</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<p>The parameters for creating a network transport zone is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+to list available options for the network server type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>Network transport zone name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>N</td>
+<td>Network transport zone description</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>N</td>
+<td>private or public</td>
+</tr>
+<tr>
+<td>tenants</td>
+<td>N</td>
+<td>Array of tenant account ids that are allowed access</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-a-network-transport-zone">Update a Network Transport Zone</h2>
+
+<p>Use this command to update an existing network transport zone.</p>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/scopes/1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{
+  "networkScope": {
+    "name": "stubby-toes-tz",
+    "description": null,
+    "visibility": "public",
+    "tenants": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ]
+  }
+}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/networks/servers/:serverId/scopes/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the network transport zone</td>
+</tr>
+</tbody></table>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<p>The parameters for update a network transport zone is type dependent. The following lists the common parameters. See <a href="#get-a-specific-network-type">get a specific type</a>
+to list available options for the network server type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Network transport zone name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Network transport zone description</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>private or public</td>
+</tr>
+<tr>
+<td>tenants</td>
+<td>Array of tenant account ids that are allowed access</td>
+</tr>
+</tbody></table>
+
+<h2 id="delete-a-network-transport-zone">Delete a Network Transport Zone</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/networks/servers/1/scopes/1"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Will delete a network transport zone.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE $serverUrl/api/networks/servers/:serverId/scopes/:id</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>serverId</td>
+<td>ID of the network server</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID of the network transport zone</td>
 </tr>
 </tbody></table>
 
@@ -48898,12 +50151,40 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Service Catalog"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"globalVdiPoolAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vdiPoolPermissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desktop 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desktop 2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"globalReportTypeAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reportTypePermissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"appCost"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Application Cost"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloudCost"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cloud Cost"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <blockquote>
-<p>The sample JSON above shows only a small subset of the featurePermissions and instanceTypePermissions that exist.</p>
+<p>The sample JSON above shows only a small subset of the featurePermissions, instanceTypePermissions and reportTypePermissions that exist.</p>
 </blockquote>
 
 <p>This endpoint will retrieve a specific role by id if the user has permission to access the role.</p>
@@ -49668,6 +50949,93 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 </tr>
 </tbody></table>
 
+<h2 id="global-report-type-access">Global Report Type Access</h2>
+
+<blockquote>
+<p>Global Report Type Access is controlled via the <strong>update-permission</strong> API</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/roles/4/update-permission"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "permissionCode": "ReportTypes",
+    "access": "custom"
+  }'</span>
+</code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/roles/:id/update-permission</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>permissionCode</td>
+<td></td>
+<td><strong>ReportTypes</strong> is the code for Global Report Type Access</td>
+</tr>
+<tr>
+<td>access</td>
+<td></td>
+<td><strong>full</strong>, <strong>custom</strong>, or <strong>none</strong></td>
+</tr>
+</tbody></table>
+
+<h2 id="customizing-report-type-access">Customizing Report Type Access</h2>
+
+<blockquote>
+<p>Global Report Type Access must first be changed to <strong>custom</strong> as seen above.</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/roles/4/update-report-type"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "reportTypeId": 1,
+    "access": "full"
+  }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON Structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT $serverUrl/api/roles/:id/update-report-type</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reportTypeId</td>
+<td></td>
+<td>id of the report type</td>
+</tr>
+<tr>
+<td>access</td>
+<td></td>
+<td><strong>full</strong> or <strong>none</strong></td>
+</tr>
+</tbody></table>
+
 <h2 id="delete-a-role">Delete a Role</h2>
 <pre class="highlight shell"><code>curl -XDELETE <span class="s2">"</span><span class="nv">$serverUrl</span><span class="s2">/api/roles/4"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: BEARER </span><span class="nv">$accessToken</span><span class="s2">"</span>
@@ -49998,20 +51366,6 @@ Any zones that are not passed in the <code class="prettyprint">zones</code> para
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST $serverUrl/api/users</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td>The ID of the User</td>
-</tr>
-</tbody></table>
 
 <h3 id="json-user-parameters">JSON User Parameters</h3>
 
