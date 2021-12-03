@@ -190,6 +190,9 @@ curl -XPOST "<%= curl_url %>/api/load-balancers" \
     "name": "test load balancer",
     "description": "a test load balancer",
     "type": "nsx-t",
+    "zone": {
+      "id": 1
+    },
     "resourcePermission": {
       "all": true
     },
@@ -218,6 +221,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name
 description      |  | Description
+zone.id |  | Cloud ID
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 visibility      | private | private or public
 tenants  |  | Array of tenant account ids that are allowed access
