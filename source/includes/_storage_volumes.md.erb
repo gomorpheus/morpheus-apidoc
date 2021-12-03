@@ -56,108 +56,6 @@ Parameter | Description
 ID | The ID of the Storage Volume to retrieve
 
 
-## Create a Storage Volume
-
-```shell
-curl -XPOST "<%= curl_url %>/api/storage/volumes" \
-  -H "Authorization: BEARER <%= curl_token %>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "storageVolume": {
-    "name": "test storage volume",
-    "description": "a test storage volume",
-    "zone": {
-      "id": 31
-    },
-    "type": {
-      "id": 8
-    },
-    "resourceGroupId": "testresource",
-    "addressSpace": "192.168.2.0/24",
-    "subnetName": "test",
-    "subnetCidr": "192.168.2.0/28",
-    "scanStorage Volume": "off",
-    "applianceUrlProxyBypass": "on",
-    "noProxy": null,
-    "resourcePermission": {
-      "all": true
-    },
-    "tenants": [
-      {
-        "id": 2
-      },
-      {
-        "id": 1
-      }
-    ],
-    "visibility": "private"
-  }
-}'
-```
-
-> The above command returns JSON structured like getting a single Storage Volume: 
-
-### HTTP Request
-
-`POST <%= api_url %>/api/storage/volumes`
-
-### JSON Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-name      |  | Name
-description      |  | Description
-zone.id      |  | Cloud ID
-type.id      |  | Storage Volume Type ID
-pool      |  | Storage Volume Pool ID
-allowStaticOverride      |  | Allow IP Override
-assignPublicIP      |  | Assign Public IP
-active      |  | Activate (true) or disable (false)
-visibility      | private | private or public
-tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
-resourcePermissions.all  |  | Pass true to allow access all groups
-resourcePermissions.sites  |  | Array of groups that are allowed access
-
-This endpoint allows creating a Storage Volume.  Only certain types of clouds support creating and deleting storage volumes. Configuration options vary by [Storage Volume Type](#storage-volume-types).
-
-## Update a Storage Volume
-
-```shell
-curl -XPUT "<%= curl_url %>/api/storage/volumes/1" \
-  -H "Authorization: BEARER <%= curl_token %>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "storageVolume": {
-    "description": "a test storage volume"
-  }
-}'
-```
-
-> The above command returns JSON structured like getting a single Storage Volume: 
-
-### HTTP Request
-
-`PUT <%= api_url %>/api/storage/volumes/:id`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the Storage Volume
-
-### JSON Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-description      |  | Description
-active      |  | Activate (true) or disable (false)
-visibility      | private | private or public
-tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
-resourcePermissions.all  |  | Pass true to allow access all groups
-resourcePermissions.sites  |  | Array of groups that are allowed access
-
-This endpoint allows updating a Storage Volume.  Configuration options vary by [Storage Volume Type](#storage-volume-types).
-
 ## Delete a Storage Volume
 
 ```shell
@@ -173,7 +71,7 @@ curl -XDELETE "<%= curl_url %>/api/storage/volumes/:id" \
 }
 ```
 
-Will delete a Storage Volume from the system and make it no longer usable.
+Will delete a Storage Volume from the system and make it no longer usable. Only certain types support this action.
 
 ### HTTP Request
 
