@@ -1,0 +1,167 @@
+## Storage Servers
+
+Provides API for managing Storage Servers.
+
+<!-- ## Get All Storage Servers -->
+
+```shell
+curl "<%= curl_url %>/api/storage/servers"
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+```
+
+This endpoint retrieves all storage servers associated with the account.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/storage/servers`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
+
+## Get a Specific Storage Server
+
+
+```shell
+curl "<%= curl_url %>/api/storage/servers/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+```
+
+This endpoint retrieves a specific Storage Server.
+
+
+### HTTP Request
+
+`GET <%= api_url %>/api/storage/servers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Storage Server to retrieve
+
+
+## Create a Storage Server
+
+```shell
+curl -XPOST "<%= curl_url %>/api/storage/servers" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "storageServer": {
+    "type": "amazons3",
+    "name": "testbucket",
+    "description": "A test bucket",
+    "enabled": true,
+    "serviceUsername": "access-key",
+    "servicePassword": "secret-key",
+    "tenants": [
+      {
+        "id": 1
+      }
+    ],
+    "visibility": "private"
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Storage Server: 
+
+### HTTP Request
+
+`POST <%= api_url %>/api/storage/servers`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+type      |  | Storage Type Code or ID
+name      |  | Name
+description |  | Description
+enabled   | true | Enabled
+config |  | Configuration object with parameters that vary by [type](#storage-server-types).
+visibility      | private | private or public
+tenants  |  | Array of tenant account ids that are allowed access
+
+This endpoint allows creating a Storage Server.  Only certain types of clouds support creating and deleting storage servers. Configuration options vary by [Storage Server Type](#storage-server-types).
+
+## Update a Storage Server
+
+```shell
+curl -XPUT "<%= curl_url %>/api/storage/servers/1" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "storageServer": {
+    "description": "a test s3 bucket"
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Storage Server: 
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/storage/servers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Storage Server
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      |  | Name
+description |  | Description
+enabled   | true | Enabled
+config |  | Configuration object with parameters that vary by [type](#storage-server-types).
+visibility      | private | private or public
+tenants  |  | Array of tenant account ids that are allowed access
+
+This endpoint allows updating a Storage Server.  Configuration options vary by [Storage Server Type](#storage-server-types).
+
+## Delete a Storage Server
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/storage/servers/:id" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a Storage Server from the system and make it no longer usable.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/storage/servers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Storage Server
+
