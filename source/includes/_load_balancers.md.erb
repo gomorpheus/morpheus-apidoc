@@ -1,0 +1,191 @@
+# Load Balancers
+
+Provides API for managing Load Balancers.
+
+## Get All Load Balancers
+
+```shell
+curl "<%= curl_url %>/api/load-balancers"
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+```
+
+This endpoint retrieves all load balancers associated with the account.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/load-balancers`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+name |  | If specified will return an exact match on name
+phrase |  | If specified will return a partial match on name
+
+## Get a Specific Load Balancer
+
+
+```shell
+curl "<%= curl_url %>/api/load-balancers/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+```
+
+This endpoint retrieves a specific Load Balancer.
+
+
+### HTTP Request
+
+`GET <%= api_url %>/api/load-balancers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Load Balancer to retrieve
+
+
+## Create a Load Balancer
+
+```shell
+curl -XPOST "<%= curl_url %>/api/load-balancers" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "loadBalancer": {
+    "name": "test load balancer",
+    "description": "a test load balancer",
+    "zone": {
+      "id": 31
+    },
+    "type": {
+      "id": 8
+    },
+    "resourceGroupId": "testresource",
+    "addressSpace": "192.168.2.0/24",
+    "subnetName": "test",
+    "subnetCidr": "192.168.2.0/28",
+    "scanLoad Balancer": "off",
+    "applianceUrlProxyBypass": "on",
+    "noProxy": null,
+    "resourcePermission": {
+      "all": true
+    },
+    "tenants": [
+      {
+        "id": 2
+      },
+      {
+        "id": 1
+      }
+    ],
+    "visibility": "private"
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Load Balancer: 
+
+### HTTP Request
+
+`POST <%= api_url %>/api/load-balancers`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+name      |  | Name
+description      |  | Description
+zone.id      |  | Cloud ID
+type.id      |  | Load Balancer Type ID
+pool      |  | Load Balancer Pool ID
+allowStaticOverride      |  | Allow IP Override
+assignPublicIP      |  | Assign Public IP
+active      |  | Activate (true) or disable (false)
+visibility      | private | private or public
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+
+This endpoint allows creating a Load Balancer.  Only certain types of clouds support creating and deleting load balancers. Configuration options vary by [Load Balancer Type](#load-balancer-types).
+
+## Update a Load Balancer
+
+```shell
+curl -XPUT "<%= curl_url %>/api/load-balancers/1" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "loadBalancer": {
+    "description": "a test load balancer"
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single Load Balancer: 
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/load-balancers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Load Balancer
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+description      |  | Description
+active      |  | Activate (true) or disable (false)
+visibility      | private | private or public
+tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
+resourcePermissions.all  |  | Pass true to allow access all groups
+resourcePermissions.sites  |  | Array of groups that are allowed access
+
+This endpoint allows updating a Load Balancer.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
+
+## Delete a Load Balancer
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/load-balancers/:id" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a Load Balancer from the system and make it no longer usable.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/load-balancers/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the Load Balancer
+
