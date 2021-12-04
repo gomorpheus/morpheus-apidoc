@@ -187,11 +187,14 @@ curl -XPOST "<%= curl_url %>/api/load-balancers" \
   -H "Content-Type: application/json" \
   -d '{
   "loadBalancer": {
-    "name": "test load balancer",
-    "description": "a test load balancer",
     "type": "nsx-t",
-    "zone": {
-      "id": 1
+    "networkServerId": 23,
+    "name": "lab-nsxt",
+    "enabled": true,
+    "config": {
+      "adminState": true,
+      "size": "SMALL",
+      "loglevel": "INFO"
     },
     "resourcePermission": {
       "all": true
@@ -221,6 +224,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name
 description      |  | Description
+networkServerId |  | Network Server ID
 zone.id |  | Cloud ID
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 visibility      | private | private or public
