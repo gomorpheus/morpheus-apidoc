@@ -1156,7 +1156,29 @@ curl "<%= curl_url %>/api/integrations/:integration_id/objects/:id" \
 > The above command returns JSON structured like this:
 
 ```json
-
+{
+  "success": true,
+  "object": {
+    "id": 1,
+    "name": "qa-amazon2",
+    "type": "cloud",
+    "refType": "ComputeZone",
+    "refId": 39,
+    "cloud": {
+      "id": 39,
+      "name": "qa-amazon2",
+      "zoneType": {
+        "id": 3,
+        "code": "amazon",
+        "name": "Amazon"
+      }
+    },
+    "group": {
+      "id": 1,
+      "name": "thegroup"
+    }
+  }
+}
 ```
 
 This endpoint retrieves a specific integration object.
