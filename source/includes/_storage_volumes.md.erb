@@ -5,7 +5,7 @@ Provides API for managing Storage Volumes.
 ## Get All Storage Volumes
 
 ```shell
-curl "<%= curl_url %>/api/storage/volumes"
+curl "<%= curl_url %>/api/storage-volumes"
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -428,7 +428,7 @@ This endpoint retrieves all storage volumes associated with the account.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/storage/volumes`
+`GET <%= api_url %>/api/storage-volumes`
 
 ### Query Parameters
 
@@ -441,7 +441,7 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= curl_url %>/api/storage/volumes/1" \
+curl "<%= curl_url %>/api/storage-volumes/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -498,7 +498,7 @@ This endpoint retrieves a specific Storage Volume.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/storage/volumes/:id`
+`GET <%= api_url %>/api/storage-volumes/:id`
 
 ### URL Parameters
 
@@ -553,7 +553,7 @@ This endpoint allows creating a Storage Volume.  Only certain types of storage s
 ## Delete a Storage Volume
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/storage/volumes/:id" \
+curl -XDELETE "<%= curl_url %>/api/storage-volumes/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -569,7 +569,7 @@ Will delete a Storage Volume from the system and make it no longer usable. Only 
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/storage/volumes/:id`
+`DELETE <%= api_url %>/api/storage-volumes/:id`
 
 ### URL Parameters
 
