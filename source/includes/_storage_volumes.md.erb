@@ -434,8 +434,12 @@ This endpoint retrieves all storage volumes associated with the account.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-name |  | If specified will return an exact match on name
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
 phrase |  | If specified will return a partial match on name
+name |  | If specified will return an exact match on name
 
 ## Get a Specific Storage Volume
 
@@ -544,7 +548,6 @@ storageServer.id      |  | [Storage Server](#storage-servers) ID
 storageGroup.id      |  | Storage Group ID
 type      |  | Storage Type Code or ID
 name      |  | Name
-storageGroup.id      |  | Storage Group ID
 config |  | Configuration object with parameters that vary by [type](#storage-server-types).
 
 This endpoint allows creating a Storage Volume.  Only certain types of storage servers support creating and deleting storage volumes, such as 3Par and Isilon. Configuration options vary by [Storage Volume Type](#storage-volume-types).

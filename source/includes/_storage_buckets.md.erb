@@ -1,11 +1,15 @@
 ## Storage Buckets
 
-Provides API interfaces for managing Storage Buckets. This is the endpoint for managing both Storage Buckets (object stores) and File Shares.
+Provides API interfaces for managing Storage Buckets and File Shares. This is the endpoint for managing both Storage Buckets (object stores) and File Shares.
+
+<aside class="info">
+This endpoint was renamed from <code>/api/storage/buckets</code> to <code>/api/storage-buckets</code> in API version 5.4.1 and the old path can still be used.
+</aside>
 
 ## Get All Storage Buckets
 
 ```shell
-curl "<%= curl_url %>/api/storage/buckets"
+curl "<%= curl_url %>/api/storage-buckets"
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -60,12 +64,17 @@ This endpoint retrieves all storage buckets associated with the account.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/storage/buckets`
+`GET <%= api_url %>/api/storage-buckets`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | If specified will return a partial match on name
 name |  | If specified will return an exact match on name
 phrase |  | If specified will return a partial match on name
 
@@ -73,7 +82,7 @@ phrase |  | If specified will return a partial match on name
 
 
 ```shell
-curl "<%= curl_url %>/api/storage/buckets/1" \
+curl "<%= curl_url %>/api/storage-buckets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -109,7 +118,7 @@ This endpoint retrieves a specific storage bucket.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/storage/buckets/:id`
+`GET <%= api_url %>/api/storage-buckets/:id`
 
 ### URL Parameters
 
@@ -120,7 +129,7 @@ ID | The ID of the storage bucket to retrieve
 ## Create a Storage Bucket
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/storage/buckets" \
+curl -XPOST "<%= curl_url %>/api/storage-buckets" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -145,7 +154,7 @@ curl -XPOST "<%= curl_url %>/api/storage/buckets" \
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/storage/buckets`
+`POST <%= api_url %>/api/storage-buckets`
 
 ### JSON Parameters
 
@@ -232,7 +241,7 @@ createBucket | false | Create the bucket if it does not exist
 ## Update a Storage Bucket
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/storage/buckets/1" \
+curl -XPUT "<%= curl_url %>/api/storage-buckets/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -247,7 +256,7 @@ curl -XPUT "<%= curl_url %>/api/storage/buckets/1" \
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/storage/buckets/1`
+`PUT <%= api_url %>/api/storage-buckets/1`
 
 ### JSON Parameters
 
@@ -256,7 +265,7 @@ See [Create](#create-a-storage-bucket).
 ## Delete a Storage Bucket
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/storage/buckets/1" \
+curl -XDELETE "<%= curl_url %>/api/storage-buckets/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -272,7 +281,7 @@ Will delete a storage bucket from the system and make it no longer usable.
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/storage/buckets/:id`
+`DELETE <%= api_url %>/api/storage-buckets/:id`
 
 ### URL Parameters
 

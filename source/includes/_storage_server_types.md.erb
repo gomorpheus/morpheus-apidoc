@@ -269,9 +269,13 @@ This endpoint retrieves all Storage Server Types. The sample response has been a
 
 Parameter | Default | Description
 --------- | ------- | -----------
+max | 25 | Max number of results to return
+offset | 0 | Offset of records you want to load
+sort | name | Sort order
+direction | asc | Sort direction, use 'desc' to reverse sort
+phrase |  | If specified will return a partial match on name or code or description
 name |  | If specified will return an exact match on name or code
 code |  | If specified will return an exact match on code
-phrase |  | If specified will return a partial match on name or code or description
 
 ## Get a Specific Storage Server Type
 
