@@ -13,7 +13,7 @@ curl "<%= curl_url %>/api/load-balancer-virtual-servers"
 
 ```json
 {
-  "virtualServers": [
+  "loadBalancerInstances": [
     {
       "id": 5,
       "loadBalancer": {
@@ -216,7 +216,7 @@ curl "<%= curl_url %>/api/load-balancer-virtual-servers/1" \
 ```json
 {
   "success": true,
-  "virtualServer": {
+  "loadBalancerInstance": {
     "id": 1,
     "loadBalancer": {
       "id": 2,
@@ -292,7 +292,7 @@ curl -XPOST "<%= curl_url %>/api/load-balancers/1/virtual-servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-  "virtualServer": {
+  "loadBalancerInstance": {
     "vipName": "test virtual server",
     "description": "a test virtual server",
     "vipAddress": "10.11.12.13",
@@ -340,7 +340,7 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-  "virtualServer": {
+  "loadBalancerInstance": {
     "description": "new description"
   }
 }'
