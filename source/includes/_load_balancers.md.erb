@@ -181,6 +181,8 @@ ID | The ID of the Load Balancer to retrieve
 
 ## Create a Load Balancer
 
+**_Available for NSX-T load balancers only_**
+
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -235,6 +237,8 @@ resourcePermissions.sites  |         | Array of groups that are allowed access
 This endpoint allows creating a Load Balancer.  Only certain types of clouds support creating and deleting load balancers. Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Update a Load Balancer
+
+**_Available for NSX-T load balancers only_**
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/1" \
