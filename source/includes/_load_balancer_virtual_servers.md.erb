@@ -2,10 +2,10 @@
 
 Provides API for managing Load Balancer Virtual Servers.
 
-## Get All Load Balancer Virtual Servers
+## Get All Load Balancer Virtual Servers For Load Balancer
 
 ```shell
-curl "<%= curl_url %>/api/load-balancer-virtual-servers"
+curl "<%= curl_url %>/api/load-balancers/1/virtual-servers"
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -183,11 +183,11 @@ curl "<%= curl_url %>/api/load-balancer-virtual-servers"
 }
 ```
 
-This endpoint retrieves all load balancer virtual servers associated with the account.
+This endpoint retrieves load balancer virtual servers associated with a specified load balancer.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/load-balancer-virtual-servers`
+`GET <%= api_url %>/api/load-balancers/:loadBalancerId/virtual-servers`
 
 ### Query Parameters
 
@@ -202,12 +202,12 @@ vipName |  | If specified will return an exact match on vipName
 name |  | Alias for vipName
 vipAddress |  | If specified will return an exact match on vipAddress
 vipHostname |  | If specified will return an exact match on vipHostname
-loadBalancerId |  | Filter by [Load Balancer](#load-balancers) ID
+
 
 ## Get a Specific Load Balancer Virtual Server
 
 ```shell
-curl "<%= curl_url %>/api/load-balancer-virtual-servers/1" \
+curl "<%= curl_url %>/api/load-balancers/1/virtual-servers/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -276,16 +276,19 @@ This endpoint retrieves a specific Load Balancer Virtual Server.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/load-balancer-virtual-servers/:id`
+`GET <%= api_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:id`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the Load Balancer Virtual Server to retrieve
+loadBalancerId | The ID of the Load Balancer
+id | The ID of the Load Balancer Virtual Server to retrieve
 
 
 ## Create a Load Balancer Virtual Server
+
+Use this command to create a load balancer virtual server.
 
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/1/virtual-servers" \
@@ -335,6 +338,8 @@ This endpoint allows creating a Load Balancer Virtual Server. Configuration opti
 
 ## Update a Load Balancer Virtual Server
 
+Use this command to update an exiting load balancer virtual server.
+
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -357,7 +362,7 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:
 Parameter | Description
 --------- | -----------
 loadBalancerId | The ID of the Load Balancer
-ID | The ID of the Load Balancer Virtual Server
+id | The ID of the Load Balancer Virtual Server
 
 ### JSON Parameters
 
@@ -374,9 +379,11 @@ sslCert      |  | SSL Client Certificate ID
 sslServerCert      |  | SSL Server Certificate ID
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 
-This endpoint allows updating a Load Balancer.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
+This endpoint allows updating a Load Balancer Virtual Server.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Virtual Server
+
+Use this command to delete a load balancer monitor.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:id" \
@@ -391,7 +398,7 @@ curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-server
 }
 ```
 
-Will delete a Load Balancer from the system and make it no longer usable.
+Will delete a Load Balancer Virtual Server from the system and make it no longer usable.
 
 ### HTTP Request
 
@@ -402,5 +409,5 @@ Will delete a Load Balancer from the system and make it no longer usable.
 Parameter | Description
 --------- | -----------
 loadBalancerId | The ID of the Load Balancer
-ID | The ID of the Load Balancer Virtual Server
+id | The ID of the Load Balancer Virtual Server
 

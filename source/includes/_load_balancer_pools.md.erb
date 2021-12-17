@@ -2,7 +2,9 @@
 
 Provides API for managing Load Balancer Pools.
 
-## Get All Load Balancer Pools
+## Get All Load Balancer Pools For Load Balancer
+
+This endpoint retrieves a list of load balancer pools for the specified load balancer.
 
 ```shell
 curl "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools"
@@ -296,11 +298,11 @@ curl "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools"
 }
 ```
 
-This endpoint retrieves all load balancer pools associated with the account.
+This endpoint retrieves all load balancer pools associated with a specified load balancer.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/load-balancer/:loadBalancerId/pools`
+`GET <%= api_url %>/api/load-balancers/:loadBalancerId/pools`
 
 ### URL Parameters
 
@@ -322,7 +324,7 @@ phrase |  | If specified will return a partial match on name or description
 ## Get a Specific Load Balancer Pool
 
 ```shell
-curl "<%= curl_url %>/api/load-balancer/80/pools/63" \
+curl "<%= curl_url %>/api/load-balancers/80/pools/63" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -427,6 +429,8 @@ ID | The ID of the Load Balancer Pool to retrieve
 
 ## Create a Load Balancer Pool
 
+Use this command to create a load balancer pool.
+
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -472,6 +476,8 @@ This endpoint allows creating a Load Balancer Pool. Configuration options vary b
 
 ## Update a Load Balancer Pool
 
+Use this command to update an existing load balancer pool.
+
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -506,9 +512,11 @@ vipBalance      |  | Balance Algorithm
 minActive      |  | Min Active Members
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 
-This endpoint allows updating a Load Balancer.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
+This endpoint allows updating a Load Balancer Pool.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Pool
+
+Use this command to delete a load balancer pool.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools/:id" \
@@ -523,7 +531,7 @@ curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/pools/:id" \
 }
 ```
 
-Will delete a Load Balancer from the system and make it no longer usable.
+Will delete a Load Balancer Pool from the system and make it no longer usable.
 
 ### HTTP Request
 

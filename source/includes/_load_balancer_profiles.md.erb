@@ -2,7 +2,7 @@
 
 Provides API for managing Load Balancer Profiles.
 
-## Get All Load Balancer Profiles
+## Get All Load Balancer Profiles For Load Balancer
 
 ```shell
 curl "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles"
@@ -127,11 +127,11 @@ curl "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles"
 }
 ```
 
-This endpoint retrieves all load balancer profiles associated with the account.
+This endpoint retrieves all load balancer profiles associated with a specified load balancer.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/load-balancer/:loadBalancerId/profiles`
+`GET <%= api_url %>/api/load-balancers/:loadBalancerId/profiles`
 
 ### URL Parameters
 
@@ -153,7 +153,7 @@ phrase |  | If specified will return a partial match on name or description
 ## Get a Specific Load Balancer Profile
 
 ```shell
-curl "<%= curl_url %>/api/load-balancer/80/profiles/63" \
+curl "<%= curl_url %>/api/load-balancers/80/profiles/63" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -230,6 +230,8 @@ ID | The ID of the Load Balancer Profile to retrieve
 
 ## Create a Load Balancer Profile
 
+Use this command to create a load balancer profile.
+
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -265,12 +267,13 @@ Parameter | Default | Description
 name      |  | Name
 description      |  | Description
 serviceType      |  | Service Type
-minActive      |  | Min Active Members
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 
 This endpoint allows creating a Load Balancer Profile. Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Update a Load Balancer Profile
+
+Use this command to update an existing load balancer profile.
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" \
@@ -302,13 +305,13 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name
 description      |  | Description
-vipBalance      |  | Balance Algorithm
-minActive      |  | Min Active Members
 config |  | Configuration object with parameters that vary by [type](#load-balancer-types).
 
-This endpoint allows updating a Load Balancer.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
+This endpoint allows updating a Load Balancer Profile.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Profile
+
+Use this command to delete a load balancer profile.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" \
@@ -323,7 +326,7 @@ curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" 
 }
 ```
 
-Will delete a Load Balancer from the system and make it no longer usable.
+Will delete a Load Balancer Profile from the system and make it no longer usable.
 
 ### HTTP Request
 
