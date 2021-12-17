@@ -115,7 +115,6 @@ phrase |  | If specified will return a partial match on name
 
 ## Get a Specific Load Balancer
 
-
 ```shell
 curl "<%= curl_url %>/api/load-balancers/1" \
   -H "Authorization: BEARER <%= curl_token %>"
@@ -181,8 +180,6 @@ ID | The ID of the Load Balancer to retrieve
 
 ## Create a Load Balancer
 
-**_Available for NSX-T load balancers only_**
-
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -216,6 +213,10 @@ curl -XPOST "<%= curl_url %>/api/load-balancers" \
 
 > The above command returns JSON structured like getting a single Load Balancer: 
 
+**_Available for NSX-T load balancers only_**
+
+Use this command to create a load balancer.
+
 ### HTTP Request
 
 `POST <%= api_url %>/api/load-balancers`
@@ -238,8 +239,6 @@ This endpoint allows creating a Load Balancer.  Only certain types of clouds sup
 
 ## Update a Load Balancer
 
-**_Available for NSX-T load balancers only_**
-
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -252,6 +251,10 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/1" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer: 
+
+**_Available for NSX-T load balancers only_**
+
+Use this command to update an existing load balancer.
 
 ### HTTP Request
 

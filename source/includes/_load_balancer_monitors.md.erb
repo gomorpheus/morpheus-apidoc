@@ -231,8 +231,6 @@ ID | The ID of the Load Balancer Monitor to retrieve
 
 ## Create a Load Balancer Monitor
 
-Use this command to create a load balancer monitor.
-
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/monitors" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -248,6 +246,8 @@ curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/monitors" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Monitor
+
+Use this command to create a load balancer monitor.
 
 ### HTTP Request
 
@@ -271,8 +271,6 @@ This endpoint allows creating a Load Balancer Monitor. Configuration options var
 
 ## Update a Load Balancer Monitor
 
-Use this command to update an existing load balancer monitor.
-
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/monitors/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -285,6 +283,8 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/monitors/:id" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Monitor: 
+
+Use this command to update an existing load balancer monitor.
 
 ### HTTP Request
 
@@ -308,8 +308,6 @@ config |  | Configuration object with parameters that vary by [type](#load-balan
 This endpoint allows updating a Load Balancer Monitor.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Monitor
-
-Use this command to delete a load balancer monitor.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/monitors/:id" \

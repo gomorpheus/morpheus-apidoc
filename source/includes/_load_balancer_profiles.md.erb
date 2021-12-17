@@ -230,8 +230,6 @@ ID | The ID of the Load Balancer Profile to retrieve
 
 ## Create a Load Balancer Profile
 
-Use this command to create a load balancer profile.
-
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -249,6 +247,8 @@ curl -XPOST "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Profile: 
+
+Use this command to create a load balancer profile.
 
 ### HTTP Request
 
@@ -273,8 +273,6 @@ This endpoint allows creating a Load Balancer Profile. Configuration options var
 
 ## Update a Load Balancer Profile
 
-Use this command to update an existing load balancer profile.
-
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -287,6 +285,8 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Profile: 
+
+Use this command to update an existing load balancer profile.
 
 ### HTTP Request
 
@@ -310,8 +310,6 @@ config |  | Configuration object with parameters that vary by [type](#load-balan
 This endpoint allows updating a Load Balancer Profile.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Profile
-
-Use this command to delete a load balancer profile.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/profiles/:id" \

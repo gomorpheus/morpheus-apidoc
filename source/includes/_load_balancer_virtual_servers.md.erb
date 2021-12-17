@@ -288,8 +288,6 @@ id | The ID of the Load Balancer Virtual Server to retrieve
 
 ## Create a Load Balancer Virtual Server
 
-Use this command to create a load balancer virtual server.
-
 ```shell
 curl -XPOST "<%= curl_url %>/api/load-balancers/1/virtual-servers" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -308,6 +306,8 @@ curl -XPOST "<%= curl_url %>/api/load-balancers/1/virtual-servers" \
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Virtual Server: 
+
+Use this command to create a load balancer virtual server.
 
 ### HTTP Request
 
@@ -338,8 +338,6 @@ This endpoint allows creating a Load Balancer Virtual Server. Configuration opti
 
 ## Update a Load Balancer Virtual Server
 
-Use this command to update an exiting load balancer virtual server.
-
 ```shell
 curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
@@ -352,6 +350,8 @@ curl -XPUT "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:
 ```
 
 > The above command returns JSON structured like getting a single Load Balancer Virtual Server: 
+
+Use this command to update an exiting load balancer virtual server.
 
 ### HTTP Request
 
@@ -382,8 +382,6 @@ config |  | Configuration object with parameters that vary by [type](#load-balan
 This endpoint allows updating a Load Balancer Virtual Server.  Configuration options vary by [Load Balancer Type](#load-balancer-types).
 
 ## Delete a Load Balancer Virtual Server
-
-Use this command to delete a load balancer monitor.
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/load-balancers/:loadBalancerId/virtual-servers/:id" \
