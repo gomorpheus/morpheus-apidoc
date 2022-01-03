@@ -62,8 +62,10 @@ typeCode |  | Filter by source type
 objectId |  | Filter by objectId
 token |  | Filter by token
 level |  | Filter by log level. `DEBUG`, `INFO`, `ERROR`. Multiple values can be passed pipe delimited. Example: `WARN|ERROR`
-startMs |  | Date filter, restricts query to only load logs updated more recently than the date specified.
-endMs |  | Date filter, restricts query to only load logs updated before the date specified.
+startMs |  | Date filter in milliseconds (unix epoch), restricts query to only load logs updated more recently than the time specified.
+endMs |  | Date filter in milliseconds (unix epoch), restricts query to only load logs updated before the time specified.
+startDateTime | | Date filter in dateTime format yyyy-mm-ddTHH:mm:ssZ eg: `2023-01-02T13:24:00+03:00`, restricts query to only load logs updated more recently than the date specified.
+endDateTime | | Date filter in dateTime format yyyy-mm-ddTHH:mm:ssZ eg: `2023-06-30T02:24:00-01:00`, restricts query to only load logs updated before the date specified.
 containers |  | Filter by Container ID. Accepts multiple values.
 servers |  | Filter by Server ID. Accepts multiple values.
 clusterId |  | Filter by Cluster ID
