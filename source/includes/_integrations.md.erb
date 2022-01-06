@@ -553,7 +553,7 @@ username |  | Filter by integration Username
 version |  | Filter by integration Version
 windowsVersion |  | Filter by integration Windows Version
 status |  | Filter by integration status
-objects | false | Include `objects=true` to return the [Integration Objects](#list-integration-objects) for each integration. Available in api version 5.2.8/5.3.2.
+objects | false | Include `objects=true` to return the [Integration Objects](#list-servicenow-integration-objects) for each integration. Available in api version 5.2.8/5.3.2.
 
 ## Get a Specific Integration
 
@@ -616,7 +616,7 @@ id | ID of the Integration
 
 Parameter | Default | Description
 --------- | ------- | -----------
-objects | false | Include `objects=true` to return the [Integration Objects](#list-integration-objects) for the integration. Available in api version 5.2.8/5.3.2.
+objects | false | Include `objects=true` to return the [Integration Objects](#list-servicenow-integration-objects) for the integration. Available in api version 5.2.8/5.3.2.
 
 ## Create an Integration
 
@@ -948,7 +948,7 @@ curl -XPOST "<%= curl_url %>/api/integrations" \
 }
 ```
 
-This example creates a new ServiceNow integration. See [Integration Objects](#list-integration-objects) for configuring the Exposed Clouds, etc.
+This example creates a new ServiceNow integration. See [Integration Objects](#list-servicenow-integration-objects) for configuring an Exposed Catalog Item.
 
 ### HTTP Request
 
@@ -977,128 +977,6 @@ curl "<%= curl_url %>/api/integrations/:integration_id/objects" \
 ```json
 {
   "objects": [
-    {
-      "id": 1,
-      "name": "Dev AWS",
-      "type": "cloud",
-      "refType": "ComputeZone",
-      "refId": 39,
-      "cloud": {
-        "id": 39,
-        "name": "Dev AWS",
-        "zoneType": {
-          "id": 3,
-          "code": "amazon",
-          "name": "Amazon"
-        }
-      },
-      "group": {
-        "id": 1,
-        "name": "Dev AWS"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Amazon NGINX",
-      "type": "layout",
-      "refType": "InstanceTypeLayout",
-      "refId": 183,
-      "layout": {
-        "id": 183,
-        "name": "Amazon NGINX",
-        "code": "nginx-amazon-1.9",
-        "provisionType": {
-          "id": 10,
-          "name": "Amazon",
-          "code": "amazon"
-        },
-        "instanceType": {
-          "id": 37,
-          "name": "Nginx",
-          "code": "nginx"
-        },
-        "instanceVersion": "1.9"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Dev Nginx",
-      "type": "blueprint",
-      "refType": "AppTemplate",
-      "refId": 146,
-      "blueprint": {
-        "id": 146,
-        "name": "Dev Nginx",
-        "type": "morpheus"
-      },
-      "group": {
-        "id": 1,
-        "name": "Dev AWS"
-      },
-      "defaultCloud": {
-        "id": 39,
-        "name": "Dev AWS"
-      },
-      "config": {
-        "tiers": {
-          "Web": {
-            "tierIndex": 1,
-            "instances": [
-              {
-                "instance": {
-                  "type": "nginx"
-                },
-                "groups": {
-                  "Dev": {
-                    "clouds": {
-                      "Dev AWS": {
-                        "instance": {
-                          "layout": {
-                            "provisionTypeCode": "amazon",
-                            "code": "nginx-amazon-1.9",
-                            "instanceVersion": "1.9",
-                            "name": "Amazon NGINX",
-                            "id": 183
-                          },
-                          "name": "${userInitials}-dev-nginx-${sequence}",
-                          "type": "nginx"
-                        },
-                        "networkInterfaces": [
-                          {
-                            "network": {
-                              "id": "network-360"
-                            }
-                          }
-                        ],
-                        "volumes": [
-                          {
-                            "size": 10,
-                            "name": "data",
-                            "rootVolume": true,
-                            "storageType": 5
-                          }
-                        ],
-                        "plan": {
-                          "code": "amazon-t2.nano",
-                          "id": 1
-                        },
-                        "config": {
-                          "resourcePoolId": 175,
-                          "createUser": true
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        "templateName": "Dev Nginx",
-        "name": "Dev Nginx",
-        "id": 146
-      }
-    },
     {
       "id": 4,
       "name": "Dev Apache",
@@ -1159,23 +1037,14 @@ curl "<%= curl_url %>/api/integrations/:integration_id/objects/:id" \
 {
   "success": true,
   "object": {
-    "id": 1,
-    "name": "qa-amazon2",
-    "type": "cloud",
-    "refType": "ComputeZone",
-    "refId": 39,
-    "cloud": {
-      "id": 39,
-      "name": "qa-amazon2",
-      "zoneType": {
-        "id": 3,
-        "code": "amazon",
-        "name": "Amazon"
-      }
-    },
-    "group": {
-      "id": 1,
-      "name": "thegroup"
+    "id": 4,
+    "name": "Dev Apache",
+    "type": "catalog",
+    "refType": "CatalogItemType",
+    "refId": 27,
+    "catalogItemType": {
+      "id": 27,
+      "name": "Dev Apache"
     }
   }
 }
