@@ -2621,6 +2621,123 @@ Parameter   | Default | Description
 ---------   | ------- | -----------
 storageProviderId       | null    | Optional storage provider to use.
 
+
+## Revert Instance to Snapshot
+
+```shell
+curl -X PUT "<%= api_url %>/api/instances/1/revert-snapshot/1835" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to restore an Instance to a snapshot.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/revert-snapshot/:snapshotId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+:snapshotId | ID of the snapshot
+
+
+## Delete Snapshot of Instance
+
+```shell
+curl -X DELETE "<%= api_url %>/api/snapshots/1835" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Delete snapshot of instance.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/snapshots/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the snapshot
+
+## Delete All Snapshots of Instance Container
+
+```shell
+curl -X DELETE "<%= api_url %>/api/instances/54/deleteall-snapshots" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Delete All Snapshots attached to Instance.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/instances/:containerId/deleteall-snapshots`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:containerId | ID of the instance container
+
+## Create Linked Clone of Instance Snapshot
+
+```shell
+curl -X PUT "<%= api_url %>/api/instances/1/linked-clone/1835" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+It is possible to create a linked clone of an Instance Snapshot.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/linked-clone/:snapshotId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the instance
+:snapshotId | ID of the snapshot
+
+
 ## Clone to Image
 
 ```shell
