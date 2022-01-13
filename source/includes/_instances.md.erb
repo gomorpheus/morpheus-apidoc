@@ -2683,7 +2683,36 @@ Parameter | Description
 ## Delete All Snapshots of Instance Container
 
 ```shell
-curl -X DELETE "<%= api_url %>/api/instances/54/deleteall-snapshots" \
+curl -X DELETE "<%= api_url %>/api/instances/54/delete-container-snapshots/403" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Delete All Snapshots attached to Instance Container.
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/instances/:id/delete-container-snapshots/:containerId`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of instance
+:containerId | ID of the instance container
+
+## Delete All Snapshots of Instance
+
+```shell
+curl -X DELETE "<%= api_url %>/api/instances/54/delete-all-snapshots" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json"
 ```
@@ -2700,13 +2729,13 @@ Delete All Snapshots attached to Instance.
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/instances/:containerId/deleteall-snapshots`
+`DELETE <%= api_url %>/api/instances/:id/delete-all-snapshots`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-:containerId | ID of the instance container
+:id | ID of the instance
 
 ## Create Linked Clone of Instance Snapshot
 
