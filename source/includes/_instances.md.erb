@@ -2543,6 +2543,54 @@ Parameter | Description
 --------- | -----------
 :id | ID of the instance
 
+
+## Get a Specific Snapshot
+
+
+```shell
+curl "<%= curl_url %>/api/snapshots/1216" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "snapshot": {
+        "id": 59,
+        "name": "auto-apache-114-2022-01-14T12:57:17.981Z",
+        "description": null,
+        "externalId": "snapshot-56466",
+        "status": "complete",
+        "state": null,
+        "snapshotType": "vm",
+        "snapshotCreated": "2022-01-14T12:57:38Z",
+        "zone": {
+            "id": 2,
+            "name": "ld-vmware"
+        },
+        "datastore": null,
+        "parentSnapshot": null,
+        "currentlyActive": true,
+        "dateCreated": "2022-01-14T12:57:20Z"
+    }
+}
+```
+
+This endpoint retrieves a specific snapshot.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/snapshots/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | ID of the snapshot
+
+
+
 ## Snapshot an Instance
 
 ```shell
