@@ -34,7 +34,8 @@ curl "<%= curl_url %>/api/integrations" \
           "ansibleHostVars": "/hosts",
           "ansibleCommandBus": "on",
           "ansibleVerbose": "on",
-          "ansibleGalaxyEnabled": null
+          "ansibleGalaxyEnabled": null,
+          "cacheEnabled": true
         }
       },
       "status": "ok",
@@ -62,7 +63,8 @@ curl "<%= curl_url %>/api/integrations" \
       "serviceMode": "static",
       "isPlugin": false,
       "config": {
-        "defaultBranch": ""
+        "defaultBranch": "",
+        "cacheEnabled": true
       },
       "status": "ok",
       "statusDate": "2021-03-19T20:09:30Z",
@@ -588,7 +590,8 @@ curl "<%= curl_url %>/api/integrations/2" \
     "serviceMode": "static",
     "isPlugin": false,
     "config": {
-      "defaultBranch": "mybranch"
+      "defaultBranch": "mybranch",
+      "cacheEnabled": true
     },
     "status": "ok",
     "statusDate": null,
