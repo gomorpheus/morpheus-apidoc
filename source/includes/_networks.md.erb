@@ -17,6 +17,7 @@ curl "<%= curl_url %>/api/networks"
     {
       "id": 1,
       "name": "my-network",
+      "displayName": "my-displayName",
       "zone": {
         "id": 5,
         "name": "qa-azure"
@@ -131,6 +132,7 @@ curl "<%= curl_url %>/api/networks/1" \
   "network": {
     "id": 1,
     "name": "my-network",
+    "displayName" : "network display name",
     "zone": {
       "id": 31,
       "name": "qa-azure"
@@ -233,6 +235,7 @@ curl -XPOST "<%= curl_url %>/api/networks" \
   -d '{
   "network": {
     "name": "test network",
+    "displayName": "Network Display Name",
     "description": "a test network",
     "zone": {
       "id": 31
@@ -283,6 +286,7 @@ curl -XPOST "<%= curl_url %>/api/networks" \
 Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Name
+displayName | | Display Name
 description      |  | Description
 zone.id      |  | Cloud ID
 type.id      |  | Network Type ID
@@ -344,6 +348,8 @@ ID | The ID of the Network
 
 Parameter | Default | Description
 --------- | ------- | -----------
+name      |  | Updates Display Name 
+displayName | | Display Name
 description      |  | Description
 dhcpServer      |  | DHCP Server
 allowStaticOverride      |  | Allow IP Override
