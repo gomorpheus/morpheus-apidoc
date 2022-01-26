@@ -2821,7 +2821,7 @@ Parameter | Description
 curl -X PUT "<%= api_url %>/api/instances/1/clone-image" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
-  -d '{ "templateName": "Example Image" }'
+  -d '{ "templateName": "Example Image", "zoneFolder": "group-v81" }'
 ```
 
 > The above command returns JSON structure like this:
@@ -2849,6 +2849,7 @@ Parameter | Description
 Parameter   | Default | Description
 ---------   | ------- | -----------
 templateName |    | Image Template Name. Default is server name + timestamp.
+zoneFolder |    | Zone Folder externalId. *This is required for VMware*
 
 
 ## Lock an Instance
