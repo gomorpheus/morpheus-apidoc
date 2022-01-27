@@ -37,7 +37,7 @@ If you choose not to connect to the hub, you will need to install a license key 
 
 Some community builds of the <%= application_name %> appliance will come with a pre-installed license, so you can skip the license install step.
 
-The [Ping](#ping) api can be used to check if setup is needed or not, it returns a boolean flag called `setupNeeded`.
+The [Ping](#ping) api can be used to check if setup is needed or not, it returns a boolean flag called `setupNeeded` when the appliance is a fresh install and still needs to be setup.
 
 <aside class="info">
 This api can only be used successfully one time. Subsequent attempts will return an HTTP 400 error indicating the appliance is already setup.
