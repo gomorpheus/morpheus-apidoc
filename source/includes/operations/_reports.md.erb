@@ -126,6 +126,7 @@ curl "<%= curl_url %>/api/reports" \
         "id": 1,
         "username": "root"
       }
+    },
     {
       "id": 1,
       "type": {
@@ -243,7 +244,7 @@ curl "<%= curl_url %>/api/reports/2" \
 }
 ```
 
-This endpoint retrieves a specific report result. The response includes the result data as `rows` which can be used to render the report.
+This endpoint retrieves a specific report result. The response includes the result data as `rows` which can be used to render the report.  Each report type will have sections for `data` and `headers` that vary by type, use [Download a Specific Report](#download-a-specific-report) to get the results organized by section.
 
 ### HTTP Request
 
@@ -258,11 +259,80 @@ id | ID of the report result
 ## Download a Specific Report
 
 ```shell
-curl "<%= curl_url %>/api/reports/download/2" \
+curl "<%= curl_url %>/api/reports/download/3" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
-> The above command returns `Content-Type: "application/octet-stream"` and `Content-disposition: attachment;filename=reportTitle.json`.
+> The above command returns `Content-Type: "application/octet-stream"` and `Content-disposition: attachment;filename=reportTitle.json`. The body contains JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "name": "dev-amazon",
+      "cost": 7.199999999999999,
+      "price": 7.199999999999999,
+      "currency": "USD",
+      "deleted": false,
+      "hostCount": 0,
+      "instanceCount": 2,
+      "discoveredCount": 2
+    },
+    {
+      "name": "dev-azure",
+      "cost": 4775.508356680239,
+      "price": 4775.508356680239,
+      "currency": "USD",
+      "deleted": false,
+      "hostCount": 126,
+      "instanceCount": 0,
+      "discoveredCount": 1
+    },
+  ],
+  "headers": [
+    {
+      "code": "totalCost",
+      "name": "Total Cost",
+      "value": 4782.7083566802385,
+      "displayOrder": 4,
+      "currency": "USD"
+    },
+    {
+      "code": "instanceCount",
+      "name": "Instances",
+      "value": 5,
+      "displayOrder": 2
+    },
+    {
+      "code": "count",
+      "name": "Clouds",
+      "value": 2,
+      "displayOrder": 0
+    },
+    {
+      "code": "discoveredCount",
+      "name": "Discovered VMs",
+      "value": 13,
+      "displayOrder": 3
+    },
+    {
+      "code": "hostCount",
+      "name": "Nodes",
+      "value": 127,
+      "displayOrder": 2
+    }
+  ],
+  "footers": [
+
+  ],
+  "reportType": "Cloud Cost",
+  "reportTypeId": 5,
+  "resultId": 146,
+  "reportDate": "2021-08-26T16:59:45Z",
+  "createdBy": "admin",
+  "createdById": 1
+}
+```
 
 This endpoint downloads a specific report result as a file attachment. The default file format is `json`.
 
