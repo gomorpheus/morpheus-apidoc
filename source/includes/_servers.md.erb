@@ -732,13 +732,26 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 curl -XPUT "<%= curl_url %>/api/servers/1/make-managed" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
-  -d '{ "server": {
-  "sshUsername": "admin",
-  "sshPassword": "93KL_&Tdst!e",
-  "serverOs": {"id": 1},
-  "plan": {"id": 9},
-  "account": {"id": 1}
-  }, "installAgent": true}'
+  -d '{
+    "server": {
+      "sshUsername": "admin",
+      "sshPassword": "93KL_&Tdst!e",
+      "serverOs": {"id": 1},
+      "plan": {"id": 9},
+      "account": {"id": 1},
+      "tags": [
+        {"name": "hello", "value": "world"},
+        {"name": "flash", "value": "bang"}
+      ],
+      "config": {
+        "customOptions": {
+          "dbfoldername": "data"
+        }
+      }
+    }, 
+    "installAgent": true
+  }
+'
 ```
 
 > The above command returns JSON structure like this:
@@ -775,6 +788,8 @@ account.id |  | Tenant to assign the server to. Only available to Master Tenant 
 provisionSiteId |  | Specific group to assign the server
 instanceTypeId |  | Specific instance type ID to assign the server
 layout |  | Specific layout ID to assign the server *(required if instanceTypeId is passed)*
+tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
+config.customOptions  |  | Custom Option Type settings object containing name value pairs to be set.
 
 ## Upgrade Agent
 

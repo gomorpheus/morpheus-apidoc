@@ -2129,16 +2129,23 @@ There can be additional properties to apply to the instance. For example mysql p
 curl -X PUT "<%= api_url %>/api/instances/1" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
-  -d '{ "instance": {
-  "description": "my new redis",
-  "addTags": [
-    {"name": "hello", "value": "world"},
-    {"name": "flash", "value": "bang"}
-  ],
-  "removeTags": [
-    {"name": "oldTag"}
-  ]
-  }}'
+  -d '{
+    "instance": {
+      "description": "my new redis",
+        "addTags": [
+          {"name": "hello", "value": "world"},
+          {"name": "flash", "value": "bang"}
+        ],
+        "removeTags": [
+          {"name": "oldTag"}
+        ]
+    },
+    "config": {
+      "customOptions": {
+        "dbfoldername": "data"
+      }
+    }
+  }'
 ```
 
 > The above command returns a similar JSON structure when submitting a GET request for a single instance
@@ -2167,6 +2174,7 @@ removeTags |  | Remove Metadata tags, Array of objects having a name and an opti
 powerScheduleType |  | Power Schedule ID
 site.id |  | Group ID
 ownerId  |  | [User](#users) ID, can be used to change instance owner.
+config.customOptions  |  | Custom Option Type settings object containing name value pairs to be updated.
 
 ## Stop an Instance
 
