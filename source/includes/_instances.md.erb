@@ -362,7 +362,10 @@ curl "<%= curl_url %>/api/instances/1216" \
           "id": "sg-21dd8144"
         }
       ],
-      "customOptions": null,
+      "customOptions": {
+        "isPrimary": "on",
+        "inventoryName": "DB12"
+      },
       "createBackup": true,
       "backup": {
         "createBackup": true,
@@ -419,6 +422,8 @@ curl "<%= curl_url %>/api/instances/1216" \
       }
     ],
     "customOptions": {
+      "isPrimary": "on",
+      "inventoryName": "DB12"
     },
     "instanceVersion": "2.4",
     "labels": [
