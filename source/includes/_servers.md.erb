@@ -837,6 +837,11 @@ curl -XPUT "<%= curl_url %>/api/servers/1/resize" \
       }
     ],
     "deleteOriginalVolumes": true,
+    "servicePlanOptions": {
+      "maxCores": 1,
+      "coresPerSocket": 1,
+      "maxMemory": 536870912
+    },
     "networkInterfaces": [
       {
         "id": 612,
@@ -875,6 +880,10 @@ Will resize a host asynchronously. This endpoint also allows for NIC reconfigura
 Parameter | Default | Description
 --------- | ------- | -----------
 server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](#get-available-service-plans-for-a-server)
+servicePlanOptions |  | Map of custom options depending on selected service plan.
+servicePlanOptions.maxCores |  | Core Count
+servicePlanOptions.coresPerSocket |  | Cores Per Socket
+servicePlanOptions.maxMemory |  | Memory in bytes **For backwards compatability, values less than 1048576 are treated as being in MB and will be converted to bytes**
 volumes |  | List of volumes with their new sizes, see [Volumes](#volumes).
 deleteOriginalVolumes | false | Delete the original volumes after resizing. (Amazon only)
 networkInterfaces |  | Key for network configuration, see [Network Interfaces](#network-interfaces). Include `id` to update an existing interface.

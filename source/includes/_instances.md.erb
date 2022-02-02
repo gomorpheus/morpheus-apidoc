@@ -534,6 +534,7 @@ curl "<%= curl_url %>/api/instances/1216" \
     "maxMemory": 536870912,
     "maxStorage": 10737418240,
     "maxCores": 1,
+    "coresPerSocket": 1,
     "maxCpu": 1,
     "hourlyCost": 0.0086816667,
     "hourlyPrice": 0.0086816667,
@@ -710,6 +711,7 @@ curl "<%= curl_url %>/api/instances/1216" \
           "lastAgentUpdate": "2021-06-22T18:06:32Z",
           "agentVersion": "2.0.0",
           "maxCores": 1,
+          "coresPerSocket": 1,
           "maxMemory": 536870912,
           "maxStorage": 10737418240,
           "maxCpu": null,
@@ -907,6 +909,7 @@ curl "<%= curl_url %>/api/instances/1216" \
         "maxStorage": 10737418240,
         "maxMemory": 536870912,
         "maxCores": 1,
+        "coresPerSocket": 1,
         "maxCpu": 1,
         "hourlyCost": 0.0086816667,
         "hourlyPrice": 0.0086816667
@@ -1364,6 +1367,7 @@ curl "<%= curl_url %>/api/instances/1216/containers" \
       "maxStorage": 10737418240,
       "maxMemory": 1073741824,
       "maxCores": 1,
+      "coresPerSocket": 1,
       "maxCpu": 1,
       "availableActions": [
         {
@@ -1966,6 +1970,11 @@ curl -X POST "<%= api_url %>/api/instances" \
       "datastoreId": "auto"
     }
   ],
+  "servicePlanOptions": {
+    "maxCores": 1,
+    "coresPerSocket": 1,
+    "maxMemory": 536870912
+  },
   "networkInterfaces": [
     {
       "network": {
@@ -2017,7 +2026,10 @@ zoneId | Y |  | The Cloud ID to provision the instance onto
 evars | N | [] | Environment Variables, an array of objects that have name and value.
 copies | N | 1 | Number of copies to provision
 layoutSize | N | 1 | Apply a multiply factor of containers/vms within the instance
-servicePlanOptions | N |  | Map of custom options depending on selected service plan . An example would be `maxMemory`, or `maxCores`.
+servicePlanOptions | N |  | Map of custom options depending on selected service plan.
+servicePlanOptions.maxCores | N |  | Core Count
+servicePlanOptions.coresPerSocket | N |  | Cores Per Socket
+servicePlanOptions.maxMemory | N |  | Memory in bytes **For backwards compatability, values less than 1048576 are treated as being in MB and will be converted to bytes**
 securityGroups | N |  | Key for security group configuration. It should be passed as an array of objects containing the id of the security group to assign the instance to
 volumes | N |  | Key for volume configuration, see [Volumes](#volumes)
 networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces)
@@ -2341,6 +2353,11 @@ curl -X PUT "<%= api_url %>/api/instances/1/resize" \
     }
   ],
   "deleteOriginalVolumes": true,
+  "servicePlanOptions": {
+    "maxCores": 1,
+    "coresPerSocket": 1,
+    "maxMemory": 536870912
+  },
   "networkInterfaces": [
     {
       "id": 534,
@@ -2383,7 +2400,11 @@ Parameter | Description
 
 Parameter   | Required | Default | Description
 ---------   | -------- | ------- | -----------
-instance.plan.id | no | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
+instance.plan.id | N | null    | The map containing the id of the service plan you wish to apply to the containers in this instance
+servicePlanOptions | N |  | Map of custom options depending on selected service plan.
+servicePlanOptions.maxCores | N |  | Core Count
+servicePlanOptions.coresPerSocket | N |  | Cores Per Socket
+servicePlanOptions.maxMemory | N |  | Memory in bytes **For backwards compatability, values less than 1048576 are treated as being in MB and will be converted to bytes**
 volumes | no | defaults to plan config | Can be used to grow just the logical volume of the instance instead of choosing a plan, see [Volumes](#volumes).
 deleteOriginalVolumes | no | false | Delete the original volumes after resizing. (Amazon only)
 networkInterfaces | N |  | Key for network configuration, see [Network Interfaces](#network-interfaces). Include `id` to update an existing interface. The existing interfaces and their `id` can be retrieved with the [hosts](#get-a-specific-host) API.
