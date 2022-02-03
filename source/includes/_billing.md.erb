@@ -16,6 +16,7 @@ curl "<%= curl_url %>/api/billing/account" \
   "success": true,
   "billingInfo": {
     "accountId": 1,
+    "accountUUID": "775333da-8487-11ec-a8a3-0242ac120002",
     "name": "<%= company_name %>",
     "startDate": "2017-02-01T07:00:00Z",
     "endDate": "2017-02-22T23:03:13Z",
@@ -92,6 +93,7 @@ curl "<%= curl_url %>/api/billing/account/1" \
   "success": true,
   "billingInfo": {
     "accountId": 1,
+    "accountUUID": "775333da-8487-11ec-a8a3-0242ac120002",
     "name": "<%= company_name %>",
     "startDate": "2017-02-01T07:00:00Z",
     "endDate": "2017-02-22T23:03:13Z",
@@ -225,7 +227,7 @@ includeSnapshots | true                       | Optional ability to exclude snap
 ## Billing For a Specific Zone
 
 ```shell
-curl "<%= curl_url %>/api/billing/zones/1" \
+curl "<%= curl_url %>/api/billing/zones/0801f6cd-4423-489f-859f-ee6ce24fd2ef" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -237,6 +239,7 @@ curl "<%= curl_url %>/api/billing/zones/1" \
   "billingInfo": {
     "zoneName": "",
     "zoneId": 1,
+    "zoneUUID": "0801f6cd-4423-489f-859f-ee6ce24fd2ef",
     "startDate": "2017-01-01T00:00:00Z",
     "endDate": "2017-01-31T23:59:59Z",
     "priceUnit": "hour",
@@ -268,11 +271,11 @@ curl "<%= curl_url %>/api/billing/zones/1" \
 }
 ```
 
-Retrieves billing information for a specific zone in the requestor's account.
+Retrieves billing information for a specific zone in the requestor's account. Use zoneUUID whenever possible.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/billing/zones/:id`
+`GET <%= api_url %>/api/billing/zones/:zoneUUID|:id`
 
 ### Query Parameters
 
@@ -312,6 +315,7 @@ curl "<%= curl_url %>/api/billing/servers" \
     "servers": [
       {
         "refType": "computeServer",
+        "refUUID": "dca94ff0-2d5d-4e1e-985c-253e498140bf",
         "refId": 1,
         "startDate": "2017-01-01T00:00:00Z",
         "endDate": "2017-01-31T23:59:59Z",
@@ -349,7 +353,7 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For a Specific Server
 
 ```shell
-curl "<%= curl_url %>/api/billing/servers/1" \
+curl "<%= curl_url %>/api/billing/servers/dca94ff0-2d5d-4e1e-985c-253e498140bf" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -360,6 +364,7 @@ curl "<%= curl_url %>/api/billing/servers/1" \
   "success": true,
   "billingInfo": {
     "refType": "computeServer",
+    "refUUID": "dca94ff0-2d5d-4e1e-985c-253e498140bf",
     "refId": 1,
     "startDate": "2017-01-01T00:00:00Z",
     "endDate": "2017-01-31T23:59:59Z",
@@ -374,11 +379,11 @@ curl "<%= curl_url %>/api/billing/servers/1" \
 }
 ```
 
-Retrieves billing information for a specific server (container host) in the requestor's account.
+Retrieves billing information for a specific server (container host) in the requestor's account. Use refUUID whenever possible.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/billing/servers/:id`
+`GET <%= api_url %>/api/billing/servers/:refUUID|:id`
 
 ### Query Parameters
 
@@ -447,7 +452,7 @@ accountId |                                | Optional ability to scope billing i
 ## Billing For a Specific Instance
 
 ```shell
-curl "<%= curl_url %>/api/billing/instances/1" \
+curl "<%= curl_url %>/api/billing/instances/cf31b12d-9aa9-4394-8fad-12a0fbc2515e" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -458,6 +463,7 @@ curl "<%= curl_url %>/api/billing/instances/1" \
   "success": true,
   "billingInfo": {
     "instanceId": 11,
+    "instanceUUID": "cf31b12d-9aa9-4394-8fad-12a0fbc2515e",
     "startDate": "2017-01-01T00:00:00Z",
     "endDate": "2017-01-31T23:59:59Z",
     "name": "name",
@@ -480,11 +486,11 @@ curl "<%= curl_url %>/api/billing/instances/1" \
 }
 ```
 
-Retrieves billing information for a specific server in the requestor's account.
+Retrieves billing information for a instance in the requestor's account. Use instanceUUID whenever possible.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/billing/instances/:id`
+`GET <%= api_url %>/api/billing/instances/:instanceUUID|:id`
 
 ### Query Parameters
 
