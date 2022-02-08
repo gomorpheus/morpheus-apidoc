@@ -775,6 +775,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 server      |  | Object containing server configuration parameters
 installAgent | true | Install agent. Set to false to manually install agent instead.
+instanceTypeId |  | Specific instance type ID to assign the server
+layout |  | Specific layout ID to assign the server *(required if instanceTypeId is passed)*
 
 ### JSON Server Parameters
 
@@ -786,8 +788,6 @@ serverOs.id |  | The ID os the OS Type for this server. See GET /api/options/osT
 plan.id |  | Service Plan to assign to the server
 account.id |  | Tenant to assign the server to. Only available to Master Tenant users/
 provisionSiteId |  | Specific group to assign the server
-instanceTypeId |  | Specific instance type ID to assign the server
-layout |  | Specific layout ID to assign the server *(required if instanceTypeId is passed)*
 tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
 config.customOptions  |  | Custom Option Type settings object containing name value pairs to be set.
 
