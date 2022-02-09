@@ -17,27 +17,29 @@ curl "<%= curl_url %>/api/power-schedules" \
     {
       "id": 1,
       "name": "weekday daytime",
-      "description": "weekday daytime hours",
+      "description": "An example power schedule",
+      "visibility": null,
       "enabled": true,
       "scheduleType": "power",
       "scheduleTimezone": "America/New_York",
-      "sundayOn": 0.0,
-      "sundayOff": 0.0,
-      "mondayOn": 7.0,
-      "mondayOff": 19.0,
-      "tuesdayOn": 7.0,
-      "tuesdayOff": 19.0,
-      "wednesdayOn": 7.0,
-      "wednesdayOff": 19.0,
-      "thursdayOn": 7.0,
-      "thursdayOff": 19.0,
-      "fridayOn": 7.0,
-      "fridayOff": 19.0,
-      "saturdayOn": 0.0,
-      "saturdayOff": 0.0,
+      "unit": "minute",
+      "sundayOn": 0,
+      "sundayOff": 0,
+      "mondayOn": 420,
+      "mondayOff": 1140,
+      "tuesdayOn": 420,
+      "tuesdayOff": 1140,
+      "wednesdayOn": 420,
+      "wednesdayOff": 1140,
+      "thursdayOn": 420,
+      "thursdayOff": 1140,
+      "fridayOn": 420,
+      "fridayOff": 1140,
+      "saturdayOn": 0,
+      "saturdayOff": 0,
       "totalMonthlyHoursSaved": 463.32,
-      "dateCreated": "2018-03-01T07:56:38+0000",
-      "lastUpdated": "2018-09-13T21:38:19+0000"
+      "dateCreated": "2018-02-28T21:56:38Z",
+      "lastUpdated": "2018-09-13T13:38:19Z"
     }
   ],
   "meta": {
@@ -74,29 +76,31 @@ curl "<%= curl_url %>/api/power-schedules/2" \
 ```json
 {
   "schedule": {
-    "id": 2,
-    "name": "my hours",
-    "description": null,
+    "id": 1,
+    "name": "weekday daytime",
+    "description": "An example power schedule",
+    "visibility": null,
     "enabled": true,
     "scheduleType": "power",
     "scheduleTimezone": "America/New_York",
-    "sundayOn": 5.5,
-    "sundayOff": 24.0,
-    "mondayOn": 0.0,
-    "mondayOff": 24.0,
-    "tuesdayOn": 0.0,
-    "tuesdayOff": 24.0,
-    "wednesdayOn": 0.0,
-    "wednesdayOff": 24.0,
-    "thursdayOn": 0.0,
-    "thursdayOff": 24.0,
-    "fridayOn": 0.0,
-    "fridayOff": 24.0,
-    "saturdayOn": 0.0,
-    "saturdayOff": 24.0,
-    "totalMonthlyHoursSaved": 23.595,
-    "dateCreated": "2018-03-07T18:34:08+0000",
-    "lastUpdated": "2018-03-07T18:34:08+0000"
+    "unit": "minute",
+    "sundayOn": 0,
+    "sundayOff": 0,
+    "mondayOn": 420,
+    "mondayOff": 1140,
+    "tuesdayOn": 420,
+    "tuesdayOff": 1140,
+    "wednesdayOn": 420,
+    "wednesdayOff": 1140,
+    "thursdayOn": 420,
+    "thursdayOff": 1140,
+    "fridayOn": 420,
+    "fridayOff": 1140,
+    "saturdayOn": 0,
+    "saturdayOff": 0,
+    "totalMonthlyHoursSaved": 463.32,
+    "dateCreated": "2018-02-28T21:56:38Z",
+    "lastUpdated": "2018-09-13T13:38:19Z"
   },
   "instances": [
 
@@ -133,18 +137,19 @@ curl -XPOST "<%= curl_url %>/api/power-schedules" \
     "enabled": true,
     "scheduleType": "power",
     "scheduleTimezone": "UTC",
+    "unit": "minute",
     "sundayOn": 0,
     "sundayOff": 0,
-    "mondayOn": 7,
-    "mondayOff": 19,
-    "tuesdayOn": 7,
-    "tuesdayOff": 19,
-    "wednesdayOn": 7,
-    "wednesdayOff": 19,
-    "thursdayOn": 7,
-    "thursdayOff": 19,
-    "fridayOn": 7,
-    "fridayOff": 19,
+    "mondayOn": 420,
+    "mondayOff": 1140,
+    "tuesdayOn": 420,
+    "tuesdayOff": 1140,
+    "wednesdayOn": 420,
+    "wednesdayOff": 1140,
+    "thursdayOn": 420,
+    "thursdayOff": 1140,
+    "fridayOn": 420,
+    "fridayOff": 1140,
     "saturdayOn": 0,
     "saturdayOff": 0,
     "enabled": true
@@ -167,20 +172,20 @@ description      |  | A description for the power schedule
 scheduleType      |  | Type of schedule: Power (power), Power Off (power off)
 scheduleTimezone      | UTC | Time Zone eg. America/New_York, Europe/Amsterdam, etc.
 enabled      | true | Enabled
-sundayOn | 0 | Saturday Start
-sundayOff | 24 | Saturday End
-mondayOn | 0 | Monday Start
-mondayOff | 24 | Monday Stop
-tuesdayOn | 0 | Tuesday Start
-tuesdayOff | 24 | Tuesday Stop
-wednesdayOn | 0 | Wednesday Start
-wednesdayOff | 24 | Wednesday Stop
-thursdayOn | 0 | Thursday Start
-thursdayOff | 24 | Thursday Stop
-fridayOn | 0 | Friday Start
-fridayOff | 24 | Friday Stop
-saturdayOn | 0 | Saturday Start
-saturdayOff | 24 | Saturday Stop
+sundayOn | 0 | Saturday Start minute of the day
+sundayOff | 1440 | Saturday End minute of the day
+mondayOn | 0 | Monday Start minute of the day
+mondayOff | 1440 | Monday Stop minute of the day
+tuesdayOn | 0 | Tuesday Start minute of the day
+tuesdayOff | 1440 | Tuesday Stop minute of the day
+wednesdayOn | 0 | Wednesday Start minute of the day
+wednesdayOff | 1440 | Wednesday Stop minute of the day
+thursdayOn | 0 | Thursday Start minute of the day
+thursdayOff | 1440 | Thursday Stop minute of the day
+fridayOn | 0 | Friday Start minute of the day
+fridayOff | 1440 | Friday Stop minute of the day
+saturdayOn | 0 | Saturday Start minute of the day
+saturdayOff | 1440 | Saturday Stop minute of the day
 
 
 ## Update a Power Schedule
@@ -191,11 +196,11 @@ curl -XPUT "<%= curl_url %>/api/power-schedules/2" \
   -H "Content-Type: application/json" \
   -d '{
   "schedule": {
-    "mondayOff": 20,
-    "tuesdayOff": 20,
-    "wednesdayOff": 20,
-    "thursdayOff": 20,
-    "fridayOff": 15
+    "mondayOff": 1200,
+    "tuesdayOff": 1200,
+    "wednesdayOff": 1200,
+    "thursdayOff": 1200,
+    "fridayOff": 900
   }
 }'
 ```
