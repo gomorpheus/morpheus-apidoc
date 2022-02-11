@@ -22,10 +22,6 @@ curl "<%= curl_url %>/api/power-schedules" \
       "enabled": true,
       "scheduleType": "power",
       "scheduleTimezone": "America/New_York",
-      "sundayOn": 0.0,
-      "sundayOnTime": "00:00",
-      "sundayOff": 0.0,
-      "sundayOffTime": "00:00",
       "mondayOn": 7.0,
       "mondayOnTime": "07:00",
       "mondayOff": 19.0,
@@ -50,6 +46,10 @@ curl "<%= curl_url %>/api/power-schedules" \
       "saturdayOnTime": "00:00",
       "saturdayOff": 0.0,
       "saturdayOffTime": "00:00",
+      "sundayOn": 0.0,
+      "sundayOnTime": "00:00",
+      "sundayOff": 0.0,
+      "sundayOffTime": "00:00",
       "totalMonthlyHoursSaved": 463.32,
       "dateCreated": "2018-02-28T21:56:38Z",
       "lastUpdated": "2018-09-13T13:38:19Z"
@@ -96,10 +96,6 @@ curl "<%= curl_url %>/api/power-schedules/2" \
     "enabled": true,
     "scheduleType": "power",
     "scheduleTimezone": "America/New_York",
-    "sundayOn": 0.0,
-    "sundayOnTime": "00:00",
-    "sundayOff": 0.0,
-    "sundayOffTime": "00:00",
     "mondayOn": 7.0,
     "mondayOnTime": "07:00",
     "mondayOff": 19.0,
@@ -124,6 +120,10 @@ curl "<%= curl_url %>/api/power-schedules/2" \
     "saturdayOnTime": "00:00",
     "saturdayOff": 0.0,
     "saturdayOffTime": "00:00",
+    "sundayOn": 0.0,
+    "sundayOnTime": "00:00",
+    "sundayOff": 0.0,
+    "sundayOffTime": "00:00",
     "totalMonthlyHoursSaved": 463.32,
     "dateCreated": "2018-02-28T21:56:38Z",
     "lastUpdated": "2018-09-13T13:38:19Z"
@@ -164,8 +164,6 @@ curl -XPOST "<%= curl_url %>/api/power-schedules" \
     "scheduleType": "power",
     "scheduleTimezone": "UTC",
     "unit": "minute",
-    "sundayOnTime": "00:00"
-    "sundayOffTime": "00:00"
     "mondayOnTime": "07:00",
     "mondayOffTime": "19:00",
     "tuesdayOnTime": "07:00",
@@ -177,7 +175,9 @@ curl -XPOST "<%= curl_url %>/api/power-schedules" \
     "fridayOnTime": "07:00",
     "fridayOffTime": "19:00",
     "saturdayOnTime": "00:00"
-    "saturdayOffTime": "00:00"
+    "saturdayOffTime": "00:00",
+    "sundayOnTime": "00:00",
+    "sundayOffTime": "00:00"
     "enabled": true
   }
 }'
@@ -198,8 +198,6 @@ description      |  | A description for the power schedule
 scheduleType      |  | Type of schedule: Power (power), Power Off (power off)
 scheduleTimezone      | UTC | Time Zone eg. America/New_York, Europe/Amsterdam, etc.
 enabled      | true | Enabled
-sundayOnTime | 00:00 | Sunday Start time of the day in 24-hour format
-sundayOffTime | 24:00 | Sunday End time of the day in 24-hour format
 mondayOnTime | 00:00 | Monday Start time of the day in 24-hour format
 mondayOffTime | 24:00 | Monday End time of the day in 24-hour format
 tuesdayOnTime | 00:00 | Tuesday Start time of the day in 24-hour format
@@ -212,6 +210,8 @@ fridayOnTime | 00:00 | Friday Start time of the day in 24-hour format
 fridayOffTime | 24:00 | Friday End time of the day in 24-hour format
 saturdayOnTime | 00:00 | Saturday Start time of the day in 24-hour format
 saturdayOffTime | 24:00 | Saturday End time of the day in 24-hour format
+sundayOnTime | 00:00 | Sunday Start time of the day in 24-hour format
+sundayOffTime | 24:00 | Sunday End time of the day in 24-hour format
 
 
 ## Update a Power Schedule
