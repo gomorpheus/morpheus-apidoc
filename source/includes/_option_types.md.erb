@@ -1,8 +1,10 @@
-# Option Types
+# Inputs
 
 Provides API interfaces for managing Library: Inputs within <%= application_name %>.
 
-## Get All Option Types
+An Input may also be referred to as an *Option Type* or *optionType*.
+
+## Get All Inputs
 
 ```shell
 curl "<%= curl_url %>/api/library/option-types" \
@@ -111,7 +113,7 @@ fieldContext |  | Field Context filter, restricts query to only load type matchi
 fieldLabel |  | Field Label filter, restricts query to only load type matching fieldLabel specified
 
 
-## Get a Specific Option Type
+## Get a Specific Input
 
 ```shell
 curl "<%= curl_url %>/api/library/option-types/811" \
@@ -169,7 +171,7 @@ Parameter | Description
 id | ID of the option type
 
 
-## Create an Option Type
+## Create an Input
 
 Use this command to create an option type.
 
@@ -214,7 +216,7 @@ required | N | Required, Default is `false`.
 exportMeta | N | Export as Tag, Default is `false`.
 optionList.id | N | ID of [Option List](#option-lists). For use with type `select`, this will set optionSource to `list`.
 
-## Update an Option Type
+## Update an Input
 
 Use this command to update an existing option type.
 
@@ -260,7 +262,7 @@ required | N | Required, Default is `false`.
 exportMeta | N | Export as Tag, Default is `false`.
 optionList.id | N | ID of [Option List](#option-lists). For use with type `select`, this will set optionSource to `list`.
 
-## Delete an Option Type
+## Delete an Input
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/library/option-types/:id" \
