@@ -453,7 +453,16 @@ curl -XPOST "<%= curl_url %>/api/1/subnets" \
     "config": {
       "subnetName": "My Subnet",
       "subnetCidr": "192.168.2.0/24"
-    }
+    },
+    "tenants": [
+      {
+        "id": 2
+      },
+      {
+        "id": 1
+      }
+    ],
+    "visibility": "private"
   },
   "resourcePermissions": {
     "all": true
