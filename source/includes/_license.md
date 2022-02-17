@@ -87,11 +87,11 @@ curl "<%= curl_url %>/api/license" \
     "lastUpdated": "2019-08-14T13:42:18Z",
     "dateCreated": "2019-08-14T13:42:18Z"
   },
-  "currentUsage": {​
-    "memory": 12014876160,
-    "storage": 177937354752,
-    "workloads": 11
-  }​
+  "currentUsage": {
+    "memory": 12014876160,
+    "storage": 177937354752,
+    "workloads": 11
+  }
 }
 ```
 
