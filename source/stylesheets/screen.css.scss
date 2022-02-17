@@ -637,21 +637,22 @@ html, body {
 // These should go back to their own file
 .tocify-wrapper {
   .logo-wrapper {
-    @include background(
-      linear-gradient(top,
-                      rgba(#000, 0.2),
-                      rgba(#000, 0) 4px),
-      linear-gradient(bottom,
-                      rgba(#000, 0.2),
-                      rgba(#000, 0) 4px),
-      linear-gradient(top,
-                      rgba($logo-bg, 1),
-                      rgba($logo-bg, 0) 1.5px),
-      linear-gradient(bottom,
-                      rgba($logo-bg, 1),
-                      rgba($logo-bg, 0) 0.5px),
-      $logo-bg
-    );
+    // @include background(
+    //   linear-gradient(top,
+    //                   rgba(#000, 0.2),
+    //                   rgba(#000, 0) 4px),
+    //   linear-gradient(bottom,
+    //                   rgba(#000, 0.2),
+    //                   rgba(#000, 0) 4px),
+    //   linear-gradient(top,
+    //                   rgba($logo-bg, 1),
+    //                   rgba($logo-bg, 0) 1.5px),
+    //   linear-gradient(bottom,
+    //                   rgba($logo-bg, 1),
+    //                   rgba($logo-bg, 0) 0.5px),
+    //   $logo-bg
+    // );
+    background: transparent;
     display: block;
     font-size: 16px;
     font-weight: normal;
@@ -666,7 +667,7 @@ html, body {
 
       input {
         width: 100%;
-        @include box-sizing(border-box);
+        // @include box-sizing(border-box);
         outline: none;
         color: #000;
         font-weight: normal;
@@ -683,13 +684,13 @@ html, body {
 
     .search-results {
       margin-top: 12px;
-      @include box-sizing(border-box);
+      // @include box-sizing(border-box);
       height: 0;
       overflow-y: auto;
       overflow-x: hidden;
-      @include transition-property(height margin);
-      @include transition-duration(180ms);
-      @include transition-timing-function(ease-in-out);
+      // @include transition-property(height margin);
+      // @include transition-duration(180ms);
+      // @include transition-timing-function(ease-in-out);
       &.visible {
         height: 30%;
         margin-bottom: 1em;
