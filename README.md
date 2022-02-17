@@ -11,25 +11,27 @@ The latest published documentation can be viewed at [https://apidocs.morpheusdat
 Building
 ------------------------------
 
+<<<<<<< HEAD
 ### Prerequisites
 
 You're going to need:
 
- - **Linux or OS X** — Windows may work, but is unsupported.
- - **Ruby, version 2.5.1 or newer**
- - **Bundler, version 1.16.2** — This repo has issues with newer versions of bundler.
+ - **Linux or macOS** — Windows may work, but is unsupported.
+ - **Ruby, version 2.7 or newer**
+ - **Bundler, version 2.2**
 
 It is recommended to use a ruby version manager like [RVM](https://rvm.io/) to keep your ruby versions and gems separate.
 
 ### Getting Set Up
 
 ```sh
-rvm install ruby-2.5.1
-rvm use ruby-2.5.1@morpheus-apidoc --create
-gem install bundler -v 1.16.2
+rvm install ruby-2.7
+rvm use ruby-2.7@morpheus-apidoc --create
+gem install bundler
 bundle install
 ```
 
+<<<<<<< HEAD
 ### Building
 
 ```sh
@@ -88,20 +90,23 @@ set :favicon_path, "favicon.png"
 
 #### Modify Included Documents
 
-You will also want to modify [source/index.md.erb](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/index.md.erb) and comment out (or remove) any unwanted documents from the list of includes or perhaps add your own documents to the list.
+You will also want to modify [source/index.md.erb](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/index.md.erb) and comment out (or remove) any unwanted documents from the list of includes or perhaps add your own documents. 
 
-Certain documents still refer to Morpheus:
+Certain documents still refer to *Morpheus*:
 * [Setup](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/includes/_setup.md.erb) refers to the [Morpheus Hub](https://morpheushub.com), though setup is unlikely needed for your whitelabel API documentation.
 
 To remove these, modify source/index.md.erb to remove the following includes:
 - setup
 
+#### Modify Style
+
+See the [Slate wiki](#https://github.com/slatedocs/slate/wiki/Changing-the-font) for details on customizations of style.
+
 #### White Labeling Caveats
-The Morpheus API does still refer to `morpheus` in several ways.
+The Morpheus API does still refer to *morpheus* in several ways.
 * Type codes, Default image codes, and other things of that nature.
   example: "type": "morpheus" is the default for both Blueprint and Cloud (Zone)
-* Authentication Client IDs: the string `morph-` is always used as client prefix. 
+* Authentication Client IDs: the string *morph-* is always used as client prefix. 
   example: "client_id": "morph-api" is required for authentication.
 Future versions of the Morpheus appliance may address these issues.
-
 

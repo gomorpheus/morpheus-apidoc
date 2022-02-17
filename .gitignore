@@ -15,10 +15,13 @@ tmp
 build/
 .cache
 .ruby-version
-
+.vagrant
+.sass-cache
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
 .idea/
 whitelabel_config.rb
+# Vagrant artifacts
+ubuntu-*-console.log

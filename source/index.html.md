@@ -1,4 +1,5 @@
 ---
+title: Morpheus API Documentation
 
 language_tabs:
   - shell
@@ -150,5 +151,11 @@ includes:
   - vdi_persona
 
 search: true
+
+code_clipboard: true
+
+meta:
+  - name: description
+    content: Documentation for the Morpheus API
 ---
 
