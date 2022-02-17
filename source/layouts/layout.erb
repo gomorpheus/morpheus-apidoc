@@ -70,7 +70,6 @@ under the License.
     <% else %>
       <%= javascript_include_tag  "all_nosearch" %>
     <% end %>
-
     <% if current_page.data.code_clipboard %>
     <script>
       $(function() { setupCodeCopy(); });
@@ -98,7 +97,10 @@ under the License.
           </div>
         <% end %>
       </div>
-
+      <ul class="search-results"></ul>
+      <div class="caption">
+        <div class="caption-text"><%= current_page.data.nav_title %></div>
+      </div>
       <ul id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
