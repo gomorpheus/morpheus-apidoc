@@ -39,24 +39,26 @@ under the License.
       <% end %>
     <% end %>
     <title><%= current_page.data.title || "API Documentation" %></title>
-    <%= favicon_tag(favicon_path) %>
+    <%= favicon_tag("favicon.png") %>
     <style media="screen">
-      .tocify-wrapper .logo-wrapper img.logo {
+      .toc-wrapper .logo-wrapper img.logo {
         display: block !important;
       }
-      .tocify-wrapper .logo-wrapper img.print-logo {
+      .toc-wrapper .logo-wrapper img.print-logo {
         display: none !important;
       }
-      <%= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
+      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
+      <%#= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
+      <%#= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
     </style>
     <style media="print">
       * {
         transition:none!important;
       }
-      .tocify-wrapper .logo-wrapper img.logo {
+      .toc-wrapper .logo-wrapper img.logo {
         display: none !important;
       }
-      .tocify-wrapper .logo-wrapper img.print-logo {
+      .toc-wrapper .logo-wrapper img.print-logo {
         display: block !important;
       }
       <%= Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
@@ -84,24 +86,19 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
-      <% if language_tabs.any? %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
+      <div class="logo-wrapper">
+        <a href="./index.html" class="logo-link">
+          <%= image_tag("logo-white.svg", class: 'logo') %>
+          <%= image_tag("logo.svg", class: 'print-logo') %>
+        </a>
+        <div class="version"><%= Morpheus::Apidoc::VERSION %></div>
+        <% if current_page.data.search %>
+          <div class="search">
+            <input type="text" class="search" id="input-search" placeholder="Search">
+          </div>
+        <% end %>
+      </div>
+
       <ul id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
@@ -126,10 +123,10 @@ under the License.
         </ul>
       <% else %>
         <ul class="toc-footer">
-          <% if footer_logo_path %>
-            <li><%= image_tag(footer_logo_path, class: 'logo-footer') %></li>
-          <% end %>
-          <li>© Copyright <%= Time.now.year %> <a href="<%= company_website %>" class="home-link"><%= company_name %></a></li>
+          <li><%= image_tag("logo_footer.svg", class: 'logo-footer') %></li>
+          <li>© Copyright <%= Time.now.year %> <a href="
+<%= current_page.data.company_website %>" class="home-link">
+<%= current_page.data.company_name %></a></li>
         </li>
       <% end %>
     </div>

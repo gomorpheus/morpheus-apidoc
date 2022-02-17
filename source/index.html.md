@@ -1,6 +1,10 @@
 ---
 title: Morpheus API Documentation
 
+nav_title: "MORPHEUS API"
+company_name: "Morpheus Data"
+company_website: "https://www.morpheusdata.com"
+
 language_tabs:
   - shell
 
@@ -14,18 +18,18 @@ includes:
   - forgot_password
 
   - operations
-  - operations/dashboard
-  - operations/reports
+  - dashboard
+  - reports
   - guidance
-  - operations/wiki
-  - operations/budgets
+  - wiki
+  - budgets
   - invoices
   - usage
   - billing
 # - projects
   - approvals
-  - operations/activity
-  - operations/processes
+  - activity
+  - processes
 
   - provisioning
   - provision_types
@@ -157,5 +161,6 @@ code_clipboard: true
 meta:
   - name: description
     content: Documentation for the Morpheus API
+
 ---
 

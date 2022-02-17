@@ -11,7 +11,6 @@ The latest published documentation can be viewed at [https://apidocs.morpheusdat
 Building
 ------------------------------
 
-<<<<<<< HEAD
 ### Prerequisites
 
 You're going to need:
@@ -31,7 +30,6 @@ gem install bundler
 bundle install
 ```
 
-<<<<<<< HEAD
 ### Building
 
 ```sh
@@ -42,61 +40,12 @@ Now you can view the documentation you just built with `open build/index.html`.
 
 ### White Labeling
 
-To rebrand this site, create a file called `whitelabel_config.rb` 
-and override the settings seen in the example below.
+To rebrand this site, modify `index.html.erb` to change the settings `title`, and `nav_title`. Then modify `variables.rb` to change the settings `application_name`, etc.
 
-#### Example whitelabel_config.rb
-
-```ruby
-# The title of the site
-set :title, "Morpheus API Documentation"
-
-# The title above the left hand navigation
-set :nav_title, "MORPHEUS API"
-
-# The name of the application
-set :application_name, "Morpheus"
-
-# The company name
-set :company_name, "Morpheus Data"
-
-# The company homepage (marketing site)
-set :company_website, "https://www.morpheusdata.com"
-
-# A domain to use in example email addresses, etc.
-set :company_domain, "morpheusdata.com"
-
-# The base url used to document each HTTP Request path, use your actual service url if desired
-set :api_url, "$serverUrl"
-
-# The URL value to use in the shell curl examples, use your actual service url if desired
-set :curl_url, "$serverUrl"
-
-# The API Token used in shell examples (curl), never a real valid token of course
-set :curl_token, "$accessToken"
-
-# The logo in the header
-set :logo_path, "logo-white.svg"
-
-# The logo in the header when printing
-set :print_logo_path, "logo.svg"
-
-# The logo in the footer
-set :footer_logo_path, "logo_footer.svg"
-
-# The favicon
-set :favicon_path, "favicon.png"
-```
-
-#### Modify Included Documents
-
-You will also want to modify [source/index.md.erb](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/index.md.erb) and comment out (or remove) any unwanted documents from the list of includes or perhaps add your own documents. 
+You may also want to to remove any unwanted documents from the list of `includes` or perhaps add your own documents.
 
 Certain documents still refer to *Morpheus*:
-* [Setup](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/includes/_setup.md.erb) refers to the [Morpheus Hub](https://morpheushub.com), though setup is unlikely needed for your whitelabel API documentation.
-
-To remove these, modify source/index.md.erb to remove the following includes:
-- setup
+* [Setup](https://github.com/gomorpheus/morpheus-apidoc/blob/master/source/includes/_setup.md) refers to the [Morpheus Hub](https://morpheushub.com), though setup is unlikely needed for your whitelabel API documentation.
 
 #### Modify Style
 

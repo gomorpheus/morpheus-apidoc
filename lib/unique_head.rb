@@ -22,6 +22,9 @@ class UniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
     return "<h#{header_level} id='#{friendly_text}'>#{text}</h#{header_level}>"
   end
 
+  # inject morpheus local variables eg. application_name
+  include Morpheus::Apidoc::Variables
+
   # support erb in .md files
   def preprocess(full_document)
     full_document = super(full_document) if defined?(super)

@@ -56,62 +56,6 @@ configure :build do
   # activate :gzip
 end
 
-########################################
-# Morpheus API Documentation Settings
-# To rebrand this site, create a file called whitelabel_config.rb 
-# and override the settings below.
-
-# The title of the site
-set :title, "Morpheus API Documentation"
-
-# The title above the left hand navigation
-set :nav_title, "MORPHEUS API"
-
-# The name of the application
-set :application_name, "Morpheus"
-
-# The company name
-set :company_name, "Morpheus Data"
-
-# The company homepage (marketing site)
-set :company_website, "https://www.morpheusdata.com"
-
-# A domain to use in example email addresses, etc.
-set :company_domain, "morpheusdata.com"
-
-# The base url used to document each HTTP Request path
-# set :api_url, "https://api.morpheusdata.com"
-set :api_url, "$serverUrl"
-
-# The URL value to use in the shell curl examples, just a variable name
-set :curl_url, "$serverUrl"
-
-# The API Token used in shell examples (curl), never a real valid token of course
-set :curl_token, "$accessToken"
-
-# The logo in the header
-set :logo_path, "logo-white.svg"
-
-# The logo in the header when printing
-set :print_logo_path, "logo.svg"
-
-# The logo in the footer
-set :footer_logo_path, "logo_footer.svg"
-
-# The favicon
-set :favicon_path, "favicon.png"
-
-# The Morpheus Hub URL (not really whitelabel ready this point, do not include setup doc)
-set :hub_url, "https://morpheushub.com"
-
-# Load custom settings from whitelabel_config.rb
-whitelabel_fn = "whitelabel_config.rb"
-if File.exists?(whitelabel_fn)
-  puts "Loading #{whitelabel_fn}..."
-  # load(whitelabel_fn)
-  eval(File.read(whitelabel_fn))
-end
-
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567

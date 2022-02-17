@@ -88,8 +88,8 @@ html, body {
       width: $nav-width - ($nav-padding*2);
       outline: none;
       color: $nav-text;
-      font-size: 80%;
-      color: red;
+      // font-size: 80%;
+      // color: red;
       border-radius: 0; /* ios has a default border radius */
     }
 
@@ -635,7 +635,7 @@ html, body {
 // MORPHEUS CUSTOMIZATIONS
 ////////////////////////////////////////////////////////////////////////////////
 // These should go back to their own file
-.tocify-wrapper {
+.toc-wrapper {
   .logo-wrapper {
     // @include background(
     //   linear-gradient(top,
@@ -652,7 +652,7 @@ html, body {
     //                   rgba($logo-bg, 0) 0.5px),
     //   $logo-bg
     // );
-    background: transparent;
+    background: $logo-bg;
     display: block;
     font-size: 16px;
     font-weight: normal;
@@ -667,7 +667,7 @@ html, body {
 
       input {
         width: 100%;
-        // @include box-sizing(border-box);
+        box-sizing: border-box;
         outline: none;
         color: #000;
         font-weight: normal;
@@ -741,7 +741,7 @@ html, body {
 
   div.version {
     text-align: center;
-    color: #ffffff;
+    color: #ffffff !important;
     margin-top: -.4045em;
     margin-bottom: .809em;
     font-weight: 500;
