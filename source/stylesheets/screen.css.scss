@@ -784,3 +784,24 @@ html, body {
     }
   }
 }
+
+// Section headers
+// .toc-h1.toc-link[data-title="Introduction"], 
+.toc-h1.toc-link[data-title="Operations"], 
+.toc-h1.toc-link[data-title="Provisioning"], 
+.toc-h1.toc-link[data-title="Library"],
+.toc-h1.toc-link[data-title="Infrastructure"],
+.toc-h1.toc-link[data-title="Monitoring"],
+.toc-h1.toc-link[data-title="Backups"],
+.toc-h1.toc-link[data-title="Tools"],
+.toc-h1.toc-link[data-title="Administration"],
+.toc-h1.toc-link[data-title="Personas"],
+.toc-h1.toc-link[data-title="Utility"] {
+  margin-top: 0.5em;
+  font-weight: bold;
+  color: $nav-section-title;
+  text-transform: uppercase;
+  &.active {
+    color: $nav-active-text;
+  }
+}

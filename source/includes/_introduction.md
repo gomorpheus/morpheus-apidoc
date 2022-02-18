@@ -17,8 +17,9 @@ Section |  Description
 [Infrastructure](#infrastructure) | [Groups](#groups), [Clouds](#clouds), [Clusters](#clusters), [Hosts](#hosts), [Networks](#networks), [Security Groups](#security-groups), [Load Balancers](#load-balancers), [Storage](#storage), [Credentials](#credentials), [Certificates](#ssl-certificates), [Key Pairs](#key-pairs)
 [Monitoring](#monitoring) | [Logs](#logs), [Checks](#checks), [Incidents](#incidents), [Contacts](#contacts), [Alerts](#alerts)
 [Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds), [VDI Pools](#vdi-pools)
-[Administration](#administration) | [Tenants](#tenants), [Plans](#service-plans) & [Pricing](#prices), [Roles](#roles), [Users](#users), [Identity Sources](#identity-sources), [Integrations](#integrations), [Policies](#policies), [Health](#health), [Settings](#appliance-settings), [License](#license), [Ping](#ping), [Setup](#setup)
+[Administration](#administration) | [Tenants](#tenants), [Plans](#service-plans) & [Pricing](#prices), [Roles](#roles), [Users](#users), [Identity Sources](#identity-sources), [Integrations](#integrations), [Policies](#policies), [Health](#health), [Settings](#appliance-settings), [License](#license)
 [Personas](#personas) | [Service Catalog](#service-catalog), [Virtual Desktop](#virtual-desktop)
+[Utility](#utility) | [Ping](#ping), [Search](#search), [Setup](#setup)
 
 To initialize a freshly installed <%= application_name %> appliance, see [Setup](#setup).
 

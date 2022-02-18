@@ -146,13 +146,15 @@ includes:
   - environments
   - provisioning_licenses
   - license
-  - ping
-  - search
-  - setup
 
   - personas
   - service_catalog
   - vdi_persona
+
+  - utility
+  - ping
+  - search
+  - setup
 
 search: true
 
