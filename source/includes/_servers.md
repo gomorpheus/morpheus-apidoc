@@ -913,7 +913,7 @@ This will start a host.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the server
+id | ID of the server
 
 ## Stop a Host
 
@@ -940,7 +940,7 @@ This will stop a host.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the server
+id | ID of the server
 
 ## Run Workflow on a Host
 
@@ -972,7 +972,7 @@ For operational workflows, see [Execute a Workflow](#execute-a-workflow).
 
 Parameter | Description
 --------- | -----------
-:id | ID of the server
+id | ID of the server
 
 ### Query Parameters
 
@@ -1013,7 +1013,7 @@ curl "<%= curl_url %>/api/servers/:id/snapshots" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the server
+id | ID of the server
 
 ## Assign To Tenant
 
@@ -1042,13 +1042,13 @@ This will change the ownership of the host to the specified Tenant account. This
 
 Parameter | Description
 --------- | -----------
-:id | ID of the Server
+id | ID of the Server
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-:accountId | ID of the Tenant
+accountId | ID of the Tenant
 
 ## Delete a Host
 

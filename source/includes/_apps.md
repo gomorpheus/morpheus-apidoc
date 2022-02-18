@@ -206,7 +206,7 @@ This endpoint retrieves a specific app.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ## Create an App
 
@@ -264,7 +264,7 @@ This endpoint provides updating of some basic app settings.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ### JSON App Parameters
 
@@ -294,7 +294,7 @@ curl -XPOST "<%= curl_url %>/api/apps/1/add-instance" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ### JSON Parameters
 
@@ -323,7 +323,7 @@ curl -XPOST "<%= curl_url %>/api/apps/1/remove-instance" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ### JSON Parameters
 
@@ -366,7 +366,7 @@ This returns a list of all of the security groups applied to an app and whether 
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ## Set Security Groups
 
@@ -387,7 +387,7 @@ curl -XPOST "<%= curl_url %>/api/apps/1/security-groups" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ### JSON Parameters
 
@@ -421,7 +421,7 @@ Use `removeInstances=on` to also delete the instances in the app and all associa
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ### Query Parameters
 
@@ -454,7 +454,7 @@ This operation will undo the delete of an app that is pending removal.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 ## Refresh State of an App
 
@@ -484,7 +484,7 @@ This action only applies to Terraform, CloudFormation and ARM.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 
 
 ## Apply State of an App
@@ -515,5 +515,5 @@ This action only applies to Terraform, CloudFormation and ARM.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the app
+id | ID of the app
 

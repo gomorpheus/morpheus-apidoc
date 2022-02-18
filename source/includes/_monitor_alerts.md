@@ -124,7 +124,7 @@ This endpoint retrieves a specific alert.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the alert
+id | ID of the alert
 
 ## Create an Alert
 
@@ -225,7 +225,7 @@ curl -XPUT "<%= curl_url %>/api/monitoring/alerts/1" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the alert
+id | ID of the alert
 
 ### JSON Alert Parameters
 
@@ -267,4 +267,4 @@ curl -XDELETE "<%= curl_url %>/api/monitoring/alerts/1" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the alert
+id | ID of the alert

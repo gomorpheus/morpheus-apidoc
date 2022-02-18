@@ -154,4 +154,4 @@ Will delete the syslog rule matching the specified name.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the syslog rule 
+id | ID of the syslog rule 

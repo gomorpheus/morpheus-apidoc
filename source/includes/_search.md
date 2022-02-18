@@ -54,7 +54,7 @@ The `phrase` parameter value can be specified as part of the URL or as a query p
 
 Parameter | Description
 --------- | -----------
-:phrase | Search phrase (query) to match results against
+phrase | Search phrase (query) to match results against
 
 ### Query Parameters
 

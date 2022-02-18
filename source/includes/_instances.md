@@ -929,7 +929,7 @@ This endpoint retrieves a specific instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### Query Parameters
 
@@ -1161,7 +1161,7 @@ This gets all the environment variables associated with the instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Get Instance History
 
@@ -1241,7 +1241,7 @@ Alternatively, the [Process History](#get-all-processes) endpoint can be used to
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### Query Parameters
 
@@ -1390,7 +1390,7 @@ This can be valuable for evaluating the details of the compute server(s) running
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 <!--
 # Instance Types
@@ -1761,7 +1761,7 @@ Fetch an instance type by ID.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance type
+id | ID of the instance type
 
 
 ## Get Available Service Plans for an Instance
@@ -2175,7 +2175,7 @@ curl -X PUT "<%= api_url %>/api/instances/1" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Instance Parameters
 
@@ -2218,7 +2218,7 @@ This will stop all containers running within an instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Start an Instance
 
@@ -2245,7 +2245,7 @@ This will start all containers running within an instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Restart an Instance
 
@@ -2272,7 +2272,7 @@ This will restart all containers running within an instance. This includes rebui
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Suspend an Instance
 
@@ -2299,7 +2299,7 @@ This will suspend all containers in the instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Eject an Instance
 
@@ -2326,7 +2326,7 @@ This will eject any ISO media on all containers in the instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Resize an Instance
 
@@ -2394,7 +2394,7 @@ It is possible to resize containers within an instance by increasing their memor
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Parameters
 
@@ -2439,7 +2439,7 @@ For operational workflows, see [Execute a Workflow](#execute-a-workflow).
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### Query Parameters
 
@@ -2485,7 +2485,7 @@ One can easily clone an instance and all containers within that instance. The co
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Parameters
 
@@ -2520,7 +2520,7 @@ curl -X PUT "<%= api_url %>/api/instances/1773/backup" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Get list of backups for an Instance
 
@@ -2549,7 +2549,7 @@ curl "<%= curl_url %>/api/instances/1773/backups" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Get list of snapshots for an Instance
 
@@ -2575,7 +2575,7 @@ curl "<%= curl_url %>/api/instances/1773/snapshots" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 
 ## Get a Specific Snapshot
@@ -2621,7 +2621,7 @@ This endpoint retrieves a specific snapshot.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the snapshot
+id | ID of the snapshot
 
 
 
@@ -2656,7 +2656,7 @@ This endpoint will create a snapshot of an instance. This is done asychronously,
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Snapshot Parameters
 
@@ -2695,7 +2695,7 @@ It is possible to import a snapshot of an instance. This creates a Virtual Image
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Parameters
 
@@ -2730,7 +2730,7 @@ It is possible to restore an Instance to a snapshot.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 :snapshotId | ID of the snapshot
 
 
@@ -2760,7 +2760,7 @@ Delete snapshot of instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the snapshot
+id | ID of the snapshot
 
 ## Delete All Snapshots of Instance Container
 
@@ -2788,7 +2788,7 @@ Delete All Snapshots attached to Instance Container.
 
 Parameter | Description
 --------- | -----------
-:id | ID of instance
+id | ID of instance
 :containerId | ID of the instance container
 
 ## Delete All Snapshots of Instance
@@ -2817,7 +2817,7 @@ Delete All Snapshots attached to Instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Create Linked Clone of Instance Snapshot
 
@@ -2845,7 +2845,7 @@ It is possible to create a linked clone of an Instance Snapshot.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 :snapshotId | ID of the snapshot
 
 
@@ -2876,7 +2876,7 @@ This endpoint allows creating an image template from an existing instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Parameters
 
@@ -2911,7 +2911,7 @@ This will lock the instance. While locked, instances may not be removed.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Unlock an Instance
 
@@ -2938,7 +2938,7 @@ This will unlock the instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 
 ## Get Security Groups
@@ -2975,7 +2975,7 @@ This returns a list of all of the security groups applied to an instance and whe
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Set Security Groups
 
@@ -2996,7 +2996,7 @@ curl -X POST "<%= api_url %>/api/instances/1/security-groups" \
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### JSON Parameters
 
@@ -3031,7 +3031,7 @@ Will delete an instance and all associated monitors and backups.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ### Query Parameters
 
@@ -3068,7 +3068,7 @@ This operation will cancel the expiration of an instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Extend Expiration of an Instance
 
@@ -3096,7 +3096,7 @@ This operation will extend the expiration of an instance. The period of time it 
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Cancel Shutdown of an Instance
 
@@ -3124,7 +3124,7 @@ This operation will cancel the shutdown of an instance.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Extend Shutdown of an Instance
 
@@ -3152,7 +3152,7 @@ This operation will extend the shutdown of an instance.  The period of time it i
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance
 
 ## Cancel Removal of an Instance
 
@@ -3174,4 +3174,4 @@ This operation will undo the delete of an instance that is pending removal.
 
 Parameter | Description
 --------- | -----------
-:id | ID of the instance
+id | ID of the instance

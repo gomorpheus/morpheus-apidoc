@@ -67,7 +67,7 @@ HTTP Request describes the method and path of the endpoint. Most endpoints have 
 
 Parameter | Description
 --------- | -----------
-:id | ID of the User.
+id | ID of the User.
 
 URL Parameters are variables which are included inside the path of the request.
 
