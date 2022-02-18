@@ -104,14 +104,12 @@ includes:
   - credential_types
   - certificates
   - keypairs
-
-  - logs
-
   - monitoring
-  - monitor_apps
+  - logs
   - checks
   - check_types
   - monitor_groups
+  - monitor_apps
   - monitor_incidents
   - contacts
   - monitor_alerts

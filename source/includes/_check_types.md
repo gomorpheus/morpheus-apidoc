@@ -1,9 +1,9 @@
 ## Check Types
 
 A set of APIs for fetching a list of available check types is also provided. This API can make it useful for associating a check type code to an ID for check `GET` and `POST` requests.
-<!--
-## Get All Check Types
--->
+
+<!--## Get All Check Types-->
+
 ```shell
 curl "<%= curl_url %>mand/api/monitoring/check-types"
   -H "Authorization: BEARER <%= curl_token %>"

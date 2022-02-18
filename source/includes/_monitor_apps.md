@@ -2,7 +2,7 @@
 
 These entities define a collection of monitoring checks and/or check groups that are associated with a specific app.
 
-<!--## Get All Monitor Apps-->
+<!-- ## Get All Monitor Apps -->
 
 ```shell
 curl "<%= curl_url %>/api/monitoring/apps"

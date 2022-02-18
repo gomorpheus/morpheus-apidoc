@@ -15,7 +15,7 @@ Section |  Description
 [Provisioning](#provisioning) | [Instances](#instances), [Apps](#apps), [Jobs](#jobs), [Deployments](#deployments), [Deploys](#deploys)
 [Library](#library) | [Automation](#automation), [Instance Types](#instance-types), [Layouts](#layouts), [Node Types](#node-types), [App Blueprints](#blueprints), [Catalog Items](#catalog-items), [Cluster Layouts](#cluster-layouts), [Virtual Images](#virtual-images), [Inputs](#inputs), [Option Lists](#option-lists), [Spec Templates](#spec-templates), [File Templates](#file-templates), [Script Templates](#script-templates)
 [Infrastructure](#infrastructure) | [Groups](#groups), [Clouds](#clouds), [Clusters](#clusters), [Hosts](#hosts), [Networks](#networks), [Security Groups](#security-groups), [Load Balancers](#load-balancers), [Storage](#storage), [Credentials](#credentials), [Certificates](#ssl-certificates), [Key Pairs](#key-pairs)
-[Monitoring](#monitoring) | [Logs](#logs), [Checks](#checks), [Incidents](#incidents), [Contacts](#contacts), [Alerts](#alerts)
+[Monitoring](#monitoring) | [Logs](#logs), [Apps](#monitoring-apps), [Checks](#checks), [Incidents](#incidents), [Contacts](#contacts), [Alerts](#alerts)
 [Tools](#tools) | [Cypher](#cypher), [Archives](#archives), [Image Builder](#image-builds), [VDI Pools](#vdi-pools)
 [Administration](#administration) | [Tenants](#tenants), [Plans](#service-plans) & [Pricing](#prices), [Roles](#roles), [Users](#users), [Identity Sources](#identity-sources), [Integrations](#integrations), [Policies](#policies), [Health](#health), [Settings](#appliance-settings), [License](#license)
 [Personas](#personas) | [Service Catalog](#service-catalog), [Virtual Desktop](#virtual-desktop)
