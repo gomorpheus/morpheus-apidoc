@@ -1,7 +1,6 @@
-<!-- ## Provision Types -->
+## Provision Types
 
-## Get All Provision Types
-
+<!-- ## Get All Provision Types -->
 
 Fetch the list of available provision types.
 
