@@ -457,7 +457,7 @@ curl -XPUT "<%= curl_url %>/api/monitoring/checks/1/mute" \
 ```
 
 This endpoint can be used to toggle the mute state of a check.  
-This sets `createIncident` the opposite of `muted`.
+This sets `createIncident` to the opposite of `muted`.
 
 ### HTTP Request
 
