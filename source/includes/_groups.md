@@ -122,7 +122,7 @@ curl -XPOST "<%= curl_url %>/api/groups" \
 
 `POST <%= api_url %>/api/groups`
 
-### JSON Check Group Parameters
+### JSON Group Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
@@ -148,7 +148,7 @@ curl -XPUT "<%= curl_url %>/api/groups/1" \
 
 `PUT <%= api_url %>/api/groups/:id`
 
-### JSON Check Group Parameters
+### JSON Group Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------

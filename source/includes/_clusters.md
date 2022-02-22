@@ -2064,7 +2064,7 @@ This endpoint retrieves the history for a specific cluster process.
 
 `GET <%= api_url %>/api/clusters/:clusterId/history/:processId`
 
-## Get Cluster History Event 
+## Get Cluster History Event
 
 ```shell
 curl "<%= curl_url %>/api/clusters/:clusterId/history/events/:eventId" \

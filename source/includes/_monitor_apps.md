@@ -224,7 +224,7 @@ This endpoint retrieves a specific monitor app.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the monitor app
+id | ID of the monitor app
 
 ## Create a Monitor App
 
@@ -278,7 +278,7 @@ curl -XPUT "<%= curl_url %>/api/monitoring/apps/3" \
 
 Parameter | Description
 --------- | -----------
-ID | ID of the monitor app
+id | ID of the monitor app
 
 ### JSON Parameters
 
@@ -313,6 +313,21 @@ curl -XPUT "<%= curl_url %>/api/monitoring/apps/1/mute" \
 
 This endpoint can be used to toggle the mute state of a monitor app. This sets `createIncident` to the opposite of `muted`.
 
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/apps/:id/mute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the monitor app
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
 
 ## Unmute a Monitor App
 
@@ -332,11 +347,17 @@ curl -XPUT "<%= curl_url %>/api/monitoring/apps/1/mute" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/monitoring/checks/:id/mute`
+`PUT <%= api_url %>/api/monitoring/apps/:id/mute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the monitor app
 
 ### JSON Parameters
 
@@ -359,22 +380,28 @@ curl -XPUT "<%= curl_url %>/api/monitoring/apps/mute-all" \
 ```json
 {
   "success": true,
-  "muted": false,
+  "muted": true,
   "updated": 3
 }
 ```
 
+This endpoint can be used to toggle the mute state of all monitor apps. This sets `createIncident` to the opposite of `muted`.
+
 ### HTTP Request
 
 `PUT <%= api_url %>/api/monitoring/apps/mute-all`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the monitor app
 
 ### JSON Parameters
 
 Parameter | Default | Description
 --------- | ----------- | -----------
 muted | true | Set to false to unmute
-
-This endpoint can be used to toggle the mute state of all monitor apps. This sets `createIncident` to the opposite of `muted`.
 
 ## Unmute All Monitor App
 
@@ -395,7 +422,17 @@ curl -XPUT "<%= curl_url %>/api/monitoring/apps/mute-all" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute-all endpoint is used to unmute by passing the parameter `"muted":false`.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/apps/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
 
 ## Delete a Monitor App
 
@@ -420,4 +457,4 @@ curl -XDELETE "<%= curl_url %>/api/monitoring/apps/1" \
 
 Parameter | Description
 --------- | -----------
-ID | ID of the monitor app
+id | ID of the monitor app

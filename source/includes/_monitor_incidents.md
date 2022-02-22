@@ -159,7 +159,7 @@ This endpoint retrieves a specific incident.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the incident to retrieve
+id | ID of the incident to retrieve
 
 ## Updating an Incident
 
@@ -185,6 +185,12 @@ This endpoint can be used to update certain properties of an incident.
 ### HTTP Request
 
 `PUT <%= api_url %>/api/monitoring/incidents/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the incident
 
 ### JSON Parameters
 
@@ -223,6 +229,12 @@ This endpoint can be used to toggle the mute state of an incident. This sets `in
 
 `PUT <%= api_url %>/api/monitoring/incidents/:id/mute`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the incident
+
 ### JSON Parameters
 
 Parameter | Default | Description
@@ -248,7 +260,23 @@ curl -XPUT "<%= curl_url %>/api/monitoring/incidents/1/mute" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute endpoint is used to unmute by passing the parameter `"muted":false`.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/incidents/:id/mute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the incident
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
 
 ## Mute All Incidents
 
@@ -300,7 +328,17 @@ curl -XPUT "<%= curl_url %>/api/monitoring/incidents/mute-all" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute-all endpoint is used to unmute by passing the parameter `"muted":false`.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/incidents/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
 
 ## Close an Incident
 
@@ -322,6 +360,11 @@ curl -XDELETE "<%= curl_url %>/api/monitoring/incidents/1" \
 
 `DELETE <%= api_url %>/api/monitoring/incidents/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the incident
 
 ## Reopen an Incident
 
@@ -347,6 +390,11 @@ This endpoint can be used to toggle the status of an incident back to `open`.
 
 `PUT <%= api_url %>/api/monitoring/incidents/:id/reopen`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the incident
 
 ## Create an Incident
 

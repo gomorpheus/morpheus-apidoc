@@ -148,7 +148,7 @@ This endpoint retrieves a specific check.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the check to retrieve
+id | ID of the check to retrieve
 
 ## Create a Check
 
@@ -459,6 +459,22 @@ curl -XPUT "<%= curl_url %>/api/monitoring/checks/1/mute" \
 This endpoint can be used to toggle the mute state of a check.  
 This sets `createIncident` the opposite of `muted`.
 
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/checks/:id/mute`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the check
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
+
 ## Unmute a Check
 
 ```shell
@@ -477,7 +493,7 @@ curl -XPUT "<%= curl_url %>/api/monitoring/checks/1/mute" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute endpoint is used to unmute by passing the parameter `"muted":false`.
 
 ### HTTP Request
 
@@ -540,7 +556,17 @@ curl -XPUT "<%= curl_url %>/api/monitoring/checks/mute-all" \
 }
 ```
 
-The same endpoint is used to unmute by passing the parameter `"muted":false`.
+The mute-all endpoint is used to unmute by passing the parameter `"muted":false`.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/monitoring/checks/mute-all`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ----------- | -----------
+muted | true | Set to false to unmute
 
 ## Delete a Check
 
@@ -563,3 +589,8 @@ A deleted check can be fetched from the API using the GET method to synchronize 
 
 `DELETE <%= api_url %>/api/monitoring/checks/:id`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the check

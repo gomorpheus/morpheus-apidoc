@@ -77,7 +77,7 @@ This endpoint retrieves a specific contact.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the contact
+id | ID of the contact
 
 ## Create a Contact
 
@@ -128,7 +128,7 @@ curl -XPUT "<%= curl_url %>/api/monitoring/contacts/3" \
 
 Parameter | Description
 --------- | -----------
-ID | ID of the contact
+id | ID of the contact
 
 ### JSON Parameters
 
@@ -162,4 +162,4 @@ curl -XDELETE "<%= curl_url %>/api/monitoring/contacts/1" \
 
 Parameter | Description
 --------- | -----------
-ID | ID of the contact
+id | ID of the contact

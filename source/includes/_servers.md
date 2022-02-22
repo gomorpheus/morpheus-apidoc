@@ -485,7 +485,7 @@ This endpoint retrieves a specific host.
 
 Parameter | Description
 --------- | -----------
-ID | ID of the check to retrieve
+id | ID of the check to retrieve
 
 ## Get Available Service Plans for a Host
 
