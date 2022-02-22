@@ -521,7 +521,7 @@ context | N | Context for running the workflow, determines if a target resource 
 ## Update Logo For Catalog Item Type
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/catalog-item-types/:id" \
+curl -XPUT "<%= curl_url %>/api/catalog-item-types/:id/update-logo" \
   -H "Authorization: BEARER <%= curl_token %>"
   -F 'catalogItemType.logo=@filename'
 ```
@@ -538,7 +538,7 @@ Use this command to update the logo image for an existing catalog item type. Thi
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/catalog-item-types/:id`
+`PUT <%= api_url %>/api/catalog-item-types/:id/update-logo`
 
 ### URL Parameters
 
