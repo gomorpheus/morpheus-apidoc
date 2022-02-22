@@ -403,7 +403,7 @@ Parameter | Default | Description
 --------- | ----------- | -----------
 muted | true | Set to false to unmute
 
-## Unmute All Monitor App
+## Unmute All Monitor Apps
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/monitoring/apps/mute-all" \
