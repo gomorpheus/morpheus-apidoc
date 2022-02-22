@@ -332,7 +332,7 @@ Parameter | Default | Description
 instanceId  |  | The ID of the instance being removed
 
 
-## Get Security Groups
+## Get Security Groups for an App
 
 ```shell
 curl -XGET "<%= curl_url %>/api/apps/1/security-groups" \
@@ -368,7 +368,7 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
-## Set Security Groups
+## Set Security Groups for an App
 
 ```shell
 curl -XPOST "<%= curl_url %>/api/apps/1/security-groups" \

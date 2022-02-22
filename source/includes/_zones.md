@@ -485,7 +485,7 @@ If a zone has zones or servers still tied to it, a delete action will fail
 
 `DELETE <%= api_url %>/api/zones/:id`
 
-## Get Security Groups
+## Get Security Groups for a Cloud
 
 ```shell
 curl -XGET "<%= curl_url %>/api/zones/1/security-groups" \
@@ -516,7 +516,7 @@ This returns a list of all of the security groups applied to a zone and whether 
 `GET <%= api_url %>/api/zones/:id/security-groups`
 
 
-## Set Security Groups
+## Set Security Groups for a Cloud
 
 ```shell
 curl -XPOST "<%= curl_url %>/api/zones/1/security-groups" \

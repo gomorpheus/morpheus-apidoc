@@ -2941,7 +2941,7 @@ Parameter | Description
 id | ID of the instance
 
 
-## Get Security Groups
+## Get Security Groups for an Instance
 
 ```shell
 curl -XGET "<%= curl_url %>/api/instances/1/security-groups" \
@@ -2977,7 +2977,7 @@ Parameter | Description
 --------- | -----------
 id | ID of the instance
 
-## Set Security Groups
+## Set Security Groups for an Instance
 
 ```shell
 curl -X POST "<%= api_url %>/api/instances/1/security-groups" \
