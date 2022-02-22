@@ -879,7 +879,7 @@ Will resize a host asynchronously. This endpoint also allows for NIC reconfigura
 
 Parameter | Default | Description
 --------- | ------- | -----------
-server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](#get-available-service-plans-for-a-server)
+server.plan.id      |  | The ID of the new plan (optional). See [Available Service Plans](#get-available-service-plans-for-a-host)
 servicePlanOptions |  | Map of custom options depending on selected service plan.
 servicePlanOptions.maxCores |  | Core Count
 servicePlanOptions.coresPerSocket |  | Cores Per Socket

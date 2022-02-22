@@ -72,14 +72,15 @@ includes:
   - servers
   - server_types
   - networks
+  - network_types
   - network_static_routes
   - network_dhcp_servers
   - network_dhcp_relays
   - network_edge_clusters
-  - network_types
   - network_firewalls
   - network_groups
   - network_subnets
+  - subnet_types
   - network_pools
   - network_domains
   - network_proxies

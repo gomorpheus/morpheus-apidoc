@@ -36,7 +36,7 @@ curl "<%= curl_url %>/api/zone-types"
       "id": 1,
       "name": "Standard",
       "code": "standard",
-      "description": "Standard zone - manually managed servers or virtual machines"
+      "description": "Standard zone - manually managed servers or virtual machines",
       "serverTypes": [],
       "optionTypes": []
     }
@@ -77,9 +77,9 @@ curl "<%= curl_url %>/api/zone-types/1"
     "id": 1,
     "name": "Standard",
     "code": "standard",
-    "description": "Standard zone - manually managed servers or virtual machines"
-    serverTypes: [],
-    optionTypes: []
+    "description": "Standard zone - manually managed servers or virtual machines",
+    "serverTypes": [],
+    "optionTypes": []
   }
 }
 ```

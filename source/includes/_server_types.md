@@ -290,7 +290,7 @@ name |  | Filter by name or code
 code |  | Filter by code
 phrase |  | Filter by wildcard search of name, code and description
 provisionType |  | Filter by [Provision Type](#provision-types) code
-zoneType |  | Filter by [Zone Type](#zone-types) code
+zoneType |  | Filter by [Cloud Type](#cloud-types) code
 creatable |  | Filter by creatable flag. This is whether or not it can be provisioned.
 
 
