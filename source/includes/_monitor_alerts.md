@@ -181,7 +181,7 @@ groups      |  | Array of [Check Group](#check-groups) IDs. Trigger for specific
 apps      |  | Array of [Monitor App](#monitor-apps) IDs. Trigger for specific monitor apps.
 contacts      |  | Array of objects. See [Alert Contact Parameters](#alert-contact-parameters).
 
-#### Alert Contacts Parameters
+#### Alert Contact Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
