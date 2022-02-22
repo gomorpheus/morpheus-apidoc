@@ -1081,6 +1081,77 @@ Parameter | Default | Description
 --------- | ------- | -----------
 phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
+
+## Delete a Worker
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/clusters/:clusterId/servers/:serverId" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint deletes a specified worker from a specified cluster.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/clusters/:clusterId/servers/:serverId`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+clusterId | The ID of the cluster
+serverId | The ID of the server (worker)
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+force | off | Force Delete
+
+## Update Worker Count
+
+```shell
+curl -XPUT "<%= curl_url %>/api/clusters/:id/worker-count" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint resizes a cluster to the specified number of worker nodes (only supports Azure AKS, Google GKE, and Amazon EKS clusters).
+
+### HTTP Request
+
+`GET <%= api_url %>/api/clusters/:id/servers/worker-count`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the cluster
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+workerCount | | The target number of worker nodes
+
+
 ## Get Masters (Kubernetes)
 
 ```shell
