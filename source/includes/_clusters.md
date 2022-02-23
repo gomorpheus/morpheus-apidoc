@@ -1120,7 +1120,7 @@ force | off | Force Delete
 ## Update Worker Count
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/clusters/:id/worker-count" \
+curl -XPUT "<%= curl_url %>/api/clusters/:id/worker-count?workerCount=3" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -1136,7 +1136,7 @@ This endpoint resizes a cluster to the specified number of worker nodes (only su
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/clusters/:id/servers/worker-count`
+`PUT <%= api_url %>/api/clusters/:id/worker-count`
 
 
 ### URL Parameters
