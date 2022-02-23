@@ -448,3 +448,31 @@ Will deactivate a service plan
 Parameter | Description
 --------- | -----------
 id | The ID of the service plan
+
+
+## Delete a Service Plan
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/service-plans/1" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete a service plan
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/service-plans/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the service plan
