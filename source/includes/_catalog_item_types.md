@@ -550,7 +550,7 @@ id | The ID of the catalog item type
 
 Parameter | Default | Description
 --------- | ------- | -----------
-catalogItemType.logo      |  | Logo File png,jpg,svg
+logo      |  | Logo File png,jpg,svg
 
 ## Delete a Catalog Item Type
 
