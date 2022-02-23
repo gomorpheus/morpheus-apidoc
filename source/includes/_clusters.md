@@ -1101,7 +1101,7 @@ This endpoint deletes a specified worker from a specified cluster.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/clusters/:clusterId/servers/:serverId`
+`DELETE <%= api_url %>/api/clusters/:clusterId/servers/:serverId`
 
 
 ### URL Parameters
