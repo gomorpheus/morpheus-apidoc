@@ -183,7 +183,7 @@ curl -XPOST "<%= curl_url %>/api/task-sets" \
     "tasks": [
       {
         "taskId": 3,
-        "phase": "operation"
+        "taskPhase": "operation"
       }
     ]
   }}'
