@@ -20,7 +20,8 @@ curl "<%= curl_url %>/api/catalog/types" \
       "description": "Example apache instance",
       "type": "instance",
       "featured": true,
-      "imagePath": "/assets/containers-png/apache.png"
+      "imagePath": "/assets/containers-png/apache.png",
+      "darkImagePath": "/assets/containers-png/apache.png"
     },
     {
       "id": 2,
@@ -28,7 +29,8 @@ curl "<%= curl_url %>/api/catalog/types" \
       "description": "Example catalog item",
       "type": "instance",
       "featured": true,
-      "imagePath": "/assets/containers-png/apache.png"
+      "imagePath": "/assets/containers-png/apache.png",
+      "darkImagePath": "/assets/containers-png/apache.png"
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@ curl "<%= curl_url %>/api/catalog/types" \
       "type": "workflow",
       "context": "instance",
       "featured": false,
-      "imagePath": "/assets/containers-png/morph-resource2.png"
+      "imagePath": "/assets/containers-png/morph-resource2.png",
+      "darkImagePath": "/assets/containers-png/morph-resource2.png"
     }
   ],
   "meta": {
@@ -86,6 +89,7 @@ curl "<%= curl_url %>/api/catalog/types/1" \
     "type": "blueprint",
     "featured": true,
     "imagePath": "/assets/containers-png/morph-resource2.png",
+    "darkImagePath": "/assets/containers-png/morph-resource2.png",
     "optionTypes": [
       {
         "id": 1717,

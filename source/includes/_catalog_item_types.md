@@ -27,6 +27,8 @@ curl "<%= curl_url %>/api/catalog-item-types" \
       "enabled": true,
       "featured": true,
       "iconPath": "/assets/containers-png/nginx.png",
+      "imagePath": "/assets/containers-png/nginx.png",
+      "darkImagePath": "/assets/containers-png/nginx.png",
       "config": {
         "group": {
           "id": 20,
@@ -93,6 +95,8 @@ curl "<%= curl_url %>/api/catalog-item-types" \
       "enabled": true,
       "featured": true,
       "iconPath": "/assets/containers-png/docker.png",
+      "imagePath": "/assets/containers-png/docker.png",
+      "darkImagePath": "/assets/containers-png/docker.png",
       "appSpec": "name: <%%= customOptions.appName %>\r\ngroup:\r\n  name: Example\r\nenvironment: Test\r\ntiers:\r\n  Web:\r\n    instances:\r\n      - instance:\r\n          type: nginx\r\n          cloud: Example\r\n  App:\r\n    instances:\r\n      - instance:\r\n          type: activemq\r\n          cloud: Example",
       "optionTypes": [
         {
@@ -348,6 +352,7 @@ description | N | Catalog Item Type description
 type | N | Type, `instance`, `blueprint` or `workflow`. This determines whether an [Instance](#instances) or [App](#apps) will be provisioned. Instance types require a `config` and blueprint requires a `blueprint` and `appSpec`, while workflow types requires a `workflow` and `context`.
 iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/containers-png/nginx.png`.
 logo | N | Logo File png,jpg,svg *Only available when using multipart form data content instead of JSON*
+darkLogo | N | Dark Logo File png,jpg,svg *Only available when using multipart form data content instead of JSON*
 enabled | N | Can be used to enable / disable the catalog item type. Default is true
 featured | N | Can be used to feature the catalog item type. Default is false
 optionTypes | N | Array of option type IDs, see [Inputs](#inputs). Only applies to type `instance` and `blueprint`. The `workflow` type always uses the option types from the workflow and its tasks instead.
@@ -509,6 +514,7 @@ name | Y | Catalog Item Type name
 description | N | Catalog Item Type description
 iconPath | N | Icon Path, relative location of an icon image, eg. `/assets/containers-png/nginx.png`.
 logo | N | Logo File png,jpg,svg *Only available when using multipart form data content instead of JSON*
+darkLogo | N | Dark Logo File png,jpg,svg *Only available when using multipart form data content instead of JSON*
 enabled | N | Can be used to enable / disable the catalog item type. Default is true
 featured | N | Can be used to feature the catalog item type. Default is false
 optionTypes | N | Array of layout option type IDs, see [Inputs](#option-types)
@@ -524,6 +530,7 @@ context | N | Context for running the workflow, determines if a target resource 
 curl -XPUT "<%= curl_url %>/api/catalog-item-types/:id/update-logo" \
   -H "Authorization: BEARER <%= curl_token %>"
   -F 'catalogItemType.logo=@filename'
+  -F 'catalogItemType.darkLogo=@darkfilename'
 ```
 
 > The above command returns JSON structured like this:
@@ -534,7 +541,7 @@ curl -XPUT "<%= curl_url %>/api/catalog-item-types/:id/update-logo" \
 }
 ```
 
-Use this command to update the logo image for an existing catalog item type. This endpoint expects multipart form data as the request format, not JSON.
+Use this command to update the logo images for an existing catalog item type. This endpoint expects multipart form data as the request format, not JSON.
 
 ### HTTP Request
 
@@ -551,6 +558,7 @@ id | The ID of the catalog item type
 Parameter | Default | Description
 --------- | ------- | -----------
 logo      |  | Logo File png,jpg,svg
+darkLogo      |  | Dark Logo File png,jpg,svg
 
 ## Delete a Catalog Item Type
 
