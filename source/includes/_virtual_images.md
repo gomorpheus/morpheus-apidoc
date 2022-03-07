@@ -633,7 +633,7 @@ This endpoint retrieves a specific virtual image and its files.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/virtual-images/:id`
+`GET <%= api_url %>/api/virtual-images/:id/locations`
 
 ### URL Parameters
 
