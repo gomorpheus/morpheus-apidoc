@@ -3175,3 +3175,75 @@ This operation will undo the delete of an instance that is pending removal.
 Parameter | Description
 --------- | -----------
 id | ID of the instance
+
+## Refresh State of an Instance
+
+```shell
+curl -XPOST "<%= curl_url %>/api/instances/:id/refresh" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to refresh the state of an instance.
+This action only applies to Terraform, CloudFormation and ARM.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/instances/:id/refresh`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+
+## Apply State of an Instance
+
+```shell
+curl -XPOST "<%= curl_url %>/api/instances/:id/apply" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "templateParameter": {
+      "myVar": "My Value",
+      "another": "Hello World"
+    }
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to apply the state of an instance.
+This action only applies to Terraform, CloudFormation and ARM.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/instances/:id/apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+templateParameter |    | Template Parameter object. A map of key-value pairs that correspond to the template variables i.e. `tfvars`

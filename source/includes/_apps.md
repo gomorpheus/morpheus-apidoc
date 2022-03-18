@@ -493,7 +493,12 @@ id | ID of the app
 curl -XPOST "<%= curl_url %>/api/apps/:id/apply" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+    "templateParameter": {
+      "myVar": "My Value",
+      "another": "Hello World"
+    }
+  }'
 ```
 
 > The above command returns JSON Structured like this:
@@ -517,3 +522,8 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+templateParameter |    | Template Parameter object. A map of key-value pairs that correspond to the template variables i.e. `tfvars`
