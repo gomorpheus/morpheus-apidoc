@@ -496,30 +496,6 @@ curl "<%= curl_url %>/api/integrations" \
       "lastSync": null,
       "nextRunDate": null,
       "lastSyncDuration": null
-    },
-    {
-      "id": 9470,
-      "name": "Labs Venafi",
-      "enabled": true,
-      "type": "venafi",
-      "integrationType": {
-        "id": 19,
-        "code": "venafi",
-        "name": "Venafi"
-      },
-      "host": "https://venafi-url",
-      "username": "tppadmin",
-      "password": "************",
-      "serviceMode": "static",
-      "isPlugin": false,
-      "config": {
-      },
-      "status": "ok",
-      "statusDate": null,
-      "statusMessage": null,
-      "lastSync": null,
-      "nextRunDate": null,
-      "lastSyncDuration": null
     }
   ],
   "meta": {
@@ -1371,48 +1347,6 @@ This is an example of [create](#create-an-integration) for a new Jenkins integra
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 serviceUrl | Y |  | Jenkins Url
-serviceUsername | Y |  | User
-servicePassword | N |  | Password
-
-## Venafi Integration
-
-```shell
-curl -XPOST "<%= curl_url %>/api/integrations" \
-  -H "Authorization: Bearer <%= curl_token %>" \
-  -H "Content-Type: application/json" \
-  -d '{
-  "integration": {
-    "name": "<%= company_name %> Venafi",
-    "type": "venafi",
-    "serviceHost": "https://venafi-url",
-    "serviceUsername": "venafi-user",
-    "servicePassword": "************"
-  }
-}'
-```
-
-> The above command returns JSON Structured like this:
-
-```json
-{
-  "success": true,
-  "integration": {
-    "id": 1
-  }
-}
-```
-
-This is an example of [create](#create-an-integration) for a new Venafi integration.
-
-### HTTP Request
-
-`POST <%= api_url %>/api/integrations`
-
-### Venafi Integration Parameters
-
-Parameter | Required | Default | Description
---------- | -------- | ------- | -----------
-serviceHost | Y |  | Venafi Host
 serviceUsername | Y |  | User
 servicePassword | N |  | Password
 
