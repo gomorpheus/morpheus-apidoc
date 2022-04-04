@@ -21,7 +21,7 @@ curl "<%= curl_url %>/api/apps" \
       "accountId": 1,
       "account": {
         "id": 1,
-        "name": "root"
+        "name": "<%= company_name %>"
       },
       "owner": {
         "id": 127,
@@ -130,7 +130,7 @@ curl "<%= curl_url %>/api/apps/4" \
     "accountId": 1,
     "account": {
       "id": 1,
-      "name": "root"
+      "name": "<%= company_name %>"
     },
     "owner": {
       "id": 127,
@@ -456,6 +456,113 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
+## Get State of an App
+
+```shell
+curl -XGET "<%= curl_url %>/api/apps/:id/state" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "workloads": [
+    {
+      "refType": "App",
+      "refId": 65,
+      "refName": "tf-example",
+      "subRefName": null,
+      "stateDate": "2022-04-04T17:35:01Z",
+      "status": "ok",
+      "iacDrift": false
+    }
+  ],
+  "iacDrift": false,
+  "planResources": [
+
+  ],
+  "specs": [
+    {
+      "id": 9,
+      "name": "tf-example",
+      "template": null,
+      "isolated": false
+    }
+  ],
+  "stateData": "{\n    \"format_version\": \"1.0\",\n    \"terraform_version\": \"1.1.7\",\n    ....",
+  "planData": "vsphere_virtual_machine.vm: Refreshing state... [id=422da4c7-2fdb-cb01-e65c-0c07e17903a8]\n\nNo changes. Your infrastructure matches the configuration.\n\nTerraform has compared your real infrastructure against your configuration\nand found no differences, so no changes are needed.\n",
+  "input": {
+    "variables": [
+      {
+        "name": "environment",
+        "value": "dev",
+        "sensitive": false,
+        "type": "string"
+      },
+      {
+        "name": "instanceName",
+        "value": "tf-example",
+        "sensitive": false,
+        "type": "string"
+      }
+    ],
+    "providers": [
+      {
+        "name": "vsphere"
+      }
+    ],
+    "data": [
+      {
+        "key": "dc",
+        "name": "labs-qa",
+        "type": "vsphere_datacenter"
+      },
+      {
+        "key": "datastore",
+        "name": "ESXi-LUN1",
+        "type": "vsphere_datastore"
+      },
+      {
+        "key": "pool",
+        "name": "QA",
+        "type": "vsphere_resource_pool"
+      },
+      {
+        "key": "network",
+        "name": "VLAN0002",
+        "type": "vsphere_network"
+      },
+      {
+        "key": "template",
+        "name": "Morpheus Ubuntu 20.04.1 v1",
+        "type": "vsphere_virtual_machine"
+      }
+    ]
+  },
+  "output": {
+    "outputs": [
+
+    ]
+  }
+}
+```
+
+This endpoint provides a way to view the state of an app. The response includes output and resource planning information from the template provider software such as Terraform.
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/apps/:id/state`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the app
+
+
 ## Refresh State of an App
 
 ```shell
@@ -474,7 +581,7 @@ curl -XPOST "<%= curl_url %>/api/apps/:id/refresh" \
 ```
 
 This endpoint provides a way to refresh the state of an app.
-This action only applies to Terraform, CloudFormation and ARM.
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
 
 ### HTTP Request
 
@@ -486,6 +593,48 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
+## Prepare To Apply an App
+
+```shell
+curl -XGET "<%= curl_url %>/api/apps/:id/prepare-apply" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "data": {
+    "image": "/assets/branding/90x30/blueprint-terraform.svg",
+    "name": "tf-example",
+    "terraform": {
+      "tf": "(your terraform config)",
+      "tfvarSecret": "tfvars/tf-example",
+      "configType": "tf"
+    },
+    "type": "terraform",
+    "executionId": "23e55735-3b6e-4183-861c-01a12eae2f9f",
+    "templateParameter": {
+      "environment": "dev",
+      "instanceName": "tf-example"
+    }
+  }
+}
+```
+
+This endpoint provides a way to view the current app configuration and `templateParameter` variables available to [apply](#apply-state-of-an-app).
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/apps/:id/prepare-apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the app
 
 ## Apply State of an App
 
@@ -510,7 +659,7 @@ curl -XPOST "<%= curl_url %>/api/apps/:id/apply" \
 ```
 
 This endpoint provides a way to apply the state of an app.
-This action only applies to Terraform, CloudFormation and ARM.
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
 
 ### HTTP Request
 
