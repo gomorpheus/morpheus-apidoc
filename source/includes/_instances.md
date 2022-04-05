@@ -3325,15 +3325,6 @@ curl -XGET "<%= curl_url %>/api/instances/:id/prepare-apply" \
 {
   "success": true,
   "data": {
-    "image": "/assets/branding/90x30/blueprint-terraform.svg",
-    "name": "tf-example",
-    "terraform": {
-      "tf": "(your terraform config)",
-      "tfvarSecret": "tfvars/tf-example",
-      "configType": "tf"
-    },
-    "type": "terraform",
-    "executionId": "23e55735-3b6e-4183-861c-01a12eae2f9f",
     "templateParameter": {
       "environment": "dev",
       "instanceName": "tf-example"
