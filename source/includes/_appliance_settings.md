@@ -140,7 +140,7 @@ expirePwdDays | Expire password after days. Setting to 0 disabled this feature
 disableAfterAttempts | Disable user after number of attempts. Set to 0 to disable this feature
 disableAfterDaysInactive | Disable user if inactive for specified days. Set to 0 to disable this feature
 warnUserDaysBefore | Send warning email number of days in advance before deactivating. Set to 0 to disable this feature
-smtpFromEmail | From email address
+smtpMailFrom | From email address
 stmpServer | SMTP server / host
 smtpPort | SMTP port
 smtpSSL | Use SSL for SMTP connection
