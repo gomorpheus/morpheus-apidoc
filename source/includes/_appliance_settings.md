@@ -135,7 +135,7 @@ passwordMinUpperCase | Min Password Uppercase
 passwordMinNumbers | Min Password Numbers
 passwordMinSymbols | Min Password Symbols
 userBrowserSessionTimeout | User Browser Session Timeout (Minutes)
-dockerPrivilegedMode | User Browser Session Warning (Minutes)
+userBrowserSessionWarning | User Browser Session Warning (Minutes)
 expirePwdDays | Expire password after days. Setting to 0 disabled this feature
 disableAfterAttempts | Disable user after number of attempts. Set to 0 to disable this feature
 disableAfterDaysInactive | Disable user if inactive for specified days. Set to 0 to disable this feature
