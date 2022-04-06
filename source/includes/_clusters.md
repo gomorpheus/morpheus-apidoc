@@ -399,7 +399,21 @@ curl -XPOST "<%= curl_url %>/api/clusters" \
             },
             "networkDomain": null,
             "hostname": null,
-            "nodeCount": 3
+            "nodeCount": 3,
+            "tags": [
+              {
+                "name": "Tag Name",
+                "value": "Sample Value"
+              },
+              {
+                "name": "BusinessUnit",
+                "value": "QualityAssurance"
+              }
+            ],
+            "labels": [
+                "cool",
+                "beans"
+            ]
         }
     }}'
 ```
@@ -439,7 +453,9 @@ securityGroups | N |  | Key for security group configuration. It should be passe
 visibility | N | private | Visibility for server host
 userGroup.id | N |  | User Group ID for server host
 hostname | N |  | Hostname for server host
-nodeCount | N |  | Number of workers or hosts 
+nodeCount | N |  | Number of workers or hosts
+labels | N |  | Array of strings (keywords)
+tags | N |  | Metadata tags, Array of objects having a name and value. 
 
 #### Volumes
 
