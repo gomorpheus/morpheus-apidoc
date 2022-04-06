@@ -2125,9 +2125,9 @@ This is specific to AWS Metadata tags.  Name-Values pairs can be anything you li
   ...
   "tags": [
     {
-      "name": "SampleName",
-      "value": "SampleValue"
-    }
+      "name": "Tag Name",
+      "value": "Sample Value"
+    },
     {
       "name": "BusinessUnit",
       "value": "QualityAssurance"
@@ -3346,6 +3346,48 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
+## Validate Apply State for an Instance
+
+```shell
+curl -XPOST "<%= curl_url %>/api/instances/:id/validate-apply" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "templateParameter": {
+      "instanceName": "example-tf",
+      "greeting": "Hello World"
+    }
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "executionId": "23e55735-3b6e-4183-861c-01a12eae2f9f"
+}
+```
+
+This endpoint provides a way to validate instance configuration and `templateParameter` variables before executing the [apply](#apply-state-of-an-instance). This only validates the configuration to see any planned changes and it does not actually [apply](#apply-state-of-an-app) the changes.
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/instances/:id/validate-apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+templateParameter |    | Template Parameter object. A map of key-value pairs that correspond to the template variables i.e. `tfvars`
+
 ## Apply State of an Instance
 
 ```shell
@@ -3354,8 +3396,8 @@ curl -XPOST "<%= curl_url %>/api/instances/:id/apply" \
   -H "Content-Type: application/json" \
   -d '{
     "templateParameter": {
-      "myVar": "My Value",
-      "another": "Hello World"
+      "instanceName": "tf-example",
+      "greeting": "Hello World"
     }
   }'
 ```

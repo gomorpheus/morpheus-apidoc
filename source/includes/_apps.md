@@ -636,6 +636,49 @@ Parameter | Description
 --------- | -----------
 id | ID of the app
 
+## Validate Apply State for an App
+
+```shell
+curl -XPOST "<%= curl_url %>/api/apps/:id/validate-apply" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "templateParameter": {
+      "instanceName": "example-tf",
+      "greeting": "Hello World"
+    }
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true,
+  "executionId": "23e55735-3b6e-4183-861c-01a12eae2f9f"
+}
+```
+
+This endpoint provides a way to validate app configuration and `templateParameter` variables before executing the [apply](#apply-state-of-an-app). This only validates the configuration to see any planned changes and it does not actually [apply](#apply-state-of-an-app) the changes.
+This action only applies to Terraform, CloudFormation and ARM and will return an HTTP 400 error for other types.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/apps/:id/validate-apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the app
+
+### JSON Parameters
+
+Parameter   | Default | Description
+---------   | ------- | -----------
+templateParameter |    | Template Parameter object. A map of key-value pairs that correspond to the template variables i.e. `tfvars`
+
+
 ## Apply State of an App
 
 ```shell
@@ -644,8 +687,8 @@ curl -XPOST "<%= curl_url %>/api/apps/:id/apply" \
   -H "Content-Type: application/json" \
   -d '{
     "templateParameter": {
-      "myVar": "My Value",
-      "another": "Hello World"
+      "instanceName": "example-tf",
+      "greeting": "Hello World"
     }
   }'
 ```
