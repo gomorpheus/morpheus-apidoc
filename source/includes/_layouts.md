@@ -728,7 +728,7 @@ provisionTypeCode | Y | Provision type code
 containerTypes | N | Array of layout node type IDs, see [Node Types](#node-types)
 optionTypes | N | Array of layout option type IDs, see [Inputs](#inputs)
 specTemplates | N | Array of layout spec template IDs, see [Spec Templates](#spec-templates)
-tfvarSecret | N | Tfvar Secret name, see [Cypher](#cypher). eg. `tfvars/dev-key`
+tfvarSecret | N | Tfvar Secret name, see [Cypher](#cypher). eg. `tfvars/dev-key` This only applies to Terraform.
 taskSetId | N | ID of [Workflow](#workflows)
 environmentVariables | N | Array of layout env variables, see [Environment Variables](#environment-variable-parameters)
 permissions | N | Permissions object for upgrading group access, see [Permissions](#permissions-parameters)
