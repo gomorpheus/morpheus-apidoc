@@ -73,6 +73,16 @@ curl "<%= curl_url %>/api/apps" \
           ]
         }
       ],
+      "instances": [
+        {
+          "id": 53,
+          "name": "Test App - Grails"
+        },
+        {
+          "id": 54,
+          "name": "Test App - MySQL"
+        }
+      ],
       "stats": {
         "usedMemory": 0,
         "maxMemory": 1073741824,
@@ -180,6 +190,16 @@ curl "<%= curl_url %>/api/apps/4" \
             }
           }
         ]
+      }
+    ],
+    "instances": [
+      {
+        "id": 53,
+        "name": "Test App - Grails"
+      },
+      {
+        "id": 54,
+        "name": "Test App - MySQL"
       }
     ],
     "stats": {
