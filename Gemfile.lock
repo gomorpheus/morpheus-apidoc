@@ -94,7 +94,7 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.2.3)
     ref (2.0.0)
-    rouge (1.8.0)
+    rouge (1.11.1)
     sass (3.4.25)
     sprockets (2.12.5)
       hike (~> 1.2)
@@ -131,7 +131,7 @@ DEPENDENCIES
   middleman-syntax (~> 2.0.0)
   rake (~> 12.3.3)
   redcarpet (~> 3.2.2)
-  rouge (~> 1.8.0)
+  rouge (~> 1.11.1)
   therubyracer (~> 0.12.1)
 
 BUNDLED WITH
