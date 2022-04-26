@@ -529,6 +529,49 @@ password      | Y |  | Password
 authKey.id      | Y |  | Private Key. ID of a [Key Pair](#key-pairs).
 
 
+## Create a OAuth 2.0 Credential
+
+```shell
+curl -XPOST "<%= curl_url %>/api/credentials" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "credential": {
+    "type": "oauth2",
+    "name": "Example Credentials",
+    "username": "your_user",
+    "password": "your_password",
+    "config": {
+      "grantType": "password",
+      "accessTokenUrl": "https://your_oauth2_url",
+      "clientId": "your_client_id",
+      "clientSecret": "your_client_secret",
+      "scope": "read",
+      "clientAuth": "body"
+    }
+  }
+}'
+```
+
+> The above command returns JSON structured like getting a single credential:
+
+### HTTP Request
+
+`POST <%= api_url %>/api/credentials`
+
+### OAuth 2.0 Credential Parameters
+
+Parameter | Required  | Default | Description
+--------- |-----------| ------- | -----------
+username | N         |  | Username
+password | N         |  | Password
+config.grantType | Y         |  | OAuth 2.0 grant type
+config.accessTokenUrl | Y         |  | Token endpoint
+config.clientId | Y         |  | Client ID 
+config.clientSecret | N         |  | Client Secret
+config.scope | N         |  | Scope
+config.clientAuth | Y |  | Auth type: body, basic-auth
+
 ## Update a Credential
 
 ```shell
