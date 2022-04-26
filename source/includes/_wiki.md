@@ -311,7 +311,7 @@ ID | The ID of the Instance
 ## Update a Wiki Page For Instance
 
 ```shell
-curl -XPUT "<%= curl_url %>/instances/1/wiki" \
+curl -XPUT "<%= curl_url %>/api/instances/1/wiki" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -368,7 +368,7 @@ ID | The ID of the App
 ## Update a Wiki Page For App
 
 ```shell
-curl -XPUT "<%= curl_url %>/apps/1/wiki" \
+curl -XPUT "<%= curl_url %>/api/apps/1/wiki" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -424,7 +424,7 @@ ID | The ID of the Cluster
 ## Update a Wiki Page For Cluster
 
 ```shell
-curl -XPUT "<%= curl_url %>/clusters/1/wiki" \
+curl -XPUT "<%= curl_url %>/api/clusters/1/wiki" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -479,7 +479,7 @@ ID | The ID of the Server
 ## Update a Wiki Page For Server
 
 ```shell
-curl -XPUT "<%= curl_url %>/servers/1/wiki" \
+curl -XPUT "<%= curl_url %>/api/servers/1/wiki" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
@@ -536,7 +536,7 @@ ID | The ID of the Cloud
 ## Update a Wiki Page For Cloud
 
 ```shell
-curl -XPUT "<%= curl_url %>/zones/1/wiki" \
+curl -XPUT "<%= curl_url %>/api/zones/1/wiki" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{"page":{
