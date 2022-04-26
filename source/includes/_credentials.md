@@ -561,16 +561,18 @@ curl -XPOST "<%= curl_url %>/api/credentials" \
 
 ### OAuth 2.0 Credential Parameters
 
-Parameter | Required  | Default | Description
---------- |-----------| ------- | -----------
-username | N         |  | Username
-password | N         |  | Password
-config.grantType | Y         |  | OAuth 2.0 grant type
-config.accessTokenUrl | Y         |  | Token endpoint
-config.clientId | Y         |  | Client ID 
-config.clientSecret | N         |  | Client Secret
-config.scope | N         |  | Scope
-config.clientAuth | Y |  | Auth type: body, basic-auth
+Parameter | Required | Default | Description
+--------- |--------| ------- | -----------
+username | N      |  | Username
+password | N      |  | Password
+config.grantType | Y      |  | OAuth 2.0 grant type (client_credentials, password)
+config.accessTokenUrl | Y      |  | Token endpoint
+config.clientId | N      |  | Client ID 
+config.clientSecret | N      |  | Client Secret
+config.scope | N      |  | Scope
+config.clientAuth | Y      |  | Auth type: body, basic-auth
+
+**NOTE: Optional parameters listed above maybe be required depending upon access token provider requirements.**
 
 ## Update a Credential
 
