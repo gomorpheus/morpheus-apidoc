@@ -36,6 +36,10 @@ curl "<%= curl_url %>/api/zones"
       "enabled": true,
       "status": "ok",
       "statusMessage": null,
+      "statusDate": "2022-05-02T23:32:28Z",
+      "costStatus": "ok",
+      "costStatusMessage": null,
+      "costStatusDate": null,
       "zoneType": {
         "id": 1,
         "code": "standard",
@@ -83,6 +87,9 @@ curl "<%= curl_url %>/api/zones"
         "serviceRegistryId": "",
         "enableNetworkTypeSelection": null
       },
+      "credential": {
+        "type": "local"
+      },
       "dateCreated": "2017-03-28T19:36:46Z",
       "lastUpdated": "2021-01-28T17:55:43Z",
       "groups": [
@@ -127,6 +134,10 @@ curl "<%= curl_url %>/api/zones"
       "enabled": true,
       "status": "ok",
       "statusMessage": null,
+      "statusDate": "2022-05-02T23:32:28Z",
+      "costStatus": "ok",
+      "costStatusMessage": null,
+      "costStatusDate": null,
       "zoneType": {
         "id": 3,
         "code": "amazon",
@@ -182,6 +193,9 @@ curl "<%= curl_url %>/api/zones"
         "configCmdbId": "",
         "configCmId": "",
         "securityServer": "null"
+      },
+      "credential": {
+        "type": "local"
       },
       "dateCreated": "2020-05-08T03:04:16Z",
       "lastUpdated": "2021-01-28T17:55:54Z",
@@ -371,7 +385,10 @@ curl -XPOST "<%= curl_url %>/api/zones" \
     "description": "My description",
     "location": "US EAST",
     "zoneType": {"code": "standard"},
-    "groupId": 1
+    "groupId": 1,
+    "credential": {
+      "id": 558
+    }
   }}'
 ```
 
@@ -398,6 +415,7 @@ autoRecoverPowerState | false | Automatically Power on VMs
 scalePriority | 1 | Scale Priority
 linkedAccountId |  | Linked Account ID (enter commercial ID to get costing for AWS Govcloud)
 config |  | Map containing zone configuration settings. See the section on specific zone types for details.
+credential |  | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local cloud `config` instead of associating a credential.
 
 Additional config properties are dynamic and depend on the specified type of cloud. See [Cloud Types](#cloud-types).
 
@@ -411,9 +429,15 @@ curl -XPUT "<%= curl_url %>/api/zones/1" \
     "name": "My Cloud",
     "description": "My description",
     "location": "US EAST",
-    "zoneType": {"code": "standard"},
+    "zoneType": {
+      "code": "standard"
+    },
     "groupId": 1,
-    "config": null
+    "config": {
+    },
+    "credential": {
+      "id": 559
+    }
   }}'
 ```
 
@@ -438,6 +462,7 @@ autoRecoverPowerState |  | Automatically Power on VMs
 scalePriority |  | Scale Priority
 linkedAccountId |  | Linked Account ID (enter commercial ID to get costing for AWS Govcloud)
 config |  | Map containing zone configuration settings. See the section on specific zone types for details.
+credential |  | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local cloud `config` instead of associating a credential.
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
