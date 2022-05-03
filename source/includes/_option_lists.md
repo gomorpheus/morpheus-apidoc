@@ -88,7 +88,7 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
 This endpoint retrieves all option lists.
 
 <aside class="info">
-<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A sepearate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
+<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A separate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
 </aside>
 
 ### HTTP Request
@@ -156,7 +156,7 @@ curl "<%= curl_url %>/api/library/option-type-lists/1" \
 This endpoint retrieves a specific option list.
 
 <aside class="info">
-<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A sepearate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
+<b>Deprecation notice.</b> This endpoint no longer returns the option list items as <code>listItems</code>. A separate endpoint is available for this at </code>/api/library/option-type-lists/:id/items</code>.
 </aside>
 
 ### HTTP Request
