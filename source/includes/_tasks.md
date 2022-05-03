@@ -23,6 +23,9 @@ curl "<%= curl_url %>/api/tasks"
         "code": "script",
         "name": "Shell Script"
       },
+      "taskOptions": {
+        "shell.sudo": "on"
+      },
       "file": {
         "id": 1275,
         "sourceType": "local",
@@ -31,8 +34,17 @@ curl "<%= curl_url %>/api/tasks"
         "repository": null,
         "content": "apt-get upgrade -y"
       },
-      "taskOptions": {
-      }
+      "resultType": null,
+      "executeTarget": "resource",
+      "retryable": false,
+      "retryCount": 5,
+      "retryDelaySeconds": 10,
+      "allowCustomConfig": false,
+      "credential": {
+        "type": "local"
+      },
+      "dateCreated": "2022-05-03T12:45:20Z",
+      "lastUpdated": "2022-05-03T12:45:20Z"
     },
   ],
   "meta": {
@@ -82,6 +94,9 @@ curl "<%= curl_url %>/api/tasks/1" \
         "code": "script",
         "name": "Shell Script"
       },
+      "taskOptions": {
+        "shell.sudo": "on"
+      },
       "file": {
         "id": 1275,
         "sourceType": "local",
@@ -90,8 +105,17 @@ curl "<%= curl_url %>/api/tasks/1" \
         "repository": null,
         "content": "apt-get upgrade -y"
       },
-      "taskOptions": {
-      }
+      "resultType": null,
+      "executeTarget": "resource",
+      "retryable": false,
+      "retryCount": 5,
+      "retryDelaySeconds": 10,
+      "allowCustomConfig": false,
+      "credential": {
+        "type": "local"
+      },
+      "dateCreated": "2022-05-03T12:45:20Z",
+      "lastUpdated": "2022-05-03T12:45:20Z"
     }
 }
 ```
@@ -147,6 +171,7 @@ retryable      | false | If the task should be retried or not.
 retryCount      |  | The number of times to retry.
 retryDelaySeconds      |  | The delay, between retries.
 file |  | File, object specifying type and content, see [File Object](#file-object-parameter). This is required for task types that expect a script, having `scriptable:true` and an optionType of `type:"file-content"`.
+credential | N | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local task options `username` and `password` instead of associating a credential.
 
 ### File Object Parameter
 
@@ -175,6 +200,7 @@ taskOptions.host      |  | Host or IP Address for remote execution
 taskOptions.port      | 22 | Port for remote execution
 taskOptions.username      |  | Username for remote execution
 taskOptions.password      |  | Password for remote execution
+taskOptions.sshKey      |  | SSH Key ID for remote execution
 
 These additional task options are available when using executeTarget of `remote`.
 
