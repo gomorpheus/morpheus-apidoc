@@ -29,6 +29,11 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
       "visibility": "private",
       "config": {
       },
+      "credential": {
+        "type": "local"
+      },
+      "serviceUsername": null,
+      "servicePassword": null,
       "initialDataset": "foo,Foo\nbar,Bar\nbaz,Baz\nhello,world",
       "translationScript": null,
       "requestScript": null,
@@ -57,6 +62,11 @@ curl "<%= curl_url %>/api/library/option-type-lists" \
           }
         ]
       },
+      "credential": {
+        "type": "local"
+      },
+      "serviceUsername": null,
+      "servicePassword": null,
       "initialDataset": null,
       "translationScript": "for(var x=0;x < data.data.length; x++) {\n    results.push(data.data[x]);\n}",
       "requestScript": null,
@@ -255,13 +265,16 @@ Parameter | Required | Description
 --------- | -------- | -----------
 name | Y | Name
 description | N | Description
-type | N | Option List Type eg. `rest` `api` or `manual`. Default is `rest`.
+type | N | Option List Type eg. `rest` `api`, `ldap` or `manual`. Default is `rest`.
 sourceUrl | N | Source URL, the http(s) URL to request data from. Required when type is rest.
 visibility | N | Visibility. Default is `private`.
 sourceMethod | N | Source Method, the HTTP method. Default is `GET`.
 apiType | N | Api Type, The code of the api option list to use, eg. `clouds`, `environments`, `groups`, `instances`, `instance-wiki`, `networks`, `servicePlans`, `resourcePools`, `securityGroups`, `servers`, `server-wiki`. Required when type is `api`.
 ignoreSSLErrors | N | Ignore SSL Errors. Default is `false`.
 realTime | N | Real Time. Default is `false`.
+credential | N | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local option list `serviceUsername` and `servicePassword` instead of associating a credential.
+serviceUsername | N | Username for authenticating with Basic Auth when type is `rest` or `ldap` username.
+servicePassword | N | Password for authenticating with Basic Auth when type is `rest` or `ldap` password.
 initialDataset | N | Initial Dataset. Create an initial JSON or CSV dataset to be used as the collection for this option list. It should be a list containing objects with properties 'name', and 'value'. Required when type is `manual`.
 translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties 'name' and 'value'. The input data is provided as data and the result should be put on the global variable results. 
 requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties 'name' and 'value' for a get. The input data is provided as data and the result should be put on the global variable results.
@@ -295,12 +308,10 @@ curl -XPUT "<%= curl_url %>/api/library/option-type-lists/:id" \
     "type": "rest",
     "config": {
       "sourceHeaders": [
-        {
-          "name": "Authorization",
-          "value": "Bearer foobar-baz-key",
-          "masked": true
-        }
       ]
+    },
+    "credential": {
+      "id": 42
     }
   }
 }'
@@ -337,6 +348,9 @@ sourceMethod | N | Source Method, the HTTP method. Default is `GET`.
 apiType | N | Api Type, The code of the api list to use, eg. `clouds`, `groups`, etc. Required when type is `api`.
 ignoreSSLErrors | N | Ignore SSL Errors. Default is `false`.
 realTime | N | Real Time. Default is `false`.
+credential | N | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local option list `serviceUsername` and `servicePassword` instead of associating a credential.
+serviceUsername | N | Username for authenticating with Basic Auth when type is `rest` or `ldap` username.
+servicePassword | N | Password for authenticating with Basic Auth when type is `rest` or `ldap` password.
 initialDataset | N | Initial Dataset. Create an initial JSON or CSV dataset to be used as the collection for this option list. It should be a list containing objects with properties 'name', and 'value'.
 translationScript | N | Translation Script. Create a js script to translate the result data object into an Array containing objects with properties 'name' and 'value'. The input data is provided as data and the result should be put on the global variable results. 
 requestScript | N | Request Script.  Create a js script to prepare the request. Return a data object as the body for a post, and return an array containing properties 'name' and 'value' for a get. The input data is provided as data and the result should be put on the global variable results.
