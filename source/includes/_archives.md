@@ -605,7 +605,7 @@ See [Download an Archive File Link](#download-an-archive-file-link)
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/archives/files/:fileId/links`
+`POST <%= api_url %>/api/archives/files/:fileId/links?expireSeconds=600`
 
 ### URL Parameters
 
