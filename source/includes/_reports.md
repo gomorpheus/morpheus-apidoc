@@ -375,7 +375,7 @@ This endpoint execute the specified report type and create a new report result.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-type     |  | The [Report Type](#report-types) code to be executed.
+type     |  | The Report Type code to be executed.
 
 The available parameters vary by report type. Refer to the defined `optionTypes` for each report.
 
@@ -383,8 +383,8 @@ The available parameters vary by report type. Refer to the defined `optionTypes`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-startDate     |  | The start date for the report
-endDate     |  | The end date for the report
+startMonth     |  | The start month for the report
+endMonth     |  | The end month for the report
 groupId     |  | The Group ID filter for the report
 cloudId     |  | The Cloud ID filter for the report
 
