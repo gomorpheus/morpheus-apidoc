@@ -352,6 +352,7 @@ curl -XPOST "<%= curl_url %>/api/clusters" \
   -d '{"cluster": {
         "type": "docker-cluster",
         "name": "stubby toes docker cluster",
+        "displayName":"stubby toes display name",
         "description": "cluster description",
         "group": {"id": 2},
         "cloud": {"id": 3},
