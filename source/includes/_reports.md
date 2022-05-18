@@ -117,8 +117,8 @@ curl "<%= curl_url %>/api/reports" \
       "status": "ready",
       "dateCreated": "2019-06-04T23:28:02+0000",
       "lastUpdated": "2019-06-04T23:28:02+0000",
-      "startDate": null,
-      "endDate": null,
+      "startMonth": null,
+      "endMonth": null,
       "config": {
         "type": "appCost"
       },
@@ -139,8 +139,8 @@ curl "<%= curl_url %>/api/reports" \
       "status": "ready",
       "dateCreated": "2019-07-12T20:30:04+0000",
       "lastUpdated": "2019-07-12T20:30:04+0000",
-      "startDate": null,
-      "endDate": null,
+      "startMonth": null,
+      "endMonth": null,
       "config": {
         "reportType": "groupInventory",
         "cloudId": "",
@@ -205,8 +205,8 @@ curl "<%= curl_url %>/api/reports/2" \
     "status": "ready",
     "dateCreated": "2019-06-04T23:28:02+0000",
     "lastUpdated": "2019-06-04T23:28:02+0000",
-    "startDate": null,
-    "endDate": null,
+    "startMonth": null,
+    "endMonth": null,
     "config": {
       "type": "appCost"
     },
@@ -382,8 +382,8 @@ The available parameters vary by report type. Refer to the defined `optionTypes`
 
 Parameter | Default | Description
 --------- | ------- | -----------
-startMonth     |  | The start month for the report
-endMonth     |  | The end month for the report
+startMonth     |  | The start month for the report (mm/yyyy)
+endMonth     |  | The end month for the report (mm/yyyy)
 groupId     |  | The Group ID filter for the report
 cloudId     |  | The Cloud ID filter for the report
 
