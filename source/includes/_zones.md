@@ -485,9 +485,18 @@ curl -XPOST "<%= curl_url %>/api/zones/:id/refresh" \
 This endpoint provides a way to manually refresh a specific cloud. 
 Each cloud type varies when it comes to what refreshing entails, but it involves operations like discovering changes to servers and networks.
 
+
 ### HTTP Request
 
 `POST <%= api_url %>/api/zones/:id/refresh`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+mode | hourly | Refresh Mode. Run the `daily` or `costing` job instead of the default `hourly` refresh job.
+rebuild | false | Rebuild. Pass `true` to purge existing invoices for the period before refreshing.
+period | (current) | Period. Invoice billing period to refresh in the format `YYYYMM`. The default period is the current month.
 
 ## Delete a Cloud
 
