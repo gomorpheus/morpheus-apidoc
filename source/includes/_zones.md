@@ -513,7 +513,7 @@ curl -XDELETE "<%= curl_url %>/api/zones/1" \
 }
 ```
 
-If a zone has zones or servers still tied to it, a delete action will fail
+If a zone has instances or managed servers still tied to it, a delete action will fail
 
 ### HTTP Request
 
