@@ -461,21 +461,21 @@ name      |  | Name
 type      |  | Type code (ldap, jumpCloud, activeDirectory, okta, oneLogin, saml, customExternal, customApi)
 description |  | Description (optional)
 defaultAccountRole.id |  | Default Role ID
-roleMappings | | List of [Role Mapping Objects](#json-parameters-for-role-mapping). This removes any mappings for roles which are not included in the list.
-roleMappings | | *(Legacy)* Map of <%= application_name %> Role ID : Fully Qualified Role Name. This does NOT remove any mappings for roles which are not included in the map.
-roleMappingNames | | *(Legacy)* Map of <%= application_name %> Role ID : Role Name. This does NOT remove any mappings for roles which are not included in the map.
+roleMappings | | List of [Role Mapping Objects](#json-parameters-for-role-mapping).
+roleMappings | | *(Legacy)* Map of <%= application_name %> Role ID : Fully Qualified Role Name.
+roleMappingNames | | *(Legacy)* Map of <%= application_name %> Role ID : Role Name.
 config | | Map of configuration options which vary by type.
 
 ### JSON Parameters for Role Mapping
 
 Parameter | Default | Description
 --------- | ------- | -----------
-mappedRole.id |  | Role ID identifying the <%= application_name %> role in the user source tenant
-mappedRole.authority |  | Role authority identifying the <%= application_name %> role in the user source tenant
-sourceRoleFqn      |  | Fully Qualified Name of the role in the identify service
-sourceRoleName      |  | Name of the role in the identify service
+mappedRole.id |  | Role ID of the <%= application_name %> role in the identity source tenant
+mappedRole.authority |  | Role authority of the <%= application_name %> role in the identity source tenant
+sourceRoleFqn      |  | Fully Qualified Name of the role in the identity source
+sourceRoleName      |  | Name of the role in the identity source
 
-This object defines a mapping from the <%= application_name %> role to the identity source role. The <%= application_name %> role is identified by passing `mappedRole.id` or `mappedRole.authority` and the identity source must be identified by passing either `sourceRoleFqn` or `sourceRoleName`.
+This object defines a mapping from the <%= application_name %> role to the identity source role. The <%= application_name %> role is identified by passing `mappedRole.id` or `mappedRole.authority` and the identity source role must be identified by passing either `sourceRoleFqn` or `sourceRoleName` to match on.
 
 ### JSON Parameters for ldap
 
