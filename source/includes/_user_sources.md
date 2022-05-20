@@ -418,7 +418,25 @@ curl -XPOST "<%= curl_url %>/api/accounts/60/user-sources" \
     },
     "defaultAccountRole": {
       "id": 19
-    }
+    },
+    "roleMappings": [
+      {
+        "sourceRoleName": "Mathematicians",
+        "sourceRoleFqn": "CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+        "mappedRole": {
+          "id": 19117,
+          "authority": "Euler"
+        }
+      },
+      {
+        "sourceRoleName": "Philosophers",
+        "sourceRoleFqn": "CN=Philosophers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+        "mappedRole": {
+          "id": 19118,
+          "authority": "Socrates"
+        }
+      }
+    ]
   }
 }'
 ```
@@ -443,9 +461,21 @@ name      |  | Name
 type      |  | Type code (ldap, jumpCloud, activeDirectory, okta, oneLogin, saml, customExternal, customApi)
 description |  | Description (optional)
 defaultAccountRole.id |  | Default Role ID
-roleMappings | | Map of <%= application_name %> Role ID : Fully Qualified Role Name
-roleMappingNames | | Map of <%= application_name %> Role ID : Role Name
+roleMappings | | List of [Role Mapping Objects](#json-parameters-for-role-mapping). This removes any mappings for roles which are not included in the list.
+roleMappings | | *(Legacy)* Map of <%= application_name %> Role ID : Fully Qualified Role Name. This does NOT remove any mappings for roles which are not included in the map.
+roleMappingNames | | *(Legacy)* Map of <%= application_name %> Role ID : Role Name. This does NOT remove any mappings for roles which are not included in the map.
 config | | Map of configuration options which vary by type.
+
+### JSON Parameters for Role Mapping
+
+Parameter | Default | Description
+--------- | ------- | -----------
+mappedRole.id |  | Role ID identifying the <%= application_name %> role in the user source tenant
+mappedRole.authority |  | Role authority identifying the <%= application_name %> role in the user source tenant
+sourceRoleFqn      |  | Fully Qualified Name of the role in the identify service
+sourceRoleName      |  | Name of the role in the identify service
+
+This object defines a mapping from the <%= application_name %> role to the identity source role. The <%= application_name %> role is identified by passing `mappedRole.id` or `mappedRole.authority` and the identity source must be identified by passing either `sourceRoleFqn` or `sourceRoleName`.
 
 ### JSON Parameters for ldap
 
@@ -545,7 +575,25 @@ curl -XPUT "<%= curl_url %>/api/user-sources/3" \
     },
     "defaultAccountRole": {
       "id": 19
-    }
+    },
+    "roleMappings": [
+      {
+        "sourceRoleName": "Mathematicians",
+        "sourceRoleFqn": "CN=Mathematicians,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+        "mappedRole": {
+          "id": 19119,
+          "authority": "Pascal"
+        }
+      },
+      {
+        "sourceRoleName": "Philosophers",
+        "sourceRoleFqn": "CN=Philosophers,CN=Users,DC=qa,DC=ad,DC=myorg,DC=com",
+        "mappedRole": {
+          "id": 19200,
+          "authority": "Plato"
+        }
+      }
+    ]
   }
 }'
 ```
@@ -570,8 +618,9 @@ name      |  | Name
 description |  | Description (optional)
 active      |  | Activate (true) or disable (false) the identity source
 defaultAccountRole.id |  | Default Role ID
-roleMappings | | Map of <%= application_name %> Role ID : Fully Qualified Role Name
-roleMappingNames | | Map of <%= application_name %> Role ID : Role Name
+roleMappings | | List of [Role Mapping Objects](#json-parameters-for-role-mapping). This removes any mappings for roles which are not included in the list.
+roleMappings | | *(Legacy)* Map of <%= application_name %> Role ID : Fully Qualified Role Name. This does NOT remove any mappings for roles which are not included in the map.
+roleMappingNames | | *(Legacy)* Map of <%= application_name %> Role ID : Role Name. This does NOT remove any mappings for roles which  are not included in the map.
 config | | Map of configuration options which vary by type.
 
 ## Updating Subdomain for an Identity Source
