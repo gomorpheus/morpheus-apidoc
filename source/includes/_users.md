@@ -468,13 +468,6 @@ This endpoint will retrieve a list of roles that can be assigned to a user.
 
 `GET <%= api_url %>/api/users/available-roles`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-accountId      | (current tenant) | ID of Tenant *Only available to the master account.*
-
-
 ## Get Available Roles for a Sub Tenant User
 
 ```shell
