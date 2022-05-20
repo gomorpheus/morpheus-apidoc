@@ -466,7 +466,7 @@ This endpoint will retrieve a list of roles that can be assigned to a user.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/accounts/available-roles`
+`GET <%= api_url %>/api/users/available-roles`
 
 ### Query Parameters
 
