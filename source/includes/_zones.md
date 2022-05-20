@@ -463,9 +463,9 @@ autoRecoverPowerState |  | Automatically Power on VMs
 scalePriority |  | Scale Priority
 linkedAccountId |  | Linked Account ID (enter commercial ID to get costing for AWS Govcloud)
 config |  | Map containing zone configuration settings. See the section on specific zone types for details.
-credential |  | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local cloud `
+credential |  | Map containing [Credential](#credentials) ID or the default `{"type": "local"}` which means use the values set in the local cloud `config` instead of associating a credential.
 securityMode | | host firewall.. off or internal. a.k.a. "local firewall"
-config` instead of associating a credential.
+
 
 Additional config properties are dynamic and depend on the type of cloud. See [Cloud Types](#cloud-types).
 
