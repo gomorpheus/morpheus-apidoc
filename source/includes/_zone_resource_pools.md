@@ -226,6 +226,7 @@ curl -XPUT "<%= curl_url %>/api/zones/5/resource-pools/50" \
   -d '{"resourcePool":{
     "active": true,
     "visibility": "private",
+    "displayName": "foo",
     "tenantPermissions": {
       "accounts": [1,2,3,4,5]
     },
@@ -259,6 +260,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 active      |  | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
+displayName  |  | Optional Display Name (VMware only)
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
