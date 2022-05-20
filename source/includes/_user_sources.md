@@ -533,7 +533,17 @@ Parameter | Default | Description
 config.url      |  | Login Redirect URL
 config.doNotIncludeSAMLRequest      | false | Exclude SAMLRequest Parameter
 config.logoutUrl      |  | Logout Post URL
-config.publicKey      |  | Signing Public Key
+config.SAMLSignatureMode      | NoSignature | SAML Request signing mode, possible values: *NoSignature*, *SelfSigned*, or *CustomSignature*
+config.request509Certificate      |  | X.509 Certificate. Only applies when `SAMLSignatureMode=CustomSignature`
+config.requestPrivateKey      |  | RSA Private Key. Only applies when `SAMLSignatureMode=CustomSignature`
+config.doNotValidateSignature      | true | SAML Response signing flag, `"true"` or `"false"`
+config.publicKey      |  | Signing Public Key. Only applies when `doNotValidateSignature=true`
+config.privateKey      |  | Encryption RSA Private Key
+config.givenNameAttribute      |  | Given Name Attribute Name
+config.surnameAttribute      |  | Surname Attribute Name
+config.roleAttributeName      |  | Role Attribute Name eg. `firstName`
+config.requiredAttributeValue      |  | Role Attribute Required Value
+
 
 ### JSON Parameters for customExternal
 
