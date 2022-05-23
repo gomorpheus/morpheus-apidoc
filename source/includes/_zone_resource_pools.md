@@ -79,8 +79,8 @@ zoneId | The ID of the cloud
 
 Parameter | Default | Description
 --------- | ------- | -----------
-phrase |  | Filter on partial match of name
-name |  | Filter on exact match of name
+phrase |  | Filter on partial match of name or displayName
+name |  | Filter on exact match of name or displayName
 
 ## Get a Specific Resource Pool
 
