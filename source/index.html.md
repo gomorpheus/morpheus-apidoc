@@ -44,6 +44,7 @@ includes:
   - tasks
   - task_types
   - workflows
+  - scale_thresholds
   - power_schedules
   - execute_schedules
   - execution_request
