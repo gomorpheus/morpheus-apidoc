@@ -185,7 +185,7 @@ curl -XPOST "<%= curl_url %>/api/thresholds" \
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
-name      |  | Y | A name for the scale threshold
+name      | Y | | A name for the scale threshold
 autoUp      | Y | false | Auto Upscale
 autoDown      | Y | false | Auto Downscale
 minCount      | Y | 0.0 | Min Count, the minimum number of nodes to scale down to
@@ -193,10 +193,10 @@ maxCount      | Y | 0.0 | Max Count, the maximum number of nodes to scale up to
 cpuEnabled      | N | false | Enable CPU Threshold
 minCpu      | N | 0.0 | Min CPU (%)
 maxCpu      | N | 0.0 | Max CPU (%)
-memoryEnabled      | N | false | Enable CPU Threshold
+memoryEnabled      | N | false | Enable Memory Threshold
 minMemory      | N | 0.0 | Min Memory (%)
 maxMemory      | N | 0.0 | Max Memory (%)
-diskEnabled      | N | false | Enable CPU Threshold
+diskEnabled      | N | false | Enable Disk Threshold
 minDisk      | N | 0.0 | Min Disk (%)
 maxDisk      | N | 0.0 | Max Disk (%)
 
