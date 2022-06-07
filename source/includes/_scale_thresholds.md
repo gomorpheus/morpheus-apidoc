@@ -177,6 +177,8 @@ curl -XPOST "<%= curl_url %>/api/thresholds" \
 
 > The above command returns JSON structured like getting a single scale threshold: 
 
+This endpoint creates a new scale threshold.
+
 ### HTTP Request
 
 `POST <%= api_url %>/api/thresholds`
@@ -188,8 +190,8 @@ Parameter | Required | Default | Description
 name      | Y | | A name for the scale threshold
 autoUp      | Y | false | Auto Upscale
 autoDown      | Y | false | Auto Downscale
-minCount      | Y | 0.0 | Min Count, the minimum number of nodes to scale down to
-maxCount      | Y | 0.0 | Max Count, the maximum number of nodes to scale up to
+minCount      | Y | 1 | Min Count, the minimum number of nodes to scale down to
+maxCount      | Y | 2 | Max Count, the maximum number of nodes to scale up to
 cpuEnabled      | N | false | Enable CPU Threshold
 minCpu      | N | 0.0 | Min CPU (%)
 maxCpu      | N | 0.0 | Max CPU (%)
@@ -217,6 +219,8 @@ curl -XPUT "<%= curl_url %>/api/thresholds/:id" \
 ```
 
 > The above command returns JSON structured like getting a single scale threshold: 
+
+This endpoint updates an existing scale threshold.
 
 ### HTTP Request
 
