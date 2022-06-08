@@ -5,7 +5,7 @@ Scale Thresholds can be configured to provide a template of rules to apply when 
 <!--## Get All Scale Thresholds-->
 
 ```shell
-curl "<%= curl_url %>/api/thresholds" \
+curl "<%= curl_url %>/api/scale-thresholds" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -13,7 +13,7 @@ curl "<%= curl_url %>/api/thresholds" \
 
 ```json
 {
-  "thresholds": [
+  "scaleThresholds": [
     {
       "id": 3,
       "name": "Default CPU Threshold",
@@ -22,6 +22,7 @@ curl "<%= curl_url %>/api/thresholds" \
       "autoDown": true,
       "minCount": 1,
       "maxCount": 3,
+      "scaleIncrement": 1,
       "cpuEnabled": true,
       "minCpu": 40.0,
       "maxCpu": 75.0,
@@ -42,6 +43,7 @@ curl "<%= curl_url %>/api/thresholds" \
       "autoDown": false,
       "minCount": 1,
       "maxCount": 2,
+      "scaleIncrement": 1,
       "cpuEnabled": true,
       "minCpu": 0.0,
       "maxCpu": 99.0,
@@ -62,6 +64,7 @@ curl "<%= curl_url %>/api/thresholds" \
       "autoDown": false,
       "minCount": 1,
       "maxCount": 2,
+      "scaleIncrement": 1,
       "cpuEnabled": false,
       "minCpu": 0.0,
       "maxCpu": 0.0,
@@ -89,7 +92,7 @@ This endpoint retrieves all scale thresholds associated with the account.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/thresholds`
+`GET <%= api_url %>/api/scale-thresholds`
 
 ### Query Parameters
 
@@ -105,7 +108,7 @@ phrase |  | If specified will return a partial match on name
 ## Get a Specific Scale Threshold
 
 ```shell
-curl "<%= curl_url %>/api/thresholds/4" \
+curl "<%= curl_url %>/api/scale-thresholds/4" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -113,7 +116,7 @@ curl "<%= curl_url %>/api/thresholds/4" \
 
 ```json
 {
-  "threshold": {
+  "scaleThreshold": {
     "id": 4,
     "name": "Scale up disk at 100%",
     "type": "template",
@@ -121,6 +124,7 @@ curl "<%= curl_url %>/api/thresholds/4" \
     "autoDown": false,
     "minCount": 1,
     "maxCount": 2,
+    "scaleIncrement": 1,
     "cpuEnabled": false,
     "minCpu": 0.0,
     "maxCpu": 0.0,
@@ -141,7 +145,7 @@ This endpoint retrieves a specific scale threshold.
 
 ### HTTP Request
 
-`GET <%= api_url %>/api/thresholds/:id`
+`GET <%= api_url %>/api/scale-thresholds/:id`
 
 ### URL Parameters
 
@@ -152,11 +156,11 @@ ID | The ID of the scale threshold to retrieve
 ## Create a Scale Threshold
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/thresholds" \
+curl -XPOST "<%= curl_url %>/api/scale-thresholds" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-  "threshold": {
+  "scaleThreshold": {
     "name": "Example Threshold",
     "autoUp": false,
     "autoDown": false,
@@ -181,7 +185,7 @@ This endpoint creates a new scale threshold.
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/thresholds`
+`POST <%= api_url %>/api/scale-thresholds`
 
 ### JSON Parameters
 
@@ -206,11 +210,11 @@ maxDisk      | N | 0.0 | Max Disk (%)
 ## Update a Scale Threshold
 
 ```shell
-curl -XPUT "<%= curl_url %>/api/thresholds/:id" \
+curl -XPUT "<%= curl_url %>/api/scale-thresholds/:id" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
-  "threshold": {
+  "scaleThreshold": {
     "memoryEnabled": true,
     "minMemory": 0,
     "maxMemory": 85.0,
@@ -224,7 +228,7 @@ This endpoint updates an existing scale threshold.
 
 ### HTTP Request
 
-`PUT <%= api_url %>/api/thresholds/:id`
+`PUT <%= api_url %>/api/scale-thresholds/:id`
 
 ### JSON Parameters
 
@@ -234,7 +238,7 @@ See [Create](#create-a-scale-threshold).
 ## Delete a Scale Threshold
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/thresholds/1" \
+curl -XDELETE "<%= curl_url %>/api/scale-thresholds/1" \
   -H "Authorization: BEARER <%= curl_token %>"
 ```
 
@@ -250,7 +254,7 @@ Will delete a scale threshold from the system and make it no longer usable.
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/thresholds/:id`
+`DELETE <%= api_url %>/api/scale-thresholds/:id`
 
 ### URL Parameters
 
