@@ -2018,6 +2018,7 @@ Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
 instance  | Y | n/a | Key for name, site, instanceType layout, and plan
 instance.name | Y |  | Name of the instance to be created
+instance.description | N |  | Description of the instance
 instance.site.id | Y |  | The Group ID to provision the instance into
 instance.instanceType.code | Y |  | The type of instance by code we want to fetch
 instance.layout.id |  Y |  | The layout id for the instance type that you want to provision. i.e. single process or cluster
