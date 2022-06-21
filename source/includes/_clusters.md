@@ -1197,6 +1197,96 @@ Parameter | Default | Description
 phrase |  | Name filter, restricts query to only load workers matching the name or display name
 
 
+## Get Cluster Upgrade Versions (Kubernetes)
+
+```shell
+curl "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "versions": [
+        "1.21.14",
+        "1.21.13",
+        "1.21.12",
+        "1.21.11",
+        "1.21.10",
+        "1.21.9",
+        "1.21.8",
+        "1.21.7",
+        "1.21.6",
+        "1.21.5",
+        "1.21.4",
+        "1.21.3",
+        "1.21.2",
+        "1.21.1",
+        "1.21.0",
+        "1.20.15",
+        "1.20.14",
+        "1.20.13",
+        "1.20.12",
+        "1.20.11",
+        "1.20.10",
+        "1.20.9",
+        "1.20.8",
+        "1.20.7",
+        "1.20.6",
+        "1.20.5",
+        "1.20.4"
+    ],
+    "currentVersion": "1.20.2"
+}
+```
+This endpoint returns valid version targets for upgrading kubectl and kubeadm on the cluster.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/clusters/:id/upgrade-cluster`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the cluster
+
+
+## Upgrade a Cluster (Kubernetes)
+
+```shell
+curl "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint updates the kubectl and kudeadm versions on cluster to the specified version. Use [Get Cluster Upgrade Versions](#get-cluster-upgrade-versions-kubernetes) to list valid version targets for the cluster.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/clusters/:id/upgrade-cluster`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the cluster
+
+### JSON Cluster Parameters
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+targetVersion | Y |  | Target version for cluster after upgrade
+
+
 ## Get Volumes
 
 ```shell
