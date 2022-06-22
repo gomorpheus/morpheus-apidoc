@@ -1256,8 +1256,12 @@ id | The ID of the cluster
 ## Upgrade a Cluster (Kubernetes)
 
 ```shell
-curl "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
+curl -XPOST "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
   -H "Authorization: BEARER <%= curl_token %>"
+  -H "Content-Type: application/json" \
+  -d '{
+       "targetVersion": "1.21.14"
+      }' 
 ```
 
 > The above command returns JSON structure like this:
@@ -1268,7 +1272,7 @@ curl "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
 }
 ```
 
-This endpoint updates the kubectl and kudeadm versions on cluster to the specified version. Use [Get Cluster Upgrade Versions](#get-cluster-upgrade-versions-kubernetes) to list valid version targets for the cluster.
+This endpoint updates the kubectl and kudeadm versions on a Kubernetes cluster to the specified version. Use [Get Cluster Upgrade Versions](#get-cluster-upgrade-versions-kubernetes) to list valid version targets for the cluster.
 
 ### HTTP Request
 
