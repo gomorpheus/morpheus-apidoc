@@ -1256,12 +1256,8 @@ id | The ID of the cluster
 ## Upgrade a Cluster (Kubernetes)
 
 ```shell
-curl -XPOST "<%= curl_url %>/api/clusters/:id/upgrade-cluster" \
+curl -XPOST "<%= curl_url %>/api/clusters/:id/upgrade-cluster?targetVersion=1.21.14" \
   -H "Authorization: BEARER <%= curl_token %>"
-  -H "Content-Type: application/json" \
-  -d '{
-       "targetVersion": "1.21.14"
-      }' 
 ```
 
 > The above command returns JSON structure like this:
@@ -1284,7 +1280,7 @@ Parameter | Description
 --------- | -----------
 id | The ID of the cluster
 
-### JSON Cluster Parameters
+### Query Parameters
 
 Parameter | Required | Default | Description
 --------- | -------- | ------- | -----------
