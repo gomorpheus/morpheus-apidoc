@@ -148,7 +148,7 @@ curl "<%= curl_url %>/api/roles/3" \
     },
   ],
   "globalInstanceTypeAccess": "custom",
-  "instanceTypePermissions": [
+  "instanceTypes": [
     {
       "id": 1,
       "code": "activemq",
@@ -169,9 +169,9 @@ curl "<%= curl_url %>/api/roles/3" \
     },
   ],
   "globalAppTemplateAccess": "full",
-  "appTemplatePermissions": [],
+  "appTemplates": [],
   "globalCatalogItemTypeAccess": "full",
-  "catalogItemTypePermissions": [
+  "catalogItemTypes": [
     {
       "id": 1,
       "code": "app1",
@@ -185,7 +185,7 @@ curl "<%= curl_url %>/api/roles/3" \
       "access": "full"
     }
   ],
-  "personaPermissions": [
+  "personas": [
     {
       "id": 1,
       "code": "standard",
@@ -200,7 +200,7 @@ curl "<%= curl_url %>/api/roles/3" \
     }
   ],
   "globalVdiPoolAccess": "custom",
-  "vdiPoolPermissions": [
+  "vdiPools": [
     {
       "id": 1,
       "name": "Desktop 1",
@@ -213,7 +213,7 @@ curl "<%= curl_url %>/api/roles/3" \
     }
   ],
   "globalReportTypeAccess": "custom",
-  "reportTypePermissions": [
+  "reportTypes": [
     {
       "id": 21,
       "code": "appCost",
@@ -230,7 +230,7 @@ curl "<%= curl_url %>/api/roles/3" \
 }
 ```
 
-> The sample JSON above shows only a small subset of the featurePermissions, instanceTypePermissions and reportTypePermissions that exist.
+> The sample JSON above shows only a small subset of the featurePermissions, instanceTypes and reportTypes that exist.
 
 This endpoint will retrieve a specific role by id if the user has permission to access the role.
 
@@ -248,7 +248,106 @@ curl -XPOST "<%= curl_url %>/api/roles" \
     "authority": "Test Role",
     "description": "A test role",
     "baseRoleId": 2,
-    "roleType": "user"
+    "roleType": "user",
+    "defaultPersona": {"code": "standard"},
+    "globalSiteAccess": "custom",
+    "globalInstanceTypeAccess": "custom",
+    "globalAppTemplateAccess": "custom",
+    "globalCatalogItemTypeAccess": "custom",
+    "globalVdiPoolAccess": "custom",
+    "globalReportTypeAccess": "custom",
+    "permissions": [
+      {
+        "code": "dashboard",
+        "access": "read"
+      },
+      {
+        "code": "operations-wiki",
+        "access": "full"
+      }
+    ],
+    "sites": [
+      {
+        "name": "Group B",
+        "access": "full"
+      },
+      {
+        "id": 43,
+        "access": "none"
+      }
+    ],
+    "instanceTypes": [
+      {
+        "code": "php",
+        "access": "full"
+      },
+      {
+        "code": "postgres",
+        "access": "full"
+      },
+      {
+        "code": "activemq",
+        "access": "full"
+      },
+      {
+        "code": "windows",
+        "access": "full"
+      }
+    ],
+    "appTemplates": [
+      {
+        "name": "my blueprint",
+        "access": "full"
+      },
+      {
+        "id": 55,
+        "access": "none"
+      }
+    ],
+    "catalogItemTypes": [
+      {
+        "name": "apache",
+        "access": "full"
+      },
+      {
+        "id": 6,
+        "access": "none"
+      }
+    ],
+    "personas": [
+      {
+        "code": "standard",
+        "access": "full"
+      },
+      {
+        "code": "serviceCatalog",
+        "access": "full"
+      },
+      {
+        "code": "vdi",
+        "access": "full"
+      }
+    ],
+    "vdiPools": [
+      {
+        "name": "Notepad",
+        "access": "full"
+      },
+      {
+        "id": 22,
+        "access": "none"
+      }
+    ],
+    "reportTypes": [
+      {
+        "code": "appCost",
+        "access": "full"
+      },
+      {
+        "code": "cloudCost",
+        "access": "full"
+      }
+    ]
   }}'
 ```
 
@@ -269,9 +368,26 @@ roleType | | The type of role to be created. Accepted values are either 'user' t
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+permissions      |  | Array of objects containing permission and access level. Permissions can be identified by code, name or id. This provides [updating role feature permissions](#updating-role-feature-permissions) in bulk. Only the specified permissions are updated.
+globalSiteAccess      |  | Global Group Access can be set to `full`, `custom` or `none`
+sites      |  | Array of objects containing group (site) and access level. Groups can be identified by id or name. This provides [customizing group access](#customizing-group-access) in bulk. Only the specified groups are updated. Only applicable when `globalSiteAccess` is `custom`. Only applicable to User roles.
+globalZoneAccess      |  | Global Cloud Access can be set to `full`, `custom` or `none`
+zones      |  | Array of objects containing cloud (zone) and access level. Clouds can be identified by id or name. This provides [customizing cloud access](#customizing-cloud-access) in bulk. Only the specified clouds are updated. Only applicable when `globalZoneAccess` is `custom`. Only applicable to Tenant roles.
+globalInstanceTypeAccess      |  | Global Instance Type Access can be set to `full`, `custom` or `none`
+instanceTypes      |  | Array of objects containing instance type and access level. Instance types can be identified by id, code or name. This provides [customizing instance type access](#customizing-instance-type-access) in bulk. Only the specified instance types are updated. Only applicable when `globalInstanceTypeAccess` is `custom`.
+globalAppTemplateAccess      |  | Global Blueprint Access can be set to `full`, `custom` or `none`
+appTemplates      |  | Array of objects containing blueprint and access level. Blueprints can be identified by id or name. This provides [customizing blueprint access](#customizing-blueprint-access) in bulk. Only the specified blueprints are updated. Only applicable when `globalAppTemplateAccess` is `custom`.
+globalCatalogItemTypeAccess      |  | Global Catalog Item Type Access can be set to `full`, `custom` or `none`
+catalogItemTypes      |  | Array of objects containing catalog item type and access level. Catalog item types can be identified by id, code or name. This provides [customizing catalog item type access](#customizing-catalog-item-type-access) in bulk. Only the specified catalog item types are updated. Only applicable when `globalCatalogItemTypeAccess` is `custom`.
+personas      |  | Array of objects containing persona and access level. Personas can be identified by code or name. This provides [customizing persona access](#customizing-persona-access) in bulk. Only the specified personas are updated.
+globalVdiPoolAccess      |  | Global VDI Pool Access can be set to `full`, `custom` or `none`
+vdiPools      |  | Array of objects containing VDI pool and access level. VDI pools can be identified by id or name. This provides [customizing VDI pool access](#customizing-vdi-pool-access) in bulk. Only the specified VDI pools are updated. Only applicable when `globalVdiPoolAccess` is `custom`.
+globalReportTypeAccess      |  | Global Report Type can be set to `full`, `custom` or `none`
+reportTypes      |  | Array of objects containing report type code and access level. Report types can be identified by id, code or name. This provides [customizing report type access](#customizing-report-type-access) in bulk. Only the specified report types are updated. Only applicable when `globalReportTypeAccess` is `custom`.
+resetPermissions      | false | Reset all feature permission access to none. This can be used in conjunction with `permissions` to recreate the feature permission access for the role.
+resetAllAccess      | false | Reset all access to none including permissions, global groups, instance types, etc. This can be used in conjunction with `permissions`, `sites`, `instanceTypes`, etc to recreate the access for the role.
 
-
-## Updating Basic Role Settings
+## Updating a Role
 
 ```shell
 curl -XPUT "<%= curl_url %>/api/roles/4" \
@@ -280,7 +396,105 @@ curl -XPUT "<%= curl_url %>/api/roles/4" \
   -d '{"role":{
     "authority": "Test Role",
     "description": "A new description of test role",
-    "defaultPersona": {"code": "serviceCatalog"}
+    "defaultPersona": {"code": "serviceCatalog"},
+    "globalSiteAccess": "custom",
+    "globalInstanceTypeAccess": "custom",
+    "globalAppTemplateAccess": "custom",
+    "globalCatalogItemTypeAccess": "custom",
+    "globalVdiPoolAccess": "custom",
+    "globalReportTypeAccess": "custom",
+    "permissions": [
+      {
+        "code": "dashboard",
+        "access": "read"
+      },
+      {
+        "code": "operations-wiki",
+        "access": "full"
+      }
+    ],
+    "sites": [
+      {
+        "name": "Group B",
+        "access": "full"
+      },
+      {
+        "id": 43,
+        "access": "none"
+      }
+    ],
+    "instanceTypes": [
+      {
+        "code": "php",
+        "access": "full"
+      },
+      {
+        "code": "postgres",
+        "access": "full"
+      },
+      {
+        "code": "activemq",
+        "access": "full"
+      },
+      {
+        "code": "windows",
+        "access": "full"
+      }
+    ],
+    "appTemplates": [
+      {
+        "name": "my blueprint",
+        "access": "full"
+      },
+      {
+        "id": 55,
+        "access": "none"
+      }
+    ],
+    "catalogItemTypes": [
+      {
+        "name": "apache",
+        "access": "full"
+      },
+      {
+        "id": 6,
+        "access": "none"
+      }
+    ],
+    "personas": [
+      {
+        "code": "standard",
+        "access": "full"
+      },
+      {
+        "code": "serviceCatalog",
+        "access": "full"
+      },
+      {
+        "code": "vdi",
+        "access": "full"
+      }
+    ],
+    "vdiPools": [
+      {
+        "name": "Notepad",
+        "access": "full"
+      },
+      {
+        "id": 22,
+        "access": "none"
+      }
+    ],
+    "reportTypes": [
+      {
+        "code": "appCost",
+        "access": "full"
+      },
+      {
+        "code": "cloudCost",
+        "access": "full"
+      }
+    ]
   }}'
 ```
 
@@ -299,6 +513,24 @@ description     |  | Optional description field if you want to put more info the
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
 defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+permissions      |  | Array of objects containing permission and access level. Permissions can be identified by code, name or id. This provides [updating role feature permissions](#updating-role-feature-permissions) in bulk. Only the specified permissions are updated.
+globalSiteAccess      |  | Global Group Access can be set to `full`, `custom` or `none`
+sites      |  | Array of objects containing group (site) and access level. Groups can be identified by id or name. This provides [customizing group access](#customizing-group-access) in bulk. Only the specified groups are updated. Only applicable when `globalSiteAccess` is `custom`. Only applicable to User roles.
+globalZoneAccess      |  | Global Cloud Access can be set to `full`, `custom` or `none`
+zones      |  | Array of objects containing cloud (zone) and access level. Clouds can be identified by id or name. This provides [customizing cloud access](#customizing-cloud-access) in bulk. Only the specified clouds are updated. Only applicable when `globalZoneAccess` is `custom`. Only applicable to Tenant roles.
+globalInstanceTypeAccess      |  | Global Instance Type Access can be set to `full`, `custom` or `none`
+instanceTypes      |  | Array of objects containing instance type and access level. Instance types can be identified by id, code or name. This provides [customizing instance type access](#customizing-instance-type-access) in bulk. Only the specified instance types are updated. Only applicable when `globalInstanceTypeAccess` is `custom`.
+globalAppTemplateAccess      |  | Global Blueprint Access can be set to `full`, `custom` or `none`
+appTemplates      |  | Array of objects containing blueprint and access level. Blueprints can be identified by id or name. This provides [customizing blueprint access](#customizing-blueprint-access) in bulk. Only the specified blueprints are updated. Only applicable when `globalAppTemplateAccess` is `custom`.
+globalCatalogItemTypeAccess      |  | Global Catalog Item Type Access can be set to `full`, `custom` or `none`
+catalogItemTypes      |  | Array of objects containing catalog item type and access level. Catalog item types can be identified by id, code or name. This provides [customizing catalog item type access](#customizing-catalog-item-type-access) in bulk. Only the specified catalog item types are updated. Only applicable when `globalCatalogItemTypeAccess` is `custom`.
+personas      |  | Array of objects containing persona and access level. Personas can be identified by code or name. This provides [customizing persona access](#customizing-persona-access) in bulk. Only the specified personas are updated.
+globalVdiPoolAccess      |  | Global VDI Pool Access can be set to `full`, `custom` or `none`
+vdiPools      |  | Array of objects containing VDI pool and access level. VDI pools can be identified by id or name. This provides [customizing VDI pool access](#customizing-vdi-pool-access) in bulk. Only the specified VDI pools are updated. Only applicable when `globalVdiPoolAccess` is `custom`.
+globalReportTypeAccess      |  | Global Report Type can be set to `full`, `custom` or `none`
+reportTypes      |  | Array of objects containing report type code and access level. Report types can be identified by id, code or name. This provides [customizing report type access](#customizing-report-type-access) in bulk. Only the specified report types are updated. Only applicable when `globalReportTypeAccess` is `custom`.
+resetPermissions      | false | Reset all feature permission access to none. This can be used in conjunction with `permissions` to recreate the feature permission access for the role.
+resetAllAccess      | false | Reset all access to none including permissions, global groups, instance types, etc. This can be used in conjunction with `permissions`, `sites`, `instanceTypes`, etc to recreate the access for the role.
 
 ## Updating Role Feature Permissions
 
