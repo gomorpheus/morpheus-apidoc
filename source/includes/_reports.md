@@ -350,15 +350,16 @@ format | Format of the rendered report file, `json` or `csv`. The default is `.j
 
 ## Run a Report
 
+
 ```shell
 curl -XPOST "<%= curl_url %>/api/reports" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{
   "report": {
-    "type": "appCost",
-    "startMonth": "01/2019",
-    "endMonth": "01/2020"
+    "type": "timeSeriesCost",
+    "startMonth": "01/2020",
+    "endMonth": "02/2020"
   }}'
 ```
 

@@ -17,6 +17,7 @@ curl "<%= curl_url %>/api/zones/5/resource-pools"
     {
       "id": 89,
       "name": "labs",
+      "inventory" : true,
       "description": "labs - vpc-231b2e3c - 10.50.0.0/16",
       "zone": {
         "id": 8,
@@ -96,6 +97,7 @@ curl "<%= curl_url %>/api/zones/5/resource-pools/50" \
   "resourcePool": {
     "id": 89,
     "name": "labs",
+    "inventory" : true,
     "description": "labs - vpc-231b2e3c - 10.50.0.0/16",
     "zone": {
       "id": 8,
@@ -196,6 +198,7 @@ defaultPool      | false | Set as the Default Pool
 defaultImage      | false | Set as the Default Image Target
 active      | true | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
+inventory       | true    | Enable (true) or disable (false) inventory sync for resource pool during cloud refresh
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  | true | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
@@ -261,6 +264,7 @@ Parameter | Default | Description
 active      |  | Activate (true) or disable (false) the resource pool
 visibility      | private | private or public
 displayName  |  | Optional Display Name (VMware only)
+inventory       |   | Enable (true) or disable (false) inventory sync for resource pool during cloud refresh
 tenantPermissions.accounts  |  | Array of tenant account ids that are allowed access
 resourcePermissions.all  |  | Pass true to allow access all groups
 resourcePermissions.sites  |  | Array of groups that are allowed access
