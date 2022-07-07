@@ -40,14 +40,14 @@ curl "<%= curl_url %>/api/library/container-types" \
           "id": 8,
           "name": "Http",
           "port": 80,
-          "loadBalanceProtocol": "http",
+          "loadBalanceProtocol": "HTTP",
           "exportName": "HTTP"
         },
         {
           "id": 9,
           "name": "Https",
           "port": 443,
-          "loadBalanceProtocol": "https",
+          "loadBalanceProtocol": "HTTPS",
           "exportName": "HTTPS"
         }
       ],
@@ -215,6 +215,18 @@ curl -XPOST "<%= curl_url %>/api/library/container-types" \
     "shortName": "mynode",
     "containerVersion": "1.0",
     "provisionTypeCode": "amazon",
+    "containerPorts": [
+      {
+        "name": "Web",
+        "port": 80,
+        "loadBalanceProtocol": "HTTP"
+      },
+      {
+        "name": "Secure Web",
+        "port": 443,
+        "loadBalanceProtocol": "HTTPS"
+      }
+    ],
     "scripts": [
       88
     ],
@@ -253,11 +265,24 @@ code | N | Node type code. Default is auto-generated UUID.
 description | N | Node type description
 containerVersion | Y | Version of the node type
 provisionTypeCode | Y | Provision type code, eg. `amazon`, etc.
+containerPorts | N | Array of exposed port definitions, see [Container Ports](#container-ports-parameter)
 scripts | N | Array of script IDs, see [Scripts](#scripts)
 templates | N | Array of file template IDs, see [File Templates](#file-templates)
 environmentVariables | N | Array of node type env variables, see [Environment Variables](#environment-variable-parameters)
 
 **note** The available configuration settings vary by provision type.
+
+#### Container Ports Parameter
+
+The `containerPorts` parameter is for exposed port configuration.
+
+It should be passed as an array of Objects with the following attributes:
+
+Parameter | Required | Default | Description
+--------- | -------- | ------- | -----------
+port | Y | n/a | port number. eg. `8080`
+name | N | n/a | A name for the port eg. `web`
+loadBalanceProtocol | N |  | The load balancer protocol. `HTTP`, `HTTPS`, or `TCP`. Default is none.
 
 #### Environment Variable Parameters
 The `environmentVariables` parameter is array of env objects with following fields:
@@ -315,6 +340,7 @@ name | Y | Node type name
 description | N | Node type description
 containerVersion | Y | Version of the node type
 provisionTypeCode | Y | Provision type code, eg. `amazon`, etc.
+containerPorts | N | Array of exposed port definitions, see [Container Ports](#container-ports-parameter)
 containerScripts | N | Array of script IDs, see [Scripts](#scripts)
 containerTemplates | N | Array of file template IDs, see [File Templates](#file-templates)
 environmentVariables | N | Array of node type env variables, see [Environment Variables](#environment-variables)
