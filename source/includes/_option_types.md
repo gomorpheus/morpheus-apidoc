@@ -137,6 +137,7 @@ curl "<%= curl_url %>/api/library/option-types/811" \
     "fieldAddOn": null,
     "fieldComponent": null,
     "placeHolder": "yourversion",
+    "verifyPattern": null,
     "helpBlock": null,
     "defaultValue": null,
     "optionSource": null,
@@ -211,6 +212,7 @@ fieldName | N | Field Name, the name for user input. This along with fieldContex
 type | N | Type, the type of input. eg. `text`, `checkbox`, `select`, etc. Default is `text`.
 fieldLabel | N | Field Label, the label for user input.
 placeHolder | N | Placeholder
+verifyPattern | N | Verify Pattern, A regexp string that validates the input, use `(?i)` to make the matcher case insensitive
 defaultValue | N | Default Value
 required | N | Required, Default is `false`.
 exportMeta | N | Export as Tag, Default is `false`.
@@ -257,6 +259,7 @@ fieldName | N | Field Name, the name for user input. This along with fieldContex
 type | N | Type, the type of input. eg. `text`, `checkbox`, `select`, etc. Default is `text`.
 fieldLabel | N | Field Label, the label for user input.
 placeHolder | N | Placeholder
+verifyPattern | N | Verify Pattern, A regexp string that validates the input, use `(?i)` to make the matcher case insensitive
 defaultValue | N | Default Value
 required | N | Required, Default is `false`.
 exportMeta | N | Export as Tag, Default is `false`.
