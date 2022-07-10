@@ -367,7 +367,7 @@ baseRoleId |  | A role to copy feature permissions and access from (optional)
 roleType | | The type of role to be created. Accepted values are either 'user' to create a User role or 'account' to create a Tenant role
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use 
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
-defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+defaultPersona.code      |  | Default Persona code, eg. standard, serviceCatalog, or vdi
 permissions      |  | Array of objects containing permission and access level. Permissions can be identified by code, name or id. This provides [updating role feature permissions](#updating-role-feature-permissions) in bulk. Only the specified permissions are updated.
 globalSiteAccess      |  | Global Group Access can be set to `full`, `custom` or `none`
 sites      |  | Array of objects containing group (site) and access level. Groups can be identified by id or name. This provides [customizing group access](#customizing-group-access) in bulk. Only the specified groups are updated. Only applicable when `globalSiteAccess` is `custom`. Only applicable to User roles.
@@ -512,7 +512,7 @@ authority  |  | A name for the role
 description     |  | Optional description field if you want to put more info there
 multitenant | false | A Multitenant role is automatically copied into all existing subtenants as well as placed into a subtenant when created. Useful for providing a set of predefined roles a Customer can use
 multitenantLocked | false | Prevents subtenants from branching off this role/modifying it
-defaultPersona.code      |  | Default Persona code, eg. standard or serviceCatalog
+defaultPersona.code      |  | Default Persona code, eg. standard, serviceCatalog, or vdi
 permissions      |  | Array of objects containing permission and access level. Permissions can be identified by code, name or id. This provides [updating role feature permissions](#updating-role-feature-permissions) in bulk. Only the specified permissions are updated.
 globalSiteAccess      |  | Global Group Access can be set to `full`, `custom` or `none`
 sites      |  | Array of objects containing group (site) and access level. Groups can be identified by id or name. This provides [customizing group access](#customizing-group-access) in bulk. Only the specified groups are updated. Only applicable when `globalSiteAccess` is `custom`. Only applicable to User roles.
