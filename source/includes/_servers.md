@@ -1082,7 +1082,7 @@ releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
 
-## Remove Discovered Hosts
+## Remove From Control/Remove Discovered Hosts
 
 ```shell
 curl -XDELETE "<%= curl_url %>/api/servers/removeFromControl" \
