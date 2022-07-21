@@ -1085,7 +1085,7 @@ force | off | Force Delete
 ## Remove Discovered Hosts
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/servers/removeDiscovered" \
+curl -XDELETE "<%= curl_url %>/api/servers/removeFromControl" \
   -H "Authorization: BEARER <%= curl_token %>"
   -d '{ "servers":[3173,3174,3175] }'
 ```
@@ -1102,7 +1102,7 @@ Will delete an unmanaged host asynchronously (Only deletes records local to morp
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/servers/removeDiscovered`
+`DELETE <%= api_url %>/api/servers/removeFromControl`
 
 ### JSON Parameters
 
