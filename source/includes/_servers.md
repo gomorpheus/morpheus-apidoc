@@ -1081,3 +1081,32 @@ preserveVolumes | off | Preserve Volumes
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
+
+## Remove Discovered Hosts
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/servers/removeDiscovered" \
+  -H "Authorization: BEARER <%= curl_token %>"
+  -d '{ "servers":[3173,3174,3175] }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Will delete an unmanaged host asynchronously (Only deletes records local to morpheus, actual VMs remain unchanged).
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/servers/removeDiscovered`
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+servers     |  | array of Ids of unmanaged Servers to be deleted
+force | off | Force Delete
