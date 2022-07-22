@@ -1104,6 +1104,12 @@ Will delete an unmanaged host asynchronously (Only deletes records local to morp
 
 `DELETE <%= api_url %>/api/servers/removeFromControl`
 
+### URL Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+force | off | Force Delete
+
 ### JSON Parameters
 
 Parameter | Default | Description
