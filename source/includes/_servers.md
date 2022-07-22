@@ -1115,4 +1115,3 @@ force | off | Force Delete
 Parameter | Default | Description
 --------- | ------- | -----------
 servers     |  | array of Ids of unmanaged Servers to be deleted
-force | off | Force Delete
