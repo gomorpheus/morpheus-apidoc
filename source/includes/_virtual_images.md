@@ -56,6 +56,12 @@ curl "<%= curl_url %>/api/virtual-images"
       "isSysprep": null,
       "userData": null,
       "consoleKeymap": null,
+      "guestConsoleType": null,
+      "guestConsoleUsername": null,
+      "guestConsolePassword": null,
+      "guestConsolePasswordHash": null,
+      "guestConsolePort": null,
+      "linkedClone": false,
       "storageProvider": null,
       "externalId": null,
       "visibility": "private",
@@ -210,6 +216,12 @@ curl "<%= curl_url %>/api/virtual-images/764" \
     "isSysprep": null,
     "userData": null,
     "consoleKeymap": null,
+    "guestConsoleType": null,
+    "guestConsoleUsername": null,
+    "guestConsolePassword": null,
+    "guestConsolePasswordHash": null,
+    "guestConsolePort": null,
+    "linkedClone": false,
     "storageProvider": null,
     "externalId": null,
     "visibility": "private",
@@ -313,6 +325,11 @@ curl -XPOST "<%= curl_url %>/api/virtual-images" \
     "osType": {
       "id": 9
     },
+    "guestConsoleType": "auto",
+    "guestConsoleUsername": null,
+    "guestConsolePassword": null,
+    "guestConsolePort": null,
+    "linkedClone": false,
     "virtioSupported": true,
     "vmToolsInstalled": true,
     "config": {
@@ -352,6 +369,10 @@ trialVersion | false | Trial Version
 isSysprep | false | Sysprep Enabled?
 config |  | Map of configuration properties, varies by image type. See below for more information
 tags |  | Metadata tags, Array of objects having a name and value
+guestConsoleType | auto | The Type of guest console this vm provides such as auto, disabled, vnc, rdp, ssh
+guetConsoleUsername | | The optional guest console username if you dont want to use the user defaults
+guestConsolePassword | | The optional guest console password if not using the accessing users creds
+guestConsolePort | | The port the guest console is being accessed from
 
 ## Create an Azure Reference Virtual Image
 
@@ -530,6 +551,10 @@ config |  | Map of configuration properties, varies by image type. See below for
 tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
 addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
 removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
+guestConsoleType | auto | The Type of guest console this vm provides such as auto, disabled, vnc, rdp, ssh
+guetConsoleUsername | | The optional guest console username if you dont want to use the user defaults
+guestConsolePassword | | The optional guest console password if not using the accessing users creds
+guestConsolePort | | The port the guest console is being accessed from
 
 ## Delete a Virtual Image
 
