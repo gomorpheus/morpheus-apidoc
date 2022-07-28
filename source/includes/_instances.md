@@ -3429,3 +3429,35 @@ id | ID of the instance
 Parameter   | Default | Description
 ---------   | ------- | -----------
 templateParameter |    | Template Parameter object. A map of key-value pairs that correspond to the template variables i.e. `tfvars`
+
+
+
+## Remove From Control
+
+```shell
+curl -XDELETE "<%= curl_url %>/api/instances/removeFromControl" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{ "ids":[3173,3174] }'
+```
+
+> The above command returns JSON structure like this:
+```json
+{
+  "success": true,
+  "msg": "Successfully removed ld-amzn-nginx-1, ld-amzn-nginx-2 from control"
+}
+```
+
+Will delete a brownfield instance(or instances) asynchronously (Only deletes records local to morpheus, actual VMs remain unchanged).
+
+### HTTP Request
+
+`DELETE <%= api_url %>/api/instances/removeFromControl`
+
+
+### JSON Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ids    |  | array of Ids of brownfield Instances to be deleted
