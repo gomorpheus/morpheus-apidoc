@@ -3449,7 +3449,7 @@ curl -XDELETE "<%= curl_url %>/api/instances/removeFromControl" \
 }
 ```
 
-Will delete a brownfield instance(or instances) asynchronously (Only deletes records local to morpheus, actual VMs remain unchanged).
+Will delete a brownfield instance (or instances) asynchronously (Only deletes records local to Morpheus, actual VMs remain unchanged).
 
 ### HTTP Request
 
