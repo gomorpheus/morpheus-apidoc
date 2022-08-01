@@ -3461,3 +3461,133 @@ Will delete a brownfield instance (or instances) asynchronously (Only deletes re
 Parameter | Default | Description
 --------- | ------- | -----------
 ids    |  | array of Ids of brownfield Instances to be deleted
+
+
+## Get an Instance Threshold
+
+```shell
+curl "<%= curl_url %>/api/instances/1/threshold" \
+  -H "Authorization: BEARER <%= curl_token %>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "instance": {
+    "id": 77036,
+    "name": "qa-docker"
+  },
+  "instanceThreshold": {
+    "id": 1,
+    "autoUp": true,
+    "autoDown": true,
+    "minCount": 1,
+    "maxCount": 3,
+    "cpuEnabled": true,
+    "minCpu": 50.0,
+    "maxCpu": 90.0,
+    "memoryEnabled": true,
+    "minMemory": 50.0,
+    "maxMemory": 90.0,
+    "diskEnabled": true,
+    "minDisk": 50.0,
+    "maxDisk": 90.0,
+    "minNetwork": null,
+    "networkEnabled": false,
+    "iopsEnabled": false,
+    "minIops": null,
+    "maxIops": null,
+    "comment": null,
+    "zoneId": null,
+    "dateCreated": "2021-08-01T22:29:58Z",
+    "lastUpdated": "2021-08-01T22:33:58Z"
+  }
+}
+```
+
+This endpoint retrieves a specific instance.
+
+### HTTP Request
+
+`GET <%= api_url %>/api/instances/:id`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+### Query Parameters
+
+
+## Apply State of an Instance
+
+```shell
+curl -XPUT "<%= curl_url %>/api/instances/:id/threshold" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "instanceThreshold": {
+      "autoUp": true,
+      "autoDown": true,
+      "minCount": 1,
+      "maxCount": 3,
+      "cpuEnabled": true,
+      "minCpu": 40.0,
+      "maxCpu": 75.0,
+      "memoryEnabled": true,
+      "minMemory": 50,
+      "maxMemory": 90,
+      "diskEnabled": true,
+      "minDisk": 50,
+      "maxDisk": 90,
+      "minNetwork": null,
+      "networkEnabled": false,
+      "iopsEnabled": false,
+      "minIops": null,
+      "maxIops": null,
+      "comment": "hello"
+    }
+  }'
+```
+
+> The above command returns JSON Structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint provides a way to apply the scaling threshold values of an instance.
+
+### HTTP Request
+
+`PUT <%= api_url %>/api/instances/:id/threshold`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | ID of the instance
+
+### JSON Parameters
+
+Parameter   |    Description
+---------   |    -----------
+autoUp | Auto Upscale - Enable auto upscaling
+autoDown | Auto Downscale - Enable auto downscaling
+zoneId | Cloud (optional) - Choose a cloud to scale into.
+minCount | Min Count (optional) - Minimum number of nodes
+maxCount | Max Count (optional) - Maximum number of nodes
+memoryEnabled | Enable Memory Threshold - Scale when memory thresholds are met.
+minMemory | Min Memory (optional) - Minimum memory percent (0-100)
+maxMemory | Max Memory (optional) - Maximum memory percent (0-100)
+diskEnabled | Enable Disk Threshold - Scale when disk thresholds are met.
+minDisk | Min Disk (optional) - Minimum storage percent (0-100)
+maxDisk | Max Disk (optional) - Minimum storage percent (0-100) 
+cpuEnabled | Enable CPU Threshold - Scale when cpu thresholds are met.
+minCpu | Min CPU (optional) - Minimum CPU percent (0-100)
+maxCpu | Max CPU (optional) - Maximum CPU percent (0-100)
+
