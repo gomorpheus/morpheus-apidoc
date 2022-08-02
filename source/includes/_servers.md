@@ -737,10 +737,11 @@ powerScheduleType |  | Power Schedule ID
 tags |  | Metadata tags, Array of objects having a name and value, this adds or updates the specified tags and removes any tags not specified.
 addTags |  | Add or update value of Metadata tags, Array of objects having a name and value
 removeTags |  | Remove Metadata tags, Array of objects having a name and an optional value. If value is passed, it must match to be removed.
-guestConsoleType | auto | The Type of guest console this server provides such as disabled, vnc, rdp, ssh
-guetConsoleUsername | | The optional guest console username if you dont want to use the user defaults
+guestConsoleType | | The Type of guest console this server provides such as disabled, vnc, rdp, ssh
+guestConsoleUsername | | The optional guest console username if you don't want to use the user defaults
 guestConsolePassword | | The optional guest console password if not using the accessing users creds
 guestConsolePort | | the port the guest console is being accessed from
+guestConsolePreferred | true | can turn off guest console preferences on server in favor of hypervisor console
 
 ## Convert To Managed
 
