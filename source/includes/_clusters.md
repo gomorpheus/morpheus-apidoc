@@ -198,6 +198,7 @@ curl "<%= curl_url %>/api/clusters/1" \
         "lastSync": null,
         "nextRunDate": "2019-08-14T04:47:22+0000",
         "lastSyncDuration": null,
+        "managed": true,
         "dateCreated": "2019-07-29T23:40:56+0000",
         "lastUpdated": "2019-08-14T04:43:54+0000",
         "serviceEntry": null,
@@ -504,7 +505,9 @@ curl -XPUT "<%= curl_url %>/api/clusters/1" \
        "description": "Cluster Description",
        "enabled": true,
        "serviceUrl": "https://api-endpoint.com",
-       "refresh": true
+       "serviceToken": "12345xyz",
+       "refresh": true,
+       "managed": true
       }}' 
 ```
 
@@ -528,7 +531,9 @@ name |  | Cluster name
 description |  | Cluster description
 enabled |  | Cluster enabled
 serviceUrl |  | Cluster API Url
+serviceToken | | Cluster API token
 refresh |  | Queue cluster refresh
+managed |  | Cluster managed
 
 ## Update Cluster Permissions
 
