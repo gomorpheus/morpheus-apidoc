@@ -1125,7 +1125,7 @@ This api call is reserved for migrating servers from one cloud to another. This 
 
 ### HTTP Request
 
-`POST <%= api_url %>/api/servers/change-cloud`
+`PUT <%= api_url %>/api/servers/change-cloud`
 
 ### JSON Server Parameters
 
