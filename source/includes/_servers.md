@@ -1098,3 +1098,40 @@ preserveVolumes | off | Preserve Volumes
 releaseEIPs | on | Release EIPs
 force | off | Force Delete
 
+## Change Server Cloud
+
+```shell
+curl -XPUT "<%= curl_url %>/api/servers/change-cloud" \
+  -H "Authorization: BEARER <%= curl_token %>" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "cloudId": 1,
+  "servers": [
+    {"source": 1, "target": 2}
+  ]
+  }'
+```
+
+> The above command returns JSON structure like this:
+
+```json
+{
+  "success": true
+}
+```
+
+
+This api call is reserved for migrating servers from one cloud to another. This could be due to moving clusters or resource pool scoping of a server without losing the data.
+
+### HTTP Request
+
+`POST <%= api_url %>/api/servers/change-cloud`
+
+### JSON Server Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+cloudId      |  | The cloud/zone ID we are moving the set of servers to
+servers |  | a JSON array of source: and target: server ids to be moved. If the target is blank Morpheus will automatically try to match by the servers unique or externalId
+
+
