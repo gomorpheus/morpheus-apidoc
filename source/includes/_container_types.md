@@ -230,6 +230,17 @@ curl -XPOST "<%= curl_url %>/api/library/container-types" \
     "scripts": [
       88
     ],
+    "templates": [
+      99
+    ],
+    "environmentVariables": [
+      {
+       "name": "foo",
+       "value": "bar",
+       "masked": false,
+       "export": false
+      }
+    ],
     "virtualImageId": 183,
     "mountLogs": null,
     "mountData": null,
@@ -302,7 +313,7 @@ Use this command to update an existing node type.
 curl -XPUT "<%= curl_url %>/api/library/container-types/:id" \
   -H "Authorization: BEARER <%= curl_token %>"
   -H "Content-Type: application/json" \
-  -d '{"layout": {
+  -d '{"containerType": {
         "name": "Custom Node Name",
         "containerVersion": "1.2",
         "environmentVariables": [
