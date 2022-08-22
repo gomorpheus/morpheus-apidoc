@@ -74,6 +74,7 @@ max | 25 | Max number of results to return
 offset | 0 | Offset of records you want to load
 phrase |  | Filter by matching authority
 authority |  | Filter by authority
+tenant |  | Filter by tenant/account
 
 
 ## Get a Specific Role
