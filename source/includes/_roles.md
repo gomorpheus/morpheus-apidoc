@@ -387,6 +387,7 @@ globalReportTypeAccess      |  | Global Report Type can be set to `full`, `custo
 reportTypes      |  | Array of objects containing report type code and access level. Report types can be identified by id, code or name. This provides [customizing report type access](#customizing-report-type-access) in bulk. Only the specified report types are updated. Only applicable when `globalReportTypeAccess` is `custom`.
 resetPermissions      | false | Reset all feature permission access to none. This can be used in conjunction with `permissions` to recreate the feature permission access for the role.
 resetAllAccess      | false | Reset all access to none including permissions, global groups, instance types, etc. This can be used in conjunction with `permissions`, `sites`, `instanceTypes`, etc to recreate the access for the role.
+owner |  |  Specify the tenant/owner/account for the role.  Can only be used by users with admin-accounts and admin-roles permissions set to full.
 
 ## Updating a Role
 
