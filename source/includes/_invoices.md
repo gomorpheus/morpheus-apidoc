@@ -186,6 +186,7 @@ projectId |  | If specified will return an exact match on project ID
 active |  | If specified will return an exact match on active flag.
 accountId | (own account) | Allows master tenant users to view invoices for another tenant.
 includeLineItems | false | Pass true to include the list of `lineItems` for each invoice, only `lineItemCount` is returned by default.
+maxLineItems | 1000 | Max number of line items to return under each invoice, only relevant if includeLineItems=true
 includeTotals | false | Pass true to include the summed totals (cost/price values) for all the invoices found in the query. The returned property is called `invoiceTotals`.
 tags |  | Filter by tags (metadata). This allows filtering by a tag name and value(s) like this `tags.env=qa` or `tags.env=qa&tags.env=test` which matches both: *env=qa* or *env=test*.
 
@@ -347,6 +348,11 @@ Parameter | Description
 --------- | -----------
 id | ID of the invoice
 
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+maxLineItems | 1000 | Max number of line items to return under the invoice.
 
 ## Update Invoice Tags
 
