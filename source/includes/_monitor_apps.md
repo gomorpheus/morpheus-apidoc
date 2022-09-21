@@ -154,7 +154,6 @@ curl "<%= curl_url %>/api/monitoring/apps/1" \
       "lastTimer": 7,
       "health": 0,
       "history": null,
-      "minHappy": 1,
       "lastMetric": null,
       "severity": "critical",
       "createIncident": true,
@@ -250,7 +249,6 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Unique name scoped to your account for the monitor app
 description |  | Optional description field
-minHappy | 1 | Min Happy. This specifies the minimum number of checks within inUptime  | true | Used to determine if monitor app should affect account wide availability calculations
 active    | true | Used to determine if monitor app is active
 severity  | critical | Severity level of incidents that are created when this check fails. They can be `info`, `warning`, or `critical`
 checks |  | Array of [Check](#checks) IDs
@@ -286,7 +284,6 @@ Parameter | Default | Description
 --------- | ------- | -----------
 name      |  | Unique name scoped to your account for the monitor app
 description |  | Description
-minHappy |  | Min Happy. This specifies the minimum number of checks within the app that must be happy to keep the app from becoming unhealthy.
 severity |  | Max Severity. Determines the maximum severity level this app can incur on an incident when failing. Default is critical
 active    | true | Used to determine if monitor app is active
 inUptime |  | Affects Availability. Default is on.
