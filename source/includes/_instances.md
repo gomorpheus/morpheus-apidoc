@@ -3435,7 +3435,7 @@ templateParameter |    | Template Parameter object. A map of key-value pairs tha
 ## Remove From Control
 
 ```shell
-curl -XDELETE "<%= curl_url %>/api/instances/removeFromControl" \
+curl -XDELETE "<%= curl_url %>/api/instances/remove-from-control" \
   -H "Authorization: BEARER <%= curl_token %>" \
   -H "Content-Type: application/json" \
   -d '{ "ids":[3173,3174] }'
@@ -3453,7 +3453,7 @@ Will delete a brownfield instance (or instances) asynchronously (Only deletes re
 
 ### HTTP Request
 
-`DELETE <%= api_url %>/api/instances/removeFromControl`
+`DELETE <%= api_url %>/api/instances/remove-from-control`
 
 
 ### JSON Parameters
