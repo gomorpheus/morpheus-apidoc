@@ -3,9 +3,9 @@
 Morpheus API Documentation
 ========
 
-The Morpheus API Documentation is built on the [Slate](https://github.com/slatedocs/slate) framework. 
+This is the repository for the legacy Morpheus API Documentation and is built on the [Slate](https://github.com/slatedocs/slate) framework. 
 
-The latest published documentation can be viewed at [https://apidocs.morpheusdata.com](https://apidocs.morpheusdata.com).
+The latest Morpheus API Documentation is built on the OpenAPI specification and can be viewed at [https://apidocs.morpheusdata.com](https://apidocs.morpheusdata.com).
 
 
 Building
